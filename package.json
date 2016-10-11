@@ -1,0 +1,23 @@
+{
+  "name": "my_lost_pet",
+  "version": "1.0.0",
+  "description": "app about pets found on the street",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "pet",
+    "lost",
+    "dog",
+    "cat",
+    "animals",
+    "missing"
+  ],
+  "author": "isaac jarquin",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  }
+}
