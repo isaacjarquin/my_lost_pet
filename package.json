@@ -4,7 +4,8 @@
   "description": "app about pets found on the street",
   "main": "index.js",
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "build": "webpack js/ClientApp.js public/bundle.js"
   },
   "keywords": [
     "pet",
