@@ -51,21 +51,21 @@
 	var MyTitle = __webpack_require__(172);
 
 	var App = function App() {
-		return React.createElement(
-			'div',
-			{ className: 'app-container' },
-			React.createElement(
-				'div',
-				{ className: 'home-info' },
-				React.createElement(MyTitle, { title: 'My lost pet', color: 'rebeccapurple' }),
-				React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
-				React.createElement(
-					'button',
-					{ className: 'browse-all' },
-					' or Brouse All'
-				)
-			)
-		);
+	  return React.createElement(
+	    'div',
+	    { className: 'app-container' },
+	    React.createElement(
+	      'div',
+	      { className: 'home-info' },
+	      React.createElement(MyTitle, { title: 'My lost pet', color: 'rebeccapurple' }),
+	      React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
+	      React.createElement(
+	        'button',
+	        { className: 'browse-all' },
+	        ' or Brouse All'
+	      )
+	    )
+	  );
 	};
 
 	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
