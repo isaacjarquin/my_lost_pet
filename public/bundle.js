@@ -48,14 +48,27 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(34);
-
-	var div = React.DOM.div;
 	var MyTitle = __webpack_require__(172);
-	var MyTitleFact = React.createFactory(MyTitle);
 
-	var MyFirstComponent = div(null, MyTitleFact({ title: 'My Lost Pet.' }));
+	var App = function App() {
+		return React.createElement(
+			'div',
+			{ className: 'app-container' },
+			React.createElement(
+				'div',
+				{ className: 'home-info' },
+				React.createElement(MyTitle, { title: 'My lost pet', color: 'rebeccapurple' }),
+				React.createElement('input', { className: 'search', type: 'text', placeholder: 'Search' }),
+				React.createElement(
+					'button',
+					{ className: 'browse-all' },
+					' or Brouse All'
+				)
+			)
+		);
+	};
 
-	ReactDOM.render(MyFirstComponent, document.getElementById('app'));
+	ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -21473,7 +21486,15 @@
 	var MyTitle = React.createClass({
 	  displayName: 'MyTitle',
 	  render: function render() {
-	    return div(null, h1(null, this.props.title));
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'h1',
+	        { style: { color: this.props.color } },
+	        this.props.title
+	      )
+	    );
 	  }
 	});
 
