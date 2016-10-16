@@ -1,6 +1,7 @@
 {
 	"pets": [
 		{
+			"id": "1",
 			"pet": "dog",
 			"image": "dog image",
 			"size": "medium",
@@ -11,6 +12,7 @@
 			"happyAtHome": "false"
 		},
 		{
+			"id": "2",
 			"pet": "dog",
 			"image": "dog image",
 			"size": "medium",
@@ -21,6 +23,7 @@
 			"happyAtHome": "false"
 		},
 		{
+			"id": "3",
 			"pet": "cat",
 			"image": "cat image",
 			"size": "medium",
@@ -31,6 +34,7 @@
 			"happyAtHome": "false"
 		},
 		{
+			"id": "4",
 			"pet": "dog",
 			"image": "dog image",
 			"size": "small",
@@ -41,6 +45,7 @@
 			"happyAtHome": "true"
 		},
 		{
+			"id": "5",
 			"pet": "cat",
 			"image": "cat image",
 			"size": "medium",

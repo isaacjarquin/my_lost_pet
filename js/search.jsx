@@ -1,10 +1,11 @@
 const React = require('react')
 const data = require('../public/mockData')
+const MissingPet = require('./MissingPet')
 
 const Search = () => (
   <div className='container'>
     {data.pets.map((pet) => (
-      <h3>{pet.description}</h3>
+      <MissingPet pet={pet}  />
     ))}
   </div>
 )
