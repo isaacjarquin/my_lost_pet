@@ -15,4 +15,9 @@ const MyTitle = React.createClass({
   }
 })
 
+MyTitle.propTypes = {
+  color: React.PropTypes.object.isRequied,
+  title: React.PropTypes.object.isRequied
+}
+
 module.exports = MyTitle

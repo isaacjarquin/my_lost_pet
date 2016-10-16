@@ -5,7 +5,7 @@ const MissingPet = require('./MissingPet')
 const Search = () => (
   <div className='container'>
     {data.pets.map((pet) => (
-      <MissingPet pet={pet}  />
+      <MissingPet {...pet} key={pet.id} />
     ))}
   </div>
 )
