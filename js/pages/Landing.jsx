@@ -1,5 +1,5 @@
 const React = require('react')
-const MyTitle = require('./MyTitle')
+const MyTitle = require('../components/MyTitle')
 const { Link } = require('react-router')
 
 const Landing = () => (
