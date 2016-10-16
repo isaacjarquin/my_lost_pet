@@ -1,7 +1,7 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Landing = require('./pages/Landing')
-const Search = require('./Search')
+const Search = require('./pages/Search')
 const { Router, Route, hashHistory } = require('react-router')
 
 const App = () => (
