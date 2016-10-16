@@ -1,6 +1,6 @@
 const React = require('react')
 const data = require('../../public/mockData')
-const MissingPet = require('../components/MissingPet')
+const MissingPet = require('../features/MissingPet')
 
 const Search = () => (
   <div className='container'>
