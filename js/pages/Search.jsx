@@ -5,7 +5,7 @@ const MissingPet = require('../features/MissingPet')
 const Search = React.createClass({
   getInitialState () {
     return {
-      searchTerm: 'search term'
+      searchTerm: ''
     }
   },
   handleSearchTermEvent (event) {
@@ -18,8 +18,10 @@ const Search = React.createClass({
           <h1 className='brand'>My lost pet</h1>
           <input value={this.state.searchTerm} className='search-input' type='text' placeholder='Search' onChange={this.handleSearchTermEvent} />
         </header>
-        {data.pets.map((pet) => (
-          <MissingPet {...pet} key={pet.id} />
+        {data.pets
+          .filter((pet) => `${pet.pet} ${pet.breading} ${pet.size}`.toUpperCase().indexOf(this.state.searchTerm.toUpperCase()) >= 0)
+          .map((pet) => (
+            <MissingPet {...pet} key={pet.id} />
         ))}
       </div>
     )
