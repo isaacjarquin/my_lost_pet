@@ -1,3 +1,5 @@
+require('./layout.scss')
+
 const React = require('react')
 
 const Layout = (props) => (
