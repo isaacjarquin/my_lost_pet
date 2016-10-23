@@ -1,5 +1,5 @@
 const React = require('react')
-const MissingPet = require('../features/MissingPet')
+const MissingPet = require('../features/missing_pet/MissingPet')
 const { object } = React.PropTypes
 
 const Search = React.createClass({
