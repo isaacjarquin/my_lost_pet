@@ -6,8 +6,10 @@ const Search = require('../js/pages/Search')
 const { shallow, mount } = require('enzyme')
 
 describe('<Search />', () => {
+  const pets = {pets: []}
+
   it('should render the brand', () => {
-    const wrapper = shallow(<Search />)
+    const wrapper = shallow(<Search pets={pets}/>)
 
     expect(wrapper.contains(<h1 className='brand'>My lost pet</h1>)).to.be.true
     expect(wrapper.contains('My lost pet')).to.be.true
