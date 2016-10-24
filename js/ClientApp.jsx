@@ -10,6 +10,9 @@ const { Router, Route, IndexRoute, hashHistory } = require('react-router')
 
 const { pets } = require('../public/mockData')
 
+const { store } = require('./Store')
+const { Provider } = require('react-redux')
+
 const App = React.createClass({
   assignPet (nextState, replace) {
     const petArray = pets.filter((pet) => pet.id === nextState.params.id)
@@ -23,13 +26,15 @@ const App = React.createClass({
   },
   render () {
     return (
-      <Router history={hashHistory}>
-        <Route path='/' component={Layout}>
-          <IndexRoute component={Landing} />
-          <Route path='/search' component={Search} pets={pets} />
-          <Route path='/details/:id' component={PetDetails} onEnter={this.assignPet} />
-        </Route>
-      </Router>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path='/' component={Layout}>
+            <IndexRoute component={Landing} />
+            <Route path='/search' component={Search} pets={pets} />
+            <Route path='/details/:id' component={PetDetails} onEnter={this.assignPet} />
+          </Route>
+        </Router>
+      </Provider>
     )
   }
 })
