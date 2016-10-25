@@ -4,8 +4,9 @@ const { expect } = require('chai')
 const React = require('react')
 const Search = require('../js/pages/Search')
 const { shallow, mount } = require('enzyme')
+const { store, rootReducer } = require('../js/Store') 
 
-describe('<Search />', () => {
+xdescribe('<Search />', () => {
   const pets = {pets: []}
 
   it('should render the brand', () => {
@@ -23,5 +24,19 @@ describe('<Search />', () => {
     input.simulate('change')
     expect(wrapper.state('searchTerm')).to.equal('cat')
     expect(wrapper.find('.pet').length).to.equal(2)
+  })
+})
+
+describe('Store', () => {
+  it('should boostrap', () => {
+    const state = rootReducer(undefined, { type: '@@redux/INIT'})
+
+    expect(state).to.deep.equal({ searchTerm: ''})
+  })
+
+  it('should handle setSearchTerm actions', () => {
+    const state = rootReducer({ searchTerm: 'dont care'}, {type: 'setSearchTerm', value: 'I do care a lot'})
+
+    expect(state).to.deep.equal({searchTerm: 'I do care a lot'})
   })
 })

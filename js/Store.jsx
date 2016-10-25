@@ -3,11 +3,11 @@ const reactRedux = require('react-redux')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
 
-const initialiState = {
+const initialState = {
   searchTerm: ''
 }
 
-const rootReducer = (state = initialiState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
       return reducerSearchTerm(state, action)
@@ -38,4 +38,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const connector = reactRedux.connect(mapStateToProps, mapDispatchToProps)
 
-module.exports = { connector, store }
+module.exports = { connector, store, rootReducer }
