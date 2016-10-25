@@ -1,5 +1,4 @@
 const React = require('react')
-// require('missing_pet/MissingPet')
 const { Link } = require('react-router')
 
 import { Card, CardImg, CardText, CardBlock, CardTitle, CardSubtitle } from 'reactstrap'

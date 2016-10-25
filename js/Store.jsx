@@ -1,10 +1,12 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
+const { pets } = require('../public/mockData')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
 
 const initialState = {
-  searchTerm: ''
+  searchTerm: '',
+  pets
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -22,10 +24,15 @@ const reducerSearchTerm = (state, action) => {
   return newState
 }
 
-const store = redux.createStore(rootReducer)
+const store = redux.createStore(rootReducer, initialState, redux.compose(
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+))
 
 const mapStateToProps = (state) => {
-  return { searchTerm: state.searchTerm }
+  return {
+    searchTerm: state.searchTerm,
+    pets: state.pets
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {

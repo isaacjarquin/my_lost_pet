@@ -1,10 +1,13 @@
 const React = require('react')
+const { connector } = require('../Store')
 
 class PetDetails extends React.Component {
-
+  assignPet (id) {
+    const petArray = this.props.pets.filter((pet) => pet.id === id)
+    return petArray[0]
+  }
   render () {
-    const params = this.props.params || {}
-    const { pet, breading, size, description } = params
+    const { pet, breading, size, description } = this.assignPet(this.props.params.id)
     return (
       <div className="container">
         <div className="pet-info">
@@ -17,10 +20,11 @@ class PetDetails extends React.Component {
   }
 }
 
-const { object } = React.PropTypes
+const { arrayOf, object } = React.PropTypes
 
 PetDetails.propTypes = {
-  params: object.isRequired
+  pets: arrayOf(object).isRequired,
+  params: object
 }
 
-module.exports = PetDetails
+module.exports = connector(PetDetails)
