@@ -1,34 +1,67 @@
 const React = require('react')
-const Landing = require('./pages/Landing')
-const Search = require('./pages/Search')
-const PetDetails = require('./pages/PetDetails')
 
 const Layout = require('./layouts/Layout')
-const { Router, Route, IndexRoute, browserHistory } = require('react-router')
+const { Router, browserHistory } = require('react-router')
 
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
 
-const appRoutes = () => (
-  <Route path='/' component={Layout}>
-    <IndexRoute component={Landing} />
-    <Route path='/search' component={Search} />
-    <Route path='/details/:id' component={PetDetails} />
-  </Route>
-)
+if (typeof module !== 'undefined' && module.require) {
+  if (typeof require.ensure === 'undefined') {
+    require.ensure = require('node-ensure')
+  }
+}
+
+const rootRoute = {
+  component: Layout,
+  path: '/',
+  indexRoute: {
+    getComponent (location, cb) {
+      require.ensure([], (error) => {
+        if (error) {
+          return console.error('BrowserEntry error', error)
+        }
+        cb(null, require('./pages/Landing'))
+      })
+    }
+  },
+  childRoutes: [
+    {
+      path: 'search',
+      getComponent (location, cb) {
+        require.ensure([], (error) => {
+          if (error) {
+            return console.error('search error', error)
+          }
+          cb(null, require('./pages/Search'))
+        })
+      }
+    },
+    {
+      path: 'details/:id',
+      getComponent (location, cb) {
+        require.ensure([], (error) => {
+          if (error) {
+            return console.error('details error', error)
+          }
+          cb(null, require('./pages/PetDetails'))
+        })
+      }
+    }
+  ]
+}
 
 const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={browserHistory}>
-          {appRoutes()}
-        </Router>
+        <Router history={browserHistory} routes={rootRoute} />
       </Provider>
     )
   }
 })
 
-App.Routes = appRoutes
+App.Routes = rootRoute
+App.History = browserHistory
 
 module.exports = App
