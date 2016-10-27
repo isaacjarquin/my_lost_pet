@@ -1,8 +1,6 @@
 const React = require('react')
-
 const Layout = require('./layouts/Layout')
 const { Router, browserHistory } = require('react-router')
-
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
 
@@ -12,15 +10,19 @@ if (typeof module !== 'undefined' && module.require) {
   }
 }
 
+const consoleErrorLogger = (location, error) => {
+  if (error) {
+    console.error(location, error)
+  }
+}
+
 const rootRoute = {
   component: Layout,
   path: '/',
   indexRoute: {
     getComponent (location, cb) {
       require.ensure([], (error) => {
-        if (error) {
-          return console.error('BrowserEntry error', error)
-        }
+        consoleErrorLogger('BrowserEntry error', error)
         cb(null, require('./pages/Landing'))
       })
     }
@@ -30,9 +32,7 @@ const rootRoute = {
       path: 'search',
       getComponent (location, cb) {
         require.ensure([], (error) => {
-          if (error) {
-            return console.error('search error', error)
-          }
+          consoleErrorLogger('Search error', error)
           cb(null, require('./pages/Search'))
         })
       }
@@ -41,9 +41,7 @@ const rootRoute = {
       path: 'details/:id',
       getComponent (location, cb) {
         require.ensure([], (error) => {
-          if (error) {
-            return console.error('details error', error)
-          }
+          consoleErrorLogger('Details error', error)
           cb(null, require('./pages/PetDetails'))
         })
       }
