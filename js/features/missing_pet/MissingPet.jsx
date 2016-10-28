@@ -1,21 +1,18 @@
-import './MissingPet.scss'
-
 const React = require('react')
 const { Link } = require('react-router')
 
-import { Card, CardImg, CardText, CardBlock, CardTitle, CardSubtitle } from 'reactstrap'
+if (process.env.WEBPACK_BUILD) {
+    require('./MissingPet.scss');
+}
 
 const MissingPet = (props) => (
   <Link to={`/details/${props.id}`}>
     <div className='pet'>
-      <Card>
-        <CardBlock className="pet-card">
-          <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-          <CardTitle>{props.pet}, {props.breading}, {props.size}</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>{props.description}</CardText>
-        </CardBlock>
-      </Card>
+      <div src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap"></div>
+      <div>{props.pet}, {props.breading}, {props.size}</div>
+      <div>Card subtitle</div>
+      <div>{props.description}</div>
+
     </div>
   </Link>
 )

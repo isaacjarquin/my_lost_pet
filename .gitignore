@@ -4,3 +4,8 @@
 /.nyc_output
 /coverage
 npm-debug.log
+/public/*.woff2
+/public/*.svg
+/public/*.ttf
+/public/*.eot
+/public/*.woff
