@@ -1,5 +1,9 @@
 const React = require('react')
-const { connector } = require('../Store')
+const { connector } = require('../../Store')
+
+if (process.env.WEBPACK_BUILD) {
+  require('./index.scss')
+}
 
 class PetDetails extends React.Component {
   assignPet (id) {

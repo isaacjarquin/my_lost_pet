@@ -23,7 +23,7 @@ const rootRoute = {
     getComponent (location, cb) {
       require.ensure([], (error) => {
         consoleErrorLogger('BrowserEntry error', error)
-        cb(null, require('./pages/Landing'))
+        cb(null, require('./pages/landing/index'))
       })
     }
   },
@@ -33,7 +33,7 @@ const rootRoute = {
       getComponent (location, cb) {
         require.ensure([], (error) => {
           consoleErrorLogger('Search error', error)
-          cb(null, require('./pages/Search'))
+          cb(null, require('./pages/search/index'))
         })
       }
     },
@@ -42,7 +42,7 @@ const rootRoute = {
       getComponent (location, cb) {
         require.ensure([], (error) => {
           consoleErrorLogger('Details error', error)
-          cb(null, require('./pages/PetDetails'))
+          cb(null, require('./pages/pet-details/index'))
         })
       }
     }

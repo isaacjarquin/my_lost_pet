@@ -9,3 +9,4 @@ npm-debug.log
 /public/*.ttf
 /public/*.eot
 /public/*.woff
+/public/*.png

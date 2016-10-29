@@ -14,6 +14,7 @@ const Header = React.createClass({
   render () {
     return (
       <header className='header'>
+        <img className="layout-background" src="../../public/pets-background.jpg" />
         <h1 className='brand'>
           <Link to='/' className='brand-link'>My lost pet</Link>
         </h1>

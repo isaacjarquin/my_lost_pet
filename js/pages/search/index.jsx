@@ -1,8 +1,12 @@
 const React = require('react')
-const MissingPet = require('../features/missing_pet/MissingPet')
+const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf } = React.PropTypes
-const Header = require('../features/Header')
-const { connector } = require('../Store')
+const Header = require('../../features/Header')
+const { connector } = require('../../Store')
+
+if (process.env.WEBPACK_BUILD) {
+  require('./index.scss')
+}
 
 const Search = React.createClass({
   propTypes: {

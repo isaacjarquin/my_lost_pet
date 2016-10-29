@@ -1,7 +1,11 @@
 const React = require('react')
 const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
-const { connector } = require('../Store')
+const { connector } = require('../../Store')
+
+if (process.env.WEBPACK_BUILD) {
+  require('./index.scss')
+}
 
 class Landing extends React.Component {
   constructor (props) {
@@ -19,6 +23,7 @@ class Landing extends React.Component {
   render () {
     return (
       <div className='home-info'>
+        <img className="landing-background" src="../../../public/landing-background.png" />
         <form onSubmit={this.gotoSearch}>
           <input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='search' type='text' placeholder='Search' />
           <Link to='/search' className='browse-all'> or Brouse All</Link>

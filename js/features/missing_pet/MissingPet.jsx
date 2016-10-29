@@ -2,7 +2,7 @@ const React = require('react')
 const { Link } = require('react-router')
 
 if (process.env.WEBPACK_BUILD) {
-    require('./MissingPet.scss');
+  require('./MissingPet.scss')
 }
 
 const MissingPet = (props) => (

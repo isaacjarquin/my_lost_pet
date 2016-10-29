@@ -1,11 +1,28 @@
 const React = require('react')
-const Header = require('../features/Header')
+
+if (process.env.WEBPACK_BUILD) {
+  require('./layout.scss')
+}
 
 const Layout = (props) => (
-  <div className='app-container'>
-    <Header title="My lost pet" />
-    <img className="layout-background" src="public/pets-background.jpg" />
-    {props.children}
+  <div className="container app-container">
+    <div className="row">
+			lol
+    </div>
+    <div className="row">
+			{props.children}
+    </div>
+    <div className="row">
+      <div className="col-md-4">
+        One of three columns
+      </div>
+      <div className="col-md-4">
+        One of three columns
+      </div>
+      <div className="col-md-4">
+        One of three columns
+      </div>
+    </div>
   </div>
 )
 
