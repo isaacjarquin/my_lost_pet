@@ -1,6 +1,7 @@
 /node_modules
 /public/bundle.js
 /public/*.bundle.js
+/public/main.css
 /.nyc_output
 /coverage
 npm-debug.log

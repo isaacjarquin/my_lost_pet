@@ -1,6 +1,7 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: __dirname,
@@ -37,38 +38,41 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
         test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'postcss-loader']
+        loader: ExtractTextPlugin.extract('css-loader?-autoprefixer!postcss-loader!sass-loader')
       },
       {
         test: /\.png$/,
-        loader: 'url-loader?limit=100000'
+        loader: ExtractTextPlugin.extract('url-loader?limit=100000')
       },
       {
         test: /\.jpg$/,
-        loader: 'file-loader'
+        loader: ExtractTextPlugin.extract('file-loader')
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/font-woff')
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=application/octet-stream'
+        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/octet-stream')
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'file'
+        loader: ExtractTextPlugin.extract('file')
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: 'url?limit=10000&mimetype=image/svg+xml'
+        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=image/svg+xml')
       }
     ]
   },
+  plugins: [
+      new ExtractTextPlugin("[name].css")
+  ],
   postcss: function () {
     return [autoprefixer, precss]
   }
