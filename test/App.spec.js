@@ -4,13 +4,14 @@ const { expect } = require('chai')
 const React = require('react')
 const Search = require('../js/pages/search/index')
 const { shallow, mount } = require('enzyme')
-const { store, rootReducer } = require('../js/Store')
+const { rootReducer } = require('../js/Store')
+const { pets } = require('../public/mockData')
 
 xdescribe('<Search />', () => {
   const pets = {pets: []}
 
   it('should render the brand', () => {
-    const wrapper = shallow(<Search pets={pets}/>)
+    const wrapper = shallow(<Search pets={pets} />)
 
     expect(wrapper.contains(<h1 className='brand'>My lost pet</h1>)).to.be.true
     expect(wrapper.contains('My lost pet')).to.be.true
@@ -29,13 +30,13 @@ xdescribe('<Search />', () => {
 
 describe('Store', () => {
   it('should boostrap', () => {
-    const state = rootReducer(undefined, { type: '@@redux/INIT'})
+    const state = rootReducer(undefined, {type: '@@redux/INIT'})
 
-    expect(state).to.deep.equal({ searchTerm: ''})
+    expect(state).to.deep.equal({ searchTerm: '', pets })
   })
 
   it('should handle setSearchTerm actions', () => {
-    const state = rootReducer({ searchTerm: 'dont care'}, {type: 'setSearchTerm', value: 'I do care a lot'})
+    const state = rootReducer({searchTerm: 'dont care'}, {type: 'setSearchTerm', value: 'I do care a lot'})
 
     expect(state).to.deep.equal({searchTerm: 'I do care a lot'})
   })

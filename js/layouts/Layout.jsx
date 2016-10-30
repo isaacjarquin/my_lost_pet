@@ -16,21 +16,21 @@ const Layout = React.createClass({
     if (pathname === '/') {
       return null
     } else {
-      return <div className="row"><Header /></div>
+      return <div className='row'><Header /></div>
     }
   },
   displayFooter ({pathname}) {
     if (pathname === '/') {
       return null
     } else {
-      return <div className="row"><Footer /></div>
+      return <div className='row'><Footer /></div>
     }
   },
   render () {
     return (
-      <div className="container app-container">
+      <div className='container app-container'>
         {this.displayHeader(this.props.location)}
-        <div className="row">
+        <div className='row'>
           {this.props.children}
         </div>
         {this.displayFooter(this.props.location)}

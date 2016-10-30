@@ -1,6 +1,6 @@
 const path = require('path')
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
 
 module.exports = {
   context: __dirname,
@@ -37,7 +37,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: 'style-loader!css-loader'
       },
       {
         test: /\.scss$/,
@@ -45,11 +45,11 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        loader: "url-loader?limit=100000"
+        loader: 'url-loader?limit=100000'
       },
       {
         test: /\.jpg$/,
-        loader: "file-loader"
+        loader: 'file-loader'
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -70,6 +70,6 @@ module.exports = {
     ]
   },
   postcss: function () {
-    return [autoprefixer, precss];
+    return [autoprefixer, precss]
   }
 }

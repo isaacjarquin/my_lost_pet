@@ -23,7 +23,7 @@ class Landing extends React.Component {
   render () {
     return (
       <div className='home-info'>
-        <img className="landing-background" src="../../../public/landing-background.png" />
+        <img className='landing-background' src='../../../public/landing-background.png' />
         <form onSubmit={this.gotoSearch}>
           <input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='search' type='text' placeholder='Search' />
           <Link to='/search' className='browse-all'> or Brouse All</Link>

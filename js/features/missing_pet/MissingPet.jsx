@@ -8,11 +8,11 @@ if (process.env.WEBPACK_BUILD) {
 const MissingPet = (props) => (
   <Link to={`/details/${props.id}`}>
     <div className='pet panel panel-primary'>
-      <div className="panel-heading">{props.pet}, {props.breading}, {props.size}</div>
-      <div className="panel-body">
-        <img src="https://placehold.it/150x80?text=IMAGE" className="img-responsive" alt="Image"></img>
+      <div className='panel-heading'>{props.pet}, {props.breading}, {props.size}</div>
+      <div className='panel-body'>
+        <img src='https://placehold.it/150x80?text=IMAGE' className='img-responsive' alt='Image' />
       </div>
-      <div className="panel-footer">{props.description}</div>
+      <div className='panel-footer'>{props.description}</div>
     </div>
   </Link>
 )

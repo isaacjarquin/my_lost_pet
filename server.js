@@ -29,7 +29,7 @@ server.use((req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      const body = ReactDOMServer.renderToString (
+      const body = ReactDOMServer.renderToString(
         React.createElement(Provider, {store},
           React.createElement(RouterContext, renderProps)
         )

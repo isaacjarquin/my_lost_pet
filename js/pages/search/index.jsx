@@ -15,9 +15,9 @@ const Search = React.createClass({
   render () {
     return (
       <div className='container'>
-        <div className="row">
-          <div className="col-sm-4">
-             {this.props.pets
+        <div className='row'>
+          <div className='col-sm-4'>
+            {this.props.pets
               .filter((pet) => `${pet.pet} ${pet.breading} ${pet.size}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
               .map((pet) => (
                 <MissingPet {...pet} key={pet.id} />

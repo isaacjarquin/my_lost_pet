@@ -13,11 +13,11 @@ class PetDetails extends React.Component {
   render () {
     const { pet, breading, size, description } = this.assignPet(this.props.params.id)
     return (
-      <div className="container">
-        <div className="pet-info">
-          <h1 className="pet-title-description">{pet}, {breading}, {size} </h1>
-          <img className="pet-image" src="#" />
-          <div className="pet-description">{description}</div>
+      <div className='container'>
+        <div className='pet-info'>
+          <h1 className='pet-title-description'>{pet}, {breading}, {size} </h1>
+          <img className='pet-image' src='#' />
+          <div className='pet-description'>{description}</div>
         </div>
       </div>
     )
