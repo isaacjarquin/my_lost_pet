@@ -1,4 +1,6 @@
 const React = require('react')
+const Header = require('../features/header/Header')
+const Footer = require('../features/footer/Footer')
 
 if (process.env.WEBPACK_BUILD) {
   require('./layout.scss')
@@ -7,21 +9,13 @@ if (process.env.WEBPACK_BUILD) {
 const Layout = (props) => (
   <div className="container app-container">
     <div className="row">
-			lol
+      <Header />
     </div>
     <div className="row">
 			{props.children}
     </div>
     <div className="row">
-      <div className="col-md-4">
-        One of three columns
-      </div>
-      <div className="col-md-4">
-        One of three columns
-      </div>
-      <div className="col-md-4">
-        One of three columns
-      </div>
+      <Footer />
     </div>
   </div>
 )

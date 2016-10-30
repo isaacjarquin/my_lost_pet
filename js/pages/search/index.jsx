@@ -1,7 +1,6 @@
 const React = require('react')
 const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf } = React.PropTypes
-const Header = require('../../features/Header')
 const { connector } = require('../../Store')
 
 if (process.env.WEBPACK_BUILD) {
@@ -16,12 +15,15 @@ const Search = React.createClass({
   render () {
     return (
       <div className='container'>
-        <Header showSearch />
-        {this.props.pets
-          .filter((pet) => `${pet.pet} ${pet.breading} ${pet.size}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .map((pet) => (
-            <MissingPet {...pet} key={pet.id} />
-        ))}
+        <div className="row">
+          <div className="col-sm-4">
+             {this.props.pets
+              .filter((pet) => `${pet.pet} ${pet.breading} ${pet.size}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+              .map((pet) => (
+                <MissingPet {...pet} key={pet.id} />
+             ))}
+          </div>
+        </div>
       </div>
     )
   }
