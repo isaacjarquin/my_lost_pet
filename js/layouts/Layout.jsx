@@ -1,7 +1,7 @@
 const React = require('react')
 const Header = require('../features/header/Header')
 const Footer = require('../features/footer/Footer')
-const { element, string } = React.PropTypes
+const { element, object } = React.PropTypes
 
 if (process.env.WEBPACK_BUILD) {
   require('./layout.scss')
@@ -10,7 +10,7 @@ if (process.env.WEBPACK_BUILD) {
 const Layout = React.createClass({
   propTypes: {
     children: element.isRequired,
-    location: string.isRequired
+    location: object.isRequired
   },
   displayHeader ({pathname}) {
     if (pathname === '/') {
