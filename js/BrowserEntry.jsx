@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom')
 const App = require('./ClientApp')
 const { match } = require('react-router')
 
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css'
+require('bootstrap/dist/css/bootstrap.css')
 
 match({ history: App.History, routes: App.Routes }, (error, redirectLocation, renderProps) => {
   if (error) {

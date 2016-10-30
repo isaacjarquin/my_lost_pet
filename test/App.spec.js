@@ -2,9 +2,9 @@
 
 const { expect } = require('chai')
 const React = require('react')
-const Search = require('../js/pages/Search')
+const Search = require('../js/pages/search/index')
 const { shallow, mount } = require('enzyme')
-const { store, rootReducer } = require('../js/Store') 
+const { store, rootReducer } = require('../js/Store')
 
 xdescribe('<Search />', () => {
   const pets = {pets: []}
