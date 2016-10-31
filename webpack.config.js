@@ -1,7 +1,11 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
+<<<<<<< HEAD
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+=======
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+>>>>>>> 379f0a2f28f535121580ce25f48d1bbcfb307bd8
 
 module.exports = {
   context: __dirname,
