@@ -1,7 +1,7 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   context: __dirname,
@@ -71,7 +71,7 @@ module.exports = {
     ]
   },
   plugins: [
-      new ExtractTextPlugin("[name].css")
+    new ExtractTextPlugin('[name].css')
   ],
   postcss: function () {
     return [autoprefixer, precss]
