@@ -1,4 +1,5 @@
 const React = require('react')
+const Dropdown = require('../dropdown/Dropdown')
 const { func, string } = React.PropTypes
 const { connector } = require('../../Store')
 
@@ -11,6 +12,7 @@ const Navbar = React.createClass({
     this.props.setSearchTerm(event.target.value)
   },
   render () {
+    const petTypes = ['dog', 'cat', 'rabit']
     return (
       <nav className='navbar navbar-inverse'>
         <div className='container-fluid'>
@@ -20,11 +22,11 @@ const Navbar = React.createClass({
               <span className='icon-bar' />
               <span className='icon-bar' />
             </button>
-            <a className='navbar-brand' href='/'>My lost pet</a>
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>
             <ul className='nav navbar-nav navbar-right'>
-              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control' type='text' placeholder='Search' /></li>
+              <li><Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} /></li>
+              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control' type='text' placeholder='Pet Location' /></li>
             </ul>
           </div>
         </div>
