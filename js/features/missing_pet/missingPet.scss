@@ -1,0 +1,23 @@
+.pet {
+  .panel {
+    .panel-body {
+      padding: 0 !important;
+
+      img {
+        width: 100% !important;
+      }
+    }
+
+    .panel-footer {
+      min-height: 120px;
+    }
+  }
+}
+
+.panel-body {
+  padding: 0 !important;
+
+  img {
+    width: 100% !important;
+  }
+}

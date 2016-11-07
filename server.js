@@ -21,6 +21,7 @@ const Routes = ClientApp.Routes
 const server = express()
 
 server.use('/public', express.static('./public'))
+server.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
 
 server.use((req, res) => {
   match({routes: Routes, location: req.url}, (error, redirectLocation, renderProps) => {
