@@ -23,6 +23,7 @@ const Dropdown = React.createClass({
     return (
       <div className='dropdown pet-type'>
         <select className="form-control" onChange={this.handleOnChangeDropdown}>
+          <option selected disabled>Pet type</option>
           {this.props.dropDownTypes.map((dropDownType) => (
             <option value={dropDownType}>{dropDownType}</option>
           ))}

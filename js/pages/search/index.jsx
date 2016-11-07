@@ -15,19 +15,13 @@ const Search = React.createClass({
     setSelectFilter: func,
     filterType: string
   },
-  chooseFilter (pet) {
-    if (this.props.filterType === 'text') {
-      return `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0
-    } else {
-      return `${pet.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0
-    }
-  },
   render () {
     return (
       <div className='container'>
         <div className='row'>
           {this.props.pets
-            .filter((pet) => this.chooseFilter(pet))
+            .filter((pet) => `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+            .filter((pet) => `${pet.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
             .map((pet) => (<MissingPet {...pet} key={pet.id} />))
           }
         </div>
