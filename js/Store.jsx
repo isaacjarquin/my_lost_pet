@@ -8,7 +8,6 @@ const SET_SELECT_FILTER = 'setSelectFilter'
 const initialState = {
   searchTerm: '',
   selectFilter: '',
-  filterType: '',
   pets
 }
 
@@ -25,13 +24,13 @@ const rootReducer = (state = initialState, action) => {
 
 const reducerSearchTerm = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {searchTerm: action.value, filterType: 'text'})
+  Object.assign(newState, state, {searchTerm: action.value})
   return newState
 }
 
 const reducerSelectFilter = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {selectFilter: action.value, filterType: 'dropdown'})
+  Object.assign(newState, state, {selectFilter: action.value})
   return newState
 }
 
@@ -43,7 +42,6 @@ const mapStateToProps = (state) => {
   return {
     searchTerm: state.searchTerm,
     selectFilter: state.selectFilter,
-    filterType: state.filterType,
     pets: state.pets
   }
 }

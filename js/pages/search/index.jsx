@@ -1,6 +1,6 @@
 const React = require('react')
 const MissingPet = require('../../features/missing_pet/MissingPet')
-const { object, string, arrayOf, func } = React.PropTypes
+const { object, string, arrayOf } = React.PropTypes
 const { connector } = require('../../Store')
 
 if (process.env.WEBPACK_BUILD) {
@@ -11,9 +11,7 @@ const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
-    selectFilter: string,
-    setSelectFilter: func,
-    filterType: string
+    selectFilter: string
   },
   render () {
     return (
