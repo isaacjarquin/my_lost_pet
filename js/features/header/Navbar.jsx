@@ -12,7 +12,7 @@ const Navbar = React.createClass({
     this.props.setSearchTerm(event.target.value)
   },
   render () {
-    const petTypes = ['dog', 'cat', 'rabit']
+    const petTypes = ['Pet type', 'dog', 'cat', 'rabit']
     return (
       <nav className='navbar navbar-inverse'>
         <div className='container-fluid'>

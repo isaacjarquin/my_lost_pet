@@ -1,5 +1,6 @@
 const React = require('react')
-const { string, arrayOf } = React.PropTypes
+const { string, arrayOf, func } = React.PropTypes
+const { connector } = require('../../Store')
 
 if (process.env.WEBPACK_BUILD) {
   require('./dropdown.scss')
@@ -8,26 +9,27 @@ if (process.env.WEBPACK_BUILD) {
 const Dropdown = React.createClass({
   propTypes: {
     dropDownTypes: arrayOf(string),
-    dropDownTitle: string
+    dropDownTitle: string,
+    selectFilter: string,
+    setSelectFilter: func
   },
   getDefaultProps: function () {
     return { petTypes: [] }
   },
+  handleOnChangeDropdown: function (event) {
+    this.props.setSelectFilter(event.target.value)
+  },
   render () {
     return (
       <div className='dropdown pet-type'>
-        <button className='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>
-          {this.props.dropDownTitle}
-          <span className='caret' />
-        </button>
-        <ul className='dropdown-menu'>
+        <select className="form-control" onChange={this.handleOnChangeDropdown}>
           {this.props.dropDownTypes.map((dropDownType) => (
-            <li><a href='#'>{dropDownType}</a></li>
+            <option value={dropDownType}>{dropDownType}</option>
           ))}
-        </ul>
+        </select>
       </div>
     )
   }
 })
 
-module.exports = Dropdown
+module.exports = connector(Dropdown)
