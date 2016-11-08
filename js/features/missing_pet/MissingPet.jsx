@@ -11,7 +11,7 @@ const MissingPet = (props) => (
       <div className='pet panel panel-primary'>
         <div className='panel-heading'>{props.pet}, {props.breading}, {props.size}</div>
         <div className='panel-body'>
-          <img src='https://placehold.it/150x80?text=IMAGE' className='img-responsive' alt='Image' />
+          <img src={props.image} className='img-responsive' alt='Image' />
         </div>
         <div className='panel-footer'>{props.description}</div>
       </div>
@@ -26,6 +26,7 @@ MissingPet.propTypes = {
   size: string.isRequired,
   pet: string.isRequired,
   description: string.isRequired,
+  image: string.isRequired,
   id: string.isRequired
 }
 

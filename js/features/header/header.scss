@@ -1,6 +1,13 @@
 .header {
-  background-image: url('../../../public/pets-background.png') no-repeat center center fixed;
+  background-image: url(/public/pets-background.png);
+  background-color: transparent;
+  background-position: 100% 100%;
+  background-repeat: no-repeat;
+  min-height: 450px;
+
   .jumbotron {
+    background-color: transparent;
+    min-height: 400px;
     margin-bottom: 0;
     border-radius: 0 !important;
   }
@@ -8,7 +15,7 @@
   .navbar {
     margin-bottom: 50px;
     border-radius: 0;
-    background-color: #eee;
-    border-color: #eee;
+    background-color: transparent;
+    border-color: transparent;
   }
 }
