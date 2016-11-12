@@ -29,7 +29,7 @@ const rootRoute = {
   },
   childRoutes: [
     {
-      path: 'search',
+      path: '/search',
       getComponent (location, cb) {
         require.ensure([], (error) => {
           consoleErrorLogger('Search error', error)
@@ -38,7 +38,7 @@ const rootRoute = {
       }
     },
     {
-      path: 'details/:id',
+      path: '/details/:id',
       getComponent (location, cb) {
         require.ensure([], (error) => {
           consoleErrorLogger('Details error', error)

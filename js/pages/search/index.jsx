@@ -3,10 +3,6 @@ const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf } = React.PropTypes
 const { connector } = require('../../Store')
 
-if (process.env.WEBPACK_BUILD) {
-  require('./index.scss')
-}
-
 const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),

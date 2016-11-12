@@ -1,20 +1,3 @@
-.pet {
-  .panel {
-    .panel-body {
-      padding: 0;
-      background-image: url(/public/pets-background.png);
-    }
-
-    .panel-footer {
-      min-height: 120px;
-    }
-  }
-}
-
 .panel-body {
-  padding: 0 !important;
-
-  img {
-    width: 100% !important;
-  }
+  padding: 0;
 }

@@ -3,7 +3,7 @@
 		{
 			"id": "1",
 			"pet": "dog",
-			"image": "dog image",
+			"image": "/public/pets-background.png",
 			"size": "medium",
 			"breading": "German Sheperd",
 			"description": "found it in Santa Brigida yesterday at 3pm",
@@ -36,7 +36,7 @@
 		{
 			"id": "4",
 			"pet": "dog",
-			"image": "dog image",
+			"image": "/public/pets-background.png",
 			"size": "small",
 			"breading": "chiguagua",
 			"description": "found it in puerta del sol today at 3pm",
@@ -47,7 +47,7 @@
 		{
 			"id": "5",
 			"pet": "cat",
-			"image": "cat image",
+			"image": "/public/pets-background.png",
 			"size": "medium",
 			"breading": "Persa",
 			"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
