@@ -49,7 +49,7 @@ const reducerActivePage = (state, action) => {
 const pageItems = (pageNumber, pageSize, pets) => {
   const lowerLimit = pageSize * (pageNumber - 1)
   const upperLimit = pageSize * (pageNumber - 1) + pageSize
-  return pets.slice(lowerLimit, upperLimit);
+  return pets.slice(lowerLimit, upperLimit)
 }
 
 const store = redux.createStore(rootReducer, initialState, redux.compose(

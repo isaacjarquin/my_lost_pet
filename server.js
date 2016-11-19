@@ -17,11 +17,12 @@ const baseTemplate = fs.readFileSync('./index.html')
 const template = _.template(baseTemplate)
 const ClientApp = require('./js/ClientApp.jsx')
 const Routes = ClientApp.Routes
+const path = require('path')
 
 const server = express()
 
 server.use('/public', express.static('./public'))
-server.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'))
+server.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))
 
 server.use((req, res) => {
   match({routes: Routes, location: req.url}, (error, redirectLocation, renderProps) => {

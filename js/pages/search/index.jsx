@@ -1,16 +1,20 @@
 const React = require('react')
 const MissingPet = require('../../features/missing_pet/MissingPet')
-const { object, string, arrayOf } = React.PropTypes
+const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
-const Pagination = require('rc-pagination');
+const Pagination = require('rc-pagination')
 
 const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
     selectFilter: string,
+    setActivePage: number,
+    activePage: number,
+    totalNumberOfPets: number,
+    pageSize: number
   },
-  handlePageChange: function(pageNumber) {
+  handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
   },
   render () {
