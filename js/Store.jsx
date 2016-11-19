@@ -4,11 +4,15 @@ const { pets } = require('../public/mockData')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
+const SET_ACTIVE_PAGE = 'setActivePage'
 
 const initialState = {
   searchTerm: '',
   selectFilter: '',
-  pets
+  activePage: 1,
+  pageSize: 9,
+  totalNumberOfPets: pets.length,
+  pets: pets.slice(0, 9)
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -17,6 +21,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerSearchTerm(state, action)
     case SET_SELECT_FILTER:
       return reducerSelectFilter(state, action)
+    case SET_ACTIVE_PAGE:
+      return reducerActivePage(state, action)
     default:
       return state
   }
@@ -34,6 +40,18 @@ const reducerSelectFilter = (state, action) => {
   return newState
 }
 
+const reducerActivePage = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {activePage: action.value, pets: pageItems(action.value, state.pageSize, pets)})
+  return newState
+}
+
+const pageItems = (pageNumber, pageSize, pets) => {
+  const lowerLimit = pageSize * (pageNumber - 1)
+  const upperLimit = pageSize * (pageNumber - 1) + pageSize
+  return pets.slice(lowerLimit, upperLimit);
+}
+
 const store = redux.createStore(rootReducer, initialState, redux.compose(
   typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
 ))
@@ -42,6 +60,9 @@ const mapStateToProps = (state) => {
   return {
     searchTerm: state.searchTerm,
     selectFilter: state.selectFilter,
+    activePage: state.activePage,
+    totalNumberOfPets: state.totalNumberOfPets,
+    pageSize: state.pageSize,
     pets: state.pets
   }
 }
@@ -53,6 +74,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setSelectFilter (selectFilter) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
+    },
+    setActivePage (activePage) {
+      dispatch({type: SET_ACTIVE_PAGE, value: activePage})
     }
   }
 }

@@ -1,21 +1,74 @@
 .header {
-  background-image: url(/public/pets-background.png);
   background-color: transparent;
+  background-image: url('/public/pets-background.png');
   background-position: 100% 100%;
   background-repeat: no-repeat;
   min-height: 450px;
 
   .jumbotron {
     background-color: transparent;
-    min-height: 400px;
+    border-radius: 0;
     margin-bottom: 0;
-    border-radius: 0 !important;
+    min-height: 400px;
+  }
+
+  @media (min-width:480px) {
+     .pet-type {
+       margin-right: 10px ;
+     }
   }
 
   .navbar {
-    margin-bottom: 50px;
+    background-color: transparent;
+    border-color: transparent;
     border-radius: 0;
+    margin-bottom: 50px;
     background-color: transparent;
     border-color: transparent;
   }
+}
+
+.panel-body {
+  padding: 0;
+  min-height: 220px;
+}
+
+.panel-footer {
+  min-height: 100px;
+  max-height: 100px;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  border-color: transparent;
+
+  ul {
+    margin: 0;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.rc-pagination-disabled {
+  cursor: not-allowed;
+  a {
+    color: #ccc !important;
+  }
+}
+
+.rc-pagination-item.rc-pagination-item-active {
+  a {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: white;
+  }
+}
+
+.rc-pagination-prev a:before{
+    content:"«";
+}
+
+.rc-pagination-next a:before{
+    content:"»";
 }

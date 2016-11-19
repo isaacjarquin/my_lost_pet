@@ -3,7 +3,7 @@
 		{
 			"id": "1",
 			"pet": "dog",
-			"image": "dog image",
+			"image": "/public/pets-background.png",
 			"size": "medium",
 			"breading": "German Sheperd",
 			"description": "found it in Santa Brigida yesterday at 3pm",
@@ -36,7 +36,7 @@
 		{
 			"id": "4",
 			"pet": "dog",
-			"image": "dog image",
+			"image": "/public/pets-background.png",
 			"size": "small",
 			"breading": "chiguagua",
 			"description": "found it in puerta del sol today at 3pm",
@@ -47,7 +47,62 @@
 		{
 			"id": "5",
 			"pet": "cat",
-			"image": "cat image",
+			"image": "/public/pets-background.png",
+			"size": "medium",
+			"breading": "Persa",
+			"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
+			"city": "Santa Cruz de Tenerife",
+			"location": "Los cristianos",
+			"happyAtHome": "true"
+		},
+		{
+			"id": "6",
+			"pet": "dog",
+			"image": "/public/pets-background.png",
+			"size": "medium",
+			"breading": "German Sheperd",
+			"description": "found it in Santa Brigida yesterday at 3pm",
+			"city": "Las palmas",
+			"location": "Santa Brigida",
+			"happyAtHome": "false"
+		},
+		{
+			"id": "7",
+			"pet": "dog",
+			"image": "/public/pets-background.png",
+			"size": "medium",
+			"breading": "staffy",
+			"description": "found it in Las palmas, la feria yesterday at 7pm",
+			"city": "Las palmas",
+			"location": "La feria",
+			"happyAtHome": "false"
+		},
+		{
+			"id": "8",
+			"pet": "cat",
+			"image": "/public/landing-background.png",
+			"size": "medium",
+			"breading": "siames",
+			"description": "found it in Agaete yesterday at 1pm",
+			"city": "Las palmas",
+			"location": "Agaete",
+			"happyAtHome": "false"
+		},
+		{
+			"id": "9",
+			"pet": "dog",
+			"image": "/public/pets-background.png",
+			"size": "small",
+			"breading": "chiguagua",
+			"description": "found it in puerta del sol today at 3pm",
+			"city": "Madrid",
+			"location": "Puerta del sol",
+			"happyAtHome": "true"
+		},
+		{
+			"id": "10",
+			"pet": "cat",
+			"image": "/public/pets-background.png",
 			"size": "medium",
 			"breading": "Persa",
 			"description": "found it in Los Cristianos Tenerife yesterday at 3pm",

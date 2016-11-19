@@ -3,10 +3,6 @@ const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
 const { connector } = require('../../Store')
 
-if (process.env.WEBPACK_BUILD) {
-  require('./index.scss')
-}
-
 class Landing extends React.Component {
   constructor (props) {
     super(props)

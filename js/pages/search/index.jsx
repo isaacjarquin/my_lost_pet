@@ -2,16 +2,16 @@ const React = require('react')
 const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf } = React.PropTypes
 const { connector } = require('../../Store')
-
-if (process.env.WEBPACK_BUILD) {
-  require('./index.scss')
-}
+const Pagination = require('rc-pagination');
 
 const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
-    selectFilter: string
+    selectFilter: string,
+  },
+  handlePageChange: function(pageNumber) {
+    this.props.setActivePage(pageNumber)
   },
   render () {
     return (
@@ -23,14 +23,14 @@ const Search = React.createClass({
             .map((pet) => (<MissingPet {...pet} key={pet.id} />))
           }
         </div>
-        <div className="page-pagination">
-          <ul className="pagination">
-            <li><a href="#">1</a></li>
-            <li className="active"><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-          </ul>
+        <div className='center'>
+          <Pagination
+            className='pagination'
+            current={this.props.activePage}
+            total={this.props.totalNumberOfPets}
+            pageSize={this.props.pageSize}
+            onChange={this.handlePageChange}
+          />
         </div>
       </div>
     )

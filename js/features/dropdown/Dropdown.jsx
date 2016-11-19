@@ -1,5 +1,5 @@
 const React = require('react')
-const { string, arrayOf, func } = React.PropTypes
+const { string, arrayOf, func, object } = React.PropTypes
 const { connector } = require('../../Store')
 
 if (process.env.WEBPACK_BUILD) {
@@ -8,7 +8,7 @@ if (process.env.WEBPACK_BUILD) {
 
 const Dropdown = React.createClass({
   propTypes: {
-    dropDownTypes: arrayOf(string),
+    dropDownTypes: arrayOf(object),
     dropDownTitle: string,
     selectFilter: string,
     setSelectFilter: func
@@ -23,9 +23,9 @@ const Dropdown = React.createClass({
     return (
       <div className='dropdown pet-type'>
         <select className="form-control" onChange={this.handleOnChangeDropdown}>
-          <option selected disabled>Pet type</option>
+          <option disabled>Pet type</option>
           {this.props.dropDownTypes.map((dropDownType) => (
-            <option value={dropDownType}>{dropDownType}</option>
+            <option value={dropDownType.pet} key={dropDownType.id}>{dropDownType.pet}</option>
           ))}
         </select>
       </div>

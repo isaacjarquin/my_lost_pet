@@ -3,10 +3,6 @@ const Header = require('../features/header/Header')
 const Footer = require('../features/footer/Footer')
 const { element, object } = React.PropTypes
 
-if (process.env.WEBPACK_BUILD) {
-  require('./layout.scss')
-}
-
 const Layout = React.createClass({
   propTypes: {
     children: element.isRequired,
