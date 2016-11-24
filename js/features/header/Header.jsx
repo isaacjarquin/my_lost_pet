@@ -7,11 +7,19 @@ if (process.env.WEBPACK_BUILD) {
 }
 
 const Header = React.createClass({
+  displayNavbar (pathname) {
+    console.log(pathname)
+    if (pathname === '/search') {
+      return <Navbar />
+    } else {
+      return null
+    }
+  },
   render () {
     return (
       <header className='header'>
         <Jumbotron />
-        <Navbar />
+        {this.displayNavbar(this.props.location)}
       </header>
     )
   }

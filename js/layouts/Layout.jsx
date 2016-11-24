@@ -12,7 +12,7 @@ const Layout = React.createClass({
     if (pathname === '/') {
       return null
     } else {
-      return <div className='row'><Header /></div>
+      return <div className='row'><Header location={pathname}/></div>
     }
   },
   displayFooter ({pathname}) {
