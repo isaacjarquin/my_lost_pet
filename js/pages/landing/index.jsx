@@ -26,7 +26,6 @@ class Landing extends React.Component {
           <li className="w3-right"><a href="#"><i className="fa fa-twitter"></i></a></li>
           <li className="w3-right"><a href="#"><i className="fa fa-search"></i></a></li>
         </ul>
-
         <header className="w3-display-container w3-wide" id="home">
           <img className="w3-image" src='../../../public/mascotas_y_personas.jpg' alt="Fashion Blog" width="1600" height="1060" />
 

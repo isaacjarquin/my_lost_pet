@@ -18,6 +18,13 @@ const Header = React.createClass({
   render () {
     return (
       <header className='header'>
+        <ul className="w3-navbar w3-black w3-hide-small">
+          <li className="w3-left"><a href="#">Home<i></i></a></li>
+          <li className="w3-left"><a href="#">About us<i></i></a></li>
+          <li className="w3-right"><a href="#"><i className="fa fa-facebook-official"></i></a></li>
+          <li className="w3-right"><a href="#"><i className="fa fa-twitter"></i></a></li>
+          <li className="w3-right"><a href="#"><i className="fa fa-search"></i></a></li>
+        </ul>
         <Jumbotron />
         {this.displayNavbar(this.props.location)}
       </header>

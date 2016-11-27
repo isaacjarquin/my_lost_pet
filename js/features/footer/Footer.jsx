@@ -7,7 +7,7 @@ if (process.env.WEBPACK_BUILD) {
 const Footer = React.createClass({
   render () {
     return (
-      <footer className='container-fluid text-center'>
+      <footer className='container-fluid text-center w3-grey w3-text-white'>
         <p>My lost pet Copyright</p>
       </footer>
     )
