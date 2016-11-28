@@ -2,6 +2,7 @@ const React = require('react')
 const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
 const { connector } = require('../../Store')
+const Dropdown = require('../../features/dropdown/Dropdown')
 
 class Landing extends React.Component {
   constructor (props) {
@@ -17,6 +18,8 @@ class Landing extends React.Component {
     event.preventDefault()
   }
   render () {
+    const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
+
     return (
       <div className='home-info'>
         <ul className='w3-navbar w3-black w3-hide-small'>
@@ -32,8 +35,8 @@ class Landing extends React.Component {
           <div className='w3-display-left w3-padding-xlarge'>
             <div className='small-nav-menu'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
-                <li><a href='#'>Perdidos<i className='fa fa-facebook-officia' /></a></li>
-                <li className='active'><a href='#'>Buscando casa<i className='fa fa-instagram' /></a></li>
+                <li className='active'><a href='#'>Perdidos</a></li>
+                <li><a href='#'>Buscando casa</a></li>
               </ul>
             </div>
 
@@ -41,14 +44,15 @@ class Landing extends React.Component {
             <div className='lost'>
               <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               <p><input className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
-              <p><input className='w3-input w3-border' type='text' placeholder='Tipo de mascota' /></p>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
 
             <div className='looking-for-home'>
               <h1 className='w3-text-white'>Adopta una mascota</h1>
-              <p><input className='w3-input w3-border' type='text' placeholder='Buscando en' /></p>
-              <p><input className='w3-input w3-border' type='text' placeholder='Tipo de mascota' /></p>
+              <form onSubmit={this.gotoSearch}>
+                <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Buscando en' /></p>
+                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} />
+              </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
           </div>
