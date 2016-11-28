@@ -12,17 +12,17 @@ class PetDetails extends React.Component {
       <div className='container'>
         <div className='pet-info'>
 
-          <div className="pet-card w3-container w3-white w3-margin w3-padding-large">
-            <div className="pet-card_title w3-center ">
+          <div className='pet-card w3-container w3-white w3-margin w3-padding-large'>
+            <div className='pet-card_title w3-center '>
               <h3>{pet}, {breading}, {size}</h3>
-              <h5>{titleDescription}, <span className="w3-opacity">{date}</span></h5>
+              <h5>{titleDescription}, <span className='w3-opacity'>{date}</span></h5>
             </div>
 
-            <div className="pet-card_body w3-justify">
-              <img src={image} alt="Men in Hats" className="w3-padding-12" />
+            <div className='pet-card_body w3-justify'>
+              <img src={image} alt='Men in Hats' className='w3-padding-12' />
               <p>{description}</p>
-              <p className="w3-right"><button className="w3-btn w3-white w3-border"><b>Responder</b></button></p>
-              <p className="w3-clear"></p>
+              <p className='w3-right'><button className='w3-btn w3-white w3-border'><b>Responder</b></button></p>
+              <p className='w3-clear' />
             </div>
           </div>
         </div>
