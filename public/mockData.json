@@ -7,17 +7,21 @@
 			"size": "medium",
 			"breading": "German Sheperd",
 			"description": "found it in Santa Brigida yesterday at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "Santa Brigida",
 			"happyAtHome": "false"
 		},
 		{
 			"id": "2",
-			"pet": "dog",
+			"pet": "Dog",
 			"image": "/public/pets-background.png",
 			"size": "medium",
 			"breading": "staffy",
 			"description": "found it in Las palmas, la feria yesterday at 7pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "La feria",
 			"happyAtHome": "false"
@@ -29,6 +33,8 @@
 			"size": "medium",
 			"breading": "siames",
 			"description": "found it in Agaete yesterday at 1pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "Agaete",
 			"happyAtHome": "false"
@@ -40,6 +46,8 @@
 			"size": "small",
 			"breading": "chiguagua",
 			"description": "found it in puerta del sol today at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Madrid",
 			"location": "Puerta del sol",
 			"happyAtHome": "true"
@@ -51,6 +59,8 @@
 			"size": "medium",
 			"breading": "Persa",
 			"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Santa Cruz de Tenerife",
 			"location": "Los cristianos",
 			"happyAtHome": "true"
@@ -62,6 +72,8 @@
 			"size": "medium",
 			"breading": "German Sheperd",
 			"description": "found it in Santa Brigida yesterday at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "Santa Brigida",
 			"happyAtHome": "false"
@@ -73,6 +85,8 @@
 			"size": "medium",
 			"breading": "staffy",
 			"description": "found it in Las palmas, la feria yesterday at 7pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "La feria",
 			"happyAtHome": "false"
@@ -84,6 +98,8 @@
 			"size": "medium",
 			"breading": "siames",
 			"description": "found it in Agaete yesterday at 1pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Las palmas",
 			"location": "Agaete",
 			"happyAtHome": "false"
@@ -95,6 +111,8 @@
 			"size": "small",
 			"breading": "chiguagua",
 			"description": "found it in puerta del sol today at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Madrid",
 			"location": "Puerta del sol",
 			"happyAtHome": "true"
@@ -106,6 +124,8 @@
 			"size": "medium",
 			"breading": "Persa",
 			"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
+			"titleDescription": "En constrado en Las Palmas",
+			"date": "25 Abril, 2016",
 			"city": "Santa Cruz de Tenerife",
 			"location": "Los cristianos",
 			"happyAtHome": "true"

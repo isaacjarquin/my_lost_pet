@@ -9,9 +9,9 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
-    pageSize: 9,
+    pageSize: 6,
     totalNumberOfPets: pets.length,
-    pets: pets.slice(0, 9)
+    pets: pets.slice(0, 6)
   }
 
   it('should boostrap', () => {
@@ -44,13 +44,15 @@ describe('Store', () => {
     const lastPet = {
       'breading': 'Persa',
       'city': 'Santa Cruz de Tenerife',
+      'date': '25 Abril, 2016',
       'description': 'found it in Los Cristianos Tenerife yesterday at 3pm',
       'happyAtHome': 'true',
       'id': '10',
       'image': '/public/pets-background.png',
       'location': 'Los cristianos',
       'pet': 'cat',
-      'size': 'medium'
+      'size': 'medium',
+      'titleDescription': 'En constrado en Las Palmas'
     }
 
     expect(state).to.deep.equal({activePage: 2, pageSize: 9, pets: [lastPet]})

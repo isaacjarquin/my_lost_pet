@@ -26,7 +26,7 @@ const Navbar = React.createClass({
           <div className='collapse navbar-collapse' id='myNavbar'>
             <ul className='nav navbar-nav navbar-right'>
               <li><Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} /></li>
-              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control' type='text' placeholder='Pet Location' /></li>
+              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Pet Location' /></li>
             </ul>
           </div>
         </div>

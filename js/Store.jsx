@@ -10,9 +10,9 @@ const initialState = {
   searchTerm: '',
   selectFilter: '',
   activePage: 1,
-  pageSize: 9,
+  pageSize: 6,
   totalNumberOfPets: pets.length,
-  pets: pets.slice(0, 9)
+  pets: pets.slice(0, 6)
 }
 
 const rootReducer = (state = initialState, action) => {
