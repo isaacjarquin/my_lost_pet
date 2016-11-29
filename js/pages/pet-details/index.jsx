@@ -2,9 +2,28 @@ const React = require('react')
 const { connector } = require('../../Store')
 
 class PetDetails extends React.Component {
+  constructor (props) {
+    super(props)
+    this.handleName = this.handleName.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
+    this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
+  }
   assignPet (id) {
     const petArray = this.props.pets.filter((pet) => pet.id === id)
     return petArray[0]
+  }
+  handleName (event) {
+    this.props.setOwnerName(event.target.value)
+  }
+  handleEmail (event) {
+    this.props.setOwnerEmail(event.target.value)
+  }
+  handlePhoneNumber (event) {
+    this.props.setOwnerPhoneNumber(event.target.value)
+  }
+  handleSubmit (event) {
+    this.props.sendOwnersDetails()
+    event.preventDefault()
   }
   render () {
     const { pet, breading, size, description, image, date, titleDescription } = this.assignPet(this.props.params.id)
@@ -34,11 +53,11 @@ class PetDetails extends React.Component {
                 </div>
                 <div className='w3-container w3-white'>
                   <p className='form-introduction'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
-                  <form>
-                    <p><input className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-                    <p><input className='w3-input w3-border' type='text' placeholder='e-mail' /></p>
-                    <p><input className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-                    <p><button type='button' className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
+                  <form onSubmit={this.handleSubmit}>
+                    <p><input value={this.props.ownerName} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+                    <p><input value={this.props.ownerEmail} onChange={this.handleEmail} className='w3-input w3-border' type="email" placeholder='e-mail' /></p>
+                    <p><input value={this.props.ownerPhoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+                    <p><button type='submit' className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
                   </form>
                 </div>
               </div>
