@@ -8,6 +8,7 @@ const SET_ACTIVE_PAGE = 'setActivePage'
 const SET_OWNER_NAME = 'setOwnerName'
 const SET_OWNER_EMAIL = 'setOwnerEmail'
 const SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber'
+const SET_DESCRIPTION = 'setDescription'
 
 const initialState = {
   searchTerm: '',
@@ -18,7 +19,8 @@ const initialState = {
   pets: pets.slice(0, 6),
   ownerName: '',
   ownerEmail: '',
-  ownerPhoneNumber: ''
+  ownerPhoneNumber: '',
+  description: ''
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -35,6 +37,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerOwnerEmail(state, action)
     case SET_OWNER_PHONE_NUMBER:
       return reducerOwnerPhoneNumber(state, action)
+    case SET_DESCRIPTION:
+      return reducerDescription(state, action)
     default:
       return state
   }
@@ -61,6 +65,12 @@ const reducerOwnerEmail = (state, action) => {
 const reducerOwnerPhoneNumber = (state, action) => {
   const newState = {}
   Object.assign(newState, state, {ownerPhoneNumber: action.value})
+  return newState
+}
+
+const reducerDescription = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {description: action.value})
   return newState
 }
 
@@ -96,7 +106,8 @@ const mapStateToProps = (state) => {
     pets: state.pets,
     ownerName: state.ownerName,
     ownerEmail: state.ownerEmail,
-    ownerPhoneNumber: state.ownerPhoneNumber
+    ownerPhoneNumber: state.ownerPhoneNumber,
+    description: state.description
   }
 }
 
@@ -119,6 +130,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setOwnerPhoneNumber (ownerPhoneNumber) {
       dispatch({type: SET_OWNER_PHONE_NUMBER, value: ownerPhoneNumber})
+    },
+    setDescription (description) {
+      dispatch({type: SET_DESCRIPTION, value: description})
     }
   }
 }

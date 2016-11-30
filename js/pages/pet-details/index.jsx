@@ -7,6 +7,8 @@ class PetDetails extends React.Component {
     this.handleName = this.handleName.bind(this)
     this.handleEmail = this.handleEmail.bind(this)
     this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
+    this.handleDescription = this.handleDescription.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   assignPet (id) {
     const petArray = this.props.pets.filter((pet) => pet.id === id)
@@ -57,7 +59,8 @@ class PetDetails extends React.Component {
                     <p><input value={this.props.ownerName} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
                     <p><input value={this.props.ownerEmail} onChange={this.handleEmail} className='w3-input w3-border' type="email" placeholder='e-mail' /></p>
                     <p><input value={this.props.ownerPhoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-                    <p><button type='submit' className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
+                    <p><textarea value={this.props.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal'></textarea></p>
+                    <p><button className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
                   </form>
                 </div>
               </div>
