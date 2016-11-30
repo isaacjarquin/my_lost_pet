@@ -23,6 +23,9 @@ class PetDetails extends React.Component {
   handlePhoneNumber (event) {
     this.props.setOwnerPhoneNumber(event.target.value)
   }
+  handleDescription (event) {
+    this.props.setDescription(event.target.value)
+  }
   handleSubmit (event) {
     this.props.sendOwnersDetails()
     event.preventDefault()
@@ -57,9 +60,9 @@ class PetDetails extends React.Component {
                   <p className='form-introduction'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
                   <form onSubmit={this.handleSubmit}>
                     <p><input value={this.props.ownerName} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-                    <p><input value={this.props.ownerEmail} onChange={this.handleEmail} className='w3-input w3-border' type="email" placeholder='e-mail' /></p>
+                    <p><input value={this.props.ownerEmail} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
                     <p><input value={this.props.ownerPhoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-                    <p><textarea value={this.props.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal'></textarea></p>
+                    <p><textarea value={this.props.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
                     <p><button className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
                   </form>
                 </div>
@@ -72,11 +75,20 @@ class PetDetails extends React.Component {
   }
 }
 
-const { arrayOf, object } = React.PropTypes
+const { arrayOf, object, string, func } = React.PropTypes
 
 PetDetails.propTypes = {
   pets: arrayOf(object).isRequired,
-  params: object
+  params: object,
+  ownerName: string,
+  ownerEmail: string,
+  ownerPhoneNumber: string,
+  description: string,
+  setOwnerName: func,
+  setOwnerEmail: func,
+  setOwnerPhoneNumber: func,
+  setDescription: func,
+  sendOwnersDetails: func
 }
 
 module.exports = connector(PetDetails)

@@ -9,6 +9,10 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
+    description: '',
+    ownerEmail: '',
+    ownerName: '',
+    ownerPhoneNumber: '',
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
