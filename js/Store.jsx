@@ -5,6 +5,10 @@ const { pets } = require('../public/mockData')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
+const SET_OWNER_NAME = 'setOwnerName'
+const SET_OWNER_EMAIL = 'setOwnerEmail'
+const SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber'
+const SET_DESCRIPTION = 'setDescription'
 
 const initialState = {
   searchTerm: '',
@@ -12,7 +16,11 @@ const initialState = {
   activePage: 1,
   pageSize: 6,
   totalNumberOfPets: pets.length,
-  pets: pets.slice(0, 6)
+  pets: pets.slice(0, 6),
+  ownerName: '',
+  ownerEmail: '',
+  ownerPhoneNumber: '',
+  description: ''
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -23,6 +31,14 @@ const rootReducer = (state = initialState, action) => {
       return reducerSelectFilter(state, action)
     case SET_ACTIVE_PAGE:
       return reducerActivePage(state, action)
+    case SET_OWNER_NAME:
+      return reducerOwnerName(state, action)
+    case SET_OWNER_EMAIL:
+      return reducerOwnerEmail(state, action)
+    case SET_OWNER_PHONE_NUMBER:
+      return reducerOwnerPhoneNumber(state, action)
+    case SET_DESCRIPTION:
+      return reducerDescription(state, action)
     default:
       return state
   }
@@ -31,6 +47,30 @@ const rootReducer = (state = initialState, action) => {
 const reducerSearchTerm = (state, action) => {
   const newState = {}
   Object.assign(newState, state, {searchTerm: action.value})
+  return newState
+}
+
+const reducerOwnerName = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {ownerName: action.value})
+  return newState
+}
+
+const reducerOwnerEmail = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {ownerEmail: action.value})
+  return newState
+}
+
+const reducerOwnerPhoneNumber = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {ownerPhoneNumber: action.value})
+  return newState
+}
+
+const reducerDescription = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {description: action.value})
   return newState
 }
 
@@ -63,7 +103,11 @@ const mapStateToProps = (state) => {
     activePage: state.activePage,
     totalNumberOfPets: state.totalNumberOfPets,
     pageSize: state.pageSize,
-    pets: state.pets
+    pets: state.pets,
+    ownerName: state.ownerName,
+    ownerEmail: state.ownerEmail,
+    ownerPhoneNumber: state.ownerPhoneNumber,
+    description: state.description
   }
 }
 
@@ -77,6 +121,18 @@ const mapDispatchToProps = (dispatch) => {
     },
     setActivePage (activePage) {
       dispatch({type: SET_ACTIVE_PAGE, value: activePage})
+    },
+    setOwnerName (ownerName) {
+      dispatch({type: SET_OWNER_NAME, value: ownerName})
+    },
+    setOwnerEmail (ownerEmail) {
+      dispatch({type: SET_OWNER_EMAIL, value: ownerEmail})
+    },
+    setOwnerPhoneNumber (ownerPhoneNumber) {
+      dispatch({type: SET_OWNER_PHONE_NUMBER, value: ownerPhoneNumber})
+    },
+    setDescription (description) {
+      dispatch({type: SET_DESCRIPTION, value: description})
     }
   }
 }

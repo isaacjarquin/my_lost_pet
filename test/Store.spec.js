@@ -9,6 +9,10 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
+    description: '',
+    ownerEmail: '',
+    ownerName: '',
+    ownerPhoneNumber: '',
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
@@ -56,5 +60,29 @@ describe('Store', () => {
     }
 
     expect(state).to.deep.equal({activePage: 2, pageSize: 9, pets: [lastPet]})
+  })
+
+  it('should handle setOwnerName actions', () => {
+    const state = rootReducer({ownerName: 'dont care'}, {type: 'setOwnerName', value: 'I do care a lot'})
+
+    expect(state).to.deep.equal({ownerName: 'I do care a lot'})
+  })
+
+  it('should handle setOwnerEmail actions', () => {
+    const state = rootReducer({ownerEmail: 'dont care'}, {type: 'setOwnerEmail', value: 'I do care a lot'})
+
+    expect(state).to.deep.equal({ownerEmail: 'I do care a lot'})
+  })
+
+  it('should handle setOwnerPhoneNumber actions', () => {
+    const state = rootReducer({ownerPhoneNumber: 'dont care'}, {type: 'setOwnerPhoneNumber', value: 'I do care a lot'})
+
+    expect(state).to.deep.equal({ownerPhoneNumber: 'I do care a lot'})
+  })
+
+  it('should handle setDescription actions', () => {
+    const state = rootReducer({description: 'dont care'}, {type: 'setDescription', value: 'I do care a lot'})
+
+    expect(state).to.deep.equal({description: 'I do care a lot'})
   })
 })
