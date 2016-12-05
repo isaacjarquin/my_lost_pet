@@ -1,0 +1,40 @@
+.looking-for-home {
+  display: none;
+}
+
+p.form-introduction {
+  margin: 15px 0;
+}
+
+.missing-pet-form {
+  .file-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-weight: bold;
+    color: grey;
+  }
+}
+
+.large-button {
+  width: 100%;
+}
+
+.small-nav-menu {
+  ul.w3-navbar.w3-black.w3-hide-small {
+    background-color: transparent !important;
+
+    li {
+      color: black;
+      margin-left: 2px;
+      background-color: white;
+      opacity: 0.20;
+    }
+
+    li.active {
+      opacity: 0.50;
+    }
+  }
+}

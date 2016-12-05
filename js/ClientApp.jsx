@@ -21,29 +21,20 @@ const rootRoute = {
   path: '/',
   indexRoute: {
     getComponent (location, cb) {
-      require.ensure([], (error) => {
-        consoleErrorLogger('BrowserEntry error', error)
         cb(null, require('./pages/landing/index'))
-      })
     }
   },
   childRoutes: [
     {
-      path: '/search',
+      path: 'search',
       getComponent (location, cb) {
-        require.ensure([], (error) => {
-          consoleErrorLogger('Search error', error)
           cb(null, require('./pages/search/index'))
-        })
       }
     },
     {
-      path: '/details/:id',
+      path: 'details/:id',
       getComponent (location, cb) {
-        require.ensure([], (error) => {
-          consoleErrorLogger('Details error', error)
           cb(null, require('./pages/pet-details/index'))
-        })
       }
     }
   ]

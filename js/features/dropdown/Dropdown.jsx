@@ -2,10 +2,6 @@ const React = require('react')
 const { string, arrayOf, func, object } = React.PropTypes
 const { connector } = require('../../Store')
 
-if (process.env.WEBPACK_BUILD) {
-  require('./dropdown.scss')
-}
-
 const Dropdown = React.createClass({
   propTypes: {
     dropDownTypes: arrayOf(object),

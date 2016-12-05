@@ -4,6 +4,10 @@ const { Link } = require('react-router')
 const { connector } = require('../../Store')
 const Dropdown = require('../../features/dropdown/Dropdown')
 
+if (process.env.WEBPACK_BUILD) {
+  require('./index.scss')
+}
+
 class Landing extends React.Component {
   constructor (props) {
     super(props)

@@ -1,0 +1,36 @@
+.rc-pagination-disabled {
+  cursor: not-allowed;
+  a {
+    color: #ccc !important;
+  }
+}
+
+.pagination>li>a, .pagination>li>span {
+  color: grey;
+}
+
+.pagination>li>a:hover {
+  color: grey;
+}
+
+.rc-pagination-item.rc-pagination-item-active {
+  a {
+    background-color: grey;
+    border-color: grey;
+    color: white;
+  }
+}
+
+.rc-pagination-prev a:before {
+    color: grey;
+    content:"«";
+}
+
+.rc-pagination-next a:before {
+    color: grey;
+    content:"»";
+}
+
+.center {
+  text-align: center;
+}
