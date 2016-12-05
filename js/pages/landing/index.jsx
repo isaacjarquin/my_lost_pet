@@ -25,10 +25,8 @@ class Landing extends React.Component {
         <ul className='w3-navbar w3-black w3-hide-small'>
           <li className='w3-left'><a href='#'>Home<i /></a></li>
           <li className='w3-left' data-toggle='collapse' data-target='#about-us'><a href='#'>About us<i /></a></li>
-          <li className='w3-left' data-toggle='collapse' data-target='#new-pet'><a href='#'>Anadir mascota encontrada<i /></a></li>
           <li className='w3-right'><a href='#'><i className='fa fa-facebook-official' /></a></li>
           <li className='w3-right'><a href='#'><i className='fa fa-twitter' /></a></li>
-          <li className='w3-right'><a href='#'><i className='fa fa-search' /></a></li>
         </ul>
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
@@ -64,21 +62,24 @@ class Landing extends React.Component {
           </div>
         </header>
 
+        <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'>Acabas de encontrarte una mascota perdida en la calle ?</button>
+
         <header id='about-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
           <h1 className='w3-xxxlarge'><b>About us</b></h1>
           <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
         </header>
 
-        <header id='new-pet' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <p className='form-introduction'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+        <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
+          <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
             <p><input className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
             <p><input className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
             <p><input className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
             <p><input className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
-            <p><input className='w3-input w3-border' type='text' placeholder='fecha (25-08-2016)' /></p>
+            <p><input className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
             <p><input className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
+            <input className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
             <p><button className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
           </form>
         </header>
