@@ -4,6 +4,10 @@ const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
 
+if (process.env.WEBPACK_BUILD) {
+  require('./index.scss')
+}
+
 const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
