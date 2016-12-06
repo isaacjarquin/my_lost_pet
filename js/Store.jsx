@@ -5,10 +5,20 @@ const { pets } = require('../public/mockData')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
+
 const SET_OWNER_NAME = 'setOwnerName'
 const SET_OWNER_EMAIL = 'setOwnerEmail'
 const SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber'
 const SET_DESCRIPTION = 'setDescription'
+
+const SET_PET_FOUNDER_NAME = 'setPetFounderName'
+const SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail'
+const SET_PET_TYPE = 'setPetType'
+const SET_PET_SIZE = 'setPetSize'
+const SET_PET_FOUND_DATE = 'setPetFoundDate'
+const SET_PET_LOCATION = 'setPetLocation'
+const SET_PET_IMAGE = 'setPetImage'
+const SET_PET_DESCRIPTION = 'setPetDescription'
 
 const initialState = {
   searchTerm: '',
@@ -21,6 +31,16 @@ const initialState = {
     name: '',
     email: '',
     phoneNumber: '',
+    description: ''
+  },
+  pet: {
+    founderName: '',
+    founderEmail: '',
+    petType: '',
+    size: '',
+    foundDate: '',
+    location: '',
+    petImage: '',
     description: ''
   }
 }
@@ -41,6 +61,22 @@ const rootReducer = (state = initialState, action) => {
       return reducerOwnerPhoneNumber(state, action)
     case SET_DESCRIPTION:
       return reducerDescription(state, action)
+    case SET_PET_FOUNDER_NAME:
+      return reducerPetFounderName(state, action)
+    case SET_PET_FOUNDER_EMAIL:
+      return reducerPetFounderEmail(state, action)
+    case SET_PET_TYPE:
+      return reducerPetType(state, action)
+    case SET_PET_SIZE:
+      return reducerPetSize(state, action)
+    case SET_PET_FOUND_DATE:
+      return reducerPetFoundDate(state, action)
+    case SET_PET_LOCATION:
+      return reducerPetLocation(state, action)
+    case SET_PET_IMAGE:
+      return reducerPetImage(state, action)
+    case SET_PET_DESCRIPTION:
+      return reducerPetDescription(state, action)
     default:
       return state
   }
@@ -104,6 +140,142 @@ const reducerDescription = (state, action) => {
   return newState
 }
 
+const reducerPetFounderName = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: action.value,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetFounderEmail = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: action.value,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetType = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: action.value,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetSize = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: action.value,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetFoundDate = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: action.value,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetLocation = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: action.value,
+      petImage: state.pet.petImage,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetImage = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: action.value,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetDescription = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: action.value
+    }
+  })
+  return newState
+}
+
 const reducerSelectFilter = (state, action) => {
   const newState = {}
   Object.assign(newState, state, {selectFilter: action.value})
@@ -139,6 +311,16 @@ const mapStateToProps = (state) => {
       email: state.owner.email,
       phoneNumber: state.owner.phoneNumber,
       description: state.owner.description
+    },
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      petImage: state.pet.petImage,
+      description: state.pet.description
     }
   }
 }
@@ -165,6 +347,30 @@ const mapDispatchToProps = (dispatch) => {
     },
     setDescription (description) {
       dispatch({type: SET_DESCRIPTION, value: description})
+    },
+    setPetFounderName (petFounderName) {
+      dispatch({type: SET_PET_FOUNDER_NAME, value: petFounderName})
+    },
+    setPetFounderEmail (petFounderEmail) {
+      dispatch({type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail})
+    },
+    setPetType (petType) {
+      dispatch({type: SET_PET_TYPE, value: petType})
+    },
+    setPetSize (petSize) {
+      dispatch({type: SET_PET_SIZE, value: petSize})
+    },
+    setPetFoundDate (petFoundDate) {
+      dispatch({type: SET_PET_FOUND_DATE, value: petFoundDate})
+    },
+    setPetLocation (petLocation) {
+      dispatch({type: SET_PET_LOCATION, value: petLocation})
+    },
+    setPetImage (petImage) {
+      dispatch({type: SET_PET_IMAGE, value: petImage})
+    },
+    setPetDescription (petDescription) {
+      dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
     }
   }
 }
