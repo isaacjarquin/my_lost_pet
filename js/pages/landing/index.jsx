@@ -128,11 +128,20 @@ class Landing extends React.Component {
   }
 }
 
-const { func, string } = React.PropTypes
+const { func, string, object } = React.PropTypes
 
 Landing.propTypes = {
   searchTerm: string,
-  setSearchTerm: func
+  setSearchTerm: func,
+  pet: object,
+  setPetFounderName: func,
+  setPetFounderEmail: func,
+  setPetType: func,
+  setPetSize: func,
+  setPetFoundDate: func,
+  setPetLocation: func,
+  setPetDescription: func,
+  setPetImage: func
 }
 
 module.exports = connector(Landing)
