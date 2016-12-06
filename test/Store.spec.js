@@ -15,6 +15,16 @@ describe('Store', () => {
       name: '',
       phoneNumber: ''
     },
+    pet: {
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      size: '',
+      foundDate: '',
+      location: '',
+      petImage: '',
+      description: ''
+    },
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
