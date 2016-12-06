@@ -12,8 +12,8 @@ const MissingPet = (props) => (
         <img src={props.image} className='img-responsive' alt='Image' />
       </div>
       <div className='panel-description w3-container w3-light-grey'>
-        <h4>{props.pet}, {props.breading}, {props.size}</h4>
-        <p>{props.description}</p>
+        <h4 className='w3-opacity'>{props.pet}, {props.breading}, {props.size}</h4>
+        <p className='w3-opacity'>{props.description}</p>
       </div>
     </div>
   </Link>

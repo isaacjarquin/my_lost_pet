@@ -15,6 +15,21 @@ describe('Store', () => {
       name: '',
       phoneNumber: ''
     },
+    pet: {
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      size: '',
+      foundDate: '',
+      location: '',
+      petImage: '',
+      description: ''
+    },
+    contactUs: {
+      name: '',
+      email: '',
+      message: ''
+    },
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
@@ -86,5 +101,71 @@ describe('Store', () => {
     const state = rootReducer({owner: {description: 'dont care'}}, {type: 'setDescription', value: 'I do care a lot'})
 
     expect(state.owner.description).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetFounderName actions', () => {
+    const state = rootReducer({pet: {founderName: 'dont care'}}, {type: 'setPetFounderName', value: 'I do care a lot'})
+
+    expect(state.pet.founderName).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetFounderEmail actions', () => {
+    const state = rootReducer({pet: {founderEmail: 'dont care'}}, {type: 'setPetFounderEmail', value: 'I do care a lot'})
+
+    expect(state.pet.founderEmail).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetType actions', () => {
+    const state = rootReducer({pet: {petType: 'dont care'}}, {type: 'setPetType', value: 'I do care a lot'})
+
+    expect(state.pet.petType).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetSize actions', () => {
+    const state = rootReducer({pet: {size: 'dont care'}}, {type: 'setPetSize', value: 'I do care a lot'})
+
+    expect(state.pet.size).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetFoundDate actions', () => {
+    const state = rootReducer({pet: {foundDate: 'dont care'}}, {type: 'setPetFoundDate', value: 'I do care a lot'})
+
+    expect(state.pet.foundDate).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetLocation actions', () => {
+    const state = rootReducer({pet: {location: 'dont care'}}, {type: 'setPetLocation', value: 'I do care a lot'})
+
+    expect(state.pet.location).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetImage actions', () => {
+    const state = rootReducer({pet: {petImage: 'dont care'}}, {type: 'setPetImage', value: 'I do care a lot'})
+
+    expect(state.pet.petImage).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetDescription actions', () => {
+    const state = rootReducer({pet: {description: 'dont care'}}, {type: 'setPetDescription', value: 'I do care a lot'})
+
+    expect(state.pet.description).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsName actions', () => {
+    const state = rootReducer({contactUs: {name: 'dont care'}}, {type: 'setContactUsName', value: 'I do care a lot'})
+
+    expect(state.contactUs.name).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsEmail actions', () => {
+    const state = rootReducer({contactUs: {email: 'dont care'}}, {type: 'setContactUsEmail', value: 'I do care a lot'})
+
+    expect(state.contactUs.email).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsMessage actions', () => {
+    const state = rootReducer({contactUs: {message: 'dont care'}}, {type: 'setContactUsMessage', value: 'I do care a lot'})
+
+    expect(state.contactUs.message).to.deep.equal('I do care a lot')
   })
 })

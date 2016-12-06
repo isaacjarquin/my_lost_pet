@@ -20,6 +20,7 @@ p.form-introduction {
 
 .large-button {
   width: 100%;
+  border-width: 1px;
 }
 
 .small-nav-menu {
@@ -35,6 +36,19 @@ p.form-introduction {
 
     li.active {
       opacity: 0.50;
+    }
+  }
+}
+
+.pet-filter {
+  input {
+    height: 38px;
+  }
+
+  .pet-type {
+    select.form-control {
+      height: 38px;
+      border-radius: 0;
     }
   }
 }
