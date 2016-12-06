@@ -10,31 +10,25 @@ if (typeof module !== 'undefined' && module.require) {
   }
 }
 
-const consoleErrorLogger = (location, error) => {
-  if (error) {
-    console.error(location, error)
-  }
-}
-
 const rootRoute = {
   component: Layout,
   path: '/',
   indexRoute: {
     getComponent (location, cb) {
-        cb(null, require('./pages/landing/index'))
+      cb(null, require('./pages/landing/index'))
     }
   },
   childRoutes: [
     {
       path: 'search',
       getComponent (location, cb) {
-          cb(null, require('./pages/search/index'))
+        cb(null, require('./pages/search/index'))
       }
     },
     {
       path: 'details/:id',
       getComponent (location, cb) {
-          cb(null, require('./pages/pet-details/index'))
+        cb(null, require('./pages/pet-details/index'))
       }
     }
   ]
