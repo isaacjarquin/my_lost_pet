@@ -17,10 +17,12 @@ const initialState = {
   pageSize: 6,
   totalNumberOfPets: pets.length,
   pets: pets.slice(0, 6),
-  ownerName: '',
-  ownerEmail: '',
-  ownerPhoneNumber: '',
-  description: ''
+  owner: {
+    name: '',
+    email: '',
+    phoneNumber: '',
+    description: ''
+  }
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -52,25 +54,53 @@ const reducerSearchTerm = (state, action) => {
 
 const reducerOwnerName = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {ownerName: action.value})
+  Object.assign(newState, state, {
+    owner: {
+      name: action.value,
+      email: state.owner.email,
+      phoneNumber: state.owner.phoneNumber,
+      description: state.owner.description
+    }
+  })
   return newState
 }
 
 const reducerOwnerEmail = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {ownerEmail: action.value})
+  Object.assign(newState, state, {
+    owner: {
+      name: state.owner.name,
+      email: action.value,
+      phoneNumber: state.owner.phoneNumber,
+      description: state.owner.description
+    }
+  })
   return newState
 }
 
 const reducerOwnerPhoneNumber = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {ownerPhoneNumber: action.value})
+  Object.assign(newState, state, {
+    owner: {
+      name: state.owner.name,
+      email: state.owner.email,
+      phoneNumber: action.value,
+      description: state.owner.description
+    }
+  })
   return newState
 }
 
 const reducerDescription = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {description: action.value})
+  Object.assign(newState, state, {
+    owner: {
+      name: state.owner.name,
+      email: state.owner.email,
+      phoneNumber: state.owner.phoneNumber,
+      description: action.value
+    }
+  })
   return newState
 }
 
@@ -104,10 +134,12 @@ const mapStateToProps = (state) => {
     totalNumberOfPets: state.totalNumberOfPets,
     pageSize: state.pageSize,
     pets: state.pets,
-    ownerName: state.ownerName,
-    ownerEmail: state.ownerEmail,
-    ownerPhoneNumber: state.ownerPhoneNumber,
-    description: state.description
+    owner: {
+      name: state.owner.name,
+      email: state.owner.email,
+      phoneNumber: state.owner.phoneNumber,
+      description: state.owner.description
+    }
   }
 }
 
