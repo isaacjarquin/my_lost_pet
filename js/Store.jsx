@@ -1,6 +1,32 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
-const { pets } = require('../public/mockData')
+
+const {
+  reducerPetFounderName,
+  reducerPetFounderEmail,
+  reducerPetType,
+  reducerPetSize,
+  reducerPetFoundDate,
+  reducerPetLocation,
+  reducerPetImage,
+  reducerPetDescription
+} = require('../js/pages/landing/petFormReducer')
+
+const {
+  reducerOwnerName,
+  reducerOwnerEmail,
+  reducerOwnerPhoneNumber,
+  reducerDescription
+} = require('../js/pages/pet-details/ownerReducer')
+
+const {
+  reducerSearchTerm,
+  reducerSelectFilter
+} = require('../js/features/header/searchFilterReducer')
+
+const { reducerActivePage } = require('../js/pages/search/paginationReducer')
+
+const initialState = require('./InitialState')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
@@ -19,31 +45,6 @@ const SET_PET_FOUND_DATE = 'setPetFoundDate'
 const SET_PET_LOCATION = 'setPetLocation'
 const SET_PET_IMAGE = 'setPetImage'
 const SET_PET_DESCRIPTION = 'setPetDescription'
-
-const initialState = {
-  searchTerm: '',
-  selectFilter: '',
-  activePage: 1,
-  pageSize: 6,
-  totalNumberOfPets: pets.length,
-  pets: pets.slice(0, 6),
-  owner: {
-    name: '',
-    email: '',
-    phoneNumber: '',
-    description: ''
-  },
-  pet: {
-    founderName: '',
-    founderEmail: '',
-    petType: '',
-    size: '',
-    foundDate: '',
-    location: '',
-    petImage: '',
-    description: ''
-  }
-}
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -80,218 +81,6 @@ const rootReducer = (state = initialState, action) => {
     default:
       return state
   }
-}
-
-const reducerSearchTerm = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {searchTerm: action.value})
-  return newState
-}
-
-const reducerOwnerName = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    owner: {
-      name: action.value,
-      email: state.owner.email,
-      phoneNumber: state.owner.phoneNumber,
-      description: state.owner.description
-    }
-  })
-  return newState
-}
-
-const reducerOwnerEmail = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    owner: {
-      name: state.owner.name,
-      email: action.value,
-      phoneNumber: state.owner.phoneNumber,
-      description: state.owner.description
-    }
-  })
-  return newState
-}
-
-const reducerOwnerPhoneNumber = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    owner: {
-      name: state.owner.name,
-      email: state.owner.email,
-      phoneNumber: action.value,
-      description: state.owner.description
-    }
-  })
-  return newState
-}
-
-const reducerDescription = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    owner: {
-      name: state.owner.name,
-      email: state.owner.email,
-      phoneNumber: state.owner.phoneNumber,
-      description: action.value
-    }
-  })
-  return newState
-}
-
-const reducerPetFounderName = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: action.value,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetFounderEmail = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: action.value,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetType = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: action.value,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetSize = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: action.value,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetFoundDate = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: action.value,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetLocation = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: action.value,
-      petImage: state.pet.petImage,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetImage = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: action.value,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
-const reducerPetDescription = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      petImage: state.pet.petImage,
-      description: action.value
-    }
-  })
-  return newState
-}
-
-const reducerSelectFilter = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {selectFilter: action.value})
-  return newState
-}
-
-const reducerActivePage = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {activePage: action.value, pets: pageItems(action.value, state.pageSize, pets)})
-  return newState
-}
-
-const pageItems = (pageNumber, pageSize, pets) => {
-  const lowerLimit = pageSize * (pageNumber - 1)
-  const upperLimit = pageSize * (pageNumber - 1) + pageSize
-  return pets.slice(lowerLimit, upperLimit)
 }
 
 const store = redux.createStore(rootReducer, initialState, redux.compose(
