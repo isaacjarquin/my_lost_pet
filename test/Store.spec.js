@@ -97,4 +97,52 @@ describe('Store', () => {
 
     expect(state.owner.description).to.deep.equal('I do care a lot')
   })
+
+  it('should handle setPetFounderName actions', () => {
+    const state = rootReducer({pet: {founderName: 'dont care'}}, {type: 'setPetFounderName', value: 'I do care a lot'})
+
+    expect(state.pet.founderName).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetFounderEmail actions', () => {
+    const state = rootReducer({pet: {founderEmail: 'dont care'}}, {type: 'setPetFounderEmail', value: 'I do care a lot'})
+
+    expect(state.pet.founderEmail).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetType actions', () => {
+    const state = rootReducer({pet: {petType: 'dont care'}}, {type: 'setPetType', value: 'I do care a lot'})
+
+    expect(state.pet.petType).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetSize actions', () => {
+    const state = rootReducer({pet: {size: 'dont care'}}, {type: 'setPetSize', value: 'I do care a lot'})
+
+    expect(state.pet.size).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetFoundDate actions', () => {
+    const state = rootReducer({pet: {foundDate: 'dont care'}}, {type: 'setPetFoundDate', value: 'I do care a lot'})
+
+    expect(state.pet.foundDate).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetLocation actions', () => {
+    const state = rootReducer({pet: {location: 'dont care'}}, {type: 'setPetLocation', value: 'I do care a lot'})
+
+    expect(state.pet.location).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetImage actions', () => {
+    const state = rootReducer({pet: {petImage: 'dont care'}}, {type: 'setPetImage', value: 'I do care a lot'})
+
+    expect(state.pet.petImage).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setPetDescription actions', () => {
+    const state = rootReducer({pet: {description: 'dont care'}}, {type: 'setPetDescription', value: 'I do care a lot'})
+
+    expect(state.pet.description).to.deep.equal('I do care a lot')
+  })
 })
