@@ -1,6 +1,5 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
-const { pets } = require('../public/mockData')
 
 const {
   reducerPetFounderName,
@@ -27,6 +26,8 @@ const {
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 
+const initialState = require('./InitialState')
+
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
@@ -44,31 +45,6 @@ const SET_PET_FOUND_DATE = 'setPetFoundDate'
 const SET_PET_LOCATION = 'setPetLocation'
 const SET_PET_IMAGE = 'setPetImage'
 const SET_PET_DESCRIPTION = 'setPetDescription'
-
-const initialState = {
-  searchTerm: '',
-  selectFilter: '',
-  activePage: 1,
-  pageSize: 6,
-  totalNumberOfPets: pets.length,
-  pets: pets.slice(0, 6),
-  owner: {
-    name: '',
-    email: '',
-    phoneNumber: '',
-    description: ''
-  },
-  pet: {
-    founderName: '',
-    founderEmail: '',
-    petType: '',
-    size: '',
-    foundDate: '',
-    location: '',
-    petImage: '',
-    description: ''
-  }
-}
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
