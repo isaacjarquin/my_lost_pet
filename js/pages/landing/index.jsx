@@ -59,8 +59,7 @@ class Landing extends React.Component {
     return (
       <div className='home-info'>
         <ul className='w3-navbar w3-black w3-hide-small'>
-          <li className='w3-left'><a href='#'>Home<i /></a></li>
-          <li className='w3-left' data-toggle='collapse' data-target='#about-us'><a href='#'>About us<i /></a></li>
+          <li className='w3-left'><a href='/'>Home<i /></a></li>
           <li className='w3-right'><a href='#'><i className='fa fa-facebook-official' /></a></li>
           <li className='w3-right'><a href='#'><i className='fa fa-twitter' /></a></li>
         </ul>
@@ -100,11 +99,6 @@ class Landing extends React.Component {
 
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'>Acabas de encontrarte una mascota perdida en la calle ?</button>
 
-        <header id='about-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <h1 className='w3-xxxlarge'><b>About us</b></h1>
-          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
-        </header>
-
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
@@ -118,6 +112,13 @@ class Landing extends React.Component {
             <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
             <p><button className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
           </form>
+        </header>
+
+        <button data-toggle='collapse' data-target='#about-us' className='large-button w3-padding-large w3-large'>About us</button>
+
+        <header id='about-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
+          <h1 className='w3-xxxlarge'><b>About us</b></h1>
+          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
         </header>
 
         <footer className='w3-container w3-grey w3-center w3-padding-xlarge'>
