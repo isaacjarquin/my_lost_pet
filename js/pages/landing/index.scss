@@ -38,3 +38,16 @@ p.form-introduction {
     }
   }
 }
+
+.pet-filter {
+  input {
+    height: 38px;
+  }
+
+  .pet-type {
+    select.form-control {
+      height: 38px;
+      border-radius: 0;
+    }
+  }
+}
