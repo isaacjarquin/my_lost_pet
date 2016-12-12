@@ -114,15 +114,25 @@ class Landing extends React.Component {
           </form>
         </header>
 
-        <button data-toggle='collapse' data-target='#about-us' className='large-button w3-padding-large w3-large'>About us</button>
-
         <header id='about-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <h1 className='w3-xxxlarge'><b>About us</b></h1>
+          <h1 className='w3-xxxlarge'><b>¿Quiénes somos?</b></h1>
+          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
+        </header>
+
+        <header id='contact-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
+          <h1 className='w3-xxxlarge'><b>Contacto</b></h1>
+          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
+        </header>
+
+        <header id='legal' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
+          <h1 className='w3-xxxlarge'><b>Aviso Legal</b></h1>
           <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
         </header>
 
         <footer className='w3-container w3-grey w3-center w3-padding-xlarge'>
-          <p>Copyright <a href='http://www.w3schools.com/w3css/default.asp' target='_blank'>@mylostpet</a></p>
+          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#about-us'>¿Quiénes somos?</a>
+          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#contact-us'>Contacto</a>
+          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#legal'>Aviso legal</a>
         </footer>
       </div>
     )
