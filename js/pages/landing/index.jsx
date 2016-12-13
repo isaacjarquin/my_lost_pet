@@ -3,7 +3,10 @@ const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
 const { connector } = require('../../Store')
 const Dropdown = require('../../features/dropdown/Dropdown')
-
+const TermsAndConditions = require('../../features/terms_and_conditions/termsAndConditions')
+const ContactUs = require('../../features/contact_us/contactUs')
+const AboutUs = require('../../features/about_us/aboutUs')
+const Footer = require('../../features/footer/Footer')
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
 }
@@ -110,30 +113,14 @@ class Landing extends React.Component {
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
             <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button className='w3-btn-block w3-padding w3-green w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
+            <p><button className='w3-btn-block w3-padding w3-grey w3-opacity w3-hover-opacity-off'><i className="fa fa-paper-plane"></i> SEND MESSAGE</button></p>
           </form>
         </header>
 
-        <header id='about-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <h1 className='w3-xxxlarge'><b>¿Quiénes somos?</b></h1>
-          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
-        </header>
-
-        <header id='contact-us' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <h1 className='w3-xxxlarge'><b>Contacto</b></h1>
-          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
-        </header>
-
-        <header id='legal' className='collapse w3-container w3-center w3-padding-48 w3-light-grey'>
-          <h1 className='w3-xxxlarge'><b>Aviso Legal</b></h1>
-          <h6>Te ayudamos a buscarlo, porque el haria lo mismo por ti</h6>
-        </header>
-
-        <footer className='w3-container w3-grey w3-center w3-padding-xlarge'>
-          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#about-us'>¿Quiénes somos?</a>
-          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#contact-us'>Contacto</a>
-          <a className='w3-margin' href='#' data-toggle='collapse' data-target='#legal'>Aviso legal</a>
-        </footer>
+        <div id='about-us' className="collapse w3-opacity w3-container w3-padding-48 w3-light-grey"><AboutUs /></div>
+        <div id='contact-us' className="collapse w3-light-grey w3-padding-xlarge"><ContactUs /></div>
+        <div id='legal' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><TermsAndConditions /></div>
+        <Footer />
       </div>
     )
   }
