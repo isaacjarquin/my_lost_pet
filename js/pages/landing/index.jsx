@@ -113,12 +113,12 @@ class Landing extends React.Component {
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
             <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button className='w3-btn-block w3-padding w3-grey w3-opacity w3-hover-opacity-off'><i className="fa fa-paper-plane"></i> SEND MESSAGE</button></p>
+            <p><button className='w3-btn-block w3-padding w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> SEND MESSAGE</button></p>
           </form>
         </header>
 
-        <div id='about-us' className="collapse w3-opacity w3-container w3-padding-48 w3-light-grey"><AboutUs /></div>
-        <div id='contact-us' className="collapse w3-light-grey w3-padding-xlarge"><ContactUs /></div>
+        <div id='about-us' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><AboutUs /></div>
+        <div id='contact-us' className='collapse w3-light-grey w3-padding-xlarge'><ContactUs /></div>
         <div id='legal' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><TermsAndConditions /></div>
         <Footer />
       </div>

@@ -1,5 +1,4 @@
 const React = require('react')
-const { Link } = require('react-router')
 
 const Jumbotron = React.createClass({
   render () {
