@@ -25,6 +25,11 @@ describe('Store', () => {
       petImage: '',
       description: ''
     },
+    contactUs: {
+      name: '',
+      email: '',
+      message: ''
+    },
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
@@ -144,5 +149,23 @@ describe('Store', () => {
     const state = rootReducer({pet: {description: 'dont care'}}, {type: 'setPetDescription', value: 'I do care a lot'})
 
     expect(state.pet.description).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsName actions', () => {
+    const state = rootReducer({contactUs: {name: 'dont care'}}, {type: 'setContactUsName', value: 'I do care a lot'})
+
+    expect(state.contactUs.name).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsEmail actions', () => {
+    const state = rootReducer({contactUs: {email: 'dont care'}}, {type: 'setContactUsEmail', value: 'I do care a lot'})
+
+    expect(state.contactUs.email).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setContactUsMessage actions', () => {
+    const state = rootReducer({contactUs: {message: 'dont care'}}, {type: 'setContactUsMessage', value: 'I do care a lot'})
+
+    expect(state.contactUs.message).to.deep.equal('I do care a lot')
   })
 })
