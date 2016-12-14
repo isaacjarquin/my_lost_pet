@@ -68,7 +68,7 @@ class PetDetails extends React.Component {
                     <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
                     <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
                     <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
-                    <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'>Enviar mis datos</button></p>
+                    <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
                   </form>
                 </div>
               </div>
