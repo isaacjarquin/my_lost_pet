@@ -40,16 +40,16 @@ class PetDetails extends React.Component {
       <div className='container'>
         <div className='pet-info'>
           <div className='pet-card w3-container w3-white w3-margin w3-padding-large'>
-            <div className='pet-card_title w3-center '>
+            <div className='pet-card_title w3-center w3-opacity'>
               <h3>{pet}, {breading}, {size}</h3>
-              <h5>{titleDescription}, <span className='w3-opacity'>{date}</span></h5>
+              <h5>{titleDescription}, <span>{date}</span></h5>
             </div>
 
             <div className='pet-card_body w3-justify'>
               <img src={image} alt='Men in Hats' className='w3-padding-12' />
-              <p>{description}</p>
+              <p className='w3-opacity'>{description}</p>
               <p className='w3-right'>
-                <button data-toggle='collapse' data-target='#response-form' className='w3-btn w3-white w3-border'>
+                <button data-toggle='collapse' data-target='#response-form' className='w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
                   <b>Responder</b>
                 </button>
               </p>
