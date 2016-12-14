@@ -22,5 +22,10 @@ module.exports = {
     location: '',
     petImage: '',
     description: ''
+  },
+  contactUs: {
+    name: '',
+    email: '',
+    message: ''
   }
 }
