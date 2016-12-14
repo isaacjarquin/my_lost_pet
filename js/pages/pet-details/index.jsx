@@ -56,7 +56,7 @@ class PetDetails extends React.Component {
               <p className='w3-clear' />
             </div>
             <div id='response-form' className='collapse'>
-              <hr class="w3-grey" />
+              <hr className='w3-grey' />
               <div className='w3-white w3-margin'>
                 <div className='w3-container w3-padding w3-opacity'>
                   <h2>Introduce tus datos de contacto</h2>
