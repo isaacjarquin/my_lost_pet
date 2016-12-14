@@ -24,6 +24,12 @@ const {
   reducerSelectFilter
 } = require('../js/features/header/searchFilterReducer')
 
+const {
+  reducerContactUsName,
+  reducerContactUsEmail,
+  reducerContactUsMessage
+} = require('../js/features/contact_us/contactUsReducer')
+
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 
 const initialState = require('./InitialState')
@@ -45,6 +51,9 @@ const SET_PET_FOUND_DATE = 'setPetFoundDate'
 const SET_PET_LOCATION = 'setPetLocation'
 const SET_PET_IMAGE = 'setPetImage'
 const SET_PET_DESCRIPTION = 'setPetDescription'
+const SET_CONTACT_US_NAME = 'setContactUsName'
+const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
+const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -78,6 +87,12 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetImage(state, action)
     case SET_PET_DESCRIPTION:
       return reducerPetDescription(state, action)
+    case SET_CONTACT_US_NAME:
+      return reducerContactUsName(state, action)
+    case SET_CONTACT_US_EMAIL:
+      return reducerContactUsEmail(state, action)
+    case SET_CONTACT_US_MESSAGE:
+      return reducerContactUsMessage(state, action)
     default:
       return state
   }
@@ -110,6 +125,11 @@ const mapStateToProps = (state) => {
       location: state.pet.location,
       petImage: state.pet.petImage,
       description: state.pet.description
+    },
+    contactUs: {
+      name: state.contactUs.name,
+      email: state.contactUs.email,
+      message: state.contactUs.message
     }
   }
 }
@@ -160,6 +180,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
+    },
+    setContactUsName (name) {
+      dispatch({type: SET_CONTACT_US_NAME, value: name})
+    },
+    setContactUsEmail (email) {
+      dispatch({type: SET_CONTACT_US_EMAIL, value: email})
+    },
+    setContactUsMessage (message) {
+      dispatch({type: SET_CONTACT_US_MESSAGE, value: message})
     }
   }
 }
