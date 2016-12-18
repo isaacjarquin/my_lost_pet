@@ -17,7 +17,7 @@ const Footer = React.createClass({
 
     links.forEach((link, clickedLinkId) => {
       if (clickedLink !== link.current) {
-          $(link.targetId).remove('.in')
+        $(link.targetId).remove('.in')
       }
     })
   },

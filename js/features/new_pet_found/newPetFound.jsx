@@ -39,15 +39,15 @@ class NewPetFound extends React.Component {
   }
   render () {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          <h4 className='panel-title w3-center'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse1'>
             Introduce datos de la mascota y los datos necesarios para poder contactar contigo</a>
           </h4>
         </div>
-        <div id="collapse1" className="panel-collapse collapse">
-          <div className="panel-body w3-margin">
+        <div id='collapse1' className='panel-collapse collapse'>
+          <div className='panel-body w3-margin'>
             <form onSubmit={this.handleSubmit}>
               <p><input value={this.props.pet.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
               <p><input value={this.props.pet.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>

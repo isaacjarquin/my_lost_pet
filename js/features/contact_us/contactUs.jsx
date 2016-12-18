@@ -24,15 +24,15 @@ class ContactUs extends React.Component {
   }
   render () {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          <h4 className='panel-title w3-center'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse3'>
             Contacto</a>
           </h4>
         </div>
-        <div id="collapse3" className="panel-collapse collapse">
-          <div className="panel-body w3-margin">
+        <div id='collapse3' className='panel-collapse collapse'>
+          <div className='panel-body w3-margin'>
             <div className='w3-section w3-center w3-opacity'>
               <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
               <i className='fa fa-phone fa-fw w3-xxlarge w3-margin' /> Teléfono: +00 151515

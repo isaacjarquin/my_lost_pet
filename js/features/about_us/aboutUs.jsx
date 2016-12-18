@@ -3,15 +3,15 @@ const React = require('react')
 const ContactUs = React.createClass({
   render () {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          <h4 className='panel-title w3-center'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse2'>
             ¿Quiénes somos?</a>
           </h4>
         </div>
-        <div id="collapse2" className="panel-collapse collapse">
-          <div className="panel-body">
+        <div id='collapse2' className='panel-collapse collapse'>
+          <div className='panel-body'>
             <div className='w3-margin'>
               <h6><b>¿Quiénes somos?</b></h6>
               <p>My lost pet es  una organización sin fines de lucro compuesta por un grupo de voluntarios unidos por el amor hacia los animales y la convicción de que, juntos, podemos hacer mucho por ellos. </p>

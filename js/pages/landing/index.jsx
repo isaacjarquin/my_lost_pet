@@ -70,7 +70,7 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <div className="panel-group" id="accordion">
+        <div className='panel-group' id='accordion'>
           <NewPetFound />
           <AboutUs />
           <ContactUs />
