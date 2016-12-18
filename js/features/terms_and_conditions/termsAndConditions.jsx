@@ -6,11 +6,11 @@ const TermsAndConditions = React.createClass({
       <div className="panel panel-default">
         <div className="panel-heading">
           <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
             Términos y condiciones</a>
           </h4>
         </div>
-        <div id="collapse3" className="panel-collapse collapse">
+        <div id="collapse4" className="panel-collapse collapse">
           <div className="panel-body">
             <div className='w3-margin'>
               <h6><b>Aviso legal</b></h6>

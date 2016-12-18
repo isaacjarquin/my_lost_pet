@@ -6,11 +6,11 @@ const ContactUs = React.createClass({
       <div className="panel panel-default">
         <div className="panel-heading">
           <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
             ¿Quiénes somos?</a>
           </h4>
         </div>
-        <div id="collapse1" className="panel-collapse collapse">
+        <div id="collapse2" className="panel-collapse collapse">
           <div className="panel-body">
             <div className='w3-margin'>
               <h6><b>¿Quiénes somos?</b></h6>
