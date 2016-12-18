@@ -117,9 +117,12 @@ class Landing extends React.Component {
           </form>
         </header>
 
-        <div id='about-us' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><AboutUs /></div>
-        <div id='contact-us' className='collapse w3-light-grey w3-padding-xlarge'><ContactUs /></div>
-        <div id='legal' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><TermsAndConditions /></div>
+        <div className="panel-group" id="accordion">
+          <AboutUs />
+          <ContactUs />
+          <TermsAndConditions />
+        </div>
+
         <Footer />
       </div>
     )
