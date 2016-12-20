@@ -7,8 +7,8 @@ if (process.env.WEBPACK_BUILD) {
 
 const MissingPet = (props) => (
   <Link to={`/details/${props.id}`}>
-    <div className='panel col-sm-4 w3-white w3-padding'>
-      <div className='panel-image w3-padding'>
+    <div className='panel col-sm-4 w3-white'>
+      <div className='panel-image'>
         <img src={props.image} className='img-responsive' alt='Image' />
       </div>
       <div className='panel-description w3-container w3-light-grey'>
