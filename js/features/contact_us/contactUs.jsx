@@ -31,7 +31,7 @@ class ContactUs extends React.Component {
             Contacto</a>
           </h4>
         </div>
-        <div id='collapse2' className='panel-collapse collapse'>
+        <div id='collapse2' className='panel-collapse collapse w3-padding'>
           <div className='panel-body'>
             <div className='w3-section w3-center w3-opacity'>
               <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
