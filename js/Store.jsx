@@ -10,7 +10,7 @@ const {
   reducerPetLocation,
   reducerPetImage,
   reducerPetDescription
-} = require('../js/pages/landing/petFormReducer')
+} = require('../js/features/new_pet_found/newPetFoundReducer')
 
 const {
   reducerOwnerName,
