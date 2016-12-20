@@ -7,6 +7,8 @@ const TermsAndConditions = require('../../features/terms_and_conditions/termsAnd
 const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
+const NewPetFound = require('../../features/new_pet_found/NewPetFound')
+
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
 }
@@ -16,14 +18,6 @@ class Landing extends React.Component {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.gotoSearch = this.gotoSearch.bind(this)
-    this.handleFounderName = this.handleFounderName.bind(this)
-    this.handleFounderEmail = this.handleFounderEmail.bind(this)
-    this.handlePetType = this.handlePetType.bind(this)
-    this.handlePetSize = this.handlePetSize.bind(this)
-    this.handleFoundDate = this.handleFoundDate.bind(this)
-    this.handlePetLocation = this.handlePetLocation.bind(this)
-    this.handlePetDescription = this.handlePetDescription.bind(this)
-    this.handlePetImage = this.handlePetImage.bind(this)
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
@@ -31,30 +25,6 @@ class Landing extends React.Component {
   gotoSearch (event) {
     hashHistory.push('search')
     event.preventDefault()
-  }
-  handleFounderName (event) {
-    this.props.setPetFounderName(event.target.value)
-  }
-  handleFounderEmail (event) {
-    this.props.setPetFounderEmail(event.target.value)
-  }
-  handlePetType (event) {
-    this.props.setPetType(event.target.value)
-  }
-  handlePetSize (event) {
-    this.props.setPetSize(event.target.value)
-  }
-  handleFoundDate (event) {
-    this.props.setPetFoundDate(event.target.value)
-  }
-  handlePetLocation (event) {
-    this.props.setPetLocation(event.target.value)
-  }
-  handlePetDescription (event) {
-    this.props.setPetDescription(event.target.value)
-  }
-  handlePetImage (event) {
-    this.props.setPetImage(event.target.value)
   }
   render () {
     const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
@@ -100,26 +70,14 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'>Acabas de encontrarte una mascota perdida en la calle ?</button>
+        <NewPetFound />
 
-        <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
-          <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
-          <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.pet.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-            <p><input value={this.props.pet.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-            <p><input value={this.props.pet.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
-            <p><input value={this.props.pet.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
-            <p><input value={this.props.pet.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
-            <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
-            <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
-            <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button className='w3-btn-block w3-padding w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> SEND MESSAGE</button></p>
-          </form>
-        </header>
+        <div className='panel-group' id='accordion'>
+          <AboutUs />
+          <ContactUs />
+          <TermsAndConditions />
+        </div>
 
-        <div id='about-us' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><AboutUs /></div>
-        <div id='contact-us' className='collapse w3-light-grey w3-padding-xlarge'><ContactUs /></div>
-        <div id='legal' className='collapse w3-opacity w3-container w3-padding-48 w3-light-grey'><TermsAndConditions /></div>
         <Footer />
       </div>
     )
