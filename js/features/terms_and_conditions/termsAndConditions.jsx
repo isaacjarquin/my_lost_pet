@@ -3,15 +3,15 @@ const React = require('react')
 const TermsAndConditions = React.createClass({
   render () {
     return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h4 className="panel-title w3-center">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+      <div className='panel panel-default'>
+        <div className='panel-heading'>
+          <h4 className='panel-title w3-center'>
+            <a data-toggle='collapse' data-parent='#accordion' href='#collapse3'>
             Términos y condiciones</a>
           </h4>
         </div>
-        <div id="collapse3" className="panel-collapse collapse">
-          <div className="panel-body">
+        <div id='collapse3' className='panel-collapse collapse'>
+          <div className='panel-body'>
             <div className='w3-margin'>
               <h6><b>Aviso legal</b></h6>
               <p>MyLostPet es un sitio web para el intercambio de información sobre mascotas que han sido encontradas y necesitan volver con sus duenos . Al utilizar el sitio de MyLostPet, aceptas y acuerdas estar obligado por los siguientes términos y condiciones. Nada en estas Condiciones debe ser interpretado como una concesión de derechos de terceros beneficiarios.</p>

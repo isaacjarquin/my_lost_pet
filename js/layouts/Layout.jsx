@@ -1,5 +1,7 @@
 const React = require('react')
 const Header = require('../features/header/Header')
+const Footer = require('../features/footer/Footer')
+
 const { element, object } = React.PropTypes
 
 const Layout = React.createClass({
@@ -18,7 +20,7 @@ const Layout = React.createClass({
     if (pathname === '/') {
       return null
     } else {
-      return <footer className='w3-container w3-grey w3-center w3-padding-xlarge'>@MyLostPet</footer>
+      return <Footer />
     }
   },
   render () {
