@@ -37,11 +37,11 @@ class Landing extends React.Component {
           <li className='w3-left'><a href='/'>Home<i /></a></li>
 
           <li className='w3-right'>
-              <FacebookButton url={"https://github.com"} appId={"facebookAppID"} className={'fa fa-facebook my-social-icons'}>
+              <FacebookButton url={process.env.HOST_URL} appId={process.env.FACEBOOK_KEY} className={'fa fa-facebook my-social-icons'}>
               </FacebookButton>
           </li>
           <li className='w3-right'>
-              <TwitterButton url={"https://github.com"} appId={"twitterAppID"} className={'fa fa-twitter my-social-icons'}>
+              <TwitterButton url={process.env.HOST_URL} appId={process.env.TWITTER_KEY} className={'fa fa-twitter my-social-icons'}>
               </TwitterButton>
           </li>
         </ul>
