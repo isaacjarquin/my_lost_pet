@@ -30334,11 +30334,6 @@
 	          React.createElement(
 	            'li',
 	            { className: 'w3-right' },
-	            React.createElement(_reactSocial.FacebookButton, { url: process.env.HOST_URL, appId: process.env.FACEBOOK_KEY, className: 'fa fa-facebook my-social-icons' })
-	          ),
-	          React.createElement(
-	            'li',
-	            { className: 'w3-right' },
 	            React.createElement(_reactSocial.TwitterButton, { url: process.env.HOST_URL, appId: process.env.TWITTER_KEY, className: 'fa fa-twitter my-social-icons' })
 	          )
 	        ),
