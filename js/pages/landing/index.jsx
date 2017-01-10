@@ -9,6 +9,8 @@ const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 
+import { FacebookButton, TwitterButton  } from "react-social";
+
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
 }
@@ -33,8 +35,15 @@ class Landing extends React.Component {
       <div className='home-info'>
         <ul className='w3-navbar w3-black w3-hide-small'>
           <li className='w3-left'><a href='/'>Home<i /></a></li>
-          <li className='w3-right'><a href='#'><i className='fa fa-facebook-official' /></a></li>
-          <li className='w3-right'><a href='#'><i className='fa fa-twitter' /></a></li>
+
+          <li className='w3-right'>
+              <FacebookButton url={process.env.HOST_URL} appId={process.env.FACEBOOK_KEY} className={'fa fa-facebook my-social-icons'}>
+              </FacebookButton>
+          </li>
+          <li className='w3-right'>
+              <TwitterButton url={process.env.HOST_URL} appId={process.env.TWITTER_KEY} className={'fa fa-twitter my-social-icons'}>
+              </TwitterButton>
+          </li>
         </ul>
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
