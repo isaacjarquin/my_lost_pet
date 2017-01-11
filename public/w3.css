@@ -70,7 +70,7 @@ ul.w3-ul{list-style-type:none;padding:0;margin:0}
 ul.w3-ul li{padding:6px 2px 6px 16px;border-bottom:1px solid #ddd}
 ul.w3-ul li:last-child{border-bottom:none}
 .w3-image,.w3-tooltip,.w3-display-container{position:relative}
-img.w3-image,.w3-image img{max-width:100%;height:auto}
+img.w3-image,.w3-image img{max-width:100%}
 .w3-image .w3-title{position:absolute;bottom:8px;left:16px;color:#fff;font-size:20px}
 .w3-fluid{max-width:100%;height:auto}
 .w3-tooltip .w3-text{display:none}
@@ -199,6 +199,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-left-align{text-align:left !important}.w3-right-align{text-align:right !important}
 .w3-justify{text-align:justify !important}
 .w3-center{text-align:center !important}
+.w3-display-left {position: absolute;top: 50%;left: 0%;transform: translate(0%,-50%);-ms-transform: translate(-0%,-50%);}
 .w3-display-topleft{position:absolute;left:0;top:0}
 .w3-display-topright{position:absolute;right:0;top:0}
 .w3-display-bottomleft{position:absolute;left:0;bottom:0}
@@ -234,6 +235,7 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-padding-0{padding:0 !important}
 .w3-padding-4{padding-top:4px !important;padding-bottom:4px !important}
 .w3-padding-8{padding-top:8px !important;padding-bottom:8px !important}
+.w3-padding-12{padding-top:12px !important;padding-bottom:12px !important}
 .w3-padding-16{padding-top:16px !important;padding-bottom:16px !important}
 .w3-padding-24{padding-top:24px !important;padding-bottom:24px !important}
 .w3-padding-32{padding-top:32px !important;padding-bottom:32px !important}
@@ -342,3 +344,4 @@ input[type=checkbox].w3-check:disabled+.w3-validate,input[type=radio].w3-radio:d
 .w3-text-light-grey,.w3-hover-text-light-grey:hover{color:#f1f1f1 !important}
 .w3-text-dark-grey,.w3-hover-text-dark-grey:hover{color:#3a3a3a !important}
 .w3-opacity,.w3-hover-opacity:hover{opacity:0.60}.w3-text-shadow{text-shadow:1px 1px 0 #444}.w3-text-shadow-white{text-shadow:1px 1px 0 #ddd}
+.w3-opacity-off,.w3-hover-opacity-off:hover{opacity:1;filter:alpha(opacity=100);-webkit-backface-visibility:hidden}
