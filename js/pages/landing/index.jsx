@@ -30,17 +30,19 @@ class Landing extends React.Component {
   }
   render () {
     const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
+    const url = process.env.HOST_URL
+    const facebookAppId = process.env.FACEBOOK_KEY
+    const twitterAppId = process.env.TWITTER_KEY
 
     return (
       <div className='home-info'>
         <ul className='w3-navbar w3-black w3-hide-small'>
           <li className='w3-left'><a href='/'>Home<i /></a></li>
-
           <li className='w3-right'>
-            <FacebookButton url={process.env.HOST_URL} appId={process.env.FACEBOOK_KEY} className={'fa fa-facebook my-social-icons'} />
+            <FacebookButton url={url} appId={facebookAppId} className={'fa fa-facebook my-social-icons'} />
           </li>
           <li className='w3-right'>
-            <TwitterButton url={process.env.HOST_URL} appId={process.env.TWITTER_KEY} className={'fa fa-twitter my-social-icons'} />
+            <TwitterButton url={url} appId={twitterAppId} className={'fa fa-twitter my-social-icons'} />
           </li>
         </ul>
         <header className='w3-display-container w3-wide' id='home'>
