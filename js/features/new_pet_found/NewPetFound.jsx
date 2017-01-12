@@ -44,7 +44,7 @@ class NewPetFound extends React.Component {
   render () {
     return (
       <div className='new-pet-form'>
-        <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'>Acabas de encontrarte una mascota perdida en la calle ?</button>
+      <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
 
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
@@ -57,7 +57,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
             <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button className='w3-btn-block w3-padding w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> SEND MESSAGE</button></p>
+            <p><button className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>
