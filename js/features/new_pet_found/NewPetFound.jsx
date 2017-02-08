@@ -1,5 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
+const axios = require('axios')
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -16,6 +17,7 @@ class NewPetFound extends React.Component {
     this.handlePetLocation = this.handlePetLocation.bind(this)
     this.handlePetDescription = this.handlePetDescription.bind(this)
     this.handlePetImage = this.handlePetImage.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleFounderName (event) {
     this.props.setPetFounderName(event.target.value)
@@ -41,10 +43,40 @@ class NewPetFound extends React.Component {
   handlePetImage (event) {
     this.props.setPetImage(event.target.value)
   }
+  handleSubmit (event) {
+    const adaptedItem = {
+      name: this.props.pet.founderName,
+      email: this.props.pet.founderEmail,
+      kind: this.props.pet.petType,
+      size: this.props.pet.size,
+      date: this.props.pet.foundDate,
+      location: this.props.pet.location,
+      info: this.props.pet.description,
+      image: this.props.pet.petImage
+    }
+
+    const url = 'http://localhost:4000/api/items'
+    const params = JSON.parse(JSON.stringify({item: adaptedItem}))
+    const headers = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    axios.post(url, params, headers)
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error)
+    })
+
+    event.preventDefault()
+  }
   render () {
     return (
       <div className='new-pet-form'>
-      <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
+        <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
 
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
@@ -57,7 +89,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
             <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> ENVIAR MENSAJE</button></p>
+            <p><button onSubmit={this.handleSubmit} className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>
