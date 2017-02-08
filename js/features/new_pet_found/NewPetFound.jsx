@@ -55,7 +55,7 @@ class NewPetFound extends React.Component {
       image: this.props.pet.petImage
     }
 
-    const url = 'http://localhost:4000/api/items'
+    const url = process.env.ITEMS_API_URL
     const params = JSON.parse(JSON.stringify({item: adaptedItem}))
     const headers = {
       headers: {
