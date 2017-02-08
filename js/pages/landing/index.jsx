@@ -9,7 +9,7 @@ const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 
-import { FacebookButton, TwitterButton } from 'react-social'
+import { TwitterButton } from 'react-social'
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -31,16 +31,12 @@ class Landing extends React.Component {
   render () {
     const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
     const url = process.env.HOST_URL
-    const facebookAppId = process.env.FACEBOOK_KEY
     const twitterAppId = process.env.TWITTER_KEY
 
     return (
       <div className='home-info'>
         <ul className='w3-navbar w3-black w3-hide-small'>
           <li className='w3-left'><a href='/'>Home<i /></a></li>
-          <li className='w3-right'>
-            <FacebookButton url={url} appId={facebookAppId} className={'fa fa-facebook my-social-icons'} />
-          </li>
           <li className='w3-right'>
             <TwitterButton url={url} appId={twitterAppId} className={'fa fa-twitter my-social-icons'} />
           </li>
