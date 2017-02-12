@@ -6,17 +6,19 @@ if (process.env.WEBPACK_BUILD) {
 }
 
 const MissingPet = (props) => (
-  <Link to={`/details/${props.id}`}>
-    <div className='panel col-sm-4 w3-white'>
+    <div>
+    <div className='panel col-sm-5 w3-white w3-margin'>
       <div className='panel-image'>
         <img src={props.image} className='img-responsive' alt='Image' />
       </div>
       <div className='panel-description w3-container w3-light-grey'>
         <h4 className='w3-opacity'>{props.pet}, {props.breading}, {props.size}</h4>
         <p className='w3-opacity'>{props.description}</p>
+        <p className='w3-clear' />
       </div>
     </div>
-  </Link>
+  </div>
+
 )
 
 const { string } = React.PropTypes
