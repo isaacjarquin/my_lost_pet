@@ -33114,9 +33114,20 @@
 	var _require = __webpack_require__(226),
 	    Link = _require.Link;
 
+	var displayLeft = "";
+	var displayRight = "";
+
 	if (process.env.WEBPACK_BUILD) {
 	  __webpack_require__(322);
 	}
+
+	var hideArrow = function hideArrow(petId) {
+	  if (parseInt(petId) % 2 === 0) {
+	    displayLeft = "displayNone";
+	  } else {
+	    displayRight = "displayNone";
+	  }
+	};
 
 	var MissingPet = function MissingPet(props) {
 	  return React.createElement(
@@ -33152,11 +33163,11 @@
 	          { className: 'w3-right' },
 	          React.createElement(
 	            'button',
-	            { 'data-toggle': 'collapse', 'data-target': '#response-form', className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	            { onSubmit: hideArrow(props.id), 'data-toggle': 'collapse', 'data-target': '#' + props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
 	            React.createElement(
 	              'b',
 	              null,
-	              'Responder'
+	              'Contactar'
 	            )
 	          )
 	        ),
@@ -33165,8 +33176,9 @@
 	    ),
 	    React.createElement(
 	      'div',
-	      { id: 'response-form', className: 'collapse' },
-	      React.createElement('hr', { className: 'w3-grey' }),
+	      { id: props.id, className: 'collapse contact-details-panel' },
+	      React.createElement('div', { className: 'arrow-up-left ' + displayLeft }),
+	      React.createElement('div', { className: 'arrow-up-right ' + displayRight }),
 	      React.createElement(
 	        'div',
 	        { className: 'w3-white w3-margin' },
