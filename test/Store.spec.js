@@ -174,9 +174,9 @@ describe('Store', () => {
   })
 
   it('should handle setDisplayArrow actions', () => {
-    const state = rootReducer({arrows: {left: 'displayNone', right: 'displayTrue'}}, {type: 'setDisplayArrow', value: {left: 'displayNone', right: 'displayNone'}})
+    const state = rootReducer({arrows: {left: 'displayNone', right: 'displayTrue'}}, {type: 'setdisplayArrow', value: {left: 'displayNone', right: 'displayNone'}})
 
-    expect(state.arrows.left).to.deep.equal('displayNone')
-    expect(state.arrows.right).to.deep.equal('displayTrue')
+    expect(state.arrows.left.display).to.deep.equal('displayNone')
+    expect(state.arrows.right.display).to.deep.equal('displayNone')
   })
 })
