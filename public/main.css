@@ -157,6 +157,9 @@ p.form-introduction {
 
 .displayNone {
   display: none; }
+
+.displayTrue {
+  display: block; }
 @charset "UTF-8";
 .rc-pagination-disabled {
   cursor: not-allowed; }

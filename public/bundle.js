@@ -21943,6 +21943,17 @@
 	    reducerContactUsEmail = _require4.reducerContactUsEmail,
 	    reducerContactUsMessage = _require4.reducerContactUsMessage;
 
+	var reducerDisplayArrow = function reducerDisplayArrow(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    arrows: {
+	      right: { display: action.value.right },
+	      left: { display: action.value.left }
+	    }
+	  });
+	  return newState;
+	};
+
 	var _require5 = __webpack_require__(219),
 	    reducerActivePage = _require5.reducerActivePage;
 
@@ -21968,6 +21979,7 @@
 	var SET_CONTACT_US_NAME = 'setContactUsName';
 	var SET_CONTACT_US_EMAIL = 'setContactUsEmail';
 	var SET_CONTACT_US_MESSAGE = 'setContactUsMessage';
+	var SET_DISPLAY_ARROW = 'setdisplayArrow';
 
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -22010,6 +22022,8 @@
 	      return reducerContactUsEmail(state, action);
 	    case SET_CONTACT_US_MESSAGE:
 	      return reducerContactUsMessage(state, action);
+	    case SET_DISPLAY_ARROW:
+	      return reducerDisplayArrow(state, action);
 	    default:
 	      return state;
 	  }
@@ -22047,6 +22061,10 @@
 	      name: state.contactUs.name,
 	      email: state.contactUs.email,
 	      message: state.contactUs.message
+	    },
+	    arrows: {
+	      left: { display: state.arrows.left.display },
+	      right: { display: state.arrows.right.display }
 	    }
 	  };
 	};
@@ -22106,6 +22124,9 @@
 	    },
 	    setContactUsMessage: function setContactUsMessage(message) {
 	      dispatch({ type: SET_CONTACT_US_MESSAGE, value: message });
+	    },
+	    setDisplayArrow: function setDisplayArrow(arrows) {
+	      dispatch({ type: SET_DISPLAY_ARROW, value: arrows });
 	    }
 	  };
 	};
@@ -24399,6 +24420,10 @@
 	    name: '',
 	    email: '',
 	    message: ''
+	  },
+	  arrows: {
+	    left: { display: 'displayNone' },
+	    right: { display: 'displayNone' }
 	  }
 	};
 
@@ -33109,115 +33134,237 @@
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var React = __webpack_require__(1);
 
-	var _require = __webpack_require__(226),
-	    Link = _require.Link;
-
-	var displayLeft = "";
-	var displayRight = "";
+	var _require = __webpack_require__(185),
+	    connector = _require.connector;
 
 	if (process.env.WEBPACK_BUILD) {
 	  __webpack_require__(322);
 	}
 
-	var hideArrow = function hideArrow(petId) {
-	  if (parseInt(petId) % 2 === 0) {
-	    displayLeft = "displayNone";
-	  } else {
-	    displayRight = "displayNone";
-	  }
-	};
+	var MissingPet = function (_React$Component) {
+	  _inherits(MissingPet, _React$Component);
 
-	var MissingPet = function MissingPet(props) {
-	  return React.createElement(
-	    'div',
-	    null,
-	    React.createElement(
-	      'div',
-	      { className: 'panel col-sm-5 w3-white w3-margin' },
-	      React.createElement(
-	        'div',
-	        { className: 'panel-image' },
-	        React.createElement('img', { src: props.image, className: 'img-responsive', alt: 'Image' })
-	      ),
-	      React.createElement(
-	        'div',
-	        { className: 'panel-description w3-container w3-light-grey' },
-	        React.createElement(
-	          'h4',
-	          { className: 'w3-opacity' },
-	          props.pet,
-	          ', ',
-	          props.breading,
-	          ', ',
-	          props.size
-	        ),
-	        React.createElement(
-	          'p',
-	          { className: 'w3-opacity' },
-	          props.description
-	        ),
-	        React.createElement(
-	          'p',
-	          { className: 'w3-right' },
+	  function MissingPet(props) {
+	    _classCallCheck(this, MissingPet);
+
+	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
+
+	    _this.addPanel = _this.addPanel.bind(_this);
+	    _this.hideArrow = _this.hideArrow.bind(_this);
+	    _this.getTargetId = _this.getTargetId.bind(_this);
+	    _this.handleName = _this.handleName.bind(_this);
+	    _this.handleEmail = _this.handleEmail.bind(_this);
+	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
+	    _this.handleDescription = _this.handleDescription.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(MissingPet, [{
+	    key: 'handleName',
+	    value: function handleName(event) {
+	      this.props.setOwnerName(event.target.value);
+	    }
+	  }, {
+	    key: 'handleEmail',
+	    value: function handleEmail(event) {
+	      this.props.setOwnerEmail(event.target.value);
+	    }
+	  }, {
+	    key: 'handlePhoneNumber',
+	    value: function handlePhoneNumber(event) {
+	      this.props.setOwnerPhoneNumber(event.target.value);
+	    }
+	  }, {
+	    key: 'handleDescription',
+	    value: function handleDescription(event) {
+	      this.props.setDescription(event.target.value);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      this.props.sendOwnersDetails();
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'hideArrow',
+	    value: function hideArrow(event) {
+	      if (parseInt(this.props.id) % 2 === 0) {
+	        this.props.setDisplayArrow({ left: 'displayNone', right: 'displayTrue' });
+	      } else {
+	        this.props.setDisplayArrow({ left: 'displayTrue', right: 'displayNone' });
+	      }
+
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'getTargetId',
+	    value: function getTargetId() {
+	      if (parseInt(this.props.id) % 2 === 0) {
+	        return this.props.id;
+	      } else {
+	        return parseInt(this.props.id) + 1;
+	      }
+	    }
+	  }, {
+	    key: 'addPanel',
+	    value: function addPanel() {
+	      if (parseInt(this.props.id) % 2 === 0) {
+	        return React.createElement(
+	          'div',
+	          { id: this.props.id, className: 'collapse contact-details-panel' },
+	          React.createElement('div', { className: 'arrow-up-left ' + this.props.arrows.left.display }),
+	          React.createElement('div', { className: 'arrow-up-right ' + this.props.arrows.right.display }),
 	          React.createElement(
-	            'button',
-	            { onSubmit: hideArrow(props.id), 'data-toggle': 'collapse', 'data-target': '#' + props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	            'div',
+	            { className: 'w3-white w3-margin' },
 	            React.createElement(
-	              'b',
-	              null,
-	              'Contactar'
+	              'div',
+	              { className: 'w3-container w3-padding w3-opacity' },
+	              React.createElement(
+	                'h2',
+	                null,
+	                'Introduce tus datos de contacto'
+	              )
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'w3-container w3-white' },
+	              React.createElement(
+	                'p',
+	                { className: 'form-introduction w3-opacity' },
+	                'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	              ),
+	              React.createElement(
+	                'form',
+	                { onSubmit: this.handleSubmit },
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement(
+	                    'button',
+	                    { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                    React.createElement('i', { className: 'fa fa-paper-plane' }),
+	                    ' Enviar mis datos'
+	                  )
+	                )
+	              )
 	            )
 	          )
-	        ),
-	        React.createElement('p', { className: 'w3-clear' })
-	      )
-	    ),
-	    React.createElement(
-	      'div',
-	      { id: props.id, className: 'collapse contact-details-panel' },
-	      React.createElement('div', { className: 'arrow-up-left ' + displayLeft }),
-	      React.createElement('div', { className: 'arrow-up-right ' + displayRight }),
-	      React.createElement(
+	        );
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
 	        'div',
-	        { className: 'w3-white w3-margin' },
+	        null,
 	        React.createElement(
 	          'div',
-	          { className: 'w3-container w3-padding w3-opacity' },
+	          { className: 'panel col-sm-5 w3-white w3-margin' },
 	          React.createElement(
-	            'h2',
-	            null,
-	            'Introduce tus datos de contacto'
+	            'div',
+	            { className: 'panel-image' },
+	            React.createElement('img', { src: this.props.image, className: 'img-responsive', alt: 'Image' })
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'panel-description w3-container w3-light-grey' },
+	            React.createElement(
+	              'h4',
+	              { className: 'w3-opacity' },
+	              this.props.pet.petType,
+	              ', ',
+	              this.props.breading,
+	              ', ',
+	              this.props.size
+	            ),
+	            React.createElement(
+	              'p',
+	              { className: 'w3-opacity' },
+	              this.props.description
+	            ),
+	            React.createElement(
+	              'form',
+	              { onSubmit: this.hideArrow },
+	              React.createElement(
+	                'button',
+	                { 'data-toggle': 'collapse', 'data-target': '#' + this.getTargetId(), className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                React.createElement(
+	                  'b',
+	                  null,
+	                  'Contactar'
+	                )
+	              )
+	            ),
+	            React.createElement('p', { className: 'w3-clear' })
 	          )
 	        ),
-	        React.createElement(
-	          'div',
-	          { className: 'w3-container w3-white' },
-	          React.createElement(
-	            'p',
-	            { className: 'form-introduction w3-opacity' },
-	            'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
-	          )
-	        )
-	      )
-	    )
-	  );
-	};
+	        this.addPanel()
+	      );
+	    }
+	  }]);
 
-	var string = React.PropTypes.string;
+	  return MissingPet;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    object = _React$PropTypes.object,
+	    func = _React$PropTypes.func;
 
 
 	MissingPet.propTypes = {
 	  breading: string.isRequired,
 	  size: string.isRequired,
-	  pet: string.isRequired,
+	  setDisplayLeftArrow: func,
+	  setDisplayRightArrow: func,
+	  arrows: object,
+	  pet: object,
+	  setDisplayArrow: func,
 	  description: string.isRequired,
 	  image: string.isRequired,
-	  id: string.isRequired
+	  id: string.isRequired,
+	  owner: object,
+	  setOwnerName: func,
+	  setOwnerEmail: func,
+	  setOwnerPhoneNumber: func,
+	  setDescription: func,
+	  sendOwnersDetails: func
 	};
 
-	module.exports = MissingPet;
+	module.exports = connector(MissingPet);
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
