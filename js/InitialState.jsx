@@ -27,5 +27,9 @@ module.exports = {
     name: '',
     email: '',
     message: ''
+  },
+  arrows: {
+    left: {display: 'displayNone'},
+    right: {display: 'displayNone'}
   }
 }
