@@ -111,6 +111,8 @@ MissingPet.propTypes = {
   setDisplayLeftArrow: func,
   setDisplayRightArrow: func,
   arrows: object,
+  pet: object,
+  setDisplayArrow: func,
   description: string.isRequired,
   image: string.isRequired,
   id: string.isRequired,

@@ -35,7 +35,7 @@ const reducerDisplayArrow = (state, action) => {
   Object.assign(newState, state, {
     arrows: {
       right: {display: action.value.right},
-      left: {display: action.value.left},
+      left: {display: action.value.left}
     }
   })
   return newState
@@ -210,7 +210,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     setDisplayArrow (arrows) {
       dispatch({type: SET_DISPLAY_ARROW, value: arrows})
-    },
+    }
   }
 }
 
