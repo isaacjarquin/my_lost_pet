@@ -33143,7 +33143,7 @@
 	    connector = _require.connector;
 
 	var MediaQuery = __webpack_require__(322);
-	var MobilePanel = __webpack_require__(331);
+	var ContactDetailsPanel = __webpack_require__(333);
 
 	if (process.env.WEBPACK_BUILD) {
 	  __webpack_require__(323);
@@ -33158,169 +33158,18 @@
 	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
 
 	    _this.addPanelsForNonMobileDevices = _this.addPanelsForNonMobileDevices.bind(_this);
-	    _this.handleName = _this.handleName.bind(_this);
-	    _this.handleEmail = _this.handleEmail.bind(_this);
-	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
-	    _this.handleDescription = _this.handleDescription.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(MissingPet, [{
-	    key: 'handleName',
-	    value: function handleName(event) {
-	      this.props.setOwnerName(event.target.value);
-	    }
-	  }, {
-	    key: 'handleEmail',
-	    value: function handleEmail(event) {
-	      this.props.setOwnerEmail(event.target.value);
-	    }
-	  }, {
-	    key: 'handlePhoneNumber',
-	    value: function handlePhoneNumber(event) {
-	      this.props.setOwnerPhoneNumber(event.target.value);
-	    }
-	  }, {
-	    key: 'handleDescription',
-	    value: function handleDescription(event) {
-	      this.props.setDescription(event.target.value);
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      this.props.sendOwnersDetails();
-	      event.preventDefault();
-	    }
-	  }, {
 	    key: 'addPanelsForNonMobileDevices',
 	    value: function addPanelsForNonMobileDevices() {
 	      if (parseInt(this.props.id) % 2 === 0) {
 	        return React.createElement(
 	          'div',
 	          null,
-	          React.createElement(
-	            'div',
-	            { id: this.props.id - 1, className: 'collapse contact-details-panel' },
-	            React.createElement('div', { className: 'arrow-up-left' }),
-	            React.createElement(
-	              'div',
-	              { className: 'w3-white w3-margin' },
-	              React.createElement(
-	                'div',
-	                { className: 'w3-container w3-padding w3-opacity' },
-	                React.createElement(
-	                  'h2',
-	                  null,
-	                  'Introduce tus datos de contacto'
-	                )
-	              ),
-	              React.createElement(
-	                'div',
-	                { className: 'w3-container w3-white' },
-	                React.createElement(
-	                  'p',
-	                  { className: 'form-introduction w3-opacity' },
-	                  'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
-	                ),
-	                React.createElement(
-	                  'form',
-	                  { onSubmit: this.handleSubmit },
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement(
-	                      'button',
-	                      { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                      React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                      ' Enviar mis datos'
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { id: this.props.id, className: 'collapse contact-details-panel' },
-	            React.createElement('div', { className: 'arrow-up-right' }),
-	            React.createElement(
-	              'div',
-	              { className: 'w3-white w3-margin' },
-	              React.createElement(
-	                'div',
-	                { className: 'w3-container w3-padding w3-opacity' },
-	                React.createElement(
-	                  'h2',
-	                  null,
-	                  'Introduce tus datos de contacto'
-	                )
-	              ),
-	              React.createElement(
-	                'div',
-	                { className: 'w3-container w3-white' },
-	                React.createElement(
-	                  'p',
-	                  { className: 'form-introduction w3-opacity' },
-	                  'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
-	                ),
-	                React.createElement(
-	                  'form',
-	                  { onSubmit: this.handleSubmit },
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	                  ),
-	                  React.createElement(
-	                    'p',
-	                    null,
-	                    React.createElement(
-	                      'button',
-	                      { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                      React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                      ' Enviar mis datos'
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
+	          React.createElement(ContactDetailsPanel, { id: this.props.id - 1 }),
+	          React.createElement(ContactDetailsPanel, { id: this.props.id })
 	        );
 	      }
 	    }
@@ -33370,7 +33219,7 @@
 	        React.createElement(
 	          MediaQuery,
 	          { query: '(max-device-width: 600px)' },
-	          React.createElement(MobilePanel, { id: this.props.id })
+	          React.createElement(ContactDetailsPanel, { id: this.props.id })
 	        ),
 	        React.createElement(
 	          MediaQuery,
@@ -33393,20 +33242,10 @@
 	MissingPet.propTypes = {
 	  breading: string.isRequired,
 	  size: string.isRequired,
-	  setDisplayLeftArrow: func,
-	  setDisplayRightArrow: func,
-	  arrows: object,
 	  pet: object,
-	  setDisplayArrow: func,
 	  description: string.isRequired,
 	  image: string.isRequired,
-	  id: string.isRequired,
-	  owner: object,
-	  setOwnerName: func,
-	  setOwnerEmail: func,
-	  setOwnerPhoneNumber: func,
-	  setDescription: func,
-	  sendOwnersDetails: func
+	  id: string.isRequired
 	};
 
 	module.exports = connector(MissingPet);
@@ -34805,7 +34644,9 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 331 */
+/* 331 */,
+/* 332 */,
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34823,13 +34664,13 @@
 	var _require = __webpack_require__(185),
 	    connector = _require.connector;
 
-	var MobilePanel = function (_React$Component) {
-	  _inherits(MobilePanel, _React$Component);
+	var ContactDetailsPanel = function (_React$Component) {
+	  _inherits(ContactDetailsPanel, _React$Component);
 
-	  function MobilePanel(props) {
-	    _classCallCheck(this, MobilePanel);
+	  function ContactDetailsPanel(props) {
+	    _classCallCheck(this, ContactDetailsPanel);
 
-	    var _this = _possibleConstructorReturn(this, (MobilePanel.__proto__ || Object.getPrototypeOf(MobilePanel)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ContactDetailsPanel.__proto__ || Object.getPrototypeOf(ContactDetailsPanel)).call(this, props));
 
 	    _this.handleName = _this.handleName.bind(_this);
 	    _this.handleEmail = _this.handleEmail.bind(_this);
@@ -34839,7 +34680,7 @@
 	    return _this;
 	  }
 
-	  _createClass(MobilePanel, [{
+	  _createClass(ContactDetailsPanel, [{
 	    key: 'handleName',
 	    value: function handleName(event) {
 	      this.props.setOwnerName(event.target.value);
@@ -34932,7 +34773,7 @@
 	    }
 	  }]);
 
-	  return MobilePanel;
+	  return ContactDetailsPanel;
 	}(React.Component);
 
 	var _React$PropTypes = React.PropTypes,
@@ -34941,7 +34782,7 @@
 	    func = _React$PropTypes.func;
 
 
-	MobilePanel.propTypes = {
+	ContactDetailsPanel.propTypes = {
 	  id: string.isRequired,
 	  owner: object,
 	  setOwnerName: func,
@@ -34951,7 +34792,7 @@
 	  sendOwnersDetails: func
 	};
 
-	module.exports = connector(MobilePanel);
+	module.exports = connector(ContactDetailsPanel);
 
 /***/ }
 /******/ ]);

@@ -1,7 +1,7 @@
 const React = require('react')
 const { connector } = require('../../Store')
 
-class MobilePanel extends React.Component {
+class ContactDetailsPanel extends React.Component {
   constructor (props) {
       super(props)
       this.handleName = this.handleName.bind(this)
@@ -55,7 +55,7 @@ class MobilePanel extends React.Component {
 
 const { string, object, func } = React.PropTypes
 
-MobilePanel.propTypes = {
+ContactDetailsPanel.propTypes = {
   id: string.isRequired,
   owner: object,
   setOwnerName: func,
@@ -65,4 +65,4 @@ MobilePanel.propTypes = {
   sendOwnersDetails: func
 }
 
-module.exports = connector(MobilePanel)
+module.exports = connector(ContactDetailsPanel)
