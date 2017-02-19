@@ -155,6 +155,9 @@ p.form-introduction {
   margin-top: -15px;
   opacity: 0.3; }
 
+.addOpacity {
+  opacity: 0.3; }
+
 .displayNone {
   display: none; }
 

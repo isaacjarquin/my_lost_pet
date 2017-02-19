@@ -33067,10 +33067,10 @@
 	var _require = __webpack_require__(185),
 	    connector = _require.connector;
 
-	var Pagination = __webpack_require__(324);
+	var Pagination = __webpack_require__(325);
 
 	if (process.env.WEBPACK_BUILD) {
-	  __webpack_require__(330);
+	  __webpack_require__(331);
 	}
 
 	var Search = React.createClass({
@@ -33143,10 +33143,10 @@
 	    connector = _require.connector;
 
 	var MediaQuery = __webpack_require__(322);
-	var ContactDetailsPanel = __webpack_require__(333);
+	var ContactDetailsPanel = __webpack_require__(323);
 
 	if (process.env.WEBPACK_BUILD) {
-	  __webpack_require__(323);
+	  __webpack_require__(324);
 	}
 
 	var MissingPet = function (_React$Component) {
@@ -33158,6 +33158,7 @@
 	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
 
 	    _this.addPanelsForNonMobileDevices = _this.addPanelsForNonMobileDevices.bind(_this);
+	    _this.handleClick = _this.handleClick.bind(_this);
 	    return _this;
 	  }
 
@@ -33174,6 +33175,26 @@
 	      }
 	    }
 	  }, {
+	    key: 'handleClick',
+	    value: function handleClick(event) {
+	      var petId = 'item-' + this.props.id;
+	      var selectedId = "#" + petId;
+
+	      if ($(selectedId).hasClass("panel-opened")) {
+	        $(".col-sm-5").removeClass("addOpacity");
+	        $(".col-sm-5").removeClass("panel-opened");
+	      } else {
+	        $.each($('.pets-row'), function (pet) {
+	          if (petId !== pet.id) {
+	            $(".col-sm-5").addClass("addOpacity panel-opened");
+	            $(selectedId).removeClass("addOpacity");
+	          }
+	        });
+	      }
+
+	      event.preventDefault();
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -33181,7 +33202,7 @@
 	        null,
 	        React.createElement(
 	          'div',
-	          { className: 'panel col-sm-5 w3-white w3-margin' },
+	          { id: 'item-' + this.props.id, className: 'panel col-sm-5 w3-white w3-margin' },
 	          React.createElement(
 	            'div',
 	            { className: 'panel-image' },
@@ -33205,12 +33226,16 @@
 	              this.props.description
 	            ),
 	            React.createElement(
-	              'button',
-	              { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	              'form',
+	              { onSubmit: this.handleClick },
 	              React.createElement(
-	                'b',
-	                null,
-	                'Contactar'
+	                'button',
+	                { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                React.createElement(
+	                  'b',
+	                  null,
+	                  'Contactar'
+	                )
 	              )
 	            ),
 	            React.createElement('p', { className: 'w3-clear' })
@@ -33934,22 +33959,170 @@
 
 /***/ },
 /* 323 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(1);
+
+	var _require = __webpack_require__(185),
+	    connector = _require.connector;
+
+	var ContactDetailsPanel = function (_React$Component) {
+	  _inherits(ContactDetailsPanel, _React$Component);
+
+	  function ContactDetailsPanel(props) {
+	    _classCallCheck(this, ContactDetailsPanel);
+
+	    var _this = _possibleConstructorReturn(this, (ContactDetailsPanel.__proto__ || Object.getPrototypeOf(ContactDetailsPanel)).call(this, props));
+
+	    _this.handleName = _this.handleName.bind(_this);
+	    _this.handleEmail = _this.handleEmail.bind(_this);
+	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
+	    _this.handleDescription = _this.handleDescription.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(ContactDetailsPanel, [{
+	    key: 'handleName',
+	    value: function handleName(event) {
+	      this.props.setOwnerName(event.target.value);
+	    }
+	  }, {
+	    key: 'handleEmail',
+	    value: function handleEmail(event) {
+	      this.props.setOwnerEmail(event.target.value);
+	    }
+	  }, {
+	    key: 'handlePhoneNumber',
+	    value: function handlePhoneNumber(event) {
+	      this.props.setOwnerPhoneNumber(event.target.value);
+	    }
+	  }, {
+	    key: 'handleDescription',
+	    value: function handleDescription(event) {
+	      this.props.setDescription(event.target.value);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      this.props.sendOwnersDetails();
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, className: 'collapse contact-details-panel' },
+	        React.createElement(
+	          'div',
+	          { className: 'w3-white w3-margin' },
+	          React.createElement(
+	            'div',
+	            { className: 'w3-container w3-padding w3-opacity' },
+	            React.createElement(
+	              'h2',
+	              null,
+	              'Introduce tus datos de contacto'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'w3-container w3-white' },
+	            React.createElement(
+	              'p',
+	              { className: 'form-introduction w3-opacity' },
+	              'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	            ),
+	            React.createElement(
+	              'form',
+	              { onSubmit: this.handleSubmit },
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement(
+	                  'button',
+	                  { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement('i', { className: 'fa fa-paper-plane' }),
+	                  ' Enviar mis datos'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ContactDetailsPanel;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    object = _React$PropTypes.object,
+	    func = _React$PropTypes.func;
+
+
+	ContactDetailsPanel.propTypes = {
+	  id: string.isRequired,
+	  owner: object,
+	  setOwnerName: func,
+	  setOwnerEmail: func,
+	  setOwnerPhoneNumber: func,
+	  setDescription: func,
+	  sendOwnersDetails: func
+	};
+
+	module.exports = connector(ContactDetailsPanel);
+
+/***/ },
+/* 324 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// export this package's api
 
-	module.exports = __webpack_require__(325);
+	module.exports = __webpack_require__(326);
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -33983,10 +34156,10 @@
 	}
 
 	var React = __webpack_require__(1);
-	var Pager = __webpack_require__(326);
-	var Options = __webpack_require__(327);
-	var KEYCODE = __webpack_require__(328);
-	var LOCALE = __webpack_require__(329);
+	var Pager = __webpack_require__(327);
+	var Options = __webpack_require__(328);
+	var KEYCODE = __webpack_require__(329);
+	var LOCALE = __webpack_require__(330);
 
 	function noop() {}
 
@@ -34358,7 +34531,7 @@
 	module.exports = Pagination;
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34432,7 +34605,7 @@
 	module.exports = Pager;
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34466,7 +34639,7 @@
 	}
 
 	var React = __webpack_require__(1);
-	var KEYCODE = __webpack_require__(328);
+	var KEYCODE = __webpack_require__(329);
 
 	var Options = function (_React$Component) {
 	  _inherits(Options, _React$Component);
@@ -34592,7 +34765,7 @@
 	module.exports = Options;
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -34613,7 +34786,7 @@
 	};
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -34638,161 +34811,10 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 331 */,
-/* 332 */,
-/* 333 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var _require = __webpack_require__(185),
-	    connector = _require.connector;
-
-	var ContactDetailsPanel = function (_React$Component) {
-	  _inherits(ContactDetailsPanel, _React$Component);
-
-	  function ContactDetailsPanel(props) {
-	    _classCallCheck(this, ContactDetailsPanel);
-
-	    var _this = _possibleConstructorReturn(this, (ContactDetailsPanel.__proto__ || Object.getPrototypeOf(ContactDetailsPanel)).call(this, props));
-
-	    _this.handleName = _this.handleName.bind(_this);
-	    _this.handleEmail = _this.handleEmail.bind(_this);
-	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
-	    _this.handleDescription = _this.handleDescription.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(ContactDetailsPanel, [{
-	    key: 'handleName',
-	    value: function handleName(event) {
-	      this.props.setOwnerName(event.target.value);
-	    }
-	  }, {
-	    key: 'handleEmail',
-	    value: function handleEmail(event) {
-	      this.props.setOwnerEmail(event.target.value);
-	    }
-	  }, {
-	    key: 'handlePhoneNumber',
-	    value: function handlePhoneNumber(event) {
-	      this.props.setOwnerPhoneNumber(event.target.value);
-	    }
-	  }, {
-	    key: 'handleDescription',
-	    value: function handleDescription(event) {
-	      this.props.setDescription(event.target.value);
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      this.props.sendOwnersDetails();
-	      event.preventDefault();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { id: this.props.id, className: 'collapse contact-details-panel' },
-	        React.createElement('div', { className: 'arrow-up-right' }),
-	        React.createElement(
-	          'div',
-	          { className: 'w3-white w3-margin' },
-	          React.createElement(
-	            'div',
-	            { className: 'w3-container w3-padding w3-opacity' },
-	            React.createElement(
-	              'h2',
-	              null,
-	              'Introduce tus datos de contacto'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'w3-container w3-white' },
-	            React.createElement(
-	              'p',
-	              { className: 'form-introduction w3-opacity' },
-	              'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
-	            ),
-	            React.createElement(
-	              'form',
-	              { onSubmit: this.handleSubmit },
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement(
-	                  'button',
-	                  { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                  ' Enviar mis datos'
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return ContactDetailsPanel;
-	}(React.Component);
-
-	var _React$PropTypes = React.PropTypes,
-	    string = _React$PropTypes.string,
-	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
-
-
-	ContactDetailsPanel.propTypes = {
-	  id: string.isRequired,
-	  owner: object,
-	  setOwnerName: func,
-	  setOwnerEmail: func,
-	  setOwnerPhoneNumber: func,
-	  setDescription: func,
-	  sendOwnersDetails: func
-	};
-
-	module.exports = connector(ContactDetailsPanel);
 
 /***/ }
 /******/ ]);
