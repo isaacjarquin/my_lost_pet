@@ -1,5 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
+var MediaQuery = require('react-responsive');
 
 if (process.env.WEBPACK_BUILD) {
   require('./missingPet.scss')
@@ -8,9 +9,8 @@ if (process.env.WEBPACK_BUILD) {
 class MissingPet extends React.Component {
   constructor (props) {
     super(props)
-    this.addPanel = this.addPanel.bind(this)
-    this.hideArrow = this.hideArrow.bind(this)
-    this.getTargetId = this.getTargetId.bind(this)
+    this.addPanelsForNonMobileDevices = this.addPanelsForNonMobileDevices.bind(this)
+    this.addPanelForMobileDevices = this.addPanelForMobileDevices.bind(this)
     this.handleName = this.handleName.bind(this)
     this.handleEmail = this.handleEmail.bind(this)
     this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
@@ -35,48 +35,72 @@ class MissingPet extends React.Component {
     event.preventDefault()
   }
 
-  hideArrow (event) {
-    if (parseInt(this.props.id) % 2 === 0) {
-      this.props.setDisplayArrow({left: 'displayNone', right: 'displayTrue'})
-    } else {
-      this.props.setDisplayArrow({left: 'displayTrue', right: 'displayNone'})
-    }
-
-    event.preventDefault()
-  }
-
-  getTargetId () {
-    if (parseInt(this.props.id) % 2 === 0) {
-      return this.props.id
-    } else {
-      return parseInt(this.props.id) + 1
-    }
-  }
-
-  addPanel () {
+  addPanelsForNonMobileDevices () {
     if (parseInt(this.props.id) % 2 === 0) {
       return (
-        <div id={this.props.id} className='collapse contact-details-panel'>
-          <div className={`arrow-up-left ${this.props.arrows.left.display}`}></div>
-          <div className={`arrow-up-right ${this.props.arrows.right.display}`}></div>
-          <div className='w3-white w3-margin'>
-            <div className='w3-container w3-padding w3-opacity'>
-              <h2>Introduce tus datos de contacto</h2>
+        <div>
+          <div id={this.props.id - 1} className='collapse contact-details-panel'>
+            <div className='arrow-up-left'></div>
+            <div className='w3-white w3-margin'>
+              <div className='w3-container w3-padding w3-opacity'>
+                <h2>Introduce tus datos de contacto</h2>
+              </div>
+              <div className='w3-container w3-white'>
+                <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+                <form onSubmit={this.handleSubmit}>
+                  <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+                  <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+                  <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+                  <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
+                  <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
+                </form>
+              </div>
             </div>
-            <div className='w3-container w3-white'>
-              <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
-              <form onSubmit={this.handleSubmit}>
-                <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-                <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-                <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-                <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
-                <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
-              </form>
+          </div>
+          <div id={this.props.id} className='collapse contact-details-panel'>
+            <div className='arrow-up-right'></div>
+            <div className='w3-white w3-margin'>
+              <div className='w3-container w3-padding w3-opacity'>
+                <h2>Introduce tus datos de contacto</h2>
+              </div>
+              <div className='w3-container w3-white'>
+                <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+                <form onSubmit={this.handleSubmit}>
+                  <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+                  <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+                  <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+                  <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
+                  <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       )
     }
+  }
+
+  addPanelForMobileDevices () {
+    return (
+      <div id={this.props.id} className='collapse contact-details-panel'>
+        <div className='arrow-up-right'></div>
+        <div className='w3-white w3-margin'>
+          <div className='w3-container w3-padding w3-opacity'>
+            <h2>Introduce tus datos de contacto</h2>
+          </div>
+          <div className='w3-container w3-white'>
+            <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+            <form onSubmit={this.handleSubmit}>
+              <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+              <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+              <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+              <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
+              <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   render () {
@@ -89,15 +113,18 @@ class MissingPet extends React.Component {
           <div className='panel-description w3-container w3-light-grey'>
             <h4 className='w3-opacity'>{this.props.pet.petType}, {this.props.breading}, {this.props.size}</h4>
             <p className='w3-opacity'>{this.props.description}</p>
-            <form onSubmit={this.hideArrow}>
-              <button data-toggle='collapse' data-target={`#${this.getTargetId()}`} className='w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
-                <b>Contactar</b>
-              </button>
-            </form>
+            <button data-toggle='collapse' data-target={`#${this.props.id}`} className='w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
+              <b>Contactar</b>
+            </button>
             <p className='w3-clear' />
           </div>
         </div>
-        {this.addPanel()}
+         <MediaQuery query='(max-device-width: 600px)'>
+            {this.addPanelForMobileDevices()}
+         </MediaQuery>
+         <MediaQuery query='(min-device-width: 700px)'>
+            {this.addPanelsForNonMobileDevices()}
+         </MediaQuery>
       </div>
     )
   }
