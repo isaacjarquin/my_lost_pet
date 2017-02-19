@@ -17,7 +17,7 @@ const {
   reducerOwnerEmail,
   reducerOwnerPhoneNumber,
   reducerDescription
-} = require('../js/pages/pet-details/ownerReducer')
+} = require('../js/pages/search/ownerReducer')
 
 const {
   reducerSearchTerm,

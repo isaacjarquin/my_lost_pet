@@ -21574,11 +21574,6 @@
 	    getComponent: function getComponent(location, cb) {
 	      cb(null, __webpack_require__(320));
 	    }
-	  }, {
-	    path: 'details/:id',
-	    getComponent: function getComponent(location, cb) {
-	      cb(null, __webpack_require__(330));
-	    }
 	  }]
 	};
 
@@ -21928,7 +21923,7 @@
 	    reducerPetImage = _require.reducerPetImage,
 	    reducerPetDescription = _require.reducerPetDescription;
 
-	var _require2 = __webpack_require__(216),
+	var _require2 = __webpack_require__(332),
 	    reducerOwnerName = _require2.reducerOwnerName,
 	    reducerOwnerEmail = _require2.reducerOwnerEmail,
 	    reducerOwnerPhoneNumber = _require2.reducerOwnerPhoneNumber,
@@ -24088,71 +24083,7 @@
 	};
 
 /***/ },
-/* 216 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var reducerOwnerName = function reducerOwnerName(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    owner: {
-	      name: action.value,
-	      email: state.owner.email,
-	      phoneNumber: state.owner.phoneNumber,
-	      description: state.owner.description
-	    }
-	  });
-	  return newState;
-	};
-
-	var reducerOwnerEmail = function reducerOwnerEmail(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    owner: {
-	      name: state.owner.name,
-	      email: action.value,
-	      phoneNumber: state.owner.phoneNumber,
-	      description: state.owner.description
-	    }
-	  });
-	  return newState;
-	};
-
-	var reducerOwnerPhoneNumber = function reducerOwnerPhoneNumber(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    owner: {
-	      name: state.owner.name,
-	      email: state.owner.email,
-	      phoneNumber: action.value,
-	      description: state.owner.description
-	    }
-	  });
-	  return newState;
-	};
-
-	var reducerDescription = function reducerDescription(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    owner: {
-	      name: state.owner.name,
-	      email: state.owner.email,
-	      phoneNumber: state.owner.phoneNumber,
-	      description: action.value
-	    }
-	  });
-	  return newState;
-	};
-
-	module.exports = {
-	  reducerOwnerName: reducerOwnerName,
-	  reducerOwnerEmail: reducerOwnerEmail,
-	  reducerOwnerPhoneNumber: reducerOwnerPhoneNumber,
-	  reducerDescription: reducerDescription
-	};
-
-/***/ },
+/* 216 */,
 /* 217 */
 /***/ function(module, exports) {
 
@@ -34079,242 +34010,71 @@
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 330 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(1);
-
-	var _require = __webpack_require__(185),
-	    connector = _require.connector;
-
-	if (process.env.WEBPACK_BUILD) {
-	  __webpack_require__(331);
-	}
-
-	var PetDetails = function (_React$Component) {
-	  _inherits(PetDetails, _React$Component);
-
-	  function PetDetails(props) {
-	    _classCallCheck(this, PetDetails);
-
-	    var _this = _possibleConstructorReturn(this, (PetDetails.__proto__ || Object.getPrototypeOf(PetDetails)).call(this, props));
-
-	    _this.handleName = _this.handleName.bind(_this);
-	    _this.handleEmail = _this.handleEmail.bind(_this);
-	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
-	    _this.handleDescription = _this.handleDescription.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(PetDetails, [{
-	    key: 'assignPet',
-	    value: function assignPet(id) {
-	      var petArray = this.props.pets.filter(function (pet) {
-	        return pet.id === id;
-	      });
-	      return petArray[0];
-	    }
-	  }, {
-	    key: 'handleName',
-	    value: function handleName(event) {
-	      this.props.setOwnerName(event.target.value);
-	    }
-	  }, {
-	    key: 'handleEmail',
-	    value: function handleEmail(event) {
-	      this.props.setOwnerEmail(event.target.value);
-	    }
-	  }, {
-	    key: 'handlePhoneNumber',
-	    value: function handlePhoneNumber(event) {
-	      this.props.setOwnerPhoneNumber(event.target.value);
-	    }
-	  }, {
-	    key: 'handleDescription',
-	    value: function handleDescription(event) {
-	      this.props.setDescription(event.target.value);
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      this.props.sendOwnersDetails();
-	      event.preventDefault();
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _assignPet = this.assignPet(this.props.params.id),
-	          pet = _assignPet.pet,
-	          breading = _assignPet.breading,
-	          size = _assignPet.size,
-	          description = _assignPet.description,
-	          image = _assignPet.image,
-	          date = _assignPet.date,
-	          titleDescription = _assignPet.titleDescription;
-
-	      return React.createElement(
-	        'div',
-	        { className: 'container' },
-	        React.createElement(
-	          'div',
-	          { className: 'pet-info' },
-	          React.createElement(
-	            'div',
-	            { className: 'pet-card w3-container w3-white w3-margin w3-padding-large' },
-	            React.createElement(
-	              'div',
-	              { className: 'pet-card_title w3-center w3-opacity' },
-	              React.createElement(
-	                'h3',
-	                null,
-	                pet,
-	                ', ',
-	                breading,
-	                ', ',
-	                size
-	              ),
-	              React.createElement(
-	                'h5',
-	                null,
-	                titleDescription,
-	                ', ',
-	                React.createElement(
-	                  'span',
-	                  null,
-	                  date
-	                )
-	              )
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'pet-card_body w3-justify' },
-	              React.createElement('img', { src: image, alt: 'Men in Hats', className: 'w3-padding-12' }),
-	              React.createElement(
-	                'p',
-	                { className: 'w3-opacity' },
-	                description
-	              ),
-	              React.createElement(
-	                'p',
-	                { className: 'w3-right' },
-	                React.createElement(
-	                  'button',
-	                  { 'data-toggle': 'collapse', 'data-target': '#response-form', className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement(
-	                    'b',
-	                    null,
-	                    'Responder'
-	                  )
-	                )
-	              ),
-	              React.createElement('p', { className: 'w3-clear' })
-	            ),
-	            React.createElement(
-	              'div',
-	              { id: 'response-form', className: 'collapse' },
-	              React.createElement('hr', { className: 'w3-grey' }),
-	              React.createElement(
-	                'div',
-	                { className: 'w3-white w3-margin' },
-	                React.createElement(
-	                  'div',
-	                  { className: 'w3-container w3-padding w3-opacity' },
-	                  React.createElement(
-	                    'h2',
-	                    null,
-	                    'Introduce tus datos de contacto'
-	                  )
-	                ),
-	                React.createElement(
-	                  'div',
-	                  { className: 'w3-container w3-white' },
-	                  React.createElement(
-	                    'p',
-	                    { className: 'form-introduction w3-opacity' },
-	                    'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
-	                  ),
-	                  React.createElement(
-	                    'form',
-	                    { onSubmit: this.handleSubmit },
-	                    React.createElement(
-	                      'p',
-	                      null,
-	                      React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
-	                    ),
-	                    React.createElement(
-	                      'p',
-	                      null,
-	                      React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	                    ),
-	                    React.createElement(
-	                      'p',
-	                      null,
-	                      React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	                    ),
-	                    React.createElement(
-	                      'p',
-	                      null,
-	                      React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	                    ),
-	                    React.createElement(
-	                      'p',
-	                      null,
-	                      React.createElement(
-	                        'button',
-	                        { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                        React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                        ' Enviar mis datos'
-	                      )
-	                    )
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return PetDetails;
-	}(React.Component);
-
-	var _React$PropTypes = React.PropTypes,
-	    arrayOf = _React$PropTypes.arrayOf,
-	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
-
-
-	PetDetails.propTypes = {
-	  pets: arrayOf(object).isRequired,
-	  params: object,
-	  owner: object,
-	  setOwnerName: func,
-	  setOwnerEmail: func,
-	  setOwnerPhoneNumber: func,
-	  setDescription: func,
-	  sendOwnersDetails: func
-	};
-
-	module.exports = connector(PetDetails);
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 331 */
+/* 330 */,
+/* 331 */,
+/* 332 */
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
+	"use strict";
+
+	var reducerOwnerName = function reducerOwnerName(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    owner: {
+	      name: action.value,
+	      email: state.owner.email,
+	      phoneNumber: state.owner.phoneNumber,
+	      description: state.owner.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerOwnerEmail = function reducerOwnerEmail(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    owner: {
+	      name: state.owner.name,
+	      email: action.value,
+	      phoneNumber: state.owner.phoneNumber,
+	      description: state.owner.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerOwnerPhoneNumber = function reducerOwnerPhoneNumber(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    owner: {
+	      name: state.owner.name,
+	      email: state.owner.email,
+	      phoneNumber: action.value,
+	      description: state.owner.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerDescription = function reducerDescription(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    owner: {
+	      name: state.owner.name,
+	      email: state.owner.email,
+	      phoneNumber: state.owner.phoneNumber,
+	      description: action.value
+	    }
+	  });
+	  return newState;
+	};
+
+	module.exports = {
+	  reducerOwnerName: reducerOwnerName,
+	  reducerOwnerEmail: reducerOwnerEmail,
+	  reducerOwnerPhoneNumber: reducerOwnerPhoneNumber,
+	  reducerDescription: reducerDescription
+	};
 
 /***/ }
 /******/ ]);

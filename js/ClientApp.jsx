@@ -24,12 +24,6 @@ const rootRoute = {
       getComponent (location, cb) {
         cb(null, require('./pages/search/index'))
       }
-    },
-    {
-      path: 'details/:id',
-      getComponent (location, cb) {
-        cb(null, require('./pages/pet-details/index'))
-      }
     }
   ]
 }
