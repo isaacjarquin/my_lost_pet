@@ -34026,7 +34026,7 @@
 	        { id: this.props.id, className: 'collapse contact-details-panel' },
 	        React.createElement(
 	          'div',
-	          { className: 'w3-white w3-margin' },
+	          { className: 'w3-margin' },
 	          React.createElement(
 	            'div',
 	            { className: 'w3-container w3-padding w3-opacity' },
@@ -34038,7 +34038,7 @@
 	          ),
 	          React.createElement(
 	            'div',
-	            { className: 'w3-container w3-white' },
+	            { className: 'w3-container' },
 	            React.createElement(
 	              'p',
 	              { className: 'form-introduction w3-opacity' },

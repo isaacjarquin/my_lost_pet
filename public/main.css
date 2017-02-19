@@ -135,6 +135,9 @@ p.form-introduction {
     box-shadow: 1px 1px 1px 1px #888888;
     margin-left: 1%; } }
 
+.contact-details-panel {
+  background-color: #f1f1f1; }
+
 .arrow-up-right {
   margin-left: 77%;
   width: 0;

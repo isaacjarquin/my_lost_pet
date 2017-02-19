@@ -32,11 +32,11 @@ class ContactDetailsPanel extends React.Component {
   render () {
     return (
       <div id={this.props.id} className='collapse contact-details-panel'>
-        <div className='w3-white w3-margin'>
+        <div className='w3-margin'>
           <div className='w3-container w3-padding w3-opacity'>
             <h2>Introduce tus datos de contacto</h2>
           </div>
-          <div className='w3-container w3-white'>
+          <div className='w3-container'>
             <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
             <form onSubmit={this.handleSubmit}>
               <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
