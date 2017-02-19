@@ -33184,6 +33184,14 @@
 	        $(".col-sm-5").removeClass("addOpacity");
 	        $(".col-sm-5").removeClass("panel-opened");
 	      } else {
+	        if (parseInt(this.props.id) % 2 === 0) {
+	          $(".arrow-up").addClass("arrow-up-right");
+	          $(".arrow-up").removeClass("arrow-up-left");
+	        } else {
+	          $(".arrow-up").addClass("arrow-up-left");
+	          $(".arrow-up").removeClass("arrow-up-right");
+	        }
+
 	        $.each($('.pets-row'), function (pet) {
 	          if (petId !== pet.id) {
 	            $(".col-sm-5").addClass("addOpacity panel-opened");
@@ -34024,6 +34032,7 @@
 	      return React.createElement(
 	        'div',
 	        { id: this.props.id, className: 'collapse contact-details-panel' },
+	        React.createElement('div', { className: 'arrow-up' }),
 	        React.createElement(
 	          'div',
 	          { className: 'w3-margin' },
