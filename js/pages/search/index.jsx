@@ -24,7 +24,7 @@ const Search = React.createClass({
   render () {
     return (
       <div className='container'>
-        <div className='row'>
+        <div className='row pets-row'>
           {this.props.pets
             .filter((pet) => `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
             .filter((pet) => `${pet.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
