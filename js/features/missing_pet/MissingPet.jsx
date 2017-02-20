@@ -1,7 +1,8 @@
 const React = require('react')
 const { connector } = require('../../Store')
-var MediaQuery = require('react-responsive');
+var MediaQuery = require('react-responsive')
 const ContactDetailsPanel = require('../panels/ContactDetailsPanel')
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./missingPet.scss')
@@ -28,24 +29,24 @@ class MissingPet extends React.Component {
 
   handleClick (event) {
     const petId = 'item-' + this.props.id
-    const selectedId = "#" + petId
+    const selectedId = '#' + petId
 
-    if ( $(selectedId).hasClass( "panel-opened") ){
-      $(".col-sm-5").removeClass("addOpacity")
-      $(".col-sm-5").removeClass("panel-opened")
+    if ($(selectedId).hasClass('panel-opened')) {
+      $('.col-sm-5').removeClass('addOpacity')
+      $('.col-sm-5').removeClass('panel-opened')
     } else {
       if (parseInt(this.props.id) % 2 === 0) {
-        $(".arrow-up").addClass("arrow-up-right")
-        $(".arrow-up").removeClass("arrow-up-left")
+        $('.arrow-up').addClass('arrow-up-right')
+        $('.arrow-up').removeClass('arrow-up-left')
       } else {
-        $(".arrow-up").addClass("arrow-up-left")
-        $(".arrow-up").removeClass("arrow-up-right")
+        $('.arrow-up').addClass('arrow-up-left')
+        $('.arrow-up').removeClass('arrow-up-right')
       }
 
-      $.each($('.pets-row'), function(pet){
-        if(petId !== pet.id) {
-          $(".col-sm-5").addClass("addOpacity panel-opened")
-          $(selectedId).removeClass("addOpacity")
+      $.each($('.pets-row'), function (pet) {
+        if (petId !== pet.id) {
+          $('.col-sm-5').addClass('addOpacity panel-opened')
+          $(selectedId).removeClass('addOpacity')
         }
       })
     }
@@ -71,18 +72,18 @@ class MissingPet extends React.Component {
             <p className='w3-clear' />
           </div>
         </div>
-         <MediaQuery query='(max-device-width: 600px)'>
-            <ContactDetailsPanel id={this.props.id} />
-         </MediaQuery>
-         <MediaQuery query='(min-device-width: 700px)'>
-            {this.addPanelsForNonMobileDevices()}
-         </MediaQuery>
+        <MediaQuery query='(max-device-width: 600px)'>
+          <ContactDetailsPanel id={this.props.id} />
+        </MediaQuery>
+        <MediaQuery query='(min-device-width: 700px)'>
+          {this.addPanelsForNonMobileDevices()}
+        </MediaQuery>
       </div>
     )
   }
 }
 
-const { string, object, func } = React.PropTypes
+const { string, object } = React.PropTypes
 
 MissingPet.propTypes = {
   breading: string.isRequired,
@@ -90,7 +91,7 @@ MissingPet.propTypes = {
   pet: object,
   description: string.isRequired,
   image: string.isRequired,
-  id: string.isRequired,
+  id: string.isRequired
 }
 
 module.exports = connector(MissingPet)

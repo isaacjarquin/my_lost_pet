@@ -3,12 +3,12 @@ const { connector } = require('../../Store')
 
 class ContactDetailsPanel extends React.Component {
   constructor (props) {
-      super(props)
-      this.handleName = this.handleName.bind(this)
-      this.handleEmail = this.handleEmail.bind(this)
-      this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
-      this.handleDescription = this.handleDescription.bind(this)
-      this.handleSubmit = this.handleSubmit.bind(this)
+    super(props)
+    this.handleName = this.handleName.bind(this)
+    this.handleEmail = this.handleEmail.bind(this)
+    this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
+    this.handleDescription = this.handleDescription.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleName (event) {
@@ -32,7 +32,7 @@ class ContactDetailsPanel extends React.Component {
   render () {
     return (
       <div id={this.props.id} className='collapse contact-details-panel'>
-        <div className='arrow-up'></div>
+        <div className='arrow-up' />
         <div className='w3-margin'>
           <div className='w3-container w3-padding w3-opacity'>
             <h2>Introduce tus datos de contacto</h2>

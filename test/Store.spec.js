@@ -30,10 +30,6 @@ describe('Store', () => {
       email: '',
       message: ''
     },
-    arrows: {
-      left: {display: 'displayNone'},
-      right: {display: 'displayNone'}
-    },
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
@@ -171,12 +167,5 @@ describe('Store', () => {
     const state = rootReducer({contactUs: {message: 'dont care'}}, {type: 'setContactUsMessage', value: 'I do care a lot'})
 
     expect(state.contactUs.message).to.deep.equal('I do care a lot')
-  })
-
-  it('should handle setDisplayArrow actions', () => {
-    const state = rootReducer({arrows: {left: 'displayNone', right: 'displayTrue'}}, {type: 'setdisplayArrow', value: {left: 'displayNone', right: 'displayNone'}})
-
-    expect(state.arrows.left.display).to.deep.equal('displayNone')
-    expect(state.arrows.right.display).to.deep.equal('displayNone')
   })
 })

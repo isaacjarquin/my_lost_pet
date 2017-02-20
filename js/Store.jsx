@@ -30,17 +30,6 @@ const {
   reducerContactUsMessage
 } = require('../js/features/contact_us/contactUsReducer')
 
-const reducerDisplayArrow = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    arrows: {
-      right: {display: action.value.right},
-      left: {display: action.value.left}
-    }
-  })
-  return newState
-}
-
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 
 const initialState = require('./InitialState')
@@ -65,7 +54,6 @@ const SET_PET_DESCRIPTION = 'setPetDescription'
 const SET_CONTACT_US_NAME = 'setContactUsName'
 const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
 const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
-const SET_DISPLAY_ARROW = 'setdisplayArrow'
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -105,8 +93,6 @@ const rootReducer = (state = initialState, action) => {
       return reducerContactUsEmail(state, action)
     case SET_CONTACT_US_MESSAGE:
       return reducerContactUsMessage(state, action)
-    case SET_DISPLAY_ARROW:
-      return reducerDisplayArrow(state, action)
     default:
       return state
   }
@@ -144,10 +130,6 @@ const mapStateToProps = (state) => {
       name: state.contactUs.name,
       email: state.contactUs.email,
       message: state.contactUs.message
-    },
-    arrows: {
-      left: {display: state.arrows.left.display},
-      right: {display: state.arrows.right.display}
     }
   }
 }
@@ -207,9 +189,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     setContactUsMessage (message) {
       dispatch({type: SET_CONTACT_US_MESSAGE, value: message})
-    },
-    setDisplayArrow (arrows) {
-      dispatch({type: SET_DISPLAY_ARROW, value: arrows})
     }
   }
 }
