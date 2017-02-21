@@ -55,7 +55,7 @@ class NewPetFound extends React.Component {
       image: this.props.pet.petImage
     }
 
-    const url = 'http://items-api.herokuapp.com/api/items'
+    const url = process.env.ITEMS_API_URL
     const params = JSON.parse(JSON.stringify({item: adaptedItem}))
     const headers = {
       headers: {
@@ -63,7 +63,13 @@ class NewPetFound extends React.Component {
       }
     }
 
-    axios.post(url, params, headers)
+    var instance = axios.create({
+      baseURL: process.env.ITEMS_API_URL,
+      timeout: 2000,
+      headers: {'Content-Type': 'application/json'}
+    });
+
+    axios.post(url, params)
     .then(function (response) {
       console.log(response)
     })
