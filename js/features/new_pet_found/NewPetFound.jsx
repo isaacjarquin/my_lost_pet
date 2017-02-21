@@ -1,6 +1,7 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const axios = require('axios')
+import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -63,18 +64,12 @@ class NewPetFound extends React.Component {
       }
     }
 
-    var instance = axios.create({
-      baseURL: process.env.ITEMS_API_URL,
-      timeout: 2000,
-      headers: {'Content-Type': 'application/json'}
-    });
-
-    axios.post(url, params)
-    .then(function (response) {
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({item: adaptedItem})
     })
 
     event.preventDefault()
