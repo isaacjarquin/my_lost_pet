@@ -63,13 +63,8 @@ class NewPetFound extends React.Component {
       }
     }
 
-    axios.post(url, params, headers)
-    .then(function (response) {
-      console.log(response)
-    })
-    .catch(function (error) {
-      console.log(error)
-    })
+    axios.post(url, {item: adaptedItem}, headers);
+
 
     event.preventDefault()
   }
