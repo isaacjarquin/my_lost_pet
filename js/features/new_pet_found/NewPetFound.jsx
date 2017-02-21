@@ -1,8 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const axios = require('axios')
-const request = require('superagent');
-import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -65,13 +63,8 @@ class NewPetFound extends React.Component {
       }
     }
 
-    request
-      .post('https://items-api.herokuapp.com/api/items')
-      .send({item: adaptedItem})
-      .set('Accept', 'application/json')
-      .end(function(err, res){
-        console.log(res)
-    });
+    axios.post(url, {item: adaptedItem}, headers);
+
 
     event.preventDefault()
   }
