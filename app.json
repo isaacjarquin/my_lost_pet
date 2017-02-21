@@ -1,0 +1,29 @@
+{
+  "name": "my_lost_pet",
+  "scripts": {
+  },
+  "env": {
+    "FACEBOOK_KEY": {
+      "required": true
+    },
+    "HOST_URL": {
+      "required": true
+    },
+    "ITEMS_API_URL": {
+      "required": true
+    },
+    "TWITTER_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
