@@ -1,6 +1,7 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const axios = require('axios')
+const request = require('superagent');
 import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
@@ -64,13 +65,13 @@ class NewPetFound extends React.Component {
       }
     }
 
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({item: adaptedItem})
-    })
+    request
+      .post(url)
+      .send({item: adaptedItem})
+      .set('Accept', 'application/json')
+      .end(function(err, res){
+        console.log(res)
+    });
 
     event.preventDefault()
   }
