@@ -55,7 +55,7 @@ class NewPetFound extends React.Component {
       image: this.props.pet.petImage
     }
 
-    const url = 'https://items-api.herokuapp.com/api/items'
+    const url = 'http://items-api.herokuapp.com/api/items'
     const params = JSON.parse(JSON.stringify({item: adaptedItem}))
     const headers = {
       headers: {
