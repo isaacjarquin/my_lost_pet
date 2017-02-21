@@ -66,7 +66,7 @@ class NewPetFound extends React.Component {
     }
 
     request
-      .post(url)
+      .post('https://items-api.herokuapp.com/api/items')
       .send({item: adaptedItem})
       .set('Accept', 'application/json')
       .end(function(err, res){
