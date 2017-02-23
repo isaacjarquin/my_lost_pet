@@ -1,7 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
-const axios = require('axios')
-import 'whatwg-fetch'
+import fetch from 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -63,11 +62,11 @@ class NewPetFound extends React.Component {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
-    }).then(function(response) {
+    }).then(function (response) {
       console.log(response)
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.log(err)
-    });
+    })
 
     event.preventDefault()
   }
