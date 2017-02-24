@@ -58,7 +58,8 @@ class NewPetFound extends React.Component {
     const url = process.env.ITEMS_API_URL
     const headers = { 'Content-Type': 'application/json' }
     console.log("*****************")
-    console.log(url)
+    console.log(process.env.ITEMS_API_URL)
+    console.log(process.env.TWITTER_KEY)
     console.log("*****************")
 
     fetch(url, {
