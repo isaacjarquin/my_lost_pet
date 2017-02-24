@@ -31942,6 +31942,7 @@
 
 	      var url = process.env.ITEMS_API_URL;
 	      var headers = { 'Content-Type': 'application/json' };
+	      console.log(url);
 
 	      fetch(url, {
 	        method: 'POST',

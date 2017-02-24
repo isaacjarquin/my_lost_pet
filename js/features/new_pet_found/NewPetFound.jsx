@@ -57,6 +57,9 @@ class NewPetFound extends React.Component {
 
     const url = process.env.ITEMS_API_URL
     const headers = { 'Content-Type': 'application/json' }
+    console.log("*****************")
+    console.log(url)
+    console.log("*****************")
 
     fetch(url, {
       method: 'POST',
