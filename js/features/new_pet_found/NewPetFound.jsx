@@ -1,6 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
-import fetch from 'whatwg-fetch'
+import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')

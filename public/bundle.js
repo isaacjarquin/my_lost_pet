@@ -31849,11 +31849,7 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _whatwgFetch = __webpack_require__(1);
-
-	var _whatwgFetch2 = _interopRequireDefault(_whatwgFetch);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	__webpack_require__(1);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -31947,7 +31943,7 @@
 	      var url = process.env.ITEMS_API_URL;
 	      var headers = { 'Content-Type': 'application/json' };
 
-	      (0, _whatwgFetch2.default)(url, {
+	      fetch(url, {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
