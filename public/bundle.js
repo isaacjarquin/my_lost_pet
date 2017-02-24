@@ -31943,7 +31943,8 @@
 	      var url = process.env.ITEMS_API_URL;
 	      var headers = { 'Content-Type': 'application/json' };
 	      console.log("*****************");
-	      console.log(url);
+	      console.log(process.env.ITEMS_API_URL);
+	      console.log(process.env.TWITTER_KEY);
 	      console.log("*****************");
 
 	      fetch(url, {
