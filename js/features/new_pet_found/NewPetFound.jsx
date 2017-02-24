@@ -60,6 +60,7 @@ class NewPetFound extends React.Component {
     console.log("*****************")
     console.log(process.env.ITEMS_API_URL)
     console.log(process.env.TWITTER_KEY)
+    console.log(process.env.NODE_ENV)
     console.log("*****************")
 
     fetch(url, {
