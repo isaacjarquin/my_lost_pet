@@ -75,6 +75,7 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env':{
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
         'ITEMS_API_URL': process.env.ITEMS_API_URL,
         'TWITTER_KEY': process.env.TWITTER_KEY
       }
