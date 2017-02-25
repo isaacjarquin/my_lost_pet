@@ -2,6 +2,7 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const precss = require('precss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
@@ -71,7 +72,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css')
+    new ExtractTextPlugin('[name].css'),
+    new webpack.DefinePlugin({
+      'process.env':{
+        'ITEMS_API_URL': process.env.ITEMS_API_URL,
+        'TWITTER_KEY': process.env.TWITTER_KEY
+      }
+    })
   ],
   postcss: function () {
     return [autoprefixer, precss]
