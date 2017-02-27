@@ -57,13 +57,8 @@ class NewPetFound extends React.Component {
 
     const url = process.env.ITEMS_API_URL
     const headers = { 'Content-Type': 'application/json' }
-    console.log("*****************")
-    console.log(ITEMS_API_URL)
-    console.log(TWITTER_KEY)
-    console.log(NODE_ENV)
-    console.log("*****************")
 
-    fetch(url, {
+    fetch("https://items-api.herokuapp.com/api/items", {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
