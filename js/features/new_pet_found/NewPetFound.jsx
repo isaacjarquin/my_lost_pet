@@ -55,10 +55,9 @@ class NewPetFound extends React.Component {
       image: this.props.pet.petImage
     }
 
-    const url = process.env.ITEMS_API_URL
     const headers = { 'Content-Type': 'application/json' }
 
-    fetch(url, {
+    fetch("https://items-api.herokuapp.com/api/items", {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
@@ -74,7 +73,6 @@ class NewPetFound extends React.Component {
     return (
       <div className='new-pet-form'>
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
-
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
