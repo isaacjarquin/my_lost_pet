@@ -13800,7 +13800,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -16136,7 +16136,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -20851,7 +20851,7 @@
 	var string = React.PropTypes.string;
 
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(212);
 	}
 
@@ -23573,7 +23573,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(215);
 	}
 
@@ -29407,7 +29407,7 @@
 	var Footer = __webpack_require__(214);
 	var NewPetFound = __webpack_require__(282);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(284);
 	}
 
@@ -29439,9 +29439,9 @@
 	    key: 'render',
 	    value: function render() {
 	      var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
-	      var url = ({"NODE_ENV":"production"}).HOST_URL;
-	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
-	      var itemsApiUrl = ({"NODE_ENV":"production"}).ITEMS_API_URL;
+	      var url = ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).HOST_URL;
+	      var twitterAppId = (undefined);
+	      var itemsApiUrl = (undefined);
 
 	      return React.createElement(
 	        'div',
@@ -30517,7 +30517,7 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(283);
 	}
 
@@ -30595,7 +30595,7 @@
 	        image: this.props.pet.petImage
 	      };
 
-	      var url = ({"NODE_ENV":"production"}).ITEMS_API_URL;
+	      var url = (undefined);
 	      var headers = { 'Content-Type': 'application/json' };
 
 	      fetch(this.props.itemsApiUrl, {
@@ -30629,7 +30629,6 @@
 	            { className: 'title form-introduction' },
 	            'Introduce datos de la mascota y los datos necesarios para poder contactar contigo'
 	          ),
-	          console.log(this.props),
 	          React.createElement(
 	            'form',
 	            { onSubmit: this.handleSubmit },
@@ -30740,7 +30739,7 @@
 
 	var Pagination = __webpack_require__(291);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(297);
 	}
 
@@ -30816,7 +30815,7 @@
 	var ContactDetailsPanel = __webpack_require__(288);
 	var $ = __webpack_require__(289);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(290);
 	}
 
