@@ -55,10 +55,9 @@ class NewPetFound extends React.Component {
       image: this.props.pet.petImage
     }
 
-    const url = process.env.ITEMS_API_URL
     const headers = { 'Content-Type': 'application/json' }
 
-    fetch(this.props.itemsApiUrl, {
+    fetch("https://items-api.herokuapp.com/api/items", {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })

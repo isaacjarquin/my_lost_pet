@@ -29441,7 +29441,6 @@
 	      var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
 	      var url = ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).HOST_URL;
 	      var twitterAppId = (undefined);
-	      var itemsApiUrl = (undefined);
 
 	      return React.createElement(
 	        'div',
@@ -29573,7 +29572,7 @@
 	            )
 	          )
 	        ),
-	        React.createElement(NewPetFound, { itemsApiUrl: itemsApiUrl }),
+	        React.createElement(NewPetFound, null),
 	        React.createElement(
 	          'div',
 	          { className: 'panel-group', id: 'accordion' },
@@ -30595,10 +30594,9 @@
 	        image: this.props.pet.petImage
 	      };
 
-	      var url = (undefined);
 	      var headers = { 'Content-Type': 'application/json' };
 
-	      fetch(this.props.itemsApiUrl, {
+	      fetch("https://items-api.herokuapp.com/api/items", {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
