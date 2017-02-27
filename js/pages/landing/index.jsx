@@ -32,6 +32,7 @@ class Landing extends React.Component {
     const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
     const url = process.env.HOST_URL
     const twitterAppId = process.env.TWITTER_KEY
+    const itemsApiUrl = process.env.ITEMS_API_URL
 
     return (
       <div className='home-info'>
@@ -75,7 +76,7 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <NewPetFound />
+        <NewPetFound itemsApiUrl={itemsApiUrl}/>
 
         <div className='panel-group' id='accordion'>
           <AboutUs />
