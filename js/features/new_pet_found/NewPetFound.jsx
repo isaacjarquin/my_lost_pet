@@ -2,24 +2,54 @@ const React = require('react')
 const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 import 'whatwg-fetch'
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
 }
 
-const handleResponse = (responseStatus, props) => {
-  console.log(responseStatus)
-  if(responseStatus === 201) {
-    props.setPetDescription('')
-    props.setPetFounderName('')
-    props.setPetFounderEmail('')
-    props.setPetType('')
-    props.setPetSize('')
-    props.setPetFoundDate('')
-    props.setPetLocation('')
-    props.setPetDescription('')
-    props.setPetImage('')
+const clearForm = (props) => {
+  props.setPetDescription('')
+  props.setPetFounderName('')
+  props.setPetFounderEmail('')
+  props.setPetType('')
+  props.setPetSize('')
+  props.setPetFoundDate('')
+  props.setPetLocation('')
+  props.setPetDescription('')
+  props.setPetImage('')
+}
+
+const closePanel = () => {
+  setTimeout(() => { $('#new-pet').removeClass('in')}, 100)
+}
+
+const clearAlert = (props) => {
+  const alertData = {
+    alert: {
+      type: '',
+      message: '',
+      visible: 'displayNone'
+    }
   }
+
+  props.setAlerts(alertData)
+}
+
+const showSuccesfullMessage = (props) => {
+  const alertData = {
+    alert: {
+      type: 'alert-success',
+      message: 'Los datos del animal se han guardado correctamente',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
+
+  setTimeout(() => {
+    clearAlert(props);
+  }, 8000)
 }
 
 class NewPetFound extends React.Component {
@@ -35,6 +65,7 @@ class NewPetFound extends React.Component {
     this.handlePetImage = this.handlePetImage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleFounderName (event) {
     this.props.setPetFounderName(event.target.value)
   }
@@ -79,7 +110,10 @@ class NewPetFound extends React.Component {
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
     }).then(function (response) {
-      handleResponse(response.status, props)
+      clearForm(props)
+      closePanel()
+      showSuccesfullMessage(props)
+
       console.log(response)
     }).catch(function (err) {
       console.log(err)

@@ -31,7 +31,7 @@ const {
 } = require('../js/features/contact_us/contactUsReducer')
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
-const { reducerAlerts } = require('../js/features/alerts/alertsReducer')
+const reducerAlerts = require('../js/features/alerts/alertsReducer')
 
 const initialState = require('./InitialState')
 
