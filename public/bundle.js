@@ -13800,7 +13800,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -16136,7 +16136,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -20851,7 +20851,7 @@
 	var string = React.PropTypes.string;
 
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(212);
 	}
 
@@ -21107,6 +21107,9 @@
 	var _require5 = __webpack_require__(209),
 	    reducerActivePage = _require5.reducerActivePage;
 
+	var _require6 = __webpack_require__(300),
+	    reducerAlerts = _require6.reducerAlerts;
+
 	var initialState = __webpack_require__(211);
 
 	var SET_SEARCH_TERM = 'setSearchTerm';
@@ -21129,6 +21132,7 @@
 	var SET_CONTACT_US_NAME = 'setContactUsName';
 	var SET_CONTACT_US_EMAIL = 'setContactUsEmail';
 	var SET_CONTACT_US_MESSAGE = 'setContactUsMessage';
+	var SET_ALERTS = 'setAlerts';
 
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -21171,6 +21175,8 @@
 	      return reducerContactUsEmail(state, action);
 	    case SET_CONTACT_US_MESSAGE:
 	      return reducerContactUsMessage(state, action);
+	    case SET_ALERTS:
+	      return reducerAlerts(state, action);
 	    default:
 	      return state;
 	  }
@@ -21208,6 +21214,11 @@
 	      name: state.contactUs.name,
 	      email: state.contactUs.email,
 	      message: state.contactUs.message
+	    },
+	    alert: {
+	      type: state.alert.type,
+	      message: state.alert.message,
+	      visible: state.alert.visible
 	    }
 	  };
 	};
@@ -21267,6 +21278,9 @@
 	    },
 	    setContactUsMessage: function setContactUsMessage(message) {
 	      dispatch({ type: SET_CONTACT_US_MESSAGE, value: message });
+	    },
+	    setAlerts: function setAlerts(alert) {
+	      dispatch({ type: SET_ALERTS, value: alert });
 	    }
 	  };
 	};
@@ -23555,6 +23569,11 @@
 	    name: '',
 	    email: '',
 	    message: ''
+	  },
+	  alert: {
+	    type: '',
+	    message: '',
+	    visible: 'displayNone'
 	  }
 	};
 
@@ -23573,7 +23592,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(215);
 	}
 
@@ -29407,7 +29426,7 @@
 	var Footer = __webpack_require__(214);
 	var NewPetFound = __webpack_require__(282);
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(284);
 	}
 
@@ -29439,8 +29458,8 @@
 	    key: 'render',
 	    value: function render() {
 	      var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
-	      var url = ({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).HOST_URL;
-	      var twitterAppId = (undefined);
+	      var url = ({"NODE_ENV":"production"}).HOST_URL;
+	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
 
 	      return React.createElement(
 	        'div',
@@ -30516,9 +30535,27 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	var Alerts = __webpack_require__(298);
+
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(283);
 	}
+
+	var handleResponse = function handleResponse(responseStatus, props) {
+	  console.log(responseStatus);
+	  if (responseStatus === 201) {
+	    props.setPetDescription('');
+	    props.setPetFounderName('');
+	    props.setPetFounderEmail('');
+	    props.setPetType('');
+	    props.setPetSize('');
+	    props.setPetFoundDate('');
+	    props.setPetLocation('');
+	    props.setPetDescription('');
+	    props.setPetImage('');
+	  }
+	};
 
 	var NewPetFound = function (_React$Component) {
 	  _inherits(NewPetFound, _React$Component);
@@ -30595,12 +30632,14 @@
 	      };
 
 	      var headers = { 'Content-Type': 'application/json' };
+	      var props = this.props;
 
 	      fetch("https://items-api.herokuapp.com/api/items", {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
 	      }).then(function (response) {
+	        handleResponse(response.status, props);
 	        console.log(response);
 	      }).catch(function (err) {
 	        console.log(err);
@@ -30619,6 +30658,7 @@
 	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large w3-large' },
 	          ' \xBF Acabas de encontrarte una mascota perdida en la calle ?'
 	        ),
+	        React.createElement(Alerts, null),
 	        React.createElement(
 	          'header',
 	          { id: 'new-pet', className: 'missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey' },
@@ -30737,7 +30777,7 @@
 
 	var Pagination = __webpack_require__(291);
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(297);
 	}
 
@@ -30813,7 +30853,7 @@
 	var ContactDetailsPanel = __webpack_require__(288);
 	var $ = __webpack_require__(289);
 
-	if (({"NODE_ENV":"production","ITEMS_API_URL":undefined,"TWITTER_KEY":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(290);
 	}
 
@@ -42290,6 +42330,93 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(299);
+	}
+
+	var Alerts = function (_React$Component) {
+	  _inherits(Alerts, _React$Component);
+
+	  function Alerts() {
+	    _classCallCheck(this, Alerts);
+
+	    return _possibleConstructorReturn(this, (Alerts.__proto__ || Object.getPrototypeOf(Alerts)).apply(this, arguments));
+	  }
+
+	  _createClass(Alerts, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'div',
+	          { className: 'alert ' + this.props.alert.type + ' ' + this.props.alert.visible + ' w3-center' },
+	          this.props.alert.message
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Alerts;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    func = _React$PropTypes.func;
+
+
+	Alerts.propTypes = {
+	  alert: object
+	};
+
+	module.exports = connector(Alerts);
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 300 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var alertsReducer = function alertsReducer(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    alert: {
+	      type: action.value.type,
+	      message: action.value.message,
+	      visible: action.value.visible
+	    }
+	  });
+	  return newState;
+	};
+
+	module.exports = { alertsReducer: alertsReducer };
 
 /***/ }
 /******/ ]);

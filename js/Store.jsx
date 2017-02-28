@@ -31,6 +31,7 @@ const {
 } = require('../js/features/contact_us/contactUsReducer')
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
+const { reducerAlerts } = require('../js/features/alerts/alertsReducer')
 
 const initialState = require('./InitialState')
 
@@ -54,6 +55,7 @@ const SET_PET_DESCRIPTION = 'setPetDescription'
 const SET_CONTACT_US_NAME = 'setContactUsName'
 const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
 const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
+const SET_ALERTS = 'setAlerts'
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -93,6 +95,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerContactUsEmail(state, action)
     case SET_CONTACT_US_MESSAGE:
       return reducerContactUsMessage(state, action)
+    case SET_ALERTS:
+      return reducerAlerts(state, action)
     default:
       return state
   }
@@ -130,6 +134,11 @@ const mapStateToProps = (state) => {
       name: state.contactUs.name,
       email: state.contactUs.email,
       message: state.contactUs.message
+    },
+    alert: {
+      type: state.alert.type,
+      message: state.alert.message,
+      visible: state.alert.visible
     }
   }
 }
@@ -189,6 +198,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setContactUsMessage (message) {
       dispatch({type: SET_CONTACT_US_MESSAGE, value: message})
+    },
+    setAlerts (alert) {
+      dispatch({type: SET_ALERTS, value: alert})
     }
   }
 }

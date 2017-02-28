@@ -27,5 +27,10 @@ module.exports = {
     name: '',
     email: '',
     message: ''
+  },
+  alert: {
+    type: '',
+    message: '',
+    visible: 'displayNone'
   }
 }
