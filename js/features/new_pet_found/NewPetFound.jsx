@@ -1,9 +1,67 @@
 const React = require('react')
 const { connector } = require('../../Store')
+const Alerts = require('../alerts/alerts')
 import 'whatwg-fetch'
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
+}
+
+const clearForm = (props) => {
+  props.setPetDescription('')
+  props.setPetFounderName('')
+  props.setPetFounderEmail('')
+  props.setPetType('')
+  props.setPetSize('')
+  props.setPetFoundDate('')
+  props.setPetLocation('')
+  props.setPetDescription('')
+  props.setPetImage('')
+}
+
+const closePanel = () => {
+  setTimeout(() => { $('#new-pet').removeClass('in') }, 100)
+}
+
+const clearAlert = (props) => {
+  const alertData = {
+    alert: {
+      type: '',
+      message: '',
+      visible: 'displayNone'
+    }
+  }
+
+  props.setAlerts(alertData)
+}
+
+const showSuccesfullMessage = (props) => {
+  const alertData = {
+    alert: {
+      type: 'alert-success',
+      message: 'Los datos del animal se han guardado correctamente',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
+
+  setTimeout(() => {
+    clearAlert(props)
+  }, 8000)
+}
+
+const showUnSuccesfullMessage = (props, err) => {
+  const alertData = {
+    alert: {
+      type: 'alert-danger',
+      message: 'Los datos del animal no se han guardado correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
 }
 
 class NewPetFound extends React.Component {
@@ -19,6 +77,7 @@ class NewPetFound extends React.Component {
     this.handlePetImage = this.handlePetImage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
+
   handleFounderName (event) {
     this.props.setPetFounderName(event.target.value)
   }
@@ -56,23 +115,31 @@ class NewPetFound extends React.Component {
     }
 
     const headers = { 'Content-Type': 'application/json' }
+    const props = this.props
 
-    fetch("https://items-api.herokuapp.com/api/items", {
+    fetch('https://items-api.herokuapp.com/api/items', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
     }).then(function (response) {
+      clearForm(props)
+      closePanel()
+      showSuccesfullMessage(props)
+
       console.log(response)
     }).catch(function (err) {
+      showUnSuccesfullMessage(props, err)
       console.log(err)
     })
 
     event.preventDefault()
   }
+
   render () {
     return (
       <div className='new-pet-form'>
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
+        <Alerts />
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
