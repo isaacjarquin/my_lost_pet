@@ -173,4 +173,11 @@ describe('Store', () => {
 
     expect(state.contactUs.message).to.deep.equal('I do care a lot')
   })
+
+  it('should handle setAlerts actions', () => {
+    const newState = {alert: {type: 'alert-success', message: 'alert message', visible: 'displayTrue'}}
+    const state = rootReducer({alert: {type: '', message: '', visible: 'displayNone'}}, {type: 'setAlerts', value: newState})
+
+    expect(state.alert).to.deep.equal(newState.alert)
+  })
 })
