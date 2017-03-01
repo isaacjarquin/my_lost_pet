@@ -1,7 +1,6 @@
 const React = require('react')
 const { connector } = require('../../Store')
 
-
 if (process.env.WEBPACK_BUILD) {
   require('./alerts.scss')
 }
@@ -18,7 +17,7 @@ class Alerts extends React.Component {
   }
 }
 
-const { object, func } = React.PropTypes
+const { object } = React.PropTypes
 
 Alerts.propTypes = {
   alert: object

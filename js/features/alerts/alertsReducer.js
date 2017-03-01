@@ -11,5 +11,4 @@ const alertsReducer = (state, action) => {
   return newState
 }
 
-
 module.exports = alertsReducer

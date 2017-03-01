@@ -21,7 +21,7 @@ const clearForm = (props) => {
 }
 
 const closePanel = () => {
-  setTimeout(() => { $('#new-pet').removeClass('in')}, 100)
+  setTimeout(() => { $('#new-pet').removeClass('in') }, 100)
 }
 
 const clearAlert = (props) => {
@@ -48,8 +48,20 @@ const showSuccesfullMessage = (props) => {
   props.setAlerts(alertData)
 
   setTimeout(() => {
-    clearAlert(props);
+    clearAlert(props)
   }, 8000)
+}
+
+const showUnSuccesfullMessage = (props, err) => {
+  const alertData = {
+    alert: {
+      type: 'alert-danger',
+      message: 'Los datos del animal no se han guardado correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
 }
 
 class NewPetFound extends React.Component {
@@ -105,7 +117,7 @@ class NewPetFound extends React.Component {
     const headers = { 'Content-Type': 'application/json' }
     const props = this.props
 
-    fetch("https://items-api.herokuapp.com/api/items", {
+    fetch('https://items-api.herokuapp.com/api/items', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
@@ -116,6 +128,7 @@ class NewPetFound extends React.Component {
 
       console.log(response)
     }).catch(function (err) {
+      showUnSuccesfullMessage(props, err)
       console.log(err)
     })
 

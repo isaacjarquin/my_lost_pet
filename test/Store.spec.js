@@ -30,6 +30,11 @@ describe('Store', () => {
       email: '',
       message: ''
     },
+    alert: {
+      type: '',
+      message: '',
+      visible: 'displayNone'
+    },
     pageSize: 6,
     totalNumberOfPets: pets.length,
     pets: pets.slice(0, 6)
