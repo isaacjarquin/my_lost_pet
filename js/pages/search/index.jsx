@@ -3,6 +3,7 @@ const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
+import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -20,6 +21,21 @@ const Search = React.createClass({
   },
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
+  },
+  componentDidMount: function() {
+    const props = this.props
+
+    fetch('https://items-api.herokuapp.com/api/items', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(function (response) {
+      console.log(response)
+      return response.json()
+    }).then(function(json) {
+      props.setPets(json.data)
+    }).catch(function (err) {
+      console.log(err)
+    })
   },
   render () {
     return (

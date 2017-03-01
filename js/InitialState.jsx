@@ -6,7 +6,7 @@ module.exports = {
   activePage: 1,
   pageSize: 6,
   totalNumberOfPets: pets.length,
-  pets: pets.slice(0, 6),
+  pets: [],
   owner: {
     name: '',
     email: '',
