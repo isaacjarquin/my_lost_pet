@@ -22,12 +22,12 @@ const Search = React.createClass({
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
   },
-  componentDidMount: function() {
+  componentDidMount: function () {
     const props = this.props
 
     const resultDecorated = (itemsCollection) => {
       const newColection = []
-      itemsCollection.forEach(function(item){
+      itemsCollection.forEach(function (item) {
         newColection.push({
           id: item.id,
           founderName: item.name,
@@ -41,16 +41,16 @@ const Search = React.createClass({
         })
       })
 
-      return newColection;
+      return newColection
     }
 
-      fetch('https://items-api.herokuapp.com/api/items', {
+    fetch('https://items-api.herokuapp.com/api/items', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     }).then(function (response) {
       console.log(response)
       return response.json()
-    }).then(function(json) {
+    }).then(function (json) {
       const result = resultDecorated(json.data)
       console.log(result)
       props.setPets(result)
