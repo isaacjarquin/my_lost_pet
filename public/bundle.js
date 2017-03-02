@@ -40876,10 +40876,15 @@
 	            ),
 	            React.createElement(
 	              'div',
+	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	              'Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto'
+	            ),
+	            React.createElement(
+	              'div',
 	              { className: 'panel-description_iteraction' },
 	              React.createElement(
 	                'a',
-	                { className: 'more-info w3-opacity' },
+	                { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
 	                'mas informacion'
 	              ),
 	              React.createElement(

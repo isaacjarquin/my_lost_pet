@@ -9,7 +9,6 @@
 
 .panel-description {
   min-height: 170px;
-  max-height: 170px;
   position: relative;
 }
 
@@ -69,22 +68,37 @@
 
 .contact-btn {
   float: right;
-  margin-right: 32px;
+  margin-right: 16px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2%;
+  right: 0;
 }
 
-.more-info {
+.more-info_link {
   float: left;
   margin-top: 10px;
-}
-
-.panel-description_iteraction {
+  cursor: pointer;
   position: absolute;
   bottom: 0;
   width: 100%;
+  margin-bottom: 3%;
+}
+
+.panel-description_iteraction {
+  bottom: 0;
+  width: 100%;
   padding-bottom: 10px;
+  padding-top: 35px;
 }
 
 .panel-description_content {
   line-height: 2;
   font-size: 0.95em;
+  margin: 0 0 0px;
+}
+
+.more-info-extra {
+  font-size: 0.95em;
+  line-height: 2;
 }

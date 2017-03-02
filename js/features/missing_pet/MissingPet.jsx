@@ -64,8 +64,11 @@ class MissingPet extends React.Component {
           <div className='panel-description w3-container w3-light-grey'>
             <h4 className='panel-description_title w3-opacity'>{this.props.pet.petType}, {this.props.breading}, {this.props.size}</h4>
             <p className='panel-description_content w3-opacity'>{this.props.description}</p>
+            <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>
+              Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto
+            </div>
             <div className='panel-description_iteraction'>
-              <a className='more-info w3-opacity'>mas informacion</a>
+              <a data-toggle='collapse' data-target={`#more-info-${this.props.id}`} className='more-info_link w3-opacity'>mas informacion</a>
               <form onSubmit={this.handleClick}>
                 <button data-toggle='collapse' data-target={`#${this.props.id}`} className='contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
                   <b>Contactar</b>
