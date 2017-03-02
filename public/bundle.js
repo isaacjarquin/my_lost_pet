@@ -40917,11 +40917,9 @@
 	            React.createElement(
 	              'h4',
 	              { className: 'w3-opacity' },
-	              this.props.pet.petType,
+	              this.props.petType,
 	              ', ',
-	              this.props.size,
-	              ' encontrado en ',
-	              this.props.location
+	              this.props.size
 	            ),
 	            React.createElement(
 	              'p',

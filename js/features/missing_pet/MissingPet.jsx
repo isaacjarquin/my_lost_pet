@@ -62,7 +62,7 @@ class MissingPet extends React.Component {
             <img src={this.props.image} className='img-responsive' alt='Image' />
           </div>
           <div className='panel-description w3-container w3-light-grey'>
-            <h4 className='w3-opacity'>{this.props.pet.petType}, {this.props.size} encontrado en {this.props.location}</h4>
+            <h4 className='w3-opacity'>{this.props.petType}, {this.props.size}</h4>
             <p className='w3-opacity'>{this.props.description}</p>
             <form onSubmit={this.handleClick}>
               <button data-toggle='collapse' data-target={`#${this.props.id}`} className='w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
