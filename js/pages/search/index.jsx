@@ -25,14 +25,35 @@ const Search = React.createClass({
   componentDidMount: function() {
     const props = this.props
 
-    fetch('https://items-api.herokuapp.com/api/items', {
+    const resultDecorated = (itemsCollection) => {
+      const newColection = []
+      itemsCollection.forEach(function(item){
+        newColection.push({
+          id: item.id,
+          founderName: item.name,
+          founderEmail: item.email,
+          petType: item.kind,
+          size: item.size,
+          foundDate: item.date,
+          location: item.location,
+          petImage: item.image,
+          description: item.info
+        })
+      })
+
+      return newColection;
+    }
+
+      fetch('https://items-api.herokuapp.com/api/items', {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     }).then(function (response) {
       console.log(response)
       return response.json()
     }).then(function(json) {
-      props.setPets(json.data)
+      const result = resultDecorated(json.data)
+      console.log(result)
+      props.setPets(result)
     }).catch(function (err) {
       console.log(err)
     })
