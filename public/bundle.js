@@ -40919,9 +40919,9 @@
 	              { className: 'w3-opacity' },
 	              this.props.pet.petType,
 	              ', ',
-	              this.props.breading,
-	              ', ',
-	              this.props.size
+	              this.props.size,
+	              ' encontrado en ',
+	              this.props.location
 	            ),
 	            React.createElement(
 	              'p',
