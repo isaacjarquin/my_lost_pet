@@ -85,6 +85,11 @@
   margin-bottom: 3%;
 }
 
+.panel-description_title {
+  font-weight: bold;
+  padding-top: 10px;
+}
+
 .panel-description_iteraction {
   bottom: 0;
   width: 100%;
@@ -101,4 +106,14 @@
 .more-info-extra {
   font-size: 0.95em;
   line-height: 2;
+}
+
+.panel-date {
+  padding: 10px;
+  font-size: 1.3em;
+}
+
+.third-panel {
+  position: relative;
+  width: 80%;
 }

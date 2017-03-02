@@ -40854,6 +40854,13 @@
 	          { id: 'item-' + this.props.id, className: 'panel col-sm-5 w3-white w3-margin' },
 	          React.createElement(
 	            'div',
+	            { className: 'panel-date w3-opacity w3-center' },
+	            this.props.breading,
+	            ', ',
+	            this.props.size
+	          ),
+	          React.createElement(
+	            'div',
 	            { className: 'panel-image' },
 	            React.createElement('img', { src: this.props.image, className: 'img-responsive', alt: 'Image' })
 	          ),
@@ -40861,13 +40868,12 @@
 	            'div',
 	            { className: 'panel-description w3-container w3-light-grey' },
 	            React.createElement(
-	              'h4',
+	              'p',
 	              { className: 'panel-description_title w3-opacity' },
-	              this.props.pet.petType,
+	              'Encontrado en ',
+	              this.props.city,
 	              ', ',
-	              this.props.breading,
-	              ', ',
-	              this.props.size
+	              this.props.location
 	            ),
 	            React.createElement(
 	              'p',

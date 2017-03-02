@@ -58,11 +58,12 @@ class MissingPet extends React.Component {
     return (
       <div>
         <div id={`item-${this.props.id}`} className='panel col-sm-5 w3-white w3-margin'>
+          <div className='panel-date w3-opacity w3-center'>{this.props.breading}, {this.props.size}</div>
           <div className='panel-image'>
             <img src={this.props.image} className='img-responsive' alt='Image' />
           </div>
           <div className='panel-description w3-container w3-light-grey'>
-            <h4 className='panel-description_title w3-opacity'>{this.props.pet.petType}, {this.props.breading}, {this.props.size}</h4>
+            <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
             <p className='panel-description_content w3-opacity'>{this.props.description}</p>
             <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>
               Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto

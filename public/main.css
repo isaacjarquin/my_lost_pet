@@ -185,6 +185,10 @@ p.form-introduction {
   width: 100%;
   margin-bottom: 3%; }
 
+.panel-description_title {
+  font-weight: bold;
+  padding-top: 10px; }
+
 .panel-description_iteraction {
   bottom: 0;
   width: 100%;
@@ -199,6 +203,14 @@ p.form-introduction {
 .more-info-extra {
   font-size: 0.95em;
   line-height: 2; }
+
+.panel-date {
+  padding: 10px;
+  font-size: 1.3em; }
+
+.third-panel {
+  position: relative;
+  width: 80%; }
 @charset "UTF-8";
 .rc-pagination-disabled {
   cursor: not-allowed; }
