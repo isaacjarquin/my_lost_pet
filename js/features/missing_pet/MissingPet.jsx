@@ -58,7 +58,7 @@ class MissingPet extends React.Component {
     return (
       <div>
         <div id={`item-${this.props.id}`} className='panel col-sm-5 w3-white w3-margin'>
-          <div className='panel-date w3-opacity w3-center'>{this.props.breading}, {this.props.size}</div>
+          <div className='panel-date w3-center'>{this.props.breading}, {this.props.size}</div>
           <div className='panel-image'>
             <img src={this.props.image} className='img-responsive' alt='Image' />
           </div>

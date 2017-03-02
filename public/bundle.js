@@ -40854,7 +40854,7 @@
 	          { id: 'item-' + this.props.id, className: 'panel col-sm-5 w3-white w3-margin' },
 	          React.createElement(
 	            'div',
-	            { className: 'panel-date w3-opacity w3-center' },
+	            { className: 'panel-date w3-center' },
 	            this.props.breading,
 	            ', ',
 	            this.props.size
