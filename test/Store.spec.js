@@ -37,7 +37,7 @@ describe('Store', () => {
     },
     pageSize: 6,
     totalNumberOfPets: pets.length,
-    pets: pets.slice(0, 6)
+    pets: []
   }
 
   it('should boostrap', () => {
