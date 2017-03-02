@@ -40777,7 +40777,6 @@
 	      return response.json();
 	    }).then(function (json) {
 	      var result = resultDecorated(json.data);
-	      console.log(result);
 	      props.setPets(result);
 	    }).catch(function (err) {
 	      console.log(err);

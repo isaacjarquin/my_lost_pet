@@ -52,7 +52,6 @@ const Search = React.createClass({
       return response.json()
     }).then(function (json) {
       const result = resultDecorated(json.data)
-      console.log(result)
       props.setPets(result)
     }).catch(function (err) {
       console.log(err)
