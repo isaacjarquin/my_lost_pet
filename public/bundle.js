@@ -23418,7 +23418,7 @@
 				"image": "/public/pets-background.png",
 				"size": "medium",
 				"breading": "staffy",
-				"description": "found it in Las palmas, la feria yesterday at 7pm",
+				"description": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
 				"titleDescription": "En constrado en Las Palmas",
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
@@ -40862,7 +40862,7 @@
 	            { className: 'panel-description w3-container w3-light-grey' },
 	            React.createElement(
 	              'h4',
-	              { className: 'w3-opacity' },
+	              { className: 'panel-description_title w3-opacity' },
 	              this.props.pet.petType,
 	              ', ',
 	              this.props.breading,
@@ -40871,19 +40871,28 @@
 	            ),
 	            React.createElement(
 	              'p',
-	              { className: 'w3-opacity' },
+	              { className: 'panel-description_content w3-opacity' },
 	              this.props.description
 	            ),
 	            React.createElement(
-	              'form',
-	              { onSubmit: this.handleClick },
+	              'div',
+	              { className: 'panel-description_iteraction' },
 	              React.createElement(
-	                'button',
-	                { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                'a',
+	                { className: 'more-info w3-opacity' },
+	                'mas informacion'
+	              ),
+	              React.createElement(
+	                'form',
+	                { onSubmit: this.handleClick },
 	                React.createElement(
-	                  'b',
-	                  null,
-	                  'Contactar'
+	                  'button',
+	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement(
+	                    'b',
+	                    null,
+	                    'Contactar'
+	                  )
 	                )
 	              )
 	            ),
