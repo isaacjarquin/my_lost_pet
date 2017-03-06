@@ -242,4 +242,5 @@ p.form-introduction {
 
 @media (min-width: 750px) {
   .container .pets-row {
-    margin-right: -15%; } }
+    margin-right: -15%;
+    clear: both; } }
