@@ -38,12 +38,18 @@ const Search = React.createClass({
   render () {
     return (
       <div className='container'>
-        {this.addPetRows(this.props.pets).map((row) => (
-          <div className='pets-row'>
-            <MissingPet {...row.left} key={row.left.id} />
-            <MissingPet {...row.right} key={row.right.id} />
-          </div>
-        ))}
+        {this.addPetRows(this.props.pets)
+          .filter((pet) => `${pet.left.city} ${pet.left.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.right.city} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.left.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
+          .map((row) => (
+            <div className='pets-row'>
+              <MissingPet {...row.left} key={row.left.id} />
+              <MissingPet {...row.right} key={row.right.id} />
+            </div>)
+          )
+        }
         <div className='center'>
           <Pagination
             className='pagination'

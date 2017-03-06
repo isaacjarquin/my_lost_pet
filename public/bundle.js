@@ -23452,7 +23452,7 @@
 				"size": "small",
 				"breading": "chiguagua",
 				"description": "found it in puerta del sol today at 3pm",
-				"titleDescription": "En constrado en Las Palmas",
+				"titleDescription": "En constrado en puerta del sol",
 				"date": "25 Abril, 2016",
 				"city": "Madrid",
 				"location": "Puerta del sol",
@@ -23467,7 +23467,7 @@
 				"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
 				"titleDescription": "En constrado en Las Palmas",
 				"date": "25 Abril, 2016",
-				"city": "Santa Cruz de Tenerife",
+				"city": "Tenerife",
 				"location": "Los cristianos",
 				"happyAtHome": "true"
 			},
@@ -40754,10 +40754,20 @@
 	    }
 	  },
 	  render: function render() {
+	    var _this = this;
+
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
-	      this.addPetRows(this.props.pets).map(function (row) {
+	      this.addPetRows(this.props.pets).filter(function (pet) {
+	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (row) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
@@ -40979,13 +40989,13 @@
 
 	var _React$PropTypes = React.PropTypes,
 	    string = _React$PropTypes.string,
-	    boolean = _React$PropTypes.boolean;
+	    bool = _React$PropTypes.bool;
 
 
 	MissingPet.propTypes = {
 	  breading: string.isRequired,
 	  city: string.isRequired,
-	  showExtraInfo: boolean.isRequired,
+	  showExtraInfo: bool.isRequired,
 	  location: string.isRequired,
 	  size: string.isRequired,
 	  description: string.isRequired,

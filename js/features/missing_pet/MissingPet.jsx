@@ -111,12 +111,12 @@ class MissingPet extends React.Component {
   }
 }
 
-const { string, boolean } = React.PropTypes
+const { string, bool } = React.PropTypes
 
 MissingPet.propTypes = {
   breading: string.isRequired,
   city: string.isRequired,
-  showExtraInfo: boolean.isRequired,
+  showExtraInfo: bool.isRequired,
   location: string.isRequired,
   size: string.isRequired,
   description: string.isRequired,
