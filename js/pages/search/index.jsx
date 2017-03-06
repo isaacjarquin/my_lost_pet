@@ -24,6 +24,25 @@ const Search = React.createClass({
   },
   componentDidMount: function () {
     const props = this.props
+    const extraDescription = (info) => {
+      if (info.length > 165) {
+        return info.slice(0, 165)
+      } else {
+        return ''
+      }
+    }
+
+    const extraDescriptionHidden = (info) => {
+      if (info.length > 165) {
+        return info.slice(165, 1000)
+      } else {
+        return ''
+      }
+    }
+
+    const showExtraInfo = (info) => {
+      return info.length > 165
+    }
 
     const resultDecorated = (itemsCollection) => {
       const newColection = []
@@ -37,7 +56,10 @@ const Search = React.createClass({
           foundDate: item.date,
           location: item.location,
           petImage: item.image,
-          description: item.info
+          description: item.info,
+          extraDescription: extraDescription(item.info),
+          extraDescriptionHidden: extraDescriptionHidden(item.info),
+          showExtraInfo: showExtraInfo(item.info)
         })
       })
 
@@ -56,8 +78,7 @@ const Search = React.createClass({
     }).catch(function (err) {
       console.log(err)
     })
-  }
-
+  },
   addPetRows: function (pets) {
     let petRows = []
     let row = {}
