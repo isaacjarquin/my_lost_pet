@@ -23417,7 +23417,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Santa Brigida",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "2",
@@ -23430,7 +23433,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "La feria",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "3",
@@ -23443,7 +23449,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Agaete",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "4",
@@ -23456,7 +23465,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Madrid",
 				"location": "Puerta del sol",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "5",
@@ -23469,7 +23481,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Tenerife",
 				"location": "Los cristianos",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "6",
@@ -23482,7 +23497,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Santa Brigida",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "7",
@@ -23495,7 +23513,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "La feria",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "8",
@@ -23508,7 +23529,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Agaete",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "9",
@@ -23521,7 +23545,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Madrid",
 				"location": "Puerta del sol",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "10",
@@ -23534,7 +23561,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Santa Cruz de Tenerife",
 				"location": "Los cristianos",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			}
 		]
 	};

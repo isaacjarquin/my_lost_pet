@@ -81,6 +81,9 @@ describe('Store', () => {
       'location': 'Los cristianos',
       'pet': 'cat',
       'size': 'medium',
+      'extraDescription': '',
+      'extraDescriptionHidden': '',
+      'showExtraInfo': false,
       'titleDescription': 'En constrado en Las Palmas'
     }
 
