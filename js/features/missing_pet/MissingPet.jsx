@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 var MediaQuery = require('react-responsive')
 const ContactDetailsPanel = require('../panels/ContactDetailsPanel')
 const $ = require('jquery')
@@ -54,21 +53,49 @@ class MissingPet extends React.Component {
     event.preventDefault()
   }
 
+  displayExtraTextLink () {
+    if (this.props.showExtraInfo) {
+      return (
+        <a data-toggle='collapse' data-target={`#more-info-${this.props.id}`} className='more-info_link w3-opacity'>mas informacion</a>
+      )
+    } else {
+      return ''
+    }
+  }
+
+  displayDescription () {
+    if (this.props.showExtraInfo) {
+      return (
+        <div className='extra-description-block'>
+          <p className='panel-description_content w3-opacity'>{this.props.extraDescription}</p>
+          <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescriptionHidden}</div>
+        </div>
+      )
+    } else {
+      return (<p className='panel-description_content w3-opacity'>{this.props.description}</p>)
+    }
+  }
+
   render () {
     return (
       <div>
         <div id={`item-${this.props.id}`} className='panel col-sm-5 w3-white w3-margin'>
+          <div className='panel-date w3-center'>{this.props.breading}, {this.props.size}</div>
           <div className='panel-image'>
             <img src={this.props.image} className='img-responsive' alt='Image' />
           </div>
           <div className='panel-description w3-container w3-light-grey'>
-            <h4 className='w3-opacity'>{this.props.pet.petType}, {this.props.breading}, {this.props.size}</h4>
-            <p className='w3-opacity'>{this.props.description}</p>
-            <form onSubmit={this.handleClick}>
-              <button data-toggle='collapse' data-target={`#${this.props.id}`} className='w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
-                <b>Contactar</b>
-              </button>
-            </form>
+            <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
+            {this.displayDescription()}
+            <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescription}</div>
+            <div className='panel-description_iteraction'>
+              {this.displayExtraTextLink()}
+              <form onSubmit={this.handleClick}>
+                <button data-toggle='collapse' data-target={`#${this.props.id}`} className='contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
+                  <b>Contactar</b>
+                </button>
+              </form>
+            </div>
             <p className='w3-clear' />
           </div>
         </div>
@@ -83,15 +110,19 @@ class MissingPet extends React.Component {
   }
 }
 
-const { string, object } = React.PropTypes
+const { string, bool } = React.PropTypes
 
 MissingPet.propTypes = {
   breading: string.isRequired,
+  city: string.isRequired,
+  showExtraInfo: bool.isRequired,
+  location: string.isRequired,
   size: string.isRequired,
-  pet: object,
   description: string.isRequired,
+  extraDescription: string.isRequired,
+  extraDescriptionHidden: string.isRequired,
   image: string.isRequired,
   id: string.isRequired
 }
 
-module.exports = connector(MissingPet)
+module.exports = MissingPet

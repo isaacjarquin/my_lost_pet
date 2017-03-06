@@ -130,6 +130,10 @@
 	      headers.forEach(function (value, name) {
 	        this.append(name, value);
 	      }, this);
+	    } else if (Array.isArray(headers)) {
+	      headers.forEach(function (header) {
+	        this.append(header[0], header[1]);
+	      }, this);
 	    } else if (headers) {
 	      Object.getOwnPropertyNames(headers).forEach(function (name) {
 	        this.append(name, headers[name]);
@@ -21207,7 +21211,10 @@
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
 	      petImage: state.pet.petImage,
-	      description: state.pet.description
+	      description: state.pet.description,
+	      extraDescription: state.pet.extraDescription,
+	      extraDescriptionHidden: state.pet.extraDescriptionHidden,
+	      showExtraInfo: state.pet.showExtraInfo
 	    },
 	    contactUs: {
 	      name: state.contactUs.name,
@@ -23410,7 +23417,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Santa Brigida",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "2",
@@ -23418,12 +23428,15 @@
 				"image": "/public/pets-background.png",
 				"size": "medium",
 				"breading": "staffy",
-				"description": "found it in Las palmas, la feria yesterday at 7pm",
+				"description": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
 				"titleDescription": "En constrado en Las Palmas",
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "La feria",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "3",
@@ -23436,7 +23449,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Agaete",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"extraDescriptionHidden": "found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm found it in Las palmas, la feria yesterday at 7pm, found it in Las palmas, la feria yesterday at 7pm",
+				"showExtraInfo": true
 			},
 			{
 				"id": "4",
@@ -23445,11 +23461,14 @@
 				"size": "small",
 				"breading": "chiguagua",
 				"description": "found it in puerta del sol today at 3pm",
-				"titleDescription": "En constrado en Las Palmas",
+				"titleDescription": "En constrado en puerta del sol",
 				"date": "25 Abril, 2016",
 				"city": "Madrid",
 				"location": "Puerta del sol",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "5",
@@ -23460,9 +23479,12 @@
 				"description": "found it in Los Cristianos Tenerife yesterday at 3pm",
 				"titleDescription": "En constrado en Las Palmas",
 				"date": "25 Abril, 2016",
-				"city": "Santa Cruz de Tenerife",
+				"city": "Tenerife",
 				"location": "Los cristianos",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "6",
@@ -23475,7 +23497,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Santa Brigida",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "7",
@@ -23488,7 +23513,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "La feria",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "8",
@@ -23501,7 +23529,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Las palmas",
 				"location": "Agaete",
-				"happyAtHome": "false"
+				"happyAtHome": "false",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "9",
@@ -23514,7 +23545,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Madrid",
 				"location": "Puerta del sol",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			},
 			{
 				"id": "10",
@@ -23527,7 +23561,10 @@
 				"date": "25 Abril, 2016",
 				"city": "Santa Cruz de Tenerife",
 				"location": "Los cristianos",
-				"happyAtHome": "true"
+				"happyAtHome": "true",
+				"extraDescription": "",
+				"extraDescriptionHidden": "",
+				"showExtraInfo": false
 			}
 		]
 	};
@@ -23583,7 +23620,10 @@
 	    foundDate: '',
 	    location: '',
 	    petImage: '',
-	    description: ''
+	    description: '',
+	    extraDescription: '',
+	    extraDescriptionHidden: '',
+	    showExtraInfo: false
 	  },
 	  contactUs: {
 	    name: '',
@@ -40729,23 +40769,42 @@
 	  handlePageChange: function handlePageChange(pageNumber) {
 	    this.props.setActivePage(pageNumber);
 	  },
+	  addPetRows: function addPetRows(pets) {
+	    var petRows = [];
+	    var row = {};
+	    this.pairwise(pets, function (current, next) {
+	      row = { left: current, right: next };
+	      petRows.push(row);
+	    });
+	    return petRows;
+	  },
+	  pairwise: function pairwise(arr, func) {
+	    for (var i = 0; i < arr.length - 1; i += 2) {
+	      func(arr[i], arr[i + 1]);
+	    }
+	  },
 	  render: function render() {
 	    var _this = this;
 
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
-	      React.createElement(
-	        'div',
-	        { className: 'row pets-row' },
-	        this.props.pets.filter(function (pet) {
-	          return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	        }).filter(function (pet) {
-	          return ('' + pet.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	        }).map(function (pet) {
-	          return React.createElement(MissingPet, _extends({}, pet, { key: pet.id }));
-	        })
-	      ),
+	      this.addPetRows(this.props.pets).filter(function (pet) {
+	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (row) {
+	        return React.createElement(
+	          'div',
+	          { className: 'pets-row' },
+	          React.createElement(MissingPet, _extends({}, row.left, { key: row.left.id })),
+	          React.createElement(MissingPet, _extends({}, row.right, { key: row.right.id }))
+	        );
+	      }),
 	      React.createElement(
 	        'div',
 	        { className: 'center' },
@@ -40778,10 +40837,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
-
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
-
 	var MediaQuery = __webpack_require__(291);
 	var ContactDetailsPanel = __webpack_require__(292);
 	var $ = __webpack_require__(286);
@@ -40844,6 +40899,45 @@
 	      event.preventDefault();
 	    }
 	  }, {
+	    key: 'displayExtraTextLink',
+	    value: function displayExtraTextLink() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'a',
+	          { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
+	          'mas informacion'
+	        );
+	      } else {
+	        return '';
+	      }
+	    }
+	  }, {
+	    key: 'displayDescription',
+	    value: function displayDescription() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'div',
+	          { className: 'extra-description-block' },
+	          React.createElement(
+	            'p',
+	            { className: 'panel-description_content w3-opacity' },
+	            this.props.extraDescription
+	          ),
+	          React.createElement(
+	            'div',
+	            { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	            this.props.extraDescriptionHidden
+	          )
+	        );
+	      } else {
+	        return React.createElement(
+	          'p',
+	          { className: 'panel-description_content w3-opacity' },
+	          this.props.description
+	        );
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
@@ -40854,6 +40948,13 @@
 	          { id: 'item-' + this.props.id, className: 'panel col-sm-5 w3-white w3-margin' },
 	          React.createElement(
 	            'div',
+	            { className: 'panel-date w3-center' },
+	            this.props.breading,
+	            ', ',
+	            this.props.size
+	          ),
+	          React.createElement(
+	            'div',
 	            { className: 'panel-image' },
 	            React.createElement('img', { src: this.props.image, className: 'img-responsive', alt: 'Image' })
 	          ),
@@ -40861,29 +40962,34 @@
 	            'div',
 	            { className: 'panel-description w3-container w3-light-grey' },
 	            React.createElement(
-	              'h4',
-	              { className: 'w3-opacity' },
-	              this.props.pet.petType,
-	              ', ',
-	              this.props.breading,
-	              ', ',
-	              this.props.size
-	            ),
-	            React.createElement(
 	              'p',
-	              { className: 'w3-opacity' },
-	              this.props.description
+	              { className: 'panel-description_title w3-opacity' },
+	              'Encontrado en ',
+	              this.props.city,
+	              ', ',
+	              this.props.location
+	            ),
+	            this.displayDescription(),
+	            React.createElement(
+	              'div',
+	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	              this.props.extraDescription
 	            ),
 	            React.createElement(
-	              'form',
-	              { onSubmit: this.handleClick },
+	              'div',
+	              { className: 'panel-description_iteraction' },
+	              this.displayExtraTextLink(),
 	              React.createElement(
-	                'button',
-	                { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                'form',
+	                { onSubmit: this.handleClick },
 	                React.createElement(
-	                  'b',
-	                  null,
-	                  'Contactar'
+	                  'button',
+	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement(
+	                    'b',
+	                    null,
+	                    'Contactar'
+	                  )
 	                )
 	              )
 	            ),
@@ -40909,19 +41015,23 @@
 
 	var _React$PropTypes = React.PropTypes,
 	    string = _React$PropTypes.string,
-	    object = _React$PropTypes.object;
+	    bool = _React$PropTypes.bool;
 
 
 	MissingPet.propTypes = {
 	  breading: string.isRequired,
+	  city: string.isRequired,
+	  showExtraInfo: bool.isRequired,
+	  location: string.isRequired,
 	  size: string.isRequired,
-	  pet: object,
 	  description: string.isRequired,
+	  extraDescription: string.isRequired,
+	  extraDescriptionHidden: string.isRequired,
 	  image: string.isRequired,
 	  id: string.isRequired
 	};
 
-	module.exports = connector(MissingPet);
+	module.exports = MissingPet;
 
 /***/ },
 /* 291 */
