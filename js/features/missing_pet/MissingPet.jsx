@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 var MediaQuery = require('react-responsive')
 const ContactDetailsPanel = require('../panels/ContactDetailsPanel')
 const $ = require('jquery')
@@ -126,4 +125,4 @@ MissingPet.propTypes = {
   id: string.isRequired
 }
 
-module.exports = connector(MissingPet)
+module.exports = MissingPet
