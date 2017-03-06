@@ -56,6 +56,16 @@ const SET_CONTACT_US_NAME = 'setContactUsName'
 const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
 const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
 const SET_ALERTS = 'setAlerts'
+const SET_PETS = 'setPets'
+
+const reducerPets = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pets: action.value
+  })
+
+  return newState
+}
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -97,6 +107,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerContactUsMessage(state, action)
     case SET_ALERTS:
       return reducerAlerts(state, action)
+    case SET_PETS:
+      return reducerPets(state, action)
     default:
       return state
   }
@@ -204,6 +216,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setAlerts (alert) {
       dispatch({type: SET_ALERTS, value: alert})
+    },
+    setPets (pets) {
+      dispatch({type: SET_PETS, value: pets})
     }
   }
 }

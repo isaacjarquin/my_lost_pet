@@ -21136,6 +21136,16 @@
 	var SET_CONTACT_US_EMAIL = 'setContactUsEmail';
 	var SET_CONTACT_US_MESSAGE = 'setContactUsMessage';
 	var SET_ALERTS = 'setAlerts';
+	var SET_PETS = 'setPets';
+
+	var reducerPets = function reducerPets(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    pets: action.value
+	  });
+
+	  return newState;
+	};
 
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -21180,6 +21190,8 @@
 	      return reducerContactUsMessage(state, action);
 	    case SET_ALERTS:
 	      return reducerAlerts(state, action);
+	    case SET_PETS:
+	      return reducerPets(state, action);
 	    default:
 	      return state;
 	  }
@@ -21287,6 +21299,9 @@
 	    },
 	    setAlerts: function setAlerts(alert) {
 	      dispatch({ type: SET_ALERTS, value: alert });
+	    },
+	    setPets: function setPets(pets) {
+	      dispatch({ type: SET_PETS, value: pets });
 	    }
 	  };
 	};
@@ -23605,7 +23620,7 @@
 	  activePage: 1,
 	  pageSize: 6,
 	  totalNumberOfPets: pets.length,
-	  pets: pets.slice(0, 6),
+	  pets: [],
 	  owner: {
 	    name: '',
 	    email: '',
@@ -40737,6 +40752,8 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	__webpack_require__(1);
+
 	var React = __webpack_require__(3);
 	var MissingPet = __webpack_require__(290);
 	var _React$PropTypes = React.PropTypes,
@@ -40749,6 +40766,7 @@
 	    connector = _require.connector;
 
 	var Pagination = __webpack_require__(294);
+
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(300);
@@ -40768,6 +40786,63 @@
 	  },
 	  handlePageChange: function handlePageChange(pageNumber) {
 	    this.props.setActivePage(pageNumber);
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var props = this.props;
+	    var extraDescription = function extraDescription(info) {
+	      if (info.length > 165) {
+	        return info.slice(0, 165);
+	      } else {
+	        return '';
+	      }
+	    };
+
+	    var extraDescriptionHidden = function extraDescriptionHidden(info) {
+	      if (info.length > 165) {
+	        return info.slice(165, 1000);
+	      } else {
+	        return '';
+	      }
+	    };
+
+	    var showExtraInfo = function showExtraInfo(info) {
+	      return info.length > 165;
+	    };
+
+	    var resultDecorated = function resultDecorated(itemsCollection) {
+	      var newColection = [];
+	      itemsCollection.forEach(function (item) {
+	        newColection.push({
+	          id: item.id,
+	          founderName: item.name,
+	          founderEmail: item.email,
+	          petType: item.kind,
+	          size: item.size,
+	          foundDate: item.date,
+	          location: item.location,
+	          petImage: item.image,
+	          description: item.info,
+	          extraDescription: extraDescription(item.info),
+	          extraDescriptionHidden: extraDescriptionHidden(item.info),
+	          showExtraInfo: showExtraInfo(item.info)
+	        });
+	      });
+
+	      return newColection;
+	    };
+
+	    fetch('https://items-api.herokuapp.com/api/items', {
+	      method: 'GET',
+	      headers: { 'Content-Type': 'application/json' }
+	    }).then(function (response) {
+	      console.log(response);
+	      return response.json();
+	    }).then(function (json) {
+	      var result = resultDecorated(json.data);
+	      props.setPets(result);
+	    }).catch(function (err) {
+	      console.log(err);
+	    });
 	  },
 	  addPetRows: function addPetRows(pets) {
 	    var petRows = [];

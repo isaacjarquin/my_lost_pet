@@ -3,6 +3,7 @@ const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
+import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -20,6 +21,63 @@ const Search = React.createClass({
   },
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
+  },
+  componentDidMount: function () {
+    const props = this.props
+    const extraDescription = (info) => {
+      if (info.length > 165) {
+        return info.slice(0, 165)
+      } else {
+        return ''
+      }
+    }
+
+    const extraDescriptionHidden = (info) => {
+      if (info.length > 165) {
+        return info.slice(165, 1000)
+      } else {
+        return ''
+      }
+    }
+
+    const showExtraInfo = (info) => {
+      return info.length > 165
+    }
+
+    const resultDecorated = (itemsCollection) => {
+      const newColection = []
+      itemsCollection.forEach(function (item) {
+        newColection.push({
+          id: item.id,
+          founderName: item.name,
+          founderEmail: item.email,
+          petType: item.kind,
+          size: item.size,
+          foundDate: item.date,
+          location: item.location,
+          petImage: item.image,
+          description: item.info,
+          extraDescription: extraDescription(item.info),
+          extraDescriptionHidden: extraDescriptionHidden(item.info),
+          showExtraInfo: showExtraInfo(item.info)
+        })
+      })
+
+      return newColection
+    }
+
+    fetch('https://items-api.herokuapp.com/api/items', {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    }).then(function (response) {
+      console.log(response)
+      return response.json()
+    }).then(function (json) {
+      const result = resultDecorated(json.data)
+      props.setPets(result)
+    }).catch(function (err) {
+      console.log(err)
+    })
   },
   addPetRows: function (pets) {
     let petRows = []
