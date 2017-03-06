@@ -120,8 +120,8 @@ p.form-introduction {
   max-height: 300px; }
 
 .panel-description {
-  min-height: 140px;
-  max-height: 140px; }
+  min-height: 170px;
+  position: relative; }
 
 .panel {
   margin-bottom: 40px;
@@ -167,6 +167,51 @@ p.form-introduction {
 
 .displayTrue {
   display: block; }
+
+.contact-btn {
+  float: right;
+  margin-right: 16px;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2%;
+  right: 0; }
+
+.more-info_link {
+  float: left;
+  margin-top: 10px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 3%; }
+
+.panel-description_title {
+  font-weight: bold;
+  padding-top: 10px; }
+
+.panel-description_iteraction {
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 10px;
+  padding-top: 35px; }
+
+.panel-description_content {
+  line-height: 2;
+  font-size: 0.95em;
+  margin: 0 0 0px; }
+
+.more-info-extra {
+  font-size: 0.95em;
+  line-height: 2; }
+
+.panel-date {
+  padding: 10px;
+  font-size: 1.3em;
+  opacity: 0.4; }
+
+.third-panel {
+  position: relative;
+  width: 80%; }
 @charset "UTF-8";
 .rc-pagination-disabled {
   cursor: not-allowed; }
@@ -197,4 +242,5 @@ p.form-introduction {
 
 @media (min-width: 750px) {
   .container .pets-row {
-    margin-right: -15%; } }
+    margin-right: -15%;
+    clear: both; } }

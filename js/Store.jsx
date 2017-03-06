@@ -140,7 +140,10 @@ const mapStateToProps = (state) => {
       foundDate: state.pet.foundDate,
       location: state.pet.location,
       petImage: state.pet.petImage,
-      description: state.pet.description
+      description: state.pet.description,
+      extraDescription: state.pet.extraDescription,
+      extraDescriptionHidden: state.pet.extraDescriptionHidden,
+      showExtraInfo: state.pet.showExtraInfo
     },
     contactUs: {
       name: state.contactUs.name,

@@ -21,7 +21,10 @@ module.exports = {
     foundDate: '',
     location: '',
     petImage: '',
-    description: ''
+    description: '',
+    extraDescription: '',
+    extraDescriptionHidden: '',
+    showExtraInfo: false
   },
   contactUs: {
     name: '',
