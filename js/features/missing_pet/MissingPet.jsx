@@ -54,6 +54,29 @@ class MissingPet extends React.Component {
     event.preventDefault()
   }
 
+  displayExtraTextLink () {
+    if (this.props.showExtraInfo) {
+      return (
+        <a data-toggle='collapse' data-target={`#more-info-${this.props.id}`} className='more-info_link w3-opacity'>mas informacion</a>
+      )
+    } else {
+      return ''
+    }
+  }
+
+  displayDescription () {
+    if (this.props.showExtraInfo) {
+      return (
+        <div className='extra-description-block'>
+          <p className='panel-description_content w3-opacity'>{this.props.extraDescription}</p>
+          <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescriptionHidden}</div>
+        </div>
+      )
+    } else {
+      return (<p className='panel-description_content w3-opacity'>{this.props.description}</p>)
+    }
+  }
+
   render () {
     return (
       <div>
@@ -64,12 +87,10 @@ class MissingPet extends React.Component {
           </div>
           <div className='panel-description w3-container w3-light-grey'>
             <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
-            <p className='panel-description_content w3-opacity'>{this.props.description}</p>
-            <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>
-              Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto Introduce tus datos para poder ponerte en contacto
-            </div>
+            {this.displayDescription()}
+            <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescription}</div>
             <div className='panel-description_iteraction'>
-              <a data-toggle='collapse' data-target={`#more-info-${this.props.id}`} className='more-info_link w3-opacity'>mas informacion</a>
+              {this.displayExtraTextLink()}
               <form onSubmit={this.handleClick}>
                 <button data-toggle='collapse' data-target={`#${this.props.id}`} className='contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off'>
                   <b>Contactar</b>
@@ -90,13 +111,17 @@ class MissingPet extends React.Component {
   }
 }
 
-const { string, object } = React.PropTypes
+const { string, boolean } = React.PropTypes
 
 MissingPet.propTypes = {
   breading: string.isRequired,
+  city: string.isRequired,
+  showExtraInfo: boolean.isRequired,
+  location: string.isRequired,
   size: string.isRequired,
-  pet: object,
   description: string.isRequired,
+  extraDescription: string.isRequired,
+  extraDescriptionHidden: string.isRequired,
   image: string.isRequired,
   id: string.isRequired
 }

@@ -3,7 +3,6 @@ const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
-const R = require('ramda');
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -22,19 +21,19 @@ const Search = React.createClass({
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
   },
-  addPetRows: function(pets) {
-      let petRows = []
-      let row = {}
-      this.pairwise(pets, function(current,next){
-          row = {left: current, right: next}
-          petRows.push(row)
-      })
-      return petRows
+  addPetRows: function (pets) {
+    let petRows = []
+    let row = {}
+    this.pairwise(pets, function (current, next) {
+      row = {left: current, right: next}
+      petRows.push(row)
+    })
+    return petRows
   },
-  pairwise: function(arr, func){
-      for(var i=0;i<arr.length-1;i += 2){
-          func(arr[i], arr[i+1])
-      }
+  pairwise: function (arr, func) {
+    for (var i = 0; i < arr.length - 1; i += 2) {
+      func(arr[i], arr[i + 1])
+    }
   },
   render () {
     return (

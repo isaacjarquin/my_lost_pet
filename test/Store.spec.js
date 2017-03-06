@@ -23,6 +23,9 @@ describe('Store', () => {
       foundDate: '',
       location: '',
       petImage: '',
+      extraDescription: '',
+      extraDescriptionHidden: '',
+      showExtraInfo: false,
       description: ''
     },
     contactUs: {
