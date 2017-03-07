@@ -40831,7 +40831,7 @@
 	      return newColection;
 	    };
 
-	    fetch('http://localhost:4000/api/items', {
+	    fetch('https://items-api.herokuapp.com/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
