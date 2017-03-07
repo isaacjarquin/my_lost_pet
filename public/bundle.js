@@ -40831,7 +40831,7 @@
 	      return newColection;
 	    };
 
-	    fetch('https://items-api.herokuapp.com/api/items', {
+	    fetch('http://localhost:4000/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
@@ -40954,7 +40954,10 @@
 	      if ($(selectedId).hasClass('panel-opened')) {
 	        $('.col-sm-5').removeClass('addOpacity');
 	        $('.col-sm-5').removeClass('panel-opened');
+	        $('.contact-btn').removeAttr('disabled');
 	      } else {
+	        $('.contact-btn').attr('disabled', 'disabled');
+
 	        if (parseInt(this.props.id) % 2 === 0) {
 	          $('.arrow-up').addClass('arrow-up-right');
 	          $('.arrow-up').removeClass('arrow-up-left');
@@ -40965,6 +40968,9 @@
 
 	        $.each($('.pets-row'), function (pet) {
 	          if (petId !== pet.id) {
+	            var selector = '#' + petId + ' .contact-btn';
+
+	            $(selector).removeAttr('disabled');
 	            $('.col-sm-5').addClass('addOpacity panel-opened');
 	            $(selectedId).removeClass('addOpacity');
 	          }

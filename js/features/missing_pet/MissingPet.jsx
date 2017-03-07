@@ -33,7 +33,10 @@ class MissingPet extends React.Component {
     if ($(selectedId).hasClass('panel-opened')) {
       $('.col-sm-5').removeClass('addOpacity')
       $('.col-sm-5').removeClass('panel-opened')
+      $('.contact-btn').removeAttr('disabled')
     } else {
+      $('.contact-btn').attr('disabled', 'disabled')
+
       if (parseInt(this.props.id) % 2 === 0) {
         $('.arrow-up').addClass('arrow-up-right')
         $('.arrow-up').removeClass('arrow-up-left')
@@ -44,6 +47,9 @@ class MissingPet extends React.Component {
 
       $.each($('.pets-row'), function (pet) {
         if (petId !== pet.id) {
+          const selector = `#${petId} .contact-btn`
+
+          $(selector).removeAttr('disabled')
           $('.col-sm-5').addClass('addOpacity panel-opened')
           $(selectedId).removeClass('addOpacity')
         }
