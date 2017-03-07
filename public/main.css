@@ -212,6 +212,10 @@ p.form-introduction {
 .third-panel {
   position: relative;
   width: 80%; }
+
+.disable-link {
+  pointer-events: none;
+  cursor: default; }
 @charset "UTF-8";
 .rc-pagination-disabled {
   cursor: not-allowed; }

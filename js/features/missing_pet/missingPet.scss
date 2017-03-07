@@ -118,3 +118,8 @@
   position: relative;
   width: 80%;
 }
+
+.disable-link {
+  pointer-events: none;
+  cursor: default;
+}
