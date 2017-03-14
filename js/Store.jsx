@@ -8,7 +8,8 @@ const {
   reducerPetSize,
   reducerPetFoundDate,
   reducerPetLocation,
-  reducerPetImage,
+  reducerImageUrl,
+  reducerPetImages,
   reducerPetDescription
 } = require('../js/features/new_pet_found/newPetFoundReducer')
 
@@ -50,7 +51,8 @@ const SET_PET_TYPE = 'setPetType'
 const SET_PET_SIZE = 'setPetSize'
 const SET_PET_FOUND_DATE = 'setPetFoundDate'
 const SET_PET_LOCATION = 'setPetLocation'
-const SET_PET_IMAGE = 'setPetImage'
+const SET_IMAGE_URL = 'setImageUrl'
+const SET_IMAGES = 'setImages'
 const SET_PET_DESCRIPTION = 'setPetDescription'
 const SET_CONTACT_US_NAME = 'setContactUsName'
 const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
@@ -95,8 +97,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetFoundDate(state, action)
     case SET_PET_LOCATION:
       return reducerPetLocation(state, action)
-    case SET_PET_IMAGE:
-      return reducerPetImage(state, action)
+    case SET_IMAGE_URL:
+      return reducerImageUrl(state, action)
+    case SET_IMAGES:
+      return reducerPetImages(state, action)
     case SET_PET_DESCRIPTION:
       return reducerPetDescription(state, action)
     case SET_CONTACT_US_NAME:
@@ -139,7 +143,8 @@ const mapStateToProps = (state) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description,
       extraDescription: state.pet.extraDescription,
       extraDescriptionHidden: state.pet.extraDescriptionHidden,
@@ -199,8 +204,11 @@ const mapDispatchToProps = (dispatch) => {
     setPetLocation (petLocation) {
       dispatch({type: SET_PET_LOCATION, value: petLocation})
     },
-    setPetImage (petImage) {
-      dispatch({type: SET_PET_IMAGE, value: petImage})
+    setImageUrl (imageUrl) {
+      dispatch({type: SET_IMAGE_URL, value: imageUrl})
+    },
+    setImages (images) {
+      dispatch({type: SET_IMAGES, value: images})
     },
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
