@@ -8,6 +8,11 @@ import request from 'superagent';
 
 const $ = require('jquery')
 
+const CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm'
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
+
+
+
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
 }
@@ -118,6 +123,22 @@ class NewPetFound extends React.Component {
     this.props.setImages(event.target.value)
   }
   handleSubmit (event) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', this.props.pet.images[0]);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        console.error(response);
+        this.props.setImageUrl(response.body.secure_url)
+      }
+    });
+
+
     const adaptedItem = {
       name: this.props.pet.founderName,
       email: this.props.pet.founderEmail,

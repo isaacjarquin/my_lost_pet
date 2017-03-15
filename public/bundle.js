@@ -30660,6 +30660,9 @@
 
 	var $ = __webpack_require__(295);
 
+	var CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm';
+	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload';
+
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(296);
 	}
@@ -30799,6 +30802,21 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
+	      var _this2 = this;
+
+	      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', this.props.pet.images[0]);
+
+	      upload.end(function (err, response) {
+	        if (err) {
+	          console.error(err);
+	        }
+
+	        if (response.body.secure_url !== '') {
+	          console.error(response);
+	          _this2.props.setImageUrl(response.body.secure_url);
+	        }
+	      });
+
 	      var adaptedItem = {
 	        name: this.props.pet.founderName,
 	        email: this.props.pet.founderEmail,
@@ -30838,7 +30856,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      return React.createElement(
 	        'div',
@@ -30930,7 +30948,7 @@
 	                          multiple: false,
 	                          accept: 'image/*',
 	                          ref: function ref(node) {
-	                            _this2.dropzone = node;
+	                            _this3.dropzone = node;
 	                          },
 	                          onDrop: this.onImageDrop },
 	                        React.createElement(
