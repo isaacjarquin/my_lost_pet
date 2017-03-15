@@ -30808,6 +30808,7 @@
 
 	      upload.end(function (err, response) {
 	        if (err) {
+	          showUnSuccesfullMessage(props, err);
 	          console.error(err);
 	        }
 
@@ -30826,20 +30827,20 @@
 	          };
 
 	          var headers = { 'Content-Type': 'application/json' };
-	          var props = _this2.props;
+	          var _props = _this2.props;
 
 	          fetch('https://items-api.herokuapp.com/api/items', {
 	            method: 'POST',
 	            headers: headers,
 	            body: JSON.stringify({ item: adaptedItem })
 	          }).then(function (response) {
-	            clearForm(props);
+	            clearForm(_props);
 	            closePanel();
-	            showSuccesfullMessage(props);
+	            showSuccesfullMessage(_props);
 
 	            console.log(response);
 	          }).catch(function (err) {
-	            showUnSuccesfullMessage(props, err);
+	            showUnSuccesfullMessage(_props, err);
 	            console.log(err);
 	          });
 	        }

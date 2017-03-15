@@ -129,6 +129,7 @@ class NewPetFound extends React.Component {
 
     upload.end((err, response) => {
       if (err) {
+        showUnSuccesfullMessage(props, err)
         console.error(err);
       }
 
