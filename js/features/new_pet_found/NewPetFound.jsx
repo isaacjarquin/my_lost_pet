@@ -133,40 +133,38 @@ class NewPetFound extends React.Component {
       }
 
       if (response.body.secure_url !== '') {
-        console.error(response);
         this.props.setImageUrl(response.body.secure_url)
+
+        const adaptedItem = {
+          name: this.props.pet.founderName,
+          email: this.props.pet.founderEmail,
+          kind: this.props.pet.petType,
+          size: this.props.pet.size,
+          date: this.props.pet.foundDate,
+          location: this.props.pet.location,
+          info: this.props.pet.description,
+          image: response.body.secure_url
+        }
+
+        const headers = { 'Content-Type': 'application/json' }
+        const props = this.props
+
+        fetch('https://items-api.herokuapp.com/api/items', {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify({ item: adaptedItem })
+        }).then(function (response) {
+          clearForm(props)
+          closePanel()
+          showSuccesfullMessage(props)
+
+          console.log(response)
+        }).catch(function (err) {
+          showUnSuccesfullMessage(props, err)
+          console.log(err)
+        })
       }
     });
-
-
-    const adaptedItem = {
-      name: this.props.pet.founderName,
-      email: this.props.pet.founderEmail,
-      kind: this.props.pet.petType,
-      size: this.props.pet.size,
-      date: this.props.pet.foundDate,
-      location: this.props.pet.location,
-      info: this.props.pet.description,
-      image: this.props.pet.imageUrl
-    }
-
-    const headers = { 'Content-Type': 'application/json' }
-    const props = this.props
-
-    fetch('https://items-api.herokuapp.com/api/items', {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ item: adaptedItem })
-    }).then(function (response) {
-      clearForm(props)
-      closePanel()
-      showSuccesfullMessage(props)
-
-      console.log(response)
-    }).catch(function (err) {
-      showUnSuccesfullMessage(props, err)
-      console.log(err)
-    })
 
     event.preventDefault()
   }

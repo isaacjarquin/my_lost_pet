@@ -30812,38 +30812,37 @@
 	        }
 
 	        if (response.body.secure_url !== '') {
-	          console.error(response);
 	          _this2.props.setImageUrl(response.body.secure_url);
+
+	          var adaptedItem = {
+	            name: _this2.props.pet.founderName,
+	            email: _this2.props.pet.founderEmail,
+	            kind: _this2.props.pet.petType,
+	            size: _this2.props.pet.size,
+	            date: _this2.props.pet.foundDate,
+	            location: _this2.props.pet.location,
+	            info: _this2.props.pet.description,
+	            image: response.body.secure_url
+	          };
+
+	          var headers = { 'Content-Type': 'application/json' };
+	          var props = _this2.props;
+
+	          fetch('https://items-api.herokuapp.com/api/items', {
+	            method: 'POST',
+	            headers: headers,
+	            body: JSON.stringify({ item: adaptedItem })
+	          }).then(function (response) {
+	            clearForm(props);
+	            closePanel();
+	            showSuccesfullMessage(props);
+
+	            console.log(response);
+	          }).catch(function (err) {
+	            showUnSuccesfullMessage(props, err);
+	            console.log(err);
+	          });
 	        }
-	      });
-
-	      var adaptedItem = {
-	        name: this.props.pet.founderName,
-	        email: this.props.pet.founderEmail,
-	        kind: this.props.pet.petType,
-	        size: this.props.pet.size,
-	        date: this.props.pet.foundDate,
-	        location: this.props.pet.location,
-	        info: this.props.pet.description,
-	        image: this.props.pet.imageUrl
-	      };
-
-	      var headers = { 'Content-Type': 'application/json' };
-	      var props = this.props;
-
-	      fetch('https://items-api.herokuapp.com/api/items', {
-	        method: 'POST',
-	        headers: headers,
-	        body: JSON.stringify({ item: adaptedItem })
-	      }).then(function (response) {
-	        clearForm(props);
-	        closePanel();
-	        showSuccesfullMessage(props);
-
-	        console.log(response);
-	      }).catch(function (err) {
-	        showUnSuccesfullMessage(props, err);
-	        console.log(err);
 	      });
 
 	      event.preventDefault();
@@ -44051,7 +44050,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'panel-image' },
-	            React.createElement('img', { src: this.props.image, className: 'img-responsive', alt: 'Image' })
+	            React.createElement('img', { src: this.props.imageUrl, className: 'img-responsive', alt: 'Image' })
 	          ),
 	          React.createElement(
 	            'div',
