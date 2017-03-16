@@ -134,40 +134,44 @@ class NewPetFound extends React.Component {
       }
 
       if (response.body.secure_url !== '') {
-        this.props.setImageUrl(response.body.secure_url)
-
-        const adaptedItem = {
-          name: this.props.pet.founderName,
-          email: this.props.pet.founderEmail,
-          kind: this.props.pet.petType,
-          size: this.props.pet.size,
-          date: this.props.pet.foundDate,
-          location: this.props.pet.location,
-          info: this.props.pet.description,
-          image: response.body.secure_url
-        }
-
-        const headers = { 'Content-Type': 'application/json' }
-        const props = this.props
-
-        fetch('https://items-api.herokuapp.com/api/items', {
-          method: 'POST',
-          headers: headers,
-          body: JSON.stringify({ item: adaptedItem })
-        }).then(function (response) {
-          clearForm(props)
-          closePanel()
-          showSuccesfullMessage(props)
-
-          console.log(response)
-        }).catch(function (err) {
-          showUnSuccesfullMessage(props, err)
-          console.log(err)
-        })
+        this.sendDetails(response.body)
       }
     });
 
     event.preventDefault()
+  }
+
+  sendDetails({secure_url}) {
+    this.props.setImageUrl(secure_url)
+
+    const adaptedItem = {
+      name: this.props.pet.founderName,
+      email: this.props.pet.founderEmail,
+      kind: this.props.pet.petType,
+      size: this.props.pet.size,
+      date: this.props.pet.foundDate,
+      location: this.props.pet.location,
+      info: this.props.pet.description,
+      image: secure_url
+    }
+
+    const headers = { 'Content-Type': 'application/json' }
+    const props = this.props
+
+    fetch('http://localhost:4000/api/items', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ item: adaptedItem })
+    }).then(function (response) {
+      clearForm(props)
+      closePanel()
+      showSuccesfullMessage(props)
+
+      console.log(response)
+    }).catch(function (err) {
+      showUnSuccesfullMessage(props, err)
+      console.log(err)
+    })
   }
 
   onOpenClick () {
@@ -190,7 +194,6 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.pet.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
-
             <div className='panel panel-default'>
               <div className='panel-heading'>
                 <h4 className='panel-title w3-center'>

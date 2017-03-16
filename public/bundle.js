@@ -30813,40 +30813,47 @@
 	        }
 
 	        if (response.body.secure_url !== '') {
-	          _this2.props.setImageUrl(response.body.secure_url);
-
-	          var adaptedItem = {
-	            name: _this2.props.pet.founderName,
-	            email: _this2.props.pet.founderEmail,
-	            kind: _this2.props.pet.petType,
-	            size: _this2.props.pet.size,
-	            date: _this2.props.pet.foundDate,
-	            location: _this2.props.pet.location,
-	            info: _this2.props.pet.description,
-	            image: response.body.secure_url
-	          };
-
-	          var headers = { 'Content-Type': 'application/json' };
-	          var _props = _this2.props;
-
-	          fetch('https://items-api.herokuapp.com/api/items', {
-	            method: 'POST',
-	            headers: headers,
-	            body: JSON.stringify({ item: adaptedItem })
-	          }).then(function (response) {
-	            clearForm(_props);
-	            closePanel();
-	            showSuccesfullMessage(_props);
-
-	            console.log(response);
-	          }).catch(function (err) {
-	            showUnSuccesfullMessage(_props, err);
-	            console.log(err);
-	          });
+	          _this2.sendDetails(response.body);
 	        }
 	      });
 
 	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'sendDetails',
+	    value: function sendDetails(_ref) {
+	      var secure_url = _ref.secure_url;
+
+	      this.props.setImageUrl(secure_url);
+
+	      var adaptedItem = {
+	        name: this.props.pet.founderName,
+	        email: this.props.pet.founderEmail,
+	        kind: this.props.pet.petType,
+	        size: this.props.pet.size,
+	        date: this.props.pet.foundDate,
+	        location: this.props.pet.location,
+	        info: this.props.pet.description,
+	        image: secure_url
+	      };
+
+	      var headers = { 'Content-Type': 'application/json' };
+	      var props = this.props;
+
+	      fetch('http://localhost:4000/api/items', {
+	        method: 'POST',
+	        headers: headers,
+	        body: JSON.stringify({ item: adaptedItem })
+	      }).then(function (response) {
+	        clearForm(props);
+	        closePanel();
+	        showSuccesfullMessage(props);
+
+	        console.log(response);
+	      }).catch(function (err) {
+	        showUnSuccesfullMessage(props, err);
+	        console.log(err);
+	      });
 	    }
 	  }, {
 	    key: 'onOpenClick',
@@ -43841,7 +43848,7 @@
 	      return newColection;
 	    };
 
-	    fetch('https://items-api.herokuapp.com/api/items', {
+	    fetch('http://localhost:4000/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
