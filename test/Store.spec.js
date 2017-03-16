@@ -22,7 +22,7 @@ describe('Store', () => {
       size: '',
       foundDate: '',
       location: '',
-      petImage: '',
+      images: [],
       extraDescription: '',
       extraDescriptionHidden: '',
       showExtraInfo: false,
@@ -68,8 +68,7 @@ describe('Store', () => {
   })
 
   it('should handle setActivePage actions', () => {
-    const pets = {pets: pets}
-    const state = rootReducer({activePage: 1, pets: pets, pageSize: 9}, {type: 'setActivePage', value: 2})
+    const state = rootReducer({activePage: 1, pets: {pets: pets}, pageSize: 9}, {type: 'setActivePage', value: 2})
     const lastPet = {
       'breading': 'Persa',
       'city': 'Santa Cruz de Tenerife',
@@ -150,12 +149,6 @@ describe('Store', () => {
     expect(state.pet.location).to.deep.equal('I do care a lot')
   })
 
-  it('should handle setPetImage actions', () => {
-    const state = rootReducer({pet: {petImage: 'dont care'}}, {type: 'setPetImage', value: 'I do care a lot'})
-
-    expect(state.pet.petImage).to.deep.equal('I do care a lot')
-  })
-
   it('should handle setPetDescription actions', () => {
     const state = rootReducer({pet: {description: 'dont care'}}, {type: 'setPetDescription', value: 'I do care a lot'})
 
@@ -185,5 +178,11 @@ describe('Store', () => {
     const state = rootReducer({alert: {type: '', message: '', visible: 'displayNone'}}, {type: 'setAlerts', value: newState})
 
     expect(state.alert).to.deep.equal(newState.alert)
+  })
+
+  it('should handle setImages actions', () => {
+    const state = rootReducer({pet: {images: []}}, {type: 'setImages', value: ['http://www.example.com']})
+
+    expect(state.pet.images).to.deep.equal(['http://www.example.com'])
   })
 })

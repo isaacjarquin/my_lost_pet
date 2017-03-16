@@ -3,15 +3,13 @@ const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 
 import 'whatwg-fetch'
-import Dropzone from 'react-dropzone';
-import request from 'superagent';
+import Dropzone from 'react-dropzone'
+import request from 'superagent'
 
 const $ = require('jquery')
 
 const CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm'
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
-
-
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -26,7 +24,6 @@ const clearForm = (props) => {
   props.setPetFoundDate('')
   props.setPetLocation('')
   props.setPetDescription('')
-  props.setImageUrl('')
   props.setImages([])
 }
 
@@ -125,25 +122,23 @@ class NewPetFound extends React.Component {
   handleSubmit (event) {
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                        .field('file', this.props.pet.images[0]);
+                        .field('file', this.props.pet.images[0])
 
     upload.end((err, response) => {
       if (err) {
-        showUnSuccesfullMessage(props, err)
-        console.error(err);
+        showUnSuccesfullMessage(this.props, err)
+        console.error(err)
       }
 
       if (response.body.secure_url !== '') {
         this.sendDetails(response.body)
       }
-    });
+    })
 
     event.preventDefault()
   }
 
-  sendDetails({secure_url}) {
-    this.props.setImageUrl(secure_url)
-
+  sendDetails ({secure_url}) {
     const adaptedItem = {
       name: this.props.pet.founderName,
       email: this.props.pet.founderEmail,
@@ -175,9 +170,8 @@ class NewPetFound extends React.Component {
   }
 
   onOpenClick () {
-    this.dropzone.open();
+    this.dropzone.open()
   }
-
 
   render () {
     return (
@@ -208,8 +202,8 @@ class NewPetFound extends React.Component {
                       <Dropzone
                         className='image-drop-zone'
                         multiple={false}
-                        accept="image/*"
-                        ref={(node) => { this.dropzone = node; }}
+                        accept='image/*'
+                        ref={(node) => { this.dropzone = node }}
                         onDrop={this.onImageDrop}>
                         <p>Arrastra la imagen o haz click para selectionarla.</p>
                       </Dropzone>
@@ -218,8 +212,7 @@ class NewPetFound extends React.Component {
                       {this.props.pet.images.length > 0 ? <div>
                         <h4 className='title'>Uploading files...</h4>
                         <img className='image' src={this.props.pet.images[0].preview} />
-                        </div> : null
-                      }
+                      </div> : null}
                     </div>
                   </div>
                 </div>
@@ -244,8 +237,7 @@ NewPetFound.propTypes = {
   setPetSize: func,
   setPetFoundDate: func,
   setPetLocation: func,
-  setPetDescription: func,
-  setImageUrl: func
+  setPetDescription: func
 }
 
 module.exports = connector(NewPetFound)

@@ -21090,7 +21090,6 @@
 	    reducerPetSize = _require.reducerPetSize,
 	    reducerPetFoundDate = _require.reducerPetFoundDate,
 	    reducerPetLocation = _require.reducerPetLocation,
-	    reducerImageUrl = _require.reducerImageUrl,
 	    reducerPetImages = _require.reducerPetImages,
 	    reducerPetDescription = _require.reducerPetDescription;
 
@@ -21131,7 +21130,6 @@
 	var SET_PET_SIZE = 'setPetSize';
 	var SET_PET_FOUND_DATE = 'setPetFoundDate';
 	var SET_PET_LOCATION = 'setPetLocation';
-	var SET_IMAGE_URL = 'setImageUrl';
 	var SET_IMAGES = 'setImages';
 	var SET_PET_DESCRIPTION = 'setPetDescription';
 	var SET_CONTACT_US_NAME = 'setContactUsName';
@@ -21180,8 +21178,6 @@
 	      return reducerPetFoundDate(state, action);
 	    case SET_PET_LOCATION:
 	      return reducerPetLocation(state, action);
-	    case SET_IMAGE_URL:
-	      return reducerImageUrl(state, action);
 	    case SET_IMAGES:
 	      return reducerPetImages(state, action);
 	    case SET_PET_DESCRIPTION:
@@ -21226,7 +21222,6 @@
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
-	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
 	      description: state.pet.description,
 	      extraDescription: state.pet.extraDescription,
@@ -21286,9 +21281,6 @@
 	    },
 	    setPetLocation: function setPetLocation(petLocation) {
 	      dispatch({ type: SET_PET_LOCATION, value: petLocation });
-	    },
-	    setImageUrl: function setImageUrl(imageUrl) {
-	      dispatch({ type: SET_IMAGE_URL, value: imageUrl });
 	    },
 	    setImages: function setImages(images) {
 	      dispatch({ type: SET_IMAGES, value: images });
@@ -23226,24 +23218,6 @@
 	  return newState;
 	};
 
-	var reducerImageUrl = function reducerImageUrl(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    pet: {
-	      founderName: state.pet.founderName,
-	      founderEmail: state.pet.founderEmail,
-	      petType: state.pet.petType,
-	      size: state.pet.size,
-	      foundDate: state.pet.foundDate,
-	      location: state.pet.location,
-	      imageUrl: action.value,
-	      images: state.pet.images,
-	      description: state.pet.description
-	    }
-	  });
-	  return newState;
-	};
-
 	var reducerPetImages = function reducerPetImages(state, action) {
 	  var newState = {};
 	  Object.assign(newState, state, {
@@ -23287,7 +23261,6 @@
 	  reducerPetSize: reducerPetSize,
 	  reducerPetFoundDate: reducerPetFoundDate,
 	  reducerPetLocation: reducerPetLocation,
-	  reducerImageUrl: reducerImageUrl,
 	  reducerPetImages: reducerPetImages,
 	  reducerPetDescription: reducerPetDescription
 	};
@@ -23669,7 +23642,6 @@
 	    size: '',
 	    foundDate: '',
 	    location: '',
-	    imageUrl: '',
 	    images: [],
 	    description: '',
 	    extraDescription: '',
@@ -30676,7 +30648,6 @@
 	  props.setPetFoundDate('');
 	  props.setPetLocation('');
 	  props.setPetDescription('');
-	  props.setImageUrl('');
 	  props.setImages([]);
 	};
 
@@ -30808,7 +30779,7 @@
 
 	      upload.end(function (err, response) {
 	        if (err) {
-	          showUnSuccesfullMessage(props, err);
+	          showUnSuccesfullMessage(_this2.props, err);
 	          console.error(err);
 	        }
 
@@ -30823,8 +30794,6 @@
 	    key: 'sendDetails',
 	    value: function sendDetails(_ref) {
 	      var secure_url = _ref.secure_url;
-
-	      this.props.setImageUrl(secure_url);
 
 	      var adaptedItem = {
 	        name: this.props.pet.founderName,
@@ -31015,8 +30984,7 @@
 	  setPetSize: func,
 	  setPetFoundDate: func,
 	  setPetLocation: func,
-	  setPetDescription: func,
-	  setImageUrl: func
+	  setPetDescription: func
 	};
 
 	module.exports = connector(NewPetFound);

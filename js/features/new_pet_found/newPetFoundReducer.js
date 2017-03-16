@@ -106,24 +106,6 @@ const reducerPetLocation = (state, action) => {
   return newState
 }
 
-const reducerImageUrl = (state, action) => {
-  const newState = {}
-  Object.assign(newState, state, {
-    pet: {
-      founderName: state.pet.founderName,
-      founderEmail: state.pet.founderEmail,
-      petType: state.pet.petType,
-      size: state.pet.size,
-      foundDate: state.pet.foundDate,
-      location: state.pet.location,
-      imageUrl: action.value,
-      images: state.pet.images,
-      description: state.pet.description
-    }
-  })
-  return newState
-}
-
 const reducerPetImages = (state, action) => {
   const newState = {}
   Object.assign(newState, state, {
@@ -167,7 +149,6 @@ module.exports = {
   reducerPetSize,
   reducerPetFoundDate,
   reducerPetLocation,
-  reducerImageUrl,
   reducerPetImages,
   reducerPetDescription
 }
