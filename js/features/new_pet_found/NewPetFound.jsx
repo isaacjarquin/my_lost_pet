@@ -120,6 +120,10 @@ class NewPetFound extends React.Component {
     this.props.setImages(event.target.value)
   }
   handleSubmit (event) {
+    $('#button-icon').removeClass('fa fa-paper-plane')
+    $('#button-icon').addClass('loader')
+    $('#details-button').addClass('disable-button')
+
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
                         .field('file', this.props.pet.images[0])
@@ -158,12 +162,20 @@ class NewPetFound extends React.Component {
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
     }).then(function (response) {
+      $('#button-icon').removeClass('loader')
+      $('#button-icon').addClass('fa fa-paper-plane')
+      $('#details-button').removeClass('disable-button')
+
       clearForm(props)
       closePanel()
       showSuccesfullMessage(props)
 
       console.log(response)
     }).catch(function (err) {
+      $('#button-icon').removeClass('loader')
+      $('#button-icon').addClass('fa fa-paper-plane')
+      $('#details-button').removeClass('disable-button')
+
       showUnSuccesfullMessage(props, err)
       console.log(err)
     })
@@ -218,8 +230,7 @@ class NewPetFound extends React.Component {
                 </div>
               </div>
             </div>
-
-            <p><button onSubmit={this.handleSubmit} className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> ENVIAR MENSAJE</button></p>
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>

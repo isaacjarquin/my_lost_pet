@@ -73,6 +73,41 @@ footer.w3-container.w3-grey.w3-center.w3-padding-xlarge p {
 .alert {
   margin-bottom: 0;
   border-radius: 0; }
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid darkgrey;
+  border-right: 10px solid lightgrey;
+  border-bottom: 10px solid grey;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  -webkit-animation: spin 2s linear infinite;
+          animation: spin 2s linear infinite;
+  position: absolute;
+  margin-left: -50px;
+  margin-top: -11px; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+.disable-button {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.1 !important; }
+
 .missing-pet-form {
   border: 1px solid lightgrey;
   margin-bottom: 10px; }
