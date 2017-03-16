@@ -216,7 +216,8 @@ p.form-introduction {
 
 .panel-description_title {
   font-weight: bold;
-  padding-top: 10px; }
+  padding-top: 10px;
+  font-size: 0.95em; }
 
 .panel-description_iteraction {
   bottom: 0;
@@ -235,8 +236,9 @@ p.form-introduction {
 
 .panel-date {
   padding: 10px;
-  font-size: 1.3em;
-  opacity: 0.4; }
+  font-size: 1.2em;
+  opacity: 0.6;
+  font-weight: bold; }
 
 .third-panel {
   position: relative;

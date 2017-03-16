@@ -44051,7 +44051,7 @@
 	          React.createElement(
 	            'div',
 	            { className: 'panel-date w3-center' },
-	            this.props.breading,
+	            this.props.petType,
 	            ', ',
 	            this.props.size
 	          ),
