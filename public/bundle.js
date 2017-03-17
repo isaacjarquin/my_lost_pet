@@ -30777,14 +30777,15 @@
 	    value: function handleSubmit(event) {
 	      var _this2 = this;
 
-	      $('#button-icon').removeClass('fa fa-paper-plane');
-	      $('#button-icon').addClass('loader');
 	      $('#details-button').addClass('disable-button');
+	      $('.loader-container').show();
 
 	      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', this.props.pet.images[0]);
 
 	      upload.end(function (err, response) {
 	        if (err) {
+	          $('#details-button').removeClass('disable-button');
+	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(_this2.props, err);
 	          console.error(err);
 	        }
@@ -30820,9 +30821,8 @@
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
 	      }).then(function (response) {
-	        $('#button-icon').removeClass('loader');
-	        $('#button-icon').addClass('fa fa-paper-plane');
 	        $('#details-button').removeClass('disable-button');
+	        $('.loader-container').hide();
 
 	        clearForm(props);
 	        closePanel();
@@ -30830,9 +30830,8 @@
 
 	        console.log(response);
 	      }).catch(function (err) {
-	        $('#button-icon').removeClass('loader');
-	        $('#button-icon').addClass('fa fa-paper-plane');
 	        $('#details-button').removeClass('disable-button');
+	        $('.loader-container').hide();
 
 	        showUnSuccesfullMessage(props, err);
 	        console.log(err);
@@ -30972,7 +30971,7 @@
 	              null,
 	              React.createElement(
 	                'button',
-	                { onSubmit: this.handleSubmit, id: 'details-button', className: 'disable-button w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                { onSubmit: this.handleSubmit, id: 'details-button', className: 'w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
 	                React.createElement('i', { className: 'fa fa-paper-plane', id: 'button-icon' }),
 	                ' ENVIAR MENSAJE'
 	              )
@@ -43831,7 +43830,7 @@
 	      return newColection;
 	    };
 
-	    fetch('https://items-api.herokuapp.com/api/items', {
+	    fetch('http://localhost:4000/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {

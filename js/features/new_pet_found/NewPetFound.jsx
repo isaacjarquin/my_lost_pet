@@ -122,9 +122,8 @@ class NewPetFound extends React.Component {
     this.props.setImages(event.target.value)
   }
   handleSubmit (event) {
-    $('#button-icon').removeClass('fa fa-paper-plane')
-    $('#button-icon').addClass('loader')
     $('#details-button').addClass('disable-button')
+    $('.loader-container').show()
 
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
@@ -132,6 +131,8 @@ class NewPetFound extends React.Component {
 
     upload.end((err, response) => {
       if (err) {
+        $('#details-button').removeClass('disable-button')
+        $('.loader-container').hide()
         showUnSuccesfullMessage(this.props, err)
         console.error(err)
       }
@@ -164,9 +165,8 @@ class NewPetFound extends React.Component {
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
     }).then(function (response) {
-      $('#button-icon').removeClass('loader')
-      $('#button-icon').addClass('fa fa-paper-plane')
       $('#details-button').removeClass('disable-button')
+      $('.loader-container').hide()
 
       clearForm(props)
       closePanel()
@@ -174,9 +174,8 @@ class NewPetFound extends React.Component {
 
       console.log(response)
     }).catch(function (err) {
-      $('#button-icon').removeClass('loader')
-      $('#button-icon').addClass('fa fa-paper-plane')
       $('#details-button').removeClass('disable-button')
+      $('.loader-container').hide()
 
       showUnSuccesfullMessage(props, err)
       console.log(err)
@@ -233,7 +232,7 @@ class NewPetFound extends React.Component {
               </div>
             </div>
             <DogLoader />
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='disable-button w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>
