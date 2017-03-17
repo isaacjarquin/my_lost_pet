@@ -1,8 +1,8 @@
 .loader {
-  border: 10px solid #f3f3f3;
-  border-top: 10px solid darkgrey;
-  border-right: 10px solid lightgrey;
-  border-bottom: 10px solid grey;
+  border-top: 10px solid #88A236;
+  border-right: 10px solid #AA9739;
+  border-bottom: 10px solid #AA6239;
+  border-left: 10px solid #AA3939;
   border-radius: 50%;
   width: 45px;
   height: 45px;
@@ -20,7 +20,6 @@
 .disable-button {
   pointer-events: none;
   cursor: default;
-  opacity: 0.1 !important;
 }
 
 .missing-pet-form {
