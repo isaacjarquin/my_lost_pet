@@ -20,6 +20,7 @@
 .disable-button {
   pointer-events: none;
   cursor: default;
+  opacity: 0.1 !important;
 }
 
 .missing-pet-form {

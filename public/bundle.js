@@ -30629,6 +30629,8 @@
 	    connector = _require.connector;
 
 	var Alerts = __webpack_require__(293);
+	var DogLoader = __webpack_require__(310);
+	DogLoader;
 
 	var $ = __webpack_require__(295);
 
@@ -30964,12 +30966,13 @@
 	                )
 	              )
 	            ),
+	            React.createElement(DogLoader, null),
 	            React.createElement(
 	              'p',
 	              null,
 	              React.createElement(
 	                'button',
-	                { onSubmit: this.handleSubmit, id: 'details-button', className: 'w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                { onSubmit: this.handleSubmit, id: 'details-button', className: 'disable-button w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
 	                React.createElement('i', { className: 'fa fa-paper-plane', id: 'button-icon' }),
 	                ' ENVIAR MENSAJE'
 	              )
@@ -43828,7 +43831,7 @@
 	      return newColection;
 	    };
 
-	    fetch('http://localhost:4000/api/items', {
+	    fetch('https://items-api.herokuapp.com/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
@@ -45652,6 +45655,102 @@
 
 /***/ },
 /* 309 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(311);
+	}
+
+	var DogLoader = function (_React$Component) {
+	  _inherits(DogLoader, _React$Component);
+
+	  function DogLoader() {
+	    _classCallCheck(this, DogLoader);
+
+	    return _possibleConstructorReturn(this, (DogLoader.__proto__ || Object.getPrototypeOf(DogLoader)).apply(this, arguments));
+	  }
+
+	  _createClass(DogLoader, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'loader-container' },
+	        React.createElement(
+	          'svg',
+	          { className: 'spinner', stroke: '#000', width: '120', height: '120', viewBox: '0 0 206 206', xmlns: 'http://www.w3.org/2000/svg' },
+	          React.createElement(
+	            'defs',
+	            null,
+	            React.createElement(
+	              'clipPath',
+	              { id: 'cut-off-bottom' },
+	              React.createElement('rect', { x: '0', y: '0', width: '200', height: '100', fill: '#000' })
+	            )
+	          ),
+	          React.createElement('circle', { className: 'path', fill: 'none', 'stroke-width': '6', 'stroke-linecap': 'round', cx: '103', cy: '103', r: '100' }),
+	          React.createElement('circle', { className: 'path', cx: '103', cy: '103', r: '100', fill: 'none', stroke: '#000', 'stroke-linecap': 'round', 'stroke-width': '6', 'stroke-dasharray': '0.001,17' })
+	        ),
+	        React.createElement(
+	          'svg',
+	          { id: 'scottie-loader', className: 'loader-dog', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 207.95 211.52' },
+	          React.createElement(
+	            'defs',
+	            null,
+	            React.createElement(
+	              'radialGradient',
+	              { id: 'a', cx: '100.23', cy: '111.94', r: '146.5', gradientTransform: 'matrix(.68 0 0 .68 31.58 35.11)', gradientUnits: 'userSpaceOnUse' },
+	              React.createElement('stop', { offset: '.51', 'stop-color': '#bedeea' }),
+	              React.createElement('stop', { offset: '.68', 'stop-color': '#bcdce7' }),
+	              React.createElement('stop', { offset: '.79', 'stop-color': '#b5d4df' }),
+	              React.createElement('stop', { offset: '.88', 'stop-color': '#aac6d0' }),
+	              React.createElement('stop', { offset: '.96', 'stop-color': '#99b4bb' }),
+	              React.createElement('stop', { offset: '1', 'stop-color': '#90a9af' })
+	            )
+	          ),
+	          React.createElement(
+	            'title',
+	            null,
+	            'dog-incircle'
+	          ),
+	          React.createElement('circle', { cx: '100', cy: '111.52', r: '100', fill: '#9ec4d6' }),
+	          React.createElement('path', { d: 'M125 199.08l-13.84-24.34 8.9-26.69-17 .91-39.27-30.15c-10.45 17.2-25.15 37.07-39.33 58.23a100.13 100.13 0 0 0 95.17 32.54l-6.13-16.86z', fill: '#010101' }),
+	          React.createElement('path', { d: 'M197.73 71.64l10.22 6.71-31-58.29a10.75 10.75 0 0 0 4.47-13.3A10.82 10.82 0 0 0 161 13.83l-66.44 43L94 40.87l-6 14.8-7-18.53 1.22 19.66-11.85-11 7.39 21.82-23.52 15.24 8.46 31 .39.17c-3.7 16.38-7.16 32.53-7.16 36.58l44.78 26.27 21.53-35.81 18.49 18.66-7.24-18.76 14.22 14.64-9-21.29 19.62 13.81-14.6-18.31 18.92 14.2-12.43-18.92L165 138.47l-10.53-20.57 16.45 14.16-6.58-16.85 16.1 10.77-10-17.71 14.48 9-11.14-16.62 15.31 10.87-12.31-16.73 17.74 13.34-12.23-18 15.05 11.14-9.77-18.75 14.86 13.12-9-18.41 13.27 12.59z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	          React.createElement('path', { className: 'left-ear', d: 'M88.42 75.73C77.16 62.28 62.48 44.71 45 45.62c-1.61 15.74 8.82 41.9 24.73 48.73a44.07 44.07 0 0 1 18.69-18.62z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	          React.createElement('path', { d: 'M167.92 2.39A10.16 10.16 0 0 0 164 5.52a15 15 0 0 1 1.94-1A11.63 11.63 0 0 1 180 9.01a11.06 11.06 0 0 0-.47-1.72 9 9 0 0 0-11.61-4.9zM114.25 64.09a11.82 11.82 0 1 0 5.75 15.6 11.65 11.65 0 0 0-5.75-15.6zm5.38 10.61a6.46 6.46 0 0 1-8.57 3.13 6.35 6.35 0 0 1-3.06-8.49 6.46 6.46 0 0 1 8.57-3.13 6.35 6.35 0 0 1 3.06 8.49z', fill: '#fff', 'fill-rule': 'evenodd' }),
+	          React.createElement('path', { className: 'right-ear', d: 'M69.42 78.07c-15.3-4.38-38.75-1.12-49.71 17.38 11.82 10.64 39.18 17.46 54 8.63a43.93 43.93 0 0 1-4.29-26.01z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	          React.createElement('path', { fill: '#8cbd44', 'fill-rule': 'evenodd', d: 'M123.36 143.82l-66.62-22.91-5.14 16.33 68.33 24.02 3.43-17.44' }),
+	          React.createElement('path', { className: 'eyelid', fill: '#010101', d: 'M85.88 68.878l24.722-16.19 1.802 2.754-24.72 16.19z' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return DogLoader;
+	}(React.Component);
+
+	module.exports = DogLoader;
+
+/***/ },
+/* 311 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

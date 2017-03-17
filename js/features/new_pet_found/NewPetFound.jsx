@@ -1,6 +1,8 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
+const DogLoader = require('./dog-loader')
+DogLoader
 
 import 'whatwg-fetch'
 import Dropzone from 'react-dropzone'
@@ -230,7 +232,8 @@ class NewPetFound extends React.Component {
                 </div>
               </div>
             </div>
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
+            <DogLoader />
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='disable-button w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>
