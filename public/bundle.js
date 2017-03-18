@@ -30630,7 +30630,6 @@
 
 	var Alerts = __webpack_require__(293);
 	var DogLoader = __webpack_require__(310);
-	DogLoader;
 
 	var $ = __webpack_require__(295);
 
@@ -43830,7 +43829,7 @@
 	      return newColection;
 	    };
 
-	    fetch('http://localhost:4000/api/items', {
+	    fetch('https://items-api.herokuapp.com/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {

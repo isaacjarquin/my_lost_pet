@@ -2,7 +2,6 @@ const React = require('react')
 const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('./dog-loader')
-DogLoader
 
 import 'whatwg-fetch'
 import Dropzone from 'react-dropzone'
