@@ -55,7 +55,7 @@ const Search = React.createClass({
           size: item.size,
           foundDate: item.date,
           location: item.location,
-          petImage: item.image,
+          imageUrl: item.image,
           description: item.info,
           extraDescription: extraDescription(item.info),
           extraDescriptionHidden: extraDescriptionHidden(item.info),

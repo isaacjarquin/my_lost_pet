@@ -8,7 +8,8 @@ const reducerPetFounderName = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
@@ -25,7 +26,8 @@ const reducerPetFounderEmail = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
@@ -42,7 +44,8 @@ const reducerPetType = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
@@ -59,7 +62,8 @@ const reducerPetSize = (state, action) => {
       size: action.value,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
@@ -76,7 +80,8 @@ const reducerPetFoundDate = (state, action) => {
       size: state.pet.size,
       foundDate: action.value,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
@@ -93,14 +98,15 @@ const reducerPetLocation = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: action.value,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: state.pet.description
     }
   })
   return newState
 }
 
-const reducerPetImage = (state, action) => {
+const reducerPetImages = (state, action) => {
   const newState = {}
   Object.assign(newState, state, {
     pet: {
@@ -110,7 +116,8 @@ const reducerPetImage = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: action.value,
+      imageUrl: state.pet.imageUrl,
+      images: action.value,
       description: state.pet.description
     }
   })
@@ -127,7 +134,8 @@ const reducerPetDescription = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
-      petImage: state.pet.petImage,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
       description: action.value
     }
   })
@@ -141,6 +149,6 @@ module.exports = {
   reducerPetSize,
   reducerPetFoundDate,
   reducerPetLocation,
-  reducerPetImage,
+  reducerPetImages,
   reducerPetDescription
 }

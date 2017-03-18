@@ -20,7 +20,7 @@ module.exports = {
     size: '',
     foundDate: '',
     location: '',
-    petImage: '',
+    images: [],
     description: '',
     extraDescription: '',
     extraDescriptionHidden: '',

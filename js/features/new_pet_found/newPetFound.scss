@@ -1,4 +1,76 @@
+.loader {
+  border-top: 10px solid #88A236;
+  border-right: 10px solid #AA9739;
+  border-bottom: 10px solid #AA6239;
+  border-left: 10px solid #AA3939;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  margin-left: -50px;
+  margin-top: -11px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.disable-button {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.1 !important;
+}
+
 .missing-pet-form {
   border: 1px solid lightgrey;
   margin-bottom: 10px;
+
+  .panel-heading {
+    background-color: white;
+    border-color: white;
+  }
+
+  .drop-zone-panel {
+    width: 20%;
+  }
+
+  .drop-zone {
+    display: block;
+
+    .images-drop {
+      float: left;
+      width: 50%;
+
+      .image-drop-zone {
+        width: 100%;
+        height: 204px;
+        border-width: 2px;
+        border-color: #666;
+        border-style: dashed;
+        border-radius: 5px;
+
+        p {
+          margin-top: 10%;
+        }
+      }
+    }
+
+    .image-preview {
+      float: left;
+      width: 50%;
+
+      .title {
+        margin: 0;
+        margin-bottom: 20px;
+      }
+
+      .image {
+        width: 60%;
+        height: 160px;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

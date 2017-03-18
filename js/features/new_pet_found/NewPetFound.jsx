@@ -1,8 +1,16 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
+const DogLoader = require('../dog_loader/DogLoader')
+
 import 'whatwg-fetch'
+import Dropzone from 'react-dropzone'
+import request from 'superagent'
+
 const $ = require('jquery')
+
+const CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm'
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -17,7 +25,7 @@ const clearForm = (props) => {
   props.setPetFoundDate('')
   props.setPetLocation('')
   props.setPetDescription('')
-  props.setPetImage('')
+  props.setImages([])
 }
 
 const closePanel = () => {
@@ -74,8 +82,15 @@ class NewPetFound extends React.Component {
     this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
     this.handlePetDescription = this.handlePetDescription.bind(this)
-    this.handlePetImage = this.handlePetImage.bind(this)
+    this.handleImageUrl = this.handleImageUrl.bind(this)
+    this.handleImages = this.handleImages.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.onImageDrop = this.onImageDrop.bind(this)
+    this.onOpenClick = this.onOpenClick.bind(this)
+  }
+
+  onImageDrop (acceptedFiles) {
+    this.props.setImages(acceptedFiles)
   }
 
   handleFounderName (event) {
@@ -99,10 +114,37 @@ class NewPetFound extends React.Component {
   handlePetDescription (event) {
     this.props.setPetDescription(event.target.value)
   }
-  handlePetImage (event) {
-    this.props.setPetImage(event.target.value)
+  handleImageUrl (event) {
+    this.props.setImageUrl(event.target.value)
+  }
+  handleImages (event) {
+    this.props.setImages(event.target.value)
   }
   handleSubmit (event) {
+    $('#details-button').addClass('disable-button')
+    $('.loader-container').show()
+
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', this.props.pet.images[0])
+
+    upload.end((err, response) => {
+      if (err) {
+        $('#details-button').removeClass('disable-button')
+        $('.loader-container').hide()
+        showUnSuccesfullMessage(this.props, err)
+        console.error(err)
+      }
+
+      if (response.body.secure_url !== '') {
+        this.sendDetails(response.body)
+      }
+    })
+
+    event.preventDefault()
+  }
+
+  sendDetails ({secure_url}) {
     const adaptedItem = {
       name: this.props.pet.founderName,
       email: this.props.pet.founderEmail,
@@ -111,28 +153,36 @@ class NewPetFound extends React.Component {
       date: this.props.pet.foundDate,
       location: this.props.pet.location,
       info: this.props.pet.description,
-      image: this.props.pet.petImage
+      image: secure_url
     }
 
     const headers = { 'Content-Type': 'application/json' }
     const props = this.props
 
-    fetch('https://items-api.herokuapp.com/api/items', {
+    fetch('http://localhost:4000/api/items', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
     }).then(function (response) {
+      $('#details-button').removeClass('disable-button')
+      $('.loader-container').hide()
+
       clearForm(props)
       closePanel()
       showSuccesfullMessage(props)
 
       console.log(response)
     }).catch(function (err) {
+      $('#details-button').removeClass('disable-button')
+      $('.loader-container').hide()
+
       showUnSuccesfullMessage(props, err)
       console.log(err)
     })
+  }
 
-    event.preventDefault()
+  onOpenClick () {
+    this.dropzone.open()
   }
 
   render () {
@@ -150,8 +200,38 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.pet.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
             <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
             <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
-            <input value={this.props.pet.petImage} onChange={this.handlePetImage} className='file-input w3-padding w3-white w3-border' type='file' name='Anadir foto' />
-            <p><button onSubmit={this.handleSubmit} className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> ENVIAR MENSAJE</button></p>
+            <div className='panel panel-default'>
+              <div className='panel-heading'>
+                <h4 className='panel-title w3-center'>
+                  <a data-toggle='collapse' data-parent='#accordion' href='#dropzone'>
+                  Adjuntar imagen</a>
+                </h4>
+              </div>
+              <div id='dropzone' className='panel-collapse collapse'>
+                <div className='panel-body'>
+                  <div className='drop-zone'>
+                    <div className='images-drop'>
+                      <Dropzone
+                        className='image-drop-zone'
+                        multiple={false}
+                        accept='image/*'
+                        ref={(node) => { this.dropzone = node }}
+                        onDrop={this.onImageDrop}>
+                        <p>Arrastra la imagen o haz click para selectionarla.</p>
+                      </Dropzone>
+                    </div>
+                    <div className='image-preview'>
+                      {this.props.pet.images.length > 0 ? <div>
+                        <h4 className='title'>Uploading files...</h4>
+                        <img className='image' src={this.props.pet.images[0].preview} />
+                      </div> : null}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <DogLoader />
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> ENVIAR MENSAJE</button></p>
           </form>
         </header>
       </div>
@@ -169,8 +249,7 @@ NewPetFound.propTypes = {
   setPetSize: func,
   setPetFoundDate: func,
   setPetLocation: func,
-  setPetDescription: func,
-  setPetImage: func
+  setPetDescription: func
 }
 
 module.exports = connector(NewPetFound)
