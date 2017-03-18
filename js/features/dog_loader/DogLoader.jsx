@@ -1,7 +1,7 @@
 const React = require('react')
 
 if (process.env.WEBPACK_BUILD) {
-  require('./dog-loader.scss')
+  require('./dogLoader.scss')
 }
 
 class DogLoader extends React.Component {

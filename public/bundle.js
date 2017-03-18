@@ -30629,7 +30629,7 @@
 	    connector = _require.connector;
 
 	var Alerts = __webpack_require__(293);
-	var DogLoader = __webpack_require__(314);
+	var DogLoader = __webpack_require__(316);
 
 	var $ = __webpack_require__(295);
 
@@ -45662,7 +45662,9 @@
 /* 311 */,
 /* 312 */,
 /* 313 */,
-/* 314 */
+/* 314 */,
+/* 315 */,
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45678,7 +45680,7 @@
 	var React = __webpack_require__(3);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(315);
+	  __webpack_require__(317);
 	}
 
 	var DogLoader = function (_React$Component) {
@@ -45752,7 +45754,7 @@
 	module.exports = DogLoader;
 
 /***/ },
-/* 315 */
+/* 317 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
