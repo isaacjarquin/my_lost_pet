@@ -20743,7 +20743,7 @@
 	  childRoutes: [{
 	    path: 'search',
 	    getComponent: function getComponent(location, cb) {
-	      cb(null, __webpack_require__(298));
+	      cb(null, __webpack_require__(300));
 	    }
 	  }]
 	};
@@ -29510,7 +29510,7 @@
 	var NewPetFound = __webpack_require__(283);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(297);
+	  __webpack_require__(299);
 	}
 
 	var Landing = function (_React$Component) {
@@ -30629,15 +30629,15 @@
 	    connector = _require.connector;
 
 	var Alerts = __webpack_require__(293);
-	var DogLoader = __webpack_require__(316);
+	var DogLoader = __webpack_require__(295);
 
-	var $ = __webpack_require__(295);
+	var $ = __webpack_require__(297);
 
 	var CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm';
 	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload';
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(296);
+	  __webpack_require__(298);
 	}
 
 	var clearForm = function clearForm(props) {
@@ -33932,6 +33932,106 @@
 
 /***/ },
 /* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(296);
+	}
+
+	var DogLoader = function (_React$Component) {
+	  _inherits(DogLoader, _React$Component);
+
+	  function DogLoader() {
+	    _classCallCheck(this, DogLoader);
+
+	    return _possibleConstructorReturn(this, (DogLoader.__proto__ || Object.getPrototypeOf(DogLoader)).apply(this, arguments));
+	  }
+
+	  _createClass(DogLoader, [{
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'dog-loader' },
+	        React.createElement(
+	          'div',
+	          { className: 'loader-container' },
+	          React.createElement(
+	            'svg',
+	            { className: 'spinner', stroke: '#000', width: '120', height: '120', viewBox: '0 0 206 206', xmlns: 'http://www.w3.org/2000/svg' },
+	            React.createElement(
+	              'defs',
+	              null,
+	              React.createElement(
+	                'clipPath',
+	                { id: 'cut-off-bottom' },
+	                React.createElement('rect', { x: '0', y: '0', width: '200', height: '100', fill: '#000' })
+	              )
+	            ),
+	            React.createElement('circle', { className: 'path', fill: 'none', 'stroke-width': '6', 'stroke-linecap': 'round', cx: '103', cy: '103', r: '100' }),
+	            React.createElement('circle', { className: 'path', cx: '103', cy: '103', r: '100', fill: 'none', stroke: '#000', 'stroke-linecap': 'round', 'stroke-width': '6', 'stroke-dasharray': '0.001,17' })
+	          ),
+	          React.createElement(
+	            'svg',
+	            { id: 'scottie-loader', className: 'loader-dog', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 207.95 211.52' },
+	            React.createElement(
+	              'defs',
+	              null,
+	              React.createElement(
+	                'radialGradient',
+	                { id: 'a', cx: '100.23', cy: '111.94', r: '146.5', gradientTransform: 'matrix(.68 0 0 .68 31.58 35.11)', gradientUnits: 'userSpaceOnUse' },
+	                React.createElement('stop', { offset: '.51', 'stop-color': '#bedeea' }),
+	                React.createElement('stop', { offset: '.68', 'stop-color': '#bcdce7' }),
+	                React.createElement('stop', { offset: '.79', 'stop-color': '#b5d4df' }),
+	                React.createElement('stop', { offset: '.88', 'stop-color': '#aac6d0' }),
+	                React.createElement('stop', { offset: '.96', 'stop-color': '#99b4bb' }),
+	                React.createElement('stop', { offset: '1', 'stop-color': '#90a9af' })
+	              )
+	            ),
+	            React.createElement(
+	              'title',
+	              null,
+	              'dog-incircle'
+	            ),
+	            React.createElement('circle', { cx: '100', cy: '111.52', r: '100', fill: '#9ec4d6' }),
+	            React.createElement('path', { d: 'M125 199.08l-13.84-24.34 8.9-26.69-17 .91-39.27-30.15c-10.45 17.2-25.15 37.07-39.33 58.23a100.13 100.13 0 0 0 95.17 32.54l-6.13-16.86z', fill: '#010101' }),
+	            React.createElement('path', { d: 'M197.73 71.64l10.22 6.71-31-58.29a10.75 10.75 0 0 0 4.47-13.3A10.82 10.82 0 0 0 161 13.83l-66.44 43L94 40.87l-6 14.8-7-18.53 1.22 19.66-11.85-11 7.39 21.82-23.52 15.24 8.46 31 .39.17c-3.7 16.38-7.16 32.53-7.16 36.58l44.78 26.27 21.53-35.81 18.49 18.66-7.24-18.76 14.22 14.64-9-21.29 19.62 13.81-14.6-18.31 18.92 14.2-12.43-18.92L165 138.47l-10.53-20.57 16.45 14.16-6.58-16.85 16.1 10.77-10-17.71 14.48 9-11.14-16.62 15.31 10.87-12.31-16.73 17.74 13.34-12.23-18 15.05 11.14-9.77-18.75 14.86 13.12-9-18.41 13.27 12.59z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	            React.createElement('path', { className: 'left-ear', d: 'M88.42 75.73C77.16 62.28 62.48 44.71 45 45.62c-1.61 15.74 8.82 41.9 24.73 48.73a44.07 44.07 0 0 1 18.69-18.62z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	            React.createElement('path', { d: 'M167.92 2.39A10.16 10.16 0 0 0 164 5.52a15 15 0 0 1 1.94-1A11.63 11.63 0 0 1 180 9.01a11.06 11.06 0 0 0-.47-1.72 9 9 0 0 0-11.61-4.9zM114.25 64.09a11.82 11.82 0 1 0 5.75 15.6 11.65 11.65 0 0 0-5.75-15.6zm5.38 10.61a6.46 6.46 0 0 1-8.57 3.13 6.35 6.35 0 0 1-3.06-8.49 6.46 6.46 0 0 1 8.57-3.13 6.35 6.35 0 0 1 3.06 8.49z', fill: '#fff', 'fill-rule': 'evenodd' }),
+	            React.createElement('path', { className: 'right-ear', d: 'M69.42 78.07c-15.3-4.38-38.75-1.12-49.71 17.38 11.82 10.64 39.18 17.46 54 8.63a43.93 43.93 0 0 1-4.29-26.01z', fill: '#010101', 'fill-rule': 'evenodd' }),
+	            React.createElement('path', { fill: '#8cbd44', 'fill-rule': 'evenodd', d: 'M123.36 143.82l-66.62-22.91-5.14 16.33 68.33 24.02 3.43-17.44' }),
+	            React.createElement('path', { className: 'eyelid', fill: '#010101', d: 'M85.88 68.878l24.722-16.19 1.802 2.754-24.72 16.19z' })
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return DogLoader;
+	}(React.Component);
+
+	module.exports = DogLoader;
+
+/***/ },
+/* 296 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -43731,19 +43831,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(169)(module)))
 
 /***/ },
-/* 296 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 297 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
 /* 298 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43753,7 +43853,7 @@
 	__webpack_require__(1);
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(299);
+	var MissingPet = __webpack_require__(301);
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
@@ -43763,11 +43863,11 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
-	var Pagination = __webpack_require__(303);
+	var Pagination = __webpack_require__(305);
 
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(309);
+	  __webpack_require__(311);
 	}
 
 	var Search = React.createClass({
@@ -43896,7 +43996,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43910,12 +44010,13 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
-	var MediaQuery = __webpack_require__(300);
-	var ContactDetailsPanel = __webpack_require__(301);
-	var $ = __webpack_require__(295);
+	var MediaQuery = __webpack_require__(302);
+	var ContactDetailsPanel = __webpack_require__(303);
+	var ResponsiveImage = __webpack_require__(312);
+	var $ = __webpack_require__(297);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(302);
+	  __webpack_require__(304);
 	}
 
 	var MissingPet = function (_React$Component) {
@@ -44036,11 +44137,7 @@
 	            ', ',
 	            this.props.size
 	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'panel-image' },
-	            React.createElement('img', { src: this.props.imageUrl, className: 'img-responsive', alt: 'Image' })
-	          ),
+	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
 	          React.createElement(
 	            'div',
 	            { className: 'panel-description w3-container w3-light-grey' },
@@ -44117,7 +44214,7 @@
 	module.exports = MissingPet;
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -44798,7 +44895,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(169)(module)))
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44947,23 +45044,23 @@
 	module.exports = connector(ContactDetailsPanel);
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// export this package's api
 
-	module.exports = __webpack_require__(304);
+	module.exports = __webpack_require__(306);
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44997,10 +45094,10 @@
 	}
 
 	var React = __webpack_require__(3);
-	var Pager = __webpack_require__(305);
-	var Options = __webpack_require__(306);
-	var KEYCODE = __webpack_require__(307);
-	var LOCALE = __webpack_require__(308);
+	var Pager = __webpack_require__(307);
+	var Options = __webpack_require__(308);
+	var KEYCODE = __webpack_require__(309);
+	var LOCALE = __webpack_require__(310);
 
 	function noop() {}
 
@@ -45372,7 +45469,7 @@
 	module.exports = Pagination;
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45446,7 +45543,7 @@
 	module.exports = Pager;
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45480,7 +45577,7 @@
 	}
 
 	var React = __webpack_require__(3);
-	var KEYCODE = __webpack_require__(307);
+	var KEYCODE = __webpack_require__(309);
 
 	var Options = function (_React$Component) {
 	  _inherits(Options, _React$Component);
@@ -45606,7 +45703,7 @@
 	module.exports = Options;
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -45627,7 +45724,7 @@
 	};
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -45652,19 +45749,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 309 */
+/* 311 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 310 */,
-/* 311 */,
-/* 312 */,
-/* 313 */,
-/* 314 */,
-/* 315 */,
-/* 316 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45678,90 +45769,88 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
+	var MediaQuery = __webpack_require__(302);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(317);
-	}
+	var ResponsiveImage = function (_React$Component) {
+	  _inherits(ResponsiveImage, _React$Component);
 
-	var DogLoader = function (_React$Component) {
-	  _inherits(DogLoader, _React$Component);
+	  function ResponsiveImage(props) {
+	    _classCallCheck(this, ResponsiveImage);
 
-	  function DogLoader() {
-	    _classCallCheck(this, DogLoader);
+	    var _this = _possibleConstructorReturn(this, (ResponsiveImage.__proto__ || Object.getPrototypeOf(ResponsiveImage)).call(this, props));
 
-	    return _possibleConstructorReturn(this, (DogLoader.__proto__ || Object.getPrototypeOf(DogLoader)).apply(this, arguments));
+	    _this.desktopImageUrl = _this.desktopImageUrl.bind(_this);
+	    _this.tabletImageUrl = _this.tabletImageUrl.bind(_this);
+	    _this.mobileImageUrl = _this.mobileImageUrl.bind(_this);
+	    return _this;
 	  }
 
-	  _createClass(DogLoader, [{
+	  _createClass(ResponsiveImage, [{
+	    key: 'desktopImageUrl',
+	    value: function desktopImageUrl(_ref) {
+	      var url = _ref.url;
+
+	      var imageProperties = 'w_300,h_440,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
+	    key: 'tabletImageUrl',
+	    value: function tabletImageUrl(_ref2) {
+	      var url = _ref2.url;
+
+	      var imageProperties = 'w_300,h_340,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
+	    key: 'mobileImageUrl',
+	    value: function mobileImageUrl(_ref3) {
+	      var url = _ref3.url;
+
+	      var imageProperties = 'w_300,h_300,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { className: 'dog-loader' },
+	        { className: this.props.className },
 	        React.createElement(
-	          'div',
-	          { className: 'loader-container' },
-	          React.createElement(
-	            'svg',
-	            { className: 'spinner', stroke: '#000', width: '120', height: '120', viewBox: '0 0 206 206', xmlns: 'http://www.w3.org/2000/svg' },
-	            React.createElement(
-	              'defs',
-	              null,
-	              React.createElement(
-	                'clipPath',
-	                { id: 'cut-off-bottom' },
-	                React.createElement('rect', { x: '0', y: '0', width: '200', height: '100', fill: '#000' })
-	              )
-	            ),
-	            React.createElement('circle', { className: 'path', fill: 'none', 'stroke-width': '6', 'stroke-linecap': 'round', cx: '103', cy: '103', r: '100' }),
-	            React.createElement('circle', { className: 'path', cx: '103', cy: '103', r: '100', fill: 'none', stroke: '#000', 'stroke-linecap': 'round', 'stroke-width': '6', 'stroke-dasharray': '0.001,17' })
-	          ),
-	          React.createElement(
-	            'svg',
-	            { id: 'scottie-loader', className: 'loader-dog', xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 207.95 211.52' },
-	            React.createElement(
-	              'defs',
-	              null,
-	              React.createElement(
-	                'radialGradient',
-	                { id: 'a', cx: '100.23', cy: '111.94', r: '146.5', gradientTransform: 'matrix(.68 0 0 .68 31.58 35.11)', gradientUnits: 'userSpaceOnUse' },
-	                React.createElement('stop', { offset: '.51', 'stop-color': '#bedeea' }),
-	                React.createElement('stop', { offset: '.68', 'stop-color': '#bcdce7' }),
-	                React.createElement('stop', { offset: '.79', 'stop-color': '#b5d4df' }),
-	                React.createElement('stop', { offset: '.88', 'stop-color': '#aac6d0' }),
-	                React.createElement('stop', { offset: '.96', 'stop-color': '#99b4bb' }),
-	                React.createElement('stop', { offset: '1', 'stop-color': '#90a9af' })
-	              )
-	            ),
-	            React.createElement(
-	              'title',
-	              null,
-	              'dog-incircle'
-	            ),
-	            React.createElement('circle', { cx: '100', cy: '111.52', r: '100', fill: '#9ec4d6' }),
-	            React.createElement('path', { d: 'M125 199.08l-13.84-24.34 8.9-26.69-17 .91-39.27-30.15c-10.45 17.2-25.15 37.07-39.33 58.23a100.13 100.13 0 0 0 95.17 32.54l-6.13-16.86z', fill: '#010101' }),
-	            React.createElement('path', { d: 'M197.73 71.64l10.22 6.71-31-58.29a10.75 10.75 0 0 0 4.47-13.3A10.82 10.82 0 0 0 161 13.83l-66.44 43L94 40.87l-6 14.8-7-18.53 1.22 19.66-11.85-11 7.39 21.82-23.52 15.24 8.46 31 .39.17c-3.7 16.38-7.16 32.53-7.16 36.58l44.78 26.27 21.53-35.81 18.49 18.66-7.24-18.76 14.22 14.64-9-21.29 19.62 13.81-14.6-18.31 18.92 14.2-12.43-18.92L165 138.47l-10.53-20.57 16.45 14.16-6.58-16.85 16.1 10.77-10-17.71 14.48 9-11.14-16.62 15.31 10.87-12.31-16.73 17.74 13.34-12.23-18 15.05 11.14-9.77-18.75 14.86 13.12-9-18.41 13.27 12.59z', fill: '#010101', 'fill-rule': 'evenodd' }),
-	            React.createElement('path', { className: 'left-ear', d: 'M88.42 75.73C77.16 62.28 62.48 44.71 45 45.62c-1.61 15.74 8.82 41.9 24.73 48.73a44.07 44.07 0 0 1 18.69-18.62z', fill: '#010101', 'fill-rule': 'evenodd' }),
-	            React.createElement('path', { d: 'M167.92 2.39A10.16 10.16 0 0 0 164 5.52a15 15 0 0 1 1.94-1A11.63 11.63 0 0 1 180 9.01a11.06 11.06 0 0 0-.47-1.72 9 9 0 0 0-11.61-4.9zM114.25 64.09a11.82 11.82 0 1 0 5.75 15.6 11.65 11.65 0 0 0-5.75-15.6zm5.38 10.61a6.46 6.46 0 0 1-8.57 3.13 6.35 6.35 0 0 1-3.06-8.49 6.46 6.46 0 0 1 8.57-3.13 6.35 6.35 0 0 1 3.06 8.49z', fill: '#fff', 'fill-rule': 'evenodd' }),
-	            React.createElement('path', { className: 'right-ear', d: 'M69.42 78.07c-15.3-4.38-38.75-1.12-49.71 17.38 11.82 10.64 39.18 17.46 54 8.63a43.93 43.93 0 0 1-4.29-26.01z', fill: '#010101', 'fill-rule': 'evenodd' }),
-	            React.createElement('path', { fill: '#8cbd44', 'fill-rule': 'evenodd', d: 'M123.36 143.82l-66.62-22.91-5.14 16.33 68.33 24.02 3.43-17.44' }),
-	            React.createElement('path', { className: 'eyelid', fill: '#010101', d: 'M85.88 68.878l24.722-16.19 1.802 2.754-24.72 16.19z' })
-	          )
+	          MediaQuery,
+	          { minDeviceWidth: 1200 },
+	          React.createElement('img', { src: this.desktopImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { minDeviceWidth: 768, maxDeviceWidth: 1200 },
+	          React.createElement('img', { src: this.tabletImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { maxDeviceWidth: 736 },
+	          React.createElement('img', { src: this.mobileImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
 	        )
 	      );
 	    }
 	  }]);
 
-	  return DogLoader;
+	  return ResponsiveImage;
 	}(React.Component);
 
-	module.exports = DogLoader;
+	var string = React.PropTypes.string;
 
-/***/ },
-/* 317 */
-/***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
+	ResponsiveImage.propTypes = {
+	  url: string.isRequired
+	};
+
+	module.exports = ResponsiveImage;
 
 /***/ }
 /******/ ]);
