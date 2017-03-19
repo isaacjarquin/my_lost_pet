@@ -1,8 +1,12 @@
 const React = require('react')
-const MissingPet = require('../../features/missing_pet/MissingPet')
 const { object, string, arrayOf, number } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
+var MediaQuery = require('react-responsive')
+const DesktopTemplateResults = require('./templates/desktop-results.jsx')
+const TabletTemplateResults = require('./templates/tablet-results.jsx')
+const MobileTemplateResults = require('./templates/mobile-results.jsx')
+
 import 'whatwg-fetch'
 
 if (process.env.WEBPACK_BUILD) {
@@ -24,6 +28,7 @@ const Search = React.createClass({
   },
   componentDidMount: function () {
     const props = this.props
+
     const extraDescription = (info) => {
       if (info.length > 165) {
         return info.slice(0, 165)
@@ -79,35 +84,21 @@ const Search = React.createClass({
       console.log(err)
     })
   },
-  addPetRows: function (pets) {
-    let petRows = []
-    let row = {}
-    this.pairwise(pets, function (current, next) {
-      row = {left: current, right: next}
-      petRows.push(row)
-    })
-    return petRows
-  },
-  pairwise: function (arr, func) {
-    for (var i = 0; i < arr.length - 1; i += 2) {
-      func(arr[i], arr[i + 1])
-    }
-  },
   render () {
     return (
       <div className='container'>
-        {this.addPetRows(this.props.pets)
-          .filter((pet) => `${pet.left.city} ${pet.left.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.right.city} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.left.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .map((row) => (
-            <div className='pets-row'>
-              <MissingPet {...row.left} key={row.left.id} />
-              <MissingPet {...row.right} key={row.right.id} />
-            </div>)
-          )
-        }
+        <div className='search-results'>
+          <MediaQuery minDeviceWidth={1200}>
+            <DesktopTemplateResults pets={this.props.pets} />
+          </MediaQuery>
+          <MediaQuery minDeviceWidth={768} maxDeviceWidth={1200}>
+            <TabletTemplateResults pets={this.props.pets} />
+          </MediaQuery>
+          <MediaQuery maxDeviceWidth={736}>
+            <MobileTemplateResults pets={this.props.pets} />
+          </MediaQuery>
+        </div>
+
         <div className='center'>
           <Pagination
             className='pagination'
