@@ -30,23 +30,23 @@ const Search = React.createClass({
     const props = this.props
 
     const extraDescription = (info) => {
-      if (info.length > 165) {
-        return info.slice(0, 165)
+      if (info.length > 90) {
+        return info.slice(0, 90)
       } else {
         return ''
       }
     }
 
     const extraDescriptionHidden = (info) => {
-      if (info.length > 165) {
-        return info.slice(165, 1000)
+      if (info.length > 90) {
+        return info.slice(90, 1000)
       } else {
         return ''
       }
     }
 
     const showExtraInfo = (info) => {
-      return info.length > 165
+      return info.length > 90
     }
 
     const resultDecorated = (itemsCollection) => {

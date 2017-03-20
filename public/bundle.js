@@ -43889,23 +43889,23 @@
 	    var props = this.props;
 
 	    var extraDescription = function extraDescription(info) {
-	      if (info.length > 165) {
-	        return info.slice(0, 165);
+	      if (info.length > 90) {
+	        return info.slice(0, 90);
 	      } else {
 	        return '';
 	      }
 	    };
 
 	    var extraDescriptionHidden = function extraDescriptionHidden(info) {
-	      if (info.length > 165) {
-	        return info.slice(165, 1000);
+	      if (info.length > 90) {
+	        return info.slice(90, 1000);
 	      } else {
 	        return '';
 	      }
 	    };
 
 	    var showExtraInfo = function showExtraInfo(info) {
-	      return info.length > 165;
+	      return info.length > 90;
 	    };
 
 	    var resultDecorated = function resultDecorated(itemsCollection) {
@@ -43930,7 +43930,7 @@
 	      return newColection;
 	    };
 
-	    fetch('https://items-api.herokuapp.com/api/items', {
+	    fetch('http://localhost:4000/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
