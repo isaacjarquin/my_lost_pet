@@ -1,5 +1,6 @@
 const React = require('react')
 const MissingPet = require('../../../features/missing_pet/MissingPet')
+const ContactDetailsPanel = require('../../../features/panels/ContactDetailsPanel')
 const { connector } = require('../../../Store')
 const { object, string, arrayOf, number } = React.PropTypes
 
@@ -18,6 +19,7 @@ const Search = React.createClass({
           .map((row) => (
             <div className='pets-row'>
               <MissingPet {...row} colSizeClass={'col-sm-5'} key={row.id} />
+              <ContactDetailsPanel id={row.id} />
             </div>)
           )
         }

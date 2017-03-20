@@ -1,6 +1,5 @@
 const React = require('react')
 var MediaQuery = require('react-responsive')
-const ContactDetailsPanel = require('../panels/ContactDetailsPanel')
 const ResponsiveImage = require('../responsive_image/ResponsiveImage')
 const $ = require('jquery')
 
@@ -94,10 +93,8 @@ class MissingPet extends React.Component {
                 </button>
               </form>
             </div>
-            <p className='w3-clear' />
           </div>
         </div>
-        <ContactDetailsPanel id={this.props.id} />
       </div>
     )
   }

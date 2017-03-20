@@ -44692,6 +44692,7 @@
 
 	var React = __webpack_require__(3);
 	var MissingPet = __webpack_require__(308);
+	var ContactDetailsPanel = __webpack_require__(310);
 
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
@@ -44745,7 +44746,10 @@
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-3', key: row.left.id })),
 	          React.createElement(MissingPet, _extends({}, row.center, { colSizeClass: 'col-sm-3', key: row.center.id })),
-	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-3', key: row.right.id }))
+	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-3', key: row.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: row.left.id }),
+	          React.createElement(ContactDetailsPanel, { id: row.center.id }),
+	          React.createElement(ContactDetailsPanel, { id: row.right.id })
 	        );
 	      })
 	    );
@@ -44770,7 +44774,6 @@
 
 	var React = __webpack_require__(3);
 	var MediaQuery = __webpack_require__(309);
-	var ContactDetailsPanel = __webpack_require__(310);
 	var ResponsiveImage = __webpack_require__(311);
 	var $ = __webpack_require__(297);
 
@@ -44919,11 +44922,9 @@
 	                  )
 	                )
 	              )
-	            ),
-	            React.createElement('p', { className: 'w3-clear' })
+	            )
 	          )
-	        ),
-	        React.createElement(ContactDetailsPanel, { id: this.props.id })
+	        )
 	      );
 	    }
 	  }]);
@@ -45895,6 +45896,7 @@
 
 	var React = __webpack_require__(3);
 	var MissingPet = __webpack_require__(308);
+	var ContactDetailsPanel = __webpack_require__(310);
 
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
@@ -45947,7 +45949,9 @@
 	          'div',
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-5', key: row.left.id })),
-	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-5', key: row.right.id }))
+	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-5', key: row.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: row.left.id }),
+	          React.createElement(ContactDetailsPanel, { id: row.right.id })
 	        );
 	      })
 	    );
@@ -45966,6 +45970,7 @@
 
 	var React = __webpack_require__(3);
 	var MissingPet = __webpack_require__(308);
+	var ContactDetailsPanel = __webpack_require__(310);
 
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
@@ -45999,7 +46004,8 @@
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, row, { colSizeClass: 'col-sm-5', key: row.id }))
+	          React.createElement(MissingPet, _extends({}, row, { colSizeClass: 'col-sm-5', key: row.id })),
+	          React.createElement(ContactDetailsPanel, { id: row.id })
 	        );
 	      })
 	    );
