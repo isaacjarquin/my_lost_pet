@@ -44715,13 +44715,13 @@
 	  addPetRows: function addPetRows(pets) {
 	    var petRows = [];
 	    var row = {};
-	    this.pairwise(pets, function (left, center, right) {
+	    this.rowElements(pets, function (left, center, right) {
 	      row = { left: left, center: center, right: right };
 	      petRows.push(row);
 	    });
 	    return petRows;
 	  },
-	  pairwise: function pairwise(arr, func) {
+	  rowElements: function rowElements(arr, func) {
 	    for (var i = 1; i < arr.length - 1; i += 3) {
 	      func(arr[i], arr[i + 1], arr[i + 2]);
 	    }
