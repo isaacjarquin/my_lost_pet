@@ -28,14 +28,6 @@ class MissingPet extends React.Component {
       $('.contact-btn').attr('disabled', 'disabled')
       $('.more-info_link').addClass('disable-link')
 
-      if (parseInt(this.props.id) % 2 === 0) {
-        $('.arrow-up').addClass('arrow-up-right')
-        $('.arrow-up').removeClass('arrow-up-left')
-      } else {
-        $('.arrow-up').addClass('arrow-up-left')
-        $('.arrow-up').removeClass('arrow-up-right')
-      }
-
       $.each($('.pets-row'), function (pet) {
         if (petId !== pet.id) {
           const buttonSelector = `#${petId} .contact-btn`

@@ -36,8 +36,8 @@ const Search = React.createClass({
             <div className='pets-row'>
               <MissingPet {...row.left} colSizeClass={'col-sm-5'} key={row.left.id} />
               <MissingPet {...row.right} colSizeClass={'col-sm-5'} key={row.right.id} />
-              <ContactDetailsPanel id={row.left.id} />
-              <ContactDetailsPanel id={row.right.id} />
+              <ContactDetailsPanel id={row.left.id} arrow={'arrow-up-left'} />
+              <ContactDetailsPanel id={row.right.id} arrow={'arrow-up-right'} />
             </div>)
           )
         }

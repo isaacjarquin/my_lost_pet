@@ -32,7 +32,7 @@ class ContactDetailsPanel extends React.Component {
   render () {
     return (
       <div id={this.props.id} className='collapse contact-details-panel'>
-        <div className='arrow-up' />
+        <div className={this.props.arrow} />
         <div className='w3-margin'>
           <div className='w3-container w3-padding w3-opacity'>
             <h2>Introduce tus datos de contacto</h2>

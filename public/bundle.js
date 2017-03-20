@@ -44747,9 +44747,9 @@
 	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-3', key: row.left.id })),
 	          React.createElement(MissingPet, _extends({}, row.center, { colSizeClass: 'col-sm-3', key: row.center.id })),
 	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-3', key: row.right.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.left.id }),
-	          React.createElement(ContactDetailsPanel, { id: row.center.id }),
-	          React.createElement(ContactDetailsPanel, { id: row.right.id })
+	          React.createElement(ContactDetailsPanel, { id: row.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: row.center.id, arrow: 'arrow-up-center' }),
+	          React.createElement(ContactDetailsPanel, { id: row.right.id, arrow: 'arrow-up-right' })
 	        );
 	      })
 	    );
@@ -44808,14 +44808,6 @@
 	      } else {
 	        $('.contact-btn').attr('disabled', 'disabled');
 	        $('.more-info_link').addClass('disable-link');
-
-	        if (parseInt(this.props.id) % 2 === 0) {
-	          $('.arrow-up').addClass('arrow-up-right');
-	          $('.arrow-up').removeClass('arrow-up-left');
-	        } else {
-	          $('.arrow-up').addClass('arrow-up-left');
-	          $('.arrow-up').removeClass('arrow-up-right');
-	        }
 
 	        $.each($('.pets-row'), function (pet) {
 	          if (petId !== pet.id) {
@@ -45700,7 +45692,7 @@
 	      return React.createElement(
 	        'div',
 	        { id: this.props.id, className: 'collapse contact-details-panel' },
-	        React.createElement('div', { className: 'arrow-up' }),
+	        React.createElement('div', { className: this.props.arrow }),
 	        React.createElement(
 	          'div',
 	          { className: 'w3-margin' },
@@ -45950,8 +45942,8 @@
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-5', key: row.left.id })),
 	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-5', key: row.right.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.left.id }),
-	          React.createElement(ContactDetailsPanel, { id: row.right.id })
+	          React.createElement(ContactDetailsPanel, { id: row.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: row.right.id, arrow: 'arrow-up-right' })
 	        );
 	      })
 	    );
@@ -46005,7 +45997,7 @@
 	          'div',
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, row, { colSizeClass: 'col-sm-5', key: row.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.id })
+	          React.createElement(ContactDetailsPanel, { id: row.id, arrow: 'arrow-up-center' })
 	        );
 	      })
 	    );

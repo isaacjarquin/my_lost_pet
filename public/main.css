@@ -290,6 +290,15 @@ p.form-introduction {
   border-bottom: 15px solid #f1f1f1;
   margin-top: -15px; }
 
+.arrow-up-center {
+  margin-left: 77%;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #f1f1f1;
+  margin-top: -15px; }
+
 .arrow-up-left {
   margin-left: 22%;
   width: 0;
@@ -374,9 +383,6 @@ p.form-introduction {
   background-color: grey;
   border-color: grey;
   color: white; }
-
-.clear-both {
-  clear: both; }
 
 .rc-pagination-prev a:before {
   color: grey;

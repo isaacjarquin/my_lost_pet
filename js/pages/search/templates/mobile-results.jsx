@@ -19,7 +19,7 @@ const Search = React.createClass({
           .map((row) => (
             <div className='pets-row'>
               <MissingPet {...row} colSizeClass={'col-sm-5'} key={row.id} />
-              <ContactDetailsPanel id={row.id} />
+              <ContactDetailsPanel id={row.id} arrow={'arrow-up-center'} />
             </div>)
           )
         }
