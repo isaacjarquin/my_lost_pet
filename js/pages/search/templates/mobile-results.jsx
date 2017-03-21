@@ -16,10 +16,10 @@ const Search = React.createClass({
         {this.props.pets
           .filter((pet) => `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
           .filter((pet) => `${pet.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .map((row) => (
+          .map((pet) => (
             <div className='pets-row'>
-              <MissingPet {...row} colSizeClass={'col-sm-5'} key={row.id} />
-              <ContactDetailsPanel id={row.id} arrow={'arrow-up-center'} />
+              <MissingPet {...pet} colSizeClass={'col-sm-6'} key={pet.id} />
+              <ContactDetailsPanel id={pet.id} arrow={'arrow-up-center'} />
             </div>)
           )
         }

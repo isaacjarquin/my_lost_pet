@@ -44735,21 +44735,25 @@
 	      this.addPetRows(this.props.pets).filter(function (pet) {
 	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
+	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
 	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
 	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
+	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
 	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (row) {
+	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-3', key: row.left.id })),
-	          React.createElement(MissingPet, _extends({}, row.center, { colSizeClass: 'col-sm-3', key: row.center.id })),
-	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-3', key: row.right.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.left.id, arrow: 'arrow-up-left' }),
-	          React.createElement(ContactDetailsPanel, { id: row.center.id, arrow: 'arrow-up-center' }),
-	          React.createElement(ContactDetailsPanel, { id: row.right.id, arrow: 'arrow-up-right' })
+	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
+	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
+	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
 	        );
 	      })
 	    );
@@ -45936,14 +45940,14 @@
 	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
 	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (row) {
+	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, row.left, { colSizeClass: 'col-sm-5', key: row.left.id })),
-	          React.createElement(MissingPet, _extends({}, row.right, { colSizeClass: 'col-sm-5', key: row.right.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.left.id, arrow: 'arrow-up-left' }),
-	          React.createElement(ContactDetailsPanel, { id: row.right.id, arrow: 'arrow-up-right' })
+	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-5', key: pet.left.id })),
+	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-5', key: pet.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
 	        );
 	      })
 	    );
@@ -45992,12 +45996,12 @@
 	        return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
 	        return ('' + pet.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (row) {
+	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, row, { colSizeClass: 'col-sm-5', key: row.id })),
-	          React.createElement(ContactDetailsPanel, { id: row.id, arrow: 'arrow-up-center' })
+	          React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-6', key: pet.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.id, arrow: 'arrow-up-center' })
 	        );
 	      })
 	    );

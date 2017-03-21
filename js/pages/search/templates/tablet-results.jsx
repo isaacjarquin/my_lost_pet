@@ -32,12 +32,12 @@ const Search = React.createClass({
           .filter((pet) => `${pet.right.city} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
           .filter((pet) => `${pet.left.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
           .filter((pet) => `${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .map((row) => (
+          .map((pet) => (
             <div className='pets-row'>
-              <MissingPet {...row.left} colSizeClass={'col-sm-5'} key={row.left.id} />
-              <MissingPet {...row.right} colSizeClass={'col-sm-5'} key={row.right.id} />
-              <ContactDetailsPanel id={row.left.id} arrow={'arrow-up-left'} />
-              <ContactDetailsPanel id={row.right.id} arrow={'arrow-up-right'} />
+              <MissingPet {...pet.left} colSizeClass={'col-sm-5'} key={pet.left.id} />
+              <MissingPet {...pet.right} colSizeClass={'col-sm-5'} key={pet.right.id} />
+              <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} />
+              <ContactDetailsPanel id={pet.right.id} arrow={'arrow-up-right'} />
             </div>)
           )
         }
