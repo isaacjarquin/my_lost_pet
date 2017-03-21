@@ -2,7 +2,7 @@ const React = require('react')
 const MissingPet = require('../../../features/missing_pet/MissingPet')
 const ContactDetailsPanel = require('../../../features/panels/ContactDetailsPanel')
 const { connector } = require('../../../Store')
-const { object, string, arrayOf, number } = React.PropTypes
+const { object, string, arrayOf } = React.PropTypes
 
 const Search = React.createClass({
   propTypes: {

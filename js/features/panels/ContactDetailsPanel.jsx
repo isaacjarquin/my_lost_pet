@@ -57,6 +57,7 @@ const { string, object, func } = React.PropTypes
 
 ContactDetailsPanel.propTypes = {
   id: string.isRequired,
+  arrow: string.isRequired,
   owner: object,
   setOwnerName: func,
   setOwnerEmail: func,

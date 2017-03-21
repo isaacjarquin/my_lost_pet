@@ -51,7 +51,8 @@ class ResponsiveImage extends React.Component {
 const { string } = React.PropTypes
 
 ResponsiveImage.propTypes = {
-  url: string.isRequired
+  url: string.isRequired,
+  className: string.isRequired
 }
 
 module.exports = ResponsiveImage

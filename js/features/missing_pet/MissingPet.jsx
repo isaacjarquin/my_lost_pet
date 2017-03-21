@@ -1,5 +1,4 @@
 const React = require('react')
-var MediaQuery = require('react-responsive')
 const ResponsiveImage = require('../responsive_image/ResponsiveImage')
 const $ = require('jquery')
 
@@ -104,6 +103,9 @@ MissingPet.propTypes = {
   extraDescription: string.isRequired,
   extraDescriptionHidden: string.isRequired,
   image: string.isRequired,
+  colSizeClass: string.isRequired,
+  petType: string.isRequired,
+  imageUrl: string.isRequired,
   id: string.isRequired
 }
 

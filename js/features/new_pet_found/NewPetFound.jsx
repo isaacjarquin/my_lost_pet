@@ -239,7 +239,7 @@ class NewPetFound extends React.Component {
   }
 }
 
-const { object, func } = React.PropTypes
+const { object, func, string } = React.PropTypes
 
 NewPetFound.propTypes = {
   pet: object,
@@ -249,7 +249,9 @@ NewPetFound.propTypes = {
   setPetSize: func,
   setPetFoundDate: func,
   setPetLocation: func,
-  setPetDescription: func
+  setPetDescription: func,
+  setImages: func,
+  setImageUrl: string.isRequired
 }
 
 module.exports = connector(NewPetFound)

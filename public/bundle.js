@@ -30986,7 +30986,8 @@
 
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
+	    func = _React$PropTypes.func,
+	    string = _React$PropTypes.string;
 
 
 	NewPetFound.propTypes = {
@@ -30997,7 +30998,9 @@
 	  setPetSize: func,
 	  setPetFoundDate: func,
 	  setPetLocation: func,
-	  setPetDescription: func
+	  setPetDescription: func,
+	  setImages: func,
+	  setImageUrl: string.isRequired
 	};
 
 	module.exports = connector(NewPetFound);
@@ -43861,8 +43864,8 @@
 	    connector = _require.connector;
 
 	var Pagination = __webpack_require__(301);
-	var MediaQuery = __webpack_require__(309);
-	var DesktopTemplateResults = __webpack_require__(307);
+	var MediaQuery = __webpack_require__(307);
+	var DesktopTemplateResults = __webpack_require__(308);
 	var TabletTemplateResults = __webpack_require__(313);
 	var MobileTemplateResults = __webpack_require__(314);
 
@@ -44686,272 +44689,6 @@
 /* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(308);
-	var ContactDetailsPanel = __webpack_require__(310);
-
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
-
-	var _React$PropTypes = React.PropTypes,
-	    object = _React$PropTypes.object,
-	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf,
-	    number = _React$PropTypes.number;
-
-
-	var Search = React.createClass({
-	  displayName: 'Search',
-
-	  propTypes: {
-	    pets: arrayOf(object),
-	    searchTerm: string,
-	    selectFilter: string
-	  },
-	  addPetRows: function addPetRows(pets) {
-	    var petRows = [];
-	    var row = {};
-	    this.rowElements(pets, function (left, center, right) {
-	      row = { left: left, center: center, right: right };
-	      petRows.push(row);
-	    });
-	    return petRows;
-	  },
-	  rowElements: function rowElements(arr, func) {
-	    for (var i = 1; i < arr.length - 1; i += 3) {
-	      func(arr[i], arr[i + 1], arr[i + 2]);
-	    }
-	  },
-	  render: function render() {
-	    var _this = this;
-
-	    return React.createElement(
-	      'div',
-	      null,
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (pet) {
-	        return React.createElement(
-	          'div',
-	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
-	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
-	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
-	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
-	        );
-	      })
-	    );
-	  }
-	});
-
-	module.exports = connector(Search);
-
-/***/ },
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(3);
-	var MediaQuery = __webpack_require__(309);
-	var ResponsiveImage = __webpack_require__(311);
-	var $ = __webpack_require__(297);
-
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(312);
-	}
-
-	var MissingPet = function (_React$Component) {
-	  _inherits(MissingPet, _React$Component);
-
-	  function MissingPet(props) {
-	    _classCallCheck(this, MissingPet);
-
-	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
-
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(MissingPet, [{
-	    key: 'handleClick',
-	    value: function handleClick(event) {
-	      var colSizeClass = '.' + this.props.colSizeClass;
-	      var petId = 'item-' + this.props.id;
-	      var selectedId = '#' + petId;
-
-	      if ($(selectedId).hasClass('panel-opened')) {
-	        $(colSizeClass).removeClass('addOpacity');
-	        $(colSizeClass).removeClass('panel-opened');
-	        $('.contact-btn').removeAttr('disabled');
-	        $('.more-info_link').removeClass('disable-link');
-	      } else {
-	        $('.contact-btn').attr('disabled', 'disabled');
-	        $('.more-info_link').addClass('disable-link');
-
-	        $.each($('.pets-row'), function (pet) {
-	          if (petId !== pet.id) {
-	            var buttonSelector = '#' + petId + ' .contact-btn';
-	            var linkSelector = '#' + petId + ' .more-info_link';
-
-	            $(buttonSelector).removeAttr('disabled');
-	            $(linkSelector).removeClass('disable-link');
-	            $(colSizeClass).addClass('addOpacity panel-opened');
-	            $(selectedId).removeClass('addOpacity');
-	          }
-	        });
-	      }
-
-	      event.preventDefault();
-	    }
-	  }, {
-	    key: 'displayExtraTextLink',
-	    value: function displayExtraTextLink() {
-	      if (this.props.showExtraInfo) {
-	        return React.createElement(
-	          'a',
-	          { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
-	          'mas informacion'
-	        );
-	      } else {
-	        return '';
-	      }
-	    }
-	  }, {
-	    key: 'displayDescription',
-	    value: function displayDescription() {
-	      if (this.props.showExtraInfo) {
-	        return React.createElement(
-	          'div',
-	          { className: 'extra-description-block' },
-	          React.createElement(
-	            'p',
-	            { className: 'panel-description_content w3-opacity' },
-	            this.props.extraDescription
-	          ),
-	          React.createElement(
-	            'div',
-	            { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
-	            this.props.extraDescriptionHidden
-	          )
-	        );
-	      } else {
-	        return React.createElement(
-	          'p',
-	          { className: 'panel-description_content w3-opacity' },
-	          this.props.description
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'missing-pet-card' },
-	        React.createElement(
-	          'div',
-	          { id: 'item-' + this.props.id, className: 'panel ' + this.props.colSizeClass + ' w3-white w3-margin' },
-	          React.createElement(
-	            'div',
-	            { className: 'panel-date w3-center' },
-	            this.props.petType,
-	            ', ',
-	            this.props.size
-	          ),
-	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
-	          React.createElement(
-	            'div',
-	            { className: 'panel-description w3-container w3-light-grey' },
-	            React.createElement(
-	              'p',
-	              { className: 'panel-description_title w3-opacity' },
-	              'Encontrado en ',
-	              this.props.city,
-	              ', ',
-	              this.props.location
-	            ),
-	            this.displayDescription(),
-	            React.createElement(
-	              'div',
-	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
-	              this.props.extraDescription
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'panel-description_iteraction' },
-	              this.displayExtraTextLink(),
-	              React.createElement(
-	                'form',
-	                { onSubmit: this.handleClick },
-	                React.createElement(
-	                  'button',
-	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement(
-	                    'b',
-	                    null,
-	                    'Contactar'
-	                  )
-	                )
-	              )
-	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return MissingPet;
-	}(React.Component);
-
-	var _React$PropTypes = React.PropTypes,
-	    string = _React$PropTypes.string,
-	    bool = _React$PropTypes.bool;
-
-
-	MissingPet.propTypes = {
-	  breading: string.isRequired,
-	  city: string.isRequired,
-	  showExtraInfo: bool.isRequired,
-	  location: string.isRequired,
-	  size: string.isRequired,
-	  description: string.isRequired,
-	  extraDescription: string.isRequired,
-	  extraDescriptionHidden: string.isRequired,
-	  image: string.isRequired,
-	  id: string.isRequired
-	};
-
-	module.exports = MissingPet;
-
-/***/ },
-/* 309 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -45630,7 +45367,379 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(169)(module)))
 
 /***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(3);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    string = _React$PropTypes.string,
+	    arrayOf = _React$PropTypes.arrayOf;
+
+
+	var Search = React.createClass({
+	  displayName: 'Search',
+
+	  propTypes: {
+	    pets: arrayOf(object),
+	    searchTerm: string,
+	    selectFilter: string
+	  },
+	  addPetRows: function addPetRows(pets) {
+	    var petRows = [];
+	    var row = {};
+	    this.rowElements(pets, function (left, center, right) {
+	      row = { left: left, center: center, right: right };
+	      petRows.push(row);
+	    });
+	    return petRows;
+	  },
+	  rowElements: function rowElements(arr, func) {
+	    for (var i = 1; i < arr.length - 1; i += 3) {
+	      func(arr[i], arr[i + 1], arr[i + 2]);
+	    }
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.addPetRows(this.props.pets).filter(function (pet) {
+	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (pet) {
+	        return React.createElement(
+	          'div',
+	          { className: 'pets-row' },
+	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
+	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
+	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
+	        );
+	      })
+	    );
+	  }
+	});
+
+	module.exports = connector(Search);
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+	var ResponsiveImage = __webpack_require__(310);
+	var $ = __webpack_require__(297);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(311);
+	}
+
+	var MissingPet = function (_React$Component) {
+	  _inherits(MissingPet, _React$Component);
+
+	  function MissingPet(props) {
+	    _classCallCheck(this, MissingPet);
+
+	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
+
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(MissingPet, [{
+	    key: 'handleClick',
+	    value: function handleClick(event) {
+	      var colSizeClass = '.' + this.props.colSizeClass;
+	      var petId = 'item-' + this.props.id;
+	      var selectedId = '#' + petId;
+
+	      if ($(selectedId).hasClass('panel-opened')) {
+	        $(colSizeClass).removeClass('addOpacity');
+	        $(colSizeClass).removeClass('panel-opened');
+	        $('.contact-btn').removeAttr('disabled');
+	        $('.more-info_link').removeClass('disable-link');
+	      } else {
+	        $('.contact-btn').attr('disabled', 'disabled');
+	        $('.more-info_link').addClass('disable-link');
+
+	        $.each($('.pets-row'), function (pet) {
+	          if (petId !== pet.id) {
+	            var buttonSelector = '#' + petId + ' .contact-btn';
+	            var linkSelector = '#' + petId + ' .more-info_link';
+
+	            $(buttonSelector).removeAttr('disabled');
+	            $(linkSelector).removeClass('disable-link');
+	            $(colSizeClass).addClass('addOpacity panel-opened');
+	            $(selectedId).removeClass('addOpacity');
+	          }
+	        });
+	      }
+
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'displayExtraTextLink',
+	    value: function displayExtraTextLink() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'a',
+	          { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
+	          'mas informacion'
+	        );
+	      } else {
+	        return '';
+	      }
+	    }
+	  }, {
+	    key: 'displayDescription',
+	    value: function displayDescription() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'div',
+	          { className: 'extra-description-block' },
+	          React.createElement(
+	            'p',
+	            { className: 'panel-description_content w3-opacity' },
+	            this.props.extraDescription
+	          ),
+	          React.createElement(
+	            'div',
+	            { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	            this.props.extraDescriptionHidden
+	          )
+	        );
+	      } else {
+	        return React.createElement(
+	          'p',
+	          { className: 'panel-description_content w3-opacity' },
+	          this.props.description
+	        );
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: 'missing-pet-card' },
+	        React.createElement(
+	          'div',
+	          { id: 'item-' + this.props.id, className: 'panel ' + this.props.colSizeClass + ' w3-white w3-margin' },
+	          React.createElement(
+	            'div',
+	            { className: 'panel-date w3-center' },
+	            this.props.petType,
+	            ', ',
+	            this.props.size
+	          ),
+	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
+	          React.createElement(
+	            'div',
+	            { className: 'panel-description w3-container w3-light-grey' },
+	            React.createElement(
+	              'p',
+	              { className: 'panel-description_title w3-opacity' },
+	              'Encontrado en ',
+	              this.props.city,
+	              ', ',
+	              this.props.location
+	            ),
+	            this.displayDescription(),
+	            React.createElement(
+	              'div',
+	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	              this.props.extraDescription
+	            ),
+	            React.createElement(
+	              'div',
+	              { className: 'panel-description_iteraction' },
+	              this.displayExtraTextLink(),
+	              React.createElement(
+	                'form',
+	                { onSubmit: this.handleClick },
+	                React.createElement(
+	                  'button',
+	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement(
+	                    'b',
+	                    null,
+	                    'Contactar'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return MissingPet;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    bool = _React$PropTypes.bool;
+
+
+	MissingPet.propTypes = {
+	  breading: string.isRequired,
+	  city: string.isRequired,
+	  showExtraInfo: bool.isRequired,
+	  location: string.isRequired,
+	  size: string.isRequired,
+	  description: string.isRequired,
+	  extraDescription: string.isRequired,
+	  extraDescriptionHidden: string.isRequired,
+	  image: string.isRequired,
+	  colSizeClass: string.isRequired,
+	  petType: string.isRequired,
+	  imageUrl: string.isRequired,
+	  id: string.isRequired
+	};
+
+	module.exports = MissingPet;
+
+/***/ },
 /* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+	var MediaQuery = __webpack_require__(307);
+
+	var ResponsiveImage = function (_React$Component) {
+	  _inherits(ResponsiveImage, _React$Component);
+
+	  function ResponsiveImage(props) {
+	    _classCallCheck(this, ResponsiveImage);
+
+	    var _this = _possibleConstructorReturn(this, (ResponsiveImage.__proto__ || Object.getPrototypeOf(ResponsiveImage)).call(this, props));
+
+	    _this.desktopImageUrl = _this.desktopImageUrl.bind(_this);
+	    _this.tabletImageUrl = _this.tabletImageUrl.bind(_this);
+	    _this.mobileImageUrl = _this.mobileImageUrl.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(ResponsiveImage, [{
+	    key: 'desktopImageUrl',
+	    value: function desktopImageUrl(_ref) {
+	      var url = _ref.url;
+
+	      var imageProperties = 'w_300,h_440,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
+	    key: 'tabletImageUrl',
+	    value: function tabletImageUrl(_ref2) {
+	      var url = _ref2.url;
+
+	      var imageProperties = 'w_300,h_340,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
+	    key: 'mobileImageUrl',
+	    value: function mobileImageUrl(_ref3) {
+	      var url = _ref3.url;
+
+	      var imageProperties = 'w_300,h_300,c_fill,g_south';
+	      var splitedUrl = url.split('upload');
+
+	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { className: this.props.className },
+	        React.createElement(
+	          MediaQuery,
+	          { minDeviceWidth: 1200 },
+	          React.createElement('img', { src: this.desktopImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { minDeviceWidth: 768, maxDeviceWidth: 1200 },
+	          React.createElement('img', { src: this.tabletImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { maxDeviceWidth: 736 },
+	          React.createElement('img', { src: this.mobileImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ResponsiveImage;
+	}(React.Component);
+
+	var string = React.PropTypes.string;
+
+
+	ResponsiveImage.propTypes = {
+	  url: string.isRequired,
+	  className: string.isRequired
+	};
+
+	module.exports = ResponsiveImage;
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45768,6 +45877,7 @@
 
 	ContactDetailsPanel.propTypes = {
 	  id: string.isRequired,
+	  arrow: string.isRequired,
 	  owner: object,
 	  setOwnerName: func,
 	  setOwnerEmail: func,
@@ -45779,110 +45889,6 @@
 	module.exports = connector(ContactDetailsPanel);
 
 /***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(3);
-	var MediaQuery = __webpack_require__(309);
-
-	var ResponsiveImage = function (_React$Component) {
-	  _inherits(ResponsiveImage, _React$Component);
-
-	  function ResponsiveImage(props) {
-	    _classCallCheck(this, ResponsiveImage);
-
-	    var _this = _possibleConstructorReturn(this, (ResponsiveImage.__proto__ || Object.getPrototypeOf(ResponsiveImage)).call(this, props));
-
-	    _this.desktopImageUrl = _this.desktopImageUrl.bind(_this);
-	    _this.tabletImageUrl = _this.tabletImageUrl.bind(_this);
-	    _this.mobileImageUrl = _this.mobileImageUrl.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(ResponsiveImage, [{
-	    key: 'desktopImageUrl',
-	    value: function desktopImageUrl(_ref) {
-	      var url = _ref.url;
-
-	      var imageProperties = 'w_300,h_440,c_fill,g_south';
-	      var splitedUrl = url.split('upload');
-
-	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
-	    }
-	  }, {
-	    key: 'tabletImageUrl',
-	    value: function tabletImageUrl(_ref2) {
-	      var url = _ref2.url;
-
-	      var imageProperties = 'w_300,h_340,c_fill,g_south';
-	      var splitedUrl = url.split('upload');
-
-	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
-	    }
-	  }, {
-	    key: 'mobileImageUrl',
-	    value: function mobileImageUrl(_ref3) {
-	      var url = _ref3.url;
-
-	      var imageProperties = 'w_300,h_300,c_fill,g_south';
-	      var splitedUrl = url.split('upload');
-
-	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: this.props.className },
-	        React.createElement(
-	          MediaQuery,
-	          { minDeviceWidth: 1200 },
-	          React.createElement('img', { src: this.desktopImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
-	        ),
-	        React.createElement(
-	          MediaQuery,
-	          { minDeviceWidth: 768, maxDeviceWidth: 1200 },
-	          React.createElement('img', { src: this.tabletImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
-	        ),
-	        React.createElement(
-	          MediaQuery,
-	          { maxDeviceWidth: 736 },
-	          React.createElement('img', { src: this.mobileImageUrl(this.props), className: 'img-responsive', alt: 'Image' })
-	        )
-	      );
-	    }
-	  }]);
-
-	  return ResponsiveImage;
-	}(React.Component);
-
-	var string = React.PropTypes.string;
-
-
-	ResponsiveImage.propTypes = {
-	  url: string.isRequired
-	};
-
-	module.exports = ResponsiveImage;
-
-/***/ },
-/* 312 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
 /* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -45891,8 +45897,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(308);
-	var ContactDetailsPanel = __webpack_require__(310);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
 
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
@@ -45900,8 +45906,7 @@
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf,
-	    number = _React$PropTypes.number;
+	    arrayOf = _React$PropTypes.arrayOf;
 
 
 	var Search = React.createClass({
@@ -45965,8 +45970,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(308);
-	var ContactDetailsPanel = __webpack_require__(310);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
 
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
@@ -45974,8 +45979,7 @@
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf,
-	    number = _React$PropTypes.number;
+	    arrayOf = _React$PropTypes.arrayOf;
 
 
 	var Search = React.createClass({
