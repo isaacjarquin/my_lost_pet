@@ -336,7 +336,6 @@ p.form-introduction {
 .disable-link {
   pointer-events: none;
   cursor: default; }
-
 @media (min-width: 1200px) {
   .contact-details-panel {
     float: left;

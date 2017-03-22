@@ -1,6 +1,10 @@
 const React = require('react')
 const { connector } = require('../../Store')
 
+if (process.env.WEBPACK_BUILD) {
+  require('./contactDetailsPanel.scss')
+}
+
 class ContactDetailsPanel extends React.Component {
   constructor (props) {
     super(props)

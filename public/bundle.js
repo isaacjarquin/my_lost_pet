@@ -45757,6 +45757,10 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(316);
+	}
+
 	var ContactDetailsPanel = function (_React$Component) {
 	  _inherits(ContactDetailsPanel, _React$Component);
 
@@ -46016,6 +46020,12 @@
 
 /***/ },
 /* 315 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 316 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
