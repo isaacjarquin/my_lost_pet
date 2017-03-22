@@ -1,6 +1,4 @@
 const React = require('react')
-var MediaQuery = require('react-responsive')
-const ContactDetailsPanel = require('../panels/ContactDetailsPanel')
 const ResponsiveImage = require('../responsive_image/ResponsiveImage')
 const $ = require('jquery')
 
@@ -12,41 +10,22 @@ class MissingPet extends React.Component {
   constructor (props) {
     super(props)
 
-    this.addPanelsForNonMobileDevices = this.addPanelsForNonMobileDevices.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
-  addPanelsForNonMobileDevices () {
-    if (parseInt(this.props.id) % 2 === 0) {
-      return (
-        <div>
-          <ContactDetailsPanel id={this.props.id - 1} />
-          <ContactDetailsPanel id={this.props.id} />
-        </div>
-      )
-    }
-  }
-
   handleClick (event) {
+    const colSizeClass = '.' + this.props.colSizeClass
     const petId = 'item-' + this.props.id
     const selectedId = '#' + petId
 
     if ($(selectedId).hasClass('panel-opened')) {
-      $('.col-sm-5').removeClass('addOpacity')
-      $('.col-sm-5').removeClass('panel-opened')
+      $(colSizeClass).removeClass('addOpacity')
+      $(colSizeClass).removeClass('panel-opened')
       $('.contact-btn').removeAttr('disabled')
       $('.more-info_link').removeClass('disable-link')
     } else {
       $('.contact-btn').attr('disabled', 'disabled')
       $('.more-info_link').addClass('disable-link')
-
-      if (parseInt(this.props.id) % 2 === 0) {
-        $('.arrow-up').addClass('arrow-up-right')
-        $('.arrow-up').removeClass('arrow-up-left')
-      } else {
-        $('.arrow-up').addClass('arrow-up-left')
-        $('.arrow-up').removeClass('arrow-up-right')
-      }
 
       $.each($('.pets-row'), function (pet) {
         if (petId !== pet.id) {
@@ -55,7 +34,7 @@ class MissingPet extends React.Component {
 
           $(buttonSelector).removeAttr('disabled')
           $(linkSelector).removeClass('disable-link')
-          $('.col-sm-5').addClass('addOpacity panel-opened')
+          $(colSizeClass).addClass('addOpacity panel-opened')
           $(selectedId).removeClass('addOpacity')
         }
       })
@@ -89,8 +68,8 @@ class MissingPet extends React.Component {
 
   render () {
     return (
-      <div>
-        <div id={`item-${this.props.id}`} className='panel col-sm-5 w3-white w3-margin'>
+      <div className='missing-pet-card'>
+        <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
           <div className='panel-date w3-center'>{this.props.petType}, {this.props.size}</div>
           <ResponsiveImage url={this.props.imageUrl} className={'panel-image'} />
           <div className='panel-description w3-container w3-light-grey'>
@@ -105,15 +84,8 @@ class MissingPet extends React.Component {
                 </button>
               </form>
             </div>
-            <p className='w3-clear' />
           </div>
         </div>
-        <MediaQuery query='(max-device-width: 600px)'>
-          <ContactDetailsPanel id={this.props.id} />
-        </MediaQuery>
-        <MediaQuery query='(min-device-width: 700px)'>
-          {this.addPanelsForNonMobileDevices()}
-        </MediaQuery>
       </div>
     )
   }
@@ -131,6 +103,9 @@ MissingPet.propTypes = {
   extraDescription: string.isRequired,
   extraDescriptionHidden: string.isRequired,
   image: string.isRequired,
+  colSizeClass: string.isRequired,
+  petType: string.isRequired,
+  imageUrl: string.isRequired,
   id: string.isRequired
 }
 

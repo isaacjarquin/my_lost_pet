@@ -30986,7 +30986,8 @@
 
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
+	    func = _React$PropTypes.func,
+	    string = _React$PropTypes.string;
 
 
 	NewPetFound.propTypes = {
@@ -30997,7 +30998,9 @@
 	  setPetSize: func,
 	  setPetFoundDate: func,
 	  setPetLocation: func,
-	  setPetDescription: func
+	  setPetDescription: func,
+	  setImages: func,
+	  setImageUrl: string.isRequired
 	};
 
 	module.exports = connector(NewPetFound);
@@ -43848,12 +43851,9 @@
 
 	'use strict';
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	__webpack_require__(1);
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(301);
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
@@ -43863,11 +43863,14 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
-	var Pagination = __webpack_require__(305);
-
+	var Pagination = __webpack_require__(301);
+	var MediaQuery = __webpack_require__(307);
+	var DesktopTemplateResults = __webpack_require__(308);
+	var TabletTemplateResults = __webpack_require__(313);
+	var MobileTemplateResults = __webpack_require__(314);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(311);
+	  __webpack_require__(315);
 	}
 
 	var Search = React.createClass({
@@ -43887,24 +43890,25 @@
 	  },
 	  componentDidMount: function componentDidMount() {
 	    var props = this.props;
+
 	    var extraDescription = function extraDescription(info) {
-	      if (info.length > 165) {
-	        return info.slice(0, 165);
+	      if (info.length > 90) {
+	        return info.slice(0, 90);
 	      } else {
 	        return '';
 	      }
 	    };
 
 	    var extraDescriptionHidden = function extraDescriptionHidden(info) {
-	      if (info.length > 165) {
-	        return info.slice(165, 1000);
+	      if (info.length > 90) {
+	        return info.slice(90, 1000);
 	      } else {
 	        return '';
 	      }
 	    };
 
 	    var showExtraInfo = function showExtraInfo(info) {
-	      return info.length > 165;
+	      return info.length > 90;
 	    };
 
 	    var resultDecorated = function resultDecorated(itemsCollection) {
@@ -43929,7 +43933,7 @@
 	      return newColection;
 	    };
 
-	    fetch('https://items-api.herokuapp.com/api/items', {
+	    fetch('http://localhost:4000/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
@@ -43942,42 +43946,29 @@
 	      console.log(err);
 	    });
 	  },
-	  addPetRows: function addPetRows(pets) {
-	    var petRows = [];
-	    var row = {};
-	    this.pairwise(pets, function (current, next) {
-	      row = { left: current, right: next };
-	      petRows.push(row);
-	    });
-	    return petRows;
-	  },
-	  pairwise: function pairwise(arr, func) {
-	    for (var i = 0; i < arr.length - 1; i += 2) {
-	      func(arr[i], arr[i + 1]);
-	    }
-	  },
 	  render: function render() {
-	    var _this = this;
-
 	    return React.createElement(
 	      'div',
 	      { className: 'container' },
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (row) {
-	        return React.createElement(
-	          'div',
-	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, row.left, { key: row.left.id })),
-	          React.createElement(MissingPet, _extends({}, row.right, { key: row.right.id }))
-	        );
-	      }),
+	      React.createElement(
+	        'div',
+	        { className: 'search-results' },
+	        React.createElement(
+	          MediaQuery,
+	          { minDeviceWidth: 1200 },
+	          React.createElement(DesktopTemplateResults, { pets: this.props.pets })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { minDeviceWidth: 768, maxDeviceWidth: 1200 },
+	          React.createElement(TabletTemplateResults, { pets: this.props.pets })
+	        ),
+	        React.createElement(
+	          MediaQuery,
+	          { maxDeviceWidth: 736 },
+	          React.createElement(MobileTemplateResults, { pets: this.props.pets })
+	        )
+	      ),
 	      React.createElement(
 	        'div',
 	        { className: 'center' },
@@ -44001,220 +43992,701 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	// export this package's api
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(3);
-	var MediaQuery = __webpack_require__(302);
-	var ContactDetailsPanel = __webpack_require__(303);
-	var ResponsiveImage = __webpack_require__(312);
-	var $ = __webpack_require__(297);
-
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(304);
-	}
-
-	var MissingPet = function (_React$Component) {
-	  _inherits(MissingPet, _React$Component);
-
-	  function MissingPet(props) {
-	    _classCallCheck(this, MissingPet);
-
-	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
-
-	    _this.addPanelsForNonMobileDevices = _this.addPanelsForNonMobileDevices.bind(_this);
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    return _this;
-	  }
-
-	  _createClass(MissingPet, [{
-	    key: 'addPanelsForNonMobileDevices',
-	    value: function addPanelsForNonMobileDevices() {
-	      if (parseInt(this.props.id) % 2 === 0) {
-	        return React.createElement(
-	          'div',
-	          null,
-	          React.createElement(ContactDetailsPanel, { id: this.props.id - 1 }),
-	          React.createElement(ContactDetailsPanel, { id: this.props.id })
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'handleClick',
-	    value: function handleClick(event) {
-	      var petId = 'item-' + this.props.id;
-	      var selectedId = '#' + petId;
-
-	      if ($(selectedId).hasClass('panel-opened')) {
-	        $('.col-sm-5').removeClass('addOpacity');
-	        $('.col-sm-5').removeClass('panel-opened');
-	        $('.contact-btn').removeAttr('disabled');
-	        $('.more-info_link').removeClass('disable-link');
-	      } else {
-	        $('.contact-btn').attr('disabled', 'disabled');
-	        $('.more-info_link').addClass('disable-link');
-
-	        if (parseInt(this.props.id) % 2 === 0) {
-	          $('.arrow-up').addClass('arrow-up-right');
-	          $('.arrow-up').removeClass('arrow-up-left');
-	        } else {
-	          $('.arrow-up').addClass('arrow-up-left');
-	          $('.arrow-up').removeClass('arrow-up-right');
-	        }
-
-	        $.each($('.pets-row'), function (pet) {
-	          if (petId !== pet.id) {
-	            var buttonSelector = '#' + petId + ' .contact-btn';
-	            var linkSelector = '#' + petId + ' .more-info_link';
-
-	            $(buttonSelector).removeAttr('disabled');
-	            $(linkSelector).removeClass('disable-link');
-	            $('.col-sm-5').addClass('addOpacity panel-opened');
-	            $(selectedId).removeClass('addOpacity');
-	          }
-	        });
-	      }
-
-	      event.preventDefault();
-	    }
-	  }, {
-	    key: 'displayExtraTextLink',
-	    value: function displayExtraTextLink() {
-	      if (this.props.showExtraInfo) {
-	        return React.createElement(
-	          'a',
-	          { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
-	          'mas informacion'
-	        );
-	      } else {
-	        return '';
-	      }
-	    }
-	  }, {
-	    key: 'displayDescription',
-	    value: function displayDescription() {
-	      if (this.props.showExtraInfo) {
-	        return React.createElement(
-	          'div',
-	          { className: 'extra-description-block' },
-	          React.createElement(
-	            'p',
-	            { className: 'panel-description_content w3-opacity' },
-	            this.props.extraDescription
-	          ),
-	          React.createElement(
-	            'div',
-	            { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
-	            this.props.extraDescriptionHidden
-	          )
-	        );
-	      } else {
-	        return React.createElement(
-	          'p',
-	          { className: 'panel-description_content w3-opacity' },
-	          this.props.description
-	        );
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'div',
-	          { id: 'item-' + this.props.id, className: 'panel col-sm-5 w3-white w3-margin' },
-	          React.createElement(
-	            'div',
-	            { className: 'panel-date w3-center' },
-	            this.props.petType,
-	            ', ',
-	            this.props.size
-	          ),
-	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
-	          React.createElement(
-	            'div',
-	            { className: 'panel-description w3-container w3-light-grey' },
-	            React.createElement(
-	              'p',
-	              { className: 'panel-description_title w3-opacity' },
-	              'Encontrado en ',
-	              this.props.city,
-	              ', ',
-	              this.props.location
-	            ),
-	            this.displayDescription(),
-	            React.createElement(
-	              'div',
-	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
-	              this.props.extraDescription
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'panel-description_iteraction' },
-	              this.displayExtraTextLink(),
-	              React.createElement(
-	                'form',
-	                { onSubmit: this.handleClick },
-	                React.createElement(
-	                  'button',
-	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement(
-	                    'b',
-	                    null,
-	                    'Contactar'
-	                  )
-	                )
-	              )
-	            ),
-	            React.createElement('p', { className: 'w3-clear' })
-	          )
-	        ),
-	        React.createElement(
-	          MediaQuery,
-	          { query: '(max-device-width: 600px)' },
-	          React.createElement(ContactDetailsPanel, { id: this.props.id })
-	        ),
-	        React.createElement(
-	          MediaQuery,
-	          { query: '(min-device-width: 700px)' },
-	          this.addPanelsForNonMobileDevices()
-	        )
-	      );
-	    }
-	  }]);
-
-	  return MissingPet;
-	}(React.Component);
-
-	var _React$PropTypes = React.PropTypes,
-	    string = _React$PropTypes.string,
-	    bool = _React$PropTypes.bool;
-
-
-	MissingPet.propTypes = {
-	  breading: string.isRequired,
-	  city: string.isRequired,
-	  showExtraInfo: bool.isRequired,
-	  location: string.isRequired,
-	  size: string.isRequired,
-	  description: string.isRequired,
-	  extraDescription: string.isRequired,
-	  extraDescriptionHidden: string.isRequired,
-	  image: string.isRequired,
-	  id: string.isRequired
-	};
-
-	module.exports = MissingPet;
+	module.exports = __webpack_require__(302);
 
 /***/ },
 /* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	function _defaults(obj, defaults) {
+	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
+	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
+	      Object.defineProperty(obj, key, value);
+	    }
+	  }return obj;
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
+	}
+
+	var React = __webpack_require__(3);
+	var Pager = __webpack_require__(303);
+	var Options = __webpack_require__(304);
+	var KEYCODE = __webpack_require__(305);
+	var LOCALE = __webpack_require__(306);
+
+	function noop() {}
+
+	var Pagination = function (_React$Component) {
+	  _inherits(Pagination, _React$Component);
+
+	  function Pagination(props) {
+	    _classCallCheck(this, Pagination);
+
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+
+	    var hasOnChange = props.onChange !== noop;
+	    var hasCurrent = 'current' in props;
+	    if (hasCurrent && !hasOnChange) {
+	      console.warn('Warning: You provided a `current` prop to a Pagination component without an `onChange` handler. This will render a read-only component.'); // eslint-disable-line
+	    }
+
+	    var current = props.defaultCurrent;
+	    if ('current' in props) {
+	      current = props.current;
+	    }
+
+	    var pageSize = props.defaultPageSize;
+	    if ('pageSize' in props) {
+	      pageSize = props.pageSize;
+	    }
+
+	    _this.state = {
+	      current: current,
+	      _current: current,
+	      pageSize: pageSize
+	    };
+
+	    ['render', '_handleChange', '_handleKeyUp', '_handleKeyDown', '_changePageSize', '_isValid', '_prev', '_next', '_hasPrev', '_hasNext', '_jumpPrev', '_jumpNext'].forEach(function (method) {
+	      return _this[method] = _this[method].bind(_this);
+	    });
+	    return _this;
+	  }
+
+	  Pagination.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	    if ('current' in nextProps) {
+	      this.setState({
+	        current: nextProps.current,
+	        _current: nextProps.current
+	      });
+	    }
+
+	    if ('pageSize' in nextProps) {
+	      var newState = {};
+	      var current = this.state.current;
+	      var newCurrent = this._calcPage(nextProps.pageSize);
+	      current = current > newCurrent ? newCurrent : current;
+	      if (!('current' in nextProps)) {
+	        newState.current = current;
+	        newState._current = current;
+	      }
+	      newState.pageSize = nextProps.pageSize;
+	      this.setState(newState);
+	    }
+	  };
+
+	  // private methods
+
+	  Pagination.prototype._calcPage = function _calcPage(p) {
+	    var pageSize = p;
+	    if (typeof pageSize === 'undefined') {
+	      pageSize = this.state.pageSize;
+	    }
+	    return Math.floor((this.props.total - 1) / pageSize) + 1;
+	  };
+
+	  Pagination.prototype._isValid = function _isValid(page) {
+	    return typeof page === 'number' && page >= 1 && page !== this.state.current;
+	  };
+
+	  Pagination.prototype._handleKeyDown = function _handleKeyDown(evt) {
+	    if (evt.keyCode === KEYCODE.ARROW_UP || evt.keyCode === KEYCODE.ARROW_DOWN) {
+	      evt.preventDefault();
+	    }
+	  };
+
+	  Pagination.prototype._handleKeyUp = function _handleKeyUp(evt) {
+	    var _val = evt.target.value;
+	    var val = void 0;
+
+	    if (_val === '') {
+	      val = _val;
+	    } else if (isNaN(Number(_val))) {
+	      val = this.state._current;
+	    } else {
+	      val = Number(_val);
+	    }
+
+	    this.setState({
+	      _current: val
+	    });
+
+	    if (evt.keyCode === KEYCODE.ENTER) {
+	      this._handleChange(val);
+	    } else if (evt.keyCode === KEYCODE.ARROW_UP) {
+	      this._handleChange(val - 1);
+	    } else if (evt.keyCode === KEYCODE.ARROW_DOWN) {
+	      this._handleChange(val + 1);
+	    }
+	  };
+
+	  Pagination.prototype._changePageSize = function _changePageSize(size) {
+	    var current = this.state.current;
+	    var newCurrent = this._calcPage(size);
+	    current = current > newCurrent ? newCurrent : current;
+	    if (typeof size === 'number') {
+	      if (!('pageSize' in this.props)) {
+	        this.setState({
+	          pageSize: size
+	        });
+	      }
+	      if (!('current' in this.props)) {
+	        this.setState({
+	          current: current,
+	          _current: current
+	        });
+	      }
+	    }
+	    this.props.onShowSizeChange(current, size);
+	  };
+
+	  Pagination.prototype._handleChange = function _handleChange(p) {
+	    var page = p;
+	    if (this._isValid(page)) {
+	      if (page > this._calcPage()) {
+	        page = this._calcPage();
+	      }
+
+	      if (!('current' in this.props)) {
+	        this.setState({
+	          current: page,
+	          _current: page
+	        });
+	      }
+
+	      var pageSize = this.state.pageSize;
+	      this.props.onChange(page, pageSize);
+
+	      return page;
+	    }
+
+	    return this.state.current;
+	  };
+
+	  Pagination.prototype._prev = function _prev() {
+	    if (this._hasPrev()) {
+	      this._handleChange(this.state.current - 1);
+	    }
+	  };
+
+	  Pagination.prototype._next = function _next() {
+	    if (this._hasNext()) {
+	      this._handleChange(this.state.current + 1);
+	    }
+	  };
+
+	  Pagination.prototype._jumpPrev = function _jumpPrev() {
+	    this._handleChange(Math.max(1, this.state.current - (this.props.showLessItems ? 3 : 5)));
+	  };
+
+	  Pagination.prototype._jumpNext = function _jumpNext() {
+	    this._handleChange(Math.min(this._calcPage(), this.state.current + (this.props.showLessItems ? 3 : 5)));
+	  };
+
+	  Pagination.prototype._hasPrev = function _hasPrev() {
+	    return this.state.current > 1;
+	  };
+
+	  Pagination.prototype._hasNext = function _hasNext() {
+	    return this.state.current < this._calcPage();
+	  };
+
+	  Pagination.prototype.render = function render() {
+	    var props = this.props;
+	    var locale = props.locale;
+
+	    var prefixCls = props.prefixCls;
+	    var allPages = this._calcPage();
+	    var pagerList = [];
+	    var jumpPrev = null;
+	    var jumpNext = null;
+	    var firstPager = null;
+	    var lastPager = null;
+
+	    var pageBufferSize = props.showLessItems ? 1 : 2;
+	    var _state = this.state,
+	        current = _state.current,
+	        pageSize = _state.pageSize;
+
+	    if (props.simple) {
+	      return React.createElement('ul', { className: prefixCls + ' ' + prefixCls + '-simple ' + props.className }, React.createElement('li', {
+	        title: locale.prev_page,
+	        onClick: this._prev,
+	        className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
+	      }, React.createElement('a', null)), React.createElement('li', { title: this.state.current + '/' + allPages, className: prefixCls + '-simple-pager' }, React.createElement('input', {
+	        type: 'text',
+	        value: this.state._current,
+	        onKeyDown: this._handleKeyDown,
+	        onKeyUp: this._handleKeyUp,
+	        onChange: this._handleKeyUp
+	      }), React.createElement('span', { className: prefixCls + '-slash' }, "\uFF0F"), allPages), React.createElement('li', {
+	        title: locale.next_page,
+	        onClick: this._next,
+	        className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
+	      }, React.createElement('a', null)));
+	    }
+
+	    if (allPages <= 5 + pageBufferSize * 2) {
+	      for (var i = 1; i <= allPages; i++) {
+	        var active = this.state.current === i;
+	        pagerList.push(React.createElement(Pager, {
+	          locale: locale,
+	          rootPrefixCls: prefixCls,
+	          onClick: this._handleChange.bind(this, i),
+	          key: i,
+	          page: i,
+	          active: active
+	        }));
+	      }
+	    } else {
+	      jumpPrev = React.createElement('li', {
+	        title: props.showLessItems ? locale.prev_3 : locale.prev_5,
+	        key: 'prev',
+	        onClick: this._jumpPrev,
+	        className: prefixCls + '-jump-prev'
+	      }, React.createElement('a', null));
+	      jumpNext = React.createElement('li', {
+	        title: props.showLessItems ? locale.next_3 : locale.next_5,
+	        key: 'next',
+	        onClick: this._jumpNext,
+	        className: prefixCls + '-jump-next'
+	      }, React.createElement('a', null));
+	      lastPager = React.createElement(Pager, {
+	        locale: props.locale,
+	        last: true,
+	        rootPrefixCls: prefixCls,
+	        onClick: this._handleChange.bind(this, allPages),
+	        key: allPages,
+	        page: allPages,
+	        active: false
+	      });
+	      firstPager = React.createElement(Pager, {
+	        locale: props.locale,
+	        rootPrefixCls: prefixCls,
+	        onClick: this._handleChange.bind(this, 1),
+	        key: 1,
+	        page: 1,
+	        active: false
+	      });
+
+	      var left = Math.max(1, current - pageBufferSize);
+	      var right = Math.min(current + pageBufferSize, allPages);
+
+	      if (current - 1 <= pageBufferSize) {
+	        right = 1 + pageBufferSize * 2;
+	      }
+
+	      if (allPages - current <= pageBufferSize) {
+	        left = allPages - pageBufferSize * 2;
+	      }
+
+	      for (var _i = left; _i <= right; _i++) {
+	        var _active = current === _i;
+	        pagerList.push(React.createElement(Pager, {
+	          locale: props.locale,
+	          rootPrefixCls: prefixCls,
+	          onClick: this._handleChange.bind(this, _i),
+	          key: _i,
+	          page: _i,
+	          active: _active
+	        }));
+	      }
+
+	      if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
+	        pagerList[0] = React.cloneElement(pagerList[0], {
+	          className: prefixCls + '-item-after-jump-prev'
+	        });
+	        pagerList.unshift(jumpPrev);
+	      }
+	      if (allPages - current >= pageBufferSize * 2 && current !== allPages - 2) {
+	        pagerList[pagerList.length - 1] = React.cloneElement(pagerList[pagerList.length - 1], {
+	          className: prefixCls + '-item-before-jump-next'
+	        });
+	        pagerList.push(jumpNext);
+	      }
+
+	      if (left !== 1) {
+	        pagerList.unshift(firstPager);
+	      }
+	      if (right !== allPages) {
+	        pagerList.push(lastPager);
+	      }
+	    }
+
+	    var totalText = null;
+
+	    if (props.showTotal) {
+	      totalText = React.createElement('span', { className: prefixCls + '-total-text' }, props.showTotal(props.total, [(current - 1) * pageSize + 1, current * pageSize > props.total ? props.total : current * pageSize]));
+	    }
+
+	    return React.createElement('ul', {
+	      className: prefixCls + ' ' + props.className,
+	      style: props.style,
+	      unselectable: 'unselectable'
+	    }, totalText, React.createElement('li', {
+	      title: locale.prev_page,
+	      onClick: this._prev,
+	      className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
+	    }, React.createElement('a', null)), pagerList, React.createElement('li', {
+	      title: locale.next_page,
+	      onClick: this._next,
+	      className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
+	    }, React.createElement('a', null)), React.createElement(Options, {
+	      locale: props.locale,
+	      rootPrefixCls: prefixCls,
+	      selectComponentClass: props.selectComponentClass,
+	      selectPrefixCls: props.selectPrefixCls,
+	      changeSize: this.props.showSizeChanger ? this._changePageSize.bind(this) : null,
+	      current: this.state.current,
+	      pageSize: this.state.pageSize,
+	      pageSizeOptions: this.props.pageSizeOptions,
+	      quickGo: this.props.showQuickJumper ? this._handleChange.bind(this) : null
+	    }));
+	  };
+
+	  return Pagination;
+	}(React.Component);
+
+	Pagination.propTypes = {
+	  current: React.PropTypes.number,
+	  defaultCurrent: React.PropTypes.number,
+	  total: React.PropTypes.number,
+	  pageSize: React.PropTypes.number,
+	  defaultPageSize: React.PropTypes.number,
+	  onChange: React.PropTypes.func,
+	  showSizeChanger: React.PropTypes.bool,
+	  showLessItems: React.PropTypes.bool,
+	  onShowSizeChange: React.PropTypes.func,
+	  selectComponentClass: React.PropTypes.func,
+	  showQuickJumper: React.PropTypes.bool,
+	  pageSizeOptions: React.PropTypes.arrayOf(React.PropTypes.string),
+	  showTotal: React.PropTypes.func,
+	  locale: React.PropTypes.object,
+	  style: React.PropTypes.object
+	};
+
+	Pagination.defaultProps = {
+	  defaultCurrent: 1,
+	  total: 0,
+	  defaultPageSize: 10,
+	  onChange: noop,
+	  className: '',
+	  selectPrefixCls: 'rc-select',
+	  prefixCls: 'rc-pagination',
+	  selectComponentClass: null,
+	  showQuickJumper: false,
+	  showSizeChanger: false,
+	  showLessItems: false,
+	  onShowSizeChange: noop,
+	  locale: LOCALE,
+	  style: {}
+	};
+
+	module.exports = Pagination;
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	function _defaults(obj, defaults) {
+	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
+	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
+	      Object.defineProperty(obj, key, value);
+	    }
+	  }return obj;
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
+	}
+
+	var React = __webpack_require__(3);
+
+	var Pager = function (_React$Component) {
+	  _inherits(Pager, _React$Component);
+
+	  function Pager() {
+	    _classCallCheck(this, Pager);
+
+	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
+	  }
+
+	  Pager.prototype.render = function render() {
+	    var props = this.props;
+	    var prefixCls = props.rootPrefixCls + '-item';
+	    var cls = prefixCls + ' ' + prefixCls + '-' + props.page;
+
+	    if (props.active) {
+	      cls = cls + ' ' + prefixCls + '-active';
+	    }
+
+	    if (props.className) {
+	      cls = cls + ' ' + props.className;
+	    }
+
+	    return React.createElement('li', { title: props.page, className: cls, onClick: props.onClick }, React.createElement('a', null, props.page));
+	  };
+
+	  return Pager;
+	}(React.Component);
+
+	Pager.propTypes = {
+	  page: React.PropTypes.number,
+	  active: React.PropTypes.bool,
+	  last: React.PropTypes.bool,
+	  locale: React.PropTypes.object,
+	  className: React.PropTypes.string
+	};
+
+	module.exports = Pager;
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+	function _defaults(obj, defaults) {
+	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
+	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
+	      Object.defineProperty(obj, key, value);
+	    }
+	  }return obj;
+	}
+
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
+
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
+	}
+
+	var React = __webpack_require__(3);
+	var KEYCODE = __webpack_require__(305);
+
+	var Options = function (_React$Component) {
+	  _inherits(Options, _React$Component);
+
+	  function Options(props) {
+	    _classCallCheck(this, Options);
+
+	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
+
+	    _this.state = {
+	      current: props.current,
+	      _current: props.current
+	    };
+
+	    ['_handleChange', '_changeSize', '_go', '_buildOptionText'].forEach(function (method) {
+	      return _this[method] = _this[method].bind(_this);
+	    });
+	    return _this;
+	  }
+
+	  Options.prototype._buildOptionText = function _buildOptionText(value) {
+	    return value + ' ' + this.props.locale.items_per_page;
+	  };
+
+	  Options.prototype._changeSize = function _changeSize(value) {
+	    this.props.changeSize(Number(value));
+	  };
+
+	  Options.prototype._handleChange = function _handleChange(evt) {
+	    var _val = evt.target.value;
+
+	    this.setState({
+	      _current: _val
+	    });
+	  };
+
+	  Options.prototype._go = function _go(e) {
+	    var _val = e.target.value;
+	    if (_val === '') {
+	      return;
+	    }
+	    var val = Number(this.state._current);
+	    if (isNaN(val)) {
+	      val = this.state.current;
+	    }
+	    if (e.keyCode === KEYCODE.ENTER) {
+	      var c = this.props.quickGo(val);
+	      this.setState({
+	        _current: c,
+	        current: c
+	      });
+	    }
+	  };
+
+	  Options.prototype.render = function render() {
+	    var _this2 = this;
+
+	    var props = this.props;
+	    var state = this.state;
+	    var locale = props.locale;
+	    var prefixCls = props.rootPrefixCls + '-options';
+	    var changeSize = props.changeSize;
+	    var quickGo = props.quickGo;
+	    var buildOptionText = props.buildOptionText || this._buildOptionText;
+	    var Select = props.selectComponentClass;
+	    var changeSelect = null;
+	    var goInput = null;
+
+	    if (!(changeSize || quickGo)) {
+	      return null;
+	    }
+
+	    if (changeSize && Select) {
+	      (function () {
+	        var Option = Select.Option;
+	        var pageSize = props.pageSize || props.pageSizeOptions[0];
+	        var options = props.pageSizeOptions.map(function (opt, i) {
+	          return React.createElement(Option, { key: i, value: opt }, buildOptionText(opt));
+	        });
+
+	        changeSelect = React.createElement(Select, {
+	          prefixCls: props.selectPrefixCls,
+	          showSearch: false,
+	          className: prefixCls + '-size-changer',
+	          optionLabelProp: 'children',
+	          dropdownMatchSelectWidth: false,
+	          value: pageSize.toString(),
+	          onChange: _this2._changeSize
+	        }, options);
+	      })();
+	    }
+
+	    if (quickGo) {
+	      goInput = React.createElement('div', { className: prefixCls + '-quick-jumper' }, locale.jump_to, React.createElement('input', {
+	        type: 'text',
+	        value: state._current,
+	        onChange: this._handleChange,
+	        onKeyUp: this._go
+	      }), locale.page);
+	    }
+
+	    return React.createElement('div', { className: '' + prefixCls }, changeSelect, goInput);
+	  };
+
+	  return Options;
+	}(React.Component);
+
+	Options.propTypes = {
+	  changeSize: React.PropTypes.func,
+	  quickGo: React.PropTypes.func,
+	  selectComponentClass: React.PropTypes.func,
+	  current: React.PropTypes.number,
+	  pageSizeOptions: React.PropTypes.arrayOf(React.PropTypes.string),
+	  pageSize: React.PropTypes.number,
+	  buildOptionText: React.PropTypes.func,
+	  locale: React.PropTypes.object
+	};
+
+	Options.defaultProps = {
+	  pageSizeOptions: ['10', '20', '30', '40']
+	};
+
+	module.exports = Options;
+
+/***/ },
+/* 305 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = {
+	  ZERO: 48,
+	  NINE: 57,
+
+	  NUMPAD_ZERO: 96,
+	  NUMPAD_NINE: 105,
+
+	  BACKSPACE: 8,
+	  DELETE: 46,
+	  ENTER: 13,
+
+	  ARROW_UP: 38,
+	  ARROW_DOWN: 40
+	};
+
+/***/ },
+/* 306 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports["default"] = {
+	  // Options.jsx
+	  items_per_page: '条/页',
+	  jump_to: '跳至',
+	  page: '页',
+
+	  // Pagination.jsx
+	  prev_page: '上一页',
+	  next_page: '下一页',
+	  prev_5: '向前 5 页',
+	  next_5: '向后 5 页',
+	  prev_3: '向前 3 页',
+	  next_3: '向后 3 页'
+	};
+	module.exports = exports['default'];
+
+/***/ },
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -44895,7 +45367,86 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(169)(module)))
 
 /***/ },
-/* 303 */
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(3);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    string = _React$PropTypes.string,
+	    arrayOf = _React$PropTypes.arrayOf;
+
+
+	var Search = React.createClass({
+	  displayName: 'Search',
+
+	  propTypes: {
+	    pets: arrayOf(object),
+	    searchTerm: string,
+	    selectFilter: string
+	  },
+	  addPetRows: function addPetRows(pets) {
+	    var petRows = [];
+	    var row = {};
+	    this.rowElements(pets, function (left, center, right) {
+	      row = { left: left, center: center, right: right };
+	      petRows.push(row);
+	    });
+	    return petRows;
+	  },
+	  rowElements: function rowElements(arr, func) {
+	    for (var i = 1; i < arr.length - 1; i += 3) {
+	      func(arr[i], arr[i + 1], arr[i + 2]);
+	    }
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.addPetRows(this.props.pets).filter(function (pet) {
+	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (pet) {
+	        return React.createElement(
+	          'div',
+	          { className: 'pets-row' },
+	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
+	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
+	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
+	        );
+	      })
+	    );
+	  }
+	});
+
+	module.exports = connector(Search);
+
+/***/ },
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44909,110 +45460,144 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
+	var ResponsiveImage = __webpack_require__(310);
+	var $ = __webpack_require__(297);
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(311);
+	}
 
-	var ContactDetailsPanel = function (_React$Component) {
-	  _inherits(ContactDetailsPanel, _React$Component);
+	var MissingPet = function (_React$Component) {
+	  _inherits(MissingPet, _React$Component);
 
-	  function ContactDetailsPanel(props) {
-	    _classCallCheck(this, ContactDetailsPanel);
+	  function MissingPet(props) {
+	    _classCallCheck(this, MissingPet);
 
-	    var _this = _possibleConstructorReturn(this, (ContactDetailsPanel.__proto__ || Object.getPrototypeOf(ContactDetailsPanel)).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
 
-	    _this.handleName = _this.handleName.bind(_this);
-	    _this.handleEmail = _this.handleEmail.bind(_this);
-	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
-	    _this.handleDescription = _this.handleDescription.bind(_this);
-	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.handleClick = _this.handleClick.bind(_this);
 	    return _this;
 	  }
 
-	  _createClass(ContactDetailsPanel, [{
-	    key: 'handleName',
-	    value: function handleName(event) {
-	      this.props.setOwnerName(event.target.value);
-	    }
-	  }, {
-	    key: 'handleEmail',
-	    value: function handleEmail(event) {
-	      this.props.setOwnerEmail(event.target.value);
-	    }
-	  }, {
-	    key: 'handlePhoneNumber',
-	    value: function handlePhoneNumber(event) {
-	      this.props.setOwnerPhoneNumber(event.target.value);
-	    }
-	  }, {
-	    key: 'handleDescription',
-	    value: function handleDescription(event) {
-	      this.props.setDescription(event.target.value);
-	    }
-	  }, {
-	    key: 'handleSubmit',
-	    value: function handleSubmit(event) {
-	      this.props.sendOwnersDetails();
+	  _createClass(MissingPet, [{
+	    key: 'handleClick',
+	    value: function handleClick(event) {
+	      var colSizeClass = '.' + this.props.colSizeClass;
+	      var petId = 'item-' + this.props.id;
+	      var selectedId = '#' + petId;
+
+	      if ($(selectedId).hasClass('panel-opened')) {
+	        $(colSizeClass).removeClass('addOpacity');
+	        $(colSizeClass).removeClass('panel-opened');
+	        $('.contact-btn').removeAttr('disabled');
+	        $('.more-info_link').removeClass('disable-link');
+	      } else {
+	        $('.contact-btn').attr('disabled', 'disabled');
+	        $('.more-info_link').addClass('disable-link');
+
+	        $.each($('.pets-row'), function (pet) {
+	          if (petId !== pet.id) {
+	            var buttonSelector = '#' + petId + ' .contact-btn';
+	            var linkSelector = '#' + petId + ' .more-info_link';
+
+	            $(buttonSelector).removeAttr('disabled');
+	            $(linkSelector).removeClass('disable-link');
+	            $(colSizeClass).addClass('addOpacity panel-opened');
+	            $(selectedId).removeClass('addOpacity');
+	          }
+	        });
+	      }
+
 	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'displayExtraTextLink',
+	    value: function displayExtraTextLink() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'a',
+	          { 'data-toggle': 'collapse', 'data-target': '#more-info-' + this.props.id, className: 'more-info_link w3-opacity' },
+	          'mas informacion'
+	        );
+	      } else {
+	        return '';
+	      }
+	    }
+	  }, {
+	    key: 'displayDescription',
+	    value: function displayDescription() {
+	      if (this.props.showExtraInfo) {
+	        return React.createElement(
+	          'div',
+	          { className: 'extra-description-block' },
+	          React.createElement(
+	            'p',
+	            { className: 'panel-description_content w3-opacity' },
+	            this.props.extraDescription
+	          ),
+	          React.createElement(
+	            'div',
+	            { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	            this.props.extraDescriptionHidden
+	          )
+	        );
+	      } else {
+	        return React.createElement(
+	          'p',
+	          { className: 'panel-description_content w3-opacity' },
+	          this.props.description
+	        );
+	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return React.createElement(
 	        'div',
-	        { id: this.props.id, className: 'collapse contact-details-panel' },
-	        React.createElement('div', { className: 'arrow-up' }),
+	        { className: 'missing-pet-card' },
 	        React.createElement(
 	          'div',
-	          { className: 'w3-margin' },
+	          { id: 'item-' + this.props.id, className: 'panel ' + this.props.colSizeClass + ' w3-white w3-margin' },
 	          React.createElement(
 	            'div',
-	            { className: 'w3-container w3-padding w3-opacity' },
-	            React.createElement(
-	              'h2',
-	              null,
-	              'Introduce tus datos de contacto'
-	            )
+	            { className: 'panel-date w3-center' },
+	            this.props.petType,
+	            ', ',
+	            this.props.size
 	          ),
+	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
 	          React.createElement(
 	            'div',
-	            { className: 'w3-container' },
+	            { className: 'panel-description w3-container w3-light-grey' },
 	            React.createElement(
 	              'p',
-	              { className: 'form-introduction w3-opacity' },
-	              'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	              { className: 'panel-description_title w3-opacity' },
+	              'Encontrado en ',
+	              this.props.city,
+	              ', ',
+	              this.props.location
+	            ),
+	            this.displayDescription(),
+	            React.createElement(
+	              'div',
+	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	              this.props.extraDescription
 	            ),
 	            React.createElement(
-	              'form',
-	              { onSubmit: this.handleSubmit },
+	              'div',
+	              { className: 'panel-description_iteraction' },
+	              this.displayExtraTextLink(),
 	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
+	                'form',
+	                { onSubmit: this.handleClick },
 	                React.createElement(
 	                  'button',
-	                  { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                  ' Enviar mis datos'
+	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement(
+	                    'b',
+	                    null,
+	                    'Contactar'
+	                  )
 	                )
 	              )
 	            )
@@ -45022,740 +45607,34 @@
 	    }
 	  }]);
 
-	  return ContactDetailsPanel;
+	  return MissingPet;
 	}(React.Component);
 
 	var _React$PropTypes = React.PropTypes,
 	    string = _React$PropTypes.string,
-	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
+	    bool = _React$PropTypes.bool;
 
 
-	ContactDetailsPanel.propTypes = {
-	  id: string.isRequired,
-	  owner: object,
-	  setOwnerName: func,
-	  setOwnerEmail: func,
-	  setOwnerPhoneNumber: func,
-	  setDescription: func,
-	  sendOwnersDetails: func
+	MissingPet.propTypes = {
+	  breading: string.isRequired,
+	  city: string.isRequired,
+	  showExtraInfo: bool.isRequired,
+	  location: string.isRequired,
+	  size: string.isRequired,
+	  description: string.isRequired,
+	  extraDescription: string.isRequired,
+	  extraDescriptionHidden: string.isRequired,
+	  image: string.isRequired,
+	  colSizeClass: string.isRequired,
+	  petType: string.isRequired,
+	  imageUrl: string.isRequired,
+	  id: string.isRequired
 	};
 
-	module.exports = connector(ContactDetailsPanel);
-
-/***/ },
-/* 304 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	// export this package's api
-
-	module.exports = __webpack_require__(306);
-
-/***/ },
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	function _defaults(obj, defaults) {
-	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
-	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
-	      Object.defineProperty(obj, key, value);
-	    }
-	  }return obj;
-	}
-
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	}
-
-	function _possibleConstructorReturn(self, call) {
-	  if (!self) {
-	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
-	}
-
-	var React = __webpack_require__(3);
-	var Pager = __webpack_require__(307);
-	var Options = __webpack_require__(308);
-	var KEYCODE = __webpack_require__(309);
-	var LOCALE = __webpack_require__(310);
-
-	function noop() {}
-
-	var Pagination = function (_React$Component) {
-	  _inherits(Pagination, _React$Component);
-
-	  function Pagination(props) {
-	    _classCallCheck(this, Pagination);
-
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-
-	    var hasOnChange = props.onChange !== noop;
-	    var hasCurrent = 'current' in props;
-	    if (hasCurrent && !hasOnChange) {
-	      console.warn('Warning: You provided a `current` prop to a Pagination component without an `onChange` handler. This will render a read-only component.'); // eslint-disable-line
-	    }
-
-	    var current = props.defaultCurrent;
-	    if ('current' in props) {
-	      current = props.current;
-	    }
-
-	    var pageSize = props.defaultPageSize;
-	    if ('pageSize' in props) {
-	      pageSize = props.pageSize;
-	    }
-
-	    _this.state = {
-	      current: current,
-	      _current: current,
-	      pageSize: pageSize
-	    };
-
-	    ['render', '_handleChange', '_handleKeyUp', '_handleKeyDown', '_changePageSize', '_isValid', '_prev', '_next', '_hasPrev', '_hasNext', '_jumpPrev', '_jumpNext'].forEach(function (method) {
-	      return _this[method] = _this[method].bind(_this);
-	    });
-	    return _this;
-	  }
-
-	  Pagination.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	    if ('current' in nextProps) {
-	      this.setState({
-	        current: nextProps.current,
-	        _current: nextProps.current
-	      });
-	    }
-
-	    if ('pageSize' in nextProps) {
-	      var newState = {};
-	      var current = this.state.current;
-	      var newCurrent = this._calcPage(nextProps.pageSize);
-	      current = current > newCurrent ? newCurrent : current;
-	      if (!('current' in nextProps)) {
-	        newState.current = current;
-	        newState._current = current;
-	      }
-	      newState.pageSize = nextProps.pageSize;
-	      this.setState(newState);
-	    }
-	  };
-
-	  // private methods
-
-	  Pagination.prototype._calcPage = function _calcPage(p) {
-	    var pageSize = p;
-	    if (typeof pageSize === 'undefined') {
-	      pageSize = this.state.pageSize;
-	    }
-	    return Math.floor((this.props.total - 1) / pageSize) + 1;
-	  };
-
-	  Pagination.prototype._isValid = function _isValid(page) {
-	    return typeof page === 'number' && page >= 1 && page !== this.state.current;
-	  };
-
-	  Pagination.prototype._handleKeyDown = function _handleKeyDown(evt) {
-	    if (evt.keyCode === KEYCODE.ARROW_UP || evt.keyCode === KEYCODE.ARROW_DOWN) {
-	      evt.preventDefault();
-	    }
-	  };
-
-	  Pagination.prototype._handleKeyUp = function _handleKeyUp(evt) {
-	    var _val = evt.target.value;
-	    var val = void 0;
-
-	    if (_val === '') {
-	      val = _val;
-	    } else if (isNaN(Number(_val))) {
-	      val = this.state._current;
-	    } else {
-	      val = Number(_val);
-	    }
-
-	    this.setState({
-	      _current: val
-	    });
-
-	    if (evt.keyCode === KEYCODE.ENTER) {
-	      this._handleChange(val);
-	    } else if (evt.keyCode === KEYCODE.ARROW_UP) {
-	      this._handleChange(val - 1);
-	    } else if (evt.keyCode === KEYCODE.ARROW_DOWN) {
-	      this._handleChange(val + 1);
-	    }
-	  };
-
-	  Pagination.prototype._changePageSize = function _changePageSize(size) {
-	    var current = this.state.current;
-	    var newCurrent = this._calcPage(size);
-	    current = current > newCurrent ? newCurrent : current;
-	    if (typeof size === 'number') {
-	      if (!('pageSize' in this.props)) {
-	        this.setState({
-	          pageSize: size
-	        });
-	      }
-	      if (!('current' in this.props)) {
-	        this.setState({
-	          current: current,
-	          _current: current
-	        });
-	      }
-	    }
-	    this.props.onShowSizeChange(current, size);
-	  };
-
-	  Pagination.prototype._handleChange = function _handleChange(p) {
-	    var page = p;
-	    if (this._isValid(page)) {
-	      if (page > this._calcPage()) {
-	        page = this._calcPage();
-	      }
-
-	      if (!('current' in this.props)) {
-	        this.setState({
-	          current: page,
-	          _current: page
-	        });
-	      }
-
-	      var pageSize = this.state.pageSize;
-	      this.props.onChange(page, pageSize);
-
-	      return page;
-	    }
-
-	    return this.state.current;
-	  };
-
-	  Pagination.prototype._prev = function _prev() {
-	    if (this._hasPrev()) {
-	      this._handleChange(this.state.current - 1);
-	    }
-	  };
-
-	  Pagination.prototype._next = function _next() {
-	    if (this._hasNext()) {
-	      this._handleChange(this.state.current + 1);
-	    }
-	  };
-
-	  Pagination.prototype._jumpPrev = function _jumpPrev() {
-	    this._handleChange(Math.max(1, this.state.current - (this.props.showLessItems ? 3 : 5)));
-	  };
-
-	  Pagination.prototype._jumpNext = function _jumpNext() {
-	    this._handleChange(Math.min(this._calcPage(), this.state.current + (this.props.showLessItems ? 3 : 5)));
-	  };
-
-	  Pagination.prototype._hasPrev = function _hasPrev() {
-	    return this.state.current > 1;
-	  };
-
-	  Pagination.prototype._hasNext = function _hasNext() {
-	    return this.state.current < this._calcPage();
-	  };
-
-	  Pagination.prototype.render = function render() {
-	    var props = this.props;
-	    var locale = props.locale;
-
-	    var prefixCls = props.prefixCls;
-	    var allPages = this._calcPage();
-	    var pagerList = [];
-	    var jumpPrev = null;
-	    var jumpNext = null;
-	    var firstPager = null;
-	    var lastPager = null;
-
-	    var pageBufferSize = props.showLessItems ? 1 : 2;
-	    var _state = this.state,
-	        current = _state.current,
-	        pageSize = _state.pageSize;
-
-	    if (props.simple) {
-	      return React.createElement('ul', { className: prefixCls + ' ' + prefixCls + '-simple ' + props.className }, React.createElement('li', {
-	        title: locale.prev_page,
-	        onClick: this._prev,
-	        className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
-	      }, React.createElement('a', null)), React.createElement('li', { title: this.state.current + '/' + allPages, className: prefixCls + '-simple-pager' }, React.createElement('input', {
-	        type: 'text',
-	        value: this.state._current,
-	        onKeyDown: this._handleKeyDown,
-	        onKeyUp: this._handleKeyUp,
-	        onChange: this._handleKeyUp
-	      }), React.createElement('span', { className: prefixCls + '-slash' }, "\uFF0F"), allPages), React.createElement('li', {
-	        title: locale.next_page,
-	        onClick: this._next,
-	        className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
-	      }, React.createElement('a', null)));
-	    }
-
-	    if (allPages <= 5 + pageBufferSize * 2) {
-	      for (var i = 1; i <= allPages; i++) {
-	        var active = this.state.current === i;
-	        pagerList.push(React.createElement(Pager, {
-	          locale: locale,
-	          rootPrefixCls: prefixCls,
-	          onClick: this._handleChange.bind(this, i),
-	          key: i,
-	          page: i,
-	          active: active
-	        }));
-	      }
-	    } else {
-	      jumpPrev = React.createElement('li', {
-	        title: props.showLessItems ? locale.prev_3 : locale.prev_5,
-	        key: 'prev',
-	        onClick: this._jumpPrev,
-	        className: prefixCls + '-jump-prev'
-	      }, React.createElement('a', null));
-	      jumpNext = React.createElement('li', {
-	        title: props.showLessItems ? locale.next_3 : locale.next_5,
-	        key: 'next',
-	        onClick: this._jumpNext,
-	        className: prefixCls + '-jump-next'
-	      }, React.createElement('a', null));
-	      lastPager = React.createElement(Pager, {
-	        locale: props.locale,
-	        last: true,
-	        rootPrefixCls: prefixCls,
-	        onClick: this._handleChange.bind(this, allPages),
-	        key: allPages,
-	        page: allPages,
-	        active: false
-	      });
-	      firstPager = React.createElement(Pager, {
-	        locale: props.locale,
-	        rootPrefixCls: prefixCls,
-	        onClick: this._handleChange.bind(this, 1),
-	        key: 1,
-	        page: 1,
-	        active: false
-	      });
-
-	      var left = Math.max(1, current - pageBufferSize);
-	      var right = Math.min(current + pageBufferSize, allPages);
-
-	      if (current - 1 <= pageBufferSize) {
-	        right = 1 + pageBufferSize * 2;
-	      }
-
-	      if (allPages - current <= pageBufferSize) {
-	        left = allPages - pageBufferSize * 2;
-	      }
-
-	      for (var _i = left; _i <= right; _i++) {
-	        var _active = current === _i;
-	        pagerList.push(React.createElement(Pager, {
-	          locale: props.locale,
-	          rootPrefixCls: prefixCls,
-	          onClick: this._handleChange.bind(this, _i),
-	          key: _i,
-	          page: _i,
-	          active: _active
-	        }));
-	      }
-
-	      if (current - 1 >= pageBufferSize * 2 && current !== 1 + 2) {
-	        pagerList[0] = React.cloneElement(pagerList[0], {
-	          className: prefixCls + '-item-after-jump-prev'
-	        });
-	        pagerList.unshift(jumpPrev);
-	      }
-	      if (allPages - current >= pageBufferSize * 2 && current !== allPages - 2) {
-	        pagerList[pagerList.length - 1] = React.cloneElement(pagerList[pagerList.length - 1], {
-	          className: prefixCls + '-item-before-jump-next'
-	        });
-	        pagerList.push(jumpNext);
-	      }
-
-	      if (left !== 1) {
-	        pagerList.unshift(firstPager);
-	      }
-	      if (right !== allPages) {
-	        pagerList.push(lastPager);
-	      }
-	    }
-
-	    var totalText = null;
-
-	    if (props.showTotal) {
-	      totalText = React.createElement('span', { className: prefixCls + '-total-text' }, props.showTotal(props.total, [(current - 1) * pageSize + 1, current * pageSize > props.total ? props.total : current * pageSize]));
-	    }
-
-	    return React.createElement('ul', {
-	      className: prefixCls + ' ' + props.className,
-	      style: props.style,
-	      unselectable: 'unselectable'
-	    }, totalText, React.createElement('li', {
-	      title: locale.prev_page,
-	      onClick: this._prev,
-	      className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
-	    }, React.createElement('a', null)), pagerList, React.createElement('li', {
-	      title: locale.next_page,
-	      onClick: this._next,
-	      className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
-	    }, React.createElement('a', null)), React.createElement(Options, {
-	      locale: props.locale,
-	      rootPrefixCls: prefixCls,
-	      selectComponentClass: props.selectComponentClass,
-	      selectPrefixCls: props.selectPrefixCls,
-	      changeSize: this.props.showSizeChanger ? this._changePageSize.bind(this) : null,
-	      current: this.state.current,
-	      pageSize: this.state.pageSize,
-	      pageSizeOptions: this.props.pageSizeOptions,
-	      quickGo: this.props.showQuickJumper ? this._handleChange.bind(this) : null
-	    }));
-	  };
-
-	  return Pagination;
-	}(React.Component);
-
-	Pagination.propTypes = {
-	  current: React.PropTypes.number,
-	  defaultCurrent: React.PropTypes.number,
-	  total: React.PropTypes.number,
-	  pageSize: React.PropTypes.number,
-	  defaultPageSize: React.PropTypes.number,
-	  onChange: React.PropTypes.func,
-	  showSizeChanger: React.PropTypes.bool,
-	  showLessItems: React.PropTypes.bool,
-	  onShowSizeChange: React.PropTypes.func,
-	  selectComponentClass: React.PropTypes.func,
-	  showQuickJumper: React.PropTypes.bool,
-	  pageSizeOptions: React.PropTypes.arrayOf(React.PropTypes.string),
-	  showTotal: React.PropTypes.func,
-	  locale: React.PropTypes.object,
-	  style: React.PropTypes.object
-	};
-
-	Pagination.defaultProps = {
-	  defaultCurrent: 1,
-	  total: 0,
-	  defaultPageSize: 10,
-	  onChange: noop,
-	  className: '',
-	  selectPrefixCls: 'rc-select',
-	  prefixCls: 'rc-pagination',
-	  selectComponentClass: null,
-	  showQuickJumper: false,
-	  showSizeChanger: false,
-	  showLessItems: false,
-	  onShowSizeChange: noop,
-	  locale: LOCALE,
-	  style: {}
-	};
-
-	module.exports = Pagination;
-
-/***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	function _defaults(obj, defaults) {
-	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
-	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
-	      Object.defineProperty(obj, key, value);
-	    }
-	  }return obj;
-	}
-
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	}
-
-	function _possibleConstructorReturn(self, call) {
-	  if (!self) {
-	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
-	}
-
-	var React = __webpack_require__(3);
-
-	var Pager = function (_React$Component) {
-	  _inherits(Pager, _React$Component);
-
-	  function Pager() {
-	    _classCallCheck(this, Pager);
-
-	    return _possibleConstructorReturn(this, _React$Component.apply(this, arguments));
-	  }
-
-	  Pager.prototype.render = function render() {
-	    var props = this.props;
-	    var prefixCls = props.rootPrefixCls + '-item';
-	    var cls = prefixCls + ' ' + prefixCls + '-' + props.page;
-
-	    if (props.active) {
-	      cls = cls + ' ' + prefixCls + '-active';
-	    }
-
-	    if (props.className) {
-	      cls = cls + ' ' + props.className;
-	    }
-
-	    return React.createElement('li', { title: props.page, className: cls, onClick: props.onClick }, React.createElement('a', null, props.page));
-	  };
-
-	  return Pager;
-	}(React.Component);
-
-	Pager.propTypes = {
-	  page: React.PropTypes.number,
-	  active: React.PropTypes.bool,
-	  last: React.PropTypes.bool,
-	  locale: React.PropTypes.object,
-	  className: React.PropTypes.string
-	};
-
-	module.exports = Pager;
-
-/***/ },
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
-	function _defaults(obj, defaults) {
-	  var keys = Object.getOwnPropertyNames(defaults);for (var i = 0; i < keys.length; i++) {
-	    var key = keys[i];var value = Object.getOwnPropertyDescriptor(defaults, key);if (value && value.configurable && obj[key] === undefined) {
-	      Object.defineProperty(obj, key, value);
-	    }
-	  }return obj;
-	}
-
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError("Cannot call a class as a function");
-	  }
-	}
-
-	function _possibleConstructorReturn(self, call) {
-	  if (!self) {
-	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
-	}
-
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== "function" && superClass !== null) {
-	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass);
-	}
-
-	var React = __webpack_require__(3);
-	var KEYCODE = __webpack_require__(309);
-
-	var Options = function (_React$Component) {
-	  _inherits(Options, _React$Component);
-
-	  function Options(props) {
-	    _classCallCheck(this, Options);
-
-	    var _this = _possibleConstructorReturn(this, _React$Component.call(this, props));
-
-	    _this.state = {
-	      current: props.current,
-	      _current: props.current
-	    };
-
-	    ['_handleChange', '_changeSize', '_go', '_buildOptionText'].forEach(function (method) {
-	      return _this[method] = _this[method].bind(_this);
-	    });
-	    return _this;
-	  }
-
-	  Options.prototype._buildOptionText = function _buildOptionText(value) {
-	    return value + ' ' + this.props.locale.items_per_page;
-	  };
-
-	  Options.prototype._changeSize = function _changeSize(value) {
-	    this.props.changeSize(Number(value));
-	  };
-
-	  Options.prototype._handleChange = function _handleChange(evt) {
-	    var _val = evt.target.value;
-
-	    this.setState({
-	      _current: _val
-	    });
-	  };
-
-	  Options.prototype._go = function _go(e) {
-	    var _val = e.target.value;
-	    if (_val === '') {
-	      return;
-	    }
-	    var val = Number(this.state._current);
-	    if (isNaN(val)) {
-	      val = this.state.current;
-	    }
-	    if (e.keyCode === KEYCODE.ENTER) {
-	      var c = this.props.quickGo(val);
-	      this.setState({
-	        _current: c,
-	        current: c
-	      });
-	    }
-	  };
-
-	  Options.prototype.render = function render() {
-	    var _this2 = this;
-
-	    var props = this.props;
-	    var state = this.state;
-	    var locale = props.locale;
-	    var prefixCls = props.rootPrefixCls + '-options';
-	    var changeSize = props.changeSize;
-	    var quickGo = props.quickGo;
-	    var buildOptionText = props.buildOptionText || this._buildOptionText;
-	    var Select = props.selectComponentClass;
-	    var changeSelect = null;
-	    var goInput = null;
-
-	    if (!(changeSize || quickGo)) {
-	      return null;
-	    }
-
-	    if (changeSize && Select) {
-	      (function () {
-	        var Option = Select.Option;
-	        var pageSize = props.pageSize || props.pageSizeOptions[0];
-	        var options = props.pageSizeOptions.map(function (opt, i) {
-	          return React.createElement(Option, { key: i, value: opt }, buildOptionText(opt));
-	        });
-
-	        changeSelect = React.createElement(Select, {
-	          prefixCls: props.selectPrefixCls,
-	          showSearch: false,
-	          className: prefixCls + '-size-changer',
-	          optionLabelProp: 'children',
-	          dropdownMatchSelectWidth: false,
-	          value: pageSize.toString(),
-	          onChange: _this2._changeSize
-	        }, options);
-	      })();
-	    }
-
-	    if (quickGo) {
-	      goInput = React.createElement('div', { className: prefixCls + '-quick-jumper' }, locale.jump_to, React.createElement('input', {
-	        type: 'text',
-	        value: state._current,
-	        onChange: this._handleChange,
-	        onKeyUp: this._go
-	      }), locale.page);
-	    }
-
-	    return React.createElement('div', { className: '' + prefixCls }, changeSelect, goInput);
-	  };
-
-	  return Options;
-	}(React.Component);
-
-	Options.propTypes = {
-	  changeSize: React.PropTypes.func,
-	  quickGo: React.PropTypes.func,
-	  selectComponentClass: React.PropTypes.func,
-	  current: React.PropTypes.number,
-	  pageSizeOptions: React.PropTypes.arrayOf(React.PropTypes.string),
-	  pageSize: React.PropTypes.number,
-	  buildOptionText: React.PropTypes.func,
-	  locale: React.PropTypes.object
-	};
-
-	Options.defaultProps = {
-	  pageSizeOptions: ['10', '20', '30', '40']
-	};
-
-	module.exports = Options;
-
-/***/ },
-/* 309 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = {
-	  ZERO: 48,
-	  NINE: 57,
-
-	  NUMPAD_ZERO: 96,
-	  NUMPAD_NINE: 105,
-
-	  BACKSPACE: 8,
-	  DELETE: 46,
-	  ENTER: 13,
-
-	  ARROW_UP: 38,
-	  ARROW_DOWN: 40
-	};
+	module.exports = MissingPet;
 
 /***/ },
 /* 310 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = {
-	  // Options.jsx
-	  items_per_page: '条/页',
-	  jump_to: '跳至',
-	  page: '页',
-
-	  // Pagination.jsx
-	  prev_page: '上一页',
-	  next_page: '下一页',
-	  prev_5: '向前 5 页',
-	  next_5: '向后 5 页',
-	  prev_3: '向前 3 页',
-	  next_3: '向后 3 页'
-	};
-	module.exports = exports['default'];
-
-/***/ },
-/* 311 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45769,7 +45648,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
-	var MediaQuery = __webpack_require__(302);
+	var MediaQuery = __webpack_require__(307);
 
 	var ResponsiveImage = function (_React$Component) {
 	  _inherits(ResponsiveImage, _React$Component);
@@ -45847,10 +45726,309 @@
 
 
 	ResponsiveImage.propTypes = {
-	  url: string.isRequired
+	  url: string.isRequired,
+	  className: string.isRequired
 	};
 
 	module.exports = ResponsiveImage;
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(3);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(316);
+	}
+
+	var ContactDetailsPanel = function (_React$Component) {
+	  _inherits(ContactDetailsPanel, _React$Component);
+
+	  function ContactDetailsPanel(props) {
+	    _classCallCheck(this, ContactDetailsPanel);
+
+	    var _this = _possibleConstructorReturn(this, (ContactDetailsPanel.__proto__ || Object.getPrototypeOf(ContactDetailsPanel)).call(this, props));
+
+	    _this.handleName = _this.handleName.bind(_this);
+	    _this.handleEmail = _this.handleEmail.bind(_this);
+	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
+	    _this.handleDescription = _this.handleDescription.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(ContactDetailsPanel, [{
+	    key: 'handleName',
+	    value: function handleName(event) {
+	      this.props.setOwnerName(event.target.value);
+	    }
+	  }, {
+	    key: 'handleEmail',
+	    value: function handleEmail(event) {
+	      this.props.setOwnerEmail(event.target.value);
+	    }
+	  }, {
+	    key: 'handlePhoneNumber',
+	    value: function handlePhoneNumber(event) {
+	      this.props.setOwnerPhoneNumber(event.target.value);
+	    }
+	  }, {
+	    key: 'handleDescription',
+	    value: function handleDescription(event) {
+	      this.props.setDescription(event.target.value);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      this.props.sendOwnersDetails();
+	      event.preventDefault();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement(
+	        'div',
+	        { id: this.props.id, className: 'collapse contact-details-panel' },
+	        React.createElement('div', { className: this.props.arrow }),
+	        React.createElement(
+	          'div',
+	          { className: 'w3-margin' },
+	          React.createElement(
+	            'div',
+	            { className: 'w3-container w3-padding w3-opacity' },
+	            React.createElement(
+	              'h2',
+	              null,
+	              'Introduce tus datos de contacto'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'w3-container' },
+	            React.createElement(
+	              'p',
+	              { className: 'form-introduction w3-opacity' },
+	              'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	            ),
+	            React.createElement(
+	              'form',
+	              { onSubmit: this.handleSubmit },
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	              ),
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement(
+	                  'button',
+	                  { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                  React.createElement('i', { className: 'fa fa-paper-plane' }),
+	                  ' Enviar mis datos'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ContactDetailsPanel;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    object = _React$PropTypes.object,
+	    func = _React$PropTypes.func;
+
+
+	ContactDetailsPanel.propTypes = {
+	  id: string.isRequired,
+	  arrow: string.isRequired,
+	  owner: object,
+	  setOwnerName: func,
+	  setOwnerEmail: func,
+	  setOwnerPhoneNumber: func,
+	  setDescription: func,
+	  sendOwnersDetails: func
+	};
+
+	module.exports = connector(ContactDetailsPanel);
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(3);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    string = _React$PropTypes.string,
+	    arrayOf = _React$PropTypes.arrayOf;
+
+
+	var Search = React.createClass({
+	  displayName: 'Search',
+
+	  propTypes: {
+	    pets: arrayOf(object),
+	    searchTerm: string,
+	    selectFilter: string
+	  },
+	  addPetRows: function addPetRows(pets) {
+	    var petRows = [];
+	    var row = {};
+	    this.pairwise(pets, function (current, next) {
+	      row = { left: current, right: next };
+	      petRows.push(row);
+	    });
+	    return petRows;
+	  },
+	  pairwise: function pairwise(arr, func) {
+	    for (var i = 0; i < arr.length - 1; i += 2) {
+	      func(arr[i], arr[i + 1]);
+	    }
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.addPetRows(this.props.pets).filter(function (pet) {
+	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (pet) {
+	        return React.createElement(
+	          'div',
+	          { className: 'pets-row' },
+	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-5', key: pet.left.id })),
+	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-5', key: pet.right.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
+	        );
+	      })
+	    );
+	  }
+	});
+
+	module.exports = connector(Search);
+
+/***/ },
+/* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var React = __webpack_require__(3);
+	var MissingPet = __webpack_require__(309);
+	var ContactDetailsPanel = __webpack_require__(312);
+
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    string = _React$PropTypes.string,
+	    arrayOf = _React$PropTypes.arrayOf;
+
+
+	var Search = React.createClass({
+	  displayName: 'Search',
+
+	  propTypes: {
+	    pets: arrayOf(object),
+	    searchTerm: string,
+	    selectFilter: string
+	  },
+	  render: function render() {
+	    var _this = this;
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      this.props.pets.filter(function (pet) {
+	        return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	      }).filter(function (pet) {
+	        return ('' + pet.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	      }).map(function (pet) {
+	        return React.createElement(
+	          'div',
+	          { className: 'pets-row' },
+	          React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-6', key: pet.id })),
+	          React.createElement(ContactDetailsPanel, { id: pet.id, arrow: 'arrow-up-center' })
+	        );
+	      })
+	    );
+	  }
+	});
+
+	module.exports = connector(Search);
+
+/***/ },
+/* 315 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 316 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

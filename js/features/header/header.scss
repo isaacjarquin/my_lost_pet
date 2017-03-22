@@ -25,6 +25,12 @@
     border-color: transparent;
     .container-fluid {
       opacity: 0.9;
+      @media (max-width:736px) {
+        padding: 0 30px;
+        li {
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 }
