@@ -20,7 +20,7 @@ const Search = React.createClass({
     return petRows
   },
   rowElements: function (arr, func) {
-    for (var i = 1; i < arr.length - 1; i += 3) {
+    for (var i = 0; i < arr.length - 1; i += 3) {
       func(arr[i], arr[i + 1], arr[i + 2])
     }
   },
