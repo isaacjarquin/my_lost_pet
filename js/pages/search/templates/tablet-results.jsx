@@ -13,14 +13,21 @@ const Search = React.createClass({
   addPetRows: function (pets) {
     let petRows = []
     let row = {}
+
     this.pairwise(pets, function (current, next) {
-      row = {left: current, right: next}
+      if (next !== undefined) {
+        row = {left: current, right: next}
+      } else {
+        row = {left: current, right: {id: undefined}}
+      }
+
       petRows.push(row)
     })
+
     return petRows
   },
   pairwise: function (arr, func) {
-    for (var i = 0; i < arr.length - 1; i += 2) {
+    for (var i = 0; i <= arr.length - 1; i += 2) {
       func(arr[i], arr[i + 1])
     }
   },

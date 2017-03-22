@@ -13,14 +13,23 @@ const Search = React.createClass({
   addPetRows: function (pets) {
     let petRows = []
     let row = {}
+
     this.rowElements(pets, function (left, center, right) {
-      row = {left: left, center: center, right: right}
+      if (center === undefined) {
+        row = {left: left, center: {id: undefined}, right: {id: undefined}}
+      } else if (right === undefined) {
+        row = {left: left, center: center, right: {id: undefined}}
+      } else {
+        row = {left: left, center: center, right: right}
+      }
+
       petRows.push(row)
     })
+
     return petRows
   },
   rowElements: function (arr, func) {
-    for (var i = 0; i < arr.length - 1; i += 3) {
+    for (var i = 0; i <= arr.length - 1; i += 3) {
       func(arr[i], arr[i + 1], arr[i + 2])
     }
   },
