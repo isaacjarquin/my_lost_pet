@@ -159,7 +159,7 @@ class NewPetFound extends React.Component {
     const headers = { 'Content-Type': 'application/json' }
     const props = this.props
 
-    fetch('http://localhost:4000/api/items', {
+    fetch('https://items-api.herokuapp.com/api/items', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })

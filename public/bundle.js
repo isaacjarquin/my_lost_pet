@@ -30815,7 +30815,7 @@
 	      var headers = { 'Content-Type': 'application/json' };
 	      var props = this.props;
 
-	      fetch('http://localhost:4000/api/items', {
+	      fetch('https://items-api.herokuapp.com/api/items', {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
@@ -43866,11 +43866,11 @@
 	var Pagination = __webpack_require__(301);
 	var MediaQuery = __webpack_require__(307);
 	var DesktopTemplateResults = __webpack_require__(308);
-	var TabletTemplateResults = __webpack_require__(313);
-	var MobileTemplateResults = __webpack_require__(314);
+	var TabletTemplateResults = __webpack_require__(314);
+	var MobileTemplateResults = __webpack_require__(315);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(315);
+	  __webpack_require__(316);
 	}
 
 	var Search = React.createClass({
@@ -43933,7 +43933,7 @@
 	      return newColection;
 	    };
 
-	    fetch('http://localhost:4000/api/items', {
+	    fetch('https://items-api.herokuapp.com/api/items', {
 	      method: 'GET',
 	      headers: { 'Content-Type': 'application/json' }
 	    }).then(function (response) {
@@ -45758,7 +45758,7 @@
 	    connector = _require.connector;
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(316);
+	  __webpack_require__(313);
 	}
 
 	var ContactDetailsPanel = function (_React$Component) {
@@ -45894,6 +45894,12 @@
 
 /***/ },
 /* 313 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45966,7 +45972,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46017,12 +46023,6 @@
 	});
 
 	module.exports = connector(Search);
-
-/***/ },
-/* 315 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ },
 /* 316 */
