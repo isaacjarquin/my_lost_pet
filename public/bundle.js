@@ -45424,16 +45424,14 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.center.city + ' ' + pet.right.city + ' ' + pet.left.location + ' ' + pet.center.location + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.left.pet + ' ' + pet.center.pet + ' ' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (pet) {
+	      this.addPetRows(this.props.pets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
 	          [pet.left, pet.center, pet.right].filter(function (pet) {
 	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).filter(function (pet) {
+	            return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
 	          }),
@@ -45977,16 +45975,14 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.right.city + ' ' + pet.left.location + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.left.pet + ' ' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (pet) {
+	      this.addPetRows(this.props.pets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
 	          [pet.left, pet.right].filter(function (pet) {
 	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).filter(function (pet) {
+	            return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-5', key: pet.id }));
 	          }),
@@ -46038,7 +46034,7 @@
 	      this.props.pets.filter(function (pet) {
 	        return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
-	        return ('' + pet.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	        return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',

@@ -35,12 +35,11 @@ const Search = React.createClass({
     return (
       <div>
         {this.addPetRows(this.props.pets)
-          .filter((pet) => `${pet.left.city} ${pet.right.city} ${pet.left.location} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.left.pet} ${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
           .map((pet) => (
             <div className='pets-row'>
               {[pet.left, pet.right]
                 .filter((pet) => `${pet.location} ${pet.city}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+                .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
                 .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-5'} key={pet.id} />))
               }
               <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} />
