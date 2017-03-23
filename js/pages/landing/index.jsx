@@ -29,7 +29,7 @@ class Landing extends React.Component {
     event.preventDefault()
   }
   render () {
-    const petTypes = [{pet: 'dog', id: 1}, {pet: 'cat', id: 2}, {pet: 'rabit', id: 3}]
+    const petTypes = [{pet: 'perro', id: 1}, {pet: 'gato', id: 2}, {pet: 'conejo', id: 3}]
     const url = process.env.HOST_URL
     const twitterAppId = process.env.TWITTER_KEY
 

@@ -37,17 +37,14 @@ const Search = React.createClass({
     return (
       <div>
         {this.addPetRows(this.props.pets)
-          .filter((pet) => `${pet.left.city} ${pet.left.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.center.city} ${pet.center.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.right.city} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.left.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.center.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.left.city} ${pet.center.city} ${pet.right.city} ${pet.left.location} ${pet.center.location} ${pet.right.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.left.pet} ${pet.center.pet} ${pet.right.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
           .map((pet) => (
             <div className='pets-row'>
-              <MissingPet {...pet.left} colSizeClass={'col-sm-3'} key={pet.left.id} />
-              <MissingPet {...pet.center} colSizeClass={'col-sm-3'} key={pet.center.id} />
-              <MissingPet {...pet.right} colSizeClass={'col-sm-3'} key={pet.right.id} />
+              {[pet.left, pet.center, pet.right]
+                .filter((pet) => `${pet.location} ${pet.city}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
+                .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-3'} key={pet.id} />))
+              }
               <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} />
               <ContactDetailsPanel id={pet.center.id} arrow={'arrow-up-center'} />
               <ContactDetailsPanel id={pet.right.id} arrow={'arrow-up-right'} />

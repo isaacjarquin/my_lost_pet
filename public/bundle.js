@@ -20972,7 +20972,7 @@
 	    this.props.setSearchTerm(event.target.value);
 	  },
 	  render: function render() {
-	    var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
+	    var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
 	    return React.createElement(
 	      'nav',
 	      { className: 'navbar navbar-inverse' },
@@ -29540,7 +29540,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
+	      var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
 	      var url = ({"NODE_ENV":"production"}).HOST_URL;
 	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
 
@@ -45425,24 +45425,18 @@
 	      'div',
 	      null,
 	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	        return (pet.left.city + ' ' + pet.center.city + ' ' + pet.right.city + ' ' + pet.left.location + ' ' + pet.center.location + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
-	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	        return (pet.left.pet + ' ' + pet.center.pet + ' ' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
-	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
-	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
+	          [pet.left, pet.center, pet.right].filter(function (pet) {
+	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).map(function (pet) {
+	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
+	          }),
 	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
@@ -45984,19 +45978,18 @@
 	      'div',
 	      null,
 	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	        return (pet.left.city + ' ' + pet.right.city + ' ' + pet.left.location + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	        return (pet.left.pet + ' ' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-5', key: pet.left.id })),
-	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-5', key: pet.right.id })),
+	          [pet.left, pet.right].filter(function (pet) {
+	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).map(function (pet) {
+	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-5', key: pet.id }));
+	          }),
 	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
 	        );
