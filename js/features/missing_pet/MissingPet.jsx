@@ -68,7 +68,7 @@ class MissingPet extends React.Component {
   }
 
   renderPetCard () {
-    if (this.props.id !== undefined ) {
+    if (this.props.id !== undefined) {
       return (
         <div className='missing-pet-card'>
           <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
@@ -95,7 +95,7 @@ class MissingPet extends React.Component {
     }
   }
   render () {
-    return ( this.renderPetCard() )
+    return (this.renderPetCard())
   }
 }
 

@@ -35,7 +35,7 @@ class ContactDetailsPanel extends React.Component {
   }
 
   renderPanel () {
-    if (this.props.id !== undefined ) {
+    if (this.props.id !== undefined) {
       return (
         <div id={this.props.id} className='collapse contact-details-panel'>
           <div className={this.props.arrow} />
@@ -62,7 +62,7 @@ class ContactDetailsPanel extends React.Component {
   }
 
   render () {
-    return ( this.renderPanel() )
+    return (this.renderPanel())
   }
 }
 
