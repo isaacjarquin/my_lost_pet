@@ -20972,7 +20972,7 @@
 	    this.props.setSearchTerm(event.target.value);
 	  },
 	  render: function render() {
-	    var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
+	    var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
 	    return React.createElement(
 	      'nav',
 	      { className: 'navbar navbar-inverse' },
@@ -29540,7 +29540,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var petTypes = [{ pet: 'dog', id: 1 }, { pet: 'cat', id: 2 }, { pet: 'rabit', id: 3 }];
+	      var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
 	      var url = ({"NODE_ENV":"production"}).HOST_URL;
 	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
 
@@ -45398,14 +45398,23 @@
 	  addPetRows: function addPetRows(pets) {
 	    var petRows = [];
 	    var row = {};
+
 	    this.rowElements(pets, function (left, center, right) {
-	      row = { left: left, center: center, right: right };
+	      if (center === undefined) {
+	        row = { left: left, center: { id: undefined }, right: { id: undefined } };
+	      } else if (right === undefined) {
+	        row = { left: left, center: center, right: { id: undefined } };
+	      } else {
+	        row = { left: left, center: center, right: right };
+	      }
+
 	      petRows.push(row);
 	    });
+
 	    return petRows;
 	  },
 	  rowElements: function rowElements(arr, func) {
-	    for (var i = 0; i < arr.length - 1; i += 3) {
+	    for (var i = 0; i <= arr.length - 1; i += 3) {
 	      func(arr[i], arr[i + 1], arr[i + 2]);
 	    }
 	  },
@@ -45415,25 +45424,17 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.center.city + ' ' + pet.center.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.center.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (pet) {
+	      this.addPetRows(this.props.pets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-3', key: pet.left.id })),
-	          React.createElement(MissingPet, _extends({}, pet.center, { colSizeClass: 'col-sm-3', key: pet.center.id })),
-	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-3', key: pet.right.id })),
+	          [pet.left, pet.center, pet.right].filter(function (pet) {
+	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).filter(function (pet) {
+	            return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	          }).map(function (pet) {
+	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
+	          }),
 	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
@@ -45476,6 +45477,7 @@
 	    var _this = _possibleConstructorReturn(this, (MissingPet.__proto__ || Object.getPrototypeOf(MissingPet)).call(this, props));
 
 	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.renderPetCard = _this.renderPetCard.bind(_this);
 	    return _this;
 	  }
 
@@ -45550,60 +45552,69 @@
 	      }
 	    }
 	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { className: 'missing-pet-card' },
-	        React.createElement(
+	    key: 'renderPetCard',
+	    value: function renderPetCard() {
+	      if (this.props.id !== undefined) {
+	        return React.createElement(
 	          'div',
-	          { id: 'item-' + this.props.id, className: 'panel ' + this.props.colSizeClass + ' w3-white w3-margin' },
+	          { className: 'missing-pet-card' },
 	          React.createElement(
 	            'div',
-	            { className: 'panel-date w3-center' },
-	            this.props.petType,
-	            ', ',
-	            this.props.size
-	          ),
-	          React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
-	          React.createElement(
-	            'div',
-	            { className: 'panel-description w3-container w3-light-grey' },
+	            { id: 'item-' + this.props.id, className: 'panel ' + this.props.colSizeClass + ' w3-white w3-margin' },
 	            React.createElement(
-	              'p',
-	              { className: 'panel-description_title w3-opacity' },
-	              'Encontrado en ',
-	              this.props.city,
+	              'div',
+	              { className: 'panel-date w3-center' },
+	              this.props.petType,
 	              ', ',
-	              this.props.location
+	              this.props.size
 	            ),
-	            this.displayDescription(),
+	            React.createElement(ResponsiveImage, { url: this.props.imageUrl, className: 'panel-image' }),
 	            React.createElement(
 	              'div',
-	              { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
-	              this.props.extraDescription
-	            ),
-	            React.createElement(
-	              'div',
-	              { className: 'panel-description_iteraction' },
-	              this.displayExtraTextLink(),
+	              { className: 'panel-description w3-container w3-light-grey' },
 	              React.createElement(
-	                'form',
-	                { onSubmit: this.handleClick },
+	                'p',
+	                { className: 'panel-description_title w3-opacity' },
+	                'Encontrado en ',
+	                this.props.city,
+	                ', ',
+	                this.props.location
+	              ),
+	              this.displayDescription(),
+	              React.createElement(
+	                'div',
+	                { id: 'more-info-' + this.props.id, className: 'more-info-extra w3-opacity collapse' },
+	                this.props.extraDescription
+	              ),
+	              React.createElement(
+	                'div',
+	                { className: 'panel-description_iteraction' },
+	                this.displayExtraTextLink(),
 	                React.createElement(
-	                  'button',
-	                  { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                  'form',
+	                  { onSubmit: this.handleClick },
 	                  React.createElement(
-	                    'b',
-	                    null,
-	                    'Contactar'
+	                    'button',
+	                    { 'data-toggle': 'collapse', 'data-target': '#' + this.props.id, className: 'contact-btn w3-btn w3-border w3-grey w3-opacity w3-hover-opacity-off' },
+	                    React.createElement(
+	                      'b',
+	                      null,
+	                      'Contactar'
+	                    )
 	                  )
 	                )
 	              )
 	            )
 	          )
-	        )
-	      );
+	        );
+	      } else {
+	        return null;
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.renderPetCard();
 	    }
 	  }]);
 
@@ -45774,6 +45785,7 @@
 	    _this.handlePhoneNumber = _this.handlePhoneNumber.bind(_this);
 	    _this.handleDescription = _this.handleDescription.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+	    _this.renderPanel = _this.renderPanel.bind(_this);
 	    return _this;
 	  }
 
@@ -45804,69 +45816,78 @@
 	      event.preventDefault();
 	    }
 	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return React.createElement(
-	        'div',
-	        { id: this.props.id, className: 'collapse contact-details-panel' },
-	        React.createElement('div', { className: this.props.arrow }),
-	        React.createElement(
+	    key: 'renderPanel',
+	    value: function renderPanel() {
+	      if (this.props.id !== undefined) {
+	        return React.createElement(
 	          'div',
-	          { className: 'w3-margin' },
+	          { id: this.props.id, className: 'collapse contact-details-panel' },
+	          React.createElement('div', { className: this.props.arrow }),
 	          React.createElement(
 	            'div',
-	            { className: 'w3-container w3-padding w3-opacity' },
+	            { className: 'w3-margin' },
 	            React.createElement(
-	              'h2',
-	              null,
-	              'Introduce tus datos de contacto'
-	            )
-	          ),
-	          React.createElement(
-	            'div',
-	            { className: 'w3-container' },
-	            React.createElement(
-	              'p',
-	              { className: 'form-introduction w3-opacity' },
-	              'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	              'div',
+	              { className: 'w3-container w3-padding w3-opacity' },
+	              React.createElement(
+	                'h2',
+	                null,
+	                'Introduce tus datos de contacto'
+	              )
 	            ),
 	            React.createElement(
-	              'form',
-	              { onSubmit: this.handleSubmit },
+	              'div',
+	              { className: 'w3-container' },
 	              React.createElement(
 	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                { className: 'form-introduction w3-opacity' },
+	                'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
 	              ),
 	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
-	                React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
-	              ),
-	              React.createElement(
-	                'p',
-	                null,
+	                'form',
+	                { onSubmit: this.handleSubmit },
 	                React.createElement(
-	                  'button',
-	                  { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
-	                  React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                  ' Enviar mis datos'
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	                ),
+	                React.createElement(
+	                  'p',
+	                  null,
+	                  React.createElement(
+	                    'button',
+	                    { className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
+	                    React.createElement('i', { className: 'fa fa-paper-plane' }),
+	                    ' Enviar mis datos'
+	                  )
 	                )
 	              )
 	            )
 	          )
-	        )
-	      );
+	        );
+	      } else {
+	        return null;
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.renderPanel();
 	    }
 	  }]);
 
@@ -45930,14 +45951,21 @@
 	  addPetRows: function addPetRows(pets) {
 	    var petRows = [];
 	    var row = {};
+
 	    this.pairwise(pets, function (current, next) {
-	      row = { left: current, right: next };
+	      if (next !== undefined) {
+	        row = { left: current, right: next };
+	      } else {
+	        row = { left: current, right: { id: undefined } };
+	      }
+
 	      petRows.push(row);
 	    });
+
 	    return petRows;
 	  },
 	  pairwise: function pairwise(arr, func) {
-	    for (var i = 0; i < arr.length - 1; i += 2) {
+	    for (var i = 0; i <= arr.length - 1; i += 2) {
 	      func(arr[i], arr[i + 1]);
 	    }
 	  },
@@ -45947,20 +45975,17 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).filter(function (pet) {
-	        return (pet.left.city + ' ' + pet.left.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return (pet.right.city + ' ' + pet.right.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.left.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).filter(function (pet) {
-	        return ('' + pet.right.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	      }).map(function (pet) {
+	      this.addPetRows(this.props.pets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          React.createElement(MissingPet, _extends({}, pet.left, { colSizeClass: 'col-sm-5', key: pet.left.id })),
-	          React.createElement(MissingPet, _extends({}, pet.right, { colSizeClass: 'col-sm-5', key: pet.right.id })),
+	          [pet.left, pet.right].filter(function (pet) {
+	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
+	          }).filter(function (pet) {
+	            return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	          }).map(function (pet) {
+	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-5', key: pet.id }));
+	          }),
 	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
 	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
 	        );
@@ -46009,7 +46034,7 @@
 	      this.props.pets.filter(function (pet) {
 	        return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
-	        return ('' + pet.pet).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
+	        return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
 	      }).map(function (pet) {
 	        return React.createElement(
 	          'div',

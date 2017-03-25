@@ -13,6 +13,7 @@ class ContactDetailsPanel extends React.Component {
     this.handlePhoneNumber = this.handlePhoneNumber.bind(this)
     this.handleDescription = this.handleDescription.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.renderPanel = this.renderPanel.bind(this)
   }
 
   handleName (event) {
@@ -33,27 +34,35 @@ class ContactDetailsPanel extends React.Component {
     event.preventDefault()
   }
 
-  render () {
-    return (
-      <div id={this.props.id} className='collapse contact-details-panel'>
-        <div className={this.props.arrow} />
-        <div className='w3-margin'>
-          <div className='w3-container w3-padding w3-opacity'>
-            <h2>Introduce tus datos de contacto</h2>
-          </div>
-          <div className='w3-container'>
-            <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
-            <form onSubmit={this.handleSubmit}>
-              <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-              <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-              <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-              <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
-              <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
-            </form>
+  renderPanel () {
+    if (this.props.id !== undefined) {
+      return (
+        <div id={this.props.id} className='collapse contact-details-panel'>
+          <div className={this.props.arrow} />
+          <div className='w3-margin'>
+            <div className='w3-container w3-padding w3-opacity'>
+              <h2>Introduce tus datos de contacto</h2>
+            </div>
+            <div className='w3-container'>
+              <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+              <form onSubmit={this.handleSubmit}>
+                <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+                <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+                <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+                <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
+                <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    } else {
+      return null
+    }
+  }
+
+  render () {
+    return (this.renderPanel())
   }
 }
 

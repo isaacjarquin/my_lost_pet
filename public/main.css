@@ -436,7 +436,8 @@ p.form-introduction {
   content: "\BB"; }
 
 .center {
-  text-align: center; }
+  text-align: center;
+  clear: both; }
 
 @media (min-width: 1200px) {
   .container .pets-row {

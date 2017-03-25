@@ -15,7 +15,7 @@ const Search = React.createClass({
       <div>
         {this.props.pets
           .filter((pet) => `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
-          .filter((pet) => `${pet.pet}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
+          .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
           .map((pet) => (
             <div className='pets-row'>
               <MissingPet {...pet} colSizeClass={'col-sm-6'} key={pet.id} />
