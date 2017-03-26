@@ -87,7 +87,7 @@ describe('Store', () => {
       'titleDescription': 'En constrado en Las Palmas'
     }
 
-    expect(state).to.deep.equal({activePage: 2, pageSize: 6, activePagePets: [lastPet]})
+    expect(state).to.deep.equal({activePage: 2, pageSize: 6, pets: pets, activePagePets: [lastPet]})
   })
 
   it('should handle setOwnerName actions', () => {
