@@ -1,8 +1,6 @@
-const { pets } = require('../../../public/mockData')
-
 const reducerActivePage = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {activePage: action.value, pets: pageItems(action.value, state.pageSize, pets)})
+  Object.assign(newState, state, {activePage: action.value, activePagePets: pageItems(action.value, state.pageSize, state.pets)})
 
   return newState
 }

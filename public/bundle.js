@@ -21111,9 +21111,9 @@
 	var _require5 = __webpack_require__(209),
 	    reducerActivePage = _require5.reducerActivePage;
 
-	var reducerAlerts = __webpack_require__(211);
+	var reducerAlerts = __webpack_require__(210);
 
-	var initialState = __webpack_require__(212);
+	var initialState = __webpack_require__(211);
 
 	var SET_SEARCH_TERM = 'setSearchTerm';
 	var SET_SELECT_FILTER = 'setSelectFilter';
@@ -21137,12 +21137,23 @@
 	var SET_CONTACT_US_MESSAGE = 'setContactUsMessage';
 	var SET_ALERTS = 'setAlerts';
 	var SET_PETS = 'setPets';
+	var SET_ACTIVE_PAGE_PETS = 'setActivePagePets';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
+
 	  Object.assign(newState, state, {
-	    pets: action.value
+	    pets: action.value,
+	    totalNumberOfPets: action.value.length
 	  });
+
+	  return newState;
+	};
+
+	var reducerActivePagePets = function reducerActivePagePets(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, { activePagePets: action.value });
 
 	  return newState;
 	};
@@ -21192,6 +21203,8 @@
 	      return reducerAlerts(state, action);
 	    case SET_PETS:
 	      return reducerPets(state, action);
+	    case SET_ACTIVE_PAGE_PETS:
+	      return reducerActivePagePets(state, action);
 	    default:
 	      return state;
 	  }
@@ -21209,6 +21222,7 @@
 	    totalNumberOfPets: state.totalNumberOfPets,
 	    pageSize: state.pageSize,
 	    pets: state.pets,
+	    activePagePets: state.activePagePets,
 	    owner: {
 	      name: state.owner.name,
 	      email: state.owner.email,
@@ -21302,6 +21316,9 @@
 	    },
 	    setPets: function setPets(pets) {
 	      dispatch({ type: SET_PETS, value: pets });
+	    },
+	    setActivePagePets: function setActivePagePets(pets) {
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: pets });
 	    }
 	  };
 	};
@@ -23400,16 +23417,13 @@
 
 /***/ },
 /* 209 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-	'use strict';
-
-	var _require = __webpack_require__(210),
-	    pets = _require.pets;
+	"use strict";
 
 	var reducerActivePage = function reducerActivePage(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, { activePage: action.value, pets: pageItems(action.value, state.pageSize, pets) });
+	  Object.assign(newState, state, { activePage: action.value, activePagePets: pageItems(action.value, state.pageSize, state.pets) });
 
 	  return newState;
 	};
@@ -23425,6 +23439,75 @@
 
 /***/ },
 /* 210 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var alertsReducer = function alertsReducer(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    alert: {
+	      type: action.value.alert.type,
+	      message: action.value.alert.message,
+	      visible: action.value.alert.visible
+	    }
+	  });
+
+	  return newState;
+	};
+
+	module.exports = alertsReducer;
+
+/***/ },
+/* 211 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _require = __webpack_require__(212),
+	    pets = _require.pets;
+
+	module.exports = {
+	  searchTerm: '',
+	  selectFilter: '',
+	  activePage: 1,
+	  pageSize: 6,
+	  totalNumberOfPets: 0,
+	  pets: [],
+	  activePagePets: [],
+	  owner: {
+	    name: '',
+	    email: '',
+	    phoneNumber: '',
+	    description: ''
+	  },
+	  pet: {
+	    founderName: '',
+	    founderEmail: '',
+	    petType: '',
+	    size: '',
+	    foundDate: '',
+	    location: '',
+	    images: [],
+	    description: '',
+	    extraDescription: '',
+	    extraDescriptionHidden: '',
+	    showExtraInfo: false
+	  },
+	  contactUs: {
+	    name: '',
+	    email: '',
+	    message: ''
+	  },
+	  alert: {
+	    type: '',
+	    message: '',
+	    visible: 'displayNone'
+	  }
+	};
+
+/***/ },
+/* 212 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -23527,54 +23610,6 @@
 			},
 			{
 				"id": "7",
-				"pet": "dog",
-				"image": "/public/pets-background.png",
-				"size": "medium",
-				"breading": "staffy",
-				"description": "found it in Las palmas, la feria yesterday at 7pm",
-				"titleDescription": "En constrado en Las Palmas",
-				"date": "25 Abril, 2016",
-				"city": "Las palmas",
-				"location": "La feria",
-				"happyAtHome": "false",
-				"extraDescription": "",
-				"extraDescriptionHidden": "",
-				"showExtraInfo": false
-			},
-			{
-				"id": "8",
-				"pet": "cat",
-				"image": "/public/landing-background.png",
-				"size": "medium",
-				"breading": "siames",
-				"description": "found it in Agaete yesterday at 1pm",
-				"titleDescription": "En constrado en Las Palmas",
-				"date": "25 Abril, 2016",
-				"city": "Las palmas",
-				"location": "Agaete",
-				"happyAtHome": "false",
-				"extraDescription": "",
-				"extraDescriptionHidden": "",
-				"showExtraInfo": false
-			},
-			{
-				"id": "9",
-				"pet": "dog",
-				"image": "/public/pets-background.png",
-				"size": "small",
-				"breading": "chiguagua",
-				"description": "found it in puerta del sol today at 3pm",
-				"titleDescription": "En constrado en Las Palmas",
-				"date": "25 Abril, 2016",
-				"city": "Madrid",
-				"location": "Puerta del sol",
-				"happyAtHome": "true",
-				"extraDescription": "",
-				"extraDescriptionHidden": "",
-				"showExtraInfo": false
-			},
-			{
-				"id": "10",
 				"pet": "cat",
 				"image": "/public/pets-background.png",
 				"size": "medium",
@@ -23590,74 +23625,6 @@
 				"showExtraInfo": false
 			}
 		]
-	};
-
-/***/ },
-/* 211 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	var alertsReducer = function alertsReducer(state, action) {
-	  var newState = {};
-	  Object.assign(newState, state, {
-	    alert: {
-	      type: action.value.alert.type,
-	      message: action.value.alert.message,
-	      visible: action.value.alert.visible
-	    }
-	  });
-
-	  return newState;
-	};
-
-	module.exports = alertsReducer;
-
-/***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _require = __webpack_require__(210),
-	    pets = _require.pets;
-
-	module.exports = {
-	  searchTerm: '',
-	  selectFilter: '',
-	  activePage: 1,
-	  pageSize: 6,
-	  totalNumberOfPets: pets.length,
-	  pets: [],
-	  owner: {
-	    name: '',
-	    email: '',
-	    phoneNumber: '',
-	    description: ''
-	  },
-	  pet: {
-	    founderName: '',
-	    founderEmail: '',
-	    petType: '',
-	    size: '',
-	    foundDate: '',
-	    location: '',
-	    images: [],
-	    description: '',
-	    extraDescription: '',
-	    extraDescriptionHidden: '',
-	    showExtraInfo: false
-	  },
-	  contactUs: {
-	    name: '',
-	    email: '',
-	    message: ''
-	  },
-	  alert: {
-	    type: '',
-	    message: '',
-	    visible: 'displayNone'
-	  }
 	};
 
 /***/ },
@@ -43880,7 +43847,7 @@
 	    pets: arrayOf(object),
 	    searchTerm: string,
 	    selectFilter: string,
-	    setActivePage: number,
+	    setActivePage: arrayOf(object),
 	    activePage: number,
 	    totalNumberOfPets: number,
 	    pageSize: number
@@ -43941,7 +43908,10 @@
 	      return response.json();
 	    }).then(function (json) {
 	      var result = resultDecorated(json.data);
+	      var activePagePets = result.slice(0, 6);
+
 	      props.setPets(result);
+	      props.setActivePagePets(activePagePets);
 	    }).catch(function (err) {
 	      console.log(err);
 	    });
@@ -45424,7 +45394,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).map(function (pet) {
+	      this.addPetRows(this.props.activePagePets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
@@ -45975,7 +45945,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.addPetRows(this.props.pets).map(function (pet) {
+	      this.addPetRows(this.props.activePagePets).map(function (pet) {
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
@@ -46031,7 +46001,7 @@
 	    return React.createElement(
 	      'div',
 	      null,
-	      this.props.pets.filter(function (pet) {
+	      this.props.activePagePets.filter(function (pet) {
 	        return (pet.city + ' ' + pet.location).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
 	      }).filter(function (pet) {
 	        return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;

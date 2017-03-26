@@ -18,7 +18,7 @@ const Search = React.createClass({
     pets: arrayOf(object),
     searchTerm: string,
     selectFilter: string,
-    setActivePage: number,
+    setActivePage: arrayOf(object),
     activePage: number,
     totalNumberOfPets: number,
     pageSize: number
@@ -79,7 +79,10 @@ const Search = React.createClass({
       return response.json()
     }).then(function (json) {
       const result = resultDecorated(json.data)
+      const activePagePets = result.slice(0, 6)
+
       props.setPets(result)
+      props.setActivePagePets(activePagePets)
     }).catch(function (err) {
       console.log(err)
     })

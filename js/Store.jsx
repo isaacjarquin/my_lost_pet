@@ -57,12 +57,23 @@ const SET_CONTACT_US_EMAIL = 'setContactUsEmail'
 const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
 const SET_ALERTS = 'setAlerts'
 const SET_PETS = 'setPets'
+const SET_ACTIVE_PAGE_PETS = 'setActivePagePets'
 
 const reducerPets = (state, action) => {
   const newState = {}
+
   Object.assign(newState, state, {
-    pets: action.value
+    pets: action.value,
+    totalNumberOfPets: action.value.length
   })
+
+  return newState
+}
+
+const reducerActivePagePets = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, { activePagePets: action.value })
 
   return newState
 }
@@ -109,6 +120,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerAlerts(state, action)
     case SET_PETS:
       return reducerPets(state, action)
+    case SET_ACTIVE_PAGE_PETS:
+      return reducerActivePagePets(state, action)
     default:
       return state
   }
@@ -126,6 +139,7 @@ const mapStateToProps = (state) => {
     totalNumberOfPets: state.totalNumberOfPets,
     pageSize: state.pageSize,
     pets: state.pets,
+    activePagePets: state.activePagePets,
     owner: {
       name: state.owner.name,
       email: state.owner.email,
@@ -219,6 +233,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPets (pets) {
       dispatch({type: SET_PETS, value: pets})
+    },
+    setActivePagePets (pets) {
+      dispatch({type: SET_ACTIVE_PAGE_PETS, value: pets})
     }
   }
 }

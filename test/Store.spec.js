@@ -39,8 +39,9 @@ describe('Store', () => {
       visible: 'displayNone'
     },
     pageSize: 6,
-    totalNumberOfPets: pets.length,
-    pets: []
+    totalNumberOfPets: 0,
+    pets: [],
+    activePagePets: []
   }
 
   it('should boostrap', () => {
@@ -68,14 +69,14 @@ describe('Store', () => {
   })
 
   it('should handle setActivePage actions', () => {
-    const state = rootReducer({activePage: 1, pets: {pets: pets}, pageSize: 9}, {type: 'setActivePage', value: 2})
+    const state = rootReducer({activePage: 1, pets: pets, pageSize: 6}, {type: 'setActivePage', value: 2})
     const lastPet = {
       'breading': 'Persa',
       'city': 'Santa Cruz de Tenerife',
       'date': '25 Abril, 2016',
       'description': 'found it in Los Cristianos Tenerife yesterday at 3pm',
       'happyAtHome': 'true',
-      'id': '10',
+      'id': '7',
       'image': '/public/pets-background.png',
       'location': 'Los cristianos',
       'pet': 'cat',
@@ -86,7 +87,7 @@ describe('Store', () => {
       'titleDescription': 'En constrado en Las Palmas'
     }
 
-    expect(state).to.deep.equal({activePage: 2, pageSize: 9, pets: [lastPet]})
+    expect(state).to.deep.equal({activePage: 2, pageSize: 6, activePagePets: [lastPet]})
   })
 
   it('should handle setOwnerName actions', () => {
