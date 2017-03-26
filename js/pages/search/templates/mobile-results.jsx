@@ -8,7 +8,8 @@ const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
-    selectFilter: string
+    selectFilter: string,
+    activePagePets: arrayOf(object)
   },
   render () {
     return (

@@ -1,5 +1,5 @@
 const React = require('react')
-const { object, string, arrayOf, number } = React.PropTypes
+const { object, string, arrayOf, number, func } = React.PropTypes
 const { connector } = require('../../Store')
 const Pagination = require('rc-pagination')
 var MediaQuery = require('react-responsive')
@@ -18,7 +18,8 @@ const Search = React.createClass({
     pets: arrayOf(object),
     searchTerm: string,
     selectFilter: string,
-    setActivePage: arrayOf(object),
+    setActivePage: func,
+    setActivePagePets: func,
     activePage: number,
     totalNumberOfPets: number,
     pageSize: number

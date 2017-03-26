@@ -1,5 +1,3 @@
-const { pets } = require('../public/mockData')
-
 module.exports = {
   searchTerm: '',
   selectFilter: '',
