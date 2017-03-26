@@ -8,12 +8,13 @@ const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
-    selectFilter: string
+    selectFilter: string,
+    activePagePets: arrayOf(object)
   },
   render () {
     return (
       <div>
-        {this.props.pets
+        {this.props.activePagePets
           .filter((pet) => `${pet.city} ${pet.location}`.toUpperCase().indexOf(this.props.searchTerm.toUpperCase()) >= 0)
           .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
           .map((pet) => (

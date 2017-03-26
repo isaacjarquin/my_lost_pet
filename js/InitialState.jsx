@@ -1,12 +1,11 @@
-const { pets } = require('../public/mockData')
-
 module.exports = {
   searchTerm: '',
   selectFilter: '',
   activePage: 1,
   pageSize: 6,
-  totalNumberOfPets: pets.length,
+  totalNumberOfPets: 0,
   pets: [],
+  activePagePets: [],
   owner: {
     name: '',
     email: '',

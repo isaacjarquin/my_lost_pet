@@ -8,7 +8,8 @@ const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
     searchTerm: string,
-    selectFilter: string
+    selectFilter: string,
+    activePagePets: arrayOf(object)
   },
   addPetRows: function (pets) {
     let petRows = []
@@ -34,7 +35,7 @@ const Search = React.createClass({
   render () {
     return (
       <div>
-        {this.addPetRows(this.props.pets)
+        {this.addPetRows(this.props.activePagePets)
           .map((pet) => (
             <div className='pets-row'>
               {[pet.left, pet.right]
