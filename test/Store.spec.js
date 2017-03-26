@@ -186,4 +186,11 @@ describe('Store', () => {
 
     expect(state.pet.images).to.deep.equal(['http://www.example.com'])
   })
+
+  it('should handle setActivePagePets actions', () => {
+    const activePets = [pets[0], pets[1]]
+    const state = rootReducer({activePagePets: 'dont care'}, {type: 'setActivePagePets', value: activePets})
+
+    expect(state.activePagePets).to.deep.equal(activePets)
+  })
 })
