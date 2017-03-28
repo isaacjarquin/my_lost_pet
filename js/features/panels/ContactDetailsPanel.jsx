@@ -8,10 +8,10 @@ if (process.env.WEBPACK_BUILD) {
 }
 
 const clearForm = (props) => {
-    props.setOwnerName('')
-    props.setOwnerEmail('')
-    props.setOwnerPhoneNumber('')
-    props.setDescription('')
+  props.setOwnerName('')
+  props.setOwnerEmail('')
+  props.setOwnerPhoneNumber('')
+  props.setDescription('')
 }
 
 const closePanel = ({colSizeClass}) => {
