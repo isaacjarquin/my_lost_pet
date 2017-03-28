@@ -1,8 +1,67 @@
 const React = require('react')
 const { connector } = require('../../Store')
+const Alerts = require('../alerts/alerts')
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./contactDetailsPanel.scss')
+}
+
+const clearForm = (props) => {
+    props.setOwnerName('')
+    props.setOwnerEmail('')
+    props.setOwnerPhoneNumber('')
+    props.setDescription('')
+}
+
+const closePanel = ({colSizeClass}) => {
+  $(colSizeClass).removeClass('addOpacity')
+  $(colSizeClass).removeClass('panel-opened')
+  $('.contact-details-panel').removeClass('in')
+  $('.contact-btn').removeAttr('disabled')
+  $('.more-info_link').removeClass('disable-link')
+}
+
+const showSuccesfullMessage = (props) => {
+  const alertData = {
+    alert: {
+      type: 'alert-success',
+      message: 'Sus datos de contacto se han guardado correctamente. Le hemos enviado un correo a la persona que ha encontrado su perro para que se ponga en contacto con usted lo antes posible.',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
+
+  setTimeout(() => {
+    clearAlert(props)
+    closePanel(props)
+    clearForm(props)
+  }, 8000)
+}
+
+const clearAlert = (props) => {
+  const alertData = {
+    alert: {
+      type: '',
+      message: '',
+      visible: 'displayNone'
+    }
+  }
+
+  props.setAlerts(alertData)
+}
+
+const showUnSuccesfullMessage = (props, err) => {
+  const alertData = {
+    alert: {
+      type: 'alert-danger',
+      message: 'no se han podido guar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+      visible: 'displayTrue'
+    }
+  }
+
+  props.setAlerts(alertData)
 }
 
 class ContactDetailsPanel extends React.Component {
@@ -30,7 +89,29 @@ class ContactDetailsPanel extends React.Component {
   }
 
   handleSubmit (event) {
-    this.props.sendOwnersDetails()
+    const headers = { 'Content-Type': 'application/json' }
+    const props = this.props
+
+    const contactDetailsDecoreted = {
+      name: props.owner.name,
+      email: props.owner.email,
+      phoneNumber: props.owner.phoneNumber,
+      description: props.owner.description,
+      petId: props.id
+    }
+
+    fetch('https://items-api.herokuapp.com/api/items', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ owner: contactDetailsDecoreted })
+    }).then(function (response) {
+      showSuccesfullMessage(props)
+      console.log(response)
+    }).catch(function (err) {
+      showUnSuccesfullMessage(props, err)
+      console.log(err)
+    })
+
     event.preventDefault()
   }
 
@@ -39,6 +120,7 @@ class ContactDetailsPanel extends React.Component {
       return (
         <div id={this.props.id} className='collapse contact-details-panel'>
           <div className={this.props.arrow} />
+          <Alerts />
           <div className='w3-margin'>
             <div className='w3-container w3-padding w3-opacity'>
               <h2>Introduce tus datos de contacto</h2>
