@@ -45284,9 +45284,9 @@
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
 	          }),
-	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left', colSizeClass: '.col-sm-3' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center', colSizeClass: '.col-sm-3' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right', colSizeClass: '.col-sm-3' })
 	        );
 	      })
 	    );
@@ -45617,9 +45617,71 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
+	var Alerts = __webpack_require__(292);
+	var $ = __webpack_require__(296);
+
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(312);
 	}
+
+	var clearForm = function clearForm(props) {
+	  props.setOwnerName('');
+	  props.setOwnerEmail('');
+	  props.setOwnerPhoneNumber('');
+	  props.setDescription('');
+	};
+
+	var closePanel = function closePanel(_ref) {
+	  var colSizeClass = _ref.colSizeClass;
+
+	  $(colSizeClass).removeClass('addOpacity');
+	  $(colSizeClass).removeClass('panel-opened');
+	  $('.contact-details-panel').removeClass('in');
+	  $('.contact-btn').removeAttr('disabled');
+	  $('.more-info_link').removeClass('disable-link');
+	};
+
+	var showSuccesfullMessage = function showSuccesfullMessage(props) {
+	  var alertData = {
+	    alert: {
+	      type: 'alert-success',
+	      message: 'Sus datos de contacto se han guardado correctamente. Le hemos enviado un correo a la persona que ha encontrado su perro para que se ponga en contacto con usted lo antes posible.',
+	      visible: 'displayTrue'
+	    }
+	  };
+
+	  props.setAlerts(alertData);
+
+	  setTimeout(function () {
+	    clearAlert(props);
+	    closePanel(props);
+	    clearForm(props);
+	  }, 8000);
+	};
+
+	var clearAlert = function clearAlert(props) {
+	  var alertData = {
+	    alert: {
+	      type: '',
+	      message: '',
+	      visible: 'displayNone'
+	    }
+	  };
+
+	  props.setAlerts(alertData);
+	};
+
+	var showUnSuccesfullMessage = function showUnSuccesfullMessage(props, err) {
+	  var alertData = {
+	    alert: {
+	      type: 'alert-danger',
+	      message: 'no se han podido guar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+	      visible: 'displayTrue'
+	    }
+	  };
+
+	  props.setAlerts(alertData);
+	};
 
 	var ContactDetailsPanel = function (_React$Component) {
 	  _inherits(ContactDetailsPanel, _React$Component);
@@ -45661,7 +45723,29 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      this.props.sendOwnersDetails();
+	      var headers = { 'Content-Type': 'application/json' };
+	      var props = this.props;
+
+	      var contactDetailsDecoreted = {
+	        name: props.owner.name,
+	        email: props.owner.email,
+	        phoneNumber: props.owner.phoneNumber,
+	        description: props.owner.description,
+	        petId: props.id
+	      };
+
+	      fetch('https://items-api.herokuapp.com/api/items', {
+	        method: 'POST',
+	        headers: headers,
+	        body: JSON.stringify({ owner: contactDetailsDecoreted })
+	      }).then(function (response) {
+	        showSuccesfullMessage(props);
+	        console.log(response);
+	      }).catch(function (err) {
+	        showUnSuccesfullMessage(props, err);
+	        console.log(err);
+	      });
+
 	      event.preventDefault();
 	    }
 	  }, {
@@ -45672,6 +45756,7 @@
 	          'div',
 	          { id: this.props.id, className: 'collapse contact-details-panel' },
 	          React.createElement('div', { className: this.props.arrow }),
+	          React.createElement(Alerts, null),
 	          React.createElement(
 	            'div',
 	            { className: 'w3-margin' },
@@ -45836,8 +45921,8 @@
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-5', key: pet.id }));
 	          }),
-	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right' })
+	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left', colSizeClass: '.col-sm-5' }),
+	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right', colSizeClass: '.col-sm-5' })
 	        );
 	      })
 	    );
@@ -45891,7 +45976,7 @@
 	          'div',
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-6', key: pet.id })),
-	          React.createElement(ContactDetailsPanel, { id: pet.id, arrow: 'arrow-up-center' })
+	          React.createElement(ContactDetailsPanel, { id: pet.id, arrow: 'arrow-up-center', colSizeClass: '.col-sm-6' })
 	        );
 	      })
 	    );

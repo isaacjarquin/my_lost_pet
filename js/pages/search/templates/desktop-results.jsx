@@ -45,9 +45,9 @@ const Search = React.createClass({
                 .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
                 .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-3'} key={pet.id} />))
               }
-              <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} />
-              <ContactDetailsPanel id={pet.center.id} arrow={'arrow-up-center'} />
-              <ContactDetailsPanel id={pet.right.id} arrow={'arrow-up-right'} />
+              <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} colSizeClass={'.col-sm-3'} />
+              <ContactDetailsPanel id={pet.center.id} arrow={'arrow-up-center'} colSizeClass={'.col-sm-3'} />
+              <ContactDetailsPanel id={pet.right.id} arrow={'arrow-up-right'} colSizeClass={'.col-sm-3'} />
             </div>)
           )
         }
