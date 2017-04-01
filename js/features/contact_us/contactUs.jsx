@@ -1,6 +1,7 @@
 const React = require('react')
 const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
+const $ = require('jquery')
 
 const showUnSuccesfullMessage = (props, err) => {
   const alertData = {
