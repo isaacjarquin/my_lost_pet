@@ -30235,6 +30235,69 @@
 	var _require = __webpack_require__(175),
 	    connector = _require.connector;
 
+	var Alerts = __webpack_require__(292);
+	var $ = __webpack_require__(296);
+
+	var showUnSuccesfullMessage = function showUnSuccesfullMessage(props, err) {
+	  var alertData = {
+	    alert: {
+	      type: 'alert-danger',
+	      message: 'no se han podido enviar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+	      visible: 'displayTrue'
+	    }
+	  };
+
+	  removeNewPetFoundAlert();
+	  props.setAlerts(alertData);
+	};
+
+	var showSuccesfullMessage = function showSuccesfullMessage(props) {
+	  var alertData = {
+	    alert: {
+	      type: 'alert-success',
+	      message: 'Sus datos de contacto se han guardado correctamente. Nos pondremos en contacto con usted lo antes posible. Gracias por usar nuestra web.',
+	      visible: 'displayTrue'
+	    }
+	  };
+
+	  removeNewPetFoundAlert();
+	  props.setAlerts(alertData);
+
+	  setTimeout(function () {
+	    clearAlert(props);
+	    clearForm(props);
+	    closePanel();
+	  }, 8000);
+	};
+
+	var removeNewPetFoundAlert = function removeNewPetFoundAlert() {
+	  $('.new-pet-form').find('.alert').remove();
+	};
+
+	var clearAlert = function clearAlert(props) {
+	  var alertData = {
+	    alert: {
+	      type: '',
+	      message: '',
+	      visible: 'displayNone'
+	    }
+	  };
+
+	  props.setAlerts(alertData);
+	};
+
+	var closePanel = function closePanel() {
+	  setTimeout(function () {
+	    $('#collapse2').removeClass('in');
+	  }, 100);
+	};
+
+	var clearForm = function clearForm(props) {
+	  props.setContactUsName('');
+	  props.setContactUsEmail('');
+	  props.setContactUsMessage('');
+	};
+
 	var ContactUs = function (_React$Component) {
 	  _inherits(ContactUs, _React$Component);
 
@@ -30268,7 +30331,27 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      this.props.sendContactUsDetails();
+	      var headers = { 'Content-Type': 'application/json' };
+	      var props = this.props;
+
+	      var contactUsDecoreted = {
+	        name: props.contactUs.name,
+	        email: props.contactUs.email,
+	        details: props.contactUs.message
+	      };
+
+	      fetch('https://items-api.herokuapp.com/api/contact_us', {
+	        method: 'POST',
+	        headers: headers,
+	        body: JSON.stringify({ contact_us: contactUsDecoreted })
+	      }).then(function (response) {
+	        showSuccesfullMessage(props);
+	        console.log(response);
+	      }).catch(function (err) {
+	        showUnSuccesfullMessage(props, err);
+	        console.log(err);
+	      });
+
 	      event.preventDefault();
 	    }
 	  }, {
@@ -30290,6 +30373,7 @@
 	            )
 	          )
 	        ),
+	        React.createElement(Alerts, null),
 	        React.createElement(
 	          'div',
 	          { id: 'collapse2', className: 'panel-collapse collapse w3-padding' },
@@ -30524,6 +30608,7 @@
 	    }
 	  };
 
+	  removeContactUsAlert();
 	  props.setAlerts(alertData);
 
 	  setTimeout(function () {
@@ -30540,7 +30625,12 @@
 	    }
 	  };
 
+	  removeContactUsAlert();
 	  props.setAlerts(alertData);
+	};
+
+	var removeContactUsAlert = function removeContactUsAlert() {
+	  $('.panel-group').find('.alert').remove();
 	};
 
 	var NewPetFound = function (_React$Component) {

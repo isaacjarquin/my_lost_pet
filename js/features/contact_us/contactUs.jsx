@@ -1,5 +1,65 @@
 const React = require('react')
 const { connector } = require('../../Store')
+const Alerts = require('../alerts/alerts')
+const $ = require('jquery')
+
+const showUnSuccesfullMessage = (props, err) => {
+  const alertData = {
+    alert: {
+      type: 'alert-danger',
+      message: 'no se han podido enviar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+      visible: 'displayTrue'
+    }
+  }
+
+  removeNewPetFoundAlert()
+  props.setAlerts(alertData)
+}
+
+const showSuccesfullMessage = (props) => {
+  const alertData = {
+    alert: {
+      type: 'alert-success',
+      message: 'Sus datos de contacto se han guardado correctamente. Nos pondremos en contacto con usted lo antes posible. Gracias por usar nuestra web.',
+      visible: 'displayTrue'
+    }
+  }
+
+  removeNewPetFoundAlert()
+  props.setAlerts(alertData)
+
+  setTimeout(() => {
+    clearAlert(props)
+    clearForm(props)
+    closePanel()
+  }, 8000)
+}
+
+const removeNewPetFoundAlert = () => {
+  $('.new-pet-form').find('.alert').remove()
+}
+
+const clearAlert = (props) => {
+  const alertData = {
+    alert: {
+      type: '',
+      message: '',
+      visible: 'displayNone'
+    }
+  }
+
+  props.setAlerts(alertData)
+}
+
+const closePanel = () => {
+  setTimeout(() => { $('#collapse2').removeClass('in') }, 100)
+}
+
+const clearForm = (props) => {
+  props.setContactUsName('')
+  props.setContactUsEmail('')
+  props.setContactUsMessage('')
+}
 
 class ContactUs extends React.Component {
   constructor (props) {
@@ -19,7 +79,27 @@ class ContactUs extends React.Component {
     this.props.setContactUsMessage(event.target.value)
   }
   handleSubmit (event) {
-    this.props.sendContactUsDetails()
+    const headers = { 'Content-Type': 'application/json' }
+    const props = this.props
+
+    const contactUsDecoreted = {
+      name: props.contactUs.name,
+      email: props.contactUs.email,
+      details: props.contactUs.message
+    }
+
+    fetch('https://items-api.herokuapp.com/api/contact_us', {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ contact_us: contactUsDecoreted })
+    }).then(function (response) {
+      showSuccesfullMessage(props)
+      console.log(response)
+    }).catch(function (err) {
+      showUnSuccesfullMessage(props, err)
+      console.log(err)
+    })
+
     event.preventDefault()
   }
   render () {
@@ -31,6 +111,7 @@ class ContactUs extends React.Component {
             Contacto</a>
           </h4>
         </div>
+        <Alerts />
         <div id='collapse2' className='panel-collapse collapse w3-padding'>
           <div className='panel-body'>
             <div className='w3-section w3-center w3-opacity'>

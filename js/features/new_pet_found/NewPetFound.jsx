@@ -53,6 +53,7 @@ const showSuccesfullMessage = (props) => {
     }
   }
 
+  removeContactUsAlert()
   props.setAlerts(alertData)
 
   setTimeout(() => {
@@ -69,7 +70,12 @@ const showUnSuccesfullMessage = (props, err) => {
     }
   }
 
+  removeContactUsAlert()
   props.setAlerts(alertData)
+}
+
+const removeContactUsAlert = () => {
+  $('.panel-group').find('.alert').remove()
 }
 
 class NewPetFound extends React.Component {
