@@ -95,15 +95,15 @@ class ContactDetailsPanel extends React.Component {
     const contactDetailsDecoreted = {
       name: props.owner.name,
       email: props.owner.email,
-      phoneNumber: props.owner.phoneNumber,
-      description: props.owner.description,
-      petId: props.id
+      phone_number: props.owner.phoneNumber,
+      details: props.owner.description,
+      item_id: props.id
     }
 
-    fetch('https://items-api.herokuapp.com/api/items', {
+    fetch('https://items-api.herokuapp.com/api/contact_details', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify({ owner: contactDetailsDecoreted })
+      body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
     }).then(function (response) {
       showSuccesfullMessage(props)
       console.log(response)

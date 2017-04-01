@@ -17772,10 +17772,10 @@
 	 */
 
 	function getUnboundedScrollPosition(scrollable) {
-	  if (scrollable === window) {
+	  if (scrollable.Window && scrollable instanceof scrollable.Window) {
 	    return {
-	      x: window.pageXOffset || document.documentElement.scrollLeft,
-	      y: window.pageYOffset || document.documentElement.scrollTop
+	      x: scrollable.pageXOffset || scrollable.document.documentElement.scrollLeft,
+	      y: scrollable.pageYOffset || scrollable.document.documentElement.scrollTop
 	    };
 	  }
 	  return {
@@ -18526,7 +18526,9 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	function isNode(object) {
-	  return !!(object && (typeof Node === 'function' ? object instanceof Node : (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+	  var doc = object ? object.ownerDocument || object : document;
+	  var defaultView = doc.defaultView || window;
+	  return !!(object && (typeof defaultView.Node === 'function' ? object instanceof defaultView.Node : (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 	}
 
 	module.exports = isNode;
@@ -18556,16 +18558,20 @@
 	 *
 	 * The activeElement will be null only if the document or document body is not
 	 * yet defined.
+	 *
+	 * @param {?DOMDocument} doc Defaults to current document.
+	 * @return {?DOMElement}
 	 */
 
-	function getActiveElement() /*?DOMElement*/{
-	  if (typeof document === 'undefined') {
+	function getActiveElement(doc) /*?DOMElement*/{
+	  doc = doc || (typeof document !== 'undefined' ? document : undefined);
+	  if (typeof doc === 'undefined') {
 	    return null;
 	  }
 	  try {
-	    return document.activeElement || document.body;
+	    return doc.activeElement || doc.body;
 	  } catch (e) {
-	    return document.body;
+	    return doc.body;
 	  }
 	}
 
@@ -29980,11 +29986,7 @@
 	  exports.EmailButton = React.createClass({
 	    displayName: "EmailButton",
 
-	    mixins: [Button],
-
-	    getDefaultProps: function getDefaultProps() {
-	      return { target: "_self" };
-	    },
+	    mixins: [Button, DefaultBlankTarget],
 
 	    constructUrl: function constructUrl() {
 	      return "mailto:?subject=" + encodeURIComponent(this.props.message) + "&body=" + encodeURIComponent(this.props.url);
@@ -30012,7 +30014,7 @@
 	    mixins: [Button, DefaultBlankTarget],
 
 	    constructUrl: function constructUrl() {
-	      return "http://vk.com/share.php?url=" + encodeURIComponent(this.props.url);
+	      return "http://vk.com/share.php?url=" + encodeURIComponent(this.props.url) + "&title=" + encodeURIComponent(this.props.title) + "&description=" + encodeURIComponent(this.props.message);
 	    }
 	  });
 
@@ -30942,9 +30944,7 @@
 
 				var _attrAccept2 = _interopRequireDefault(_attrAccept);
 
-				var _reactIsDeprecated = __webpack_require__(3);
-
-				var _getDataTransferItems = __webpack_require__(4);
+				var _getDataTransferItems = __webpack_require__(3);
 
 				var _getDataTransferItems2 = _interopRequireDefault(_getDataTransferItems);
 
@@ -31224,7 +31224,9 @@
 					}, {
 						key: 'fileAccepted',
 						value: function fileAccepted(file) {
-							return (0, _attrAccept2.default)(file, this.props.accept);
+							// Firefox versions prior to 53 return a bogus MIME type for every file drag, so dragovers with
+							// that MIME type will always be accepted
+							return file.type === 'application/x-moz-file' || (0, _attrAccept2.default)(file, this.props.accept);
 						}
 					}, {
 						key: 'fileMatchSize',
@@ -31364,26 +31366,13 @@
 					onDragOver: _react2.default.PropTypes.func,
 					onDragLeave: _react2.default.PropTypes.func,
 
-					// Contents of the dropzone
-					children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.node, _react2.default.PropTypes.func]),
-
-					// CSS styles to apply
-					style: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop style is deprecated. Use function as children to style dropzone and its contents.'),
-
-					// CSS styles to apply when drop will be accepted
-					activeStyle: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop activeStyle is deprecated. Use function as children to style dropzone and its contents.'),
-
-					// CSS styles to apply when drop will be rejected
-					rejectStyle: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.object, 'Prop rejectStyle is deprecated. Use function as children to style dropzone and its contents.'),
-
-					// Optional className
-					className: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop className is deprecated. Use function as children to style dropzone and its contents.'),
-
-					// className for accepted state
-					activeClassName: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop activeClassName is deprecated. Use function as children to style dropzone and its contents.'),
-
-					// className for rejected state
-					rejectClassName: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.string, 'Prop rejectClassName is deprecated. Use function as children to style dropzone and its contents.'),
+					children: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.node, _react2.default.PropTypes.func]), // Contents of the dropzone
+					style: _react2.default.PropTypes.object, // CSS styles to apply
+					activeStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be accepted
+					rejectStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be rejected
+					className: _react2.default.PropTypes.string, // Optional className
+					activeClassName: _react2.default.PropTypes.string, // className for accepted state
+					rejectClassName: _react2.default.PropTypes.string, // className for rejected state
 
 					preventDropOnDocument: _react2.default.PropTypes.bool, // If false, allow dropped items to take over the current browser window
 					disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
@@ -31394,8 +31383,8 @@
 					multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
 					accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
 					name: _react2.default.PropTypes.string, // name attribute for the input tag
-					maxSize: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.number, 'Prop maxSize is deprecated and will be removed in the next major release'),
-					minSize: (0, _reactIsDeprecated.deprecate)(_react2.default.PropTypes.number, 'Prop minSize is deprecated and will be removed in the next major release')
+					maxSize: _react2.default.PropTypes.number,
+					minSize: _react2.default.PropTypes.number
 				};
 
 				exports.default = Dropzone;
@@ -31609,77 +31598,6 @@
 				/***/
 			},
 			/* 3 */
-			/***/function (module, exports) {
-
-				"use strict";
-
-				Object.defineProperty(exports, "__esModule", {
-					value: true
-				});
-
-				var _extends = Object.assign || function (target) {
-					for (var i = 1; i < arguments.length; i++) {
-						var source = arguments[i];for (var key in source) {
-							if (Object.prototype.hasOwnProperty.call(source, key)) {
-								target[key] = source[key];
-							}
-						}
-					}return target;
-				};
-
-				exports.deprecate = deprecate;
-				exports.addIsDeprecated = addIsDeprecated;
-
-				/**
-	    * Wraps a singular React.PropTypes.[type] with
-	    * a console.warn call that is only called if the
-	    * prop is not undefined/null and is only called
-	    * once.
-	    * @param  {Object} propType React.PropType type
-	    * @param  {String} message  Deprecation message
-	    * @return {Function}        ReactPropTypes checkType
-	    */
-				function deprecate(propType, message) {
-					var warned = false;
-					return function () {
-						for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-							args[_key] = arguments[_key];
-						}
-
-						var props = args[0];
-						var propName = args[1];
-
-						var prop = props[propName];
-						if (prop !== undefined && prop !== null && !warned) {
-							warned = true;
-							console.warn(message);
-						}
-						return propType.call.apply(propType, [this].concat(args));
-					};
-				}
-
-				/**
-	    * Returns a copy of `PropTypes` with an `isDeprecated`
-	    * method available on all top-level propType options.
-	    * @param {React.PropTypes}  PropTypes
-	    * @return {React.PropTypes} newPropTypes
-	    */
-				function addIsDeprecated(PropTypes) {
-					var newPropTypes = _extends({}, PropTypes);
-					for (var type in newPropTypes) {
-						if (newPropTypes.hasOwnProperty(type)) {
-							var propType = newPropTypes[type];
-							propType = propType.bind(newPropTypes);
-							propType.isDeprecated = deprecate.bind(newPropTypes, propType);
-							newPropTypes[type] = propType;
-						}
-					}
-					return newPropTypes;
-				}
-
-				/***/
-			},
-			/* 4 */
 			/***/function (module, exports) {
 
 				"use strict";
@@ -32528,7 +32446,8 @@
 	  // set header fields
 	  for (var field in this.header) {
 	    if (null == this.header[field]) continue;
-	    xhr.setRequestHeader(field, this.header[field]);
+
+	    if (this.header.hasOwnProperty(field)) xhr.setRequestHeader(field, this.header[field]);
 	  }
 
 	  if (this._responseType) {
@@ -33708,6 +33627,7 @@
 	  if (res && res.status && res.status >= 500) return true;
 	  // Superagent timeout
 	  if (err && 'timeout' in err && err.code == 'ECONNABORTED') return true;
+	  if (err && 'crossDomain' in err) return true;
 	  return false;
 	};
 
@@ -33885,17 +33805,17 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 	/*!
-	 * jQuery JavaScript Library v3.1.1
+	 * jQuery JavaScript Library v3.2.1
 	 * https://jquery.com/
 	 *
 	 * Includes Sizzle.js
 	 * https://sizzlejs.com/
 	 *
-	 * Copyright jQuery Foundation and other contributors
+	 * Copyright JS Foundation and other contributors
 	 * Released under the MIT license
 	 * https://jquery.org/license
 	 *
-	 * Date: 2016-09-22T22:30Z
+	 * Date: 2017-03-20T18:59Z
 	 */
 	(function (global, factory) {
 
@@ -33968,7 +33888,7 @@
 		// unguarded in another place, it seems safer to define global only for this module
 
 
-		var version = "3.1.1",
+		var version = "3.2.1",
 
 
 		// Define a local copy of jQuery
@@ -34124,11 +34044,11 @@
 						}
 
 						// Recurse if we're merging plain objects or arrays
-						if (deep && copy && (jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)))) {
+						if (deep && copy && (jQuery.isPlainObject(copy) || (copyIsArray = Array.isArray(copy)))) {
 
 							if (copyIsArray) {
 								copyIsArray = false;
-								clone = src && jQuery.isArray(src) ? src : [];
+								clone = src && Array.isArray(src) ? src : [];
 							} else {
 								clone = src && jQuery.isPlainObject(src) ? src : {};
 							}
@@ -34165,8 +34085,6 @@
 			isFunction: function isFunction(obj) {
 				return jQuery.type(obj) === "function";
 			},
-
-			isArray: Array.isArray,
 
 			isWindow: function isWindow(obj) {
 				return obj != null && obj === obj.window;
@@ -34238,10 +34156,6 @@
 			// Microsoft forgot to hump their vendor prefix (#9572)
 			camelCase: function camelCase(string) {
 				return string.replace(rmsPrefix, "ms-").replace(rdashAlpha, fcamelCase);
-			},
-
-			nodeName: function nodeName(elem, name) {
-				return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 			},
 
 			each: function each(obj, callback) {
@@ -36616,6 +36530,10 @@
 
 		var rneedsContext = jQuery.expr.match.needsContext;
 
+		function nodeName(elem, name) {
+
+			return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+		};
 		var rsingleTag = /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;
 
 		var risSimple = /^.[^:#\[\.,]*$/;
@@ -36943,7 +36861,18 @@
 				return _siblings(elem.firstChild);
 			},
 			contents: function contents(elem) {
-				return elem.contentDocument || jQuery.merge([], elem.childNodes);
+				if (nodeName(elem, "iframe")) {
+					return elem.contentDocument;
+				}
+
+				// Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
+				// Treat the template element as a regular one in browsers that
+				// don't support it.
+				if (nodeName(elem, "template")) {
+					elem = elem.content || elem;
+				}
+
+				return jQuery.merge([], elem.childNodes);
 			}
 		}, function (name, fn) {
 			jQuery.fn[name] = function (until, selector) {
@@ -37044,7 +36973,7 @@
 			fire = function fire() {
 
 				// Enforce single-firing
-				_locked = options.once;
+				_locked = _locked || options.once;
 
 				// Execute callbacks for all pending executions,
 				// respecting firingIndex overrides and runtime changes
@@ -37210,7 +37139,7 @@
 			throw ex;
 		}
 
-		function adoptValue(value, resolve, reject) {
+		function adoptValue(value, resolve, reject, noValue) {
 			var method;
 
 			try {
@@ -37226,9 +37155,10 @@
 					// Other non-thenables
 				} else {
 
-					// Support: Android 4.0 only
-					// Strict mode functions invoked without .call/.apply get global-object context
-					resolve.call(undefined, value);
+					// Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:
+					// * false: [ value ].slice( 0 ) => resolve( value )
+					// * true: [ value ].slice( 1 ) => resolve()
+					resolve.apply(undefined, [value].slice(noValue));
 				}
 
 				// For Promises/A+, convert exceptions into rejections
@@ -37238,7 +37168,7 @@
 
 				// Support: Android 4.0 only
 				// Strict mode functions invoked without .call/.apply get global-object context
-				reject.call(undefined, value);
+				reject.apply(undefined, [value]);
 			}
 		}
 
@@ -37514,7 +37444,7 @@
 
 				// Single- and empty arguments are adopted like Promise.resolve
 				if (remaining <= 1) {
-					adoptValue(singleValue, master.done(updateFunc(i)).resolve, master.reject);
+					adoptValue(singleValue, master.done(updateFunc(i)).resolve, master.reject, !remaining);
 
 					// Use .then() to unwrap secondary thenables (cf. gh-3000)
 					if (master.state() === "pending" || jQuery.isFunction(resolveValues[i] && resolveValues[i].then)) {
@@ -37576,15 +37506,6 @@
 			// A counter to track how many items to wait for before
 			// the ready event fires. See #6781
 			readyWait: 1,
-
-			// Hold (or release) the ready event
-			holdReady: function holdReady(hold) {
-				if (hold) {
-					jQuery.readyWait++;
-				} else {
-					jQuery.ready(true);
-				}
-			},
 
 			// Handle when the DOM is ready
 			ready: function ready(wait) {
@@ -37807,7 +37728,7 @@
 				if (key !== undefined) {
 
 					// Support array or space separated string of keys
-					if (jQuery.isArray(key)) {
+					if (Array.isArray(key)) {
 
 						// If key is an array of keys...
 						// We always set camelCase keys, so remove that.
@@ -38030,7 +37951,7 @@
 
 					// Speed up dequeue by getting out quickly if this is just a lookup
 					if (data) {
-						if (!queue || jQuery.isArray(data)) {
+						if (!queue || Array.isArray(data)) {
 							queue = dataPriv.access(elem, type, jQuery.makeArray(data));
 						} else {
 							queue.push(data);
@@ -38388,7 +38309,7 @@
 				ret = [];
 			}
 
-			if (tag === undefined || tag && jQuery.nodeName(context, tag)) {
+			if (tag === undefined || tag && nodeName(context, tag)) {
 				return jQuery.merge([context], ret);
 			}
 
@@ -38998,7 +38919,7 @@
 
 					// For checkbox, fire native event so checked state will be right
 					trigger: function trigger() {
-						if (this.type === "checkbox" && this.click && jQuery.nodeName(this, "input")) {
+						if (this.type === "checkbox" && this.click && nodeName(this, "input")) {
 							this.click();
 							return false;
 						}
@@ -39006,7 +38927,7 @@
 
 					// For cross-browser consistency, don't fire native .click() on links
 					_default: function _default(event) {
-						return jQuery.nodeName(event.target, "a");
+						return nodeName(event.target, "a");
 					}
 				},
 
@@ -39273,10 +39194,11 @@
 		    rscriptTypeMasked = /^true\/(.*)/,
 		    rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
+		// Prefer a tbody over its parent table for containing new rows
 		function manipulationTarget(elem, content) {
-			if (jQuery.nodeName(elem, "table") && jQuery.nodeName(content.nodeType !== 11 ? content : content.firstChild, "tr")) {
+			if (nodeName(elem, "table") && nodeName(content.nodeType !== 11 ? content : content.firstChild, "tr")) {
 
-				return elem.getElementsByTagName("tbody")[0] || elem;
+				return jQuery(">tbody", elem)[0] || elem;
 			}
 
 			return elem;
@@ -39806,12 +39728,19 @@
 			    minWidth,
 			    maxWidth,
 			    ret,
-			    style = elem.style;
+
+
+			// Support: Firefox 51+
+			// Retrieving style before computed somehow
+			// fixes an issue with getting wrong values
+			// on detached elements
+			style = elem.style;
 
 			computed = computed || getStyles(elem);
 
-			// Support: IE <=9 only
-			// getPropertyValue is only needed for .css('filter') (#12537)
+			// getPropertyValue is needed for:
+			//   .css('filter') (IE 9 only, #12537)
+			//   .css('--customProperty) (#3144)
 			if (computed) {
 				ret = computed.getPropertyValue(name) || computed[name];
 
@@ -39874,6 +39803,7 @@
 		// except "table", "table-cell", or "table-caption"
 		// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 		rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+		    rcustomProp = /^--/,
 		    cssShow = { position: "absolute", visibility: "hidden", display: "block" },
 		    cssNormalTransform = {
 			letterSpacing: "0",
@@ -39900,6 +39830,16 @@
 					return name;
 				}
 			}
+		}
+
+		// Return a property mapped along what jQuery.cssProps suggests or to
+		// a vendor prefixed property.
+		function finalPropName(name) {
+			var ret = jQuery.cssProps[name];
+			if (!ret) {
+				ret = jQuery.cssProps[name] = vendorPropName(name) || name;
+			}
+			return ret;
 		}
 
 		function setPositiveNumber(elem, value, subtract) {
@@ -39961,42 +39901,29 @@
 
 		function getWidthOrHeight(elem, name, extra) {
 
-			// Start with offset property, which is equivalent to the border-box value
-			var val,
-			    valueIsBorderBox = true,
+			// Start with computed style
+			var valueIsBorderBox,
 			    styles = getStyles(elem),
+			    val = curCSS(elem, name, styles),
 			    isBorderBox = jQuery.css(elem, "boxSizing", false, styles) === "border-box";
 
-			// Support: IE <=11 only
-			// Running getBoundingClientRect on a disconnected node
-			// in IE throws an error.
-			if (elem.getClientRects().length) {
-				val = elem.getBoundingClientRect()[name];
+			// Computed unit is not pixels. Stop here and return.
+			if (rnumnonpx.test(val)) {
+				return val;
 			}
 
-			// Some non-html elements return undefined for offsetWidth, so check for null/undefined
-			// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
-			// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
-			if (val <= 0 || val == null) {
+			// Check for style in case a browser which returns unreliable values
+			// for getComputedStyle silently falls back to the reliable elem.style
+			valueIsBorderBox = isBorderBox && (support.boxSizingReliable() || val === elem.style[name]);
 
-				// Fall back to computed then uncomputed css if necessary
-				val = curCSS(elem, name, styles);
-				if (val < 0 || val == null) {
-					val = elem.style[name];
-				}
-
-				// Computed unit is not pixels. Stop here and return.
-				if (rnumnonpx.test(val)) {
-					return val;
-				}
-
-				// Check for style in case a browser which returns unreliable values
-				// for getComputedStyle silently falls back to the reliable elem.style
-				valueIsBorderBox = isBorderBox && (support.boxSizingReliable() || val === elem.style[name]);
-
-				// Normalize "", auto, and prepare for extra
-				val = parseFloat(val) || 0;
+			// Fall back to offsetWidth/Height when value is "auto"
+			// This happens for inline elements with no explicit setting (gh-3571)
+			if (val === "auto") {
+				val = elem["offset" + name[0].toUpperCase() + name.slice(1)];
 			}
+
+			// Normalize "", auto, and prepare for extra
+			val = parseFloat(val) || 0;
 
 			// Use the active box-sizing model to add/subtract irrelevant styles
 			return val + augmentWidthOrHeight(elem, name, extra || (isBorderBox ? "border" : "content"), valueIsBorderBox, styles) + "px";
@@ -40055,9 +39982,15 @@
 				    type,
 				    hooks,
 				    origName = jQuery.camelCase(name),
+				    isCustomProp = rcustomProp.test(name),
 				    style = elem.style;
 
-				name = jQuery.cssProps[origName] || (jQuery.cssProps[origName] = vendorPropName(origName) || origName);
+				// Make sure that we're working with the right name. We don't
+				// want to query the value if it is a CSS custom property
+				// since they are user-defined.
+				if (!isCustomProp) {
+					name = finalPropName(origName);
+				}
 
 				// Gets hook for the prefixed version, then unprefixed version
 				hooks = jQuery.cssHooks[name] || jQuery.cssHooks[origName];
@@ -40092,7 +40025,11 @@
 					// If a hook was provided, use that value, otherwise just set the specified value
 					if (!hooks || !("set" in hooks) || (value = hooks.set(elem, value, extra)) !== undefined) {
 
-						style[name] = value;
+						if (isCustomProp) {
+							style.setProperty(name, value);
+						} else {
+							style[name] = value;
+						}
 					}
 				} else {
 
@@ -40111,10 +40048,15 @@
 				var val,
 				    num,
 				    hooks,
-				    origName = jQuery.camelCase(name);
+				    origName = jQuery.camelCase(name),
+				    isCustomProp = rcustomProp.test(name);
 
-				// Make sure that we're working with the right name
-				name = jQuery.cssProps[origName] || (jQuery.cssProps[origName] = vendorPropName(origName) || origName);
+				// Make sure that we're working with the right name. We don't
+				// want to modify the value if it is a CSS custom property
+				// since they are user-defined.
+				if (!isCustomProp) {
+					name = finalPropName(origName);
+				}
 
 				// Try prefixed name followed by the unprefixed name
 				hooks = jQuery.cssHooks[name] || jQuery.cssHooks[origName];
@@ -40139,6 +40081,7 @@
 					num = parseFloat(val);
 					return extra === true || isFinite(num) ? num || 0 : val;
 				}
+
 				return val;
 			}
 		});
@@ -40225,7 +40168,7 @@
 					    map = {},
 					    i = 0;
 
-					if (jQuery.isArray(name)) {
+					if (Array.isArray(name)) {
 						styles = getStyles(elem);
 						len = name.length;
 
@@ -40350,13 +40293,18 @@
 		jQuery.fx.step = {};
 
 		var fxNow,
-		    timerId,
+		    inProgress,
 		    rfxtypes = /^(?:toggle|show|hide)$/,
 		    rrun = /queueHooks$/;
 
-		function raf() {
-			if (timerId) {
-				window.requestAnimationFrame(raf);
+		function schedule() {
+			if (inProgress) {
+				if (document.hidden === false && window.requestAnimationFrame) {
+					window.requestAnimationFrame(schedule);
+				} else {
+					window.setTimeout(schedule, jQuery.fx.interval);
+				}
+
 				jQuery.fx.tick();
 			}
 		}
@@ -40590,7 +40538,7 @@
 				name = jQuery.camelCase(index);
 				easing = specialEasing[name];
 				value = props[index];
-				if (jQuery.isArray(value)) {
+				if (Array.isArray(value)) {
 					easing = value[1];
 					value = props[index] = value[0];
 				}
@@ -40650,12 +40598,19 @@
 
 				deferred.notifyWith(elem, [animation, percent, remaining]);
 
+				// If there's more to do, yield
 				if (percent < 1 && length) {
 					return remaining;
-				} else {
-					deferred.resolveWith(elem, [animation]);
-					return false;
 				}
+
+				// If this was an empty animation, synthesize a final progress notification
+				if (!length) {
+					deferred.notifyWith(elem, [animation, 1, 0]);
+				}
+
+				// Resolve the animation and report its conclusion
+				deferred.resolveWith(elem, [animation]);
+				return false;
 			},
 			    animation = deferred.promise({
 				elem: elem,
@@ -40719,14 +40674,16 @@
 				animation.opts.start.call(elem, animation);
 			}
 
+			// Attach callbacks from options
+			animation.progress(animation.opts.progress).done(animation.opts.done, animation.opts.complete).fail(animation.opts.fail).always(animation.opts.always);
+
 			jQuery.fx.timer(jQuery.extend(tick, {
 				elem: elem,
 				anim: animation,
 				queue: animation.opts.queue
 			}));
 
-			// attach callbacks from options
-			return animation.progress(animation.opts.progress).done(animation.opts.done, animation.opts.complete).fail(animation.opts.fail).always(animation.opts.always);
+			return animation;
 		}
 
 		jQuery.Animation = jQuery.extend(Animation, {
@@ -40776,8 +40733,8 @@
 				easing: fn && easing || easing && !jQuery.isFunction(easing) && easing
 			};
 
-			// Go to the end state if fx are off or if document is hidden
-			if (jQuery.fx.off || document.hidden) {
+			// Go to the end state if fx are off
+			if (jQuery.fx.off) {
 				opt.duration = 0;
 			} else {
 				if (typeof opt.duration !== "number") {
@@ -40962,7 +40919,7 @@
 			for (; i < timers.length; i++) {
 				timer = timers[i];
 
-				// Checks the timer has not already been removed
+				// Run the timer and safely remove it when done (allowing for external removal)
 				if (!timer() && timers[i] === timer) {
 					timers.splice(i--, 1);
 				}
@@ -40976,28 +40933,21 @@
 
 		jQuery.fx.timer = function (timer) {
 			jQuery.timers.push(timer);
-			if (timer()) {
-				jQuery.fx.start();
-			} else {
-				jQuery.timers.pop();
-			}
+			jQuery.fx.start();
 		};
 
 		jQuery.fx.interval = 13;
 		jQuery.fx.start = function () {
-			if (!timerId) {
-				timerId = window.requestAnimationFrame ? window.requestAnimationFrame(raf) : window.setInterval(jQuery.fx.tick, jQuery.fx.interval);
+			if (inProgress) {
+				return;
 			}
+
+			inProgress = true;
+			schedule();
 		};
 
 		jQuery.fx.stop = function () {
-			if (window.cancelAnimationFrame) {
-				window.cancelAnimationFrame(timerId);
-			} else {
-				window.clearInterval(timerId);
-			}
-
-			timerId = null;
+			inProgress = null;
 		};
 
 		jQuery.fx.speeds = {
@@ -41109,7 +41059,7 @@
 			attrHooks: {
 				type: {
 					set: function set(elem, value) {
-						if (!support.radioValue && value === "radio" && jQuery.nodeName(elem, "input")) {
+						if (!support.radioValue && value === "radio" && nodeName(elem, "input")) {
 							var val = elem.value;
 							elem.setAttribute("type", value);
 							if (val) {
@@ -41516,7 +41466,7 @@
 						val = "";
 					} else if (typeof val === "number") {
 						val += "";
-					} else if (jQuery.isArray(val)) {
+					} else if (Array.isArray(val)) {
 						val = jQuery.map(val, function (value) {
 							return value == null ? "" : value + "";
 						});
@@ -41573,7 +41523,7 @@
 							if ((option.selected || i === index) &&
 
 							// Don't return options that are disabled or in a disabled optgroup
-							!option.disabled && (!option.parentNode.disabled || !jQuery.nodeName(option.parentNode, "optgroup"))) {
+							!option.disabled && (!option.parentNode.disabled || !nodeName(option.parentNode, "optgroup"))) {
 
 								// Get the specific value for the option
 								value = jQuery(option).val();
@@ -41624,7 +41574,7 @@
 		jQuery.each(["radio", "checkbox"], function () {
 			jQuery.valHooks[this] = {
 				set: function set(elem, value) {
-					if (jQuery.isArray(value)) {
+					if (Array.isArray(value)) {
 						return elem.checked = jQuery.inArray(jQuery(elem).val(), value) > -1;
 					}
 				}
@@ -41892,7 +41842,7 @@
 		function buildParams(prefix, obj, traditional, add) {
 			var name;
 
-			if (jQuery.isArray(obj)) {
+			if (Array.isArray(obj)) {
 
 				// Serialize array item.
 				jQuery.each(obj, function (i, v) {
@@ -41933,7 +41883,7 @@
 			};
 
 			// If an array was passed in, assume that it is an array of form elements.
-			if (jQuery.isArray(a) || a.jquery && !jQuery.isPlainObject(a)) {
+			if (Array.isArray(a) || a.jquery && !jQuery.isPlainObject(a)) {
 
 				// Serialize the form elements
 				jQuery.each(a, function () {
@@ -41974,7 +41924,7 @@
 						return null;
 					}
 
-					if (jQuery.isArray(val)) {
+					if (Array.isArray(val)) {
 						return jQuery.map(val, function (val) {
 							return { name: elem.name, value: val.replace(rCRLF, "\r\n") };
 						});
@@ -43356,13 +43306,6 @@
 			}).length;
 		};
 
-		/**
-	  * Gets a window from an element
-	  */
-		function getWindow(elem) {
-			return jQuery.isWindow(elem) ? elem : elem.nodeType === 9 && elem.defaultView;
-		}
-
 		jQuery.offset = {
 			setOffset: function setOffset(elem, options, i) {
 				var curPosition,
@@ -43428,16 +43371,17 @@
 					});
 				}
 
-				var docElem,
-				    win,
+				var doc,
+				    docElem,
 				    rect,
-				    doc,
+				    win,
 				    elem = this[0];
 
 				if (!elem) {
 					return;
 				}
 
+				// Return zeros for disconnected and hidden (display: none) elements (gh-2310)
 				// Support: IE <=11 only
 				// Running getBoundingClientRect on a
 				// disconnected node in IE throws an error
@@ -43447,20 +43391,14 @@
 
 				rect = elem.getBoundingClientRect();
 
-				// Make sure element is not hidden (display: none)
-				if (rect.width || rect.height) {
-					doc = elem.ownerDocument;
-					win = getWindow(doc);
-					docElem = doc.documentElement;
+				doc = elem.ownerDocument;
+				docElem = doc.documentElement;
+				win = doc.defaultView;
 
-					return {
-						top: rect.top + win.pageYOffset - docElem.clientTop,
-						left: rect.left + win.pageXOffset - docElem.clientLeft
-					};
-				}
-
-				// Return zeros for disconnected and hidden elements (gh-2310)
-				return rect;
+				return {
+					top: rect.top + win.pageYOffset - docElem.clientTop,
+					left: rect.left + win.pageXOffset - docElem.clientLeft
+				};
 			},
 
 			position: function position() {
@@ -43486,7 +43424,7 @@
 
 					// Get correct offsets
 					offset = this.offset();
-					if (!jQuery.nodeName(offsetParent[0], "html")) {
+					if (!nodeName(offsetParent[0], "html")) {
 						parentOffset = offsetParent.offset();
 					}
 
@@ -43533,7 +43471,14 @@
 
 			jQuery.fn[method] = function (val) {
 				return access(this, function (elem, method, val) {
-					var win = getWindow(elem);
+
+					// Coalesce documents and windows
+					var win;
+					if (jQuery.isWindow(elem)) {
+						win = elem;
+					} else if (elem.nodeType === 9) {
+						win = elem.defaultView;
+					}
 
 					if (val === undefined) {
 						return win ? win[prop] : elem[method];
@@ -43623,7 +43568,16 @@
 			}
 		});
 
+		jQuery.holdReady = function (hold) {
+			if (hold) {
+				jQuery.readyWait++;
+			} else {
+				jQuery.ready(true);
+			}
+		};
+		jQuery.isArray = Array.isArray;
 		jQuery.parseJSON = JSON.parse;
+		jQuery.nodeName = nodeName;
 
 		// Register as a named AMD module, since jQuery can be concatenated with other
 		// files that may use define, but not via a proper concatenation script that
@@ -44079,17 +44033,20 @@
 
 	    if (props.simple) {
 	      return React.createElement('ul', { className: prefixCls + ' ' + prefixCls + '-simple ' + props.className }, React.createElement('li', {
-	        title: locale.prev_page,
+	        title: props.showTitle ? locale.prev_page : null,
 	        onClick: this._prev,
 	        className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
-	      }, React.createElement('a', null)), React.createElement('li', { title: this.state.current + '/' + allPages, className: prefixCls + '-simple-pager' }, React.createElement('input', {
+	      }, React.createElement('a', null)), React.createElement('li', {
+	        title: props.showTitle ? this.state.current + '/' + allPages : null,
+	        className: prefixCls + '-simple-pager'
+	      }, React.createElement('input', {
 	        type: 'text',
 	        value: this.state._current,
 	        onKeyDown: this._handleKeyDown,
 	        onKeyUp: this._handleKeyUp,
 	        onChange: this._handleKeyUp
 	      }), React.createElement('span', { className: prefixCls + '-slash' }, "\uFF0F"), allPages), React.createElement('li', {
-	        title: locale.next_page,
+	        title: props.showTitle ? locale.next_page : null,
 	        onClick: this._next,
 	        className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
 	      }, React.createElement('a', null)));
@@ -44104,18 +44061,21 @@
 	          onClick: this._handleChange.bind(this, i),
 	          key: i,
 	          page: i,
-	          active: active
+	          active: active,
+	          showTitle: props.showTitle
 	        }));
 	      }
 	    } else {
+	      var prevItemTitle = props.showLessItems ? locale.prev_3 : locale.prev_5;
+	      var nextItemTitle = props.showLessItems ? locale.next_3 : locale.next_5;
 	      jumpPrev = React.createElement('li', {
-	        title: props.showLessItems ? locale.prev_3 : locale.prev_5,
+	        title: props.showTitle ? prevItemTitle : null,
 	        key: 'prev',
 	        onClick: this._jumpPrev,
 	        className: prefixCls + '-jump-prev'
 	      }, React.createElement('a', null));
 	      jumpNext = React.createElement('li', {
-	        title: props.showLessItems ? locale.next_3 : locale.next_5,
+	        title: props.showTitle ? nextItemTitle : null,
 	        key: 'next',
 	        onClick: this._jumpNext,
 	        className: prefixCls + '-jump-next'
@@ -44127,7 +44087,8 @@
 	        onClick: this._handleChange.bind(this, allPages),
 	        key: allPages,
 	        page: allPages,
-	        active: false
+	        active: false,
+	        showTitle: props.showTitle
 	      });
 	      firstPager = React.createElement(Pager, {
 	        locale: props.locale,
@@ -44135,7 +44096,8 @@
 	        onClick: this._handleChange.bind(this, 1),
 	        key: 1,
 	        page: 1,
-	        active: false
+	        active: false,
+	        showTitle: props.showTitle
 	      });
 
 	      var left = Math.max(1, current - pageBufferSize);
@@ -44157,7 +44119,8 @@
 	          onClick: this._handleChange.bind(this, _i),
 	          key: _i,
 	          page: _i,
-	          active: _active
+	          active: _active,
+	          showTitle: props.showTitle
 	        }));
 	      }
 
@@ -44193,11 +44156,11 @@
 	      style: props.style,
 	      unselectable: 'unselectable'
 	    }, totalText, React.createElement('li', {
-	      title: locale.prev_page,
+	      title: props.showTitle ? locale.prev_page : null,
 	      onClick: this._prev,
 	      className: (this._hasPrev() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-prev'
 	    }, React.createElement('a', null)), pagerList, React.createElement('li', {
-	      title: locale.next_page,
+	      title: props.showTitle ? locale.next_page : null,
 	      onClick: this._next,
 	      className: (this._hasNext() ? '' : prefixCls + '-disabled') + ' ' + prefixCls + '-next'
 	    }, React.createElement('a', null)), React.createElement(Options, {
@@ -44228,6 +44191,7 @@
 	  onShowSizeChange: React.PropTypes.func,
 	  selectComponentClass: React.PropTypes.func,
 	  showQuickJumper: React.PropTypes.bool,
+	  showTitle: React.PropTypes.bool,
 	  pageSizeOptions: React.PropTypes.arrayOf(React.PropTypes.string),
 	  showTotal: React.PropTypes.func,
 	  locale: React.PropTypes.object,
@@ -44246,6 +44210,7 @@
 	  showQuickJumper: false,
 	  showSizeChanger: false,
 	  showLessItems: false,
+	  showTitle: true,
 	  onShowSizeChange: noop,
 	  locale: LOCALE,
 	  style: {}
@@ -44311,7 +44276,7 @@
 	      cls = cls + ' ' + props.className;
 	    }
 
-	    return React.createElement('li', { title: props.page, className: cls, onClick: props.onClick }, React.createElement('a', null, props.page));
+	    return React.createElement('li', { title: props.showTitle ? props.page : null, className: cls, onClick: props.onClick }, React.createElement('a', null, props.page));
 	  };
 
 	  return Pager;
@@ -44322,7 +44287,8 @@
 	  active: React.PropTypes.bool,
 	  last: React.PropTypes.bool,
 	  locale: React.PropTypes.object,
-	  className: React.PropTypes.string
+	  className: React.PropTypes.string,
+	  showTitle: React.PropTypes.bool
 	};
 
 	module.exports = Pager;
@@ -45729,15 +45695,15 @@
 	      var contactDetailsDecoreted = {
 	        name: props.owner.name,
 	        email: props.owner.email,
-	        phoneNumber: props.owner.phoneNumber,
-	        description: props.owner.description,
-	        petId: props.id
+	        phone_number: props.owner.phoneNumber,
+	        details: props.owner.description,
+	        item_id: props.id
 	      };
 
-	      fetch('https://items-api.herokuapp.com/api/items', {
+	      fetch('https://items-api.herokuapp.com/api/contact_details', {
 	        method: 'POST',
 	        headers: headers,
-	        body: JSON.stringify({ owner: contactDetailsDecoreted })
+	        body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
 	      }).then(function (response) {
 	        showSuccesfullMessage(props);
 	        console.log(response);
