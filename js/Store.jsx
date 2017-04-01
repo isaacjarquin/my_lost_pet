@@ -167,7 +167,9 @@ const mapStateToProps = (state) => {
     alert: {
       type: state.alert.type,
       message: state.alert.message,
-      visible: state.alert.visible
+      visible: state.alert.visible,
+      newPetFound: state.alert.newPetFound,
+      contactUs: state.alert.contactUs
     }
   }
 }

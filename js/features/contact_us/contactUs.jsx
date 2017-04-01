@@ -8,11 +8,12 @@ const showUnSuccesfullMessage = (props, err) => {
     alert: {
       type: 'alert-danger',
       message: 'no se han podido enviar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
-      visible: 'displayTrue'
+      visible: 'displayTrue',
+      contactUs: 'displayTrue',
+      newPetFound: 'displayNone'
     }
   }
 
-  removeNewPetFoundAlert()
   props.setAlerts(alertData)
 }
 
@@ -21,11 +22,12 @@ const showSuccesfullMessage = (props) => {
     alert: {
       type: 'alert-success',
       message: 'Sus datos de contacto se han guardado correctamente. Nos pondremos en contacto con usted lo antes posible. Gracias por usar nuestra web.',
-      visible: 'displayTrue'
+      visible: 'displayTrue',
+      contactUs: 'displayTrue',
+      newPetFound: 'displayNone'
     }
   }
 
-  removeNewPetFoundAlert()
   props.setAlerts(alertData)
 
   setTimeout(() => {
@@ -33,10 +35,6 @@ const showSuccesfullMessage = (props) => {
     clearForm(props)
     closePanel()
   }, 8000)
-}
-
-const removeNewPetFoundAlert = () => {
-  $('.new-pet-form').find('.alert').remove()
 }
 
 const clearAlert = (props) => {
@@ -111,7 +109,7 @@ class ContactUs extends React.Component {
             Contacto</a>
           </h4>
         </div>
-        <Alerts />
+        <div className={this.props.alert.contactUs} ><Alerts {...this.props.alert} /></div>
         <div id='collapse2' className='panel-collapse collapse w3-padding'>
           <div className='panel-body'>
             <div className='w3-section w3-center w3-opacity'>

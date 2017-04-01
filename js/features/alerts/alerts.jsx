@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 
 if (process.env.WEBPACK_BUILD) {
   require('./alerts.scss')
@@ -9,8 +8,8 @@ class Alerts extends React.Component {
   render () {
     return (
       <div>
-        <div className={`alert ${this.props.alert.type} ${this.props.alert.visible} w3-center`}>
-          {this.props.alert.message}
+        <div className={`alert ${this.props.type} ${this.props.visible} w3-center`}>
+          {this.props.message}
         </div>
       </div>
     )
@@ -23,4 +22,4 @@ Alerts.propTypes = {
   alert: object
 }
 
-module.exports = connector(Alerts)
+module.exports = Alerts

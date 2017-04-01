@@ -21256,7 +21256,9 @@
 	    alert: {
 	      type: state.alert.type,
 	      message: state.alert.message,
-	      visible: state.alert.visible
+	      visible: state.alert.visible,
+	      newPetFound: state.alert.newPetFound,
+	      contactUs: state.alert.contactUs
 	    }
 	  };
 	};
@@ -23455,7 +23457,9 @@
 	    alert: {
 	      type: action.value.alert.type,
 	      message: action.value.alert.message,
-	      visible: action.value.alert.visible
+	      visible: action.value.alert.visible,
+	      contactUs: action.value.alert.contactUs,
+	      newPetFound: action.value.alert.newPetFound
 	    }
 	  });
 
@@ -23505,7 +23509,9 @@
 	  alert: {
 	    type: '',
 	    message: '',
-	    visible: 'displayNone'
+	    visible: 'displayNone',
+	    newPetFound: 'displayNone',
+	    contactUs: 'displayNone'
 	  }
 	};
 
@@ -30243,11 +30249,12 @@
 	    alert: {
 	      type: 'alert-danger',
 	      message: 'no se han podido enviar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
-	      visible: 'displayTrue'
+	      visible: 'displayTrue',
+	      contactUs: 'displayTrue',
+	      newPetFound: 'displayNone'
 	    }
 	  };
 
-	  removeNewPetFoundAlert();
 	  props.setAlerts(alertData);
 	};
 
@@ -30256,11 +30263,12 @@
 	    alert: {
 	      type: 'alert-success',
 	      message: 'Sus datos de contacto se han guardado correctamente. Nos pondremos en contacto con usted lo antes posible. Gracias por usar nuestra web.',
-	      visible: 'displayTrue'
+	      visible: 'displayTrue',
+	      contactUs: 'displayTrue',
+	      newPetFound: 'displayNone'
 	    }
 	  };
 
-	  removeNewPetFoundAlert();
 	  props.setAlerts(alertData);
 
 	  setTimeout(function () {
@@ -30268,10 +30276,6 @@
 	    clearForm(props);
 	    closePanel();
 	  }, 8000);
-	};
-
-	var removeNewPetFoundAlert = function removeNewPetFoundAlert() {
-	  $('.new-pet-form').find('.alert').remove();
 	};
 
 	var clearAlert = function clearAlert(props) {
@@ -30373,7 +30377,11 @@
 	            )
 	          )
 	        ),
-	        React.createElement(Alerts, null),
+	        React.createElement(
+	          'div',
+	          { className: this.props.alert.contactUs },
+	          React.createElement(Alerts, this.props.alert)
+	        ),
 	        React.createElement(
 	          'div',
 	          { id: 'collapse2', className: 'panel-collapse collapse w3-padding' },
@@ -30604,11 +30612,12 @@
 	    alert: {
 	      type: 'alert-success',
 	      message: 'Los datos del animal se han guardado correctamente',
-	      visible: 'displayTrue'
+	      visible: 'displayTrue',
+	      contactUs: 'displayNone',
+	      newPetFound: 'displayTrue'
 	    }
 	  };
 
-	  removeContactUsAlert();
 	  props.setAlerts(alertData);
 
 	  setTimeout(function () {
@@ -30621,16 +30630,13 @@
 	    alert: {
 	      type: 'alert-danger',
 	      message: 'Los datos del animal no se han guardado correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
-	      visible: 'displayTrue'
+	      visible: 'displayTrue',
+	      contactUs: 'displayNone',
+	      newPetFound: 'displayTrue'
 	    }
 	  };
 
-	  removeContactUsAlert();
 	  props.setAlerts(alertData);
-	};
-
-	var removeContactUsAlert = function removeContactUsAlert() {
-	  $('.panel-group').find('.alert').remove();
 	};
 
 	var NewPetFound = function (_React$Component) {
@@ -30789,7 +30795,11 @@
 	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large w3-large' },
 	          ' \xBF Acabas de encontrarte una mascota perdida en la calle ?'
 	        ),
-	        React.createElement(Alerts, null),
+	        React.createElement(
+	          'div',
+	          { className: this.props.alert.newPetFound },
+	          React.createElement(Alerts, this.props.alert)
+	        ),
 	        React.createElement(
 	          'header',
 	          { id: 'new-pet', className: 'missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey' },
@@ -33737,9 +33747,6 @@
 
 	var React = __webpack_require__(3);
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
-
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(293);
 	}
@@ -33761,8 +33768,8 @@
 	        null,
 	        React.createElement(
 	          'div',
-	          { className: 'alert ' + this.props.alert.type + ' ' + this.props.alert.visible + ' w3-center' },
-	          this.props.alert.message
+	          { className: 'alert ' + this.props.type + ' ' + this.props.visible + ' w3-center' },
+	          this.props.message
 	        )
 	      );
 	    }
@@ -33778,7 +33785,7 @@
 	  alert: object
 	};
 
-	module.exports = connector(Alerts);
+	module.exports = Alerts;
 
 /***/ },
 /* 293 */

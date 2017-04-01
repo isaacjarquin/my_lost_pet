@@ -49,11 +49,12 @@ const showSuccesfullMessage = (props) => {
     alert: {
       type: 'alert-success',
       message: 'Los datos del animal se han guardado correctamente',
-      visible: 'displayTrue'
+      visible: 'displayTrue',
+      contactUs: 'displayNone',
+      newPetFound: 'displayTrue'
     }
   }
 
-  removeContactUsAlert()
   props.setAlerts(alertData)
 
   setTimeout(() => {
@@ -66,17 +67,15 @@ const showUnSuccesfullMessage = (props, err) => {
     alert: {
       type: 'alert-danger',
       message: 'Los datos del animal no se han guardado correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
-      visible: 'displayTrue'
+      visible: 'displayTrue',
+      contactUs: 'displayNone',
+      newPetFound: 'displayTrue'
     }
   }
 
-  removeContactUsAlert()
   props.setAlerts(alertData)
 }
 
-const removeContactUsAlert = () => {
-  $('.panel-group').find('.alert').remove()
-}
 
 class NewPetFound extends React.Component {
   constructor (props) {
@@ -195,7 +194,7 @@ class NewPetFound extends React.Component {
     return (
       <div className='new-pet-form'>
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large w3-large'> ¿ Acabas de encontrarte una mascota perdida en la calle ?</button>
-        <Alerts />
+        <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
