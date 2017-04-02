@@ -129,10 +129,14 @@ class ContactUs extends React.Component {
   }
 }
 
-const { object, func } = React.PropTypes
+const { object, func, string } = React.PropTypes
 
 ContactUs.propTypes = {
   contactUs: object,
+  alert: object,
+  name: string,
+  email: string,
+  message: string,
   setContactUsName: func,
   setContactUsEmail: func,
   setContactUsMessage: func,

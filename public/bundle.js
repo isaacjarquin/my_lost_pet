@@ -30438,11 +30438,16 @@
 
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
-	    func = _React$PropTypes.func;
+	    func = _React$PropTypes.func,
+	    string = _React$PropTypes.string;
 
 
 	ContactUs.propTypes = {
 	  contactUs: object,
+	  alert: object,
+	  name: string,
+	  email: string,
+	  message: string,
 	  setContactUsName: func,
 	  setContactUsEmail: func,
 	  setContactUsMessage: func,

@@ -76,7 +76,6 @@ const showUnSuccesfullMessage = (props, err) => {
   props.setAlerts(alertData)
 }
 
-
 class NewPetFound extends React.Component {
   constructor (props) {
     super(props)
