@@ -45819,7 +45819,7 @@
 	          'div',
 	          { id: this.props.id, className: 'collapse contact-details-panel' },
 	          React.createElement('div', { className: this.props.arrow }),
-	          React.createElement(Alerts, null),
+	          React.createElement(Alerts, this.props.alert),
 	          React.createElement(
 	            'div',
 	            { className: 'w3-margin' },
