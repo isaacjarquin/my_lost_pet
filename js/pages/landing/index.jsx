@@ -58,7 +58,7 @@ class Landing extends React.Component {
               <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
-                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} />
+                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} />
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
@@ -67,7 +67,7 @@ class Landing extends React.Component {
               <h1 className='w3-text-white'>Dale un hogar</h1>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Actualmente en' /></p>
-                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} />
+                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} />
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
@@ -115,7 +115,8 @@ Landing.propTypes = {
   setContactUsName: func,
   setContactUsEmail: func,
   setContactUsMessage: func,
-  setAlerts: func
+  setAlerts: func,
+  setSelectFilter: func
 }
 
 module.exports = connector(Landing)
