@@ -1,7 +1,6 @@
 const React = require('react')
 const Dropdown = require('../dropdown/Dropdown')
 const { func, string } = React.PropTypes
-const { connector } = require('../../Store')
 
 const Navbar = React.createClass({
   propTypes: {
@@ -36,4 +35,4 @@ const Navbar = React.createClass({
   }
 })
 
-module.exports = connector(Navbar)
+module.exports = Navbar

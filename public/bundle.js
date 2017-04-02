@@ -20798,6 +20798,9 @@
 	var Header = __webpack_require__(171);
 	var Footer = __webpack_require__(214);
 
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
+
 	var _React$PropTypes = React.PropTypes,
 	    element = _React$PropTypes.element,
 	    object = _React$PropTypes.object;
@@ -20811,15 +20814,18 @@
 	    location: object.isRequired
 	  },
 	  displayHeader: function displayHeader(_ref) {
-	    var pathname = _ref.pathname;
+	    var location = _ref.location,
+	        setSearchTerm = _ref.setSearchTerm,
+	        setSelectFilter = _ref.setSelectFilter,
+	        searchTerm = _ref.searchTerm;
 
-	    if (pathname === '/') {
+	    if (location.pathname === '/') {
 	      return null;
 	    } else {
 	      return React.createElement(
 	        'div',
 	        { className: 'row' },
-	        React.createElement(Header, { location: pathname })
+	        React.createElement(Header, { location: location.pathname, setSearchTerm: setSearchTerm, setSelectFilter: setSelectFilter, searchTerm: searchTerm })
 	      );
 	    }
 	  },
@@ -20836,7 +20842,7 @@
 	    return React.createElement(
 	      'div',
 	      { className: 'container app-container' },
-	      this.displayHeader(this.props.location),
+	      this.displayHeader(this.props),
 	      React.createElement(
 	        'div',
 	        { className: 'row' },
@@ -20847,7 +20853,7 @@
 	  }
 	});
 
-	module.exports = Layout;
+	module.exports = connector(Layout);
 
 /***/ },
 /* 171 */
@@ -20858,7 +20864,9 @@
 	var React = __webpack_require__(3);
 	var Jumbotron = __webpack_require__(172);
 	var Navbar = __webpack_require__(173);
-	var string = React.PropTypes.string;
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    func = _React$PropTypes.func;
 
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
@@ -20869,12 +20877,19 @@
 	  displayName: 'Header',
 
 	  propTypes: {
-	    location: string
+	    location: string,
+	    searchTerm: string,
+	    setSearchTerm: func,
+	    setSelectFilter: func
 	  },
-	  displayNavbar: function displayNavbar(pathname) {
-	    console.log(pathname);
-	    if (pathname === '/search') {
-	      return React.createElement(Navbar, null);
+	  displayNavbar: function displayNavbar(_ref) {
+	    var location = _ref.location,
+	        setSearchTerm = _ref.setSearchTerm,
+	        searchTerm = _ref.searchTerm,
+	        setSelectFilter = _ref.setSelectFilter;
+
+	    if (location === '/search') {
+	      return React.createElement(Navbar, { setSearchTerm: setSearchTerm, setSelectFilter: setSelectFilter, searchTerm: searchTerm });
 	    } else {
 	      return null;
 	    }
@@ -20916,7 +20931,7 @@
 	        )
 	      ),
 	      React.createElement(Jumbotron, null),
-	      this.displayNavbar(this.props.location)
+	      this.displayNavbar(this.props)
 	    );
 	  }
 	});
@@ -20964,8 +20979,6 @@
 	    func = _React$PropTypes.func,
 	    string = _React$PropTypes.string;
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
 
 	var Navbar = React.createClass({
 	  displayName: 'Navbar',
@@ -21020,7 +21033,7 @@
 	  }
 	});
 
-	module.exports = connector(Navbar);
+	module.exports = Navbar;
 
 /***/ },
 /* 174 */

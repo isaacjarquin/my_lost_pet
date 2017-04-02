@@ -1,7 +1,7 @@
 const React = require('react')
 const Jumbotron = require('./Jumbotron')
 const Navbar = require('./Navbar')
-const { string } = React.PropTypes
+const { string, func } = React.PropTypes
 
 if (process.env.WEBPACK_BUILD) {
   require('./header.scss')
@@ -9,12 +9,14 @@ if (process.env.WEBPACK_BUILD) {
 
 const Header = React.createClass({
   propTypes: {
-    location: string
+    location: string,
+    searchTerm: string,
+    setSearchTerm: func,
+    setSelectFilter: func
   },
-  displayNavbar (pathname) {
-    console.log(pathname)
-    if (pathname === '/search') {
-      return <Navbar />
+  displayNavbar ({location, setSearchTerm, searchTerm, setSelectFilter}) {
+    if (location === '/search') {
+      return <Navbar setSearchTerm={setSearchTerm} setSelectFilter={setSelectFilter} searchTerm={searchTerm} />
     } else {
       return null
     }
@@ -28,7 +30,7 @@ const Header = React.createClass({
           <li className='w3-right'><a href='#'><i className='fa fa-twitter' /></a></li>
         </ul>
         <Jumbotron />
-        {this.displayNavbar(this.props.location)}
+        {this.displayNavbar(this.props)}
       </header>
     )
   }
