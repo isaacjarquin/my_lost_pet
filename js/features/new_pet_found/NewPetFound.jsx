@@ -76,7 +76,6 @@ const showUnSuccesfullMessage = (props, err) => {
   props.setAlerts(alertData)
 }
 
-
 class NewPetFound extends React.Component {
   constructor (props) {
     super(props)
@@ -248,6 +247,7 @@ const { object, func, string } = React.PropTypes
 
 NewPetFound.propTypes = {
   pet: object,
+  alert: object,
   setPetFounderName: func,
   setPetFounderEmail: func,
   setPetType: func,

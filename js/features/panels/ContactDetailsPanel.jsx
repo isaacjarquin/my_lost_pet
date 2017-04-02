@@ -154,6 +154,7 @@ ContactDetailsPanel.propTypes = {
   id: string.isRequired,
   arrow: string.isRequired,
   owner: object,
+  alert: object,
   setOwnerName: func,
   setOwnerEmail: func,
   setOwnerPhoneNumber: func,
