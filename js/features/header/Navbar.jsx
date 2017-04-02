@@ -6,7 +6,8 @@ const { connector } = require('../../Store')
 const Navbar = React.createClass({
   propTypes: {
     searchTerm: string,
-    setSearchTerm: func
+    setSearchTerm: func,
+    setSelectFilter: func
   },
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
@@ -25,7 +26,7 @@ const Navbar = React.createClass({
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>
             <ul className='nav navbar-nav navbar-right'>
-              <li><Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} /></li>
+              <li><Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} /></li>
               <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Pet Location' /></li>
             </ul>
           </div>

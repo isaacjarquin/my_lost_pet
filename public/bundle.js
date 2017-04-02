@@ -20972,7 +20972,8 @@
 
 	  propTypes: {
 	    searchTerm: string,
-	    setSearchTerm: func
+	    setSearchTerm: func,
+	    setSelectFilter: func
 	  },
 	  handleSearchTermEvent: function handleSearchTermEvent(event) {
 	    this.props.setSearchTerm(event.target.value);
@@ -21005,7 +21006,7 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ' })
+	              React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
 	            ),
 	            React.createElement(
 	              'li',
@@ -21034,8 +21035,6 @@
 	    func = _React$PropTypes.func,
 	    object = _React$PropTypes.object;
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
 
 	var Dropdown = React.createClass({
 	  displayName: 'Dropdown',
@@ -21076,7 +21075,7 @@
 	  }
 	});
 
-	module.exports = connector(Dropdown);
+	module.exports = Dropdown;
 
 /***/ },
 /* 175 */
@@ -29481,7 +29480,7 @@
 	                  null,
 	                  React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrado en' })
 	                ),
-	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ' })
+	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
 	              ),
 	              React.createElement(
 	                Link,
@@ -29513,7 +29512,7 @@
 	                  null,
 	                  React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'w3-input w3-border', type: 'text', placeholder: 'Actualmente en' })
 	                ),
-	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ' })
+	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
 	              ),
 	              React.createElement(
 	                Link,
@@ -29576,7 +29575,8 @@
 	  setContactUsName: func,
 	  setContactUsEmail: func,
 	  setContactUsMessage: func,
-	  setAlerts: func
+	  setAlerts: func,
+	  setSelectFilter: func
 	};
 
 	module.exports = connector(Landing);
