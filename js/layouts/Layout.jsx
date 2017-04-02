@@ -1,6 +1,7 @@
 const React = require('react')
 const Header = require('../features/header/Header')
 const Footer = require('../features/footer/Footer')
+const { connector } = require('../Store')
 
 const { element, object } = React.PropTypes
 
@@ -9,11 +10,11 @@ const Layout = React.createClass({
     children: element.isRequired,
     location: object.isRequired
   },
-  displayHeader ({pathname}) {
-    if (pathname === '/') {
+  displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm}) {
+    if (location.pathname === '/') {
       return null
     } else {
-      return <div className='row'><Header location={pathname} /></div>
+      return <div className='row'><Header location={location.pathname} setSearchTerm={setSearchTerm} setSelectFilter={setSelectFilter} searchTerm={searchTerm} /></div>
     }
   },
   displayFooter ({pathname}) {
@@ -26,7 +27,7 @@ const Layout = React.createClass({
   render () {
     return (
       <div className='container app-container'>
-        {this.displayHeader(this.props.location)}
+        {this.displayHeader(this.props)}
         <div className='row'>
           {this.props.children}
         </div>
@@ -36,4 +37,4 @@ const Layout = React.createClass({
   }
 })
 
-module.exports = Layout
+module.exports = connector(Layout)
