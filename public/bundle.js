@@ -29570,7 +29570,13 @@
 	  setPetFoundDate: func,
 	  setPetLocation: func,
 	  setPetDescription: func,
-	  setImageUrl: func
+	  setImageUrl: func,
+	  contactUs: object,
+	  alert: object,
+	  setContactUsName: func,
+	  setContactUsEmail: func,
+	  setContactUsMessage: func,
+	  setAlerts: func
 	};
 
 	module.exports = connector(Landing);
@@ -30503,11 +30509,17 @@
 	  return Alerts;
 	}(React.Component);
 
-	var object = React.PropTypes.object;
+	var _React$PropTypes = React.PropTypes,
+	    object = _React$PropTypes.object,
+	    string = _React$PropTypes.string,
+	    bool = _React$PropTypes.bool;
 
 
 	Alerts.propTypes = {
-	  alert: object
+	  alert: object,
+	  type: string,
+	  visible: bool,
+	  message: string
 	};
 
 	module.exports = Alerts;
@@ -40842,6 +40854,7 @@
 
 	NewPetFound.propTypes = {
 	  pet: object,
+	  alert: object,
 	  setPetFounderName: func,
 	  setPetFounderEmail: func,
 	  setPetType: func,
@@ -45910,6 +45923,7 @@
 	  id: string.isRequired,
 	  arrow: string.isRequired,
 	  owner: object,
+	  alert: object,
 	  setOwnerName: func,
 	  setOwnerEmail: func,
 	  setOwnerPhoneNumber: func,

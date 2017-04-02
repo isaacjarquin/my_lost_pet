@@ -16,10 +16,13 @@ class Alerts extends React.Component {
   }
 }
 
-const { object } = React.PropTypes
+const { object, string, bool } = React.PropTypes
 
 Alerts.propTypes = {
-  alert: object
+  alert: object,
+  type: string,
+  visible: bool,
+  message: string
 }
 
 module.exports = Alerts

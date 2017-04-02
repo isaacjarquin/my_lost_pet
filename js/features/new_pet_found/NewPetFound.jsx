@@ -247,6 +247,7 @@ const { object, func, string } = React.PropTypes
 
 NewPetFound.propTypes = {
   pet: object,
+  alert: object,
   setPetFounderName: func,
   setPetFounderEmail: func,
   setPetType: func,

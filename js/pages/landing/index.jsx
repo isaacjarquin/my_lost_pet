@@ -109,7 +109,13 @@ Landing.propTypes = {
   setPetFoundDate: func,
   setPetLocation: func,
   setPetDescription: func,
-  setImageUrl: func
+  setImageUrl: func,
+  contactUs: object,
+  alert: object,
+  setContactUsName: func,
+  setContactUsEmail: func,
+  setContactUsMessage: func,
+  setAlerts: func
 }
 
 module.exports = connector(Landing)
