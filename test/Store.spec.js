@@ -36,7 +36,9 @@ describe('Store', () => {
     alert: {
       type: '',
       message: '',
-      visible: 'displayNone'
+      visible: 'displayNone',
+      newPetFound: 'displayNone',
+      contactUs: 'displayNone'
     },
     pageSize: 6,
     totalNumberOfPets: 0,
@@ -175,7 +177,7 @@ describe('Store', () => {
   })
 
   it('should handle setAlerts actions', () => {
-    const newState = {alert: {type: 'alert-success', message: 'alert message', visible: 'displayTrue'}}
+    const newState = {alert: {type: 'alert-success', message: 'alert message', visible: 'displayTrue', newPetFound: 'displayNone', contactUs: 'displayNone'}}
     const state = rootReducer({alert: {type: '', message: '', visible: 'displayNone'}}, {type: 'setAlerts', value: newState})
 
     expect(state.alert).to.deep.equal(newState.alert)

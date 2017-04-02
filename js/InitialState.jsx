@@ -33,6 +33,8 @@ module.exports = {
   alert: {
     type: '',
     message: '',
-    visible: 'displayNone'
+    visible: 'displayNone',
+    newPetFound: 'displayNone',
+    contactUs: 'displayNone'
   }
 }
