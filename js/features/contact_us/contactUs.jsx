@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
 
@@ -81,9 +80,9 @@ class ContactUs extends React.Component {
     const props = this.props
 
     const contactUsDecoreted = {
-      name: props.contactUs.name,
-      email: props.contactUs.email,
-      details: props.contactUs.message
+      name: props.name,
+      email: props.email,
+      details: props.message
     }
 
     fetch('https://items-api.herokuapp.com/api/contact_us', {
@@ -118,9 +117,9 @@ class ContactUs extends React.Component {
               <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: mylostpet@mail.com
             </div>
             <form onSubmit={this.handleSubmit}>
-              <p><input value={this.props.contactUs.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-              <p><input value={this.props.contactUs.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-              <p><textarea value={this.props.contactUs.message} onChange={this.handleMessage} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
+              <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+              <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+              <p><textarea value={this.props.message} onChange={this.handleMessage} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>
             </form>
           </div>
@@ -140,4 +139,4 @@ ContactUs.propTypes = {
   sendContactUsDetails: func
 }
 
-module.exports = connector(ContactUs)
+module.exports = ContactUs

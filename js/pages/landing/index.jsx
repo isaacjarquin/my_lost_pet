@@ -79,7 +79,14 @@ class Landing extends React.Component {
 
         <div className='panel-group' id='accordion'>
           <AboutUs />
-          <ContactUs />
+            <ContactUs
+              {...this.props.contactUs}
+              alert={this.props.alert}
+              setAlerts={this.props.setAlerts}
+              setContactUsName={this.props.setContactUsName}
+              setContactUsEmail={this.props.setContactUsEmail}
+              setContactUsMessage={this.props.setContactUsMessage}
+            />
           <TermsAndConditions />
         </div>
 
