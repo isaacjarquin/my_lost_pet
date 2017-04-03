@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
 
@@ -93,10 +92,10 @@ class ContactDetailsPanel extends React.Component {
     const props = this.props
 
     const contactDetailsDecoreted = {
-      name: props.owner.name,
-      email: props.owner.email,
-      phone_number: props.owner.phoneNumber,
-      details: props.owner.description,
+      name: props.name,
+      email: props.email,
+      phone_number: props.phoneNumber,
+      details: props.description,
       item_id: props.id
     }
 
@@ -128,10 +127,10 @@ class ContactDetailsPanel extends React.Component {
             <div className='w3-container'>
               <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
               <form onSubmit={this.handleSubmit}>
-                <p><input value={this.props.owner.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-                <p><input value={this.props.owner.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-                <p><input value={this.props.owner.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
-                <p><textarea value={this.props.owner.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
+                <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+                <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+                <p><input value={this.props.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' /></p>
+                <p><textarea value={this.props.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' /></p>
                 <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
               </form>
             </div>
@@ -151,9 +150,12 @@ class ContactDetailsPanel extends React.Component {
 const { string, object, func } = React.PropTypes
 
 ContactDetailsPanel.propTypes = {
+  name: string.isRequired,
+  email: string.isRequired,
+  phoneNumber: string.isRequired,
+  description: string.isRequired,
   id: string.isRequired,
   arrow: string.isRequired,
-  owner: object,
   alert: object,
   setOwnerName: func,
   setOwnerEmail: func,
@@ -162,4 +164,4 @@ ContactDetailsPanel.propTypes = {
   sendOwnersDetails: func
 }
 
-module.exports = connector(ContactDetailsPanel)
+module.exports = ContactDetailsPanel

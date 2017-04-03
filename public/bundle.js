@@ -45348,7 +45348,8 @@
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf;
+	    arrayOf = _React$PropTypes.arrayOf,
+	    func = _React$PropTypes.func;
 
 
 	var Search = React.createClass({
@@ -45356,6 +45357,13 @@
 
 	  propTypes: {
 	    pets: arrayOf(object),
+	    owner: object.isRequired,
+	    alert: object.isRequired,
+	    setOwnerName: func.isRequired,
+	    setOwnerEmail: func.isRequired,
+	    setOwnerPhoneNumber: func.isRequired,
+	    setDescription: func.isRequired,
+	    setAlerts: func.isRequired,
 	    searchTerm: string,
 	    selectFilter: string,
 	    activePagePets: arrayOf(object)
@@ -45400,9 +45408,39 @@
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
 	          }),
-	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left', colSizeClass: '.col-sm-3' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.center.id, arrow: 'arrow-up-center', colSizeClass: '.col-sm-3' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right', colSizeClass: '.col-sm-3' })
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.left.id,
+	            arrow: 'arrow-up-left',
+	            colSizeClass: '.col-sm-3',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          })),
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.center.id,
+	            arrow: 'arrow-up-center',
+	            colSizeClass: '.col-sm-3',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          })),
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.right.id,
+	            arrow: 'arrow-up-right',
+	            colSizeClass: '.col-sm-3',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          }))
 	        );
 	      })
 	    );
@@ -45729,10 +45767,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
-
-	var _require = __webpack_require__(179),
-	    connector = _require.connector;
-
 	var Alerts = __webpack_require__(281);
 	var $ = __webpack_require__(283);
 
@@ -45843,10 +45877,10 @@
 	      var props = this.props;
 
 	      var contactDetailsDecoreted = {
-	        name: props.owner.name,
-	        email: props.owner.email,
-	        phone_number: props.owner.phoneNumber,
-	        details: props.owner.description,
+	        name: props.name,
+	        email: props.email,
+	        phone_number: props.phoneNumber,
+	        details: props.description,
 	        item_id: props.id
 	      };
 
@@ -45899,22 +45933,22 @@
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.owner.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.owner.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.owner.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('textarea', { value: this.props.owner.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
 	                ),
 	                React.createElement(
 	                  'p',
@@ -45951,9 +45985,12 @@
 
 
 	ContactDetailsPanel.propTypes = {
+	  name: string.isRequired,
+	  email: string.isRequired,
+	  phoneNumber: string.isRequired,
+	  description: string.isRequired,
 	  id: string.isRequired,
 	  arrow: string.isRequired,
-	  owner: object,
 	  alert: object,
 	  setOwnerName: func,
 	  setOwnerEmail: func,
@@ -45962,7 +45999,7 @@
 	  sendOwnersDetails: func
 	};
 
-	module.exports = connector(ContactDetailsPanel);
+	module.exports = ContactDetailsPanel;
 
 /***/ },
 /* 312 */
@@ -45988,7 +46025,8 @@
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf;
+	    arrayOf = _React$PropTypes.arrayOf,
+	    func = _React$PropTypes.func;
 
 
 	var Search = React.createClass({
@@ -45996,6 +46034,13 @@
 
 	  propTypes: {
 	    pets: arrayOf(object),
+	    owner: object.isRequired,
+	    alert: object.isRequired,
+	    setOwnerName: func.isRequired,
+	    setOwnerEmail: func.isRequired,
+	    setOwnerPhoneNumber: func.isRequired,
+	    setDescription: func.isRequired,
+	    setAlerts: func.isRequired,
 	    searchTerm: string,
 	    selectFilter: string,
 	    activePagePets: arrayOf(object)
@@ -46038,8 +46083,28 @@
 	          }).map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-5', key: pet.id }));
 	          }),
-	          React.createElement(ContactDetailsPanel, { id: pet.left.id, arrow: 'arrow-up-left', colSizeClass: '.col-sm-5' }),
-	          React.createElement(ContactDetailsPanel, { id: pet.right.id, arrow: 'arrow-up-right', colSizeClass: '.col-sm-5' })
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.left.id,
+	            arrow: 'arrow-up-left',
+	            colSizeClass: '.col-sm-5',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          })),
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.right.id,
+	            arrow: 'arrow-up-right',
+	            colSizeClass: '.col-sm-5',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          }))
 	        );
 	      })
 	    );
@@ -46066,7 +46131,8 @@
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
 	    string = _React$PropTypes.string,
-	    arrayOf = _React$PropTypes.arrayOf;
+	    arrayOf = _React$PropTypes.arrayOf,
+	    func = _React$PropTypes.func;
 
 
 	var Search = React.createClass({
@@ -46074,6 +46140,13 @@
 
 	  propTypes: {
 	    pets: arrayOf(object),
+	    owner: object.isRequired,
+	    alert: object.isRequired,
+	    setOwnerName: func.isRequired,
+	    setOwnerEmail: func.isRequired,
+	    setOwnerPhoneNumber: func.isRequired,
+	    setDescription: func.isRequired,
+	    setAlerts: func.isRequired,
 	    searchTerm: string,
 	    selectFilter: string,
 	    activePagePets: arrayOf(object)
@@ -46093,7 +46166,17 @@
 	          'div',
 	          { className: 'pets-row' },
 	          React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-6', key: pet.id })),
-	          React.createElement(ContactDetailsPanel, { id: pet.id, arrow: 'arrow-up-center', colSizeClass: '.col-sm-6' })
+	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
+	            id: pet.id,
+	            arrow: 'arrow-up-center',
+	            colSizeClass: '.col-sm-6',
+	            alert: _this.props.alert,
+	            setAlerts: _this.props.setAlerts,
+	            setOwnerName: _this.props.setOwnerName,
+	            setOwnerEmail: _this.props.setOwnerEmail,
+	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
+	            setDescription: _this.props.setDescription
+	          }))
 	        );
 	      })
 	    );
