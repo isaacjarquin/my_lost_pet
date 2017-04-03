@@ -2,11 +2,18 @@ const React = require('react')
 const MissingPet = require('../../../features/missing_pet/MissingPet')
 const ContactDetailsPanel = require('../../../features/panels/ContactDetailsPanel')
 const { connector } = require('../../../Store')
-const { object, string, arrayOf } = React.PropTypes
+const { object, string, arrayOf, func } = React.PropTypes
 
 const Search = React.createClass({
   propTypes: {
     pets: arrayOf(object),
+    owner: object.isRequired,
+    alert: object.isRequired,
+    setOwnerName: func.isRequired,
+    setOwnerEmail: func.isRequired,
+    setOwnerPhoneNumber: func.isRequired,
+    setDescription: func.isRequired,
+    setAlerts: func.isRequired,
     searchTerm: string,
     selectFilter: string,
     activePagePets: arrayOf(object)
@@ -43,8 +50,30 @@ const Search = React.createClass({
                 .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(this.props.selectFilter.toUpperCase()) >= 0)
                 .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-5'} key={pet.id} />))
               }
-              <ContactDetailsPanel id={pet.left.id} arrow={'arrow-up-left'} colSizeClass={'.col-sm-5'} />
-              <ContactDetailsPanel id={pet.right.id} arrow={'arrow-up-right'} colSizeClass={'.col-sm-5'} />
+              <ContactDetailsPanel
+                {...this.props.owner}
+                id={pet.left.id}
+                arrow={'arrow-up-left'}
+                colSizeClass={'.col-sm-5'}
+                alert={this.props.alert}
+                setAlerts={this.props.setAlerts}
+                setOwnerName={this.props.setOwnerName}
+                setOwnerEmail={this.props.setOwnerEmail}
+                setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
+                setDescription={this.props.setDescription}
+              />
+              <ContactDetailsPanel
+                {...this.props.owner}
+                id={pet.right.id}
+                arrow={'arrow-up-right'}
+                colSizeClass={'.col-sm-5'}
+                alert={this.props.alert}
+                setAlerts={this.props.setAlerts}
+                setOwnerName={this.props.setOwnerName}
+                setOwnerEmail={this.props.setOwnerEmail}
+                setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
+                setDescription={this.props.setDescription}
+              />
             </div>)
           )
         }
