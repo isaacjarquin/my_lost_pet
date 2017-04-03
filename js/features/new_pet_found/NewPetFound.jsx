@@ -1,5 +1,4 @@
 const React = require('react')
-const { connector } = require('../../Store')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
 
@@ -130,7 +129,7 @@ class NewPetFound extends React.Component {
 
     let upload = request.post(CLOUDINARY_UPLOAD_URL)
                         .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                        .field('file', this.props.pet.images[0])
+                        .field('file', this.props.images[0])
 
     upload.end((err, response) => {
       if (err) {
@@ -150,13 +149,13 @@ class NewPetFound extends React.Component {
 
   sendDetails ({secure_url}) {
     const adaptedItem = {
-      name: this.props.pet.founderName,
-      email: this.props.pet.founderEmail,
-      kind: this.props.pet.petType,
-      size: this.props.pet.size,
-      date: this.props.pet.foundDate,
-      location: this.props.pet.location,
-      info: this.props.pet.description,
+      name: this.props.founderName,
+      email: this.props.founderEmail,
+      kind: this.props.petType,
+      size: this.props.size,
+      date: this.props.foundDate,
+      location: this.props.location,
+      info: this.props.description,
       image: secure_url
     }
 
@@ -197,13 +196,13 @@ class NewPetFound extends React.Component {
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.pet.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-            <p><input value={this.props.pet.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-            <p><input value={this.props.pet.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
-            <p><input value={this.props.pet.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
-            <p><input value={this.props.pet.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
-            <p><input value={this.props.pet.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
-            <p><textarea value={this.props.pet.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
+            <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+            <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
+            <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
+            <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
+            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
             <div className='panel panel-default'>
               <div className='panel-heading'>
                 <h4 className='panel-title w3-center'>
@@ -225,9 +224,9 @@ class NewPetFound extends React.Component {
                       </Dropzone>
                     </div>
                     <div className='image-preview'>
-                      {this.props.pet.images.length > 0 ? <div>
+                      {this.props.images.length > 0 ? <div>
                         <h4 className='title'>Uploading files...</h4>
-                        <img className='image' src={this.props.pet.images[0].preview} />
+                        <img className='image' src={this.props.images[0].preview} />
                       </div> : null}
                     </div>
                   </div>
@@ -243,7 +242,7 @@ class NewPetFound extends React.Component {
   }
 }
 
-const { object, func, string } = React.PropTypes
+const { object, func, string, arrayOf } = React.PropTypes
 
 NewPetFound.propTypes = {
   pet: object,
@@ -256,7 +255,15 @@ NewPetFound.propTypes = {
   setPetLocation: func,
   setPetDescription: func,
   setImages: func,
-  setImageUrl: string.isRequired
+  setImageUrl: string.isRequired,
+  founderName: string.isRequired,
+  founderEmail: string.isRequired,
+  petType: string.isRequired,
+  size: string.isRequired,
+  foundDate: string.isRequired,
+  location: string.isRequired,
+  description: string.isRequired,
+  images: arrayOf(object).isRequired
 }
 
-module.exports = connector(NewPetFound)
+module.exports = NewPetFound
