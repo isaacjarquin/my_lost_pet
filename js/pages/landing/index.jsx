@@ -75,7 +75,20 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <NewPetFound />
+        <NewPetFound
+          {...this.props.pet}
+          alert={this.props.alert}
+          setPetFounderName={this.props.setPetFounderName}
+          setPetFounderEmail={this.props.setPetFounderEmail}
+          setPetType={this.props.setPetType}
+          setPetSize={this.props.setPetSize}
+          setPetFoundDate={this.props.setPetFoundDate}
+          setPetLocation={this.props.setPetLocation}
+          setPetDescription={this.props.setPetDescription}
+          setImageUrl={this.props.setImageUrl}
+          setImages={this.props.setImages}
+          setAlerts={this.props.setAlerts}
+          />
 
         <div className='panel-group' id='accordion'>
           <AboutUs />
@@ -116,7 +129,8 @@ Landing.propTypes = {
   setContactUsEmail: func,
   setContactUsMessage: func,
   setAlerts: func,
-  setSelectFilter: func
+  setSelectFilter: func,
+  setImages: func
 }
 
 module.exports = connector(Landing)
