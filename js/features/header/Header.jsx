@@ -2,7 +2,6 @@ const React = require('react')
 const Jumbotron = require('./Jumbotron')
 const Navbar = require('./Navbar')
 const { string, func } = React.PropTypes
-const { connector } = require('../../Store.jsx')
 
 if (process.env.WEBPACK_BUILD) {
   require('./header.scss')
@@ -42,4 +41,4 @@ const Header = React.createClass({
   }
 })
 
-module.exports = connector(Header)
+module.exports = Header

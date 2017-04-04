@@ -20817,7 +20817,9 @@
 	    var location = _ref.location,
 	        setSearchTerm = _ref.setSearchTerm,
 	        setSelectFilter = _ref.setSelectFilter,
-	        searchTerm = _ref.searchTerm;
+	        searchTerm = _ref.searchTerm,
+	        selectFilter = _ref.selectFilter,
+	        pets = _ref.pets;
 
 	    if (location.pathname === '/') {
 	      return null;
@@ -20825,7 +20827,14 @@
 	      return React.createElement(
 	        'div',
 	        { className: 'row' },
-	        React.createElement(Header, { location: location.pathname, setSearchTerm: setSearchTerm, setSelectFilter: setSelectFilter, searchTerm: searchTerm })
+	        React.createElement(Header, {
+	          location: location.pathname,
+	          setSearchTerm: setSearchTerm,
+	          setSelectFilter: setSelectFilter,
+	          searchTerm: searchTerm,
+	          selectFilter: selectFilter,
+	          pets: pets
+	        })
 	      );
 	    }
 	  },
@@ -20868,8 +20877,6 @@
 	    string = _React$PropTypes.string,
 	    func = _React$PropTypes.func;
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(212);
@@ -20945,7 +20952,7 @@
 	  }
 	});
 
-	module.exports = connector(Header);
+	module.exports = Header;
 
 /***/ },
 /* 172 */

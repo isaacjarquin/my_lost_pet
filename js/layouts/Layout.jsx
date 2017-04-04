@@ -10,11 +10,19 @@ const Layout = React.createClass({
     children: element.isRequired,
     location: object.isRequired
   },
-  displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm}) {
+  displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm, selectFilter, pets}) {
     if (location.pathname === '/') {
       return null
     } else {
-      return <div className='row'><Header location={location.pathname} setSearchTerm={setSearchTerm} setSelectFilter={setSelectFilter} searchTerm={searchTerm} /></div>
+      return <div className='row'>
+              <Header
+                location={location.pathname}
+                setSearchTerm={setSearchTerm}
+                setSelectFilter={setSelectFilter}
+                searchTerm={searchTerm}
+                selectFilter={selectFilter}
+                pets={pets}
+              /></div>
     }
   },
   displayFooter ({pathname}) {
