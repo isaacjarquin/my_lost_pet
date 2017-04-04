@@ -6,7 +6,9 @@ const Dropdown = React.createClass({
     dropDownTypes: arrayOf(object),
     dropDownTitle: string,
     selectFilter: string,
-    setSelectFilter: func
+    setSelectFilter: func,
+    searchTerm: string,
+    pets: arrayOf(object)
   },
   getDefaultProps: function () {
     return { petTypes: [] }

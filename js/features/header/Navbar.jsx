@@ -1,12 +1,14 @@
 const React = require('react')
 const Dropdown = require('../dropdown/Dropdown')
-const { func, string } = React.PropTypes
+const { func, string, arrayOf, object } = React.PropTypes
 
 const Navbar = React.createClass({
   propTypes: {
     searchTerm: string,
     setSearchTerm: func,
-    setSelectFilter: func
+    setSelectFilter: func,
+    selectFilter: string,
+    pets: arrayOf(object)
   },
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(

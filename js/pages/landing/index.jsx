@@ -115,12 +115,13 @@ class Landing extends React.Component {
   }
 }
 
-const { func, string, object } = React.PropTypes
+const { func, string, object, arrayOf } = React.PropTypes
 
 Landing.propTypes = {
   searchTerm: string,
   setSearchTerm: func,
   pet: object,
+  pets: arrayOf(object),
   setPetFounderName: func,
   setPetFounderEmail: func,
   setPetType: func,
