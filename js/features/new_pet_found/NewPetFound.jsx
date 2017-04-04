@@ -219,8 +219,9 @@ class NewPetFound extends React.Component {
                         multiple={false}
                         accept='image/*'
                         ref={(node) => { this.dropzone = node }}
+                        maxSize={1048576}
                         onDrop={this.onImageDrop}>
-                        <p>Arrastra la imagen o haz click para selectionarla.</p>
+                        <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 1 Mbytes</p>
                       </Dropzone>
                     </div>
                     <div className='image-preview'>

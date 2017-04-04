@@ -7,7 +7,7 @@
   @media (min-width:1200px) {
     img {
       min-height: 440px;
-      max-height: 300px;
+      max-height: 440px;
     }
   }
 
@@ -15,15 +15,15 @@
     @media (min-width:768px) {
       img {
         min-height: 340px;
-        max-height: 300px;
+        max-height: 340px;
       }
     }
   }
 
   @media (max-width:736px) {
     img {
-      min-height: 300px;
-      max-height: 300px;
+      min-height: 340px;
+      max-height: 340px;
     }
   }
 }
