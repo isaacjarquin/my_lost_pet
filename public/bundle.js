@@ -40910,11 +40910,12 @@
 	                          ref: function ref(node) {
 	                            _this3.dropzone = node;
 	                          },
+	                          maxSize: 1048576,
 	                          onDrop: this.onImageDrop },
 	                        React.createElement(
 	                          'p',
 	                          null,
-	                          'Arrastra la imagen o haz click para selectionarla.'
+	                          'Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 1 Mbytes'
 	                        )
 	                      )
 	                    ),
