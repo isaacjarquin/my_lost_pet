@@ -58,7 +58,13 @@ class Landing extends React.Component {
               <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
-                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} />
+                <Dropdown
+                  dropDownTypes={petTypes}
+                  dropDownTitle={'Pet type '}
+                  setSelectFilter={this.props.setSelectFilter}
+                  searchTerm={this.props.searchTerm}
+                  pets={this.props.pets}
+                />
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
@@ -109,12 +115,13 @@ class Landing extends React.Component {
   }
 }
 
-const { func, string, object } = React.PropTypes
+const { func, string, object, arrayOf } = React.PropTypes
 
 Landing.propTypes = {
   searchTerm: string,
   setSearchTerm: func,
   pet: object,
+  pets: arrayOf(object),
   setPetFounderName: func,
   setPetFounderEmail: func,
   setPetType: func,

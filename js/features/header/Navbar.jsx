@@ -1,15 +1,21 @@
 const React = require('react')
 const Dropdown = require('../dropdown/Dropdown')
-const { func, string } = React.PropTypes
+const { func, string, arrayOf, object } = React.PropTypes
 
 const Navbar = React.createClass({
   propTypes: {
     searchTerm: string,
     setSearchTerm: func,
-    setSelectFilter: func
+    setSelectFilter: func,
+    selectFilter: string,
+    pets: arrayOf(object)
   },
   handleSearchTermEvent (event) {
-    this.props.setSearchTerm(event.target.value)
+    this.props.setSearchTerm(
+      event.target.value,
+      this.props.pets,
+      this.props.selectFilter
+  )
   },
   render () {
     const petTypes = [{pet: 'perro', id: 1}, {pet: 'gato', id: 2}, {pet: 'conejo', id: 3}]
@@ -25,7 +31,15 @@ const Navbar = React.createClass({
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>
             <ul className='nav navbar-nav navbar-right'>
-              <li><Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} /></li>
+              <li>
+                <Dropdown
+                  dropDownTypes={petTypes}
+                  dropDownTitle={'Pet type '}
+                  setSelectFilter={this.props.setSelectFilter}
+                  searchTerm={this.props.searchTerm}
+                  pets={this.props.pets}
+                />
+              </li>
               <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Pet Location' /></li>
             </ul>
           </div>

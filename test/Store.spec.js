@@ -43,7 +43,8 @@ describe('Store', () => {
     pageSize: 6,
     totalNumberOfPets: 0,
     pets: [],
-    activePagePets: []
+    activePagePets: [],
+    filteredPets: []
   }
 
   it('should boostrap', () => {
@@ -71,7 +72,7 @@ describe('Store', () => {
   })
 
   it('should handle setActivePage actions', () => {
-    const state = rootReducer({activePage: 1, pets: pets, pageSize: 6}, {type: 'setActivePage', value: 2})
+    const state = rootReducer({activePage: 1, filteredPets: pets, pageSize: 6}, {type: 'setActivePage', value: 2})
     const lastPet = {
       'breading': 'Persa',
       'city': 'Santa Cruz de Tenerife',
@@ -89,7 +90,7 @@ describe('Store', () => {
       'titleDescription': 'En constrado en Las Palmas'
     }
 
-    expect(state).to.deep.equal({activePage: 2, pageSize: 6, pets: pets, activePagePets: [lastPet]})
+    expect(state).to.deep.equal({activePage: 2, pageSize: 6, filteredPets: pets, activePagePets: [lastPet]})
   })
 
   it('should handle setOwnerName actions', () => {
@@ -194,5 +195,25 @@ describe('Store', () => {
     const state = rootReducer({activePagePets: 'dont care'}, {type: 'setActivePagePets', value: activePets})
 
     expect(state.activePagePets).to.deep.equal(activePets)
+  })
+
+  it('should handle setFilteredPets actions', () => {
+    const filteredPets = [pets[0], pets[1]]
+    const state = rootReducer({filteredPets: 'dont care'}, {type: 'setFilteredPets', value: filteredPets})
+
+    expect(state.filteredPets).to.deep.equal(filteredPets)
+  })
+
+  it('should handle setTotalNumberOfPets actions', () => {
+    const state = rootReducer({totalNumberOfPets: 0}, {type: 'setTotalNumberOfPets', value: pets})
+
+    expect(state.totalNumberOfPets).to.deep.equal(7)
+  })
+
+  it('should handle setPets actions', () => {
+    const state = rootReducer({pets: [], totalNumberOfPets: 0}, {type: 'setPets', value: pets})
+
+    expect(state.totalNumberOfPets).to.deep.equal(7)
+    expect(state.pets).to.deep.equal(pets)
   })
 })

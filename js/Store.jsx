@@ -58,6 +58,8 @@ const SET_CONTACT_US_MESSAGE = 'setContactUsMessage'
 const SET_ALERTS = 'setAlerts'
 const SET_PETS = 'setPets'
 const SET_ACTIVE_PAGE_PETS = 'setActivePagePets'
+const SET_FILTERED_PETS = 'setFilteredPets'
+const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -70,10 +72,28 @@ const reducerPets = (state, action) => {
   return newState
 }
 
+const reducerTotalNumberOfPets = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    totalNumberOfPets: action.value.length
+  })
+
+  return newState
+}
+
 const reducerActivePagePets = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, { activePagePets: action.value })
+
+  return newState
+}
+
+const reducerFilteredPets = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, { filteredPets: action.value })
 
   return newState
 }
@@ -122,6 +142,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerPets(state, action)
     case SET_ACTIVE_PAGE_PETS:
       return reducerActivePagePets(state, action)
+    case SET_FILTERED_PETS:
+      return reducerFilteredPets(state, action)
+    case SET_TOTAL_NUMBER_OF_PETS:
+      return reducerTotalNumberOfPets(state, action)
     default:
       return state
   }
@@ -140,6 +164,7 @@ const mapStateToProps = (state) => {
     pageSize: state.pageSize,
     pets: state.pets,
     activePagePets: state.activePagePets,
+    filteredPets: state.filteredPets,
     owner: {
       name: state.owner.name,
       email: state.owner.email,
@@ -174,13 +199,30 @@ const mapStateToProps = (state) => {
   }
 }
 
+const getFilteredPets = (searchTerm, pets, selectFilter) => {
+  const filteredPets = pets
+    .filter((pet) => `${pet.location} ${pet.city}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
+    .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0)
+    .map((pet) => pet)
+
+  return filteredPets
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSearchTerm (searchTerm) {
+    setSearchTerm (searchTerm, pets, selectFilter, activePage) {
       dispatch({type: SET_SEARCH_TERM, value: searchTerm})
+      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE, value: 1})
     },
-    setSelectFilter (selectFilter) {
+    setSelectFilter (searchTerm, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
+      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE, value: 1})
     },
     setActivePage (activePage) {
       dispatch({type: SET_ACTIVE_PAGE, value: activePage})
@@ -238,6 +280,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setActivePagePets (pets) {
       dispatch({type: SET_ACTIVE_PAGE_PETS, value: pets})
+    },
+    setFilteredPets (pets) {
+      dispatch({type: SET_FILTERED_PETS, value: pets})
     }
   }
 }

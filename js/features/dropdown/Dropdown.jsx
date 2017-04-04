@@ -6,13 +6,19 @@ const Dropdown = React.createClass({
     dropDownTypes: arrayOf(object),
     dropDownTitle: string,
     selectFilter: string,
-    setSelectFilter: func
+    setSelectFilter: func,
+    searchTerm: string,
+    pets: arrayOf(object)
   },
   getDefaultProps: function () {
     return { petTypes: [] }
   },
   handleOnChangeDropdown: function (event) {
-    this.props.setSelectFilter(event.target.value)
+    this.props.setSelectFilter(
+      this.props.searchTerm,
+      this.props.pets,
+      event.target.value
+  )
   },
   render () {
     return (

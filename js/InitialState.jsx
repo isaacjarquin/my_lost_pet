@@ -6,6 +6,7 @@ module.exports = {
   totalNumberOfPets: 0,
   pets: [],
   activePagePets: [],
+  filteredPets: [],
   owner: {
     name: '',
     email: '',
