@@ -83,6 +83,7 @@ const Search = React.createClass({
       const activePagePets = result.slice(0, 6)
 
       props.setPets(result)
+      props.setFilteredPets(result)
       props.setActivePagePets(activePagePets)
     }).catch(function (err) {
       console.log(err)

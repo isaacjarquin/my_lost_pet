@@ -1,6 +1,7 @@
 const React = require('react')
 const Dropdown = require('../dropdown/Dropdown')
 const { func, string } = React.PropTypes
+const { connector } = require('../../Store.jsx')
 
 const Navbar = React.createClass({
   propTypes: {
@@ -9,7 +10,11 @@ const Navbar = React.createClass({
     setSelectFilter: func
   },
   handleSearchTermEvent (event) {
-    this.props.setSearchTerm(event.target.value)
+    this.props.setSearchTerm(
+      event.target.value,
+      this.props.pets,
+      this.props.selectFilter
+  )
   },
   render () {
     const petTypes = [{pet: 'perro', id: 1}, {pet: 'gato', id: 2}, {pet: 'conejo', id: 3}]
@@ -35,4 +40,4 @@ const Navbar = React.createClass({
   }
 })
 
-module.exports = Navbar
+module.exports = connector(Navbar)

@@ -1,5 +1,6 @@
 const React = require('react')
 const { string, arrayOf, func, object } = React.PropTypes
+const { connector } = require('../../Store.jsx')
 
 const Dropdown = React.createClass({
   propTypes: {
@@ -12,7 +13,11 @@ const Dropdown = React.createClass({
     return { petTypes: [] }
   },
   handleOnChangeDropdown: function (event) {
-    this.props.setSelectFilter(event.target.value)
+    this.props.setSelectFilter(
+      this.props.searchTerm,
+      this.props.pets,
+      event.target.value
+  )
   },
   render () {
     return (
@@ -28,4 +33,4 @@ const Dropdown = React.createClass({
   }
 })
 
-module.exports = Dropdown
+module.exports = connector(Dropdown)

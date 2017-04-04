@@ -20979,6 +20979,8 @@
 	    func = _React$PropTypes.func,
 	    string = _React$PropTypes.string;
 
+	var _require = __webpack_require__(179),
+	    connector = _require.connector;
 
 	var Navbar = React.createClass({
 	  displayName: 'Navbar',
@@ -20989,7 +20991,7 @@
 	    setSelectFilter: func
 	  },
 	  handleSearchTermEvent: function handleSearchTermEvent(event) {
-	    this.props.setSearchTerm(event.target.value);
+	    this.props.setSearchTerm(event.target.value, this.props.pets, this.props.selectFilter);
 	  },
 	  render: function render() {
 	    var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
@@ -21033,7 +21035,7 @@
 	  }
 	});
 
-	module.exports = Navbar;
+	module.exports = connector(Navbar);
 
 /***/ },
 /* 174 */
@@ -21048,6 +21050,8 @@
 	    func = _React$PropTypes.func,
 	    object = _React$PropTypes.object;
 
+	var _require = __webpack_require__(179),
+	    connector = _require.connector;
 
 	var Dropdown = React.createClass({
 	  displayName: 'Dropdown',
@@ -21062,7 +21066,7 @@
 	    return { petTypes: [] };
 	  },
 	  handleOnChangeDropdown: function handleOnChangeDropdown(event) {
-	    this.props.setSelectFilter(event.target.value);
+	    this.props.setSelectFilter(this.props.searchTerm, this.props.pets, event.target.value);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -21088,7 +21092,7 @@
 	  }
 	});
 
-	module.exports = Dropdown;
+	module.exports = connector(Dropdown);
 
 /***/ },
 /* 175 */
@@ -21194,6 +21198,8 @@
 	var SET_ALERTS = 'setAlerts';
 	var SET_PETS = 'setPets';
 	var SET_ACTIVE_PAGE_PETS = 'setActivePagePets';
+	var SET_FILTERED_PETS = 'setFilteredPets';
+	var SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -21206,10 +21212,28 @@
 	  return newState;
 	};
 
+	var reducerTotalNumberOfPets = function reducerTotalNumberOfPets(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    totalNumberOfPets: action.value.length
+	  });
+
+	  return newState;
+	};
+
 	var reducerActivePagePets = function reducerActivePagePets(state, action) {
 	  var newState = {};
 
 	  Object.assign(newState, state, { activePagePets: action.value });
+
+	  return newState;
+	};
+
+	var reducerFilteredPets = function reducerFilteredPets(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, { filteredPets: action.value });
 
 	  return newState;
 	};
@@ -21261,6 +21285,10 @@
 	      return reducerPets(state, action);
 	    case SET_ACTIVE_PAGE_PETS:
 	      return reducerActivePagePets(state, action);
+	    case SET_FILTERED_PETS:
+	      return reducerFilteredPets(state, action);
+	    case SET_TOTAL_NUMBER_OF_PETS:
+	      return reducerTotalNumberOfPets(state, action);
 	    default:
 	      return state;
 	  }
@@ -21279,6 +21307,7 @@
 	    pageSize: state.pageSize,
 	    pets: state.pets,
 	    activePagePets: state.activePagePets,
+	    filteredPets: state.filteredPets,
 	    owner: {
 	      name: state.owner.name,
 	      email: state.owner.email,
@@ -21313,13 +21342,33 @@
 	  };
 	};
 
+	var getFilteredPets = function getFilteredPets(searchTerm, pets, selectFilter) {
+	  var filteredPets = pets.filter(function (pet) {
+	    return (pet.location + ' ' + pet.city).toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+	  }).filter(function (pet) {
+	    return ('' + pet.petType).toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0;
+	  }).map(function (pet) {
+	    return pet;
+	  });
+
+	  return filteredPets;
+	};
+
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    setSearchTerm: function setSearchTerm(searchTerm) {
+	    setSearchTerm: function setSearchTerm(searchTerm, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SEARCH_TERM, value: searchTerm });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
-	    setSelectFilter: function setSelectFilter(selectFilter) {
+	    setSelectFilter: function setSelectFilter(searchTerm, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SELECT_FILTER, value: selectFilter });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
 	    setActivePage: function setActivePage(activePage) {
 	      dispatch({ type: SET_ACTIVE_PAGE, value: activePage });
@@ -21377,6 +21426,9 @@
 	    },
 	    setActivePagePets: function setActivePagePets(pets) {
 	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: pets });
+	    },
+	    setFilteredPets: function setFilteredPets(pets) {
+	      dispatch({ type: SET_FILTERED_PETS, value: pets });
 	    }
 	  };
 	};
@@ -23481,7 +23533,10 @@
 
 	var reducerActivePage = function reducerActivePage(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, { activePage: action.value, activePagePets: pageItems(action.value, state.pageSize, state.pets) });
+	  Object.assign(newState, state, {
+	    activePage: action.value,
+	    activePagePets: pageItems(action.value, state.pageSize, state.filteredPets)
+	  });
 
 	  return newState;
 	};
@@ -23532,6 +23587,7 @@
 	  totalNumberOfPets: 0,
 	  pets: [],
 	  activePagePets: [],
+	  filteredPets: [],
 	  owner: {
 	    name: '',
 	    email: '',
@@ -43893,6 +43949,7 @@
 	      var activePagePets = result.slice(0, 6);
 
 	      props.setPets(result);
+	      props.setFilteredPets(result);
 	      props.setActivePagePets(activePagePets);
 	    }).catch(function (err) {
 	      console.log(err);
@@ -45401,11 +45458,7 @@
 	        return React.createElement(
 	          'div',
 	          { className: 'pets-row' },
-	          [pet.left, pet.center, pet.right].filter(function (pet) {
-	            return (pet.location + ' ' + pet.city).toUpperCase().indexOf(_this.props.searchTerm.toUpperCase()) >= 0;
-	          }).filter(function (pet) {
-	            return ('' + pet.petType).toUpperCase().indexOf(_this.props.selectFilter.toUpperCase()) >= 0;
-	          }).map(function (pet) {
+	          [pet.left, pet.center, pet.right].map(function (pet) {
 	            return React.createElement(MissingPet, _extends({}, pet, { colSizeClass: 'col-sm-3', key: pet.id }));
 	          }),
 	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {

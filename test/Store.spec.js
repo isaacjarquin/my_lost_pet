@@ -43,7 +43,8 @@ describe('Store', () => {
     pageSize: 6,
     totalNumberOfPets: 0,
     pets: [],
-    activePagePets: []
+    activePagePets: [],
+    filteredPets: []
   }
 
   it('should boostrap', () => {
@@ -71,7 +72,7 @@ describe('Store', () => {
   })
 
   it('should handle setActivePage actions', () => {
-    const state = rootReducer({activePage: 1, pets: pets, pageSize: 6}, {type: 'setActivePage', value: 2})
+    const state = rootReducer({activePage: 1, filteredPets: pets, pageSize: 6}, {type: 'setActivePage', value: 2})
     const lastPet = {
       'breading': 'Persa',
       'city': 'Santa Cruz de Tenerife',
@@ -89,7 +90,7 @@ describe('Store', () => {
       'titleDescription': 'En constrado en Las Palmas'
     }
 
-    expect(state).to.deep.equal({activePage: 2, pageSize: 6, pets: pets, activePagePets: [lastPet]})
+    expect(state).to.deep.equal({activePage: 2, pageSize: 6, filteredPets: pets, activePagePets: [lastPet]})
   })
 
   it('should handle setOwnerName actions', () => {

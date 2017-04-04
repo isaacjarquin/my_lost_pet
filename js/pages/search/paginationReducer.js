@@ -1,6 +1,9 @@
 const reducerActivePage = (state, action) => {
   const newState = {}
-  Object.assign(newState, state, {activePage: action.value, activePagePets: pageItems(action.value, state.pageSize, state.pets)})
+  Object.assign(newState, state, {
+    activePage: action.value,
+    activePagePets: pageItems(action.value, state.pageSize, state.filteredPets)
+  })
 
   return newState
 }
