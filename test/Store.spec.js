@@ -196,4 +196,24 @@ describe('Store', () => {
 
     expect(state.activePagePets).to.deep.equal(activePets)
   })
+
+  it('should handle setFilteredPets actions', () => {
+    const filteredPets = [pets[0], pets[1]]
+    const state = rootReducer({filteredPets: 'dont care'}, {type: 'setFilteredPets', value: filteredPets})
+
+    expect(state.filteredPets).to.deep.equal(filteredPets)
+  })
+
+  it('should handle setTotalNumberOfPets actions', () => {
+    const state = rootReducer({totalNumberOfPets: 0}, {type: 'setTotalNumberOfPets', value: pets})
+
+    expect(state.totalNumberOfPets).to.deep.equal(7)
+  })
+
+  it('should handle setPets actions', () => {
+    const state = rootReducer({pets: [], totalNumberOfPets: 0}, {type: 'setPets', value: pets})
+
+    expect(state.totalNumberOfPets).to.deep.equal(7)
+    expect(state.pets).to.deep.equal(pets)
+  })
 })
