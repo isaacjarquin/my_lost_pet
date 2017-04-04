@@ -265,17 +265,17 @@ p.form-introduction {
 @media (min-width: 1200px) {
   .panel-image img {
     min-height: 440px;
-    max-height: 300px; } }
+    max-height: 440px; } }
 
 @media (max-width: 1200px) and (min-width: 768px) {
   .panel-image img {
     min-height: 340px;
-    max-height: 300px; } }
+    max-height: 340px; } }
 
 @media (max-width: 736px) {
   .panel-image img {
-    min-height: 300px;
-    max-height: 300px; } }
+    min-height: 340px;
+    max-height: 340px; } }
 
 .panel-description {
   min-height: 170px;

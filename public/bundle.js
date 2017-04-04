@@ -45789,7 +45789,7 @@
 	    value: function mobileImageUrl(_ref3) {
 	      var url = _ref3.url;
 
-	      var imageProperties = 'w_300,h_300,c_fill,g_south';
+	      var imageProperties = 'w_300,h_340,c_fill,g_south';
 	      var splitedUrl = url.split('upload');
 
 	      return splitedUrl[0] + 'upload/' + imageProperties + splitedUrl[1];
