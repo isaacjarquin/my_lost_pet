@@ -29553,7 +29553,13 @@
 	                  null,
 	                  React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrado en' })
 	                ),
-	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
+	                React.createElement(Dropdown, {
+	                  dropDownTypes: petTypes,
+	                  dropDownTitle: 'Pet type ',
+	                  setSelectFilter: this.props.setSelectFilter,
+	                  searchTerm: this.props.searchTerm,
+	                  pets: this.props.pets
+	                })
 	              ),
 	              React.createElement(
 	                Link,
