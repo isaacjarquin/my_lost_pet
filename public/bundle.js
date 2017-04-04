@@ -20868,6 +20868,8 @@
 	    string = _React$PropTypes.string,
 	    func = _React$PropTypes.func;
 
+	var _require = __webpack_require__(175),
+	    connector = _require.connector;
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(212);
@@ -20886,10 +20888,17 @@
 	    var location = _ref.location,
 	        setSearchTerm = _ref.setSearchTerm,
 	        searchTerm = _ref.searchTerm,
-	        setSelectFilter = _ref.setSelectFilter;
+	        setSelectFilter = _ref.setSelectFilter,
+	        pets = _ref.pets,
+	        selectFilter = _ref.selectFilter;
 
 	    if (location === '/search') {
-	      return React.createElement(Navbar, { setSearchTerm: setSearchTerm, setSelectFilter: setSelectFilter, searchTerm: searchTerm });
+	      return React.createElement(Navbar, {
+	        setSearchTerm: setSearchTerm,
+	        setSelectFilter: setSelectFilter,
+	        searchTerm: searchTerm,
+	        selectFilter: selectFilter,
+	        pets: pets });
 	    } else {
 	      return null;
 	    }
@@ -20936,7 +20945,7 @@
 	  }
 	});
 
-	module.exports = Header;
+	module.exports = connector(Header);
 
 /***/ },
 /* 172 */
@@ -20979,8 +20988,6 @@
 	    func = _React$PropTypes.func,
 	    string = _React$PropTypes.string;
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
 
 	var Navbar = React.createClass({
 	  displayName: 'Navbar',
@@ -21041,7 +21048,7 @@
 	  }
 	});
 
-	module.exports = connector(Navbar);
+	module.exports = Navbar;
 
 /***/ },
 /* 174 */

@@ -2,6 +2,7 @@ const React = require('react')
 const Jumbotron = require('./Jumbotron')
 const Navbar = require('./Navbar')
 const { string, func } = React.PropTypes
+const { connector } = require('../../Store.jsx')
 
 if (process.env.WEBPACK_BUILD) {
   require('./header.scss')
@@ -14,9 +15,14 @@ const Header = React.createClass({
     setSearchTerm: func,
     setSelectFilter: func
   },
-  displayNavbar ({location, setSearchTerm, searchTerm, setSelectFilter}) {
+  displayNavbar ({location, setSearchTerm, searchTerm, setSelectFilter, pets, selectFilter}) {
     if (location === '/search') {
-      return <Navbar setSearchTerm={setSearchTerm} setSelectFilter={setSelectFilter} searchTerm={searchTerm} />
+      return <Navbar
+                setSearchTerm={setSearchTerm}
+                setSelectFilter={setSelectFilter}
+                searchTerm={searchTerm}
+                selectFilter={selectFilter}
+                pets={pets} />
     } else {
       return null
     }
@@ -36,4 +42,4 @@ const Header = React.createClass({
   }
 })
 
-module.exports = Header
+module.exports = connector(Header)
