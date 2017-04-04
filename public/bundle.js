@@ -21021,7 +21021,13 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
+	              React.createElement(Dropdown, {
+	                dropDownTypes: petTypes,
+	                dropDownTitle: 'Pet type ',
+	                setSelectFilter: this.props.setSelectFilter,
+	                searchTerm: this.props.searchTerm,
+	                pets: this.props.pets
+	              })
 	            ),
 	            React.createElement(
 	              'li',
@@ -21050,8 +21056,6 @@
 	    func = _React$PropTypes.func,
 	    object = _React$PropTypes.object;
 
-	var _require = __webpack_require__(175),
-	    connector = _require.connector;
 
 	var Dropdown = React.createClass({
 	  displayName: 'Dropdown',
@@ -21092,7 +21096,7 @@
 	  }
 	});
 
-	module.exports = connector(Dropdown);
+	module.exports = Dropdown;
 
 /***/ },
 /* 175 */

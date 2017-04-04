@@ -1,6 +1,5 @@
 const React = require('react')
 const { string, arrayOf, func, object } = React.PropTypes
-const { connector } = require('../../Store.jsx')
 
 const Dropdown = React.createClass({
   propTypes: {
@@ -33,4 +32,4 @@ const Dropdown = React.createClass({
   }
 })
 
-module.exports = connector(Dropdown)
+module.exports = Dropdown
