@@ -15,13 +15,13 @@ const Layout = React.createClass({
       return null
     } else {
       return <div className='row'>
-              <Header
-                location={location.pathname}
-                setSearchTerm={setSearchTerm}
-                setSelectFilter={setSelectFilter}
-                searchTerm={searchTerm}
-                selectFilter={selectFilter}
-                pets={pets}
+        <Header
+          location={location.pathname}
+          setSearchTerm={setSearchTerm}
+          setSelectFilter={setSelectFilter}
+          searchTerm={searchTerm}
+          selectFilter={selectFilter}
+          pets={pets}
               /></div>
     }
   },

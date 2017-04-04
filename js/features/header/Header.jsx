@@ -17,11 +17,11 @@ const Header = React.createClass({
   displayNavbar ({location, setSearchTerm, searchTerm, setSelectFilter, pets, selectFilter}) {
     if (location === '/search') {
       return <Navbar
-                setSearchTerm={setSearchTerm}
-                setSelectFilter={setSelectFilter}
-                searchTerm={searchTerm}
-                selectFilter={selectFilter}
-                pets={pets} />
+        setSearchTerm={setSearchTerm}
+        setSelectFilter={setSelectFilter}
+        searchTerm={searchTerm}
+        selectFilter={selectFilter}
+        pets={pets} />
     } else {
       return null
     }
