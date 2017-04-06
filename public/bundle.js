@@ -40734,8 +40734,8 @@
 	    key: 'onImageDrop',
 	    value: function onImageDrop(acceptedFiles) {
 	      this.props.setImages(acceptedFiles);
-	      this.props.setEncloseImageTitle("Adjuntar imagen");
-	      this.props.setValidationBackground("");
+	      this.props.setEncloseImageTitle('Adjuntar imagen');
+	      this.props.setValidationBackground('');
 	    }
 	  }, {
 	    key: 'handleFounderName',
@@ -40806,8 +40806,8 @@
 	          }
 	        });
 	      } else {
-	        this.props.setEncloseImageTitle("Debes añadir una foto de la mascota para poder enviar los datos.");
-	        this.props.setValidationBackground("validation-color");
+	        this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.');
+	        this.props.setValidationBackground('validation-color');
 	      }
 
 	      event.preventDefault();

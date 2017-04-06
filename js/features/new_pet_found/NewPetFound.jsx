@@ -94,8 +94,8 @@ class NewPetFound extends React.Component {
 
   onImageDrop (acceptedFiles) {
     this.props.setImages(acceptedFiles)
-    this.props.setEncloseImageTitle("Adjuntar imagen")
-    this.props.setValidationBackground("")
+    this.props.setEncloseImageTitle('Adjuntar imagen')
+    this.props.setValidationBackground('')
   }
 
   handleFounderName (event) {
@@ -147,8 +147,8 @@ class NewPetFound extends React.Component {
         }
       })
     } else {
-      this.props.setEncloseImageTitle("Debes añadir una foto de la mascota para poder enviar los datos.")
-      this.props.setValidationBackground("validation-color")
+      this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.')
+      this.props.setValidationBackground('validation-color')
     }
 
     event.preventDefault()
@@ -214,7 +214,7 @@ class NewPetFound extends React.Component {
               <div className='panel-heading'>
                 <h4 className='panel-title w3-center'>
                   <a data-toggle='collapse' data-parent='#accordion' href='#dropzone'>
-                  {this.props.encloseImageTitle}</a>
+                    {this.props.encloseImageTitle}</a>
                 </h4>
               </div>
               <div id='dropzone' className='panel-collapse collapse'>

@@ -9,8 +9,8 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
-    encloseImageTitle: "Adjuntar imagen",
-    validationBackground: "",
+    encloseImageTitle: 'Adjuntar imagen',
+    validationBackground: '',
     owner: {
       description: '',
       email: '',
