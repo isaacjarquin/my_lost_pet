@@ -46075,22 +46075,22 @@
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
