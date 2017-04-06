@@ -9,6 +9,8 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
+    encloseImageTitle: 'Adjuntar imagen',
+    validationBackground: '',
     owner: {
       description: '',
       email: '',
@@ -215,5 +217,17 @@ describe('Store', () => {
 
     expect(state.totalNumberOfPets).to.deep.equal(7)
     expect(state.pets).to.deep.equal(pets)
+  })
+
+  it('should handle setEncloseImageTitle actions', () => {
+    const state = rootReducer({encloseImageTitle: ''}, {type: 'setEncloseImageTitle', value: 'title example'})
+
+    expect(state.encloseImageTitle).to.deep.equal('title example')
+  })
+
+  it('should handle setValidationBackground actions', () => {
+    const state = rootReducer({validationBackground: ''}, {type: 'setValidationBackground', value: 'validation-color'})
+
+    expect(state.validationBackground).to.deep.equal('validation-color')
   })
 })

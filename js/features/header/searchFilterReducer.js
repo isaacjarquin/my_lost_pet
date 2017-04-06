@@ -10,4 +10,10 @@ const reducerSelectFilter = (state, action) => {
   return newState
 }
 
-module.exports = { reducerSearchTerm, reducerSelectFilter }
+const reducerFilteredPets = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, { filteredPets: action.value })
+  return newState
+}
+
+module.exports = { reducerSearchTerm, reducerSelectFilter, reducerFilteredPets }

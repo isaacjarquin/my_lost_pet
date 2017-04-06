@@ -94,6 +94,8 @@ class NewPetFound extends React.Component {
 
   onImageDrop (acceptedFiles) {
     this.props.setImages(acceptedFiles)
+    this.props.setEncloseImageTitle('Adjuntar imagen')
+    this.props.setValidationBackground('')
   }
 
   handleFounderName (event) {
@@ -124,25 +126,30 @@ class NewPetFound extends React.Component {
     this.props.setImages(event.target.value)
   }
   handleSubmit (event) {
-    $('#details-button').addClass('disable-button')
-    $('.loader-container').show()
+    if (this.props.images[0]) {
+      $('#details-button').addClass('disable-button')
+      $('.loader-container').show()
 
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                        .field('file', this.props.images[0])
+      let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                          .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                          .field('file', this.props.images[0])
 
-    upload.end((err, response) => {
-      if (err) {
-        $('#details-button').removeClass('disable-button')
-        $('.loader-container').hide()
-        showUnSuccesfullMessage(this.props, err)
-        console.error(err)
-      }
+      upload.end((err, response) => {
+        if (err) {
+          $('#details-button').removeClass('disable-button')
+          $('.loader-container').hide()
+          showUnSuccesfullMessage(this.props, err)
+          console.error(err)
+        }
 
-      if (response.body.secure_url !== '') {
-        this.sendDetails(response.body)
-      }
-    })
+        if (response.body.secure_url !== '') {
+          this.sendDetails(response.body)
+        }
+      })
+    } else {
+      this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.')
+      this.props.setValidationBackground('validation-color')
+    }
 
     event.preventDefault()
   }
@@ -196,18 +203,18 @@ class NewPetFound extends React.Component {
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
-            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
-            <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
-            <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
-            <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
-            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' /></p>
-            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
-            <div className='panel panel-default'>
+            <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
+            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
+            <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
+            <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
+            <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>
+            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
+            <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>
                 <h4 className='panel-title w3-center'>
                   <a data-toggle='collapse' data-parent='#accordion' href='#dropzone'>
-                  Adjuntar imagen</a>
+                    {this.props.encloseImageTitle}</a>
                 </h4>
               </div>
               <div id='dropzone' className='panel-collapse collapse'>
@@ -226,7 +233,7 @@ class NewPetFound extends React.Component {
                     </div>
                     <div className='image-preview'>
                       {this.props.images.length > 0 ? <div>
-                        <h4 className='title'>Uploading files...</h4>
+                        <h4 className='title'>Imagen Adjuntada</h4>
                         <img className='image' src={this.props.images[0].preview} />
                       </div> : null}
                     </div>
@@ -264,7 +271,11 @@ NewPetFound.propTypes = {
   foundDate: string.isRequired,
   location: string.isRequired,
   description: string.isRequired,
-  images: arrayOf(object).isRequired
+  images: arrayOf(object).isRequired,
+  setEncloseImageTitle: func.isRequired,
+  setValidationBackground: func.isRequired,
+  validationBackground: string.isRequired,
+  encloseImageTitle: string.isRequired
 }
 
 module.exports = NewPetFound

@@ -9,7 +9,9 @@ const {
   reducerPetFoundDate,
   reducerPetLocation,
   reducerPetImages,
-  reducerPetDescription
+  reducerPetDescription,
+  reducerEncloseImageTitle,
+  reducerValidationBackground
 } = require('../js/features/new_pet_found/newPetFoundReducer')
 
 const {
@@ -21,7 +23,8 @@ const {
 
 const {
   reducerSearchTerm,
-  reducerSelectFilter
+  reducerSelectFilter,
+  reducerFilteredPets
 } = require('../js/features/header/searchFilterReducer')
 
 const {
@@ -38,12 +41,10 @@ const initialState = require('./InitialState')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
-
 const SET_OWNER_NAME = 'setOwnerName'
 const SET_OWNER_EMAIL = 'setOwnerEmail'
 const SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber'
 const SET_DESCRIPTION = 'setDescription'
-
 const SET_PET_FOUNDER_NAME = 'setPetFounderName'
 const SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail'
 const SET_PET_TYPE = 'setPetType'
@@ -60,6 +61,8 @@ const SET_PETS = 'setPets'
 const SET_ACTIVE_PAGE_PETS = 'setActivePagePets'
 const SET_FILTERED_PETS = 'setFilteredPets'
 const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
+const SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle'
+const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -86,14 +89,6 @@ const reducerActivePagePets = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, { activePagePets: action.value })
-
-  return newState
-}
-
-const reducerFilteredPets = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, { filteredPets: action.value })
 
   return newState
 }
@@ -146,6 +141,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerFilteredPets(state, action)
     case SET_TOTAL_NUMBER_OF_PETS:
       return reducerTotalNumberOfPets(state, action)
+    case SET_ENCLOSE_IMAGE_TITLE:
+      return reducerEncloseImageTitle(state, action)
+    case SET_VALIDATION_BACKGROUND:
+      return reducerValidationBackground(state, action)
     default:
       return state
   }
@@ -164,6 +163,8 @@ const mapStateToProps = (state) => {
     pageSize: state.pageSize,
     pets: state.pets,
     activePagePets: state.activePagePets,
+    encloseImageTitle: state.encloseImageTitle,
+    validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
     owner: {
       name: state.owner.name,
@@ -283,6 +284,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setFilteredPets (pets) {
       dispatch({type: SET_FILTERED_PETS, value: pets})
+    },
+    setEncloseImageTitle (message) {
+      dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: message})
+    },
+    setValidationBackground (validationClass) {
+      dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
     }
   }
 }

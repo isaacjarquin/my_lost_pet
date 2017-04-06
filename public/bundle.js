@@ -21175,7 +21175,9 @@
 	    reducerPetFoundDate = _require.reducerPetFoundDate,
 	    reducerPetLocation = _require.reducerPetLocation,
 	    reducerPetImages = _require.reducerPetImages,
-	    reducerPetDescription = _require.reducerPetDescription;
+	    reducerPetDescription = _require.reducerPetDescription,
+	    reducerEncloseImageTitle = _require.reducerEncloseImageTitle,
+	    reducerValidationBackground = _require.reducerValidationBackground;
 
 	var _require2 = __webpack_require__(210),
 	    reducerOwnerName = _require2.reducerOwnerName,
@@ -21185,7 +21187,8 @@
 
 	var _require3 = __webpack_require__(211),
 	    reducerSearchTerm = _require3.reducerSearchTerm,
-	    reducerSelectFilter = _require3.reducerSelectFilter;
+	    reducerSelectFilter = _require3.reducerSelectFilter,
+	    reducerFilteredPets = _require3.reducerFilteredPets;
 
 	var _require4 = __webpack_require__(212),
 	    reducerContactUsName = _require4.reducerContactUsName,
@@ -21202,12 +21205,10 @@
 	var SET_SEARCH_TERM = 'setSearchTerm';
 	var SET_SELECT_FILTER = 'setSelectFilter';
 	var SET_ACTIVE_PAGE = 'setActivePage';
-
 	var SET_OWNER_NAME = 'setOwnerName';
 	var SET_OWNER_EMAIL = 'setOwnerEmail';
 	var SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber';
 	var SET_DESCRIPTION = 'setDescription';
-
 	var SET_PET_FOUNDER_NAME = 'setPetFounderName';
 	var SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail';
 	var SET_PET_TYPE = 'setPetType';
@@ -21224,6 +21225,8 @@
 	var SET_ACTIVE_PAGE_PETS = 'setActivePagePets';
 	var SET_FILTERED_PETS = 'setFilteredPets';
 	var SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets';
+	var SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle';
+	var SET_VALIDATION_BACKGROUND = 'setValidationBackground';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -21250,14 +21253,6 @@
 	  var newState = {};
 
 	  Object.assign(newState, state, { activePagePets: action.value });
-
-	  return newState;
-	};
-
-	var reducerFilteredPets = function reducerFilteredPets(state, action) {
-	  var newState = {};
-
-	  Object.assign(newState, state, { filteredPets: action.value });
 
 	  return newState;
 	};
@@ -21313,6 +21308,10 @@
 	      return reducerFilteredPets(state, action);
 	    case SET_TOTAL_NUMBER_OF_PETS:
 	      return reducerTotalNumberOfPets(state, action);
+	    case SET_ENCLOSE_IMAGE_TITLE:
+	      return reducerEncloseImageTitle(state, action);
+	    case SET_VALIDATION_BACKGROUND:
+	      return reducerValidationBackground(state, action);
 	    default:
 	      return state;
 	  }
@@ -21331,6 +21330,8 @@
 	    pageSize: state.pageSize,
 	    pets: state.pets,
 	    activePagePets: state.activePagePets,
+	    encloseImageTitle: state.encloseImageTitle,
+	    validationBackground: state.validationBackground,
 	    filteredPets: state.filteredPets,
 	    owner: {
 	      name: state.owner.name,
@@ -21453,6 +21454,12 @@
 	    },
 	    setFilteredPets: function setFilteredPets(pets) {
 	      dispatch({ type: SET_FILTERED_PETS, value: pets });
+	    },
+	    setEncloseImageTitle: function setEncloseImageTitle(message) {
+	      dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: message });
+	    },
+	    setValidationBackground: function setValidationBackground(validationClass) {
+	      dispatch({ type: SET_VALIDATION_BACKGROUND, value: validationClass });
 	    }
 	  };
 	};
@@ -23405,6 +23412,26 @@
 	  return newState;
 	};
 
+	var reducerValidationBackground = function reducerValidationBackground(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    validationBackground: action.value
+	  });
+
+	  return newState;
+	};
+
+	var reducerEncloseImageTitle = function reducerEncloseImageTitle(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    encloseImageTitle: action.value
+	  });
+
+	  return newState;
+	};
+
 	module.exports = {
 	  reducerPetFounderName: reducerPetFounderName,
 	  reducerPetFounderEmail: reducerPetFounderEmail,
@@ -23413,7 +23440,9 @@
 	  reducerPetFoundDate: reducerPetFoundDate,
 	  reducerPetLocation: reducerPetLocation,
 	  reducerPetImages: reducerPetImages,
-	  reducerPetDescription: reducerPetDescription
+	  reducerPetDescription: reducerPetDescription,
+	  reducerValidationBackground: reducerValidationBackground,
+	  reducerEncloseImageTitle: reducerEncloseImageTitle
 	};
 
 /***/ },
@@ -23499,7 +23528,13 @@
 	  return newState;
 	};
 
-	module.exports = { reducerSearchTerm: reducerSearchTerm, reducerSelectFilter: reducerSelectFilter };
+	var reducerFilteredPets = function reducerFilteredPets(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, { filteredPets: action.value });
+	  return newState;
+	};
+
+	module.exports = { reducerSearchTerm: reducerSearchTerm, reducerSelectFilter: reducerSelectFilter, reducerFilteredPets: reducerFilteredPets };
 
 /***/ },
 /* 212 */
@@ -23612,6 +23647,8 @@
 	  pets: [],
 	  activePagePets: [],
 	  filteredPets: [],
+	  encloseImageTitle: 'Adjuntar imagen',
+	  validationBackground: '',
 	  owner: {
 	    name: '',
 	    email: '',
@@ -29640,7 +29677,11 @@
 	          setPetDescription: this.props.setPetDescription,
 	          setImageUrl: this.props.setImageUrl,
 	          setImages: this.props.setImages,
-	          setAlerts: this.props.setAlerts
+	          setAlerts: this.props.setAlerts,
+	          encloseImageTitle: this.props.encloseImageTitle,
+	          validationBackground: this.props.validationBackground,
+	          setEncloseImageTitle: this.props.setEncloseImageTitle,
+	          setValidationBackground: this.props.setValidationBackground
 	        })),
 	        React.createElement(
 	          'div',
@@ -29690,7 +29731,11 @@
 	  setContactUsMessage: func,
 	  setAlerts: func,
 	  setSelectFilter: func,
-	  setImages: func
+	  setImages: func,
+	  encloseImageTitle: string,
+	  validationBackground: string,
+	  setEncloseImageTitle: func,
+	  setValidationBackground: func
 	};
 
 	module.exports = connector(Landing);
@@ -30528,17 +30573,17 @@
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
 	              ),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
 	              ),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
+	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border', placeholder: 'Describenos la informacion que necesitas', required: true })
 	              ),
 	              React.createElement(
 	                'button',
@@ -40693,6 +40738,8 @@
 	    key: 'onImageDrop',
 	    value: function onImageDrop(acceptedFiles) {
 	      this.props.setImages(acceptedFiles);
+	      this.props.setEncloseImageTitle('Adjuntar imagen');
+	      this.props.setValidationBackground('');
 	    }
 	  }, {
 	    key: 'handleFounderName',
@@ -40744,23 +40791,28 @@
 	    value: function handleSubmit(event) {
 	      var _this2 = this;
 
-	      $('#details-button').addClass('disable-button');
-	      $('.loader-container').show();
+	      if (this.props.images[0]) {
+	        $('#details-button').addClass('disable-button');
+	        $('.loader-container').show();
 
-	      var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', this.props.images[0]);
+	        var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', this.props.images[0]);
 
-	      upload.end(function (err, response) {
-	        if (err) {
-	          $('#details-button').removeClass('disable-button');
-	          $('.loader-container').hide();
-	          showUnSuccesfullMessage(_this2.props, err);
-	          console.error(err);
-	        }
+	        upload.end(function (err, response) {
+	          if (err) {
+	            $('#details-button').removeClass('disable-button');
+	            $('.loader-container').hide();
+	            showUnSuccesfullMessage(_this2.props, err);
+	            console.error(err);
+	          }
 
-	        if (response.body.secure_url !== '') {
-	          _this2.sendDetails(response.body);
-	        }
-	      });
+	          if (response.body.secure_url !== '') {
+	            _this2.sendDetails(response.body);
+	          }
+	        });
+	      } else {
+	        this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.');
+	        this.props.setValidationBackground('validation-color');
+	      }
 
 	      event.preventDefault();
 	    }
@@ -40841,41 +40893,41 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)' })
+	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
+	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)' })
+	              React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrada en ciudad, localidad' })
+	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrada en ciudad, localidad', required: true })
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
+	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota', required: true })
 	            ),
 	            React.createElement(
 	              'div',
-	              { className: 'panel panel-default' },
+	              { className: 'panel panel-default ' + this.props.validationBackground },
 	              React.createElement(
 	                'div',
 	                { className: 'panel-heading' },
@@ -40885,7 +40937,7 @@
 	                  React.createElement(
 	                    'a',
 	                    { 'data-toggle': 'collapse', 'data-parent': '#accordion', href: '#dropzone' },
-	                    'Adjuntar imagen'
+	                    this.props.encloseImageTitle
 	                  )
 	                )
 	              ),
@@ -40928,7 +40980,7 @@
 	                        React.createElement(
 	                          'h4',
 	                          { className: 'title' },
-	                          'Uploading files...'
+	                          'Imagen Adjuntada'
 	                        ),
 	                        React.createElement('img', { className: 'image', src: this.props.images[0].preview })
 	                      ) : null
@@ -40983,7 +41035,11 @@
 	  foundDate: string.isRequired,
 	  location: string.isRequired,
 	  description: string.isRequired,
-	  images: arrayOf(object).isRequired
+	  images: arrayOf(object).isRequired,
+	  setEncloseImageTitle: func.isRequired,
+	  setValidationBackground: func.isRequired,
+	  validationBackground: string.isRequired,
+	  encloseImageTitle: string.isRequired
 	};
 
 	module.exports = NewPetFound;
@@ -46019,22 +46075,22 @@
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono' })
+	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal' })
+	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal', required: true })
 	                ),
 	                React.createElement(
 	                  'p',
