@@ -12,6 +12,18 @@
   margin-top: -11px;
 }
 
+.w3-border .validation-color {
+  background-color: #ffe6e6;
+}
+
+.validation-color {
+  background-color: #ffe6e6;
+}
+
+.missing-pet-form .panel-heading {
+  background-color: transparent;
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -28,7 +40,6 @@
   margin-bottom: 10px;
 
   .panel-heading {
-    background-color: white;
     border-color: white;
   }
 

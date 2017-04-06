@@ -168,6 +168,15 @@ footer.w3-container.w3-grey.w3-center.w3-padding-xlarge p {
   margin-left: -50px;
   margin-top: -11px; }
 
+.w3-border .validation-color {
+  background-color: #ffe6e6; }
+
+.validation-color {
+  background-color: #ffe6e6; }
+
+.missing-pet-form .panel-heading {
+  background-color: transparent; }
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -193,7 +202,6 @@ footer.w3-container.w3-grey.w3-center.w3-padding-xlarge p {
   border: 1px solid lightgrey;
   margin-bottom: 10px; }
   .missing-pet-form .panel-heading {
-    background-color: white;
     border-color: white; }
   .missing-pet-form .drop-zone-panel {
     width: 20%; }

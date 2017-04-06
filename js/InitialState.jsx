@@ -7,6 +7,8 @@ module.exports = {
   pets: [],
   activePagePets: [],
   filteredPets: [],
+  encloseImageTitle: 'Adjuntar imagen',
+  validationBackground: '',
   owner: {
     name: '',
     email: '',

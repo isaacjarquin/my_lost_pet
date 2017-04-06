@@ -94,6 +94,10 @@ class Landing extends React.Component {
           setImageUrl={this.props.setImageUrl}
           setImages={this.props.setImages}
           setAlerts={this.props.setAlerts}
+          encloseImageTitle={this.props.encloseImageTitle}
+          validationBackground={this.props.validationBackground}
+          setEncloseImageTitle={this.props.setEncloseImageTitle}
+          setValidationBackground={this.props.setValidationBackground}
           />
 
         <div className='panel-group' id='accordion'>
