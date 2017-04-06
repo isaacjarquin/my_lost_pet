@@ -30573,17 +30573,17 @@
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
 	              ),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
 	              ),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
+	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border', placeholder: 'Describenos la informacion que necesitas', required: true })
 	              ),
 	              React.createElement(
 	                'button',
