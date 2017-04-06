@@ -142,6 +142,26 @@ const reducerPetDescription = (state, action) => {
   return newState
 }
 
+const reducerValidationBackground = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    validationBackground: action.value
+  })
+
+  return newState
+}
+
+const reducerEncloseImageTitle = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    encloseImageTitle: action.value
+  })
+
+  return newState
+}
+
 module.exports = {
   reducerPetFounderName,
   reducerPetFounderEmail,
@@ -150,5 +170,7 @@ module.exports = {
   reducerPetFoundDate,
   reducerPetLocation,
   reducerPetImages,
-  reducerPetDescription
+  reducerPetDescription,
+  reducerValidationBackground,
+  reducerEncloseImageTitle
 }

@@ -9,7 +9,9 @@ const {
   reducerPetFoundDate,
   reducerPetLocation,
   reducerPetImages,
-  reducerPetDescription
+  reducerPetDescription,
+  reducerEncloseImageTitle,
+  reducerValidationBackground
 } = require('../js/features/new_pet_found/newPetFoundReducer')
 
 const {
@@ -21,7 +23,8 @@ const {
 
 const {
   reducerSearchTerm,
-  reducerSelectFilter
+  reducerSelectFilter,
+  reducerFilteredPets
 } = require('../js/features/header/searchFilterReducer')
 
 const {
@@ -38,12 +41,10 @@ const initialState = require('./InitialState')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
-
 const SET_OWNER_NAME = 'setOwnerName'
 const SET_OWNER_EMAIL = 'setOwnerEmail'
 const SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber'
 const SET_DESCRIPTION = 'setDescription'
-
 const SET_PET_FOUNDER_NAME = 'setPetFounderName'
 const SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail'
 const SET_PET_TYPE = 'setPetType'
@@ -62,26 +63,6 @@ const SET_FILTERED_PETS = 'setFilteredPets'
 const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
 const SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle'
 const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
-
-const reducerValidationBackground = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    validationBackground: action.value
-  })
-
-  return newState
-}
-
-const reducerEncloseImageTitle = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    encloseImageTitle: action.value
-  })
-
-  return newState
-}
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -108,14 +89,6 @@ const reducerActivePagePets = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, { activePagePets: action.value })
-
-  return newState
-}
-
-const reducerFilteredPets = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, { filteredPets: action.value })
 
   return newState
 }

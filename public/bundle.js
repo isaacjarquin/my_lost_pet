@@ -21175,7 +21175,9 @@
 	    reducerPetFoundDate = _require.reducerPetFoundDate,
 	    reducerPetLocation = _require.reducerPetLocation,
 	    reducerPetImages = _require.reducerPetImages,
-	    reducerPetDescription = _require.reducerPetDescription;
+	    reducerPetDescription = _require.reducerPetDescription,
+	    reducerEncloseImageTitle = _require.reducerEncloseImageTitle,
+	    reducerValidationBackground = _require.reducerValidationBackground;
 
 	var _require2 = __webpack_require__(210),
 	    reducerOwnerName = _require2.reducerOwnerName,
@@ -21185,7 +21187,8 @@
 
 	var _require3 = __webpack_require__(211),
 	    reducerSearchTerm = _require3.reducerSearchTerm,
-	    reducerSelectFilter = _require3.reducerSelectFilter;
+	    reducerSelectFilter = _require3.reducerSelectFilter,
+	    reducerFilteredPets = _require3.reducerFilteredPets;
 
 	var _require4 = __webpack_require__(212),
 	    reducerContactUsName = _require4.reducerContactUsName,
@@ -21202,12 +21205,10 @@
 	var SET_SEARCH_TERM = 'setSearchTerm';
 	var SET_SELECT_FILTER = 'setSelectFilter';
 	var SET_ACTIVE_PAGE = 'setActivePage';
-
 	var SET_OWNER_NAME = 'setOwnerName';
 	var SET_OWNER_EMAIL = 'setOwnerEmail';
 	var SET_OWNER_PHONE_NUMBER = 'setOwnerPhoneNumber';
 	var SET_DESCRIPTION = 'setDescription';
-
 	var SET_PET_FOUNDER_NAME = 'setPetFounderName';
 	var SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail';
 	var SET_PET_TYPE = 'setPetType';
@@ -21226,26 +21227,6 @@
 	var SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets';
 	var SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle';
 	var SET_VALIDATION_BACKGROUND = 'setValidationBackground';
-
-	var reducerValidationBackground = function reducerValidationBackground(state, action) {
-	  var newState = {};
-
-	  Object.assign(newState, state, {
-	    validationBackground: action.value
-	  });
-
-	  return newState;
-	};
-
-	var reducerEncloseImageTitle = function reducerEncloseImageTitle(state, action) {
-	  var newState = {};
-
-	  Object.assign(newState, state, {
-	    encloseImageTitle: action.value
-	  });
-
-	  return newState;
-	};
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -21272,14 +21253,6 @@
 	  var newState = {};
 
 	  Object.assign(newState, state, { activePagePets: action.value });
-
-	  return newState;
-	};
-
-	var reducerFilteredPets = function reducerFilteredPets(state, action) {
-	  var newState = {};
-
-	  Object.assign(newState, state, { filteredPets: action.value });
 
 	  return newState;
 	};
@@ -23439,6 +23412,26 @@
 	  return newState;
 	};
 
+	var reducerValidationBackground = function reducerValidationBackground(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    validationBackground: action.value
+	  });
+
+	  return newState;
+	};
+
+	var reducerEncloseImageTitle = function reducerEncloseImageTitle(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    encloseImageTitle: action.value
+	  });
+
+	  return newState;
+	};
+
 	module.exports = {
 	  reducerPetFounderName: reducerPetFounderName,
 	  reducerPetFounderEmail: reducerPetFounderEmail,
@@ -23447,7 +23440,9 @@
 	  reducerPetFoundDate: reducerPetFoundDate,
 	  reducerPetLocation: reducerPetLocation,
 	  reducerPetImages: reducerPetImages,
-	  reducerPetDescription: reducerPetDescription
+	  reducerPetDescription: reducerPetDescription,
+	  reducerValidationBackground: reducerValidationBackground,
+	  reducerEncloseImageTitle: reducerEncloseImageTitle
 	};
 
 /***/ },
@@ -23533,7 +23528,13 @@
 	  return newState;
 	};
 
-	module.exports = { reducerSearchTerm: reducerSearchTerm, reducerSelectFilter: reducerSelectFilter };
+	var reducerFilteredPets = function reducerFilteredPets(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, { filteredPets: action.value });
+	  return newState;
+	};
+
+	module.exports = { reducerSearchTerm: reducerSearchTerm, reducerSelectFilter: reducerSelectFilter, reducerFilteredPets: reducerFilteredPets };
 
 /***/ },
 /* 212 */
