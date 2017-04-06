@@ -141,7 +141,11 @@ Landing.propTypes = {
   setContactUsMessage: func,
   setAlerts: func,
   setSelectFilter: func,
-  setImages: func
+  setImages: func,
+  encloseImageTitle: string,
+  validationBackground: string,
+  setEncloseImageTitle: func,
+  setValidationBackground: func
 }
 
 module.exports = connector(Landing)

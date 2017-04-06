@@ -271,7 +271,11 @@ NewPetFound.propTypes = {
   foundDate: string.isRequired,
   location: string.isRequired,
   description: string.isRequired,
-  images: arrayOf(object).isRequired
+  images: arrayOf(object).isRequired,
+  setEncloseImageTitle: func.isRequired,
+  setValidationBackground: func.isRequired,
+  validationBackground: string.isRequired,
+  encloseImageTitle: string.isRequired
 }
 
 module.exports = NewPetFound

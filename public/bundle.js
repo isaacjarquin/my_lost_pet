@@ -29731,7 +29731,11 @@
 	  setContactUsMessage: func,
 	  setAlerts: func,
 	  setSelectFilter: func,
-	  setImages: func
+	  setImages: func,
+	  encloseImageTitle: string,
+	  validationBackground: string,
+	  setEncloseImageTitle: func,
+	  setValidationBackground: func
 	};
 
 	module.exports = connector(Landing);
@@ -41031,7 +41035,11 @@
 	  foundDate: string.isRequired,
 	  location: string.isRequired,
 	  description: string.isRequired,
-	  images: arrayOf(object).isRequired
+	  images: arrayOf(object).isRequired,
+	  setEncloseImageTitle: func.isRequired,
+	  setValidationBackground: func.isRequired,
+	  validationBackground: string.isRequired,
+	  encloseImageTitle: string.isRequired
 	};
 
 	module.exports = NewPetFound;
