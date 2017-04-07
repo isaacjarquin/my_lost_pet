@@ -12,7 +12,7 @@
     min-height: 400px;
   }
 
-  @media (min-width:480px) {
+  @media (min-width:736px) {
      .pet-type {
        margin-right: 10px ;
      }
@@ -62,13 +62,27 @@ select {
   }
 }
 
-header {
-  .w3-image {
-      height: 600px;
-  }
+@media (max-width:736px) {
+  header {
+    .w3-image {
+        height: 350px;
+    }
 
-  .w3-display-left {
-      top: 72%;
+    .w3-display-left {
+        top: 64%;
+    }
+  }
+}
+
+@media (min-width:768px) {
+  header {
+    .w3-image {
+        height: 600px;
+    }
+
+    .w3-display-left {
+        top: 73%;
+    }
   }
 }
 

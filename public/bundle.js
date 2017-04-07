@@ -29572,7 +29572,7 @@
 	          React.createElement('img', { className: 'w3-image', src: '../../../public/mascotas_y_personas.jpg', alt: 'Fashion Blog', width: '1600', height: '1060' }),
 	          React.createElement(
 	            'div',
-	            { className: 'pet-filter w3-display-left w3-padding-xlarge' },
+	            { className: 'pet-filter w3-display-left w3-padding-medium' },
 	            React.createElement(
 	              'div',
 	              { className: 'small-nav-menu' },
