@@ -23,10 +23,10 @@ const Navbar = React.createClass({
       <nav className='navbar navbar-inverse'>
         <div className='container-fluid'>
           <div className='navbar-header'>
-            <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='#myNavbar'>
-              <span className='icon-bar' />
-              <span className='icon-bar' />
-              <span className='icon-bar' />
+            <button type='button' className='navbar-toggle w3-dark-grey search-filter' data-toggle='collapse' data-target='#myNavbar'>
+              <span className='icon-bar w3-white' />
+              <span className='icon-bar w3-white' />
+              <span className='icon-bar w3-white' />
             </button>
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>

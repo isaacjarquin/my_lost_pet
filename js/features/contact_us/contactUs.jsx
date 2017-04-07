@@ -1,6 +1,11 @@
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
+var MediaQuery = require('react-responsive')
+
+if (process.env.WEBPACK_BUILD) {
+  require('./contactUs.scss')
+}
 
 const showUnSuccesfullMessage = (props, err) => {
   const alertData = {
@@ -111,11 +116,29 @@ class ContactUs extends React.Component {
         <div className={this.props.alert.contactUs} ><Alerts {...this.props.alert} /></div>
         <div id='collapse2' className='panel-collapse collapse w3-padding'>
           <div className='panel-body'>
-            <div className='w3-section w3-center w3-opacity'>
-              <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
-              <i className='fa fa-phone fa-fw w3-xxlarge w3-margin' /> Teléfono: +00 151515
-              <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: mylostpet@mail.com
-            </div>
+            <MediaQuery maxDeviceWidth={736}>
+              <div>
+                <div className='navbar-header'>
+                  <button type='button' className='navbar-toggle w3-grey' w3-grey data-toggle='collapse' data-target='#contactUsNavbar'>
+                    <span className='icon-bar w3-white' />
+                    <span className='icon-bar w3-white' />
+                    <span className='icon-bar w3-white' />
+                  </button>
+                </div>
+                <div className='collapse navbar-collapse contact-us-mobile-details' id='contactUsNavbar'>
+                  <ul className='nav navbar-nav navbar-right contact-us'>
+                    <li><i className='fa fa-map-marker fa-fw w3-large w3-margin' /> Las Palmas de Gran Canaria</li>
+                    <li><i className='fa fa-envelope fa-fw w3-large w3-margin' /> Email: mylostpet@mail.com</li>
+                  </ul>
+                </div>
+              </div>
+            </MediaQuery>
+            <MediaQuery minDeviceWidth={768}>
+              <div className='w3-section w3-center w3-opacity'>
+                <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
+                <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: mylostpet@mail.com
+              </div>
+            </MediaQuery>
             <form onSubmit={this.handleSubmit}>
               <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
               <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>

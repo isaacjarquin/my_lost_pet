@@ -20749,7 +20749,7 @@
 	  childRoutes: [{
 	    path: 'search',
 	    getComponent: function getComponent(location, cb) {
-	      cb(null, __webpack_require__(302));
+	      cb(null, __webpack_require__(303));
 	    }
 	  }]
 	};
@@ -21038,10 +21038,10 @@
 	          { className: 'navbar-header' },
 	          React.createElement(
 	            'button',
-	            { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#myNavbar' },
-	            React.createElement('span', { className: 'icon-bar' }),
-	            React.createElement('span', { className: 'icon-bar' }),
-	            React.createElement('span', { className: 'icon-bar' })
+	            { type: 'button', className: 'navbar-toggle w3-dark-grey search-filter', 'data-toggle': 'collapse', 'data-target': '#myNavbar' },
+	            React.createElement('span', { className: 'icon-bar w3-white' }),
+	            React.createElement('span', { className: 'icon-bar w3-white' }),
+	            React.createElement('span', { className: 'icon-bar w3-white' })
 	          )
 	        ),
 	        React.createElement(
@@ -30269,13 +30269,13 @@
 	var Dropdown = __webpack_require__(174);
 	var TermsAndConditions = __webpack_require__(282);
 	var ContactUs = __webpack_require__(283);
-	var AboutUs = __webpack_require__(287);
+	var AboutUs = __webpack_require__(288);
 	var Footer = __webpack_require__(180);
-	var NewPetFound = __webpack_require__(288);
+	var NewPetFound = __webpack_require__(289);
 	var MediaQuery = __webpack_require__(178);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(301);
+	  __webpack_require__(302);
 	}
 
 	var Landing = function (_React$Component) {
@@ -30477,7 +30477,7 @@
 	        })),
 	        React.createElement(
 	          'div',
-	          { className: 'panel-group', id: 'accordion' },
+	          { className: 'panel-group w3-opacity w3-medium', id: 'accordion' },
 	          React.createElement(AboutUs, null),
 	          React.createElement(ContactUs, _extends({}, this.props.contactUs, {
 	            alert: this.props.alert,
@@ -31204,6 +31204,11 @@
 	var React = __webpack_require__(3);
 	var Alerts = __webpack_require__(284);
 	var $ = __webpack_require__(286);
+	var MediaQuery = __webpack_require__(178);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(287);
+	}
 
 	var showUnSuccesfullMessage = function showUnSuccesfullMessage(props, err) {
 	  var alertData = {
@@ -31350,14 +31355,55 @@
 	            'div',
 	            { className: 'panel-body' },
 	            React.createElement(
-	              'div',
-	              { className: 'w3-section w3-center w3-opacity' },
-	              React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
-	              ' Las Palmas de Gran Canaria, Espa\xF1a',
-	              React.createElement('i', { className: 'fa fa-phone fa-fw w3-xxlarge w3-margin' }),
-	              ' Tel\xE9fono: +00 151515',
-	              React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
-	              ' Email: mylostpet@mail.com'
+	              MediaQuery,
+	              { maxDeviceWidth: 736 },
+	              React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  { className: 'navbar-header' },
+	                  React.createElement(
+	                    'button',
+	                    { type: 'button', className: 'navbar-toggle w3-grey', 'w3-grey': true, 'data-toggle': 'collapse', 'data-target': '#contactUsNavbar' },
+	                    React.createElement('span', { className: 'icon-bar w3-white' }),
+	                    React.createElement('span', { className: 'icon-bar w3-white' }),
+	                    React.createElement('span', { className: 'icon-bar w3-white' })
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'collapse navbar-collapse contact-us-mobile-details', id: 'contactUsNavbar' },
+	                  React.createElement(
+	                    'ul',
+	                    { className: 'nav navbar-nav navbar-right contact-us' },
+	                    React.createElement(
+	                      'li',
+	                      null,
+	                      React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-large w3-margin' }),
+	                      ' Las Palmas de Gran Canaria'
+	                    ),
+	                    React.createElement(
+	                      'li',
+	                      null,
+	                      React.createElement('i', { className: 'fa fa-envelope fa-fw w3-large w3-margin' }),
+	                      ' Email: mylostpet@mail.com'
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              MediaQuery,
+	              { minDeviceWidth: 768 },
+	              React.createElement(
+	                'div',
+	                { className: 'w3-section w3-center w3-opacity' },
+	                React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
+	                ' Las Palmas de Gran Canaria, Espa\xF1a',
+	                React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
+	                ' Email: mylostpet@mail.com'
+	              )
 	            ),
 	            React.createElement(
 	              'form',
@@ -41317,6 +41363,12 @@
 
 /***/ },
 /* 287 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41403,7 +41455,7 @@
 	module.exports = ContactUs;
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41412,11 +41464,11 @@
 
 	__webpack_require__(1);
 
-	var _reactDropzone = __webpack_require__(289);
+	var _reactDropzone = __webpack_require__(290);
 
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
-	var _superagent = __webpack_require__(290);
+	var _superagent = __webpack_require__(291);
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
@@ -41430,7 +41482,7 @@
 
 	var React = __webpack_require__(3);
 	var Alerts = __webpack_require__(284);
-	var DogLoader = __webpack_require__(298);
+	var DogLoader = __webpack_require__(299);
 
 	var $ = __webpack_require__(286);
 
@@ -41438,7 +41490,7 @@
 	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload';
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(300);
+	  __webpack_require__(301);
 	}
 
 	var clearForm = function clearForm(props) {
@@ -41663,8 +41715,8 @@
 	        { className: 'new-pet-form' },
 	        React.createElement(
 	          'button',
-	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large w3-large' },
-	          ' \xBF Acabas de encontrarte una mascota perdida en la calle ?'
+	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large' },
+	          ' \xBF Encontraste una mascota perdida ?'
 	        ),
 	        React.createElement(
 	          'div',
@@ -41837,7 +41889,7 @@
 	module.exports = NewPetFound;
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
@@ -42628,7 +42680,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(169)(module)))
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42652,12 +42704,12 @@
 	  root = undefined;
 	}
 
-	var Emitter = __webpack_require__(291);
-	var RequestBase = __webpack_require__(292);
-	var isObject = __webpack_require__(293);
-	var isFunction = __webpack_require__(294);
-	var ResponseBase = __webpack_require__(295);
-	var shouldRetry = __webpack_require__(297);
+	var Emitter = __webpack_require__(292);
+	var RequestBase = __webpack_require__(293);
+	var isObject = __webpack_require__(294);
+	var isFunction = __webpack_require__(295);
+	var ResponseBase = __webpack_require__(296);
+	var shouldRetry = __webpack_require__(298);
 
 	/**
 	 * Noop.
@@ -43579,7 +43631,7 @@
 	};
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43743,7 +43795,7 @@
 	};
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43753,7 +43805,7 @@
 	/**
 	 * Module of mixed-in functions shared between node and client code
 	 */
-	var isObject = __webpack_require__(293);
+	var isObject = __webpack_require__(294);
 
 	/**
 	 * Expose `RequestBase`.
@@ -44338,7 +44390,7 @@
 	};
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44360,7 +44412,7 @@
 	module.exports = isObject;
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44372,7 +44424,7 @@
 	 * @return {Boolean}
 	 * @api private
 	 */
-	var isObject = __webpack_require__(293);
+	var isObject = __webpack_require__(294);
 
 	function isFunction(fn) {
 	  var tag = isObject(fn) ? Object.prototype.toString.call(fn) : '';
@@ -44382,7 +44434,7 @@
 	module.exports = isFunction;
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44391,7 +44443,7 @@
 	 * Module dependencies.
 	 */
 
-	var utils = __webpack_require__(296);
+	var utils = __webpack_require__(297);
 
 	/**
 	 * Expose `ResponseBase`.
@@ -44519,7 +44571,7 @@
 	};
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44593,7 +44645,7 @@
 	};
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -44618,7 +44670,7 @@
 	};
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44634,7 +44686,7 @@
 	var React = __webpack_require__(3);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(299);
+	  __webpack_require__(300);
 	}
 
 	var DogLoader = function (_React$Component) {
@@ -44712,12 +44764,6 @@
 	module.exports = DogLoader;
 
 /***/ },
-/* 299 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
 /* 300 */
 /***/ function(module, exports) {
 
@@ -44731,6 +44777,12 @@
 
 /***/ },
 /* 302 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44748,14 +44800,14 @@
 	var _require = __webpack_require__(182),
 	    connector = _require.connector;
 
-	var Pagination = __webpack_require__(303);
+	var Pagination = __webpack_require__(304);
 	var MediaQuery = __webpack_require__(178);
-	var DesktopTemplateResults = __webpack_require__(309);
-	var TabletTemplateResults = __webpack_require__(315);
-	var MobileTemplateResults = __webpack_require__(316);
+	var DesktopTemplateResults = __webpack_require__(310);
+	var TabletTemplateResults = __webpack_require__(316);
+	var MobileTemplateResults = __webpack_require__(317);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(317);
+	  __webpack_require__(318);
 	}
 
 	var Search = React.createClass({
@@ -44877,17 +44929,17 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// export this package's api
 
-	module.exports = __webpack_require__(304);
+	module.exports = __webpack_require__(305);
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44921,10 +44973,10 @@
 	}
 
 	var React = __webpack_require__(3);
-	var Pager = __webpack_require__(305);
-	var Options = __webpack_require__(306);
-	var KEYCODE = __webpack_require__(307);
-	var LOCALE = __webpack_require__(308);
+	var Pager = __webpack_require__(306);
+	var Options = __webpack_require__(307);
+	var KEYCODE = __webpack_require__(308);
+	var LOCALE = __webpack_require__(309);
 
 	function noop() {}
 
@@ -45307,7 +45359,7 @@
 	module.exports = Pagination;
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45382,7 +45434,7 @@
 	module.exports = Pager;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45416,7 +45468,7 @@
 	}
 
 	var React = __webpack_require__(3);
-	var KEYCODE = __webpack_require__(307);
+	var KEYCODE = __webpack_require__(308);
 
 	var Options = function (_React$Component) {
 	  _inherits(Options, _React$Component);
@@ -45542,7 +45594,7 @@
 	module.exports = Options;
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -45563,7 +45615,7 @@
 	};
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -45588,7 +45640,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45596,8 +45648,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(310);
-	var ContactDetailsPanel = __webpack_require__(313);
+	var MissingPet = __webpack_require__(311);
+	var ContactDetailsPanel = __webpack_require__(314);
 
 	var _require = __webpack_require__(182),
 	    connector = _require.connector;
@@ -45703,7 +45755,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -45717,11 +45769,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(3);
-	var ResponsiveImage = __webpack_require__(311);
+	var ResponsiveImage = __webpack_require__(312);
 	var $ = __webpack_require__(286);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(312);
+	  __webpack_require__(313);
 	}
 
 	var MissingPet = function (_React$Component) {
@@ -45901,7 +45953,7 @@
 	module.exports = MissingPet;
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46000,13 +46052,13 @@
 	module.exports = ResponsiveImage;
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46024,7 +46076,7 @@
 	var $ = __webpack_require__(286);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
-	  __webpack_require__(314);
+	  __webpack_require__(315);
 	}
 
 	var clearForm = function clearForm(props) {
@@ -46255,13 +46307,13 @@
 	module.exports = ContactDetailsPanel;
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46269,8 +46321,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(310);
-	var ContactDetailsPanel = __webpack_require__(313);
+	var MissingPet = __webpack_require__(311);
+	var ContactDetailsPanel = __webpack_require__(314);
 
 	var _require = __webpack_require__(182),
 	    connector = _require.connector;
@@ -46363,7 +46415,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -46371,8 +46423,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(3);
-	var MissingPet = __webpack_require__(310);
-	var ContactDetailsPanel = __webpack_require__(313);
+	var MissingPet = __webpack_require__(311);
+	var ContactDetailsPanel = __webpack_require__(314);
 
 	var _require = __webpack_require__(182),
 	    connector = _require.connector;
@@ -46431,7 +46483,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

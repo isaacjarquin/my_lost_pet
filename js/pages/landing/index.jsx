@@ -106,7 +106,7 @@ class Landing extends React.Component {
           setValidationBackground={this.props.setValidationBackground}
           />
 
-        <div className='panel-group' id='accordion'>
+        <div className='panel-group w3-opacity w3-medium' id='accordion'>
           <AboutUs />
           <ContactUs
             {...this.props.contactUs}
