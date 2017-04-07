@@ -21038,10 +21038,10 @@
 	          { className: 'navbar-header' },
 	          React.createElement(
 	            'button',
-	            { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#myNavbar' },
-	            React.createElement('span', { className: 'icon-bar' }),
-	            React.createElement('span', { className: 'icon-bar' }),
-	            React.createElement('span', { className: 'icon-bar' })
+	            { type: 'button', className: 'navbar-toggle w3-dark-grey search-filter', 'data-toggle': 'collapse', 'data-target': '#myNavbar' },
+	            React.createElement('span', { className: 'icon-bar w3-white' }),
+	            React.createElement('span', { className: 'icon-bar w3-white' }),
+	            React.createElement('span', { className: 'icon-bar w3-white' })
 	          )
 	        ),
 	        React.createElement(
@@ -30637,8 +30637,6 @@
 	                { className: 'w3-section w3-center w3-opacity' },
 	                React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
 	                ' Las Palmas de Gran Canaria, Espa\xF1a',
-	                React.createElement('i', { className: 'fa fa-phone fa-fw w3-xxlarge w3-margin' }),
-	                ' Tel\xE9fono: +00 151515',
 	                React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
 	                ' Email: mylostpet@mail.com'
 	              )

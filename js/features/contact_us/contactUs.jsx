@@ -136,7 +136,6 @@ class ContactUs extends React.Component {
             <MediaQuery minDeviceWidth={768}>
               <div className='w3-section w3-center w3-opacity'>
                 <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
-                <i className='fa fa-phone fa-fw w3-xxlarge w3-margin' /> Teléfono: +00 151515
                 <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: mylostpet@mail.com
               </div>
             </MediaQuery>
