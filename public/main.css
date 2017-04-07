@@ -1,6 +1,10 @@
 @media (max-width: 736px) {
   .navbar-inverse .navbar-nav > li > a {
     color: white; }
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    padding: 0; }
+  .navbar-toggle {
+    margin-right: 0; }
   .movile-header .fa {
     margin-right: 10px;
     color: white; }
@@ -16,7 +20,7 @@
     .movile-header .mobile-social .nav > li > a {
       position: relative;
       display: block;
-      padding: 10px 0px; }
+      padding: 10px 15px; }
   .container {
     padding-right: 0;
     padding-left: 0; }

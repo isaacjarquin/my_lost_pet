@@ -3,6 +3,14 @@
     color: white;
   }
 
+  .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    padding: 0;
+  }
+
+  .navbar-toggle {
+    margin-right: 0;
+  }
+
   .movile-header {
     .fa {
       margin-right: 10px;
@@ -21,7 +29,7 @@
       .nav > li > a {
         position: relative;
         display: block;
-        padding: 10px 0px;
+        padding: 10px 15px;
       }
     }
   }

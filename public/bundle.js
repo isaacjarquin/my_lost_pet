@@ -46065,7 +46065,7 @@
 	          React.createElement(Alerts, this.props.alert),
 	          React.createElement(
 	            'div',
-	            { className: 'w3-margin' },
+	            null,
 	            React.createElement(
 	              'div',
 	              { className: 'w3-container w3-padding w3-opacity' },
