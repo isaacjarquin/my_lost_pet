@@ -29713,7 +29713,7 @@
 	        })),
 	        React.createElement(
 	          'div',
-	          { className: 'panel-group', id: 'accordion' },
+	          { className: 'panel-group w3-opacity w3-medium', id: 'accordion' },
 	          React.createElement(AboutUs, null),
 	          React.createElement(ContactUs, _extends({}, this.props.contactUs, {
 	            alert: this.props.alert,
@@ -40945,8 +40945,8 @@
 	        { className: 'new-pet-form' },
 	        React.createElement(
 	          'button',
-	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large w3-large' },
-	          ' \xBF Acabas de encontrarte una mascota perdida en la calle ?'
+	          { 'data-toggle': 'collapse', 'data-target': '#new-pet', className: 'large-button w3-padding-large' },
+	          ' \xBF Encontraste una mascota perdida ?'
 	        ),
 	        React.createElement(
 	          'div',
