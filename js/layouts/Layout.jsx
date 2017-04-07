@@ -2,6 +2,8 @@ const React = require('react')
 const Header = require('../features/header/Header')
 const Footer = require('../features/footer/Footer')
 const { connector } = require('../Store')
+const MobileHeader = require('../features/header/MobileHeader.js')
+var MediaQuery = require('react-responsive')
 
 const { element, object } = React.PropTypes
 
@@ -12,7 +14,7 @@ const Layout = React.createClass({
   },
   displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm, selectFilter, pets}) {
     if (location.pathname === '/') {
-      return null
+      return <MediaQuery maxDeviceWidth={736}><MobileHeader /></MediaQuery>
     } else {
       return <div className='row'>
         <Header

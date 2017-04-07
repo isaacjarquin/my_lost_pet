@@ -1,7 +1,9 @@
 const React = require('react')
 const Jumbotron = require('./Jumbotron')
 const Navbar = require('./Navbar')
+const MobileHeader = require('./MobileHeader')
 const { string, func } = React.PropTypes
+var MediaQuery = require('react-responsive')
 
 if (process.env.WEBPACK_BUILD) {
   require('./header.scss')
@@ -29,6 +31,9 @@ const Header = React.createClass({
   render () {
     return (
       <header className='header'>
+        <MediaQuery maxDeviceWidth={736}>
+          <MobileHeader />
+        </MediaQuery>
         <ul className='w3-navbar w3-black w3-hide-small'>
           <li className='w3-left'><a href='/'>Home<i /></a></li>
           <li className='w3-right'><a href='#'><i className='fa fa-facebook-official' /></a></li>
