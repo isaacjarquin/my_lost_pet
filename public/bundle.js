@@ -30440,6 +30440,11 @@
 	var React = __webpack_require__(3);
 	var Alerts = __webpack_require__(281);
 	var $ = __webpack_require__(283);
+	var MediaQuery = __webpack_require__(306);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(318);
+	}
 
 	var showUnSuccesfullMessage = function showUnSuccesfullMessage(props, err) {
 	  var alertData = {
@@ -30586,14 +30591,57 @@
 	            'div',
 	            { className: 'panel-body' },
 	            React.createElement(
-	              'div',
-	              { className: 'w3-section w3-center w3-opacity' },
-	              React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
-	              ' Las Palmas de Gran Canaria, Espa\xF1a',
-	              React.createElement('i', { className: 'fa fa-phone fa-fw w3-xxlarge w3-margin' }),
-	              ' Tel\xE9fono: +00 151515',
-	              React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
-	              ' Email: mylostpet@mail.com'
+	              MediaQuery,
+	              { maxDeviceWidth: 736 },
+	              React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                  'div',
+	                  { className: 'navbar-header' },
+	                  React.createElement(
+	                    'button',
+	                    { type: 'button', className: 'navbar-toggle w3-grey', 'w3-grey': true, 'data-toggle': 'collapse', 'data-target': '#contactUsNavbar' },
+	                    React.createElement('span', { className: 'icon-bar w3-white' }),
+	                    React.createElement('span', { className: 'icon-bar w3-white' }),
+	                    React.createElement('span', { className: 'icon-bar w3-white' })
+	                  )
+	                ),
+	                React.createElement(
+	                  'div',
+	                  { className: 'collapse navbar-collapse contact-us-mobile-details', id: 'contactUsNavbar' },
+	                  React.createElement(
+	                    'ul',
+	                    { className: 'nav navbar-nav navbar-right contact-us' },
+	                    React.createElement(
+	                      'li',
+	                      null,
+	                      React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-large w3-margin' }),
+	                      ' Las Palmas de Gran Canaria'
+	                    ),
+	                    React.createElement(
+	                      'li',
+	                      null,
+	                      React.createElement('i', { className: 'fa fa-envelope fa-fw w3-large w3-margin' }),
+	                      ' Email: mylostpet@mail.com'
+	                    )
+	                  )
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              MediaQuery,
+	              { minDeviceWidth: 768 },
+	              React.createElement(
+	                'div',
+	                { className: 'w3-section w3-center w3-opacity' },
+	                React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
+	                ' Las Palmas de Gran Canaria, Espa\xF1a',
+	                React.createElement('i', { className: 'fa fa-phone fa-fw w3-xxlarge w3-margin' }),
+	                ' Tel\xE9fono: +00 151515',
+	                React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
+	                ' Email: mylostpet@mail.com'
+	              )
 	            ),
 	            React.createElement(
 	              'form',
@@ -46432,6 +46480,12 @@
 
 /***/ },
 /* 317 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 318 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
