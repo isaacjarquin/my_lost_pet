@@ -120,7 +120,7 @@ class ContactDetailsPanel extends React.Component {
         <div id={this.props.id} className='collapse contact-details-panel'>
           <div className={this.props.arrow} />
           <Alerts {...this.props.alert} />
-          <div className='w3-margin'>
+          <div>
             <div className='w3-container w3-padding w3-opacity'>
               <h2>Introduce tus datos de contacto</h2>
             </div>

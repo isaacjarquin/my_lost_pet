@@ -8,6 +8,7 @@ const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
+var MediaQuery = require('react-responsive')
 
 import { TwitterButton } from 'react-social'
 
@@ -44,7 +45,7 @@ class Landing extends React.Component {
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
 
-          <div className='pet-filter w3-display-left w3-padding-xlarge'>
+          <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
                 <li className='active'><a href='#'>Perdidos</a></li>
@@ -55,7 +56,12 @@ class Landing extends React.Component {
             <h1 className='w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
 
             <div className='lost'>
-              <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
+              <MediaQuery maxDeviceWidth={736}>
+                <h3 className='w3-text-white'>Encuentralo con nosotros</h3>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={768}>
+                <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
+              </MediaQuery>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
                 <Dropdown

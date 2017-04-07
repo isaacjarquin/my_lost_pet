@@ -119,7 +119,7 @@ class ContactUs extends React.Component {
             <form onSubmit={this.handleSubmit}>
               <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
               <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
-              <p><textarea value={this.props.message} onChange={this.handleMessage} className='w3-input w3-border' placeholder='Describenos la informacion que necesitas' required/></p>
+              <p><textarea value={this.props.message} onChange={this.handleMessage} className='w3-input w3-border' placeholder='Describenos la informacion que necesitas' required /></p>
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>
             </form>
           </div>

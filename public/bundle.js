@@ -20801,6 +20801,9 @@
 	var _require = __webpack_require__(179),
 	    connector = _require.connector;
 
+	var MobileHeader = __webpack_require__(316);
+	var MediaQuery = __webpack_require__(306);
+
 	var _React$PropTypes = React.PropTypes,
 	    element = _React$PropTypes.element,
 	    object = _React$PropTypes.object;
@@ -20822,7 +20825,11 @@
 	        pets = _ref.pets;
 
 	    if (location.pathname === '/') {
-	      return null;
+	      return React.createElement(
+	        MediaQuery,
+	        { maxDeviceWidth: 736 },
+	        React.createElement(MobileHeader, null)
+	      );
 	    } else {
 	      return React.createElement(
 	        'div',
@@ -20873,10 +20880,12 @@
 	var React = __webpack_require__(3);
 	var Jumbotron = __webpack_require__(172);
 	var Navbar = __webpack_require__(173);
+	var MobileHeader = __webpack_require__(316);
 	var _React$PropTypes = React.PropTypes,
 	    string = _React$PropTypes.string,
 	    func = _React$PropTypes.func;
 
+	var MediaQuery = __webpack_require__(306);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(175);
@@ -20914,6 +20923,11 @@
 	    return React.createElement(
 	      'header',
 	      { className: 'header' },
+	      React.createElement(
+	        MediaQuery,
+	        { maxDeviceWidth: 736 },
+	        React.createElement(MobileHeader, null)
+	      ),
 	      React.createElement(
 	        'ul',
 	        { className: 'w3-navbar w3-black w3-hide-small' },
@@ -29494,6 +29508,7 @@
 	var AboutUs = __webpack_require__(284);
 	var Footer = __webpack_require__(177);
 	var NewPetFound = __webpack_require__(285);
+	var MediaQuery = __webpack_require__(306);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(298);
@@ -29558,7 +29573,7 @@
 	          React.createElement('img', { className: 'w3-image', src: '../../../public/mascotas_y_personas.jpg', alt: 'Fashion Blog', width: '1600', height: '1060' }),
 	          React.createElement(
 	            'div',
-	            { className: 'pet-filter w3-display-left w3-padding-xlarge' },
+	            { className: 'pet-filter w3-display-left w3-padding-medium' },
 	            React.createElement(
 	              'div',
 	              { className: 'small-nav-menu' },
@@ -29598,9 +29613,22 @@
 	              'div',
 	              { className: 'lost' },
 	              React.createElement(
-	                'h1',
-	                { className: 'w3-text-white' },
-	                'Encuentralo con nosotros'
+	                MediaQuery,
+	                { maxDeviceWidth: 736 },
+	                React.createElement(
+	                  'h3',
+	                  { className: 'w3-text-white' },
+	                  'Encuentralo con nosotros'
+	                )
+	              ),
+	              React.createElement(
+	                MediaQuery,
+	                { minDeviceWidth: 768 },
+	                React.createElement(
+	                  'h1',
+	                  { className: 'w3-text-white' },
+	                  'Encuentralo con nosotros'
+	                )
 	              ),
 	              React.createElement(
 	                'form',
@@ -46051,7 +46079,7 @@
 	          React.createElement(Alerts, this.props.alert),
 	          React.createElement(
 	            'div',
-	            { className: 'w3-margin' },
+	            null,
 	            React.createElement(
 	              'div',
 	              { className: 'w3-container w3-padding w3-opacity' },
@@ -46321,6 +46349,89 @@
 
 /***/ },
 /* 315 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(3);
+
+	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	  __webpack_require__(317);
+	}
+
+	var MobileHeader = React.createClass({
+	  displayName: 'MobileHeader',
+	  render: function render() {
+	    return React.createElement(
+	      'nav',
+	      { className: 'movile-header navbar navbar-inverse w3-black' },
+	      React.createElement(
+	        'div',
+	        { className: 'container-fluid' },
+	        React.createElement(
+	          'div',
+	          { className: 'navbar-header' },
+	          React.createElement(
+	            'div',
+	            { className: 'mobile-home' },
+	            React.createElement(
+	              'a',
+	              { href: '/' },
+	              'Home',
+	              React.createElement('i', null)
+	            )
+	          ),
+	          React.createElement(
+	            'button',
+	            { type: 'button', className: 'navbar-toggle', 'data-toggle': 'collapse', 'data-target': '#myTopNavbar' },
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' }),
+	            React.createElement('span', { className: 'icon-bar' })
+	          )
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'collapse navbar-collapse mobile-social', id: 'myTopNavbar' },
+	          React.createElement(
+	            'ul',
+	            { className: 'nav navbar-nav navbar-right' },
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { href: '#' },
+	                React.createElement('i', { className: 'fa fa-facebook-official' }),
+	                'Facebook'
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                'a',
+	                { href: '#' },
+	                React.createElement('i', { className: 'fa fa-twitter' }),
+	                'Twitter'
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = MobileHeader;
+
+/***/ },
+/* 317 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
