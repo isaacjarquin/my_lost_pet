@@ -29508,6 +29508,7 @@
 	var AboutUs = __webpack_require__(284);
 	var Footer = __webpack_require__(177);
 	var NewPetFound = __webpack_require__(285);
+	var MediaQuery = __webpack_require__(306);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(298);
@@ -29612,9 +29613,22 @@
 	              'div',
 	              { className: 'lost' },
 	              React.createElement(
-	                'h1',
-	                { className: 'w3-text-white' },
-	                'Encuentralo con nosotros'
+	                MediaQuery,
+	                { maxDeviceWidth: 736 },
+	                React.createElement(
+	                  'h3',
+	                  { className: 'w3-text-white' },
+	                  'Encuentralo con nosotros'
+	                )
+	              ),
+	              React.createElement(
+	                MediaQuery,
+	                { minDeviceWidth: 768 },
+	                React.createElement(
+	                  'h1',
+	                  { className: 'w3-text-white' },
+	                  'Encuentralo con nosotros'
+	                )
 	              ),
 	              React.createElement(
 	                'form',

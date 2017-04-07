@@ -8,6 +8,7 @@ const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
+var MediaQuery = require('react-responsive')
 
 import { TwitterButton } from 'react-social'
 
@@ -55,7 +56,12 @@ class Landing extends React.Component {
             <h1 className='w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
 
             <div className='lost'>
-              <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
+              <MediaQuery maxDeviceWidth={736}>
+                <h3 className='w3-text-white'>Encuentralo con nosotros</h3>
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={768}>
+                <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
+              </MediaQuery>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
                 <Dropdown
