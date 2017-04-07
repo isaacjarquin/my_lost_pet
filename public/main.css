@@ -79,9 +79,9 @@ select {
 
 @media (max-width: 736px) {
   header .w3-image {
-    height: 360px; }
+    height: 390px; }
   header .w3-display-left {
-    top: 69%; } }
+    top: 71%; } }
 
 @media (min-width: 768px) {
   header .w3-image {
