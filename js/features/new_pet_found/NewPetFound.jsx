@@ -20,6 +20,7 @@ const clearForm = (props) => {
   props.setPetFounderName('')
   props.setPetFounderEmail('')
   props.setPetType('')
+  props.setBreed('')
   props.setPetSize('')
   props.setPetFoundDate('')
   props.setPetLocation('')
@@ -163,6 +164,7 @@ class NewPetFound extends React.Component {
       name: this.props.founderName,
       email: this.props.founderEmail,
       kind: this.props.petType,
+      breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
       location: this.props.location,
