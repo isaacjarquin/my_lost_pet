@@ -19,6 +19,7 @@ module.exports = {
     founderName: '',
     founderEmail: '',
     petType: '',
+    breed: '',
     size: '',
     foundDate: '',
     location: '',

@@ -93,6 +93,7 @@ class Landing extends React.Component {
           setPetFounderName={this.props.setPetFounderName}
           setPetFounderEmail={this.props.setPetFounderEmail}
           setPetType={this.props.setPetType}
+          setBreed={this.props.setBreed}
           setPetSize={this.props.setPetSize}
           setPetFoundDate={this.props.setPetFoundDate}
           setPetLocation={this.props.setPetLocation}

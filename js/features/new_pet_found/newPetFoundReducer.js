@@ -5,6 +5,7 @@ const reducerPetFounderName = (state, action) => {
       founderName: action.value,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -23,6 +24,7 @@ const reducerPetFounderEmail = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: action.value,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -41,6 +43,26 @@ const reducerPetType = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: action.value,
+      breed: state.pet.breed,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      location: state.pet.location,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerBreed = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      breed: action.value,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -59,6 +81,7 @@ const reducerPetSize = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: action.value,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -77,6 +100,7 @@ const reducerPetFoundDate = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: action.value,
       location: state.pet.location,
@@ -95,6 +119,7 @@ const reducerPetLocation = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: action.value,
@@ -113,6 +138,7 @@ const reducerPetImages = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -131,6 +157,7 @@ const reducerPetDescription = (state, action) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
@@ -166,6 +193,7 @@ module.exports = {
   reducerPetFounderName,
   reducerPetFounderEmail,
   reducerPetType,
+  reducerBreed,
   reducerPetSize,
   reducerPetFoundDate,
   reducerPetLocation,

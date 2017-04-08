@@ -21949,6 +21949,7 @@
 	    reducerPetFounderName = _require.reducerPetFounderName,
 	    reducerPetFounderEmail = _require.reducerPetFounderEmail,
 	    reducerPetType = _require.reducerPetType,
+	    reducerBreed = _require.reducerBreed,
 	    reducerPetSize = _require.reducerPetSize,
 	    reducerPetFoundDate = _require.reducerPetFoundDate,
 	    reducerPetLocation = _require.reducerPetLocation,
@@ -21990,6 +21991,7 @@
 	var SET_PET_FOUNDER_NAME = 'setPetFounderName';
 	var SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail';
 	var SET_PET_TYPE = 'setPetType';
+	var SET_BREED = 'setBreed';
 	var SET_PET_SIZE = 'setPetSize';
 	var SET_PET_FOUND_DATE = 'setPetFoundDate';
 	var SET_PET_LOCATION = 'setPetLocation';
@@ -22060,6 +22062,8 @@
 	      return reducerPetFounderEmail(state, action);
 	    case SET_PET_TYPE:
 	      return reducerPetType(state, action);
+	    case SET_BREED:
+	      return reducerBreed(state, action);
 	    case SET_PET_SIZE:
 	      return reducerPetSize(state, action);
 	    case SET_PET_FOUND_DATE:
@@ -22121,6 +22125,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -22196,6 +22201,9 @@
 	    },
 	    setPetType: function setPetType(petType) {
 	      dispatch({ type: SET_PET_TYPE, value: petType });
+	    },
+	    setBreed: function setBreed(breed) {
+	      dispatch({ type: SET_BREED, value: breed });
 	    },
 	    setPetSize: function setPetSize(petSize) {
 	      dispatch({ type: SET_PET_SIZE, value: petSize });
@@ -24053,6 +24061,7 @@
 	      founderName: action.value,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24071,6 +24080,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: action.value,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24089,6 +24099,26 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: action.value,
+	      breed: state.pet.breed,
+	      size: state.pet.size,
+	      foundDate: state.pet.foundDate,
+	      location: state.pet.location,
+	      imageUrl: state.pet.imageUrl,
+	      images: state.pet.images,
+	      description: state.pet.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerBreed = function reducerBreed(state, action) {
+	  var newState = {};
+	  Object.assign(newState, state, {
+	    pet: {
+	      founderName: state.pet.founderName,
+	      founderEmail: state.pet.founderEmail,
+	      petType: state.pet.petType,
+	      breed: action.value,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24107,6 +24137,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: action.value,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24125,6 +24156,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: action.value,
 	      location: state.pet.location,
@@ -24143,6 +24175,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: action.value,
@@ -24161,6 +24194,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24179,6 +24213,7 @@
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
 	      petType: state.pet.petType,
+	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
@@ -24214,6 +24249,7 @@
 	  reducerPetFounderName: reducerPetFounderName,
 	  reducerPetFounderEmail: reducerPetFounderEmail,
 	  reducerPetType: reducerPetType,
+	  reducerBreed: reducerBreed,
 	  reducerPetSize: reducerPetSize,
 	  reducerPetFoundDate: reducerPetFoundDate,
 	  reducerPetLocation: reducerPetLocation,
@@ -24437,6 +24473,7 @@
 	    founderName: '',
 	    founderEmail: '',
 	    petType: '',
+	    breed: '',
 	    size: '',
 	    foundDate: '',
 	    location: '',
@@ -30463,6 +30500,7 @@
 	          setPetFounderName: this.props.setPetFounderName,
 	          setPetFounderEmail: this.props.setPetFounderEmail,
 	          setPetType: this.props.setPetType,
+	          setBreed: this.props.setBreed,
 	          setPetSize: this.props.setPetSize,
 	          setPetFoundDate: this.props.setPetFoundDate,
 	          setPetLocation: this.props.setPetLocation,
@@ -41575,6 +41613,7 @@
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.onImageDrop = _this.onImageDrop.bind(_this);
 	    _this.onOpenClick = _this.onOpenClick.bind(_this);
+	    _this.handleBreed = _this.handleBreed.bind(_this);
 	    return _this;
 	  }
 
@@ -41599,6 +41638,11 @@
 	    key: 'handlePetType',
 	    value: function handlePetType(event) {
 	      this.props.setPetType(event.target.value);
+	    }
+	  }, {
+	    key: 'handleBreed',
+	    value: function handleBreed(event) {
+	      this.props.setBreed(event.target.value);
 	    }
 	  }, {
 	    key: 'handlePetSize',
@@ -41748,6 +41792,11 @@
 	              'p',
 	              null,
 	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)', required: true })
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border', type: 'text', placeholder: 'raca (pitbul, pastor aleman ...)' })
 	            ),
 	            React.createElement(
 	              'p',
