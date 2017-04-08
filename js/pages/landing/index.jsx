@@ -22,6 +22,7 @@ class Landing extends React.Component {
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.gotoSearch = this.gotoSearch.bind(this)
     this.handleLocationFilter = this.handleLocationFilter.bind(this)
+    this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
@@ -29,12 +30,16 @@ class Landing extends React.Component {
   handleLocationFilter (event) {
     this.props.setLocationFilter(event.target.value)
   }
+  handlePetTypeFilter () {
+    this.props.setPetTypeFilter(event.target.value)
+  }
   gotoSearch (event) {
     hashHistory.push('search')
     event.preventDefault()
   }
   render () {
-    const petTypes = [{pet: 'perro', id: 1}, {pet: 'gato', id: 2}, {pet: 'conejo', id: 3}]
+    const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
+    const petTypes = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
     const url = process.env.HOST_URL
     const twitterAppId = process.env.TWITTER_KEY
 
@@ -68,13 +73,13 @@ class Landing extends React.Component {
               </MediaQuery>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
-                <Dropdown
-                  dropDownTypes={petTypes}
-                  dropDownTitle={'Pet type '}
-                  setSelectFilter={this.props.setSelectFilter}
-                  searchTerm={this.props.searchTerm}
-                  pets={this.props.pets}
-                />
+                <select className='form-control' onChange={this.handlePetTypeFilter}>
+                  <option disabled>Tipo de mascota</option>
+                  <option value="default-value" key={0}></option>
+                  {petTypesOptions.map((option) => (
+                    <option value={option.type} key={option.id}>{option.type}</option>
+                  ))}
+                </select>
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>

@@ -34,6 +34,11 @@ const {
   reducerContactUsMessage
 } = require('../js/features/contact_us/contactUsReducer')
 
+const {
+  reducerLocationFilter,
+  reducerPetTypeFilter
+} = require('../js/pages/landing/pageFilters')
+
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 const reducerAlerts = require('../js/features/alerts/alertsReducer')
 
@@ -41,6 +46,7 @@ const initialState = require('./InitialState')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_LOCATION_FILTER = 'setLocationFilter'
+const SET_PET_TYPE_FILTER = 'setPetTypeFilter'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
 const SET_OWNER_NAME = 'setOwnerName'
@@ -78,18 +84,6 @@ const reducerPets = (state, action) => {
   return newState
 }
 
-const reducerLocationFilter = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    filters: {
-      location: action.value
-    }
-  })
-
-  return newState
-}
-
 const reducerTotalNumberOfPets = (state, action) => {
   const newState = {}
 
@@ -116,6 +110,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerSelectFilter(state, action)
     case SET_LOCATION_FILTER:
       return reducerLocationFilter(state, action)
+    case SET_PET_TYPE_FILTER:
+      return reducerPetTypeFilter(state, action)
     case SET_ACTIVE_PAGE:
       return reducerActivePage(state, action)
     case SET_OWNER_NAME:
@@ -186,7 +182,8 @@ const mapStateToProps = (state) => {
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
     filters: {
-      location: state.filters.location
+      location: state.filters.location,
+      petType: state.filters.petType
     },
     owner: {
       name: state.owner.name,
@@ -243,6 +240,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setLocationFilter (location) {
       dispatch({type: SET_LOCATION_FILTER, value: location})
+    },
+    setPetTypeFilter (petType) {
+      dispatch({type: SET_PET_TYPE_FILTER, value: petType})
     },
     setSelectFilter (searchTerm, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
