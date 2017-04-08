@@ -20,6 +20,7 @@ const clearForm = (props) => {
   props.setPetFounderName('')
   props.setPetFounderEmail('')
   props.setPetType('')
+  props.setBreed('')
   props.setPetSize('')
   props.setPetFoundDate('')
   props.setPetLocation('')
@@ -90,6 +91,7 @@ class NewPetFound extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onImageDrop = this.onImageDrop.bind(this)
     this.onOpenClick = this.onOpenClick.bind(this)
+    this.handleBreed = this.handleBreed.bind(this)
   }
 
   onImageDrop (acceptedFiles) {
@@ -106,6 +108,9 @@ class NewPetFound extends React.Component {
   }
   handlePetType (event) {
     this.props.setPetType(event.target.value)
+  }
+  handleBreed (event) {
+    this.props.setBreed(event.target.value)
   }
   handlePetSize (event) {
     this.props.setPetSize(event.target.value)
@@ -159,6 +164,7 @@ class NewPetFound extends React.Component {
       name: this.props.founderName,
       email: this.props.founderEmail,
       kind: this.props.petType,
+      breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
       location: this.props.location,
@@ -206,6 +212,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
             <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
+            <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raca (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
             <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
             <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>

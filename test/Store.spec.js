@@ -21,6 +21,7 @@ describe('Store', () => {
       founderName: '',
       founderEmail: '',
       petType: '',
+      breed: '',
       size: '',
       foundDate: '',
       location: '',
@@ -135,6 +136,12 @@ describe('Store', () => {
     const state = rootReducer({pet: {petType: 'dont care'}}, {type: 'setPetType', value: 'I do care a lot'})
 
     expect(state.pet.petType).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle setBreed actions', () => {
+    const state = rootReducer({pet: {breed: 'non breed'}}, {type: 'setBreed', value: 'some breed'})
+
+    expect(state.pet.breed).to.deep.equal('some breed')
   })
 
   it('should handle setPetSize actions', () => {
