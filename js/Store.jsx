@@ -40,6 +40,7 @@ const reducerAlerts = require('../js/features/alerts/alertsReducer')
 const initialState = require('./InitialState')
 
 const SET_SEARCH_TERM = 'setSearchTerm'
+const SET_LOCATION_FILTER = 'setLocationFilter'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
 const SET_OWNER_NAME = 'setOwnerName'
@@ -77,6 +78,18 @@ const reducerPets = (state, action) => {
   return newState
 }
 
+const reducerLocationFilter = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    filters: {
+      location: action.value
+    }
+  })
+
+  return newState
+}
+
 const reducerTotalNumberOfPets = (state, action) => {
   const newState = {}
 
@@ -101,6 +114,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerSearchTerm(state, action)
     case SET_SELECT_FILTER:
       return reducerSelectFilter(state, action)
+    case SET_LOCATION_FILTER:
+      return reducerLocationFilter(state, action)
     case SET_ACTIVE_PAGE:
       return reducerActivePage(state, action)
     case SET_OWNER_NAME:
@@ -170,6 +185,9 @@ const mapStateToProps = (state) => {
     encloseImageTitle: state.encloseImageTitle,
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
+    filters: {
+      location: state.filters.location
+    },
     owner: {
       name: state.owner.name,
       email: state.owner.email,
@@ -222,6 +240,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
       dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
       dispatch({type: SET_ACTIVE_PAGE, value: 1})
+    },
+    setLocationFilter (location) {
+      dispatch({type: SET_LOCATION_FILTER, value: location})
     },
     setSelectFilter (searchTerm, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})

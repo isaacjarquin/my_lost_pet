@@ -11,6 +11,9 @@ describe('Store', () => {
     activePage: 1,
     encloseImageTitle: 'Adjuntar imagen',
     validationBackground: '',
+    filters: {
+      location: ''
+    },
     owner: {
       description: '',
       email: '',
@@ -236,5 +239,11 @@ describe('Store', () => {
     const state = rootReducer({validationBackground: ''}, {type: 'setValidationBackground', value: 'validation-color'})
 
     expect(state.validationBackground).to.deep.equal('validation-color')
+  })
+
+  it('should handle setLocationFilter actions', () => {
+    const state = rootReducer({filters: {location: ''}}, {type: 'setLocationFilter', value: 'some location'})
+
+    expect(state.filters.location).to.deep.equal('some location')
   })
 })

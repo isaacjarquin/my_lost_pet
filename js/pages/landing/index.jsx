@@ -21,9 +21,13 @@ class Landing extends React.Component {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.gotoSearch = this.gotoSearch.bind(this)
+    this.handleLocationFilter = this.handleLocationFilter.bind(this)
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
+  }
+  handleLocationFilter (event) {
+    this.props.setLocationFilter(event.target.value)
   }
   gotoSearch (event) {
     hashHistory.push('search')
@@ -63,7 +67,7 @@ class Landing extends React.Component {
                 <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               </MediaQuery>
               <form onSubmit={this.gotoSearch}>
-                <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
+                <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
                 <Dropdown
                   dropDownTypes={petTypes}
                   dropDownTitle={'Pet type '}
