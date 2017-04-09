@@ -21026,7 +21026,7 @@
 	    this.props.setSearchTerm(event.target.value, this.props.pets, this.props.selectFilter);
 	  },
 	  render: function render() {
-	    var petTypes = [{ pet: 'perro', id: 1 }, { pet: 'gato', id: 2 }, { pet: 'conejo', id: 3 }];
+	    var dropDownOptions = [{ value: 'pequeno', id: 1 }, { value: 'mediano', id: 2 }, { value: 'grande', id: 3 }, { value: 'gigante', id: 4 }];
 	    return React.createElement(
 	      'nav',
 	      { className: 'navbar navbar-inverse' },
@@ -21054,8 +21054,8 @@
 	              'li',
 	              null,
 	              React.createElement(Dropdown, {
-	                dropDownTypes: petTypes,
-	                dropDownTitle: 'Pet type ',
+	                dropDownOptions: dropDownOptions,
+	                dropDownTitle: 'Tamaño',
 	                setSelectFilter: this.props.setSelectFilter,
 	                searchTerm: this.props.searchTerm,
 	                pets: this.props.pets
@@ -21064,7 +21064,7 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Pet Location' })
+	              React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Raza' })
 	            )
 	          )
 	        )
@@ -21116,13 +21116,14 @@
 	        React.createElement(
 	          'option',
 	          { disabled: true },
-	          'Pet type'
+	          this.props.dropDownTitle
 	        ),
-	        this.props.dropDownTypes.map(function (dropDownType) {
+	        React.createElement('option', { key: 0 }),
+	        this.props.dropDownOptions.map(function (dropDownOption) {
 	          return React.createElement(
 	            'option',
-	            { value: dropDownType.pet, key: dropDownType.id },
-	            dropDownType.pet
+	            { value: dropDownOption.value, key: dropDownOption.id },
+	            dropDownOption.value
 	          );
 	        })
 	      )
@@ -22166,9 +22167,9 @@
 
 	var getFilteredPets = function getFilteredPets(searchTerm, pets, selectFilter) {
 	  var filteredPets = pets.filter(function (pet) {
-	    return (pet.location + ' ' + pet.city).toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
+	    return ('' + pet.breed).toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
 	  }).filter(function (pet) {
-	    return ('' + pet.petType).toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0;
+	    return ('' + pet.size).toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0;
 	  }).map(function (pet) {
 	    return pet;
 	  });
@@ -30416,7 +30417,7 @@
 	    key: 'render',
 	    value: function render() {
 	      var petTypesOptions = [{ type: 'perro', id: 1 }, { type: 'gato', id: 2 }, { type: 'conejo', id: 3 }];
-	      var petTypes = [{ type: 'perro', id: 1 }, { type: 'gato', id: 2 }, { type: 'conejo', id: 3 }];
+	      var dropDownOptions = [{ value: 'perro', id: 1 }, { value: 'gato', id: 2 }, { value: 'conejo', id: 3 }];
 	      var url = ({"NODE_ENV":"production"}).HOST_URL;
 	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
 
@@ -30561,7 +30562,11 @@
 	                  null,
 	                  React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'w3-input w3-border', type: 'text', placeholder: 'Actualmente en' })
 	                ),
-	                React.createElement(Dropdown, { dropDownTypes: petTypes, dropDownTitle: 'Pet type ', setSelectFilter: this.props.setSelectFilter })
+	                React.createElement(Dropdown, {
+	                  dropDownOptions: dropDownOptions,
+	                  dropDownTitle: 'Pet type ',
+	                  setSelectFilter: this.props.setSelectFilter
+	                })
 	              ),
 	              React.createElement(
 	                Link,
@@ -44991,6 +44996,7 @@
 	          founderName: item.name,
 	          founderEmail: item.email,
 	          petType: item.kind,
+	          breed: item.breed,
 	          size: item.size,
 	          foundDate: item.date,
 	          location: item.location,

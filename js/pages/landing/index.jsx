@@ -39,7 +39,7 @@ class Landing extends React.Component {
   }
   render () {
     const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
-    const petTypes = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
+    const dropDownOptions = [{value: 'perro', id: 1}, {value: 'gato', id: 2}, {value: 'conejo', id: 3}]
     const url = process.env.HOST_URL
     const twitterAppId = process.env.TWITTER_KEY
 
@@ -88,7 +88,11 @@ class Landing extends React.Component {
               <h1 className='w3-text-white'>Dale un hogar</h1>
               <form onSubmit={this.gotoSearch}>
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Actualmente en' /></p>
-                <Dropdown dropDownTypes={petTypes} dropDownTitle={'Pet type '} setSelectFilter={this.props.setSelectFilter} />
+                <Dropdown
+                  dropDownOptions={dropDownOptions}
+                  dropDownTitle={'Pet type '}
+                  setSelectFilter={this.props.setSelectFilter}
+                  />
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>

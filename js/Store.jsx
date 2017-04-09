@@ -222,8 +222,8 @@ const mapStateToProps = (state) => {
 
 const getFilteredPets = (searchTerm, pets, selectFilter) => {
   const filteredPets = pets
-    .filter((pet) => `${pet.location} ${pet.city}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
-    .filter((pet) => `${pet.petType}`.toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0)
+    .filter((pet) => `${pet.breed}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
+    .filter((pet) => `${pet.size}`.toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0)
     .map((pet) => pet)
 
   return filteredPets
