@@ -10,8 +10,8 @@ module.exports = {
   encloseImageTitle: 'Adjuntar imagen',
   validationBackground: '',
   filters: {
-    location: "",
-    petType: ""
+    location: '',
+    petType: ''
   },
   owner: {
     name: '',

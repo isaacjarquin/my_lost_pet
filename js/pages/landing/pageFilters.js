@@ -4,7 +4,7 @@ const reducerLocationFilter = (state, action) => {
   Object.assign(newState, state, {
     filters: {
       location: action.value,
-      petType: state.filters.petType,
+      petType: state.filters.petType
     }
   })
 

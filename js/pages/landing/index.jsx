@@ -30,7 +30,7 @@ class Landing extends React.Component {
   handleLocationFilter (event) {
     this.props.setLocationFilter(event.target.value)
   }
-  handlePetTypeFilter () {
+  handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
   }
   gotoSearch (event) {
@@ -75,7 +75,7 @@ class Landing extends React.Component {
                 <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
                 <select className='form-control' onChange={this.handlePetTypeFilter}>
                   <option disabled>Tipo de mascota</option>
-                  <option value="default-value" key={0}></option>
+                  <option value='default-value' key={0} />
                   {petTypesOptions.map((option) => (
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}

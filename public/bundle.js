@@ -24521,8 +24521,8 @@
 	  encloseImageTitle: 'Adjuntar imagen',
 	  validationBackground: '',
 	  filters: {
-	    location: "",
-	    petType: ""
+	    location: '',
+	    petType: ''
 	  },
 	  owner: {
 	    name: '',
@@ -30403,7 +30403,7 @@
 	    }
 	  }, {
 	    key: 'handlePetTypeFilter',
-	    value: function handlePetTypeFilter() {
+	    value: function handlePetTypeFilter(event) {
 	      this.props.setPetTypeFilter(event.target.value);
 	    }
 	  }, {
@@ -44922,8 +44922,6 @@
 
 	'use strict';
 
-	__webpack_require__(1);
-
 	var React = __webpack_require__(3);
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
@@ -44940,6 +44938,7 @@
 	var DesktopTemplateResults = __webpack_require__(311);
 	var TabletTemplateResults = __webpack_require__(317);
 	var MobileTemplateResults = __webpack_require__(318);
+	var $ = __webpack_require__(287);
 
 	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
 	  __webpack_require__(319);
@@ -45010,11 +45009,11 @@
 	      var location = _ref.location,
 	          petType = _ref.petType;
 
-	      if (location !== "" && petType !== "") {
+	      if (location !== '' && petType !== '') {
 	        return { location: location, petType: petType };
-	      } else if (location !== "" && petType == "") {
+	      } else if (location !== '' && petType === '') {
 	        return { location: location };
-	      } else if (location == "" && petType !== "") {
+	      } else if (location === '' && petType !== '') {
 	        return { petType: petType };
 	      } else {
 	        return {};
@@ -45022,10 +45021,10 @@
 	    };
 
 	    $.ajax({
-	      url: "http://localhost:4000/api/items",
+	      url: 'http://localhost:4000/api/items',
 	      data: urlParams(props.filters),
 	      cache: false,
-	      type: "GET",
+	      type: 'GET',
 	      success: function success(response) {
 	        var result = resultDecorated(response.data);
 	        var activePagePets = result.slice(0, 6);

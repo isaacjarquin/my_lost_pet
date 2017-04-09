@@ -6,8 +6,7 @@ var MediaQuery = require('react-responsive')
 const DesktopTemplateResults = require('./templates/desktop-results.jsx')
 const TabletTemplateResults = require('./templates/tablet-results.jsx')
 const MobileTemplateResults = require('./templates/mobile-results.jsx')
-
-import 'whatwg-fetch'
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -73,11 +72,11 @@ const Search = React.createClass({
     }
 
     const urlParams = ({location, petType}) => {
-      if (location !== "" && petType !== "") {
+      if (location !== '' && petType !== '') {
         return { location: location, petType: petType }
-      } else if (location !== "" && petType == "") {
+      } else if (location !== '' && petType === '') {
         return { location: location }
-      } else if (location == "" && petType !== "") {
+      } else if (location === '' && petType !== '') {
         return { petType: petType }
       } else {
         return {}
@@ -85,11 +84,11 @@ const Search = React.createClass({
     }
 
     $.ajax({
-      url: "http://localhost:4000/api/items",
+      url: 'http://localhost:4000/api/items',
       data: urlParams(props.filters),
       cache: false,
-      type: "GET",
-      success: function(response) {
+      type: 'GET',
+      success: function (response) {
         const result = resultDecorated(response.data)
         const activePagePets = result.slice(0, 6)
 
@@ -97,10 +96,10 @@ const Search = React.createClass({
         props.setFilteredPets(result)
         props.setActivePagePets(activePagePets)
       },
-      error: function(xhr) {
+      error: function (xhr) {
         console.log(xhr)
       }
-    });
+    })
   },
   render () {
     return (
