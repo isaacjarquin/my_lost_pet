@@ -57,6 +57,7 @@ const Search = React.createClass({
           founderName: item.name,
           founderEmail: item.email,
           petType: item.kind,
+          breed: item.breed,
           size: item.size,
           foundDate: item.date,
           location: item.location,

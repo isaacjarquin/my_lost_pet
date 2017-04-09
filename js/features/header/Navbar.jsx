@@ -18,7 +18,12 @@ const Navbar = React.createClass({
   )
   },
   render () {
-    const petTypes = [{pet: 'perro', id: 1}, {pet: 'gato', id: 2}, {pet: 'conejo', id: 3}]
+    const dropDownOptions = [
+      {value: 'pequeno', id: 1},
+      {value: 'mediano', id: 2},
+      {value: 'grande', id: 3},
+      {value: 'gigante', id: 4}
+    ]
     return (
       <nav className='navbar navbar-inverse'>
         <div className='container-fluid'>
@@ -33,14 +38,14 @@ const Navbar = React.createClass({
             <ul className='nav navbar-nav navbar-right'>
               <li>
                 <Dropdown
-                  dropDownTypes={petTypes}
-                  dropDownTitle={'Pet type '}
+                  dropDownOptions={dropDownOptions}
+                  dropDownTitle={'Tamaño'}
                   setSelectFilter={this.props.setSelectFilter}
                   searchTerm={this.props.searchTerm}
                   pets={this.props.pets}
                 />
               </li>
-              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Pet Location' /></li>
+              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
             </ul>
           </div>
         </div>

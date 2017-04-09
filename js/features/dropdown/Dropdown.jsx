@@ -23,10 +23,11 @@ const Dropdown = React.createClass({
   render () {
     return (
       <div className='dropdown pet-type'>
-        <select className='form-control' onChange={this.handleOnChangeDropdown}>
-          <option disabled>Pet type</option>
-          {this.props.dropDownTypes.map((dropDownType) => (
-            <option value={dropDownType.pet} key={dropDownType.id}>{dropDownType.pet}</option>
+        <select className='form-control' onChange={this.handleOnChangeDropdown} >
+          <option disabled>{this.props.dropDownTitle}</option>
+          <option key={0} />
+          {this.props.dropDownOptions.map((dropDownOption) => (
+            <option value={dropDownOption.value} key={dropDownOption.id}>{dropDownOption.value}</option>
           ))}
         </select>
       </div>
