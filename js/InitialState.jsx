@@ -9,6 +9,10 @@ module.exports = {
   filteredPets: [],
   encloseImageTitle: 'Adjuntar imagen',
   validationBackground: '',
+  filters: {
+    location: '',
+    petType: ''
+  },
   owner: {
     name: '',
     email: '',

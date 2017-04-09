@@ -6,8 +6,7 @@ var MediaQuery = require('react-responsive')
 const DesktopTemplateResults = require('./templates/desktop-results.jsx')
 const TabletTemplateResults = require('./templates/tablet-results.jsx')
 const MobileTemplateResults = require('./templates/mobile-results.jsx')
-
-import 'whatwg-fetch'
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -72,21 +71,34 @@ const Search = React.createClass({
       return newColection
     }
 
-    fetch('https://items-api.herokuapp.com/api/items', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' }
-    }).then(function (response) {
-      console.log(response)
-      return response.json()
-    }).then(function (json) {
-      const result = resultDecorated(json.data)
-      const activePagePets = result.slice(0, 6)
+    const urlParams = ({location, petType}) => {
+      if (location !== '' && petType !== '') {
+        return { location: location, petType: petType }
+      } else if (location !== '' && petType === '') {
+        return { location: location }
+      } else if (location === '' && petType !== '') {
+        return { petType: petType }
+      } else {
+        return {}
+      }
+    }
 
-      props.setPets(result)
-      props.setFilteredPets(result)
-      props.setActivePagePets(activePagePets)
-    }).catch(function (err) {
-      console.log(err)
+    $.ajax({
+      url: 'http://localhost:4000/api/items',
+      data: urlParams(props.filters),
+      cache: false,
+      type: 'GET',
+      success: function (response) {
+        const result = resultDecorated(response.data)
+        const activePagePets = result.slice(0, 6)
+
+        props.setPets(result)
+        props.setFilteredPets(result)
+        props.setActivePagePets(activePagePets)
+      },
+      error: function (xhr) {
+        console.log(xhr)
+      }
     })
   },
   render () {
