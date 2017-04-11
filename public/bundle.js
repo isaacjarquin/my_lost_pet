@@ -14023,7 +14023,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -16360,7 +16360,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production"}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -21112,7 +21112,7 @@
 
 	var MediaQuery = __webpack_require__(180);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(181);
 	}
 
@@ -21366,7 +21366,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(178);
 	}
 
@@ -22137,7 +22137,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(183);
 	}
 
@@ -30598,7 +30598,7 @@
 	var NewPetFound = __webpack_require__(292);
 	var MediaQuery = __webpack_require__(180);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(305);
 	}
 
@@ -30643,9 +30643,9 @@
 	    value: function render() {
 	      var petTypesOptions = [{ type: 'perro', id: 1 }, { type: 'gato', id: 2 }, { type: 'conejo', id: 3 }];
 	      var dropDownOptions = [{ value: 'perro', id: 1 }, { value: 'gato', id: 2 }, { value: 'conejo', id: 3 }];
-	      var url = ({"NODE_ENV":"production"}).HOST_URL;
-	      var twitterAppId = ({"NODE_ENV":"production"}).TWITTER_KEY;
-	      var facebookAppId = ({"NODE_ENV":"production"}).FACEBOOK_KEY;
+	      var url = (undefined);
+	      var twitterAppId = (undefined);
+	      var facebookAppId = (undefined);
 
 	      return React.createElement(
 	        'div',
@@ -31572,7 +31572,7 @@
 	var $ = __webpack_require__(289);
 	var MediaQuery = __webpack_require__(180);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(290);
 	}
 
@@ -31841,7 +31841,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(288);
 	}
 
@@ -41855,7 +41855,7 @@
 	var CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm';
 	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload';
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(304);
 	}
 
@@ -45258,7 +45258,7 @@
 
 	var React = __webpack_require__(3);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(303);
 	}
 
@@ -45378,7 +45378,7 @@
 	var MobileTemplateResults = __webpack_require__(320);
 	var $ = __webpack_require__(289);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(321);
 	}
 
@@ -46364,7 +46364,7 @@
 	var ResponsiveImage = __webpack_require__(315);
 	var $ = __webpack_require__(289);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(316);
 	}
 
@@ -46667,7 +46667,7 @@
 	var Alerts = __webpack_require__(287);
 	var $ = __webpack_require__(289);
 
-	if (({"NODE_ENV":"production"}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(318);
 	}
 
