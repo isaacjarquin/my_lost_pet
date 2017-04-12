@@ -22,6 +22,24 @@ const path = require('path')
 const server = express()
 
 server.use('/public', express.static('./public'))
+
+server.get('/api/envs', function (req, res) {
+  res.send(
+    JSON.stringify(
+      {
+        social: {
+          facebook: '290373181365977',
+          twitter: 'Cw7HdKgnuuevzQO5N03jfZOQ9'
+        },
+        cloudinary: {
+          upload_preset: 'ak0f1cnm',
+          upload_url: 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
+        },
+        host_url: 'https://mylostpet.herokuapp.com/',
+        items_api_url: 'http://items-api.herokuapp.com/api/items'
+      }
+    ))
+})
 server.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))
 
 server.use((req, res) => {

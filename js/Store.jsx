@@ -72,6 +72,7 @@ const SET_FILTERED_PETS = 'setFilteredPets'
 const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
 const SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle'
 const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
+const SET_SOCIAL_KEYS = 'setSocialKeys'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -98,6 +99,14 @@ const reducerActivePagePets = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, { activePagePets: action.value })
+
+  return newState
+}
+
+const reducerSocialKeys = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, { social: { facebook: action.value.facebook, twitter:  action.value.twitter}})
 
   return newState
 }
@@ -160,6 +169,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerEncloseImageTitle(state, action)
     case SET_VALIDATION_BACKGROUND:
       return reducerValidationBackground(state, action)
+    case SET_SOCIAL_KEYS:
+      return reducerSocialKeys(state, action)
     default:
       return state
   }
@@ -181,6 +192,10 @@ const mapStateToProps = (state) => {
     encloseImageTitle: state.encloseImageTitle,
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
+    social: {
+      facebook: state.social.facebook,
+      twitter: state.social.twitter
+    },
     filters: {
       location: state.filters.location,
       petType: state.filters.petType
@@ -319,6 +334,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setValidationBackground (validationClass) {
       dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
+    },
+    setSocialKeys (keyValues) {
+      dispatch({type: SET_SOCIAL_KEYS, value: keyValues})
     }
   }
 }
