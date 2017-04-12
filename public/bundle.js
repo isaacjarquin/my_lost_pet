@@ -22239,6 +22239,7 @@
 	var SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets';
 	var SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle';
 	var SET_VALIDATION_BACKGROUND = 'setValidationBackground';
+	var SET_SOCIAL_KEYS = 'setSocialKeys';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -22265,6 +22266,14 @@
 	  var newState = {};
 
 	  Object.assign(newState, state, { activePagePets: action.value });
+
+	  return newState;
+	};
+
+	var reducerSocialKeys = function reducerSocialKeys(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, { social: { facebook: action.value.facebook, twitter: action.value.twitter } });
 
 	  return newState;
 	};
@@ -22330,6 +22339,8 @@
 	      return reducerEncloseImageTitle(state, action);
 	    case SET_VALIDATION_BACKGROUND:
 	      return reducerValidationBackground(state, action);
+	    case SET_SOCIAL_KEYS:
+	      return reducerSocialKeys(state, action);
 	    default:
 	      return state;
 	  }
@@ -22351,6 +22362,10 @@
 	    encloseImageTitle: state.encloseImageTitle,
 	    validationBackground: state.validationBackground,
 	    filteredPets: state.filteredPets,
+	    social: {
+	      facebook: state.social.facebook,
+	      twitter: state.social.twitter
+	    },
 	    filters: {
 	      location: state.filters.location,
 	      petType: state.filters.petType
@@ -22492,6 +22507,9 @@
 	    },
 	    setValidationBackground: function setValidationBackground(validationClass) {
 	      dispatch({ type: SET_VALIDATION_BACKGROUND, value: validationClass });
+	    },
+	    setSocialKeys: function setSocialKeys(keyValues) {
+	      dispatch({ type: SET_SOCIAL_KEYS, value: keyValues });
 	    }
 	  };
 	};
@@ -24746,6 +24764,10 @@
 	  filteredPets: [],
 	  encloseImageTitle: 'Adjuntar imagen',
 	  validationBackground: '',
+	  social: {
+	    facebook: '',
+	    twitter: ''
+	  },
 	  filters: {
 	    location: '',
 	    petType: ''
@@ -30639,13 +30661,29 @@
 	      event.preventDefault();
 	    }
 	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var props = this.props;
+
+	      $.ajax({
+	        url: '/api/envs',
+	        cache: false,
+	        type: 'GET',
+	        success: function success(response) {
+	          var result = JSON.parse(response);
+	          props.setSocialKeys(result.social);
+	        },
+	        error: function error(xhr) {
+	          console.log(xhr);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var petTypesOptions = [{ type: 'perro', id: 1 }, { type: 'gato', id: 2 }, { type: 'conejo', id: 3 }];
 	      var dropDownOptions = [{ value: 'perro', id: 1 }, { value: 'gato', id: 2 }, { value: 'conejo', id: 3 }];
 	      var url = (undefined);
-	      var twitterAppId = (undefined);
-	      var facebookAppId = (undefined);
 
 	      return React.createElement(
 	        'div',
@@ -30668,7 +30706,7 @@
 	            { className: 'w3-right' },
 	            React.createElement(_reactSocial.TwitterButton, {
 	              url: url,
-	              appId: twitterAppId,
+	              appId: this.props.social.twitter,
 	              className: 'fa fa-twitter my-social-icons'
 	            })
 	          ),
@@ -30677,7 +30715,7 @@
 	            { className: 'w3-right' },
 	            React.createElement(_reactSocial.FacebookButton, {
 	              url: url,
-	              appId: facebookAppId,
+	              appId: this.props.social.facebook,
 	              className: 'fa fa-facebook my-social-icons'
 	            })
 	          )
@@ -45460,7 +45498,7 @@
 	    };
 
 	    $.ajax({
-	      url: 'http://localhost:4000/api/items',
+	      url: 'https://items-api.herokuapp.com/api/items',
 	      data: urlParams(props.filters),
 	      cache: false,
 	      type: 'GET',

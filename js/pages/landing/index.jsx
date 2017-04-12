@@ -37,12 +37,24 @@ class Landing extends React.Component {
     hashHistory.push('search')
     event.preventDefault()
   }
+  componentDidMount() {
+    const props = this.props
+
+    $.ajax({
+      url: '/api/envs',
+      cache: false,
+      type: 'GET',
+      success: function (response) {
+        const result = JSON.parse(response)
+        props.setSocialKeys(result.social)
+      },
+      error: function (xhr) {console.log(xhr)}
+    })
+  }
   render () {
     const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
     const dropDownOptions = [{value: 'perro', id: 1}, {value: 'gato', id: 2}, {value: 'conejo', id: 3}]
     const url = process.env.HOST_URL
-    const twitterAppId = process.env.TWITTER_KEY
-    const facebookAppId = process.env.FACEBOOK_KEY
 
     return (
       <div className='home-info'>
@@ -51,14 +63,14 @@ class Landing extends React.Component {
           <li className='w3-right'>
             <TwitterButton
               url={url}
-              appId={twitterAppId}
+              appId={this.props.social.twitter}
               className={'fa fa-twitter my-social-icons'}
               />
           </li>
           <li className='w3-right'>
             <FacebookButton
               url={url}
-              appId={facebookAppId}
+              appId={this.props.social.facebook}
               className={'fa fa-facebook my-social-icons'}
               />
           </li>

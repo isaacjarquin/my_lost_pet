@@ -15,6 +15,10 @@ describe('Store', () => {
       location: '',
       petType: ''
     },
+    "social": {
+      "facebook": "",
+      "twitter": ""
+    },
     owner: {
       description: '',
       email: '',
