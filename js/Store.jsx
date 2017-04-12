@@ -73,6 +73,8 @@ const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
 const SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle'
 const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
 const SET_SOCIAL_KEYS = 'setSocialKeys'
+const SET_CLOUDINARY = 'setCloudinary'
+const SET_URLS = 'setUrls'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -106,7 +108,38 @@ const reducerActivePagePets = (state, action) => {
 const reducerSocialKeys = (state, action) => {
   const newState = {}
 
-  Object.assign(newState, state, { social: { facebook: action.value.facebook, twitter:  action.value.twitter}})
+  Object.assign(newState, state, {
+      social: {
+        facebook: action.value.facebook,
+        twitter:  action.value.twitter
+      }
+  })
+
+  return newState
+}
+
+const reducerCloudinary = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      cloudinary: {
+        upload_preset: action.value.upload_preset,
+        upload_url:  action.value.upload_url
+      }
+  })
+
+  return newState
+}
+
+const reducerUrls = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      urls: {
+        host: action.value.host,
+        items_api:  action.value.items_api
+      }
+  })
 
   return newState
 }
@@ -171,6 +204,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerValidationBackground(state, action)
     case SET_SOCIAL_KEYS:
       return reducerSocialKeys(state, action)
+    case SET_CLOUDINARY:
+      return reducerCloudinary(state, action)
+    case SET_URLS:
+      return reducerUrls(state, action)
     default:
       return state
   }
@@ -192,6 +229,14 @@ const mapStateToProps = (state) => {
     encloseImageTitle: state.encloseImageTitle,
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
+    urls: {
+      host: state.urls.host,
+      items_api: state.urls.items_api
+    },
+    cloudinary: {
+      upload_preset: state.cloudinary.upload_preset,
+      upload_url: state.cloudinary.upload_url
+    },
     social: {
       facebook: state.social.facebook,
       twitter: state.social.twitter
@@ -337,6 +382,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setSocialKeys (keyValues) {
       dispatch({type: SET_SOCIAL_KEYS, value: keyValues})
+    },
+    setCloudinary (keys) {
+      dispatch({type: SET_CLOUDINARY, value: keys})
+    },
+    setUrls (urls) {
+      dispatch({type: SET_URLS, value: urls})
     }
   }
 }

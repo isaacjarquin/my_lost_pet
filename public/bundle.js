@@ -22240,6 +22240,8 @@
 	var SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle';
 	var SET_VALIDATION_BACKGROUND = 'setValidationBackground';
 	var SET_SOCIAL_KEYS = 'setSocialKeys';
+	var SET_CLOUDINARY = 'setCloudinary';
+	var SET_URLS = 'setUrls';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -22273,7 +22275,38 @@
 	var reducerSocialKeys = function reducerSocialKeys(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, { social: { facebook: action.value.facebook, twitter: action.value.twitter } });
+	  Object.assign(newState, state, {
+	    social: {
+	      facebook: action.value.facebook,
+	      twitter: action.value.twitter
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerCloudinary = function reducerCloudinary(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    cloudinary: {
+	      upload_preset: action.value.upload_preset,
+	      upload_url: action.value.upload_url
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerUrls = function reducerUrls(state, action) {
+	  var newState = {};
+
+	  Object.assign(newState, state, {
+	    urls: {
+	      host: action.value.host,
+	      items_api: action.value.items_api
+	    }
+	  });
 
 	  return newState;
 	};
@@ -22341,6 +22374,10 @@
 	      return reducerValidationBackground(state, action);
 	    case SET_SOCIAL_KEYS:
 	      return reducerSocialKeys(state, action);
+	    case SET_CLOUDINARY:
+	      return reducerCloudinary(state, action);
+	    case SET_URLS:
+	      return reducerUrls(state, action);
 	    default:
 	      return state;
 	  }
@@ -22362,6 +22399,14 @@
 	    encloseImageTitle: state.encloseImageTitle,
 	    validationBackground: state.validationBackground,
 	    filteredPets: state.filteredPets,
+	    urls: {
+	      host: state.urls.host,
+	      items_api: state.urls.items_api
+	    },
+	    cloudinary: {
+	      upload_preset: state.cloudinary.upload_preset,
+	      upload_url: state.cloudinary.upload_url
+	    },
 	    social: {
 	      facebook: state.social.facebook,
 	      twitter: state.social.twitter
@@ -22510,6 +22555,12 @@
 	    },
 	    setSocialKeys: function setSocialKeys(keyValues) {
 	      dispatch({ type: SET_SOCIAL_KEYS, value: keyValues });
+	    },
+	    setCloudinary: function setCloudinary(keys) {
+	      dispatch({ type: SET_CLOUDINARY, value: keys });
+	    },
+	    setUrls: function setUrls(urls) {
+	      dispatch({ type: SET_URLS, value: urls });
 	    }
 	  };
 	};
@@ -24767,6 +24818,14 @@
 	  social: {
 	    facebook: '',
 	    twitter: ''
+	  },
+	  urls: {
+	    host: '',
+	    items_api: ''
+	  },
+	  cloudinary: {
+	    upload_preset: '',
+	    upload_url: ''
 	  },
 	  filters: {
 	    location: '',
@@ -30672,6 +30731,8 @@
 	        success: function success(response) {
 	          var result = JSON.parse(response);
 	          props.setSocialKeys(result.social);
+	          props.setCloudinary(result.cloudinary);
+	          props.setUrls(result.urls);
 	        },
 	        error: function error(xhr) {
 	          console.log(xhr);
@@ -30683,7 +30744,7 @@
 	    value: function render() {
 	      var petTypesOptions = [{ type: 'perro', id: 1 }, { type: 'gato', id: 2 }, { type: 'conejo', id: 3 }];
 	      var dropDownOptions = [{ value: 'perro', id: 1 }, { value: 'gato', id: 2 }, { value: 'conejo', id: 3 }];
-	      var url = (undefined);
+	      var url = this.props.urls.host;
 
 	      return React.createElement(
 	        'div',
@@ -30877,7 +30938,9 @@
 	          encloseImageTitle: this.props.encloseImageTitle,
 	          validationBackground: this.props.validationBackground,
 	          setEncloseImageTitle: this.props.setEncloseImageTitle,
-	          setValidationBackground: this.props.setValidationBackground
+	          setValidationBackground: this.props.setValidationBackground,
+	          cloudinary: this.props.cloudinary,
+	          items_api: this.props.urls.items_api
 	        })),
 	        React.createElement(
 	          'div',
@@ -30888,7 +30951,8 @@
 	            setAlerts: this.props.setAlerts,
 	            setContactUsName: this.props.setContactUsName,
 	            setContactUsEmail: this.props.setContactUsEmail,
-	            setContactUsMessage: this.props.setContactUsMessage
+	            setContactUsMessage: this.props.setContactUsMessage,
+	            items_api: this.props.urls.items_api
 	          })),
 	          React.createElement(TermsAndConditions, null)
 	        ),
@@ -31714,7 +31778,7 @@
 	        details: props.message
 	      };
 
-	      fetch('https://items-api.herokuapp.com/api/contact_us', {
+	      fetch(props.items_api + '/api/contact_us', {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ contact_us: contactUsDecoreted })
@@ -41890,9 +41954,6 @@
 
 	var $ = __webpack_require__(289);
 
-	var CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm';
-	var CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload';
-
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(304);
 	}
@@ -42050,7 +42111,7 @@
 	        $('#details-button').addClass('disable-button');
 	        $('.loader-container').show();
 
-	        var upload = _superagent2.default.post(CLOUDINARY_UPLOAD_URL).field('upload_preset', CLOUDINARY_UPLOAD_PRESET).field('file', this.props.images[0]);
+	        var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
 
 	        upload.end(function (err, response) {
 	          if (err) {
@@ -42091,7 +42152,7 @@
 	      var headers = { 'Content-Type': 'application/json' };
 	      var props = this.props;
 
-	      fetch('https://items-api.herokuapp.com/api/items', {
+	      fetch(props.items_api + '/api/items', {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ item: adaptedItem })
@@ -45496,9 +45557,9 @@
 	        return {};
 	      }
 	    };
-
+	    console.log(props.urls.items_api);
 	    $.ajax({
-	      url: 'https://items-api.herokuapp.com/api/items',
+	      url: props.urls.items_api + '/api/items',
 	      data: urlParams(props.filters),
 	      cache: false,
 	      type: 'GET',
@@ -46352,7 +46413,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          })),
 	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
 	            id: pet.center.id,
@@ -46363,7 +46425,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          })),
 	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
 	            id: pet.right.id,
@@ -46374,7 +46437,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          }))
 	        );
 	      })
@@ -46819,7 +46883,7 @@
 	        item_id: props.id
 	      };
 
-	      fetch('https://items-api.herokuapp.com/api/contact_details', {
+	      fetch(props.items_api + '/api/contact_details', {
 	        method: 'POST',
 	        headers: headers,
 	        body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
@@ -47023,7 +47087,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          })),
 	          React.createElement(ContactDetailsPanel, _extends({}, _this.props.owner, {
 	            id: pet.right.id,
@@ -47034,7 +47099,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          }))
 	        );
 	      })
@@ -47102,7 +47168,8 @@
 	            setOwnerName: _this.props.setOwnerName,
 	            setOwnerEmail: _this.props.setOwnerEmail,
 	            setOwnerPhoneNumber: _this.props.setOwnerPhoneNumber,
-	            setDescription: _this.props.setDescription
+	            setDescription: _this.props.setDescription,
+	            items_api: _this.props.urls.items_api
 	          }))
 	        );
 	      })

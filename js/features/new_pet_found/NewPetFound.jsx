@@ -8,9 +8,6 @@ import request from 'superagent'
 
 const $ = require('jquery')
 
-const CLOUDINARY_UPLOAD_PRESET = 'ak0f1cnm'
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
-
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
 }
@@ -135,8 +132,8 @@ class NewPetFound extends React.Component {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
 
-      let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                          .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+      let upload = request.post(this.props.cloudinary.upload_url)
+                          .field('upload_preset', this.props.cloudinary.upload_preset)
                           .field('file', this.props.images[0])
 
       upload.end((err, response) => {
@@ -175,7 +172,7 @@ class NewPetFound extends React.Component {
     const headers = { 'Content-Type': 'application/json' }
     const props = this.props
 
-    fetch('https://items-api.herokuapp.com/api/items', {
+    fetch(props.items_api + '/api/items', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })

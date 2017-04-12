@@ -90,7 +90,7 @@ class ContactUs extends React.Component {
       details: props.message
     }
 
-    fetch('https://items-api.herokuapp.com/api/contact_us', {
+    fetch(props.items_api + '/api/contact_us', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ contact_us: contactUsDecoreted })

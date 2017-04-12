@@ -13,6 +13,14 @@ module.exports = {
     facebook: '',
     twitter: ''
   },
+  urls: {
+    host: '',
+    items_api: ''
+  },
+  cloudinary: {
+    upload_preset: '',
+    upload_url: ''
+  },
   filters: {
     location: '',
     petType: ''

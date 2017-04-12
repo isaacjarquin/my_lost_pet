@@ -83,9 +83,9 @@ const Search = React.createClass({
         return {}
       }
     }
-
+    console.log(props.urls.items_api)
     $.ajax({
-      url: 'https://items-api.herokuapp.com/api/items',
+      url: props.urls.items_api + '/api/items',
       data: urlParams(props.filters),
       cache: false,
       type: 'GET',

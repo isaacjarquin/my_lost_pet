@@ -47,6 +47,8 @@ class Landing extends React.Component {
       success: function (response) {
         const result = JSON.parse(response)
         props.setSocialKeys(result.social)
+        props.setCloudinary(result.cloudinary)
+        props.setUrls(result.urls)
       },
       error: function (xhr) {console.log(xhr)}
     })
@@ -54,7 +56,7 @@ class Landing extends React.Component {
   render () {
     const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
     const dropDownOptions = [{value: 'perro', id: 1}, {value: 'gato', id: 2}, {value: 'conejo', id: 3}]
-    const url = process.env.HOST_URL
+    const url = this.props.urls.host
 
     return (
       <div className='home-info'>
@@ -123,7 +125,6 @@ class Landing extends React.Component {
 
           </div>
         </header>
-
         <NewPetFound
           {...this.props.pet}
           alert={this.props.alert}
@@ -142,6 +143,8 @@ class Landing extends React.Component {
           validationBackground={this.props.validationBackground}
           setEncloseImageTitle={this.props.setEncloseImageTitle}
           setValidationBackground={this.props.setValidationBackground}
+          cloudinary={this.props.cloudinary}
+          items_api={this.props.urls.items_api}
           />
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>
@@ -153,6 +156,7 @@ class Landing extends React.Component {
             setContactUsName={this.props.setContactUsName}
             setContactUsEmail={this.props.setContactUsEmail}
             setContactUsMessage={this.props.setContactUsMessage}
+            items_api={this.props.urls.items_api}
             />
           <TermsAndConditions />
         </div>

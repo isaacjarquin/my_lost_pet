@@ -61,6 +61,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
               />
               <ContactDetailsPanel
                 {...this.props.owner}
@@ -73,6 +74,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
               />
               <ContactDetailsPanel
                 {...this.props.owner}
@@ -85,6 +87,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
               />
             </div>)
           )
