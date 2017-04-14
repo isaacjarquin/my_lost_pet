@@ -20,10 +20,14 @@ const Search = React.createClass({
     setActivePagePets: func,
     activePage: number,
     totalNumberOfPets: number,
-    pageSize: number
+    pageSize: number,
+    getPets: func
   },
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
+  },
+  componentDidMount: function () {
+    this.props.getPets(this.props)
   },
   render () {
     return (

@@ -40588,7 +40588,7 @@
 	var React = __webpack_require__(3);
 
 	var _require = __webpack_require__(224),
-	    browserHistory = _require.browserHistory;
+	    hashHistory = _require.hashHistory;
 
 	var _require2 = __webpack_require__(224),
 	    Link = _require2.Link;
@@ -40642,8 +40642,7 @@
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      this.props.getPets(this.props);
-	      browserHistory.push('search');
+	      hashHistory.push('search');
 	      event.preventDefault();
 	    }
 	  }, {
@@ -40792,18 +40791,18 @@
 	                      option.type
 	                    );
 	                  })
-	                ),
+	                )
+	              ),
+	              React.createElement(
+	                Link,
+	                { to: '/search' },
 	                React.createElement(
-	                  Link,
-	                  { to: '/search' },
+	                  'h6',
+	                  null,
 	                  React.createElement(
-	                    'h6',
-	                    null,
-	                    React.createElement(
-	                      'button',
-	                      { type: 'submit', onClick: this.handleSubmit, className: 'w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off' },
-	                      'Buscar'
-	                    )
+	                    'button',
+	                    { className: 'w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off' },
+	                    'Buscar'
 	                  )
 	                )
 	              )
@@ -40922,7 +40921,6 @@
 	  setValidationBackground: func,
 	  setLocationFilter: func,
 	  setPetTypeFilter: func,
-	  getPets: func,
 	  setBreed: func,
 	  urls: object,
 	  social: object,
@@ -45592,10 +45590,14 @@
 	    setActivePagePets: func,
 	    activePage: number,
 	    totalNumberOfPets: number,
-	    pageSize: number
+	    pageSize: number,
+	    getPets: func
 	  },
 	  handlePageChange: function handlePageChange(pageNumber) {
 	    this.props.setActivePage(pageNumber);
+	  },
+	  componentDidMount: function componentDidMount() {
+	    this.props.getPets(this.props);
 	  },
 	  render: function render() {
 	    return React.createElement(

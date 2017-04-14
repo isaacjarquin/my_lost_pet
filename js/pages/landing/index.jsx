@@ -1,7 +1,7 @@
 import { TwitterButton, FacebookButton } from 'react-social'
 
 const React = require('react')
-const { browserHistory } = require('react-router')
+const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
 const { connector } = require('../../Store')
 const Dropdown = require('../../features/dropdown/Dropdown')
@@ -35,8 +35,7 @@ class Landing extends React.Component {
     this.props.setPetTypeFilter(event.target.value)
   }
   handleSubmit (event) {
-    this.props.getPets(this.props)
-    browserHistory.push('search')
+    hashHistory.push('search')
     event.preventDefault()
   }
   componentDidMount () {
@@ -103,10 +102,10 @@ class Landing extends React.Component {
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
-                <Link to='/search'>
-                  <h6><button type='submit' onClick={this.handleSubmit} className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
-                </Link>
               </form>
+              <Link to='/search'>
+                <h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
+              </Link>
             </div>
 
             <div className='looking-for-home'>
@@ -195,7 +194,6 @@ Landing.propTypes = {
   setValidationBackground: func,
   setLocationFilter: func,
   setPetTypeFilter: func,
-  getPets: func,
   setBreed: func,
   urls: object,
   social: object,
