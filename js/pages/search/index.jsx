@@ -6,7 +6,6 @@ var MediaQuery = require('react-responsive')
 const DesktopTemplateResults = require('./templates/desktop-results.jsx')
 const TabletTemplateResults = require('./templates/tablet-results.jsx')
 const MobileTemplateResults = require('./templates/mobile-results.jsx')
-const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')

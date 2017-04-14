@@ -1,5 +1,7 @@
+import { TwitterButton, FacebookButton } from 'react-social'
+
 const React = require('react')
-const { hashHistory, browserHistory } = require('react-router')
+const { browserHistory } = require('react-router')
 const { Link } = require('react-router')
 const { connector } = require('../../Store')
 const Dropdown = require('../../features/dropdown/Dropdown')
@@ -8,9 +10,8 @@ const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
+const $ = require('jquery')
 var MediaQuery = require('react-responsive')
-
-import { TwitterButton, FacebookButton } from 'react-social'
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -36,7 +37,7 @@ class Landing extends React.Component {
   handleSubmit (event) {
     this.props.getPets(this.props)
     browserHistory.push('search')
-    event.preventDefault
+    event.preventDefault()
   }
   componentDidMount () {
     const props = this.props
@@ -191,7 +192,15 @@ Landing.propTypes = {
   encloseImageTitle: string,
   validationBackground: string,
   setEncloseImageTitle: func,
-  setValidationBackground: func
+  setValidationBackground: func,
+  setLocationFilter: func,
+  setPetTypeFilter: func,
+  getPets: func,
+  setBreed: func,
+  urls: object,
+  social: object,
+  locationFilter: string,
+  cloudinary: object
 }
 
 module.exports = connector(Landing)

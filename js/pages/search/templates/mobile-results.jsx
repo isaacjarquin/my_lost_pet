@@ -16,6 +16,7 @@ const Search = React.createClass({
     setAlerts: func.isRequired,
     searchTerm: string,
     selectFilter: string,
+    urls: object.isRequired,
     activePagePets: arrayOf(object)
   },
   render () {

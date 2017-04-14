@@ -1,10 +1,10 @@
-const React = require('react')
-const Alerts = require('../alerts/alerts')
-const DogLoader = require('../dog_loader/DogLoader')
-
 import 'whatwg-fetch'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
+
+const React = require('react')
+const Alerts = require('../alerts/alerts')
+const DogLoader = require('../dog_loader/DogLoader')
 
 const $ = require('jquery')
 
@@ -279,7 +279,10 @@ NewPetFound.propTypes = {
   setEncloseImageTitle: func.isRequired,
   setValidationBackground: func.isRequired,
   validationBackground: string.isRequired,
-  encloseImageTitle: string.isRequired
+  encloseImageTitle: string.isRequired,
+  setBreed: func.isRequired,
+  cloudinary: object,
+  breed: string
 }
 
 module.exports = NewPetFound

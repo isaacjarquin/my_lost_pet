@@ -14,8 +14,9 @@ const Search = React.createClass({
     setOwnerPhoneNumber: func.isRequired,
     setDescription: func.isRequired,
     setAlerts: func.isRequired,
-    searchTerm: string,
-    selectFilter: string,
+    searchTerm: string.isRequired,
+    selectFilter: string.isRequired,
+    urls: object.isRequired,
     activePagePets: arrayOf(object)
   },
   addPetRows: function (pets) {

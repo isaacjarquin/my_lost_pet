@@ -1,5 +1,6 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
+const $ = require('jquery')
 
 const {
   reducerPetFounderName,
