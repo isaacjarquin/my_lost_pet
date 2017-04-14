@@ -35,8 +35,10 @@ server.get('/api/envs', function (req, res) {
           upload_preset: 'ak0f1cnm',
           upload_url: 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
         },
-        host_url: 'https://mylostpet.herokuapp.com/',
-        items_api_url: 'http://items-api.herokuapp.com/api/items'
+        urls: {
+          host: 'https://mylostpet.herokuapp.com/',
+          items_api: 'http://items-api.herokuapp.com'
+        }
       }
     ))
 })

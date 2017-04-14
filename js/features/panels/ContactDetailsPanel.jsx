@@ -99,7 +99,7 @@ class ContactDetailsPanel extends React.Component {
       item_id: props.id
     }
 
-    fetch('https://items-api.herokuapp.com/api/contact_details', {
+    fetch(props.items_api + '/api/contact_details', {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ contact_detail: contactDetailsDecoreted })

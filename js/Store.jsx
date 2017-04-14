@@ -1,5 +1,6 @@
 const redux = require('redux')
 const reactRedux = require('react-redux')
+const $ = require('jquery')
 
 const {
   reducerPetFounderName,
@@ -41,6 +42,7 @@ const {
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 const reducerAlerts = require('../js/features/alerts/alertsReducer')
+const resultDecorated = require('../js/pages/landing/resultDecorated')
 
 const initialState = require('./InitialState')
 
@@ -73,6 +75,8 @@ const SET_TOTAL_NUMBER_OF_PETS = 'setTotalNumberOfPets'
 const SET_ENCLOSE_IMAGE_TITLE = 'setEncloseImageTitle'
 const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
 const SET_SOCIAL_KEYS = 'setSocialKeys'
+const SET_CLOUDINARY = 'setCloudinary'
+const SET_URLS = 'setUrls'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -106,7 +110,38 @@ const reducerActivePagePets = (state, action) => {
 const reducerSocialKeys = (state, action) => {
   const newState = {}
 
-  Object.assign(newState, state, { social: { facebook: action.value.facebook, twitter:  action.value.twitter}})
+  Object.assign(newState, state, {
+    social: {
+      facebook: action.value.facebook,
+      twitter: action.value.twitter
+    }
+  })
+
+  return newState
+}
+
+const reducerCloudinary = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    cloudinary: {
+      upload_preset: action.value.upload_preset,
+      upload_url: action.value.upload_url
+    }
+  })
+
+  return newState
+}
+
+const reducerUrls = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    urls: {
+      host: action.value.host,
+      items_api: action.value.items_api
+    }
+  })
 
   return newState
 }
@@ -171,6 +206,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerValidationBackground(state, action)
     case SET_SOCIAL_KEYS:
       return reducerSocialKeys(state, action)
+    case SET_CLOUDINARY:
+      return reducerCloudinary(state, action)
+    case SET_URLS:
+      return reducerUrls(state, action)
     default:
       return state
   }
@@ -192,6 +231,14 @@ const mapStateToProps = (state) => {
     encloseImageTitle: state.encloseImageTitle,
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
+    urls: {
+      host: state.urls.host,
+      items_api: state.urls.items_api
+    },
+    cloudinary: {
+      upload_preset: state.cloudinary.upload_preset,
+      upload_url: state.cloudinary.upload_url
+    },
     social: {
       facebook: state.social.facebook,
       twitter: state.social.twitter
@@ -242,6 +289,18 @@ const getFilteredPets = (searchTerm, pets, selectFilter) => {
     .map((pet) => pet)
 
   return filteredPets
+}
+
+const urlParams = ({location, petType}) => {
+  if (location !== '' && petType !== '') {
+    return { location: location, petType: petType }
+  } else if (location !== '' && petType === '') {
+    return { location: location }
+  } else if (location === '' && petType !== '') {
+    return { petType: petType }
+  } else {
+    return {}
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -335,8 +394,29 @@ const mapDispatchToProps = (dispatch) => {
     setValidationBackground (validationClass) {
       dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
     },
-    setSocialKeys (keyValues) {
-      dispatch({type: SET_SOCIAL_KEYS, value: keyValues})
+    setEnvs ({social, cloudinary, urls}) {
+      dispatch({type: SET_SOCIAL_KEYS, value: social})
+      dispatch({type: SET_CLOUDINARY, value: cloudinary})
+      dispatch({type: SET_URLS, value: urls})
+    },
+    getPets ({urls, filters}) {
+      $.ajax({
+        url: urls.items_api + '/api/items',
+        data: urlParams(filters),
+        cache: false,
+        type: 'GET',
+        success: function (response) {
+          const result = resultDecorated(response.data)
+          const activePagePets = result.slice(0, 6)
+
+          dispatch({type: SET_PETS, value: result})
+          dispatch({type: SET_FILTERED_PETS, value: result})
+          dispatch({type: SET_ACTIVE_PAGE_PETS, value: activePagePets})
+        },
+        error: function (xhr) {
+          console.log(xhr)
+        }
+      })
     }
   }
 }

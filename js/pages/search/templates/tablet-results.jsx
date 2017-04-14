@@ -14,8 +14,9 @@ const Search = React.createClass({
     setOwnerPhoneNumber: func.isRequired,
     setDescription: func.isRequired,
     setAlerts: func.isRequired,
-    searchTerm: string,
-    selectFilter: string,
+    searchTerm: string.isRequired,
+    selectFilter: string.isRequired,
+    urls: object.isRequired,
     activePagePets: arrayOf(object)
   },
   addPetRows: function (pets) {
@@ -59,6 +60,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
               />
               <ContactDetailsPanel
                 {...this.props.owner}
@@ -71,6 +73,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
               />
             </div>)
           )

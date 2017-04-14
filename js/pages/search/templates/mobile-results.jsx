@@ -16,6 +16,7 @@ const Search = React.createClass({
     setAlerts: func.isRequired,
     searchTerm: string,
     selectFilter: string,
+    urls: object.isRequired,
     activePagePets: arrayOf(object)
   },
   render () {
@@ -36,6 +37,7 @@ const Search = React.createClass({
                 setOwnerEmail={this.props.setOwnerEmail}
                 setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
                 setDescription={this.props.setDescription}
+                items_api={this.props.urls.items_api}
                 />
             </div>)
           )
