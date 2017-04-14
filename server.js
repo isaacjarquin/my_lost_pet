@@ -37,7 +37,7 @@ server.get('/api/envs', function (req, res) {
         },
         urls: {
           host: 'https://mylostpet.herokuapp.com/',
-          items_api: 'http://items-api.herokuapp.com'
+          items_api: 'https://items-api.herokuapp.com'
         }
       }
     ))
