@@ -265,4 +265,25 @@ describe('Store', () => {
 
     expect(state.filters.petType).to.deep.equal('dog')
   })
+
+  it('should handle setSocialKeys actions', () => {
+    const newSocialState = {facebook: '2323424242', twitter: '11111111'}
+    const state = rootReducer({facebook: '', twitter: ''}, {type: 'setSocialKeys', value: newSocialState})
+
+    expect(state.social).to.deep.equal(newSocialState)
+  })
+
+  it('should handle urls actions', () => {
+    const newUrlsState = {host: 'localhost', items_api: '/api/items'}
+    const state = rootReducer({host: '', items_api: ''}, {type: 'setUrls', value: newUrlsState})
+
+    expect(state.urls).to.deep.equal(newUrlsState)
+  })
+
+  it('should handle cloudinary actions', () => {
+    const newCloudinaryState = {upload_preset: '23423254352', upload_url: 'https://test.claudinay.uk'}
+    const state = rootReducer({upload_preset: '', upload_url: ''}, {type: 'setCloudinary', value: newCloudinaryState})
+
+    expect(state.cloudinary).to.deep.equal(newCloudinaryState)
+  })
 })
