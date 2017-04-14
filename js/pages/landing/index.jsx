@@ -1,5 +1,3 @@
-import { TwitterButton, FacebookButton } from 'react-social'
-
 const React = require('react')
 const { hashHistory } = require('react-router')
 const { Link } = require('react-router')
@@ -10,6 +8,7 @@ const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
+const TopNavigationBar = require('../../features/navigation/topNavigationBar')
 const $ = require('jquery')
 var MediaQuery = require('react-responsive')
 
@@ -56,23 +55,7 @@ class Landing extends React.Component {
 
     return (
       <div className='home-info'>
-        <ul className='w3-navbar w3-black w3-hide-small'>
-          <li className='w3-left'><a href='/'>Home<i /></a></li>
-          <li className='w3-right'>
-            <TwitterButton
-              url={url}
-              appId={this.props.social.twitter}
-              className={'fa fa-twitter my-social-icons'}
-              />
-          </li>
-          <li className='w3-right'>
-            <FacebookButton
-              url={url}
-              appId={this.props.social.facebook}
-              className={'fa fa-facebook my-social-icons'}
-              />
-          </li>
-        </ul>
+        <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
 

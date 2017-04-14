@@ -1,3 +1,5 @@
+/* eslint-env mocha */
+
 const { expect } = require('chai')
 const resultDecorated = require('../js/pages/landing/resultDecorated')
 

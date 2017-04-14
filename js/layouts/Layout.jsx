@@ -10,7 +10,9 @@ const { element, object } = React.PropTypes
 const Layout = React.createClass({
   propTypes: {
     children: element.isRequired,
-    location: object.isRequired
+    location: object.isRequired,
+    social: object.isRequired,
+    urls: object.isRequired
   },
   displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm, selectFilter, pets}) {
     if (location.pathname === '/') {
@@ -24,7 +26,9 @@ const Layout = React.createClass({
           searchTerm={searchTerm}
           selectFilter={selectFilter}
           pets={pets}
-              /></div>
+          social={this.props.social}
+          urls={this.props.urls}
+        /></div>
     }
   },
   displayFooter ({pathname}) {
