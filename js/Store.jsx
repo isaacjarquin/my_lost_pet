@@ -41,6 +41,7 @@ const {
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
 const reducerAlerts = require('../js/features/alerts/alertsReducer')
+const resultDecorated = require('../js/pages/landing/resultDecorated')
 
 const initialState = require('./InitialState')
 
@@ -289,6 +290,18 @@ const getFilteredPets = (searchTerm, pets, selectFilter) => {
   return filteredPets
 }
 
+const urlParams = ({location, petType}) => {
+  if (location !== '' && petType !== '') {
+    return { location: location, petType: petType }
+  } else if (location !== '' && petType === '') {
+    return { location: location }
+  } else if (location === '' && petType !== '') {
+    return { petType: petType }
+  } else {
+    return {}
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setSearchTerm (searchTerm, pets, selectFilter, activePage) {
@@ -380,14 +393,29 @@ const mapDispatchToProps = (dispatch) => {
     setValidationBackground (validationClass) {
       dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
     },
-    setSocialKeys (keyValues) {
-      dispatch({type: SET_SOCIAL_KEYS, value: keyValues})
-    },
-    setCloudinary (keys) {
-      dispatch({type: SET_CLOUDINARY, value: keys})
-    },
-    setUrls (urls) {
+    setEnvs ({social, cloudinary, urls}) {
+      dispatch({type: SET_SOCIAL_KEYS, value: social})
+      dispatch({type: SET_CLOUDINARY, value: cloudinary})
       dispatch({type: SET_URLS, value: urls})
+    },
+    getPets({urls, filters}) {
+      $.ajax({
+        url: urls.items_api + '/api/items',
+        data: urlParams(filters),
+        cache: false,
+        type: 'GET',
+        success: function (response) {
+          const result = resultDecorated(response.data)
+          const activePagePets = result.slice(0, 6)
+
+          dispatch({type: SET_PETS, value: result})
+          dispatch({type: SET_FILTERED_PETS, value: result})
+          dispatch({type: SET_ACTIVE_PAGE_PETS, value: activePagePets})
+        },
+        error: function (xhr) {
+          console.log(xhr)
+        }
+      })
     }
   }
 }
