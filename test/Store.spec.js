@@ -12,20 +12,20 @@ describe('Store', () => {
     encloseImageTitle: 'Adjuntar imagen',
     validationBackground: '',
     cloudinary: {
-      upload_preset: "",
-      upload_url: ""
+      upload_preset: '',
+      upload_url: ''
     },
     urls: {
-      host: "",
-      items_api: ""
+      host: '',
+      items_api: ''
     },
     filters: {
       location: '',
       petType: ''
     },
-    "social": {
-      "facebook": "",
-      "twitter": ""
+    'social': {
+      'facebook': '',
+      'twitter': ''
     },
     owner: {
       description: '',

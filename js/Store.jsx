@@ -110,10 +110,10 @@ const reducerSocialKeys = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      social: {
-        facebook: action.value.facebook,
-        twitter:  action.value.twitter
-      }
+    social: {
+      facebook: action.value.facebook,
+      twitter: action.value.twitter
+    }
   })
 
   return newState
@@ -123,10 +123,10 @@ const reducerCloudinary = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      cloudinary: {
-        upload_preset: action.value.upload_preset,
-        upload_url:  action.value.upload_url
-      }
+    cloudinary: {
+      upload_preset: action.value.upload_preset,
+      upload_url: action.value.upload_url
+    }
   })
 
   return newState
@@ -136,10 +136,10 @@ const reducerUrls = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      urls: {
-        host: action.value.host,
-        items_api:  action.value.items_api
-      }
+    urls: {
+      host: action.value.host,
+      items_api: action.value.items_api
+    }
   })
 
   return newState
@@ -398,7 +398,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_CLOUDINARY, value: cloudinary})
       dispatch({type: SET_URLS, value: urls})
     },
-    getPets({urls, filters}) {
+    getPets ({urls, filters}) {
       $.ajax({
         url: urls.items_api + '/api/items',
         data: urlParams(filters),

@@ -41,5 +41,4 @@ const resultDecorated = (itemsCollection) => {
   return newColection
 }
 
-
 module.exports = resultDecorated

@@ -38,13 +38,15 @@ class Landing extends React.Component {
     browserHistory.push('search')
     event.preventDefault
   }
-  componentDidMount() {
+  componentDidMount () {
     const props = this.props
 
     $.ajax({
-      url: '/api/envs', cache: false, type: 'GET',
+      url: '/api/envs',
+      cache: false,
+      type: 'GET',
       success: function (response) { props.setEnvs(JSON.parse(response)) },
-      error: function (xhr) {console.log(xhr)}
+      error: function (xhr) { console.log(xhr) }
     })
   }
   render () {

@@ -30816,7 +30816,9 @@
 	      var props = this.props;
 
 	      $.ajax({
-	        url: '/api/envs', cache: false, type: 'GET',
+	        url: '/api/envs',
+	        cache: false,
+	        type: 'GET',
 	        success: function success(response) {
 	          props.setEnvs(JSON.parse(response));
 	        },
