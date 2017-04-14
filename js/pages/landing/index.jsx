@@ -22,6 +22,7 @@ class Landing extends React.Component {
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
@@ -31,6 +32,11 @@ class Landing extends React.Component {
   }
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
+  }
+  handleSubmit (event) {
+    this.props.getPets(this.props)
+    browserHistory.push('search')
+    event.preventDefault
   }
   componentDidMount() {
     const props = this.props
@@ -85,7 +91,7 @@ class Landing extends React.Component {
               <MediaQuery minDeviceWidth={768}>
                 <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               </MediaQuery>
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
                 <select className='form-control' onChange={this.handlePetTypeFilter}>
                   <option disabled>Tipo de mascota</option>
@@ -94,10 +100,10 @@ class Landing extends React.Component {
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
+                <Link to='/search'>
+                  <h6><button type='submit' onClick={this.handleSubmit} className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
+                </Link>
               </form>
-              <Link to='/search'>
-                <h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
-              </Link>
             </div>
 
             <div className='looking-for-home'>

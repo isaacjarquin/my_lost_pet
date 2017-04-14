@@ -26,10 +26,6 @@ const Search = React.createClass({
   handlePageChange: function (pageNumber) {
     this.props.setActivePage(pageNumber)
   },
-  componentDidMount() {
-    const props = this.props
-    props.getPets(props)
-  },
   render () {
     return (
       <div className='container'>

@@ -30784,6 +30784,7 @@
 	    _this.handleSearchTermEvent = _this.handleSearchTermEvent.bind(_this);
 	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
+	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
 
@@ -30801,6 +30802,13 @@
 	    key: 'handlePetTypeFilter',
 	    value: function handlePetTypeFilter(event) {
 	      this.props.setPetTypeFilter(event.target.value);
+	    }
+	  }, {
+	    key: 'handleSubmit',
+	    value: function handleSubmit(event) {
+	      this.props.getPets(this.props);
+	      browserHistory.push('search');
+	      event.preventDefault;
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -30924,7 +30932,7 @@
 	              ),
 	              React.createElement(
 	                'form',
-	                null,
+	                { onSubmit: this.handleSubmit },
 	                React.createElement(
 	                  'p',
 	                  null,
@@ -30946,18 +30954,18 @@
 	                      option.type
 	                    );
 	                  })
-	                )
-	              ),
-	              React.createElement(
-	                Link,
-	                { to: '/search' },
+	                ),
 	                React.createElement(
-	                  'h6',
-	                  null,
+	                  Link,
+	                  { to: '/search' },
 	                  React.createElement(
-	                    'button',
-	                    { className: 'w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off' },
-	                    'Buscar'
+	                    'h6',
+	                    null,
+	                    React.createElement(
+	                      'button',
+	                      { type: 'submit', onClick: this.handleSubmit, className: 'w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off' },
+	                      'Buscar'
+	                    )
 	                  )
 	                )
 	              )
@@ -45574,10 +45582,6 @@
 	  },
 	  handlePageChange: function handlePageChange(pageNumber) {
 	    this.props.setActivePage(pageNumber);
-	  },
-	  componentDidMount: function componentDidMount() {
-	    var props = this.props;
-	    props.getPets(props);
 	  },
 	  render: function render() {
 	    return React.createElement(
