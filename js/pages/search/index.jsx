@@ -6,6 +6,7 @@ var MediaQuery = require('react-responsive')
 const DesktopTemplateResults = require('./templates/desktop-results.jsx')
 const TabletTemplateResults = require('./templates/tablet-results.jsx')
 const MobileTemplateResults = require('./templates/mobile-results.jsx')
+const $ = require('jquery')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -27,7 +28,20 @@ const Search = React.createClass({
     this.props.setActivePage(pageNumber)
   },
   componentDidMount: function () {
-    this.props.getPets(this.props)
+    const props = this.props
+
+    $.ajax({
+      url: '/api/envs',
+      cache: true,
+      type: 'GET',
+      success: function (response) {
+        const newProps = {}
+        Object.assign(newProps, props, {urls: JSON.parse(response).urls})
+        props.setEnvs(JSON.parse(response))
+        props.getPets(newProps)
+      },
+      error: function (xhr) { console.log(xhr) }
+    })
   },
   render () {
     return (

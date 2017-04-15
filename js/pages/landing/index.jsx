@@ -42,7 +42,7 @@ class Landing extends React.Component {
 
     $.ajax({
       url: '/api/envs',
-      cache: false,
+      cache: true,
       type: 'GET',
       success: function (response) { props.setEnvs(JSON.parse(response)) },
       error: function (xhr) { console.log(xhr) }
