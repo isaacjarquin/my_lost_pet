@@ -36,7 +36,7 @@ const Search = React.createClass({
       type: 'GET',
       success: function (response) {
         const newProps = {}
-        Object.assign(newProps, props, { urls: JSON.parse(response).urls} )
+        Object.assign(newProps, props, { urls: JSON.parse(response).urls})
         props.setEnvs(JSON.parse(response))
         props.getPets(newProps)
       },
