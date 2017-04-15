@@ -87,7 +87,7 @@ class Landing extends React.Component {
                 </select>
               </form>
               <Link to='/search'>
-                <h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
+                <h6><button className='w3-btn w3-white w3-padding-medium w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
               </Link>
             </div>
 

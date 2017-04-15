@@ -90,13 +90,13 @@ select {
   header .w3-image {
     height: 390px; }
   header .w3-display-left {
-    top: 71%; } }
+    top: 73%; } }
 
 @media (min-width: 768px) {
   header .w3-image {
     height: 600px; }
   header .w3-display-left {
-    top: 73%; } }
+    top: 74%; } }
 
 .w3-navbar {
   opacity: 0.9; }
