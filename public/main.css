@@ -302,8 +302,12 @@ p.form-introduction {
   .small-nav-menu ul.w3-navbar.w3-black.w3-hide-small li.active {
     opacity: 0.50; }
 
+.lost button {
+  border-radius: 4px; }
+
 .pet-filter input {
-  height: 38px; }
+  height: 38px;
+  border-radius: 4px; }
 
 .pet-filter .pet-type select.form-control {
   height: 38px;
@@ -383,6 +387,8 @@ p.form-introduction {
   width: 100%;
   padding-bottom: 10px;
   padding-top: 35px; }
+  .panel-description_iteraction button {
+    border-radius: 4px; }
 
 .panel-description_content {
   line-height: 2;
