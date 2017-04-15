@@ -41207,7 +41207,7 @@
 
 	      $.ajax({
 	        url: '/api/envs',
-	        cache: false,
+	        cache: true,
 	        type: 'GET',
 	        success: function success(response) {
 	          props.setEnvs(JSON.parse(response));
@@ -45578,9 +45578,10 @@
 	var DesktopTemplateResults = __webpack_require__(315);
 	var TabletTemplateResults = __webpack_require__(321);
 	var MobileTemplateResults = __webpack_require__(322);
+	var $ = __webpack_require__(216);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(323);
+	  __webpack_require__(333);
 	}
 
 	var Search = React.createClass({
@@ -45601,7 +45602,22 @@
 	    this.props.setActivePage(pageNumber);
 	  },
 	  componentDidMount: function componentDidMount() {
-	    this.props.getPets(this.props);
+	    var props = this.props;
+
+	    $.ajax({
+	      url: '/api/envs',
+	      cache: true,
+	      type: 'GET',
+	      success: function success(response) {
+	        var newProps = {};
+	        Object.assign(newProps, props, { urls: JSON.parse(response).urls });
+	        props.setEnvs(JSON.parse(response));
+	        props.getPets(newProps);
+	      },
+	      error: function error(xhr) {
+	        console.log(xhr);
+	      }
+	    });
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -47210,7 +47226,17 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 323 */
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */,
+/* 331 */,
+/* 332 */,
+/* 333 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
