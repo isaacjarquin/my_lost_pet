@@ -1,10 +1,16 @@
 const React = require('react')
+const { string } = React.PropTypes
+import { TwitterButton, FacebookButton } from 'react-social'
 
 if (process.env.WEBPACK_BUILD) {
   require('./mobileHeader.scss')
 }
 
 const MobileHeader = React.createClass({
+  propTypes: {
+    facebook: string.isRequired,
+    twitter: string.isRequired
+  },
   render () {
     return (
       <nav className='movile-header navbar navbar-inverse w3-black'>
@@ -19,8 +25,21 @@ const MobileHeader = React.createClass({
           </div>
           <div className='collapse navbar-collapse mobile-social' id='myTopNavbar'>
             <ul className='nav navbar-nav navbar-right'>
-              <li><a href='#'><i className='fa fa-facebook-official' />Facebook</a></li>
-              <li><a href='#'><i className='fa fa-twitter' />Twitter</a></li>
+              <li>
+                <FacebookButton
+                  url={this.hostUrl}
+                  appId={this.props.facebook}
+                  className={'fa fa-facebook mobile-social-button'}
+                  ><span className='mobile-social-button_text'>Facebook</span></FacebookButton>
+              </li>
+              <li>
+                <TwitterButton
+                  url={this.hostUrl}
+                  appId={this.props.twitter}
+                  className={'fa fa-twitter mobile-social-button'}
+                  ><span className='mobile-social-button_text'>Twitter</span></TwitterButton>
+              </li>
+
             </ul>
           </div>
         </div>

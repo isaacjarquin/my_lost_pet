@@ -34,7 +34,7 @@ const Header = React.createClass({
   render () {
     return (
       <header className='header'>
-        <MediaQuery maxDeviceWidth={736}><MobileHeader /></MediaQuery>
+        <MediaQuery maxDeviceWidth={736}><MobileHeader {...this.props.social} hostUrl={this.props.urls.host} /></MediaQuery>
         <TopNavigationBar {...this.props.social} hostUrl={this.props.urls.host} />
         <Jumbotron />
         {this.displayNavbar(this.props)}

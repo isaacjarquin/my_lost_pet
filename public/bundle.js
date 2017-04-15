@@ -21112,7 +21112,7 @@
 	var Jumbotron = __webpack_require__(174);
 	var Navbar = __webpack_require__(175);
 	var MobileHeader = __webpack_require__(177);
-	var TopNavigationBar = __webpack_require__(180);
+	var TopNavigationBar = __webpack_require__(181);
 	var _React$PropTypes = React.PropTypes,
 	    string = _React$PropTypes.string,
 	    func = _React$PropTypes.func,
@@ -21161,7 +21161,7 @@
 	      React.createElement(
 	        MediaQuery,
 	        { maxDeviceWidth: 736 },
-	        React.createElement(MobileHeader, null)
+	        React.createElement(MobileHeader, _extends({}, this.props.social, { hostUrl: this.props.urls.host }))
 	      ),
 	      React.createElement(TopNavigationBar, _extends({}, this.props.social, { hostUrl: this.props.urls.host })),
 	      React.createElement(Jumbotron, null),
@@ -21344,14 +21344,23 @@
 
 	'use strict';
 
+	var _reactSocial = __webpack_require__(178);
+
 	var React = __webpack_require__(3);
+	var string = React.PropTypes.string;
+
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(178);
+	  __webpack_require__(179);
 	}
 
 	var MobileHeader = React.createClass({
 	  displayName: 'MobileHeader',
+
+	  propTypes: {
+	    facebook: string.isRequired,
+	    twitter: string.isRequired
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'nav',
@@ -21390,20 +21399,34 @@
 	              'li',
 	              null,
 	              React.createElement(
-	                'a',
-	                { href: '#' },
-	                React.createElement('i', { className: 'fa fa-facebook-official' }),
-	                'Facebook'
+	                _reactSocial.FacebookButton,
+	                {
+	                  url: this.hostUrl,
+	                  appId: this.props.facebook,
+	                  className: 'fa fa-facebook mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'Facebook'
+	                )
 	              )
 	            ),
 	            React.createElement(
 	              'li',
 	              null,
 	              React.createElement(
-	                'a',
-	                { href: '#' },
-	                React.createElement('i', { className: 'fa fa-twitter' }),
-	                'Twitter'
+	                _reactSocial.TwitterButton,
+	                {
+	                  url: this.hostUrl,
+	                  appId: this.props.twitter,
+	                  className: 'fa fa-twitter mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'Twitter'
+	                )
 	              )
 	            )
 	          )
@@ -21417,70 +21440,6 @@
 
 /***/ },
 /* 178 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 179 */,
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _reactSocial = __webpack_require__(181);
-
-	var React = __webpack_require__(3);
-	var string = React.PropTypes.string;
-
-
-	var TopNavigationBar = React.createClass({
-	  displayName: 'TopNavigationBar',
-
-	  propTypes: {
-	    twitter: string.isRequired,
-	    facebook: string.isRequired
-	  },
-	  render: function render() {
-	    return React.createElement(
-	      'ul',
-	      { className: 'w3-navbar w3-black w3-hide-small' },
-	      React.createElement(
-	        'li',
-	        { className: 'w3-left' },
-	        React.createElement(
-	          'a',
-	          { href: '/' },
-	          'Home',
-	          React.createElement('i', null)
-	        )
-	      ),
-	      React.createElement(
-	        'li',
-	        { className: 'w3-right' },
-	        React.createElement(_reactSocial.TwitterButton, {
-	          url: this.hostUrl,
-	          appId: this.props.twitter,
-	          className: 'fa fa-twitter my-social-icons'
-	        })
-	      ),
-	      React.createElement(
-	        'li',
-	        { className: 'w3-right' },
-	        React.createElement(_reactSocial.FacebookButton, {
-	          url: this.hostUrl,
-	          appId: this.props.facebook,
-	          className: 'fa fa-facebook my-social-icons'
-	        })
-	      )
-	    );
-	  }
-	});
-
-	module.exports = TopNavigationBar;
-
-/***/ },
-/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;"use strict";
@@ -21998,6 +21957,70 @@
 
 	  return exports;
 	});
+
+/***/ },
+/* 179 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 180 */,
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactSocial = __webpack_require__(178);
+
+	var React = __webpack_require__(3);
+	var string = React.PropTypes.string;
+
+
+	var TopNavigationBar = React.createClass({
+	  displayName: 'TopNavigationBar',
+
+	  propTypes: {
+	    twitter: string.isRequired,
+	    facebook: string.isRequired
+	  },
+	  render: function render() {
+	    return React.createElement(
+	      'ul',
+	      { className: 'w3-navbar w3-black w3-hide-small' },
+	      React.createElement(
+	        'li',
+	        { className: 'w3-left' },
+	        React.createElement(
+	          'a',
+	          { href: '/' },
+	          'Home',
+	          React.createElement('i', null)
+	        )
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.TwitterButton, {
+	          url: this.hostUrl,
+	          appId: this.props.twitter,
+	          className: 'fa fa-twitter my-social-icons'
+	        })
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.FacebookButton, {
+	          url: this.hostUrl,
+	          appId: this.props.facebook,
+	          className: 'fa fa-facebook my-social-icons'
+	        })
+	      )
+	    );
+	  }
+	});
+
+	module.exports = TopNavigationBar;
 
 /***/ },
 /* 182 */
@@ -41156,7 +41179,7 @@
 	var AboutUs = __webpack_require__(293);
 	var Footer = __webpack_require__(184);
 	var NewPetFound = __webpack_require__(294);
-	var TopNavigationBar = __webpack_require__(180);
+	var TopNavigationBar = __webpack_require__(181);
 	var $ = __webpack_require__(216);
 	var MediaQuery = __webpack_require__(182);
 

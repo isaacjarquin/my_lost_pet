@@ -5,6 +5,12 @@
     padding: 0; }
   .navbar-toggle {
     margin-right: 0; }
+  .mobile-social-button {
+    margin: 8px; }
+  .mobile-social-button_text {
+    margin-left: 8px;
+    font-family: sans-serif;
+    font-weight: bold; }
   .movile-header .fa {
     margin-right: 10px;
     color: white; }
