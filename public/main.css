@@ -13,7 +13,10 @@
     font-weight: bold; }
   .movile-header .fa {
     margin-right: 10px;
-    color: white; }
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1em; }
   .movile-header .navbar-toggle {
     margin-right: 0; }
   .movile-header ul {
