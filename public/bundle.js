@@ -45581,7 +45581,7 @@
 	var $ = __webpack_require__(216);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(333);
+	  __webpack_require__(323);
 	}
 
 	var Search = React.createClass({
@@ -47226,17 +47226,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 323 */,
-/* 324 */,
-/* 325 */,
-/* 326 */,
-/* 327 */,
-/* 328 */,
-/* 329 */,
-/* 330 */,
-/* 331 */,
-/* 332 */,
-/* 333 */
+/* 323 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
