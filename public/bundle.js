@@ -21430,6 +21430,22 @@
 	                  'Twitter'
 	                )
 	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                _reactSocial.RedditButton,
+	                {
+	                  url: this.hostUrl,
+	                  className: 'fa fa-reddit mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'Reddit'
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -22016,6 +22032,14 @@
 	          url: this.hostUrl,
 	          appId: this.props.facebook,
 	          className: 'fa fa-facebook my-social-icons'
+	        })
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.RedditButton, {
+	          url: this.hostUrl,
+	          className: 'fa fa-reddit my-social-icons'
 	        })
 	      )
 	    );

@@ -1,4 +1,4 @@
-import { TwitterButton, FacebookButton } from 'react-social'
+import { TwitterButton, FacebookButton, RedditButton } from 'react-social'
 
 const React = require('react')
 const { string } = React.PropTypes
@@ -24,6 +24,12 @@ const TopNavigationBar = React.createClass({
             url={this.hostUrl}
             appId={this.props.facebook}
             className={'fa fa-facebook my-social-icons'}
+            />
+        </li>
+        <li className='w3-right'>
+          <RedditButton
+            url={this.hostUrl}
+            className={'fa fa-reddit my-social-icons'}
             />
         </li>
       </ul>
