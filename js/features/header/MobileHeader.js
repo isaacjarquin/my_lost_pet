@@ -1,6 +1,6 @@
 const React = require('react')
 const { string } = React.PropTypes
-import { TwitterButton, FacebookButton, RedditButton } from 'react-social'
+import { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedInButton, EmailButton } from 'react-social'
 
 if (process.env.WEBPACK_BUILD) {
   require('./mobileHeader.scss')
@@ -44,6 +44,24 @@ const MobileHeader = React.createClass({
                   url={this.hostUrl}
                   className={'fa fa-reddit mobile-social-button'}
                   ><span className='mobile-social-button_text'>Reddit</span></RedditButton>
+              </li>
+              <li>
+                <GooglePlusButton
+                  url={this.hostUrl}
+                  className={'fa fa-google mobile-social-button'}
+                  ><span className='mobile-social-button_text'>Google Plus</span></GooglePlusButton>
+              </li>
+              <li>
+                <LinkedInButton
+                  url={this.hostUrl}
+                  className={'fa fa-linkedin mobile-social-button'}
+                  ><span className='mobile-social-button_text'>LinkedIn</span></LinkedInButton>
+              </li>
+              <li>
+                <EmailButton
+                  url={this.hostUrl}
+                  className={'fa fa-envelope-o mobile-social-button'}
+                  ><span className='mobile-social-button_text'>Email</span></EmailButton>
               </li>
             </ul>
           </div>

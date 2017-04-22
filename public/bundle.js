@@ -21446,6 +21446,54 @@
 	                  'Reddit'
 	                )
 	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                _reactSocial.GooglePlusButton,
+	                {
+	                  url: this.hostUrl,
+	                  className: 'fa fa-google mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'Google Plus'
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                _reactSocial.LinkedInButton,
+	                {
+	                  url: this.hostUrl,
+	                  className: 'fa fa-linkedin mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'LinkedIn'
+	                )
+	              )
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(
+	                _reactSocial.EmailButton,
+	                {
+	                  url: this.hostUrl,
+	                  className: 'fa fa-envelope-o mobile-social-button'
+	                },
+	                React.createElement(
+	                  'span',
+	                  { className: 'mobile-social-button_text' },
+	                  'Email'
+	                )
+	              )
 	            )
 	          )
 	        )
@@ -22040,6 +22088,30 @@
 	        React.createElement(_reactSocial.RedditButton, {
 	          url: this.hostUrl,
 	          className: 'fa fa-reddit my-social-icons'
+	        })
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.GooglePlusButton, {
+	          url: this.hostUrl,
+	          className: 'fa fa-google my-social-icons'
+	        })
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.LinkedInButton, {
+	          url: this.hostUrl,
+	          className: 'fa fa-linkedin my-social-icons'
+	        })
+	      ),
+	      React.createElement(
+	        'li',
+	        { className: 'w3-right' },
+	        React.createElement(_reactSocial.EmailButton, {
+	          url: this.hostUrl,
+	          className: 'fa fa-envelope-o my-social-icons'
 	        })
 	      )
 	    );
