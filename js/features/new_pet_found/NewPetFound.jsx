@@ -2,6 +2,10 @@ import 'whatwg-fetch'
 import Dropzone from 'react-dropzone'
 import request from 'superagent'
 
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+
+
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
@@ -89,6 +93,15 @@ class NewPetFound extends React.Component {
     this.onImageDrop = this.onImageDrop.bind(this)
     this.onOpenClick = this.onOpenClick.bind(this)
     this.handleBreed = this.handleBreed.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+
+    this.state = { startDate: moment() }
+  }
+
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    })
   }
 
   onImageDrop (acceptedFiles) {
@@ -212,6 +225,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raca (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
             <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
+            <DatePicker dateFormat="DD-MM-YYYY" selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
             <div className={'panel panel-default ' + this.props.validationBackground}>
