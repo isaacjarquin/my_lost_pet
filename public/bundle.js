@@ -42262,7 +42262,6 @@
 	    _this.handleFounderEmail = _this.handleFounderEmail.bind(_this);
 	    _this.handlePetType = _this.handlePetType.bind(_this);
 	    _this.handlePetSize = _this.handlePetSize.bind(_this);
-	    _this.handleFoundDate = _this.handleFoundDate.bind(_this);
 	    _this.handlePetLocation = _this.handlePetLocation.bind(_this);
 	    _this.handlePetDescription = _this.handlePetDescription.bind(_this);
 	    _this.handleImageUrl = _this.handleImageUrl.bind(_this);
@@ -42280,9 +42279,9 @@
 	  _createClass(NewPetFound, [{
 	    key: 'handleChange',
 	    value: function handleChange(date) {
-	      this.setState({
-	        startDate: date
-	      });
+	      this.setState({ startDate: date });
+
+	      this.props.setPetFoundDate((0, _moment2.default)(date).format('DD-MM-YYYY'));
 	    }
 	  }, {
 	    key: 'onImageDrop',
@@ -42315,11 +42314,6 @@
 	    key: 'handlePetSize',
 	    value: function handlePetSize(event) {
 	      this.props.setPetSize(event.target.value);
-	    }
-	  }, {
-	    key: 'handleFoundDate',
-	    value: function handleFoundDate(event) {
-	      this.props.setPetFoundDate(event.target.value);
 	    }
 	  }, {
 	    key: 'handlePetLocation',
@@ -42470,11 +42464,6 @@
 	              'p',
 	              null,
 	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)', required: true })
-	            ),
-	            React.createElement(
-	              'p',
-	              null,
-	              React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)', required: true })
 	            ),
 	            React.createElement(_reactDatepicker2.default, { dateFormat: 'DD-MM-YYYY', selected: this.state.startDate, onChange: this.handleChange, className: 'w3-input w3-border' }),
 	            React.createElement(
