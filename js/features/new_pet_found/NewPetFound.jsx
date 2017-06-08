@@ -100,7 +100,7 @@ class NewPetFound extends React.Component {
   handleChange(date) {
     this.setState({ startDate: date })
 
-    this.props.setPetFoundDate(moment(date).format('DD-MM-YYYY'))
+    this.props.setPetFoundDate(moment(date).format('YYYY-MM-DD'))
   }
 
   onImageDrop (acceptedFiles) {

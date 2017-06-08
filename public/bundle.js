@@ -42281,7 +42281,7 @@
 	    value: function handleChange(date) {
 	      this.setState({ startDate: date });
 
-	      this.props.setPetFoundDate((0, _moment2.default)(date).format('DD-MM-YYYY'));
+	      this.props.setPetFoundDate((0, _moment2.default)(date).format('YYYY-MM-DD'));
 	    }
 	  }, {
 	    key: 'onImageDrop',
