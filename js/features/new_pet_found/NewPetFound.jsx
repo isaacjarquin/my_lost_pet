@@ -226,10 +226,10 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
             <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raca (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
-            <MediaQuery maxDeviceWidth={736}>
+            <MediaQuery maxDeviceWidth={1200}>
               <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
             </MediaQuery>
-            <MediaQuery minDeviceWidth={768}>
+            <MediaQuery minDeviceWidth={1200}>
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
             <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>

@@ -42474,7 +42474,7 @@
 	            ),
 	            React.createElement(
 	              MediaQuery,
-	              { maxDeviceWidth: 736 },
+	              { maxDeviceWidth: 1200 },
 	              React.createElement(
 	                'p',
 	                null,
@@ -42483,7 +42483,7 @@
 	            ),
 	            React.createElement(
 	              MediaQuery,
-	              { minDeviceWidth: 768 },
+	              { minDeviceWidth: 1200 },
 	              React.createElement(_reactDatepicker2.default, { dateFormat: 'DD-MM-YYYY', selected: this.state.startDate, onChange: this.handleChange, className: 'w3-input w3-border' })
 	            ),
 	            React.createElement(
