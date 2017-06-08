@@ -1,6 +1,7 @@
+import { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedInButton, EmailButton } from 'react-social'
+
 const React = require('react')
 const { string } = React.PropTypes
-import { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedInButton, EmailButton } from 'react-social'
 
 if (process.env.WEBPACK_BUILD) {
   require('./mobileHeader.scss')
