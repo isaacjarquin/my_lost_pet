@@ -42180,8 +42180,9 @@
 	var React = __webpack_require__(3);
 	var Alerts = __webpack_require__(290);
 	var DogLoader = __webpack_require__(425);
-
 	var $ = __webpack_require__(216);
+
+	var MediaQuery = __webpack_require__(182);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(427);
@@ -42262,6 +42263,7 @@
 	    _this.handleFounderEmail = _this.handleFounderEmail.bind(_this);
 	    _this.handlePetType = _this.handlePetType.bind(_this);
 	    _this.handlePetSize = _this.handlePetSize.bind(_this);
+	    _this.handleFoundDate = _this.handleFoundDate.bind(_this);
 	    _this.handlePetLocation = _this.handlePetLocation.bind(_this);
 	    _this.handlePetDescription = _this.handlePetDescription.bind(_this);
 	    _this.handleImageUrl = _this.handleImageUrl.bind(_this);
@@ -42314,6 +42316,11 @@
 	    key: 'handlePetSize',
 	    value: function handlePetSize(event) {
 	      this.props.setPetSize(event.target.value);
+	    }
+	  }, {
+	    key: 'handleFoundDate',
+	    value: function handleFoundDate(event) {
+	      this.props.setPetFoundDate(event.target.value);
 	    }
 	  }, {
 	    key: 'handlePetLocation',
@@ -42465,7 +42472,20 @@
 	              null,
 	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)', required: true })
 	            ),
-	            React.createElement(_reactDatepicker2.default, { dateFormat: 'DD-MM-YYYY', selected: this.state.startDate, onChange: this.handleChange, className: 'w3-input w3-border' }),
+	            React.createElement(
+	              MediaQuery,
+	              { maxDeviceWidth: 1200 },
+	              React.createElement(
+	                'p',
+	                null,
+	                React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)', required: true })
+	              )
+	            ),
+	            React.createElement(
+	              MediaQuery,
+	              { minDeviceWidth: 1200 },
+	              React.createElement(_reactDatepicker2.default, { dateFormat: 'DD-MM-YYYY', selected: this.state.startDate, onChange: this.handleChange, className: 'w3-input w3-border' })
+	            ),
 	            React.createElement(
 	              'p',
 	              null,

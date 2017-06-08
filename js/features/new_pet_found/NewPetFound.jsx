@@ -8,8 +8,9 @@ import moment from 'moment'
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
-
 const $ = require('jquery')
+
+var MediaQuery = require('react-responsive')
 
 if (process.env.WEBPACK_BUILD) {
   require('./newPetFound.scss')
@@ -83,6 +84,7 @@ class NewPetFound extends React.Component {
     this.handleFounderEmail = this.handleFounderEmail.bind(this)
     this.handlePetType = this.handlePetType.bind(this)
     this.handlePetSize = this.handlePetSize.bind(this)
+    this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
     this.handlePetDescription = this.handlePetDescription.bind(this)
     this.handleImageUrl = this.handleImageUrl.bind(this)
@@ -122,6 +124,10 @@ class NewPetFound extends React.Component {
   }
   handlePetSize (event) {
     this.props.setPetSize(event.target.value)
+  }
+
+  handleFoundDate (event) {
+    this.props.setPetFoundDate(event.target.value)
   }
 
   handlePetLocation (event) {
@@ -220,7 +226,12 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
             <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raca (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
-            <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
+            <MediaQuery maxDeviceWidth={1200}>
+              <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
+            </MediaQuery>
+            <MediaQuery minDeviceWidth={1200}>
+              <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
+            </MediaQuery>
             <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
             <div className={'panel panel-default ' + this.props.validationBackground}>
