@@ -661,6 +661,8 @@
 	'use strict';
 	/* eslint-disable no-unused-vars */
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var getOwnPropertySymbols = Object.getOwnPropertySymbols;
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
@@ -705,7 +707,7 @@
 			'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
 				test3[letter] = letter;
 			});
-			if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+			if (Object.keys(_extends({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
 				return false;
 			}
 
@@ -22846,6 +22848,8 @@
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var redux = __webpack_require__(187);
 	var reactRedux = __webpack_require__(207);
 	var $ = __webpack_require__(216);
@@ -22926,7 +22930,7 @@
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pets: action.value,
 	    totalNumberOfPets: action.value.length
 	  });
@@ -22937,7 +22941,7 @@
 	var reducerTotalNumberOfPets = function reducerTotalNumberOfPets(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    totalNumberOfPets: action.value.length
 	  });
 
@@ -22947,7 +22951,7 @@
 	var reducerActivePagePets = function reducerActivePagePets(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, { activePagePets: action.value });
+	  _extends(newState, state, { activePagePets: action.value });
 
 	  return newState;
 	};
@@ -22955,7 +22959,7 @@
 	var reducerSocialKeys = function reducerSocialKeys(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    social: {
 	      facebook: action.value.facebook,
 	      twitter: action.value.twitter
@@ -22968,7 +22972,7 @@
 	var reducerCloudinary = function reducerCloudinary(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    cloudinary: {
 	      upload_preset: action.value.upload_preset,
 	      upload_url: action.value.upload_url
@@ -22981,7 +22985,7 @@
 	var reducerUrls = function reducerUrls(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    urls: {
 	      host: action.value.host,
 	      items_api: action.value.items_api
@@ -34920,9 +34924,11 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerPetFounderName = function reducerPetFounderName(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: action.value,
 	      founderEmail: state.pet.founderEmail,
@@ -34941,7 +34947,7 @@
 
 	var reducerPetFounderEmail = function reducerPetFounderEmail(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: action.value,
@@ -34960,7 +34966,7 @@
 
 	var reducerPetType = function reducerPetType(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -34979,7 +34985,7 @@
 
 	var reducerBreed = function reducerBreed(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -34998,7 +35004,7 @@
 
 	var reducerPetSize = function reducerPetSize(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -35017,7 +35023,7 @@
 
 	var reducerPetFoundDate = function reducerPetFoundDate(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -35036,7 +35042,7 @@
 
 	var reducerPetLocation = function reducerPetLocation(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -35055,7 +35061,7 @@
 
 	var reducerPetImages = function reducerPetImages(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -35074,7 +35080,7 @@
 
 	var reducerPetDescription = function reducerPetDescription(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    pet: {
 	      founderName: state.pet.founderName,
 	      founderEmail: state.pet.founderEmail,
@@ -35094,7 +35100,7 @@
 	var reducerValidationBackground = function reducerValidationBackground(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    validationBackground: action.value
 	  });
 
@@ -35104,7 +35110,7 @@
 	var reducerEncloseImageTitle = function reducerEncloseImageTitle(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    encloseImageTitle: action.value
 	  });
 
@@ -35131,9 +35137,11 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerOwnerName = function reducerOwnerName(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    owner: {
 	      name: action.value,
 	      email: state.owner.email,
@@ -35146,7 +35154,7 @@
 
 	var reducerOwnerEmail = function reducerOwnerEmail(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    owner: {
 	      name: state.owner.name,
 	      email: action.value,
@@ -35159,7 +35167,7 @@
 
 	var reducerOwnerPhoneNumber = function reducerOwnerPhoneNumber(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    owner: {
 	      name: state.owner.name,
 	      email: state.owner.email,
@@ -35172,7 +35180,7 @@
 
 	var reducerDescription = function reducerDescription(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    owner: {
 	      name: state.owner.name,
 	      email: state.owner.email,
@@ -35196,21 +35204,23 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerSearchTerm = function reducerSearchTerm(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, { searchTerm: action.value });
+	  _extends(newState, state, { searchTerm: action.value });
 	  return newState;
 	};
 
 	var reducerSelectFilter = function reducerSelectFilter(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, { selectFilter: action.value });
+	  _extends(newState, state, { selectFilter: action.value });
 	  return newState;
 	};
 
 	var reducerFilteredPets = function reducerFilteredPets(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, { filteredPets: action.value });
+	  _extends(newState, state, { filteredPets: action.value });
 	  return newState;
 	};
 
@@ -35222,9 +35232,11 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerContactUsName = function reducerContactUsName(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    contactUs: {
 	      name: action.value,
 	      email: state.contactUs.email,
@@ -35236,7 +35248,7 @@
 
 	var reducerContactUsEmail = function reducerContactUsEmail(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    contactUs: {
 	      name: state.contactUs.name,
 	      email: action.value,
@@ -35248,7 +35260,7 @@
 
 	var reducerContactUsMessage = function reducerContactUsMessage(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    contactUs: {
 	      name: state.contactUs.name,
 	      email: state.contactUs.email,
@@ -35270,10 +35282,12 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerLocationFilter = function reducerLocationFilter(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    filters: {
 	      location: action.value,
 	      petType: state.filters.petType
@@ -35286,7 +35300,7 @@
 	var reducerPetTypeFilter = function reducerPetTypeFilter(state, action) {
 	  var newState = {};
 
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    filters: {
 	      location: state.filters.location,
 	      petType: action.value
@@ -35307,9 +35321,11 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var reducerActivePage = function reducerActivePage(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    activePage: action.value,
 	    activePagePets: pageItems(action.value, state.pageSize, state.filteredPets)
 	  });
@@ -35332,9 +35348,11 @@
 
 	"use strict";
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var alertsReducer = function alertsReducer(state, action) {
 	  var newState = {};
-	  Object.assign(newState, state, {
+	  _extends(newState, state, {
 	    alert: {
 	      type: action.value.alert.type,
 	      message: action.value.alert.message,
@@ -63710,6 +63728,8 @@
 
 	'use strict';
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var React = __webpack_require__(3);
 	var _React$PropTypes = React.PropTypes,
 	    object = _React$PropTypes.object,
@@ -63758,7 +63778,7 @@
 	      type: 'GET',
 	      success: function success(response) {
 	        var newProps = {};
-	        Object.assign(newProps, props, { urls: JSON.parse(response).urls });
+	        _extends(newProps, props, { urls: JSON.parse(response).urls });
 	        props.setEnvs(JSON.parse(response));
 	        props.getPets(newProps);
 	      },
