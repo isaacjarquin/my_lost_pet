@@ -22,6 +22,7 @@ class Landing extends React.Component {
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
+    this.handleComunidades = this.handleComunidades.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
@@ -33,18 +34,38 @@ class Landing extends React.Component {
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
   }
+  handleComunidades (event) {
+    const value = event.target.value
+
+    this.props.comunidades.map((comunidad) => {
+      if (comunidad.value === event.target.value) {
+        this.props.setProvincias(comunidad.provincias)
+      }
+    })
+  }
   handleSubmit (event) {
     hashHistory.push('search')
     event.preventDefault()
   }
   componentDidMount () {
     const props = this.props
+    let comunidades = []
 
     $.ajax({
       url: '/api/envs',
       cache: true,
       type: 'GET',
       success: function (response) { props.setEnvs(JSON.parse(response)) },
+      error: function (xhr) { console.log(xhr) }
+    })
+
+    $.ajax({
+      url: '/api/comunidades',
+      cache: true,
+      type: 'GET',
+      success: function (response) {
+        props.setComunidades(JSON.parse(response))
+      },
       error: function (xhr) { console.log(xhr) }
     })
   }
@@ -78,6 +99,23 @@ class Landing extends React.Component {
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
                 <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
+
+                <select className='form-control' onChange={this.handleComunidades}>
+                  <option disabled>Comunidades Autonomas</option>
+                  <option value='default-value' key={0} />
+                  {this.props.comunidades.map((option) => (
+                    <option value={option.value} key={option.id}>{option.value}</option>
+                  ))}
+                </select>
+
+                <select className='form-control' onChange={this.handleComunidades}>
+                  <option disabled>Provincias</option>
+                  <option value='default-value' key={0} />
+                  {this.props.provincias.map((option) => (
+                    <option value={option.value} key={option.id}>{option.value}</option>
+                  ))}
+                </select>
+
                 <select className='form-control' onChange={this.handlePetTypeFilter}>
                   <option disabled>Tipo de mascota</option>
                   <option value='default-value' key={0} />
@@ -97,7 +135,7 @@ class Landing extends React.Component {
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Actualmente en' /></p>
                 <Dropdown
                   dropDownOptions={dropDownOptions}
-                  dropDownTitle={'Pet type '}
+                  dropDownTitle={'tipo de mascota'}
                   setSelectFilter={this.props.setSelectFilter}
                   />
               </form>

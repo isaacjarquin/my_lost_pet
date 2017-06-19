@@ -77,6 +77,8 @@ const SET_VALIDATION_BACKGROUND = 'setValidationBackground'
 const SET_SOCIAL_KEYS = 'setSocialKeys'
 const SET_CLOUDINARY = 'setCloudinary'
 const SET_URLS = 'setUrls'
+const SET_COMUNIDADES = 'setComunidades'
+const SET_PROVINCIAS = 'setProvincias'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -146,6 +148,26 @@ const reducerUrls = (state, action) => {
   return newState
 }
 
+const reducerComunidades = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    comunidades: action.value
+  })
+
+  return newState
+}
+
+const reducerProvincias = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    provincias: action.value
+  })
+
+  return newState
+}
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -210,6 +232,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerCloudinary(state, action)
     case SET_URLS:
       return reducerUrls(state, action)
+    case SET_COMUNIDADES:
+      return reducerComunidades(state, action)
+    case SET_PROVINCIAS:
+      return reducerProvincias(state, action)
     default:
       return state
   }
@@ -231,6 +257,8 @@ const mapStateToProps = (state) => {
     encloseImageTitle: state.encloseImageTitle,
     validationBackground: state.validationBackground,
     filteredPets: state.filteredPets,
+    comunidades: state.comunidades,
+    provincias: state.provincias,
     urls: {
       host: state.urls.host,
       items_api: state.urls.items_api
@@ -398,6 +426,12 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_SOCIAL_KEYS, value: social})
       dispatch({type: SET_CLOUDINARY, value: cloudinary})
       dispatch({type: SET_URLS, value: urls})
+    },
+    setComunidades (comunidades) {
+      dispatch({type: SET_COMUNIDADES, value: comunidades})
+    },
+    setProvincias (provincias) {
+      dispatch({type: SET_PROVINCIAS, value: provincias})
     },
     getPets ({urls, filters}) {
       $.ajax({

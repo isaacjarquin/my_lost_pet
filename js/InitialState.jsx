@@ -9,6 +9,8 @@ module.exports = {
   filteredPets: [],
   encloseImageTitle: 'Adjuntar imagen',
   validationBackground: '',
+  comunidades: [],
+  provincias: [],
   social: {
     facebook: '',
     twitter: ''

@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24096,6 +24096,8 @@
 	var SET_SOCIAL_KEYS = 'setSocialKeys';
 	var SET_CLOUDINARY = 'setCloudinary';
 	var SET_URLS = 'setUrls';
+	var SET_COMUNIDADES = 'setComunidades';
+	var SET_PROVINCIAS = 'setProvincias';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -24160,6 +24162,26 @@
 	      host: action.value.host,
 	      items_api: action.value.items_api
 	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerComunidades = function reducerComunidades(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    comunidades: action.value
+	  });
+
+	  return newState;
+	};
+
+	var reducerProvincias = function reducerProvincias(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    provincias: action.value
 	  });
 
 	  return newState;
@@ -24232,6 +24254,10 @@
 	      return reducerCloudinary(state, action);
 	    case SET_URLS:
 	      return reducerUrls(state, action);
+	    case SET_COMUNIDADES:
+	      return reducerComunidades(state, action);
+	    case SET_PROVINCIAS:
+	      return reducerProvincias(state, action);
 	    default:
 	      return state;
 	  }
@@ -24253,6 +24279,8 @@
 	    encloseImageTitle: state.encloseImageTitle,
 	    validationBackground: state.validationBackground,
 	    filteredPets: state.filteredPets,
+	    comunidades: state.comunidades,
+	    provincias: state.provincias,
 	    urls: {
 	      host: state.urls.host,
 	      items_api: state.urls.items_api
@@ -24430,6 +24458,12 @@
 	      dispatch({ type: SET_SOCIAL_KEYS, value: social });
 	      dispatch({ type: SET_CLOUDINARY, value: cloudinary });
 	      dispatch({ type: SET_URLS, value: urls });
+	    },
+	    setComunidades: function setComunidades(comunidades) {
+	      dispatch({ type: SET_COMUNIDADES, value: comunidades });
+	    },
+	    setProvincias: function setProvincias(provincias) {
+	      dispatch({ type: SET_PROVINCIAS, value: provincias });
 	    },
 	    getPets: function getPets(_ref3) {
 	      var urls = _ref3.urls,
@@ -36605,6 +36639,8 @@
 	  filteredPets: [],
 	  encloseImageTitle: 'Adjuntar imagen',
 	  validationBackground: '',
+	  comunidades: [],
+	  provincias: [],
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -42484,6 +42520,7 @@
 	    _this.handleSearchTermEvent = _this.handleSearchTermEvent.bind(_this);
 	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
+	    _this.handleComunidades = _this.handleComunidades.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
@@ -42504,6 +42541,19 @@
 	      this.props.setPetTypeFilter(event.target.value);
 	    }
 	  }, {
+	    key: 'handleComunidades',
+	    value: function handleComunidades(event) {
+	      var _this2 = this;
+
+	      var value = event.target.value;
+
+	      this.props.comunidades.map(function (comunidad) {
+	        if (comunidad.value === event.target.value) {
+	          _this2.props.setProvincias(comunidad.provincias);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
 	      hashHistory.push('search');
@@ -42513,6 +42563,7 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var props = this.props;
+	      var comunidades = [];
 
 	      $.ajax({
 	        url: '/api/envs',
@@ -42520,6 +42571,18 @@
 	        type: 'GET',
 	        success: function success(response) {
 	          props.setEnvs(JSON.parse(response));
+	        },
+	        error: function error(xhr) {
+	          console.log(xhr);
+	        }
+	      });
+
+	      $.ajax({
+	        url: '/api/comunidades',
+	        cache: true,
+	        type: 'GET',
+	        success: function success(response) {
+	          props.setComunidades(JSON.parse(response));
 	        },
 	        error: function error(xhr) {
 	          console.log(xhr);
@@ -42610,6 +42673,40 @@
 	                ),
 	                React.createElement(
 	                  'select',
+	                  { className: 'form-control', onChange: this.handleComunidades },
+	                  React.createElement(
+	                    'option',
+	                    { disabled: true },
+	                    'Comunidades Autonomas'
+	                  ),
+	                  React.createElement('option', { value: 'default-value', key: 0 }),
+	                  this.props.comunidades.map(function (option) {
+	                    return React.createElement(
+	                      'option',
+	                      { value: option.value, key: option.id },
+	                      option.value
+	                    );
+	                  })
+	                ),
+	                React.createElement(
+	                  'select',
+	                  { className: 'form-control', onChange: this.handleComunidades },
+	                  React.createElement(
+	                    'option',
+	                    { disabled: true },
+	                    'Provincias'
+	                  ),
+	                  React.createElement('option', { value: 'default-value', key: 0 }),
+	                  this.props.provincias.map(function (option) {
+	                    return React.createElement(
+	                      'option',
+	                      { value: option.value, key: option.id },
+	                      option.value
+	                    );
+	                  })
+	                ),
+	                React.createElement(
+	                  'select',
 	                  { className: 'form-control', onChange: this.handlePetTypeFilter },
 	                  React.createElement(
 	                    'option',
@@ -42658,7 +42755,7 @@
 	                ),
 	                React.createElement(Dropdown, {
 	                  dropDownOptions: dropDownOptions,
-	                  dropDownTitle: 'Pet type ',
+	                  dropDownTitle: 'tipo de mascota',
 	                  setSelectFilter: this.props.setSelectFilter
 	                })
 	              ),
