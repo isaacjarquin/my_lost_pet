@@ -421,6 +421,16 @@ p.form-introduction {
 .disable-link {
   pointer-events: none;
   cursor: default; }
+
+.disable-selector {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6; }
+
+.disable-input {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6; }
 @media (min-width: 1200px) {
   .contact-details-panel {
     float: left;

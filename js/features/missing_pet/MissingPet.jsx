@@ -24,9 +24,13 @@ class MissingPet extends React.Component {
       $(colSizeClass).removeClass('panel-opened')
       $('.contact-btn').removeAttr('disabled')
       $('.more-info_link').removeClass('disable-link')
+      $('.pet-type').removeClass('disable-selector')
+      $('.pet-location').removeClass('disable-input')
     } else {
       $('.contact-btn').attr('disabled', 'disabled')
       $('.more-info_link').addClass('disable-link')
+      $('.pet-type').addClass('disable-selector')
+      $('.pet-location').addClass('disable-input')
 
       $.each($('.pets-row'), function (pet) {
         if (petId !== pet.id) {
