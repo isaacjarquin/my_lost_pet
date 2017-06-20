@@ -37,7 +37,9 @@ const {
 
 const {
   reducerLocationFilter,
-  reducerPetTypeFilter
+  reducerPetTypeFilter,
+  reducerAutonomousComunityFilter,
+  reducerProvinceFilter
 } = require('../js/pages/landing/pageFilters')
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
@@ -170,26 +172,6 @@ const reducerProvincias = (state, action) => {
   return newState
 }
 
-const reducerAutonomousComunity = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    autonomousComunity: action.value
-  })
-
-  return newState
-}
-
-const reducerProvince = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    province: action.value
-  })
-
-  return newState
-}
-
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -259,9 +241,9 @@ const rootReducer = (state = initialState, action) => {
     case SET_PROVINCIAS:
       return reducerProvincias(state, action)
     case SET_AUTONOMOUS_COMUNITY:
-      return reducerAutonomousComunity(state, action)
+      return reducerAutonomousComunityFilter(state, action)
     case SET_PROVINCE:
-      return reducerProvince(state, action)
+      return reducerProvinceFilter(state, action)
     default:
       return state
   }
@@ -285,8 +267,6 @@ const mapStateToProps = (state) => {
     filteredPets: state.filteredPets,
     comunidades: state.comunidades,
     provincias: state.provincias,
-    autonomousComunity: state.autonomousComunity,
-    province: state.province,
     urls: {
       host: state.urls.host,
       items_api: state.urls.items_api
@@ -301,7 +281,9 @@ const mapStateToProps = (state) => {
     },
     filters: {
       location: state.filters.location,
-      petType: state.filters.petType
+      petType: state.filters.petType,
+      autonomousComunity: state.filters.autonomousComunity,
+      province: state.filters.province
     },
     owner: {
       name: state.owner.name,

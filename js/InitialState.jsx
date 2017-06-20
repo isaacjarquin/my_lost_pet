@@ -11,8 +11,6 @@ module.exports = {
   validationBackground: '',
   comunidades: [],
   provincias: [],
-  autonomousComunity: "",
-  province: "",
   social: {
     facebook: '',
     twitter: ''
@@ -27,7 +25,9 @@ module.exports = {
   },
   filters: {
     location: '',
-    petType: ''
+    petType: '',
+    autonomousComunity: "",
+    province: "",
   },
   owner: {
     name: '',

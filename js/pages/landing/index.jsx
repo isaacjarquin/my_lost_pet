@@ -23,7 +23,7 @@ class Landing extends React.Component {
     this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
-    this.handleProvince = this.handleProvince.bind(this)
+    this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
@@ -44,7 +44,7 @@ class Landing extends React.Component {
       }
     })
   }
-  handleProvince (event) {
+  handleProvincesFilter (event) {
     this.props.setProvince(event.target.value)
   }
   handleSubmit (event) {
@@ -112,7 +112,7 @@ class Landing extends React.Component {
                   ))}
                 </select>
 
-                <select className='form-control' onChange={this.handleProvince}>
+                <select className='form-control' onChange={this.handleProvincesFilter}>
                   <option disabled>Provincias</option>
                   <option value='default-value' key={0} />
                   {this.props.provincias.map((option) => (

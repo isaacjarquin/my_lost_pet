@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24055,7 +24055,9 @@
 
 	var _require5 = __webpack_require__(223),
 	    reducerLocationFilter = _require5.reducerLocationFilter,
-	    reducerPetTypeFilter = _require5.reducerPetTypeFilter;
+	    reducerPetTypeFilter = _require5.reducerPetTypeFilter,
+	    reducerAutonomousComunityFilter = _require5.reducerAutonomousComunityFilter,
+	    reducerProvinceFilter = _require5.reducerProvinceFilter;
 
 	var _require6 = __webpack_require__(224),
 	    reducerActivePage = _require6.reducerActivePage;
@@ -24189,26 +24191,6 @@
 	  return newState;
 	};
 
-	var reducerAutonomousComunity = function reducerAutonomousComunity(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    autonomousComunity: action.value
-	  });
-
-	  return newState;
-	};
-
-	var reducerProvince = function reducerProvince(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    province: action.value
-	  });
-
-	  return newState;
-	};
-
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
@@ -24281,9 +24263,9 @@
 	    case SET_PROVINCIAS:
 	      return reducerProvincias(state, action);
 	    case SET_AUTONOMOUS_COMUNITY:
-	      return reducerAutonomousComunity(state, action);
+	      return reducerAutonomousComunityFilter(state, action);
 	    case SET_PROVINCE:
-	      return reducerProvince(state, action);
+	      return reducerProvinceFilter(state, action);
 	    default:
 	      return state;
 	  }
@@ -24307,8 +24289,6 @@
 	    filteredPets: state.filteredPets,
 	    comunidades: state.comunidades,
 	    provincias: state.provincias,
-	    autonomousComunity: state.autonomousComunity,
-	    province: state.province,
 	    urls: {
 	      host: state.urls.host,
 	      items_api: state.urls.items_api
@@ -24323,7 +24303,9 @@
 	    },
 	    filters: {
 	      location: state.filters.location,
-	      petType: state.filters.petType
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
 	    },
 	    owner: {
 	      name: state.owner.name,
@@ -36528,7 +36510,9 @@
 	  _extends(newState, state, {
 	    filters: {
 	      location: action.value,
-	      petType: state.filters.petType
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
 	    }
 	  });
 
@@ -36541,7 +36525,39 @@
 	  _extends(newState, state, {
 	    filters: {
 	      location: state.filters.location,
-	      petType: action.value
+	      petType: action.value,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerAutonomousComunityFilter = function reducerAutonomousComunityFilter(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    filters: {
+	      location: state.filters.location,
+	      petType: state.filters.petType,
+	      autonomousComunity: action.value,
+	      province: state.filters.province
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerProvinceFilter = function reducerProvinceFilter(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    filters: {
+	      location: state.filters.location,
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: action.value
 	    }
 	  });
 
@@ -36550,7 +36566,9 @@
 
 	module.exports = {
 	  reducerLocationFilter: reducerLocationFilter,
-	  reducerPetTypeFilter: reducerPetTypeFilter
+	  reducerPetTypeFilter: reducerPetTypeFilter,
+	  reducerAutonomousComunityFilter: reducerAutonomousComunityFilter,
+	  reducerProvinceFilter: reducerProvinceFilter
 	};
 
 /***/ },
@@ -36675,8 +36693,6 @@
 	  validationBackground: '',
 	  comunidades: [],
 	  provincias: [],
-	  autonomousComunity: "",
-	  province: "",
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -36691,7 +36707,9 @@
 	  },
 	  filters: {
 	    location: '',
-	    petType: ''
+	    petType: '',
+	    autonomousComunity: "",
+	    province: ""
 	  },
 	  owner: {
 	    name: '',
@@ -42557,7 +42575,7 @@
 	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
 	    _this.handleComunidadesFilter = _this.handleComunidadesFilter.bind(_this);
-	    _this.handleProvince = _this.handleProvince.bind(_this);
+	    _this.handleProvincesFilter = _this.handleProvincesFilter.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
@@ -42591,8 +42609,8 @@
 	      });
 	    }
 	  }, {
-	    key: 'handleProvince',
-	    value: function handleProvince(event) {
+	    key: 'handleProvincesFilter',
+	    value: function handleProvincesFilter(event) {
 	      this.props.setProvince(event.target.value);
 	    }
 	  }, {
@@ -42732,7 +42750,7 @@
 	                ),
 	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handleProvince },
+	                  { className: 'form-control', onChange: this.handleProvincesFilter },
 	                  React.createElement(
 	                    'option',
 	                    { disabled: true },
