@@ -22507,7 +22507,7 @@
 	        { className: 'form-control', onChange: this.handleOnChangeDropdown },
 	        React.createElement(
 	          'option',
-	          { disabled: true },
+	          { selected: 'selected', disabled: true },
 	          this.props.dropDownTitle
 	        ),
 	        React.createElement('option', { key: 0 }),
@@ -42828,7 +42828,7 @@
 	                  { className: 'form-control landing-select-filter', onChange: this.handlePetTypeFilter },
 	                  React.createElement(
 	                    'option',
-	                    { disabled: true },
+	                    { selected: 'selected', disabled: true },
 	                    'Tipo de mascota'
 	                  ),
 	                  React.createElement('option', { value: 'default-value', key: 0 }),
@@ -42845,8 +42845,8 @@
 	                  { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
 	                  React.createElement(
 	                    'option',
-	                    { disabled: true },
-	                    'Comunidades Aut\xF3nomas'
+	                    { selected: 'selected', disabled: true },
+	                    'Comunidad Aut\xF3noma'
 	                  ),
 	                  React.createElement('option', { value: 'default-value', key: 0 }),
 	                  this.props.comunidades.map(function (option) {
@@ -42862,8 +42862,8 @@
 	                  { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
 	                  React.createElement(
 	                    'option',
-	                    { disabled: true },
-	                    'Provincias'
+	                    { selected: 'selected', disabled: true },
+	                    'Provincia'
 	                  ),
 	                  React.createElement('option', { value: 'default-value', key: 0 }),
 	                  this.props.provincias.map(function (option) {
@@ -43907,7 +43907,7 @@
 	          React.createElement(
 	            'p',
 	            { className: 'title form-introduction' },
-	            'Introduce datos de la mascota y los datos necesarios para poder contactar contigo'
+	            'Introduce los datos de la mascota y los datos necesarios para poder contactar contigo'
 	          ),
 	          React.createElement(
 	            'form',
@@ -43956,8 +43956,8 @@
 	              { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
 	              React.createElement(
 	                'option',
-	                { disabled: true },
-	                'Comunidades Aut\xF3nomas'
+	                { selected: 'selected', disabled: true },
+	                'Comunidad Aut\xF3noma'
 	              ),
 	              React.createElement('option', { value: 'default-value', key: 0 }),
 	              this.props.comunidades.map(function (option) {
@@ -43973,8 +43973,8 @@
 	              { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
 	              React.createElement(
 	                'option',
-	                { disabled: true },
-	                'Provincias'
+	                { selected: 'selected', disabled: true },
+	                'Provincia'
 	              ),
 	              React.createElement('option', { value: 'default-value', key: 0 }),
 	              this.props.provincias.map(function (option) {

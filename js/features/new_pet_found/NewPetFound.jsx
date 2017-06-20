@@ -237,7 +237,7 @@ class NewPetFound extends React.Component {
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
         <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
-          <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
+          <p className='title form-introduction'>Introduce los datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
@@ -252,7 +252,7 @@ class NewPetFound extends React.Component {
             </MediaQuery>
 
             <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
-              <option disabled>Comunidades Autónomas</option>
+              <option selected="selected" disabled>Comunidad Autónoma</option>
               <option value='default-value' key={0} />
               {this.props.comunidades.map((option) => (
                 <option value={option.value} key={option.id}>{option.value}</option>
@@ -260,7 +260,7 @@ class NewPetFound extends React.Component {
             </select>
 
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
-              <option disabled>Provincias</option>
+              <option selected="selected" disabled>Provincia</option>
               <option value='default-value' key={0} />
               {this.props.provincias.map((option) => (
                 <option value={option.value} key={option.id}>{option.value}</option>
