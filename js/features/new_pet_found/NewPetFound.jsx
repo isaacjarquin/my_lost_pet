@@ -250,7 +250,6 @@ class NewPetFound extends React.Component {
             <MediaQuery minDeviceWidth={1200}>
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
-
             <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
               <option selected="selected" disabled>Comunidad Autónoma</option>
               <option value='default-value' key={0} />
@@ -258,7 +257,6 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
-
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
               <option selected="selected" disabled>Provincia</option>
               <option value='default-value' key={0} />
@@ -266,8 +264,7 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
-
-            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, municipio' required /></p>
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Ciudad/Municipio' required /></p>
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>

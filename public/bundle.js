@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -43988,7 +43988,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrada en ciudad, municipio', required: true })
+	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio', required: true })
 	            ),
 	            React.createElement(
 	              'p',
