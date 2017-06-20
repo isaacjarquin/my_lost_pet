@@ -17,6 +17,7 @@ const Dropdown = React.createClass({
   handleOnChangeDropdown: function (event) {
     this.props.setSelectFilter(
       this.props.searchTerm,
+      this.props.locationFilter,
       this.props.pets,
       event.target.value
   )

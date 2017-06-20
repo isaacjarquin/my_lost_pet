@@ -53,6 +53,7 @@ const Navbar = React.createClass({
                   dropDownTitle={'Tamaño'}
                   setSelectFilter={this.props.setSelectFilter}
                   searchTerm={this.props.searchTerm}
+                  locationFilter={this.props.locationFilter}
                   pets={this.props.pets}
                 />
               </li>

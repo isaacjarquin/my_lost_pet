@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -22320,7 +22320,6 @@
 	        selectFilter = _ref.selectFilter,
 	        locationFilter = _ref.locationFilter;
 
-	    console.log('this.props', this.props);
 	    if (location === '/search') {
 	      return React.createElement(Navbar, {
 	        setSearchTerm: setSearchTerm,
@@ -22454,6 +22453,7 @@
 	                dropDownTitle: 'Tamaño',
 	                setSelectFilter: this.props.setSelectFilter,
 	                searchTerm: this.props.searchTerm,
+	                locationFilter: this.props.locationFilter,
 	                pets: this.props.pets
 	              })
 	            )
@@ -22496,7 +22496,7 @@
 	    return { petTypes: [] };
 	  },
 	  handleOnChangeDropdown: function handleOnChangeDropdown(event) {
-	    this.props.setSelectFilter(this.props.searchTerm, this.props.pets, event.target.value);
+	    this.props.setSelectFilter(this.props.searchTerm, this.props.locationFilter, this.props.pets, event.target.value);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -24406,11 +24406,12 @@
 	    setPetTypeFilter: function setPetTypeFilter(petType) {
 	      dispatch({ type: SET_PET_TYPE_FILTER, value: petType });
 	    },
-	    setSelectFilter: function setSelectFilter(searchTerm, pets, selectFilter, activePage) {
+	    setSelectFilter: function setSelectFilter(searchTerm, location, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SELECT_FILTER, value: selectFilter });
-	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_LOCATION_FILTER, value: location });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
 	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
 	    setActivePage: function setActivePage(activePage) {

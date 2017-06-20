@@ -363,11 +363,12 @@ const mapDispatchToProps = (dispatch) => {
     setPetTypeFilter (petType) {
       dispatch({type: SET_PET_TYPE_FILTER, value: petType})
     },
-    setSelectFilter (searchTerm, pets, selectFilter, activePage) {
+    setSelectFilter (searchTerm, location, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
-      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
-      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
-      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
+      dispatch({type: SET_LOCATION_FILTER, value: location})
+      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
+      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
       dispatch({type: SET_ACTIVE_PAGE, value: 1})
     },
     setActivePage (activePage) {
