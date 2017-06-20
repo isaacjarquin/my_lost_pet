@@ -94,6 +94,8 @@ class NewPetFound extends React.Component {
     this.onOpenClick = this.onOpenClick.bind(this)
     this.handleBreed = this.handleBreed.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
+    this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
     this.state = { startDate: moment() }
   }
@@ -141,6 +143,19 @@ class NewPetFound extends React.Component {
   }
   handleImages (event) {
     this.props.setImages(event.target.value)
+  }
+  handleComunidadesFilter (event) {
+    this.props.setAutonomousComunity(event.target.value)
+
+    this.props.comunidades.map((comunidad) => {
+      if (comunidad.value === event.target.value) {
+        this.props.setProvincias(comunidad.provincias)
+      }
+    })
+  }
+
+  handleProvincesFilter (event) {
+    this.props.setProvince(event.target.value)
   }
   handleSubmit (event) {
     if (this.props.images[0]) {
@@ -232,7 +247,24 @@ class NewPetFound extends React.Component {
             <MediaQuery minDeviceWidth={1200}>
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
-            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>
+
+            <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
+              <option disabled>Comunidades Autónomas</option>
+              <option value='default-value' key={0} />
+              {this.props.comunidades.map((option) => (
+                <option value={option.value} key={option.id}>{option.value}</option>
+              ))}
+            </select>
+
+            <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
+              <option disabled>Provincias</option>
+              <option value='default-value' key={0} />
+              {this.props.provincias.map((option) => (
+                <option value={option.value} key={option.id}>{option.value}</option>
+              ))}
+            </select>
+
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, municipio' required /></p>
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>

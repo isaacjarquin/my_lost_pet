@@ -42,6 +42,8 @@ module.exports = {
     breed: '',
     size: '',
     foundDate: '',
+    autonomousComunity: '',
+    province: '',
     location: '',
     images: [],
     description: '',

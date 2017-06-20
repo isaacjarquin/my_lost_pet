@@ -9,6 +9,8 @@ const {
   reducerBreed,
   reducerPetSize,
   reducerPetFoundDate,
+  reducerPetAutonomousComunity,
+  reducerPetProvince,
   reducerPetLocation,
   reducerPetImages,
   reducerPetDescription,
@@ -81,6 +83,8 @@ const SET_CLOUDINARY = 'setCloudinary'
 const SET_URLS = 'setUrls'
 const SET_COMUNIDADES = 'setComunidades'
 const SET_PROVINCIAS = 'setProvincias'
+const SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter'
+const SET_PROVINCE_FILTER = 'setProvinceFilter'
 const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
 const SET_PROVINCE = 'setProvince'
 
@@ -240,10 +244,14 @@ const rootReducer = (state = initialState, action) => {
       return reducerComunidades(state, action)
     case SET_PROVINCIAS:
       return reducerProvincias(state, action)
-    case SET_AUTONOMOUS_COMUNITY:
+    case SET_AUTONOMOUS_COMUNITY_FILTER:
       return reducerAutonomousComunityFilter(state, action)
-    case SET_PROVINCE:
+    case SET_PROVINCE_FILTER:
       return reducerProvinceFilter(state, action)
+    case SET_AUTONOMOUS_COMUNITY:
+      return reducerPetAutonomousComunity(state, action)
+    case SET_PROVINCE:
+      return reducerPetProvince(state, action)
     default:
       return state
   }
@@ -298,6 +306,8 @@ const mapStateToProps = (state) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: state.pet.location,
       images: state.pet.images,
       description: state.pet.description,
@@ -450,6 +460,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setProvincias (provincias) {
       dispatch({type: SET_PROVINCIAS, value: provincias})
+    },
+    setAutonomousComunityFilter (autonomousComunityFilter) {
+      dispatch({type: SET_AUTONOMOUS_COMUNITY_FILTER, value: autonomousComunityFilter})
+    },
+    setProvinceFilter (provinceFilter) {
+      dispatch({type: SET_PROVINCE_FILTER, value: provinceFilter})
     },
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})

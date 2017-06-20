@@ -32,7 +32,7 @@ class Landing extends React.Component {
     this.props.setPetTypeFilter(event.target.value)
   }
   handleComunidadesFilter (event) {
-    this.props.setAutonomousComunity(event.target.value)
+    this.props.setAutonomousComunityFilter(event.target.value)
 
     this.props.comunidades.map((comunidad) => {
       if (comunidad.value === event.target.value) {
@@ -41,7 +41,7 @@ class Landing extends React.Component {
     })
   }
   handleProvincesFilter (event) {
-    this.props.setProvince(event.target.value)
+    this.props.setProvinceFilter(event.target.value)
   }
   handleSubmit (event) {
     hashHistory.push('search')
@@ -145,6 +145,11 @@ class Landing extends React.Component {
         <NewPetFound
           {...this.props.pet}
           alert={this.props.alert}
+          comunidades={this.props.comunidades}
+          provincias={this.props.provincias}
+          setAutonomousComunity={this.props.setAutonomousComunity}
+          setProvince={this.props.setProvince}
+          setProvincias={this.props.setProvincias}
           setPetFounderName={this.props.setPetFounderName}
           setPetFounderEmail={this.props.setPetFounderEmail}
           setPetType={this.props.setPetType}
