@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24355,15 +24355,24 @@
 	};
 
 	var urlParams = function urlParams(_ref) {
-	  var location = _ref.location,
+	  var province = _ref.province,
+	      autonomousComunity = _ref.autonomousComunity,
 	      petType = _ref.petType;
 
-	  if (location !== '' && petType !== '') {
-	    return { location: location, petType: petType };
-	  } else if (location !== '' && petType === '') {
-	    return { location: location };
-	  } else if (location === '' && petType !== '') {
+	  if (autonomousComunity !== '' && province !== '' && petType !== '') {
+	    return { autonomousComunity: autonomousComunity, province: province, petType: petType };
+	  } else if (autonomousComunity !== '' && province === '' && petType === '') {
+	    return { autonomousComunity: autonomousComunity };
+	  } else if (autonomousComunity === '' && province !== '' && petType === '') {
+	    return { province: province };
+	  } else if (autonomousComunity === '' && province === '' && petType !== '') {
 	    return { petType: petType };
+	  } else if (autonomousComunity !== '' && province !== '' && petType === '') {
+	    return { autonomousComunity: autonomousComunity, province: province };
+	  } else if (autonomousComunity !== '' && province === '' && petType !== '') {
+	    return { autonomousComunity: autonomousComunity, petType: petType };
+	  } else if (autonomousComunity === '' && province !== '' && petType !== '') {
+	    return { province: province, petType: petType };
 	  } else {
 	    return {};
 	  }
@@ -42572,7 +42581,6 @@
 	    var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props));
 
 	    _this.handleSearchTermEvent = _this.handleSearchTermEvent.bind(_this);
-	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
 	    _this.handleComunidadesFilter = _this.handleComunidadesFilter.bind(_this);
 	    _this.handleProvincesFilter = _this.handleProvincesFilter.bind(_this);
@@ -42584,11 +42592,6 @@
 	    key: 'handleSearchTermEvent',
 	    value: function handleSearchTermEvent(event) {
 	      this.props.setSearchTerm(event.target.value);
-	    }
-	  }, {
-	    key: 'handleLocationFilter',
-	    value: function handleLocationFilter(event) {
-	      this.props.setLocationFilter(event.target.value);
 	    }
 	  }, {
 	    key: 'handlePetTypeFilter',
@@ -42727,13 +42730,25 @@
 	                'form',
 	                { onSubmit: this.handleSubmit },
 	                React.createElement(
-	                  'p',
-	                  null,
-	                  React.createElement('input', { value: this.props.locationFilter, onChange: this.handleLocationFilter, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrado en' })
+	                  'select',
+	                  { className: 'form-control landing-select-filter', onChange: this.handlePetTypeFilter },
+	                  React.createElement(
+	                    'option',
+	                    { disabled: true },
+	                    'Tipo de mascota'
+	                  ),
+	                  React.createElement('option', { value: 'default-value', key: 0 }),
+	                  petTypesOptions.map(function (option) {
+	                    return React.createElement(
+	                      'option',
+	                      { value: option.type, key: option.id },
+	                      option.type
+	                    );
+	                  })
 	                ),
 	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handleComunidadesFilter },
+	                  { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
 	                  React.createElement(
 	                    'option',
 	                    { disabled: true },
@@ -42750,7 +42765,7 @@
 	                ),
 	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handleProvincesFilter },
+	                  { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
 	                  React.createElement(
 	                    'option',
 	                    { disabled: true },
@@ -42762,23 +42777,6 @@
 	                      'option',
 	                      { value: option.value, key: option.id },
 	                      option.value
-	                    );
-	                  })
-	                ),
-	                React.createElement(
-	                  'select',
-	                  { className: 'form-control', onChange: this.handlePetTypeFilter },
-	                  React.createElement(
-	                    'option',
-	                    { disabled: true },
-	                    'Tipo de mascota'
-	                  ),
-	                  React.createElement('option', { value: 'default-value', key: 0 }),
-	                  petTypesOptions.map(function (option) {
-	                    return React.createElement(
-	                      'option',
-	                      { value: option.type, key: option.id },
-	                      option.type
 	                    );
 	                  })
 	                )

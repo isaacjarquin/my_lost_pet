@@ -20,7 +20,6 @@ class Landing extends React.Component {
   constructor (props) {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
-    this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
@@ -28,9 +27,6 @@ class Landing extends React.Component {
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
-  }
-  handleLocationFilter (event) {
-    this.props.setLocationFilter(event.target.value)
   }
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
@@ -102,9 +98,15 @@ class Landing extends React.Component {
                 <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
-                <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
+                <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
+                  <option disabled>Tipo de mascota</option>
+                  <option value='default-value' key={0} />
+                  {petTypesOptions.map((option) => (
+                    <option value={option.type} key={option.id}>{option.type}</option>
+                  ))}
+                </select>
 
-                <select className='form-control' onChange={this.handleComunidadesFilter}>
+                <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
                   <option disabled>Comunidades Autónomas</option>
                   <option value='default-value' key={0} />
                   {this.props.comunidades.map((option) => (
@@ -112,19 +114,11 @@ class Landing extends React.Component {
                   ))}
                 </select>
 
-                <select className='form-control' onChange={this.handleProvincesFilter}>
+                <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
                   <option disabled>Provincias</option>
                   <option value='default-value' key={0} />
                   {this.props.provincias.map((option) => (
                     <option value={option.value} key={option.id}>{option.value}</option>
-                  ))}
-                </select>
-
-                <select className='form-control' onChange={this.handlePetTypeFilter}>
-                  <option disabled>Tipo de mascota</option>
-                  <option value='default-value' key={0} />
-                  {petTypesOptions.map((option) => (
-                    <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
               </form>

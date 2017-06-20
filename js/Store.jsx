@@ -329,13 +329,21 @@ const getFilteredPets = (searchTerm, pets, selectFilter) => {
   return filteredPets
 }
 
-const urlParams = ({location, petType}) => {
-  if (location !== '' && petType !== '') {
-    return { location: location, petType: petType }
-  } else if (location !== '' && petType === '') {
-    return { location: location }
-  } else if (location === '' && petType !== '') {
+const urlParams = ({province, autonomousComunity, petType}) => {
+  if (autonomousComunity !== '' && province !== '' && petType !== '') {
+    return { autonomousComunity: autonomousComunity, province: province,  petType: petType }
+  } else if (autonomousComunity !== '' && province === '' && petType === '') {
+    return { autonomousComunity: autonomousComunity }
+  } else if (autonomousComunity === '' && province !== '' && petType === '') {
+    return { province: province }
+  } else if (autonomousComunity === '' && province === '' && petType !== '') {
     return { petType: petType }
+  } else if (autonomousComunity !== '' && province !== '' && petType === '') {
+    return { autonomousComunity: autonomousComunity, province: province }
+  } else if (autonomousComunity !== '' && province === '' && petType !== '') {
+    return { autonomousComunity: autonomousComunity, petType: petType }
+  } else if (autonomousComunity === '' && province !== '' && petType !== '') {
+    return { province: province, petType: petType }
   } else {
     return {}
   }
