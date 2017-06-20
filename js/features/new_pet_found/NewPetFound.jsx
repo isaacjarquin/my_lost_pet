@@ -98,6 +98,7 @@ class NewPetFound extends React.Component {
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
     this.state = { startDate: moment() }
+    this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
   }
 
   handleChange (date) {
