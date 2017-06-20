@@ -13,6 +13,15 @@ const Navbar = React.createClass({
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(
       event.target.value,
+      this.props.locationFilter,
+      this.props.pets,
+      this.props.selectFilter
+  )
+  },
+  handleLocationSearchTermEvent (event) {
+    this.props.setSearchTerm(
+      this.props.searchTerm,
+      event.target.value,
       this.props.pets,
       this.props.selectFilter
   )
@@ -36,6 +45,8 @@ const Navbar = React.createClass({
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>
             <ul className='nav navbar-nav navbar-right'>
+              <li><input value={this.props.locationFilter} onChange={this.handleLocationSearchTermEvent} className='form-control pet-location' type='text' placeholder='Municipio' /></li>
+              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
               <li>
                 <Dropdown
                   dropDownOptions={dropDownOptions}
@@ -45,7 +56,6 @@ const Navbar = React.createClass({
                   pets={this.props.pets}
                 />
               </li>
-              <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
             </ul>
           </div>
         </div>

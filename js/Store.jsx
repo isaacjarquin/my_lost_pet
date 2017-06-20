@@ -320,8 +320,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const getFilteredPets = (searchTerm, pets, selectFilter) => {
+const getFilteredPets = (searchTerm, location, pets, selectFilter) => {
   const filteredPets = pets
+    .filter((pet) => `${pet.location}`.toUpperCase().indexOf(location.toUpperCase()) >= 0)
     .filter((pet) => `${pet.breed}`.toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0)
     .filter((pet) => `${pet.size}`.toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0)
     .map((pet) => pet)
@@ -351,15 +352,13 @@ const urlParams = ({province, autonomousComunity, petType}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSearchTerm (searchTerm, pets, selectFilter, activePage) {
+    setSearchTerm (searchTerm, location, pets, selectFilter, activePage) {
       dispatch({type: SET_SEARCH_TERM, value: searchTerm})
-      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
-      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
-      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter)})
-      dispatch({type: SET_ACTIVE_PAGE, value: 1})
-    },
-    setLocationFilter (location) {
       dispatch({type: SET_LOCATION_FILTER, value: location})
+      dispatch({type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
+      dispatch({type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter)})
+      dispatch({type: SET_ACTIVE_PAGE, value: 1})
     },
     setPetTypeFilter (petType) {
       dispatch({type: SET_PET_TYPE_FILTER, value: petType})

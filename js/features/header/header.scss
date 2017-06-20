@@ -13,9 +13,13 @@
   }
 
   @media (min-width:736px) {
-     .pet-type {
-       margin-right: 10px ;
-     }
+    li {
+      margin-right: 10px ;
+    }
+
+    li:last-of-type {
+      margin-right: 0;
+    }
   }
 
   .navbar {

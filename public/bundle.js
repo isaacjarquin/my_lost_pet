@@ -22223,7 +22223,8 @@
 	        setSelectFilter = _ref.setSelectFilter,
 	        searchTerm = _ref.searchTerm,
 	        selectFilter = _ref.selectFilter,
-	        pets = _ref.pets;
+	        pets = _ref.pets,
+	        filters = _ref.filters;
 
 	    if (location.pathname === '/') {
 	      return React.createElement(
@@ -22240,6 +22241,7 @@
 	          setSearchTerm: setSearchTerm,
 	          setSelectFilter: setSelectFilter,
 	          searchTerm: searchTerm,
+	          locationFilter: filters.location,
 	          selectFilter: selectFilter,
 	          pets: pets,
 	          social: this.props.social,
@@ -22315,13 +22317,16 @@
 	        searchTerm = _ref.searchTerm,
 	        setSelectFilter = _ref.setSelectFilter,
 	        pets = _ref.pets,
-	        selectFilter = _ref.selectFilter;
+	        selectFilter = _ref.selectFilter,
+	        locationFilter = _ref.locationFilter;
 
+	    console.log('this.props', this.props);
 	    if (location === '/search') {
 	      return React.createElement(Navbar, {
 	        setSearchTerm: setSearchTerm,
 	        setSelectFilter: setSelectFilter,
 	        searchTerm: searchTerm,
+	        locationFilter: locationFilter,
 	        selectFilter: selectFilter,
 	        pets: pets });
 	    } else {
@@ -22401,7 +22406,10 @@
 	    pets: arrayOf(object)
 	  },
 	  handleSearchTermEvent: function handleSearchTermEvent(event) {
-	    this.props.setSearchTerm(event.target.value, this.props.pets, this.props.selectFilter);
+	    this.props.setSearchTerm(event.target.value, this.props.locationFilter, this.props.pets, this.props.selectFilter);
+	  },
+	  handleLocationSearchTermEvent: function handleLocationSearchTermEvent(event) {
+	    this.props.setSearchTerm(this.props.searchTerm, event.target.value, this.props.pets, this.props.selectFilter);
 	  },
 	  render: function render() {
 	    var dropDownOptions = [{ value: 'pequeno', id: 1 }, { value: 'mediano', id: 2 }, { value: 'grande', id: 3 }, { value: 'gigante', id: 4 }];
@@ -22431,6 +22439,16 @@
 	            React.createElement(
 	              'li',
 	              null,
+	              React.createElement('input', { value: this.props.locationFilter, onChange: this.handleLocationSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Municipio' })
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Raza' })
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
 	              React.createElement(Dropdown, {
 	                dropDownOptions: dropDownOptions,
 	                dropDownTitle: 'Tamaño',
@@ -22438,11 +22456,6 @@
 	                searchTerm: this.props.searchTerm,
 	                pets: this.props.pets
 	              })
-	            ),
-	            React.createElement(
-	              'li',
-	              null,
-	              React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Raza' })
 	            )
 	          )
 	        )
@@ -24342,8 +24355,10 @@
 	  };
 	};
 
-	var getFilteredPets = function getFilteredPets(searchTerm, pets, selectFilter) {
+	var getFilteredPets = function getFilteredPets(searchTerm, location, pets, selectFilter) {
 	  var filteredPets = pets.filter(function (pet) {
+	    return ('' + pet.location).toUpperCase().indexOf(location.toUpperCase()) >= 0;
+	  }).filter(function (pet) {
 	    return ('' + pet.breed).toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
 	  }).filter(function (pet) {
 	    return ('' + pet.size).toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0;
@@ -24380,15 +24395,13 @@
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    setSearchTerm: function setSearchTerm(searchTerm, pets, selectFilter, activePage) {
+	    setSearchTerm: function setSearchTerm(searchTerm, location, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SEARCH_TERM, value: searchTerm });
-	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
-	    },
-	    setLocationFilter: function setLocationFilter(location) {
 	      dispatch({ type: SET_LOCATION_FILTER, value: location });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
 	    setPetTypeFilter: function setPetTypeFilter(petType) {
 	      dispatch({ type: SET_PET_TYPE_FILTER, value: petType });
