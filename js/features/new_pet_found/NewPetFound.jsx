@@ -242,7 +242,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
             <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
-            <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raza (pitbul, pastor aleman ...)' /></p>
+            <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
             <MediaQuery maxDeviceWidth={1200}>
               <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
