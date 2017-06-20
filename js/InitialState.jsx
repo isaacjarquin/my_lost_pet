@@ -11,6 +11,8 @@ module.exports = {
   validationBackground: '',
   comunidades: [],
   provincias: [],
+  autonomousComunity: "",
+  province: "",
   social: {
     facebook: '',
     twitter: ''

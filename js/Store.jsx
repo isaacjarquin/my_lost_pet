@@ -79,6 +79,8 @@ const SET_CLOUDINARY = 'setCloudinary'
 const SET_URLS = 'setUrls'
 const SET_COMUNIDADES = 'setComunidades'
 const SET_PROVINCIAS = 'setProvincias'
+const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
+const SET_PROVINCE = 'setProvince'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -168,6 +170,26 @@ const reducerProvincias = (state, action) => {
   return newState
 }
 
+const reducerAutonomousComunity = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    autonomousComunity: action.value
+  })
+
+  return newState
+}
+
+const reducerProvince = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    province: action.value
+  })
+
+  return newState
+}
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -236,6 +258,10 @@ const rootReducer = (state = initialState, action) => {
       return reducerComunidades(state, action)
     case SET_PROVINCIAS:
       return reducerProvincias(state, action)
+    case SET_AUTONOMOUS_COMUNITY:
+      return reducerAutonomousComunity(state, action)
+    case SET_PROVINCE:
+      return reducerProvince(state, action)
     default:
       return state
   }
@@ -259,6 +285,8 @@ const mapStateToProps = (state) => {
     filteredPets: state.filteredPets,
     comunidades: state.comunidades,
     provincias: state.provincias,
+    autonomousComunity: state.autonomousComunity,
+    province: state.province,
     urls: {
       host: state.urls.host,
       items_api: state.urls.items_api
@@ -432,6 +460,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     setProvincias (provincias) {
       dispatch({type: SET_PROVINCIAS, value: provincias})
+    },
+    setAutonomousComunity (autonomousComunity) {
+      dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})
+    },
+    setProvince (province) {
+      dispatch({type: SET_PROVINCE, value: province})
     },
     getPets ({urls, filters}) {
       $.ajax({

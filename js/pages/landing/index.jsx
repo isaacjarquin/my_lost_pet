@@ -22,7 +22,8 @@ class Landing extends React.Component {
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
-    this.handleComunidades = this.handleComunidades.bind(this)
+    this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
+    this.handleProvince = this.handleProvince.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
@@ -34,14 +35,17 @@ class Landing extends React.Component {
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
   }
-  handleComunidades (event) {
-    const value = event.target.value
+  handleComunidadesFilter (event) {
+    this.props.setAutonomousComunity(event.target.value)
 
     this.props.comunidades.map((comunidad) => {
       if (comunidad.value === event.target.value) {
         this.props.setProvincias(comunidad.provincias)
       }
     })
+  }
+  handleProvince (event) {
+    this.props.setProvince(event.target.value)
   }
   handleSubmit (event) {
     hashHistory.push('search')
@@ -100,15 +104,15 @@ class Landing extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
 
-                <select className='form-control' onChange={this.handleComunidades}>
-                  <option disabled>Comunidades Autonomas</option>
+                <select className='form-control' onChange={this.handleComunidadesFilter}>
+                  <option disabled>Comunidades Autónomas</option>
                   <option value='default-value' key={0} />
                   {this.props.comunidades.map((option) => (
                     <option value={option.value} key={option.id}>{option.value}</option>
                   ))}
                 </select>
 
-                <select className='form-control' onChange={this.handleComunidades}>
+                <select className='form-control' onChange={this.handleProvince}>
                   <option disabled>Provincias</option>
                   <option value='default-value' key={0} />
                   {this.props.provincias.map((option) => (

@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24098,6 +24098,8 @@
 	var SET_URLS = 'setUrls';
 	var SET_COMUNIDADES = 'setComunidades';
 	var SET_PROVINCIAS = 'setProvincias';
+	var SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity';
+	var SET_PROVINCE = 'setProvince';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -24187,6 +24189,26 @@
 	  return newState;
 	};
 
+	var reducerAutonomousComunity = function reducerAutonomousComunity(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    autonomousComunity: action.value
+	  });
+
+	  return newState;
+	};
+
+	var reducerProvince = function reducerProvince(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    province: action.value
+	  });
+
+	  return newState;
+	};
+
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
@@ -24258,6 +24280,10 @@
 	      return reducerComunidades(state, action);
 	    case SET_PROVINCIAS:
 	      return reducerProvincias(state, action);
+	    case SET_AUTONOMOUS_COMUNITY:
+	      return reducerAutonomousComunity(state, action);
+	    case SET_PROVINCE:
+	      return reducerProvince(state, action);
 	    default:
 	      return state;
 	  }
@@ -24281,6 +24307,8 @@
 	    filteredPets: state.filteredPets,
 	    comunidades: state.comunidades,
 	    provincias: state.provincias,
+	    autonomousComunity: state.autonomousComunity,
+	    province: state.province,
 	    urls: {
 	      host: state.urls.host,
 	      items_api: state.urls.items_api
@@ -24464,6 +24492,12 @@
 	    },
 	    setProvincias: function setProvincias(provincias) {
 	      dispatch({ type: SET_PROVINCIAS, value: provincias });
+	    },
+	    setAutonomousComunity: function setAutonomousComunity(autonomousComunity) {
+	      dispatch({ type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity });
+	    },
+	    setProvince: function setProvince(province) {
+	      dispatch({ type: SET_PROVINCE, value: province });
 	    },
 	    getPets: function getPets(_ref3) {
 	      var urls = _ref3.urls,
@@ -36641,6 +36675,8 @@
 	  validationBackground: '',
 	  comunidades: [],
 	  provincias: [],
+	  autonomousComunity: "",
+	  province: "",
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -42520,7 +42556,8 @@
 	    _this.handleSearchTermEvent = _this.handleSearchTermEvent.bind(_this);
 	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
-	    _this.handleComunidades = _this.handleComunidades.bind(_this);
+	    _this.handleComunidadesFilter = _this.handleComunidadesFilter.bind(_this);
+	    _this.handleProvince = _this.handleProvince.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
@@ -42541,17 +42578,22 @@
 	      this.props.setPetTypeFilter(event.target.value);
 	    }
 	  }, {
-	    key: 'handleComunidades',
-	    value: function handleComunidades(event) {
+	    key: 'handleComunidadesFilter',
+	    value: function handleComunidadesFilter(event) {
 	      var _this2 = this;
 
-	      var value = event.target.value;
+	      this.props.setAutonomousComunity(event.target.value);
 
 	      this.props.comunidades.map(function (comunidad) {
 	        if (comunidad.value === event.target.value) {
 	          _this2.props.setProvincias(comunidad.provincias);
 	        }
 	      });
+	    }
+	  }, {
+	    key: 'handleProvince',
+	    value: function handleProvince(event) {
+	      this.props.setProvince(event.target.value);
 	    }
 	  }, {
 	    key: 'handleSubmit',
@@ -42673,11 +42715,11 @@
 	                ),
 	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handleComunidades },
+	                  { className: 'form-control', onChange: this.handleComunidadesFilter },
 	                  React.createElement(
 	                    'option',
 	                    { disabled: true },
-	                    'Comunidades Autonomas'
+	                    'Comunidades Aut\xF3nomas'
 	                  ),
 	                  React.createElement('option', { value: 'default-value', key: 0 }),
 	                  this.props.comunidades.map(function (option) {
@@ -42690,7 +42732,7 @@
 	                ),
 	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handleComunidades },
+	                  { className: 'form-control', onChange: this.handleProvince },
 	                  React.createElement(
 	                    'option',
 	                    { disabled: true },
