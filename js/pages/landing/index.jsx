@@ -211,16 +211,23 @@ Landing.propTypes = {
   setAlerts: func,
   setSelectFilter: func,
   setImages: func,
+  setProvincias: func,
+  setProvince: func,
   encloseImageTitle: string,
   validationBackground: string,
   setEncloseImageTitle: func,
   setValidationBackground: func,
   setLocationFilter: func,
   setPetTypeFilter: func,
+  setProvinceFilter: func,
+  setAutonomousComunity: func,
   setBreed: func,
   urls: object,
   social: object,
   locationFilter: string,
+  setAutonomousComunityFilter: func,
+  comunidades: arrayOf(string),
+  provincias: arrayOf(string),
   cloudinary: object
 }
 

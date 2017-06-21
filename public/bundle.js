@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -22402,6 +22402,7 @@
 	    setSearchTerm: func,
 	    setSelectFilter: func,
 	    selectFilter: string,
+	    locationFilter: string,
 	    pets: arrayOf(object)
 	  },
 	  handleSearchTermEvent: function handleSearchTermEvent(event) {
@@ -22489,6 +22490,7 @@
 	    selectFilter: string,
 	    setSelectFilter: func,
 	    searchTerm: string,
+	    locationFilter: string,
 	    pets: arrayOf(object),
 	    dropDownOptions: arrayOf(object)
 	  },
@@ -43001,16 +43003,23 @@
 	  setAlerts: func,
 	  setSelectFilter: func,
 	  setImages: func,
+	  setProvincias: func,
+	  setProvince: func,
 	  encloseImageTitle: string,
 	  validationBackground: string,
 	  setEncloseImageTitle: func,
 	  setValidationBackground: func,
 	  setLocationFilter: func,
 	  setPetTypeFilter: func,
+	  setProvinceFilter: func,
+	  setAutonomousComunity: func,
 	  setBreed: func,
 	  urls: object,
 	  social: object,
 	  locationFilter: string,
+	  setAutonomousComunityFilter: func,
+	  comunidades: arrayOf(string),
+	  provincias: arrayOf(string),
 	  cloudinary: object
 	};
 
@@ -44096,6 +44105,9 @@
 	  setPetLocation: func,
 	  setPetDescription: func,
 	  setImages: func,
+	  setAutonomousComunity: func,
+	  setProvincias: func,
+	  setProvince: func,
 	  setImageUrl: string.isRequired,
 	  founderName: string.isRequired,
 	  founderEmail: string.isRequired,
@@ -44111,6 +44123,10 @@
 	  encloseImageTitle: string.isRequired,
 	  setBreed: func.isRequired,
 	  cloudinary: object,
+	  comunidades: arrayOf(string),
+	  provincias: arrayOf(string),
+	  autonomousComunity: string,
+	  province: string,
 	  breed: string
 	};
 

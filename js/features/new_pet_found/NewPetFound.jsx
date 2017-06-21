@@ -319,6 +319,9 @@ NewPetFound.propTypes = {
   setPetLocation: func,
   setPetDescription: func,
   setImages: func,
+  setAutonomousComunity: func,
+  setProvincias: func,
+  setProvince: func,
   setImageUrl: string.isRequired,
   founderName: string.isRequired,
   founderEmail: string.isRequired,
@@ -334,6 +337,10 @@ NewPetFound.propTypes = {
   encloseImageTitle: string.isRequired,
   setBreed: func.isRequired,
   cloudinary: object,
+  comunidades: arrayOf(string),
+  provincias: arrayOf(string),
+  autonomousComunity: string,
+  province: string,
   breed: string
 }
 

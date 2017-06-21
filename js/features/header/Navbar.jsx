@@ -8,6 +8,7 @@ const Navbar = React.createClass({
     setSearchTerm: func,
     setSelectFilter: func,
     selectFilter: string,
+    locationFilter: string,
     pets: arrayOf(object)
   },
   handleSearchTermEvent (event) {
