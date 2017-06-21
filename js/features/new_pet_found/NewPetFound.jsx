@@ -251,14 +251,14 @@ class NewPetFound extends React.Component {
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
             <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
-              <option selected="selected" disabled>Comunidad Autónoma</option>
+              <option selected='selected' disabled>Comunidad Autónoma</option>
               <option value='default-value' key={0} />
               {this.props.comunidades.map((option) => (
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
-              <option selected="selected" disabled>Provincia</option>
+              <option selected='selected' disabled>Provincia</option>
               <option value='default-value' key={0} />
               {this.props.provincias.map((option) => (
                 <option value={option.value} key={option.id}>{option.value}</option>

@@ -99,7 +99,7 @@ class Landing extends React.Component {
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
-                  <option selected="selected" disabled>Tipo de mascota</option>
+                  <option selected='selected' disabled>Tipo de mascota</option>
                   <option value='default-value' key={0} />
                   {petTypesOptions.map((option) => (
                     <option value={option.type} key={option.id}>{option.type}</option>
@@ -107,7 +107,7 @@ class Landing extends React.Component {
                 </select>
 
                 <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
-                  <option selected="selected" disabled>Comunidad Autónoma</option>
+                  <option selected='selected' disabled>Comunidad Autónoma</option>
                   <option value='default-value' key={0} />
                   {this.props.comunidades.map((option) => (
                     <option value={option.value} key={option.id}>{option.value}</option>
@@ -115,7 +115,7 @@ class Landing extends React.Component {
                 </select>
 
                 <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
-                  <option selected="selected" disabled>Provincia</option>
+                  <option selected='selected' disabled>Provincia</option>
                   <option value='default-value' key={0} />
                   {this.props.provincias.map((option) => (
                     <option value={option.value} key={option.id}>{option.value}</option>

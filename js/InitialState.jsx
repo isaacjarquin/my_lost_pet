@@ -26,8 +26,8 @@ module.exports = {
   filters: {
     location: '',
     petType: '',
-    autonomousComunity: "",
-    province: "",
+    autonomousComunity: '',
+    province: ''
   },
   owner: {
     name: '',

@@ -21,6 +21,8 @@ describe('Store', () => {
     },
     filters: {
       location: '',
+      autonomousComunity: '',
+      province: '',
       petType: ''
     },
     'social': {
@@ -40,6 +42,8 @@ describe('Store', () => {
       breed: '',
       size: '',
       foundDate: '',
+      autonomousComunity: '',
+      province: '',
       location: '',
       images: [],
       extraDescription: '',
@@ -63,7 +67,9 @@ describe('Store', () => {
     totalNumberOfPets: 0,
     pets: [],
     activePagePets: [],
-    filteredPets: []
+    filteredPets: [],
+    provincias: [],
+    comunidades: []
   }
 
   it('should boostrap', () => {

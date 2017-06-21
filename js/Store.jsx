@@ -342,7 +342,7 @@ const getFilteredPets = (searchTerm, location, pets, selectFilter) => {
 
 const urlParams = ({province, autonomousComunity, petType}) => {
   if (autonomousComunity !== '' && province !== '' && petType !== '') {
-    return { autonomousComunity: autonomousComunity, province: province,  petType: petType }
+    return { autonomousComunity: autonomousComunity, province: province, petType: petType }
   } else if (autonomousComunity !== '' && province === '' && petType === '') {
     return { autonomousComunity: autonomousComunity }
   } else if (autonomousComunity === '' && province !== '' && petType === '') {

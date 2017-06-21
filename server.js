@@ -27,15 +27,15 @@ const server = express()
 server.use('/public', express.static('./public'))
 
 server.get('/api/envs', function (req, res) {
-  res.send( JSON.stringify(envs) )
+  res.send(JSON.stringify(envs))
 })
 
 server.get('/api/comunidades', function (req, res) {
-  res.send( JSON.stringify(comunidades) )
+  res.send(JSON.stringify(comunidades))
 })
 
 server.get('/api/pets', function (req, res) {
-  res.send( JSON.stringify(pets) )
+  res.send(JSON.stringify(pets))
 })
 
 server.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))

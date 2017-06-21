@@ -33,10 +33,10 @@ const reducerAutonomousComunityFilter = (state, action) => {
 
   Object.assign(newState, state, {
     filters: {
-        location: state.filters.location,
-        petType: state.filters.petType,
-        autonomousComunity: action.value,
-        province: state.filters.province
+      location: state.filters.location,
+      petType: state.filters.petType,
+      autonomousComunity: action.value,
+      province: state.filters.province
     }
   })
 
@@ -48,10 +48,10 @@ const reducerProvinceFilter = (state, action) => {
 
   Object.assign(newState, state, {
     filters: {
-        location: state.filters.location,
-        petType: state.filters.petType,
-        autonomousComunity: state.filters.autonomousComunity,
-        province: action.value
+      location: state.filters.location,
+      petType: state.filters.petType,
+      autonomousComunity: state.filters.autonomousComunity,
+      province: action.value
     }
   })
 
