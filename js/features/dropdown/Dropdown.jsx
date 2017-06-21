@@ -17,6 +17,7 @@ const Dropdown = React.createClass({
   handleOnChangeDropdown: function (event) {
     this.props.setSelectFilter(
       this.props.searchTerm,
+      this.props.locationFilter,
       this.props.pets,
       event.target.value
   )
@@ -25,7 +26,7 @@ const Dropdown = React.createClass({
     return (
       <div className='dropdown pet-type'>
         <select className='form-control' onChange={this.handleOnChangeDropdown} >
-          <option disabled>{this.props.dropDownTitle}</option>
+          <option selected='selected' disabled>{this.props.dropDownTitle}</option>
           <option key={0} />
           {this.props.dropDownOptions.map((dropDownOption) => (
             <option value={dropDownOption.value} key={dropDownOption.id}>{dropDownOption.value}</option>

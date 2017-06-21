@@ -22223,7 +22223,8 @@
 	        setSelectFilter = _ref.setSelectFilter,
 	        searchTerm = _ref.searchTerm,
 	        selectFilter = _ref.selectFilter,
-	        pets = _ref.pets;
+	        pets = _ref.pets,
+	        filters = _ref.filters;
 
 	    if (location.pathname === '/') {
 	      return React.createElement(
@@ -22240,6 +22241,7 @@
 	          setSearchTerm: setSearchTerm,
 	          setSelectFilter: setSelectFilter,
 	          searchTerm: searchTerm,
+	          locationFilter: filters.location,
 	          selectFilter: selectFilter,
 	          pets: pets,
 	          social: this.props.social,
@@ -22315,13 +22317,15 @@
 	        searchTerm = _ref.searchTerm,
 	        setSelectFilter = _ref.setSelectFilter,
 	        pets = _ref.pets,
-	        selectFilter = _ref.selectFilter;
+	        selectFilter = _ref.selectFilter,
+	        locationFilter = _ref.locationFilter;
 
 	    if (location === '/search') {
 	      return React.createElement(Navbar, {
 	        setSearchTerm: setSearchTerm,
 	        setSelectFilter: setSelectFilter,
 	        searchTerm: searchTerm,
+	        locationFilter: locationFilter,
 	        selectFilter: selectFilter,
 	        pets: pets });
 	    } else {
@@ -22401,7 +22405,10 @@
 	    pets: arrayOf(object)
 	  },
 	  handleSearchTermEvent: function handleSearchTermEvent(event) {
-	    this.props.setSearchTerm(event.target.value, this.props.pets, this.props.selectFilter);
+	    this.props.setSearchTerm(event.target.value, this.props.locationFilter, this.props.pets, this.props.selectFilter);
+	  },
+	  handleLocationSearchTermEvent: function handleLocationSearchTermEvent(event) {
+	    this.props.setSearchTerm(this.props.searchTerm, event.target.value, this.props.pets, this.props.selectFilter);
 	  },
 	  render: function render() {
 	    var dropDownOptions = [{ value: 'pequeno', id: 1 }, { value: 'mediano', id: 2 }, { value: 'grande', id: 3 }, { value: 'gigante', id: 4 }];
@@ -22431,18 +22438,24 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement(Dropdown, {
-	                dropDownOptions: dropDownOptions,
-	                dropDownTitle: 'Tamaño',
-	                setSelectFilter: this.props.setSelectFilter,
-	                searchTerm: this.props.searchTerm,
-	                pets: this.props.pets
-	              })
+	              React.createElement('input', { value: this.props.locationFilter, onChange: this.handleLocationSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Ciudad/Municipio' })
 	            ),
 	            React.createElement(
 	              'li',
 	              null,
 	              React.createElement('input', { value: this.props.searchTerm, onChange: this.handleSearchTermEvent, className: 'form-control pet-location', type: 'text', placeholder: 'Raza' })
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement(Dropdown, {
+	                dropDownOptions: dropDownOptions,
+	                dropDownTitle: 'Tamaño',
+	                setSelectFilter: this.props.setSelectFilter,
+	                searchTerm: this.props.searchTerm,
+	                locationFilter: this.props.locationFilter,
+	                pets: this.props.pets
+	              })
 	            )
 	          )
 	        )
@@ -22483,7 +22496,7 @@
 	    return { petTypes: [] };
 	  },
 	  handleOnChangeDropdown: function handleOnChangeDropdown(event) {
-	    this.props.setSelectFilter(this.props.searchTerm, this.props.pets, event.target.value);
+	    this.props.setSelectFilter(this.props.searchTerm, this.props.locationFilter, this.props.pets, event.target.value);
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -22494,7 +22507,7 @@
 	        { className: 'form-control', onChange: this.handleOnChangeDropdown },
 	        React.createElement(
 	          'option',
-	          { disabled: true },
+	          { selected: 'selected', disabled: true },
 	          this.props.dropDownTitle
 	        ),
 	        React.createElement('option', { key: 0 }),
@@ -24031,6 +24044,8 @@
 	    reducerBreed = _require.reducerBreed,
 	    reducerPetSize = _require.reducerPetSize,
 	    reducerPetFoundDate = _require.reducerPetFoundDate,
+	    reducerPetAutonomousComunity = _require.reducerPetAutonomousComunity,
+	    reducerPetProvince = _require.reducerPetProvince,
 	    reducerPetLocation = _require.reducerPetLocation,
 	    reducerPetImages = _require.reducerPetImages,
 	    reducerPetDescription = _require.reducerPetDescription,
@@ -24055,7 +24070,9 @@
 
 	var _require5 = __webpack_require__(223),
 	    reducerLocationFilter = _require5.reducerLocationFilter,
-	    reducerPetTypeFilter = _require5.reducerPetTypeFilter;
+	    reducerPetTypeFilter = _require5.reducerPetTypeFilter,
+	    reducerAutonomousComunityFilter = _require5.reducerAutonomousComunityFilter,
+	    reducerProvinceFilter = _require5.reducerProvinceFilter;
 
 	var _require6 = __webpack_require__(224),
 	    reducerActivePage = _require6.reducerActivePage;
@@ -24096,6 +24113,12 @@
 	var SET_SOCIAL_KEYS = 'setSocialKeys';
 	var SET_CLOUDINARY = 'setCloudinary';
 	var SET_URLS = 'setUrls';
+	var SET_COMUNIDADES = 'setComunidades';
+	var SET_PROVINCIAS = 'setProvincias';
+	var SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter';
+	var SET_PROVINCE_FILTER = 'setProvinceFilter';
+	var SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity';
+	var SET_PROVINCE = 'setProvince';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -24160,6 +24183,26 @@
 	      host: action.value.host,
 	      items_api: action.value.items_api
 	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerComunidades = function reducerComunidades(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    comunidades: action.value
+	  });
+
+	  return newState;
+	};
+
+	var reducerProvincias = function reducerProvincias(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    provincias: action.value
 	  });
 
 	  return newState;
@@ -24232,6 +24275,18 @@
 	      return reducerCloudinary(state, action);
 	    case SET_URLS:
 	      return reducerUrls(state, action);
+	    case SET_COMUNIDADES:
+	      return reducerComunidades(state, action);
+	    case SET_PROVINCIAS:
+	      return reducerProvincias(state, action);
+	    case SET_AUTONOMOUS_COMUNITY_FILTER:
+	      return reducerAutonomousComunityFilter(state, action);
+	    case SET_PROVINCE_FILTER:
+	      return reducerProvinceFilter(state, action);
+	    case SET_AUTONOMOUS_COMUNITY:
+	      return reducerPetAutonomousComunity(state, action);
+	    case SET_PROVINCE:
+	      return reducerPetProvince(state, action);
 	    default:
 	      return state;
 	  }
@@ -24253,6 +24308,8 @@
 	    encloseImageTitle: state.encloseImageTitle,
 	    validationBackground: state.validationBackground,
 	    filteredPets: state.filteredPets,
+	    comunidades: state.comunidades,
+	    provincias: state.provincias,
 	    urls: {
 	      host: state.urls.host,
 	      items_api: state.urls.items_api
@@ -24267,7 +24324,9 @@
 	    },
 	    filters: {
 	      location: state.filters.location,
-	      petType: state.filters.petType
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
 	    },
 	    owner: {
 	      name: state.owner.name,
@@ -24282,6 +24341,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: state.pet.location,
 	      images: state.pet.images,
 	      description: state.pet.description,
@@ -24304,8 +24365,10 @@
 	  };
 	};
 
-	var getFilteredPets = function getFilteredPets(searchTerm, pets, selectFilter) {
+	var getFilteredPets = function getFilteredPets(searchTerm, location, pets, selectFilter) {
 	  var filteredPets = pets.filter(function (pet) {
+	    return ('' + pet.location).toUpperCase().indexOf(location.toUpperCase()) >= 0;
+	  }).filter(function (pet) {
 	    return ('' + pet.breed).toUpperCase().indexOf(searchTerm.toUpperCase()) >= 0;
 	  }).filter(function (pet) {
 	    return ('' + pet.size).toUpperCase().indexOf(selectFilter.toUpperCase()) >= 0;
@@ -24317,15 +24380,24 @@
 	};
 
 	var urlParams = function urlParams(_ref) {
-	  var location = _ref.location,
+	  var province = _ref.province,
+	      autonomousComunity = _ref.autonomousComunity,
 	      petType = _ref.petType;
 
-	  if (location !== '' && petType !== '') {
-	    return { location: location, petType: petType };
-	  } else if (location !== '' && petType === '') {
-	    return { location: location };
-	  } else if (location === '' && petType !== '') {
+	  if (autonomousComunity !== '' && province !== '' && petType !== '') {
+	    return { autonomousComunity: autonomousComunity, province: province, petType: petType };
+	  } else if (autonomousComunity !== '' && province === '' && petType === '') {
+	    return { autonomousComunity: autonomousComunity };
+	  } else if (autonomousComunity === '' && province !== '' && petType === '') {
+	    return { province: province };
+	  } else if (autonomousComunity === '' && province === '' && petType !== '') {
 	    return { petType: petType };
+	  } else if (autonomousComunity !== '' && province !== '' && petType === '') {
+	    return { autonomousComunity: autonomousComunity, province: province };
+	  } else if (autonomousComunity !== '' && province === '' && petType !== '') {
+	    return { autonomousComunity: autonomousComunity, petType: petType };
+	  } else if (autonomousComunity === '' && province !== '' && petType !== '') {
+	    return { province: province, petType: petType };
 	  } else {
 	    return {};
 	  }
@@ -24333,24 +24405,23 @@
 
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	  return {
-	    setSearchTerm: function setSearchTerm(searchTerm, pets, selectFilter, activePage) {
+	    setSearchTerm: function setSearchTerm(searchTerm, location, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SEARCH_TERM, value: searchTerm });
-	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
-	    },
-	    setLocationFilter: function setLocationFilter(location) {
 	      dispatch({ type: SET_LOCATION_FILTER, value: location });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
 	    setPetTypeFilter: function setPetTypeFilter(petType) {
 	      dispatch({ type: SET_PET_TYPE_FILTER, value: petType });
 	    },
-	    setSelectFilter: function setSelectFilter(searchTerm, pets, selectFilter, activePage) {
+	    setSelectFilter: function setSelectFilter(searchTerm, location, pets, selectFilter, activePage) {
 	      dispatch({ type: SET_SELECT_FILTER, value: selectFilter });
-	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
-	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, pets, selectFilter) });
+	      dispatch({ type: SET_LOCATION_FILTER, value: location });
+	      dispatch({ type: SET_FILTERED_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_ACTIVE_PAGE_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
+	      dispatch({ type: SET_TOTAL_NUMBER_OF_PETS, value: getFilteredPets(searchTerm, location, pets, selectFilter) });
 	      dispatch({ type: SET_ACTIVE_PAGE, value: 1 });
 	    },
 	    setActivePage: function setActivePage(activePage) {
@@ -24430,6 +24501,24 @@
 	      dispatch({ type: SET_SOCIAL_KEYS, value: social });
 	      dispatch({ type: SET_CLOUDINARY, value: cloudinary });
 	      dispatch({ type: SET_URLS, value: urls });
+	    },
+	    setComunidades: function setComunidades(comunidades) {
+	      dispatch({ type: SET_COMUNIDADES, value: comunidades });
+	    },
+	    setProvincias: function setProvincias(provincias) {
+	      dispatch({ type: SET_PROVINCIAS, value: provincias });
+	    },
+	    setAutonomousComunityFilter: function setAutonomousComunityFilter(autonomousComunityFilter) {
+	      dispatch({ type: SET_AUTONOMOUS_COMUNITY_FILTER, value: autonomousComunityFilter });
+	    },
+	    setProvinceFilter: function setProvinceFilter(provinceFilter) {
+	      dispatch({ type: SET_PROVINCE_FILTER, value: provinceFilter });
+	    },
+	    setAutonomousComunity: function setAutonomousComunity(autonomousComunity) {
+	      dispatch({ type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity });
+	    },
+	    setProvince: function setProvince(province) {
+	      dispatch({ type: SET_PROVINCE, value: province });
 	    },
 	    getPets: function getPets(_ref3) {
 	      var urls = _ref3.urls,
@@ -36106,6 +36195,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: state.pet.location,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
@@ -36125,6 +36216,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: state.pet.location,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
@@ -36144,6 +36237,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: state.pet.location,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
@@ -36164,6 +36259,8 @@
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
 	      description: state.pet.description
@@ -36183,6 +36280,8 @@
 	      size: action.value,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
 	      description: state.pet.description
@@ -36202,6 +36301,50 @@
 	      size: state.pet.size,
 	      foundDate: action.value,
 	      location: state.pet.location,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
+	      imageUrl: state.pet.imageUrl,
+	      images: state.pet.images,
+	      description: state.pet.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerPetAutonomousComunity = function reducerPetAutonomousComunity(state, action) {
+	  var newState = {};
+	  _extends(newState, state, {
+	    pet: {
+	      founderName: state.pet.founderName,
+	      founderEmail: state.pet.founderEmail,
+	      petType: state.pet.petType,
+	      breed: state.pet.breed,
+	      size: state.pet.size,
+	      foundDate: state.pet.foundDate,
+	      autonomousComunity: action.value,
+	      province: state.pet.province,
+	      location: state.pet.location,
+	      imageUrl: state.pet.imageUrl,
+	      images: state.pet.images,
+	      description: state.pet.description
+	    }
+	  });
+	  return newState;
+	};
+
+	var reducerPetProvince = function reducerPetProvince(state, action) {
+	  var newState = {};
+	  _extends(newState, state, {
+	    pet: {
+	      founderName: state.pet.founderName,
+	      founderEmail: state.pet.founderEmail,
+	      petType: state.pet.petType,
+	      breed: state.pet.breed,
+	      size: state.pet.size,
+	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: action.value,
+	      location: state.pet.location,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
 	      description: state.pet.description
@@ -36220,6 +36363,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: action.value,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
@@ -36239,6 +36384,8 @@
 	      breed: state.pet.breed,
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      location: state.pet.location,
 	      imageUrl: state.pet.imageUrl,
 	      images: action.value,
@@ -36259,6 +36406,8 @@
 	      size: state.pet.size,
 	      foundDate: state.pet.foundDate,
 	      location: state.pet.location,
+	      autonomousComunity: state.pet.autonomousComunity,
+	      province: state.pet.province,
 	      imageUrl: state.pet.imageUrl,
 	      images: state.pet.images,
 	      description: action.value
@@ -36294,6 +36443,8 @@
 	  reducerBreed: reducerBreed,
 	  reducerPetSize: reducerPetSize,
 	  reducerPetFoundDate: reducerPetFoundDate,
+	  reducerPetAutonomousComunity: reducerPetAutonomousComunity,
+	  reducerPetProvince: reducerPetProvince,
 	  reducerPetLocation: reducerPetLocation,
 	  reducerPetImages: reducerPetImages,
 	  reducerPetDescription: reducerPetDescription,
@@ -36460,7 +36611,9 @@
 	  _extends(newState, state, {
 	    filters: {
 	      location: action.value,
-	      petType: state.filters.petType
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
 	    }
 	  });
 
@@ -36473,7 +36626,39 @@
 	  _extends(newState, state, {
 	    filters: {
 	      location: state.filters.location,
-	      petType: action.value
+	      petType: action.value,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: state.filters.province
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerAutonomousComunityFilter = function reducerAutonomousComunityFilter(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    filters: {
+	      location: state.filters.location,
+	      petType: state.filters.petType,
+	      autonomousComunity: action.value,
+	      province: state.filters.province
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerProvinceFilter = function reducerProvinceFilter(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    filters: {
+	      location: state.filters.location,
+	      petType: state.filters.petType,
+	      autonomousComunity: state.filters.autonomousComunity,
+	      province: action.value
 	    }
 	  });
 
@@ -36482,7 +36667,9 @@
 
 	module.exports = {
 	  reducerLocationFilter: reducerLocationFilter,
-	  reducerPetTypeFilter: reducerPetTypeFilter
+	  reducerPetTypeFilter: reducerPetTypeFilter,
+	  reducerAutonomousComunityFilter: reducerAutonomousComunityFilter,
+	  reducerProvinceFilter: reducerProvinceFilter
 	};
 
 /***/ },
@@ -36605,6 +36792,8 @@
 	  filteredPets: [],
 	  encloseImageTitle: 'Adjuntar imagen',
 	  validationBackground: '',
+	  comunidades: [],
+	  provincias: [],
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -36619,7 +36808,9 @@
 	  },
 	  filters: {
 	    location: '',
-	    petType: ''
+	    petType: '',
+	    autonomousComunity: '',
+	    province: ''
 	  },
 	  owner: {
 	    name: '',
@@ -36634,6 +36825,8 @@
 	    breed: '',
 	    size: '',
 	    foundDate: '',
+	    autonomousComunity: '',
+	    province: '',
 	    location: '',
 	    images: [],
 	    description: '',
@@ -42482,8 +42675,9 @@
 	    var _this = _possibleConstructorReturn(this, (Landing.__proto__ || Object.getPrototypeOf(Landing)).call(this, props));
 
 	    _this.handleSearchTermEvent = _this.handleSearchTermEvent.bind(_this);
-	    _this.handleLocationFilter = _this.handleLocationFilter.bind(_this);
 	    _this.handlePetTypeFilter = _this.handlePetTypeFilter.bind(_this);
+	    _this.handleComunidadesFilter = _this.handleComunidadesFilter.bind(_this);
+	    _this.handleProvincesFilter = _this.handleProvincesFilter.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    return _this;
 	  }
@@ -42494,14 +42688,27 @@
 	      this.props.setSearchTerm(event.target.value);
 	    }
 	  }, {
-	    key: 'handleLocationFilter',
-	    value: function handleLocationFilter(event) {
-	      this.props.setLocationFilter(event.target.value);
-	    }
-	  }, {
 	    key: 'handlePetTypeFilter',
 	    value: function handlePetTypeFilter(event) {
 	      this.props.setPetTypeFilter(event.target.value);
+	    }
+	  }, {
+	    key: 'handleComunidadesFilter',
+	    value: function handleComunidadesFilter(event) {
+	      var _this2 = this;
+
+	      this.props.setAutonomousComunityFilter(event.target.value);
+
+	      this.props.comunidades.map(function (comunidad) {
+	        if (comunidad.value === event.target.value) {
+	          _this2.props.setProvincias(comunidad.provincias);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'handleProvincesFilter',
+	    value: function handleProvincesFilter(event) {
+	      this.props.setProvinceFilter(event.target.value);
 	    }
 	  }, {
 	    key: 'handleSubmit',
@@ -42520,6 +42727,18 @@
 	        type: 'GET',
 	        success: function success(response) {
 	          props.setEnvs(JSON.parse(response));
+	        },
+	        error: function error(xhr) {
+	          console.log(xhr);
+	        }
+	      });
+
+	      $.ajax({
+	        url: '/api/comunidades',
+	        cache: true,
+	        type: 'GET',
+	        success: function success(response) {
+	          props.setComunidades(JSON.parse(response));
 	        },
 	        error: function error(xhr) {
 	          console.log(xhr);
@@ -42604,16 +42823,11 @@
 	                'form',
 	                { onSubmit: this.handleSubmit },
 	                React.createElement(
-	                  'p',
-	                  null,
-	                  React.createElement('input', { value: this.props.locationFilter, onChange: this.handleLocationFilter, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrado en' })
-	                ),
-	                React.createElement(
 	                  'select',
-	                  { className: 'form-control', onChange: this.handlePetTypeFilter },
+	                  { className: 'form-control landing-select-filter', onChange: this.handlePetTypeFilter },
 	                  React.createElement(
 	                    'option',
-	                    { disabled: true },
+	                    { selected: 'selected', disabled: true },
 	                    'Tipo de mascota'
 	                  ),
 	                  React.createElement('option', { value: 'default-value', key: 0 }),
@@ -42622,6 +42836,40 @@
 	                      'option',
 	                      { value: option.type, key: option.id },
 	                      option.type
+	                    );
+	                  })
+	                ),
+	                React.createElement(
+	                  'select',
+	                  { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
+	                  React.createElement(
+	                    'option',
+	                    { selected: 'selected', disabled: true },
+	                    'Comunidad Aut\xF3noma'
+	                  ),
+	                  React.createElement('option', { value: 'default-value', key: 0 }),
+	                  this.props.comunidades.map(function (option) {
+	                    return React.createElement(
+	                      'option',
+	                      { value: option.value, key: option.id },
+	                      option.value
+	                    );
+	                  })
+	                ),
+	                React.createElement(
+	                  'select',
+	                  { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
+	                  React.createElement(
+	                    'option',
+	                    { selected: 'selected', disabled: true },
+	                    'Provincia'
+	                  ),
+	                  React.createElement('option', { value: 'default-value', key: 0 }),
+	                  this.props.provincias.map(function (option) {
+	                    return React.createElement(
+	                      'option',
+	                      { value: option.value, key: option.id },
+	                      option.value
 	                    );
 	                  })
 	                )
@@ -42658,7 +42906,7 @@
 	                ),
 	                React.createElement(Dropdown, {
 	                  dropDownOptions: dropDownOptions,
-	                  dropDownTitle: 'Pet type ',
+	                  dropDownTitle: 'tipo de mascota',
 	                  setSelectFilter: this.props.setSelectFilter
 	                })
 	              ),
@@ -42680,6 +42928,11 @@
 	        ),
 	        React.createElement(NewPetFound, _extends({}, this.props.pet, {
 	          alert: this.props.alert,
+	          comunidades: this.props.comunidades,
+	          provincias: this.props.provincias,
+	          setAutonomousComunity: this.props.setAutonomousComunity,
+	          setProvince: this.props.setProvince,
+	          setProvincias: this.props.setProvincias,
 	          setPetFounderName: this.props.setPetFounderName,
 	          setPetFounderEmail: this.props.setPetFounderEmail,
 	          setPetType: this.props.setPetType,
@@ -43461,8 +43714,11 @@
 	    _this.onOpenClick = _this.onOpenClick.bind(_this);
 	    _this.handleBreed = _this.handleBreed.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
+	    _this.handleComunidadesFilter = _this.handleComunidadesFilter.bind(_this);
+	    _this.handleProvincesFilter = _this.handleProvincesFilter.bind(_this);
 
 	    _this.state = { startDate: (0, _moment2.default)() };
+	    _this.props.setPetFoundDate((0, _moment2.default)().format('YYYY-MM-DD'));
 	    return _this;
 	  }
 
@@ -43531,9 +43787,27 @@
 	      this.props.setImages(event.target.value);
 	    }
 	  }, {
+	    key: 'handleComunidadesFilter',
+	    value: function handleComunidadesFilter(event) {
+	      var _this2 = this;
+
+	      this.props.setAutonomousComunity(event.target.value);
+
+	      this.props.comunidades.map(function (comunidad) {
+	        if (comunidad.value === event.target.value) {
+	          _this2.props.setProvincias(comunidad.provincias);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'handleProvincesFilter',
+	    value: function handleProvincesFilter(event) {
+	      this.props.setProvince(event.target.value);
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      var _this2 = this;
+	      var _this3 = this;
 
 	      if (this.props.images[0]) {
 	        $('#details-button').addClass('disable-button');
@@ -43545,12 +43819,12 @@
 	          if (err) {
 	            $('#details-button').removeClass('disable-button');
 	            $('.loader-container').hide();
-	            showUnSuccesfullMessage(_this2.props, err);
+	            showUnSuccesfullMessage(_this3.props, err);
 	            console.error(err);
 	          }
 
 	          if (response.body.secure_url !== '') {
-	            _this2.sendDetails(response.body);
+	            _this3.sendDetails(response.body);
 	          }
 	        });
 	      } else {
@@ -43572,6 +43846,8 @@
 	        breed: this.props.breed,
 	        size: this.props.size,
 	        date: this.props.foundDate,
+	        autonomousComunity: this.props.autonomousComunity,
+	        province: this.props.province,
 	        location: this.props.location,
 	        info: this.props.description,
 	        image: secure_url
@@ -43609,7 +43885,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this3 = this;
+	      var _this4 = this;
 
 	      return React.createElement(
 	        'div',
@@ -43630,7 +43906,7 @@
 	          React.createElement(
 	            'p',
 	            { className: 'title form-introduction' },
-	            'Introduce datos de la mascota y los datos necesarios para poder contactar contigo'
+	            'Introduce los datos de la mascota y los datos necesarios para poder contactar contigo'
 	          ),
 	          React.createElement(
 	            'form',
@@ -43653,7 +43929,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border', type: 'text', placeholder: 'raca (pitbul, pastor aleman ...)' })
+	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border', type: 'text', placeholder: 'Raza (pitbul, pastor aleman ...)' })
 	            ),
 	            React.createElement(
 	              'p',
@@ -43675,9 +43951,43 @@
 	              React.createElement(_reactDatepicker2.default, { dateFormat: 'DD-MM-YYYY', selected: this.state.startDate, onChange: this.handleChange, className: 'w3-input w3-border' })
 	            ),
 	            React.createElement(
+	              'select',
+	              { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
+	              React.createElement(
+	                'option',
+	                { selected: 'selected', disabled: true },
+	                'Comunidad Aut\xF3noma'
+	              ),
+	              React.createElement('option', { value: 'default-value', key: 0 }),
+	              this.props.comunidades.map(function (option) {
+	                return React.createElement(
+	                  'option',
+	                  { value: option.value, key: option.id },
+	                  option.value
+	                );
+	              })
+	            ),
+	            React.createElement(
+	              'select',
+	              { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
+	              React.createElement(
+	                'option',
+	                { selected: 'selected', disabled: true },
+	                'Provincia'
+	              ),
+	              React.createElement('option', { value: 'default-value', key: 0 }),
+	              this.props.provincias.map(function (option) {
+	                return React.createElement(
+	                  'option',
+	                  { value: option.value, key: option.id },
+	                  option.value
+	                );
+	              })
+	            ),
+	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Encontrada en ciudad, localidad', required: true })
+	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio', required: true })
 	            ),
 	            React.createElement(
 	              'p',
@@ -43719,7 +44029,7 @@
 	                          multiple: false,
 	                          accept: 'image/*',
 	                          ref: function ref(node) {
-	                            _this3.dropzone = node;
+	                            _this4.dropzone = node;
 	                          },
 	                          maxSize: 1048576,
 	                          onDrop: this.onImageDrop },

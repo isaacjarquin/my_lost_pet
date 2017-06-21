@@ -21,6 +21,8 @@ describe('Store', () => {
     },
     filters: {
       location: '',
+      autonomousComunity: '',
+      province: '',
       petType: ''
     },
     'social': {
@@ -40,6 +42,8 @@ describe('Store', () => {
       breed: '',
       size: '',
       foundDate: '',
+      autonomousComunity: '',
+      province: '',
       location: '',
       images: [],
       extraDescription: '',
@@ -63,7 +67,9 @@ describe('Store', () => {
     totalNumberOfPets: 0,
     pets: [],
     activePagePets: [],
-    filteredPets: []
+    filteredPets: [],
+    provincias: [],
+    comunidades: []
   }
 
   it('should boostrap', () => {
@@ -178,6 +184,18 @@ describe('Store', () => {
     expect(state.pet.location).to.deep.equal('I do care a lot')
   })
 
+  it('should handle province actions', () => {
+    const state = rootReducer({pet: {province: 'dont care'}}, {type: 'setProvince', value: 'I do care a lot'})
+
+    expect(state.pet.province).to.deep.equal('I do care a lot')
+  })
+
+  it('should handle autonomousComunity actions', () => {
+    const state = rootReducer({pet: {autonomousComunity: 'dont care'}}, {type: 'setAutonomousComunity', value: 'I do care a lot'})
+
+    expect(state.pet.autonomousComunity).to.deep.equal('I do care a lot')
+  })
+
   it('should handle setPetDescription actions', () => {
     const state = rootReducer({pet: {description: 'dont care'}}, {type: 'setPetDescription', value: 'I do care a lot'})
 
@@ -285,5 +303,29 @@ describe('Store', () => {
     const state = rootReducer({upload_preset: '', upload_url: ''}, {type: 'setCloudinary', value: newCloudinaryState})
 
     expect(state.cloudinary).to.deep.equal(newCloudinaryState)
+  })
+
+  it('should handle setAutonomousComunityFilter actions', () => {
+    const state = rootReducer({filters: {autonomousComunity: ''}}, {type: 'setAutonomousComunityFilter', value: 'Canarias'})
+
+    expect(state.filters.autonomousComunity).to.deep.equal('Canarias')
+  })
+
+  it('should handle setProvinceFilter actions', () => {
+    const state = rootReducer({filters: {province: ''}}, {type: 'setProvinceFilter', value: 'Las Palmas'})
+
+    expect(state.filters.province).to.deep.equal('Las Palmas')
+  })
+
+  it('should handle setComunidades actions', () => {
+    const state = rootReducer({comunidades: ''}, {type: 'setComunidades', value: ['Canarias', 'Andalucia']})
+
+    expect(state.comunidades).to.deep.equal(['Canarias', 'Andalucia'])
+  })
+
+  it('should handle setProvincias actions', () => {
+    const state = rootReducer({provincias: ''}, {type: 'setProvincias', value: ['Las Palmas', 'Santa Cruz']})
+
+    expect(state.provincias).to.deep.equal(['Las Palmas', 'Santa Cruz'])
   })
 })

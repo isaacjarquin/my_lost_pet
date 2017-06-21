@@ -8,6 +8,8 @@ const reducerPetFounderName = (state, action) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: state.pet.location,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
@@ -27,6 +29,8 @@ const reducerPetFounderEmail = (state, action) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: state.pet.location,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
@@ -46,6 +50,8 @@ const reducerPetType = (state, action) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: state.pet.location,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
@@ -66,6 +72,8 @@ const reducerBreed = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
       description: state.pet.description
@@ -85,6 +93,8 @@ const reducerPetSize = (state, action) => {
       size: action.value,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
       description: state.pet.description
@@ -104,6 +114,50 @@ const reducerPetFoundDate = (state, action) => {
       size: state.pet.size,
       foundDate: action.value,
       location: state.pet.location,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetAutonomousComunity = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      breed: state.pet.breed,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      autonomousComunity: action.value,
+      province: state.pet.province,
+      location: state.pet.location,
+      imageUrl: state.pet.imageUrl,
+      images: state.pet.images,
+      description: state.pet.description
+    }
+  })
+  return newState
+}
+
+const reducerPetProvince = (state, action) => {
+  const newState = {}
+  Object.assign(newState, state, {
+    pet: {
+      founderName: state.pet.founderName,
+      founderEmail: state.pet.founderEmail,
+      petType: state.pet.petType,
+      breed: state.pet.breed,
+      size: state.pet.size,
+      foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: action.value,
+      location: state.pet.location,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
       description: state.pet.description
@@ -122,6 +176,8 @@ const reducerPetLocation = (state, action) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: action.value,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
@@ -141,6 +197,8 @@ const reducerPetImages = (state, action) => {
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       location: state.pet.location,
       imageUrl: state.pet.imageUrl,
       images: action.value,
@@ -161,6 +219,8 @@ const reducerPetDescription = (state, action) => {
       size: state.pet.size,
       foundDate: state.pet.foundDate,
       location: state.pet.location,
+      autonomousComunity: state.pet.autonomousComunity,
+      province: state.pet.province,
       imageUrl: state.pet.imageUrl,
       images: state.pet.images,
       description: action.value
@@ -196,6 +256,8 @@ module.exports = {
   reducerBreed,
   reducerPetSize,
   reducerPetFoundDate,
+  reducerPetAutonomousComunity,
+  reducerPetProvince,
   reducerPetLocation,
   reducerPetImages,
   reducerPetDescription,

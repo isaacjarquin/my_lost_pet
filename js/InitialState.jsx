@@ -9,6 +9,8 @@ module.exports = {
   filteredPets: [],
   encloseImageTitle: 'Adjuntar imagen',
   validationBackground: '',
+  comunidades: [],
+  provincias: [],
   social: {
     facebook: '',
     twitter: ''
@@ -23,7 +25,9 @@ module.exports = {
   },
   filters: {
     location: '',
-    petType: ''
+    petType: '',
+    autonomousComunity: '',
+    province: ''
   },
   owner: {
     name: '',
@@ -38,6 +42,8 @@ module.exports = {
     breed: '',
     size: '',
     foundDate: '',
+    autonomousComunity: '',
+    province: '',
     location: '',
     images: [],
     description: '',

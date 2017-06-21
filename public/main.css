@@ -53,8 +53,10 @@
     margin-bottom: 0;
     min-height: 400px; }
   @media (min-width: 736px) {
-    .header .pet-type {
-      margin-right: 10px; } }
+    .header li {
+      margin-right: 10px; }
+    .header li:last-of-type {
+      margin-right: 0; } }
   .header .navbar {
     border-radius: 0;
     margin-bottom: 50px;
@@ -96,7 +98,7 @@ select {
   header .w3-image {
     height: 600px; }
   header .w3-display-left {
-    top: 74%; } }
+    top: 70%; } }
 
 .w3-navbar {
   opacity: 0.9; }
@@ -321,6 +323,9 @@ p.form-introduction {
 .pet-filter .pet-type select.form-control {
   height: 38px;
   border-radius: 0; }
+
+.landing-select-filter {
+  margin-bottom: 10px; }
 
 .panel-group {
   margin-bottom: 0; }

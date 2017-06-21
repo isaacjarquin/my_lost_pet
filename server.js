@@ -18,30 +18,26 @@ const template = _.template(baseTemplate)
 const ClientApp = require('./js/ClientApp.jsx')
 const Routes = ClientApp.Routes
 const path = require('path')
+const comunidades = require('./js/data/comunidades.js')
+const envs = require('./js/data/envs.js')
+const pets = require('./js/data/pets.js')
 
 const server = express()
 
 server.use('/public', express.static('./public'))
 
 server.get('/api/envs', function (req, res) {
-  res.send(
-    JSON.stringify(
-      {
-        social: {
-          facebook: '290373181365977',
-          twitter: 'Cw7HdKgnuuevzQO5N03jfZOQ9'
-        },
-        cloudinary: {
-          upload_preset: 'ak0f1cnm',
-          upload_url: 'https://api.cloudinary.com/v1_1/my-lost-pet/image/upload'
-        },
-        urls: {
-          host: 'https://mylostpet.herokuapp.com/',
-          items_api: 'https://items-api.herokuapp.com'
-        }
-      }
-    ))
+  res.send(JSON.stringify(envs))
 })
+
+server.get('/api/comunidades', function (req, res) {
+  res.send(JSON.stringify(comunidades))
+})
+
+server.get('/api/pets', function (req, res) {
+  res.send(JSON.stringify(pets))
+})
+
 server.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))
 
 server.use((req, res) => {

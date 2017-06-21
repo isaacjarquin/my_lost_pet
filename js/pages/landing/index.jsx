@@ -20,18 +20,28 @@ class Landing extends React.Component {
   constructor (props) {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
-    this.handleLocationFilter = this.handleLocationFilter.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
+    this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
+    this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
   }
-  handleLocationFilter (event) {
-    this.props.setLocationFilter(event.target.value)
-  }
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
+  }
+  handleComunidadesFilter (event) {
+    this.props.setAutonomousComunityFilter(event.target.value)
+
+    this.props.comunidades.map((comunidad) => {
+      if (comunidad.value === event.target.value) {
+        this.props.setProvincias(comunidad.provincias)
+      }
+    })
+  }
+  handleProvincesFilter (event) {
+    this.props.setProvinceFilter(event.target.value)
   }
   handleSubmit (event) {
     hashHistory.push('search')
@@ -45,6 +55,16 @@ class Landing extends React.Component {
       cache: true,
       type: 'GET',
       success: function (response) { props.setEnvs(JSON.parse(response)) },
+      error: function (xhr) { console.log(xhr) }
+    })
+
+    $.ajax({
+      url: '/api/comunidades',
+      cache: true,
+      type: 'GET',
+      success: function (response) {
+        props.setComunidades(JSON.parse(response))
+      },
       error: function (xhr) { console.log(xhr) }
     })
   }
@@ -77,12 +97,27 @@ class Landing extends React.Component {
                 <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
-                <p><input value={this.props.locationFilter} onChange={this.handleLocationFilter} className='w3-input w3-border' type='text' placeholder='Encontrado en' /></p>
-                <select className='form-control' onChange={this.handlePetTypeFilter}>
-                  <option disabled>Tipo de mascota</option>
+                <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
+                  <option selected='selected' disabled>Tipo de mascota</option>
                   <option value='default-value' key={0} />
                   {petTypesOptions.map((option) => (
                     <option value={option.type} key={option.id}>{option.type}</option>
+                  ))}
+                </select>
+
+                <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
+                  <option selected='selected' disabled>Comunidad Autónoma</option>
+                  <option value='default-value' key={0} />
+                  {this.props.comunidades.map((option) => (
+                    <option value={option.value} key={option.id}>{option.value}</option>
+                  ))}
+                </select>
+
+                <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
+                  <option selected='selected' disabled>Provincia</option>
+                  <option value='default-value' key={0} />
+                  {this.props.provincias.map((option) => (
+                    <option value={option.value} key={option.id}>{option.value}</option>
                   ))}
                 </select>
               </form>
@@ -97,7 +132,7 @@ class Landing extends React.Component {
                 <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Actualmente en' /></p>
                 <Dropdown
                   dropDownOptions={dropDownOptions}
-                  dropDownTitle={'Pet type '}
+                  dropDownTitle={'tipo de mascota'}
                   setSelectFilter={this.props.setSelectFilter}
                   />
               </form>
@@ -109,6 +144,11 @@ class Landing extends React.Component {
         <NewPetFound
           {...this.props.pet}
           alert={this.props.alert}
+          comunidades={this.props.comunidades}
+          provincias={this.props.provincias}
+          setAutonomousComunity={this.props.setAutonomousComunity}
+          setProvince={this.props.setProvince}
+          setProvincias={this.props.setProvincias}
           setPetFounderName={this.props.setPetFounderName}
           setPetFounderEmail={this.props.setPetFounderEmail}
           setPetType={this.props.setPetType}

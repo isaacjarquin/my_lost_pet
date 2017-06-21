@@ -94,8 +94,11 @@ class NewPetFound extends React.Component {
     this.onOpenClick = this.onOpenClick.bind(this)
     this.handleBreed = this.handleBreed.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
+    this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
     this.state = { startDate: moment() }
+    this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
   }
 
   handleChange (date) {
@@ -142,6 +145,19 @@ class NewPetFound extends React.Component {
   handleImages (event) {
     this.props.setImages(event.target.value)
   }
+  handleComunidadesFilter (event) {
+    this.props.setAutonomousComunity(event.target.value)
+
+    this.props.comunidades.map((comunidad) => {
+      if (comunidad.value === event.target.value) {
+        this.props.setProvincias(comunidad.provincias)
+      }
+    })
+  }
+
+  handleProvincesFilter (event) {
+    this.props.setProvince(event.target.value)
+  }
   handleSubmit (event) {
     if (this.props.images[0]) {
       $('#details-button').addClass('disable-button')
@@ -179,6 +195,8 @@ class NewPetFound extends React.Component {
       breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
+      autonomousComunity: this.props.autonomousComunity,
+      province: this.props.province,
       location: this.props.location,
       info: this.props.description,
       image: secure_url
@@ -219,12 +237,12 @@ class NewPetFound extends React.Component {
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
         <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
-          <p className='title form-introduction'>Introduce datos de la mascota y los datos necesarios para poder contactar contigo</p>
+          <p className='title form-introduction'>Introduce los datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
             <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
-            <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='raca (pitbul, pastor aleman ...)' /></p>
+            <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
             <MediaQuery maxDeviceWidth={1200}>
               <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
@@ -232,7 +250,21 @@ class NewPetFound extends React.Component {
             <MediaQuery minDeviceWidth={1200}>
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
-            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Encontrada en ciudad, localidad' required /></p>
+            <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
+              <option selected='selected' disabled>Comunidad Autónoma</option>
+              <option value='default-value' key={0} />
+              {this.props.comunidades.map((option) => (
+                <option value={option.value} key={option.id}>{option.value}</option>
+              ))}
+            </select>
+            <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
+              <option selected='selected' disabled>Provincia</option>
+              <option value='default-value' key={0} />
+              {this.props.provincias.map((option) => (
+                <option value={option.value} key={option.id}>{option.value}</option>
+              ))}
+            </select>
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Ciudad/Municipio' required /></p>
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>
