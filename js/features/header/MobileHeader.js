@@ -17,7 +17,7 @@ const MobileHeader = React.createClass({
       <nav className='movile-header navbar navbar-inverse w3-black'>
         <div className='container-fluid'>
           <div className='navbar-header'>
-            <div className='mobile-home'><a href='/'>Home<i /></a></div>
+            <div className='mobile-home'><a href='/'>Inicio<i /></a></div>
             <button type='button' className='navbar-toggle' data-toggle='collapse' data-target='#myTopNavbar'>
               <span className='icon-bar' />
               <span className='icon-bar' />

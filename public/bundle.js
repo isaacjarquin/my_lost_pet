@@ -22566,7 +22566,7 @@
 	            React.createElement(
 	              'a',
 	              { href: '/' },
-	              'Home',
+	              'Inicio',
 	              React.createElement('i', null)
 	            )
 	          ),
@@ -23247,7 +23247,7 @@
 	        React.createElement(
 	          'a',
 	          { href: '/' },
-	          'Home',
+	          'Inicio',
 	          React.createElement('i', null)
 	        )
 	      ),

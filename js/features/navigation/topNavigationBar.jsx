@@ -11,7 +11,7 @@ const TopNavigationBar = React.createClass({
   render () {
     return (
       <ul className='w3-navbar w3-black w3-hide-small'>
-        <li className='w3-left'><a href='/'>Home<i /></a></li>
+        <li className='w3-left'><a href='/'>Inicio<i /></a></li>
         <li className='w3-right'>
           <TwitterButton
             url={this.hostUrl}
