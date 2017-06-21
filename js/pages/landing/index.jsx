@@ -49,7 +49,6 @@ class Landing extends React.Component {
   }
   componentDidMount () {
     const props = this.props
-    let comunidades = []
 
     $.ajax({
       url: '/api/envs',
