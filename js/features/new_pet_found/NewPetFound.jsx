@@ -195,7 +195,7 @@ class NewPetFound extends React.Component {
       breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
-      autonomousComunity: this.props.autonomousComunity,
+      autonomous_comunity: this.props.autonomousComunity,
       province: this.props.province,
       location: this.props.location,
       info: this.props.description,
