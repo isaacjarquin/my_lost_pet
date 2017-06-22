@@ -31,11 +31,11 @@ const showSuccesfullMessage = (props) => {
   }
 
   props.setAlerts(alertData)
+  clearForm(props)
 
   setTimeout(() => {
     clearAlert(props)
     closePanel(props)
-    clearForm(props)
   }, 8000)
 }
 
