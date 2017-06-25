@@ -629,6 +629,8 @@ const mapDispatchToProps = (dispatch) => {
     },
     setImages (images) {
       dispatch({type: SET_IMAGES, value: images})
+      dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: ''})
+      dispatch({type: SET_VALIDATION_BACKGROUND, value: ''})
     },
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})

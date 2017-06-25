@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24674,6 +24674,8 @@
 	    },
 	    setImages: function setImages(images) {
 	      dispatch({ type: SET_IMAGES, value: images });
+	      dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: '' });
+	      dispatch({ type: SET_VALIDATION_BACKGROUND, value: '' });
 	    },
 	    setPetDescription: function setPetDescription(petDescription) {
 	      dispatch({ type: SET_PET_DESCRIPTION, value: petDescription });
