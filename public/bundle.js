@@ -22146,7 +22146,7 @@
 	  childRoutes: [{
 	    path: 'search',
 	    getComponent: function getComponent(location, cb) {
-	      cb(null, __webpack_require__(431));
+	      cb(null, __webpack_require__(433));
 	    }
 	  }]
 	};
@@ -24129,6 +24129,14 @@
 	var SET_SIZE_VALIDATION = 'setSizeValidation';
 	var SET_LOCATION_VALIDATION = 'setLocationValidation';
 	var SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation';
+	var SET_FOUNDER_NAME_INPUT_COLOR = 'setFounderNameInputColor';
+	var SET_FOUNDER_EMAIL_INPUT_COLOR = 'setFounderEmailInputColor';
+	var SET_PET_TYPE_INPUT_COLOR = 'setPetTypeInputColor';
+	var SET_BREED_INPUT_COLOR = 'setBreedInputColor';
+	var SET_SIZE_INPUT_COLOR = 'setSizeInputColor';
+	var SET_LOCATION_INPUT_COLOR = 'setLocationInputColor';
+	var SET_DESCRIPTION_INPUT_COLOR = 'setDescriptionInputColor';
+	var SET_AUTONOMOUS_COMUNITY_INPUT_COLOR = 'setAutonomousComunityInputColor';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -24386,6 +24394,174 @@
 	  return newState;
 	};
 
+	var reducerAutonomousComunityInputColor = function reducerAutonomousComunityInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: action.value,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderNameInputColor = function reducerFounderNameInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: action.value,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderEmailInputColor = function reducerFounderEmailInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: action.value,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerPetTypeInputColor = function reducerPetTypeInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: action.value,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerBreedInputColor = function reducerBreedInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: action.value,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerSizeInputColor = function reducerSizeInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: action.value,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerLocationInputColor = function reducerLocationInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: action.value,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerDescriptionInputColor = function reducerDescriptionInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: action.value
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
@@ -24481,6 +24657,22 @@
 	      return reducerLocationValidation(state, action);
 	    case SET_DESCRIPTION_VALIDATION:
 	      return reducerDescriptionValidation(state, action);
+	    case SET_FOUNDER_NAME_INPUT_COLOR:
+	      return reducerFounderNameInputColor(state, action);
+	    case SET_FOUNDER_EMAIL_INPUT_COLOR:
+	      return reducerFounderEmailInputColor(state, action);
+	    case SET_PET_TYPE_INPUT_COLOR:
+	      return reducerPetTypeInputColor(state, action);
+	    case SET_BREED_INPUT_COLOR:
+	      return reducerBreedInputColor(state, action);
+	    case SET_SIZE_INPUT_COLOR:
+	      return reducerSizeInputColor(state, action);
+	    case SET_LOCATION_INPUT_COLOR:
+	      return reducerLocationInputColor(state, action);
+	    case SET_DESCRIPTION_INPUT_COLOR:
+	      return reducerDescriptionInputColor(state, action);
+	    case SET_AUTONOMOUS_COMUNITY_INPUT_COLOR:
+	      return reducerAutonomousComunityInputColor(state, action);
 	    default:
 	      return state;
 	  }
@@ -24514,6 +24706,18 @@
 	        size: state.validations.newPetFound.size,
 	        location: state.validations.newPetFound.location,
 	        description: state.validations.newPetFound.description
+	      }
+	    },
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
 	      }
 	    },
 	    urls: {
@@ -24743,27 +24947,35 @@
 
 	      if (founderName === "") {
 	        dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (founderEmail === "") {
 	        dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (petType === "") {
 	        dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (breed === "") {
 	        dispatch({ type: SET_BREED_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_BREED_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (size === "") {
 	        dispatch({ type: SET_SIZE_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_SIZE_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (location === "") {
 	        dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_LOCATION_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (description === "") {
 	        dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_DESCRIPTION_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (autonomousComunity === "") {
 	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue' });
+	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'w3-border-red' });
 	      }
 	      if (!images[0]) {
 	        dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.' });
@@ -37056,6 +37268,18 @@
 	      description: 'displayNone'
 	    }
 	  },
+	  inputColor: {
+	    newPetFound: {
+	      autonomousComunity: '',
+	      founderName: '',
+	      founderEmail: '',
+	      petType: '',
+	      breed: '',
+	      size: '',
+	      location: '',
+	      description: ''
+	    }
+	  },
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -42925,7 +43149,7 @@
 	var MediaQuery = __webpack_require__(184);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(430);
+	  __webpack_require__(432);
 	}
 
 	var Landing = function (_React$Component) {
@@ -43213,7 +43437,8 @@
 	          setValidationBackground: this.props.setValidationBackground,
 	          cloudinary: this.props.cloudinary,
 	          items_api: this.props.urls.items_api,
-	          validations: this.props.validations.newPetFound
+	          validations: this.props.validations.newPetFound,
+	          inputColor: this.props.inputColor.newPetFound
 	        })),
 	        React.createElement(
 	          'div',
@@ -43893,12 +44118,12 @@
 	var Alerts = __webpack_require__(292);
 	var DogLoader = __webpack_require__(427);
 	var $ = __webpack_require__(218);
-	var ValidationError = __webpack_require__(447);
+	var ValidationError = __webpack_require__(429);
 
 	var MediaQuery = __webpack_require__(184);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(429);
+	  __webpack_require__(431);
 	}
 
 	var clearForm = function clearForm(props) {
@@ -44191,31 +44416,31 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
+	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border ' + this.props.inputColor.founderName, type: 'text', placeholder: 'Nombre' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo nombre es obligatorio', field: this.props.validations.founderName }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
+	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border ' + this.props.inputColor.founderEmail, type: 'email', placeholder: 'e-mail' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo email es obligatorio', field: this.props.validations.founderEmail }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)' })
+	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border ' + this.props.inputColor.petType, type: 'text', placeholder: 'Typo de mascota (perro/gato ...)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo tipo de mascota es obligatorio', field: this.props.validations.petType }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border', type: 'text', placeholder: 'Raza (pitbul, pastor aleman ...)' })
+	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border ' + this.props.inputColor.breed, type: 'text', placeholder: 'Raza (pitbul, pastor aleman ...)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo raza es obligatorio', field: this.props.validations.breed }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
+	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border ' + this.props.inputColor.petSize, type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo tama\xF1o es obligatorio', field: this.props.validations.size }),
 	            React.createElement(
@@ -44270,13 +44495,13 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio' })
+	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border ' + this.props.inputColor.location, type: 'text', placeholder: 'Ciudad/Municipio' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo Ciudad/Municipio es oblidatorio', field: this.props.validations.location }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
+	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border ' + this.props.inputColor.description, placeholder: 'Imformacion sobre la mascota' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo Descripci\xF3n es oblidatorio', field: this.props.validations.description }),
 	            React.createElement(
@@ -65486,9 +65711,68 @@
 
 /***/ },
 /* 429 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(6);
+
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	  __webpack_require__(430);
+	}
+
+	var Error = function (_React$Component) {
+	  _inherits(Error, _React$Component);
+
+	  function Error() {
+	    _classCallCheck(this, Error);
+
+	    return _possibleConstructorReturn(this, (Error.__proto__ || Object.getPrototypeOf(Error)).apply(this, arguments));
+	  }
+
+	  _createClass(Error, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          field = _props.field,
+	          visible = _props.visible,
+	          message = _props.message;
+
+
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'div',
+	          { className: 'validation-error ' + field },
+	          message
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Error;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    bool = _React$PropTypes.bool;
+
+
+	Error.propTypes = {
+	  message: string,
+	  visible: bool
+	};
+
+	module.exports = Error;
 
 /***/ },
 /* 430 */
@@ -65498,6 +65782,18 @@
 
 /***/ },
 /* 431 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 432 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 433 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65515,15 +65811,15 @@
 	var _require = __webpack_require__(188),
 	    connector = _require.connector;
 
-	var Pagination = __webpack_require__(432);
+	var Pagination = __webpack_require__(434);
 	var MediaQuery = __webpack_require__(184);
-	var DesktopTemplateResults = __webpack_require__(438);
-	var TabletTemplateResults = __webpack_require__(444);
-	var MobileTemplateResults = __webpack_require__(445);
+	var DesktopTemplateResults = __webpack_require__(440);
+	var TabletTemplateResults = __webpack_require__(446);
+	var MobileTemplateResults = __webpack_require__(447);
 	var $ = __webpack_require__(218);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(446);
+	  __webpack_require__(448);
 	}
 
 	var Search = React.createClass({
@@ -65602,17 +65898,17 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 432 */
+/* 434 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// export this package's api
 
-	module.exports = __webpack_require__(433);
+	module.exports = __webpack_require__(435);
 
 /***/ },
-/* 433 */
+/* 435 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -65646,10 +65942,10 @@
 	}
 
 	var React = __webpack_require__(6);
-	var Pager = __webpack_require__(434);
-	var Options = __webpack_require__(435);
-	var KEYCODE = __webpack_require__(436);
-	var LOCALE = __webpack_require__(437);
+	var Pager = __webpack_require__(436);
+	var Options = __webpack_require__(437);
+	var KEYCODE = __webpack_require__(438);
+	var LOCALE = __webpack_require__(439);
 
 	function noop() {}
 
@@ -66032,7 +66328,7 @@
 	module.exports = Pagination;
 
 /***/ },
-/* 434 */
+/* 436 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66107,7 +66403,7 @@
 	module.exports = Pager;
 
 /***/ },
-/* 435 */
+/* 437 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66141,7 +66437,7 @@
 	}
 
 	var React = __webpack_require__(6);
-	var KEYCODE = __webpack_require__(436);
+	var KEYCODE = __webpack_require__(438);
 
 	var Options = function (_React$Component) {
 	  _inherits(Options, _React$Component);
@@ -66270,7 +66566,7 @@
 	module.exports = Options;
 
 /***/ },
-/* 436 */
+/* 438 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -66291,7 +66587,7 @@
 	};
 
 /***/ },
-/* 437 */
+/* 439 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -66316,7 +66612,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 438 */
+/* 440 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66324,8 +66620,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(6);
-	var MissingPet = __webpack_require__(439);
-	var ContactDetailsPanel = __webpack_require__(442);
+	var MissingPet = __webpack_require__(441);
+	var ContactDetailsPanel = __webpack_require__(444);
 
 	var _require = __webpack_require__(188),
 	    connector = _require.connector;
@@ -66435,7 +66731,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 439 */
+/* 441 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66449,11 +66745,11 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(6);
-	var ResponsiveImage = __webpack_require__(440);
+	var ResponsiveImage = __webpack_require__(442);
 	var $ = __webpack_require__(218);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(441);
+	  __webpack_require__(443);
 	}
 
 	var MissingPet = function (_React$Component) {
@@ -66637,7 +66933,7 @@
 	module.exports = MissingPet;
 
 /***/ },
-/* 440 */
+/* 442 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66736,13 +67032,13 @@
 	module.exports = ResponsiveImage;
 
 /***/ },
-/* 441 */
+/* 443 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 442 */
+/* 444 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -66760,7 +67056,7 @@
 	var $ = __webpack_require__(218);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(443);
+	  __webpack_require__(445);
 	}
 
 	var clearForm = function clearForm(props) {
@@ -66991,13 +67287,13 @@
 	module.exports = ContactDetailsPanel;
 
 /***/ },
-/* 443 */
+/* 445 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 444 */
+/* 446 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67005,8 +67301,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(6);
-	var MissingPet = __webpack_require__(439);
-	var ContactDetailsPanel = __webpack_require__(442);
+	var MissingPet = __webpack_require__(441);
+	var ContactDetailsPanel = __webpack_require__(444);
 
 	var _require = __webpack_require__(188),
 	    connector = _require.connector;
@@ -67102,7 +67398,7 @@
 	module.exports = connector(Search);
 
 /***/ },
-/* 445 */
+/* 447 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -67110,8 +67406,8 @@
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var React = __webpack_require__(6);
-	var MissingPet = __webpack_require__(439);
-	var ContactDetailsPanel = __webpack_require__(442);
+	var MissingPet = __webpack_require__(441);
+	var ContactDetailsPanel = __webpack_require__(444);
 
 	var _require = __webpack_require__(188),
 	    connector = _require.connector;
@@ -67170,77 +67466,6 @@
 	});
 
 	module.exports = connector(Search);
-
-/***/ },
-/* 446 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 447 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var React = __webpack_require__(6);
-
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
-	  __webpack_require__(448);
-	}
-
-	var Error = function (_React$Component) {
-	  _inherits(Error, _React$Component);
-
-	  function Error() {
-	    _classCallCheck(this, Error);
-
-	    return _possibleConstructorReturn(this, (Error.__proto__ || Object.getPrototypeOf(Error)).apply(this, arguments));
-	  }
-
-	  _createClass(Error, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props,
-	          field = _props.field,
-	          visible = _props.visible,
-	          message = _props.message;
-
-
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'div',
-	          { className: 'validation-error ' + field },
-	          message
-	        )
-	      );
-	    }
-	  }]);
-
-	  return Error;
-	}(React.Component);
-
-	var _React$PropTypes = React.PropTypes,
-	    string = _React$PropTypes.string,
-	    bool = _React$PropTypes.bool;
-
-
-	Error.propTypes = {
-	  message: string,
-	  visible: bool
-	};
-
-	module.exports = Error;
 
 /***/ },
 /* 448 */

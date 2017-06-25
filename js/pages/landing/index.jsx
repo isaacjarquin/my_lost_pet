@@ -167,7 +167,8 @@ class Landing extends React.Component {
           setValidationBackground={this.props.setValidationBackground}
           cloudinary={this.props.cloudinary}
           items_api={this.props.urls.items_api}
-          validations = {this.props.validations.newPetFound}
+          validations={this.props.validations.newPetFound}
+          inputColor={this.props.inputColor.newPetFound}
           />
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>

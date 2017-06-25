@@ -23,6 +23,18 @@ module.exports = {
       description: 'displayNone'
     }
   },
+  inputColor: {
+    newPetFound: {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+  },
   social: {
     facebook: '',
     twitter: ''

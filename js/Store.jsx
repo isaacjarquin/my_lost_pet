@@ -95,6 +95,14 @@ const SET_BREED_VALIDATION = 'setBreedValidation'
 const SET_SIZE_VALIDATION = 'setSizeValidation'
 const SET_LOCATION_VALIDATION = 'setLocationValidation'
 const SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation'
+const SET_FOUNDER_NAME_INPUT_COLOR = 'setFounderNameInputColor'
+const SET_FOUNDER_EMAIL_INPUT_COLOR = 'setFounderEmailInputColor'
+const SET_PET_TYPE_INPUT_COLOR = 'setPetTypeInputColor'
+const SET_BREED_INPUT_COLOR = 'setBreedInputColor'
+const SET_SIZE_INPUT_COLOR = 'setSizeInputColor'
+const SET_LOCATION_INPUT_COLOR = 'setLocationInputColor'
+const SET_DESCRIPTION_INPUT_COLOR = 'setDescriptionInputColor'
+const SET_AUTONOMOUS_COMUNITY_INPUT_COLOR = 'setAutonomousComunityInputColor'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -352,6 +360,174 @@ const reducerDescriptionValidation = (state, action) => {
   return newState
 }
 
+const reducerAutonomousComunityInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: action.value,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerFounderNameInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: action.value,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerFounderEmailInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: action.value,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerPetTypeInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: action.value,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerBreedInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: action.value,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerSizeInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: action.value,
+          location: state.inputColor.newPetFound.location,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerLocationInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: action.value,
+          description: state.inputColor.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerDescriptionInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+          founderName: state.inputColor.newPetFound.founderName,
+          founderEmail: state.inputColor.newPetFound.founderEmail,
+          petType: state.inputColor.newPetFound.petType,
+          breed: state.inputColor.newPetFound.breed,
+          size: state.inputColor.newPetFound.size,
+          location: state.inputColor.newPetFound.location,
+          description: action.value
+        }
+      }
+    })
+
+  return newState
+}
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -444,6 +620,22 @@ const rootReducer = (state = initialState, action) => {
       return reducerLocationValidation(state, action)
     case SET_DESCRIPTION_VALIDATION:
       return reducerDescriptionValidation(state, action)
+    case SET_FOUNDER_NAME_INPUT_COLOR:
+      return reducerFounderNameInputColor(state, action)
+    case SET_FOUNDER_EMAIL_INPUT_COLOR:
+      return reducerFounderEmailInputColor(state, action)
+    case SET_PET_TYPE_INPUT_COLOR:
+      return reducerPetTypeInputColor(state, action)
+    case SET_BREED_INPUT_COLOR:
+      return reducerBreedInputColor(state, action)
+    case SET_SIZE_INPUT_COLOR:
+      return reducerSizeInputColor(state, action)
+    case SET_LOCATION_INPUT_COLOR:
+      return reducerLocationInputColor(state, action)
+    case SET_DESCRIPTION_INPUT_COLOR:
+      return reducerDescriptionInputColor(state, action)
+    case SET_AUTONOMOUS_COMUNITY_INPUT_COLOR:
+      return reducerAutonomousComunityInputColor(state, action)
     default:
       return state
   }
@@ -477,6 +669,18 @@ const mapStateToProps = (state) => {
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
         description: state.validations.newPetFound.description
+      }
+    },
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description,
       }
     },
     urls: {
@@ -684,27 +888,35 @@ const mapDispatchToProps = (dispatch) => {
     setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
         if (founderName === "") {
             dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (founderEmail === "") {
             dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (petType === "") {
             dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (breed === "") {
             dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_BREED_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (size === "") {
             dispatch({type: SET_SIZE_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_SIZE_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (location === "") {
             dispatch({type: SET_LOCATION_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_LOCATION_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (description === "") {
             dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (autonomousComunity === "") {
             dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
+            dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'w3-border-red'})
         }
         if (!images[0]) {
           dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.'})
