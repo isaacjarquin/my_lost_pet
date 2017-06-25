@@ -24035,8 +24035,6 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 	var redux = __webpack_require__(189);
 	var reactRedux = __webpack_require__(209);
 	var $ = __webpack_require__(218);
@@ -24493,8 +24491,6 @@
 	}));
 
 	var mapStateToProps = function mapStateToProps(state) {
-	  var _newPetFound;
-
 	  return {
 	    searchTerm: state.searchTerm,
 	    selectFilter: state.selectFilter,
@@ -24509,14 +24505,16 @@
 	    comunidades: state.comunidades,
 	    provincias: state.provincias,
 	    validations: {
-	      newPetFound: (_newPetFound = {
+	      newPetFound: {
 	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
 	        founderName: state.validations.newPetFound.founderName,
 	        founderEmail: state.validations.newPetFound.founderEmail,
 	        petType: state.validations.newPetFound.petType,
 	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size
-	      }, _defineProperty(_newPetFound, 'breed', state.validations.newPetFound.location), _defineProperty(_newPetFound, 'size', state.validations.newPetFound.description), _newPetFound)
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
 	    },
 	    urls: {
 	      host: state.urls.host,
@@ -24649,30 +24647,37 @@
 	    },
 	    setPetFounderName: function setPetFounderName(petFounderName) {
 	      dispatch({ type: SET_PET_FOUNDER_NAME, value: petFounderName });
+	      dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayNone' });
 	    },
 	    setPetFounderEmail: function setPetFounderEmail(petFounderEmail) {
 	      dispatch({ type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail });
+	      dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayNone' });
 	    },
 	    setPetType: function setPetType(petType) {
 	      dispatch({ type: SET_PET_TYPE, value: petType });
+	      dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayNone' });
 	    },
 	    setBreed: function setBreed(breed) {
 	      dispatch({ type: SET_BREED, value: breed });
+	      dispatch({ type: SET_BREED_VALIDATION, value: 'displayNone' });
 	    },
 	    setPetSize: function setPetSize(petSize) {
 	      dispatch({ type: SET_PET_SIZE, value: petSize });
+	      dispatch({ type: SET_SIZE_VALIDATION, value: 'displayNone' });
 	    },
 	    setPetFoundDate: function setPetFoundDate(petFoundDate) {
 	      dispatch({ type: SET_PET_FOUND_DATE, value: petFoundDate });
 	    },
 	    setPetLocation: function setPetLocation(petLocation) {
 	      dispatch({ type: SET_PET_LOCATION, value: petLocation });
+	      dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayNone' });
 	    },
 	    setImages: function setImages(images) {
 	      dispatch({ type: SET_IMAGES, value: images });
 	    },
 	    setPetDescription: function setPetDescription(petDescription) {
 	      dispatch({ type: SET_PET_DESCRIPTION, value: petDescription });
+	      dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayNone' });
 	    },
 	    setContactUsName: function setContactUsName(name) {
 	      dispatch({ type: SET_CONTACT_US_NAME, value: name });
@@ -24694,12 +24699,6 @@
 	    },
 	    setFilteredPets: function setFilteredPets(pets) {
 	      dispatch({ type: SET_FILTERED_PETS, value: pets });
-	    },
-	    setEncloseImageTitle: function setEncloseImageTitle(message) {
-	      dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: message });
-	    },
-	    setValidationBackground: function setValidationBackground(validationClass) {
-	      dispatch({ type: SET_VALIDATION_BACKGROUND, value: validationClass });
 	    },
 	    setEnvs: function setEnvs(_ref2) {
 	      var social = _ref2.social,
@@ -24724,6 +24723,7 @@
 	    },
 	    setAutonomousComunity: function setAutonomousComunity(autonomousComunity) {
 	      dispatch({ type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity });
+	      dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone' });
 	    },
 	    setProvince: function setProvince(province) {
 	      dispatch({ type: SET_PROVINCE, value: province });
@@ -24736,12 +24736,12 @@
 	          size = _ref3.size,
 	          location = _ref3.location,
 	          description = _ref3.description,
-	          autonomousComunity = _ref3.autonomousComunity;
+	          autonomousComunity = _ref3.autonomousComunity,
+	          images = _ref3.images;
 
 	      if (founderName === "") {
 	        dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue' });
 	      }
-
 	      if (founderEmail === "") {
 	        dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue' });
 	      }
@@ -24762,6 +24762,10 @@
 	      }
 	      if (autonomousComunity === "") {
 	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (!images[0]) {
+	        dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.' });
+	        dispatch({ type: SET_VALIDATION_BACKGROUND, value: 'validation-color' });
 	      }
 	    },
 	    getPets: function getPets(_ref4) {
@@ -44084,28 +44088,23 @@
 	        // this.props.setValidations()
 	        this.props.setAutonomousComunityValidation(this.props);
 	      } else {
-	        if (this.props.images[0]) {
-	          $('#details-button').addClass('disable-button');
-	          $('.loader-container').show();
+	        $('#details-button').addClass('disable-button');
+	        $('.loader-container').show();
 
-	          var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
+	        var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
 
-	          upload.end(function (err, response) {
-	            if (err) {
-	              $('#details-button').removeClass('disable-button');
-	              $('.loader-container').hide();
-	              showUnSuccesfullMessage(_this3.props, err);
-	              console.error(err);
-	            }
+	        upload.end(function (err, response) {
+	          if (err) {
+	            $('#details-button').removeClass('disable-button');
+	            $('.loader-container').hide();
+	            showUnSuccesfullMessage(_this3.props, err);
+	            console.error(err);
+	          }
 
-	            if (response.body.secure_url !== '') {
-	              _this3.sendDetails(response.body);
-	            }
-	          });
-	        } else {
-	          this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.');
-	          this.props.setValidationBackground('validation-color');
-	        }
+	          if (response.body.secure_url !== '') {
+	            _this3.sendDetails(response.body);
+	          }
+	        });
 	      }
 
 	      event.preventDefault();
@@ -44271,13 +44270,13 @@
 	              null,
 	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio' })
 	            ),
-	            React.createElement(ValidationError, { message: 'El campo Ciudad/Municipio es oblidatorio', field: this.props.validations.size }),
+	            React.createElement(ValidationError, { message: 'El campo Ciudad/Municipio es oblidatorio', field: this.props.validations.location }),
 	            React.createElement(
 	              'p',
 	              null,
 	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
 	            ),
-	            React.createElement(ValidationError, { message: 'El campo Descripci\xF3n es oblidatorio', field: this.props.validations.size }),
+	            React.createElement(ValidationError, { message: 'El campo Descripci\xF3n es oblidatorio', field: this.props.validations.description }),
 	            React.createElement(
 	              'div',
 	              { className: 'panel panel-default ' + this.props.validationBackground },

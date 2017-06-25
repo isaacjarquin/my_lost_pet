@@ -169,30 +169,25 @@ class NewPetFound extends React.Component {
       // this.props.setValidations()
       this.props.setAutonomousComunityValidation(this.props)
     } else {
-      if (this.props.images[0]) {
-        $('#details-button').addClass('disable-button')
-        $('.loader-container').show()
+      $('#details-button').addClass('disable-button')
+      $('.loader-container').show()
 
-        let upload = request.post(this.props.cloudinary.upload_url)
-                            .field('upload_preset', this.props.cloudinary.upload_preset)
-                            .field('file', this.props.images[0])
+      let upload = request.post(this.props.cloudinary.upload_url)
+                          .field('upload_preset', this.props.cloudinary.upload_preset)
+                          .field('file', this.props.images[0])
 
-        upload.end((err, response) => {
-          if (err) {
-            $('#details-button').removeClass('disable-button')
-            $('.loader-container').hide()
-            showUnSuccesfullMessage(this.props, err)
-            console.error(err)
-          }
+      upload.end((err, response) => {
+        if (err) {
+          $('#details-button').removeClass('disable-button')
+          $('.loader-container').hide()
+          showUnSuccesfullMessage(this.props, err)
+          console.error(err)
+        }
 
-          if (response.body.secure_url !== '') {
-            this.sendDetails(response.body)
-          }
-        })
-      } else {
-        this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.')
-        this.props.setValidationBackground('validation-color')
-      }
+        if (response.body.secure_url !== '') {
+          this.sendDetails(response.body)
+        }
+      })
     }
 
     event.preventDefault()
@@ -290,10 +285,10 @@ class NewPetFound extends React.Component {
             </select>
 
             <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Ciudad/Municipio' /></p>
-            <ValidationError message="El campo Ciudad/Municipio es oblidatorio" field={this.props.validations.size} />
+            <ValidationError message="El campo Ciudad/Municipio es oblidatorio" field={this.props.validations.location} />
 
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
-            <ValidationError message="El campo Descripción es oblidatorio" field={this.props.validations.size} />
+            <ValidationError message="El campo Descripción es oblidatorio" field={this.props.validations.description} />
 
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>

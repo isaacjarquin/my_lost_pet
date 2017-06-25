@@ -475,8 +475,8 @@ const mapStateToProps = (state) => {
         petType: state.validations.newPetFound.petType,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
-        breed: state.validations.newPetFound.location,
-        size: state.validations.newPetFound.description
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
     },
     urls: {
@@ -602,30 +602,37 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPetFounderName (petFounderName) {
       dispatch({type: SET_PET_FOUNDER_NAME, value: petFounderName})
+      dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayNone'})
     },
     setPetFounderEmail (petFounderEmail) {
       dispatch({type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail})
+      dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayNone'})
     },
     setPetType (petType) {
       dispatch({type: SET_PET_TYPE, value: petType})
+      dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayNone'})
     },
     setBreed (breed) {
       dispatch({type: SET_BREED, value: breed})
+      dispatch({type: SET_BREED_VALIDATION, value: 'displayNone'})
     },
     setPetSize (petSize) {
       dispatch({type: SET_PET_SIZE, value: petSize})
+      dispatch({type: SET_SIZE_VALIDATION, value: 'displayNone'})
     },
     setPetFoundDate (petFoundDate) {
       dispatch({type: SET_PET_FOUND_DATE, value: petFoundDate})
     },
     setPetLocation (petLocation) {
       dispatch({type: SET_PET_LOCATION, value: petLocation})
+      dispatch({type: SET_LOCATION_VALIDATION, value: 'displayNone'})
     },
     setImages (images) {
       dispatch({type: SET_IMAGES, value: images})
     },
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
+      dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayNone'})
     },
     setContactUsName (name) {
       dispatch({type: SET_CONTACT_US_NAME, value: name})
@@ -648,12 +655,6 @@ const mapDispatchToProps = (dispatch) => {
     setFilteredPets (pets) {
       dispatch({type: SET_FILTERED_PETS, value: pets})
     },
-    setEncloseImageTitle (message) {
-      dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: message})
-    },
-    setValidationBackground (validationClass) {
-      dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
-    },
     setEnvs ({social, cloudinary, urls}) {
       dispatch({type: SET_SOCIAL_KEYS, value: social})
       dispatch({type: SET_CLOUDINARY, value: cloudinary})
@@ -673,15 +674,15 @@ const mapDispatchToProps = (dispatch) => {
     },
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})
+      dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone'})
     },
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
     },
-    setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity}) {
+    setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
         if (founderName === "") {
             dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
         }
-
         if (founderEmail === "") {
             dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
         }
@@ -702,6 +703,10 @@ const mapDispatchToProps = (dispatch) => {
         }
         if (autonomousComunity === "") {
             dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
+        }
+        if (!images[0]) {
+          dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.'})
+          dispatch({type: SET_VALIDATION_BACKGROUND, value: 'validation-color'})
         }
     },
     getPets ({urls, filters}) {
