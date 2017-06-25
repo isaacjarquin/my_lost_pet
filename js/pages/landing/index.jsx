@@ -147,6 +147,7 @@ class Landing extends React.Component {
           comunidades={this.props.comunidades}
           provincias={this.props.provincias}
           setAutonomousComunity={this.props.setAutonomousComunity}
+          setAutonomousComunityValidation={this.props.setAutonomousComunityValidation}
           setProvince={this.props.setProvince}
           setProvincias={this.props.setProvincias}
           setPetFounderName={this.props.setPetFounderName}
@@ -166,6 +167,7 @@ class Landing extends React.Component {
           setValidationBackground={this.props.setValidationBackground}
           cloudinary={this.props.cloudinary}
           items_api={this.props.urls.items_api}
+          validations = {this.props.validations.newPetFound}
           />
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>

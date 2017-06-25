@@ -87,6 +87,14 @@ const SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter'
 const SET_PROVINCE_FILTER = 'setProvinceFilter'
 const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
 const SET_PROVINCE = 'setProvince'
+const SET_AUTONOMOUS_COMUNITY_VALIDATION = 'setAutonomousComunityValidation'
+const SET_FOUNDER_NAME_VALIDATION = 'setFounderNameValidation'
+const SET_FOUNDER_EMAIL_VALIDATION = 'setFounderEmailValidation'
+const SET_PET_TYPE_VALIDATION = 'setPetTypeValidation'
+const SET_BREED_VALIDATION = 'setBreedValidation'
+const SET_SIZE_VALIDATION = 'setSizeValidation'
+const SET_LOCATION_VALIDATION = 'setLocationValidation'
+const SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -176,6 +184,174 @@ const reducerProvincias = (state, action) => {
   return newState
 }
 
+const reducerSetAutonomousComunityValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: action.value,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerFounderNameValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: action.value,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerFounderEmailValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: action.value,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerPetTypeValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: action.value,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerBreedValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: action.value,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerSizeValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: action.value,
+          location: state.validations.newPetFound.location,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerLocationValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: action.value,
+          description: state.validations.newPetFound.description
+        }
+      }
+    })
+
+  return newState
+}
+
+const reducerDescriptionValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+      validations: {
+        newPetFound: {
+          autonomousComunity: state.validations.newPetFound.autonomousComunity,
+          founderName: state.validations.newPetFound.founderName,
+          founderEmail: state.validations.newPetFound.founderEmail,
+          petType: state.validations.newPetFound.petType,
+          breed: state.validations.newPetFound.breed,
+          size: state.validations.newPetFound.size,
+          location: state.validations.newPetFound.location,
+          description: action.value
+        }
+      }
+    })
+
+  return newState
+}
+
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SEARCH_TERM:
@@ -252,6 +428,22 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetAutonomousComunity(state, action)
     case SET_PROVINCE:
       return reducerPetProvince(state, action)
+    case SET_AUTONOMOUS_COMUNITY_VALIDATION:
+      return reducerSetAutonomousComunityValidation(state, action)
+    case SET_FOUNDER_NAME_VALIDATION:
+      return reducerFounderNameValidation(state, action)
+    case SET_FOUNDER_EMAIL_VALIDATION:
+      return reducerFounderEmailValidation(state, action)
+    case SET_PET_TYPE_VALIDATION:
+      return reducerPetTypeValidation(state, action)
+    case SET_BREED_VALIDATION:
+      return reducerBreedValidation(state, action)
+    case SET_SIZE_VALIDATION:
+      return reducerSizeValidation(state, action)
+    case SET_LOCATION_VALIDATION:
+      return reducerLocationValidation(state, action)
+    case SET_DESCRIPTION_VALIDATION:
+      return reducerDescriptionValidation(state, action)
     default:
       return state
   }
@@ -275,6 +467,18 @@ const mapStateToProps = (state) => {
     filteredPets: state.filteredPets,
     comunidades: state.comunidades,
     provincias: state.provincias,
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        breed: state.validations.newPetFound.location,
+        size: state.validations.newPetFound.description
+      }
+    },
     urls: {
       host: state.urls.host,
       items_api: state.urls.items_api
@@ -472,6 +676,33 @@ const mapDispatchToProps = (dispatch) => {
     },
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
+    },
+    setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity}) {
+        if (founderName === "") {
+            dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
+        }
+
+        if (founderEmail === "") {
+            dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
+        }
+        if (petType === "") {
+            dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
+        }
+        if (breed === "") {
+            dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})
+        }
+        if (size === "") {
+            dispatch({type: SET_SIZE_VALIDATION, value: 'displayTrue'})
+        }
+        if (location === "") {
+            dispatch({type: SET_LOCATION_VALIDATION, value: 'displayTrue'})
+        }
+        if (description === "") {
+            dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue'})
+        }
+        if (autonomousComunity === "") {
+            dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
+        }
     },
     getPets ({urls, filters}) {
       $.ajax({

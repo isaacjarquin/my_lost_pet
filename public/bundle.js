@@ -24035,6 +24035,8 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	var redux = __webpack_require__(189);
 	var reactRedux = __webpack_require__(209);
 	var $ = __webpack_require__(218);
@@ -24121,6 +24123,14 @@
 	var SET_PROVINCE_FILTER = 'setProvinceFilter';
 	var SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity';
 	var SET_PROVINCE = 'setProvince';
+	var SET_AUTONOMOUS_COMUNITY_VALIDATION = 'setAutonomousComunityValidation';
+	var SET_FOUNDER_NAME_VALIDATION = 'setFounderNameValidation';
+	var SET_FOUNDER_EMAIL_VALIDATION = 'setFounderEmailValidation';
+	var SET_PET_TYPE_VALIDATION = 'setPetTypeValidation';
+	var SET_BREED_VALIDATION = 'setBreedValidation';
+	var SET_SIZE_VALIDATION = 'setSizeValidation';
+	var SET_LOCATION_VALIDATION = 'setLocationValidation';
+	var SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation';
 
 	var reducerPets = function reducerPets(state, action) {
 	  var newState = {};
@@ -24210,6 +24220,174 @@
 	  return newState;
 	};
 
+	var reducerSetAutonomousComunityValidation = function reducerSetAutonomousComunityValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: action.value,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderNameValidation = function reducerFounderNameValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: action.value,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderEmailValidation = function reducerFounderEmailValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: action.value,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerPetTypeValidation = function reducerPetTypeValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: action.value,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerBreedValidation = function reducerBreedValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: action.value,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerSizeValidation = function reducerSizeValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: action.value,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerLocationValidation = function reducerLocationValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: action.value,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerDescriptionValidation = function reducerDescriptionValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: action.value
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
 	var rootReducer = function rootReducer() {
 	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	  var action = arguments[1];
@@ -24289,6 +24467,22 @@
 	      return reducerPetAutonomousComunity(state, action);
 	    case SET_PROVINCE:
 	      return reducerPetProvince(state, action);
+	    case SET_AUTONOMOUS_COMUNITY_VALIDATION:
+	      return reducerSetAutonomousComunityValidation(state, action);
+	    case SET_FOUNDER_NAME_VALIDATION:
+	      return reducerFounderNameValidation(state, action);
+	    case SET_FOUNDER_EMAIL_VALIDATION:
+	      return reducerFounderEmailValidation(state, action);
+	    case SET_PET_TYPE_VALIDATION:
+	      return reducerPetTypeValidation(state, action);
+	    case SET_BREED_VALIDATION:
+	      return reducerBreedValidation(state, action);
+	    case SET_SIZE_VALIDATION:
+	      return reducerSizeValidation(state, action);
+	    case SET_LOCATION_VALIDATION:
+	      return reducerLocationValidation(state, action);
+	    case SET_DESCRIPTION_VALIDATION:
+	      return reducerDescriptionValidation(state, action);
 	    default:
 	      return state;
 	  }
@@ -24299,6 +24493,8 @@
 	}));
 
 	var mapStateToProps = function mapStateToProps(state) {
+	  var _newPetFound;
+
 	  return {
 	    searchTerm: state.searchTerm,
 	    selectFilter: state.selectFilter,
@@ -24312,6 +24508,16 @@
 	    filteredPets: state.filteredPets,
 	    comunidades: state.comunidades,
 	    provincias: state.provincias,
+	    validations: {
+	      newPetFound: (_newPetFound = {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size
+	      }, _defineProperty(_newPetFound, 'breed', state.validations.newPetFound.location), _defineProperty(_newPetFound, 'size', state.validations.newPetFound.description), _newPetFound)
+	    },
 	    urls: {
 	      host: state.urls.host,
 	      items_api: state.urls.items_api
@@ -24522,9 +24728,45 @@
 	    setProvince: function setProvince(province) {
 	      dispatch({ type: SET_PROVINCE, value: province });
 	    },
-	    getPets: function getPets(_ref3) {
-	      var urls = _ref3.urls,
-	          filters = _ref3.filters;
+	    setAutonomousComunityValidation: function setAutonomousComunityValidation(_ref3) {
+	      var founderName = _ref3.founderName,
+	          founderEmail = _ref3.founderEmail,
+	          petType = _ref3.petType,
+	          breed = _ref3.breed,
+	          size = _ref3.size,
+	          location = _ref3.location,
+	          description = _ref3.description,
+	          autonomousComunity = _ref3.autonomousComunity;
+
+	      if (founderName === "") {
+	        dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue' });
+	      }
+
+	      if (founderEmail === "") {
+	        dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (petType === "") {
+	        dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (breed === "") {
+	        dispatch({ type: SET_BREED_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (size === "") {
+	        dispatch({ type: SET_SIZE_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (location === "") {
+	        dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (description === "") {
+	        dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue' });
+	      }
+	      if (autonomousComunity === "") {
+	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue' });
+	      }
+	    },
+	    getPets: function getPets(_ref4) {
+	      var urls = _ref4.urls,
+	          filters = _ref4.filters;
 
 	      $.ajax({
 	        url: urls.items_api + '/api/items',
@@ -36796,6 +37038,18 @@
 	  validationBackground: '',
 	  comunidades: [],
 	  provincias: [],
+	  validations: {
+	    newPetFound: {
+	      autonomousComunity: 'displayNone',
+	      founderName: 'displayNone',
+	      founderEmail: 'displayNone',
+	      petType: 'displayNone',
+	      breed: 'displayNone',
+	      size: 'displayNone',
+	      location: 'displayNone',
+	      description: 'displayNone'
+	    }
+	  },
 	  social: {
 	    facebook: '',
 	    twitter: ''
@@ -42933,6 +43187,7 @@
 	          comunidades: this.props.comunidades,
 	          provincias: this.props.provincias,
 	          setAutonomousComunity: this.props.setAutonomousComunity,
+	          setAutonomousComunityValidation: this.props.setAutonomousComunityValidation,
 	          setProvince: this.props.setProvince,
 	          setProvincias: this.props.setProvincias,
 	          setPetFounderName: this.props.setPetFounderName,
@@ -42951,7 +43206,8 @@
 	          setEncloseImageTitle: this.props.setEncloseImageTitle,
 	          setValidationBackground: this.props.setValidationBackground,
 	          cloudinary: this.props.cloudinary,
-	          items_api: this.props.urls.items_api
+	          items_api: this.props.urls.items_api,
+	          validations: this.props.validations.newPetFound
 	        })),
 	        React.createElement(
 	          'div',
@@ -43631,6 +43887,7 @@
 	var Alerts = __webpack_require__(292);
 	var DogLoader = __webpack_require__(427);
 	var $ = __webpack_require__(218);
+	var ValidationError = __webpack_require__(447);
 
 	var MediaQuery = __webpack_require__(184);
 
@@ -43814,31 +44071,41 @@
 	      this.props.setProvince(event.target.value);
 	    }
 	  }, {
+	    key: 'hasMissingValues',
+	    value: function hasMissingValues() {
+	      return this.props.autonomousComunity === "";
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
 	      var _this3 = this;
 
-	      if (this.props.images[0]) {
-	        $('#details-button').addClass('disable-button');
-	        $('.loader-container').show();
-
-	        var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
-
-	        upload.end(function (err, response) {
-	          if (err) {
-	            $('#details-button').removeClass('disable-button');
-	            $('.loader-container').hide();
-	            showUnSuccesfullMessage(_this3.props, err);
-	            console.error(err);
-	          }
-
-	          if (response.body.secure_url !== '') {
-	            _this3.sendDetails(response.body);
-	          }
-	        });
+	      if (this.hasMissingValues()) {
+	        // this.props.setValidations()
+	        this.props.setAutonomousComunityValidation(this.props);
 	      } else {
-	        this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.');
-	        this.props.setValidationBackground('validation-color');
+	        if (this.props.images[0]) {
+	          $('#details-button').addClass('disable-button');
+	          $('.loader-container').show();
+
+	          var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
+
+	          upload.end(function (err, response) {
+	            if (err) {
+	              $('#details-button').removeClass('disable-button');
+	              $('.loader-container').hide();
+	              showUnSuccesfullMessage(_this3.props, err);
+	              console.error(err);
+	            }
+
+	            if (response.body.secure_url !== '') {
+	              _this3.sendDetails(response.body);
+	            }
+	          });
+	        } else {
+	          this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.');
+	          this.props.setValidationBackground('validation-color');
+	        }
 	      }
 
 	      event.preventDefault();
@@ -43923,35 +44190,40 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
+	              React.createElement('input', { value: this.props.founderName, onChange: this.handleFounderName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo nombre es obligatorio', field: this.props.validations.founderName }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
+	              React.createElement('input', { value: this.props.founderEmail, onChange: this.handleFounderEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo email es obligatorio', field: this.props.validations.founderEmail }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)', required: true })
+	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border', type: 'text', placeholder: 'Typo de mascota (perro/gato ...)' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo tipo de mascota es obligatorio', field: this.props.validations.petType }),
 	            React.createElement(
 	              'p',
 	              null,
 	              React.createElement('input', { value: this.props.breed, onChange: this.handleBreed, className: 'w3-input w3-border', type: 'text', placeholder: 'Raza (pitbul, pastor aleman ...)' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo raza es obligatorio', field: this.props.validations.breed }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)', required: true })
+	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border', type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo tama\xF1o es obligatorio', field: this.props.validations.size }),
 	            React.createElement(
 	              MediaQuery,
 	              { maxDeviceWidth: 1200 },
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)', required: true })
+	                React.createElement('input', { value: this.props.foundDate, onChange: this.handleFoundDate, className: 'w3-input w3-border', type: 'date', placeholder: 'fecha (25-08-2016)' })
 	              )
 	            ),
 	            React.createElement(
@@ -43976,6 +44248,7 @@
 	                );
 	              })
 	            ),
+	            React.createElement(ValidationError, { message: 'Debes seleccionar una Comunidad Autonoma', field: this.props.validations.autonomousComunity }),
 	            React.createElement(
 	              'select',
 	              { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
@@ -43996,13 +44269,15 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio', required: true })
+	              React.createElement('input', { value: this.props.location, onChange: this.handlePetLocation, className: 'w3-input w3-border', type: 'text', placeholder: 'Ciudad/Municipio' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo Ciudad/Municipio es oblidatorio', field: this.props.validations.size }),
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota', required: true })
+	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border', placeholder: 'Imformacion sobre la mascota' })
 	            ),
+	            React.createElement(ValidationError, { message: 'El campo Descripci\xF3n es oblidatorio', field: this.props.validations.size }),
 	            React.createElement(
 	              'div',
 	              { className: 'panel panel-default ' + this.props.validationBackground },
@@ -66897,6 +67172,77 @@
 
 /***/ },
 /* 446 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 447 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(6);
+
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	  __webpack_require__(448);
+	}
+
+	var Error = function (_React$Component) {
+	  _inherits(Error, _React$Component);
+
+	  function Error() {
+	    _classCallCheck(this, Error);
+
+	    return _possibleConstructorReturn(this, (Error.__proto__ || Object.getPrototypeOf(Error)).apply(this, arguments));
+	  }
+
+	  _createClass(Error, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props,
+	          field = _props.field,
+	          visible = _props.visible,
+	          message = _props.message;
+
+
+	      return React.createElement(
+	        'div',
+	        null,
+	        React.createElement(
+	          'div',
+	          { className: 'validation-error ' + field },
+	          message
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Error;
+	}(React.Component);
+
+	var _React$PropTypes = React.PropTypes,
+	    string = _React$PropTypes.string,
+	    bool = _React$PropTypes.bool;
+
+
+	Error.propTypes = {
+	  message: string,
+	  visible: bool
+	};
+
+	module.exports = Error;
+
+/***/ },
+/* 448 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

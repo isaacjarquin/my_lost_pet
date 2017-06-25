@@ -9,6 +9,7 @@ const React = require('react')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
 const $ = require('jquery')
+const ValidationError = require('../validations/error')
 
 var MediaQuery = require('react-responsive')
 
@@ -158,30 +159,40 @@ class NewPetFound extends React.Component {
   handleProvincesFilter (event) {
     this.props.setProvince(event.target.value)
   }
+
+  hasMissingValues() {
+    return this.props.autonomousComunity === ""
+  }
+
   handleSubmit (event) {
-    if (this.props.images[0]) {
-      $('#details-button').addClass('disable-button')
-      $('.loader-container').show()
-
-      let upload = request.post(this.props.cloudinary.upload_url)
-                          .field('upload_preset', this.props.cloudinary.upload_preset)
-                          .field('file', this.props.images[0])
-
-      upload.end((err, response) => {
-        if (err) {
-          $('#details-button').removeClass('disable-button')
-          $('.loader-container').hide()
-          showUnSuccesfullMessage(this.props, err)
-          console.error(err)
-        }
-
-        if (response.body.secure_url !== '') {
-          this.sendDetails(response.body)
-        }
-      })
+    if (this.hasMissingValues()) {
+      // this.props.setValidations()
+      this.props.setAutonomousComunityValidation(this.props)
     } else {
-      this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.')
-      this.props.setValidationBackground('validation-color')
+      if (this.props.images[0]) {
+        $('#details-button').addClass('disable-button')
+        $('.loader-container').show()
+
+        let upload = request.post(this.props.cloudinary.upload_url)
+                            .field('upload_preset', this.props.cloudinary.upload_preset)
+                            .field('file', this.props.images[0])
+
+        upload.end((err, response) => {
+          if (err) {
+            $('#details-button').removeClass('disable-button')
+            $('.loader-container').hide()
+            showUnSuccesfullMessage(this.props, err)
+            console.error(err)
+          }
+
+          if (response.body.secure_url !== '') {
+            this.sendDetails(response.body)
+          }
+        })
+      } else {
+        this.props.setEncloseImageTitle('Debes añadir una foto de la mascota para poder enviar los datos.')
+        this.props.setValidationBackground('validation-color')
+      }
     }
 
     event.preventDefault()
@@ -239,17 +250,28 @@ class NewPetFound extends React.Component {
         <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
           <p className='title form-introduction'>Introduce los datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
-            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
-            <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' required /></p>
+            <p><input value={this.props.founderName} onChange={this.handleFounderName} className='w3-input w3-border' type='text' placeholder='Nombre' /></p>
+            <ValidationError message="El campo nombre es obligatorio" field={this.props.validations.founderName} />
+
+            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className='w3-input w3-border' type='email' placeholder='e-mail' /></p>
+            <ValidationError message="El campo email es obligatorio" field={this.props.validations.founderEmail} />
+
+            <p><input value={this.props.petType} onChange={this.handlePetType} className='w3-input w3-border' type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
+            <ValidationError message="El campo tipo de mascota es obligatorio" field={this.props.validations.petType} />
+
             <p><input value={this.props.breed} onChange={this.handleBreed} className='w3-input w3-border' type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
-            <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' required /></p>
+            <ValidationError message="El campo raza es obligatorio" field={this.props.validations.breed} />
+
+            <p><input value={this.props.size} onChange={this.handlePetSize} className='w3-input w3-border' type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
+            <ValidationError message="El campo tamaño es obligatorio" field={this.props.validations.size} />
+
             <MediaQuery maxDeviceWidth={1200}>
-              <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' required /></p>
+              <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
             </MediaQuery>
             <MediaQuery minDeviceWidth={1200}>
               <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
             </MediaQuery>
+
             <select className='form-control landing-select-filter' onChange={this.handleComunidadesFilter}>
               <option selected='selected' disabled>Comunidad Autónoma</option>
               <option value='default-value' key={0} />
@@ -257,6 +279,8 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
+            <ValidationError message="Debes seleccionar una Comunidad Autonoma" field={this.props.validations.autonomousComunity} />
+
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
               <option selected='selected' disabled>Provincia</option>
               <option value='default-value' key={0} />
@@ -264,8 +288,13 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
-            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Ciudad/Municipio' required /></p>
-            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' required /></p>
+
+            <p><input value={this.props.location} onChange={this.handlePetLocation} className='w3-input w3-border' type='text' placeholder='Ciudad/Municipio' /></p>
+            <ValidationError message="El campo Ciudad/Municipio es oblidatorio" field={this.props.validations.size} />
+
+            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className='w3-input w3-border' placeholder='Imformacion sobre la mascota' /></p>
+            <ValidationError message="El campo Descripción es oblidatorio" field={this.props.validations.size} />
+
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>
                 <h4 className='panel-title w3-center'>
