@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24852,22 +24852,27 @@
 	    setPetFounderName: function setPetFounderName(petFounderName) {
 	      dispatch({ type: SET_PET_FOUNDER_NAME, value: petFounderName });
 	      dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_FOUNDER_NAME_INPUT_COLOR, value: '' });
 	    },
 	    setPetFounderEmail: function setPetFounderEmail(petFounderEmail) {
 	      dispatch({ type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail });
 	      dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: '' });
 	    },
 	    setPetType: function setPetType(petType) {
 	      dispatch({ type: SET_PET_TYPE, value: petType });
 	      dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: '' });
 	    },
 	    setBreed: function setBreed(breed) {
 	      dispatch({ type: SET_BREED, value: breed });
 	      dispatch({ type: SET_BREED_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_BREED_INPUT_COLOR, value: '' });
 	    },
 	    setPetSize: function setPetSize(petSize) {
 	      dispatch({ type: SET_PET_SIZE, value: petSize });
 	      dispatch({ type: SET_SIZE_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_SIZE_INPUT_COLOR, value: '' });
 	    },
 	    setPetFoundDate: function setPetFoundDate(petFoundDate) {
 	      dispatch({ type: SET_PET_FOUND_DATE, value: petFoundDate });
@@ -24875,6 +24880,7 @@
 	    setPetLocation: function setPetLocation(petLocation) {
 	      dispatch({ type: SET_PET_LOCATION, value: petLocation });
 	      dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_LOCATION_INPUT_COLOR, value: '' });
 	    },
 	    setImages: function setImages(images) {
 	      dispatch({ type: SET_IMAGES, value: images });
@@ -24884,6 +24890,7 @@
 	    setPetDescription: function setPetDescription(petDescription) {
 	      dispatch({ type: SET_PET_DESCRIPTION, value: petDescription });
 	      dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_DESCRIPTION_INPUT_COLOR, value: '' });
 	    },
 	    setContactUsName: function setContactUsName(name) {
 	      dispatch({ type: SET_CONTACT_US_NAME, value: name });
@@ -44440,7 +44447,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border ' + this.props.inputColor.petSize, type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
+	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border ' + this.props.inputColor.size, type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo tama\xF1o es obligatorio', field: this.props.validations.size }),
 	            React.createElement(

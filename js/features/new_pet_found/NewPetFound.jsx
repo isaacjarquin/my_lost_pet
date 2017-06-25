@@ -257,7 +257,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <ValidationError message="El campo raza es obligatorio" field={this.props.validations.breed} />
 
-            <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.petSize}`} type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
+            <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
             <ValidationError message="El campo tamaño es obligatorio" field={this.props.validations.size} />
 
             <MediaQuery maxDeviceWidth={1200}>

@@ -807,22 +807,27 @@ const mapDispatchToProps = (dispatch) => {
     setPetFounderName (petFounderName) {
       dispatch({type: SET_PET_FOUNDER_NAME, value: petFounderName})
       dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: ''})
     },
     setPetFounderEmail (petFounderEmail) {
       dispatch({type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail})
       dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: ''})
     },
     setPetType (petType) {
       dispatch({type: SET_PET_TYPE, value: petType})
       dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: ''})
     },
     setBreed (breed) {
       dispatch({type: SET_BREED, value: breed})
       dispatch({type: SET_BREED_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_BREED_INPUT_COLOR, value: ''})
     },
     setPetSize (petSize) {
       dispatch({type: SET_PET_SIZE, value: petSize})
       dispatch({type: SET_SIZE_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_SIZE_INPUT_COLOR, value: ''})
     },
     setPetFoundDate (petFoundDate) {
       dispatch({type: SET_PET_FOUND_DATE, value: petFoundDate})
@@ -830,6 +835,7 @@ const mapDispatchToProps = (dispatch) => {
     setPetLocation (petLocation) {
       dispatch({type: SET_PET_LOCATION, value: petLocation})
       dispatch({type: SET_LOCATION_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_LOCATION_INPUT_COLOR, value: ''})
     },
     setImages (images) {
       dispatch({type: SET_IMAGES, value: images})
@@ -839,6 +845,7 @@ const mapDispatchToProps = (dispatch) => {
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
       dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: ''})
     },
     setContactUsName (name) {
       dispatch({type: SET_CONTACT_US_NAME, value: name})
