@@ -6,3 +6,12 @@
   font-size: 14px;
   margin-left: 10px;
 }
+
+.fields-color {
+  border: 1px solid red!important;
+  background-color: #ffe6e6;
+}
+
+.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
+  color: grey;
+}

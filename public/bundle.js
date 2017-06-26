@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24954,35 +24954,35 @@
 
 	      if (founderName === "") {
 	        dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (founderEmail === "") {
 	        dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (petType === "") {
 	        dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (breed === "") {
 	        dispatch({ type: SET_BREED_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_BREED_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_BREED_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (size === "") {
 	        dispatch({ type: SET_SIZE_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_SIZE_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_SIZE_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (location === "") {
 	        dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_LOCATION_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_LOCATION_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (description === "") {
 	        dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_DESCRIPTION_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_DESCRIPTION_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (autonomousComunity === "") {
 	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue' });
-	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'w3-border-red' });
+	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'fields-color' });
 	      }
 	      if (!images[0]) {
 	        dispatch({ type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.' });
