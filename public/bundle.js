@@ -44240,8 +44240,6 @@
 	    key: 'onImageDrop',
 	    value: function onImageDrop(acceptedFiles) {
 	      this.props.setImages(acceptedFiles);
-	      this.props.setEncloseImageTitle('Adjuntar imagen');
-	      this.props.setValidationBackground('');
 	    }
 	  }, {
 	    key: 'handleFounderName',
