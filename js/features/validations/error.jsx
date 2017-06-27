@@ -6,7 +6,7 @@ if (process.env.WEBPACK_BUILD) {
 
 class Error extends React.Component {
   render () {
-    const {field, visible, message} = this.props
+    const {field, message} = this.props
 
     return (
       <div>

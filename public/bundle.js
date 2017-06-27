@@ -24952,35 +24952,35 @@
 	          autonomousComunity = _ref3.autonomousComunity,
 	          images = _ref3.images;
 
-	      if (founderName === "") {
+	      if (founderName === '') {
 	        dispatch({ type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (founderEmail === "") {
+	      if (founderEmail === '') {
 	        dispatch({ type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (petType === "") {
+	      if (petType === '') {
 	        dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (breed === "") {
+	      if (breed === '') {
 	        dispatch({ type: SET_BREED_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_BREED_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (size === "") {
+	      if (size === '') {
 	        dispatch({ type: SET_SIZE_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_SIZE_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (location === "") {
+	      if (location === '') {
 	        dispatch({ type: SET_LOCATION_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_LOCATION_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (description === "") {
+	      if (description === '') {
 	        dispatch({ type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_DESCRIPTION_INPUT_COLOR, value: 'fields-color' });
 	      }
-	      if (autonomousComunity === "") {
+	      if (autonomousComunity === '') {
 	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue' });
 	        dispatch({ type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'fields-color' });
 	      }
@@ -44311,7 +44311,7 @@
 	  }, {
 	    key: 'hasMissingValues',
 	    value: function hasMissingValues() {
-	      return this.props.autonomousComunity === "";
+	      return this.props.autonomousComunity === '';
 	    }
 	  }, {
 	    key: 'handleSubmit',
@@ -65750,7 +65750,6 @@
 	    value: function render() {
 	      var _props = this.props,
 	          field = _props.field,
-	          visible = _props.visible,
 	          message = _props.message;
 
 

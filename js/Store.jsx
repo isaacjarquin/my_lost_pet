@@ -196,19 +196,19 @@ const reducerSetAutonomousComunityValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: action.value,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: action.value,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -217,19 +217,19 @@ const reducerFounderNameValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: action.value,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: action.value,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -238,19 +238,19 @@ const reducerFounderEmailValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: action.value,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: action.value,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -259,19 +259,19 @@ const reducerPetTypeValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: action.value,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: action.value,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -280,19 +280,19 @@ const reducerBreedValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: action.value,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: action.value,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -301,19 +301,19 @@ const reducerSizeValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: action.value,
-          location: state.validations.newPetFound.location,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: action.value,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -322,19 +322,19 @@ const reducerLocationValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: action.value,
-          description: state.validations.newPetFound.description
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: action.value,
+        description: state.validations.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -343,19 +343,19 @@ const reducerDescriptionValidation = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      validations: {
-        newPetFound: {
-          autonomousComunity: state.validations.newPetFound.autonomousComunity,
-          founderName: state.validations.newPetFound.founderName,
-          founderEmail: state.validations.newPetFound.founderEmail,
-          petType: state.validations.newPetFound.petType,
-          breed: state.validations.newPetFound.breed,
-          size: state.validations.newPetFound.size,
-          location: state.validations.newPetFound.location,
-          description: action.value
-        }
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: action.value
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -364,19 +364,19 @@ const reducerAutonomousComunityInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: action.value,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: action.value,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -385,19 +385,19 @@ const reducerFounderNameInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: action.value,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: action.value,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -406,19 +406,19 @@ const reducerFounderEmailInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: action.value,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: action.value,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -427,19 +427,19 @@ const reducerPetTypeInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: action.value,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: action.value,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -448,19 +448,19 @@ const reducerBreedInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: action.value,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: action.value,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -469,19 +469,19 @@ const reducerSizeInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: action.value,
-          location: state.inputColor.newPetFound.location,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: action.value,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -490,19 +490,19 @@ const reducerLocationInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: action.value,
-          description: state.inputColor.newPetFound.description
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: action.value,
+        description: state.inputColor.newPetFound.description
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -511,19 +511,19 @@ const reducerDescriptionInputColor = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
-      inputColor: {
-        newPetFound: {
-          autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-          founderName: state.inputColor.newPetFound.founderName,
-          founderEmail: state.inputColor.newPetFound.founderEmail,
-          petType: state.inputColor.newPetFound.petType,
-          breed: state.inputColor.newPetFound.breed,
-          size: state.inputColor.newPetFound.size,
-          location: state.inputColor.newPetFound.location,
-          description: action.value
-        }
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: action.value
       }
-    })
+    }
+  })
 
   return newState
 }
@@ -680,7 +680,7 @@ const mapStateToProps = (state) => {
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
-        description: state.inputColor.newPetFound.description,
+        description: state.inputColor.newPetFound.description
       }
     },
     urls: {
@@ -893,42 +893,42 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_PROVINCE, value: province})
     },
     setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
-        if (founderName === "") {
-          dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (founderEmail === "") {
-          dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (petType === "") {
-          dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (breed === "") {
-          dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_BREED_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (size === "") {
-          dispatch({type: SET_SIZE_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_SIZE_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (location === "") {
-          dispatch({type: SET_LOCATION_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_LOCATION_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (description === "") {
-          dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (autonomousComunity === "") {
-          dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
-          dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'fields-color'})
-        }
-        if (!images[0]) {
-          dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.'})
-          dispatch({type: SET_VALIDATION_BACKGROUND, value: 'validation-color'})
-        }
+      if (founderName === '') {
+        dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (founderEmail === '') {
+        dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (petType === '') {
+        dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (breed === '') {
+        dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_BREED_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (size === '') {
+        dispatch({type: SET_SIZE_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_SIZE_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (location === '') {
+        dispatch({type: SET_LOCATION_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_LOCATION_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (description === '') {
+        dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (autonomousComunity === '') {
+        dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (!images[0]) {
+        dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.'})
+        dispatch({type: SET_VALIDATION_BACKGROUND, value: 'validation-color'})
+      }
     },
     getPets ({urls, filters}) {
       $.ajax({

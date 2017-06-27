@@ -355,30 +355,30 @@ describe('Store', () => {
 
   it('should handle founderName actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: 'newValue',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: 'newValue',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setFounderNameValidation', value: 'newValue'})
 
@@ -387,30 +387,30 @@ describe('Store', () => {
 
   it('should handle founderEmail actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: 'newValue',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: 'newValue',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setFounderEmailValidation', value: 'newValue'})
 
@@ -419,30 +419,30 @@ describe('Store', () => {
 
   it('should handle petType actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: 'newValue',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: 'newValue',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setPetTypeValidation', value: 'newValue'})
 
@@ -451,30 +451,30 @@ describe('Store', () => {
 
   it('should handle breed actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: 'newValue',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: 'newValue',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setBreedValidation', value: 'newValue'})
 
@@ -483,30 +483,30 @@ describe('Store', () => {
 
   it('should handle size actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: 'newValue',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: 'newValue',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setSizeValidation', value: 'newValue'})
 
@@ -515,30 +515,30 @@ describe('Store', () => {
 
   it('should handle Location actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: 'newValue',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: 'newValue',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setLocationValidation', value: 'newValue'})
 
@@ -547,30 +547,30 @@ describe('Store', () => {
 
   it('should handle description actions', () => {
     const intialStateValues = {
-        validations: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: 'newValue'
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: 'newValue'
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setDescriptionValidation', value: 'newValue'})
 
@@ -579,30 +579,30 @@ describe('Store', () => {
 
   it('should handle autonomousComunityInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: 'fields-color',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: 'fields-color',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setAutonomousComunityInputColor', value: 'fields-color'})
 
@@ -611,30 +611,30 @@ describe('Store', () => {
 
   it('should handle founderNameInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: 'fields-color',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: 'fields-color',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setFounderNameInputColor', value: 'fields-color'})
 
@@ -643,30 +643,30 @@ describe('Store', () => {
 
   it('should handle founderEmailInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: 'fields-color',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: 'fields-color',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setFounderEmailInputColor', value: 'fields-color'})
 
@@ -675,30 +675,30 @@ describe('Store', () => {
 
   it('should handle petTypeInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: 'fields-color',
-        breed: '',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: 'fields-color',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setPetTypeInputColor', value: 'fields-color'})
 
@@ -707,30 +707,30 @@ describe('Store', () => {
 
   it('should handle breedInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: 'fields-color',
-        size: '',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: 'fields-color',
+      size: '',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setBreedInputColor', value: 'fields-color'})
 
@@ -739,30 +739,30 @@ describe('Store', () => {
 
   it('should handle sizeInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: 'fields-color',
-        location: '',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: 'fields-color',
+      location: '',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setSizeInputColor', value: 'fields-color'})
 
@@ -771,30 +771,30 @@ describe('Store', () => {
 
   it('should handle locationInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: 'fields-color',
-        description: ''
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: 'fields-color',
+      description: ''
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setLocationInputColor', value: 'fields-color'})
 
@@ -803,30 +803,30 @@ describe('Store', () => {
 
   it('should handle descriptionInputColor actions', () => {
     const intialStateValues = {
-        inputColor: {
-          newPetFound: {
-            autonomousComunity: '',
-            founderName: '',
-            founderEmail: '',
-            petType: '',
-            breed: '',
-            size: '',
-            location: '',
-            description: ''
-          }
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
         }
       }
+    }
 
-      const modifiedState = {
-        autonomousComunity: '',
-        founderName: '',
-        founderEmail: '',
-        petType: '',
-        breed: '',
-        size: '',
-        location: '',
-        description: 'fields-color'
-      }
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: 'fields-color'
+    }
 
     const state = rootReducer(intialStateValues, {type: 'setDescriptionInputColor', value: 'fields-color'})
 

@@ -160,8 +160,8 @@ class NewPetFound extends React.Component {
     this.props.setProvince(event.target.value)
   }
 
-  hasMissingValues() {
-    return this.props.autonomousComunity === ""
+  hasMissingValues () {
+    return this.props.autonomousComunity === ''
   }
 
   handleSubmit (event) {
@@ -246,19 +246,19 @@ class NewPetFound extends React.Component {
           <p className='title form-introduction'>Introduce los datos de la mascota y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
-            <ValidationError message="El campo nombre es obligatorio" field={this.props.validations.founderName} />
+            <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
 
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
-            <ValidationError message="El campo email es obligatorio" field={this.props.validations.founderEmail} />
+            <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
 
             <p><input value={this.props.petType} onChange={this.handlePetType} className={`w3-input w3-border ${this.props.inputColor.petType}`} type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
-            <ValidationError message="El campo tipo de mascota es obligatorio" field={this.props.validations.petType} />
+            <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
 
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
-            <ValidationError message="El campo raza es obligatorio" field={this.props.validations.breed} />
+            <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
 
             <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
-            <ValidationError message="El campo tamaño es obligatorio" field={this.props.validations.size} />
+            <ValidationError message='El campo tamaño es obligatorio' field={this.props.validations.size} />
 
             <MediaQuery maxDeviceWidth={1200}>
               <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
@@ -274,7 +274,7 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
-            <ValidationError message="Debes seleccionar una Comunidad Autonoma" field={this.props.validations.autonomousComunity} />
+            <ValidationError message='Debes seleccionar una Comunidad Autonoma' field={this.props.validations.autonomousComunity} />
 
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
               <option selected='selected' disabled>Provincia</option>
@@ -285,10 +285,10 @@ class NewPetFound extends React.Component {
             </select>
 
             <p><input value={this.props.location} onChange={this.handlePetLocation} className={`w3-input w3-border ${this.props.inputColor.location}`} type='text' placeholder='Ciudad/Municipio' /></p>
-            <ValidationError message="El campo Ciudad/Municipio es oblidatorio" field={this.props.validations.location} />
+            <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
             <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Imformacion sobre la mascota' /></p>
-            <ValidationError message="El campo Descripción es oblidatorio" field={this.props.validations.description} />
+            <ValidationError message='El campo Descripción es oblidatorio' field={this.props.validations.description} />
 
             <div className={'panel panel-default ' + this.props.validationBackground}>
               <div className='panel-heading'>
