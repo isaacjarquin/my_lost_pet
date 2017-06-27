@@ -365,7 +365,10 @@ NewPetFound.propTypes = {
   provincias: arrayOf(string),
   autonomousComunity: string,
   province: string,
-  breed: string
+  breed: string,
+  setAutonomousComunityValidation: func,
+  inputColor: object,
+  validations: object
 }
 
 module.exports = NewPetFound

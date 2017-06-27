@@ -18,11 +18,11 @@ class Error extends React.Component {
   }
 }
 
-const { string, bool } = React.PropTypes
+const { string } = React.PropTypes
 
 Error.propTypes = {
   message: string,
-  visible: bool
+  field: string
 }
 
 module.exports = Error

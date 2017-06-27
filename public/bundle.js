@@ -43514,6 +43514,9 @@
 	  setAutonomousComunityFilter: func,
 	  comunidades: arrayOf(string),
 	  provincias: arrayOf(string),
+	  setAutonomousComunityValidation: func,
+	  validations: object,
+	  inputColor: object,
 	  cloudinary: object
 	};
 
@@ -44635,7 +44638,10 @@
 	  provincias: arrayOf(string),
 	  autonomousComunity: string,
 	  province: string,
-	  breed: string
+	  breed: string,
+	  setAutonomousComunityValidation: func,
+	  inputColor: object,
+	  validations: object
 	};
 
 	module.exports = NewPetFound;
@@ -65768,14 +65774,12 @@
 	  return Error;
 	}(React.Component);
 
-	var _React$PropTypes = React.PropTypes,
-	    string = _React$PropTypes.string,
-	    bool = _React$PropTypes.bool;
+	var string = React.PropTypes.string;
 
 
 	Error.propTypes = {
 	  message: string,
-	  visible: bool
+	  field: string
 	};
 
 	module.exports = Error;

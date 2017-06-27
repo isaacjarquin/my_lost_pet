@@ -231,6 +231,9 @@ Landing.propTypes = {
   setAutonomousComunityFilter: func,
   comunidades: arrayOf(string),
   provincias: arrayOf(string),
+  setAutonomousComunityValidation: func,
+  validations: object,
+  inputColor: object,
   cloudinary: object
 }
 
