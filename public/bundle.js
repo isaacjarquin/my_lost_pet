@@ -24054,30 +24054,50 @@
 	    reducerEncloseImageTitle = _require.reducerEncloseImageTitle,
 	    reducerValidationBackground = _require.reducerValidationBackground;
 
-	var _require2 = __webpack_require__(220),
-	    reducerOwnerName = _require2.reducerOwnerName,
-	    reducerOwnerEmail = _require2.reducerOwnerEmail,
-	    reducerOwnerPhoneNumber = _require2.reducerOwnerPhoneNumber,
-	    reducerDescription = _require2.reducerDescription;
+	var _require2 = __webpack_require__(449),
+	    reducerSetAutonomousComunityValidation = _require2.reducerSetAutonomousComunityValidation,
+	    reducerFounderNameValidation = _require2.reducerFounderNameValidation,
+	    reducerFounderEmailValidation = _require2.reducerFounderEmailValidation,
+	    reducerBreedValidation = _require2.reducerBreedValidation,
+	    reducerPetTypeValidation = _require2.reducerPetTypeValidation,
+	    reducerSizeValidation = _require2.reducerSizeValidation,
+	    reducerLocationValidation = _require2.reducerLocationValidation,
+	    reducerDescriptionValidation = _require2.reducerDescriptionValidation;
 
-	var _require3 = __webpack_require__(221),
-	    reducerSearchTerm = _require3.reducerSearchTerm,
-	    reducerSelectFilter = _require3.reducerSelectFilter,
-	    reducerFilteredPets = _require3.reducerFilteredPets;
+	var _require3 = __webpack_require__(450),
+	    reducerAutonomousComunityInputColor = _require3.reducerAutonomousComunityInputColor,
+	    reducerFounderNameInputColor = _require3.reducerFounderNameInputColor,
+	    reducerFounderEmailInputColor = _require3.reducerFounderEmailInputColor,
+	    reducerBreedInputColor = _require3.reducerBreedInputColor,
+	    reducerPetTypeInputColor = _require3.reducerPetTypeInputColor,
+	    reducerSizeInputColor = _require3.reducerSizeInputColor,
+	    reducerLocationInputColor = _require3.reducerLocationInputColor,
+	    reducerDescriptionInputColor = _require3.reducerDescriptionInputColor;
 
-	var _require4 = __webpack_require__(222),
-	    reducerContactUsName = _require4.reducerContactUsName,
-	    reducerContactUsEmail = _require4.reducerContactUsEmail,
-	    reducerContactUsMessage = _require4.reducerContactUsMessage;
+	var _require4 = __webpack_require__(220),
+	    reducerOwnerName = _require4.reducerOwnerName,
+	    reducerOwnerEmail = _require4.reducerOwnerEmail,
+	    reducerOwnerPhoneNumber = _require4.reducerOwnerPhoneNumber,
+	    reducerDescription = _require4.reducerDescription;
 
-	var _require5 = __webpack_require__(223),
-	    reducerLocationFilter = _require5.reducerLocationFilter,
-	    reducerPetTypeFilter = _require5.reducerPetTypeFilter,
-	    reducerAutonomousComunityFilter = _require5.reducerAutonomousComunityFilter,
-	    reducerProvinceFilter = _require5.reducerProvinceFilter;
+	var _require5 = __webpack_require__(221),
+	    reducerSearchTerm = _require5.reducerSearchTerm,
+	    reducerSelectFilter = _require5.reducerSelectFilter,
+	    reducerFilteredPets = _require5.reducerFilteredPets;
 
-	var _require6 = __webpack_require__(224),
-	    reducerActivePage = _require6.reducerActivePage;
+	var _require6 = __webpack_require__(222),
+	    reducerContactUsName = _require6.reducerContactUsName,
+	    reducerContactUsEmail = _require6.reducerContactUsEmail,
+	    reducerContactUsMessage = _require6.reducerContactUsMessage;
+
+	var _require7 = __webpack_require__(223),
+	    reducerLocationFilter = _require7.reducerLocationFilter,
+	    reducerPetTypeFilter = _require7.reducerPetTypeFilter,
+	    reducerAutonomousComunityFilter = _require7.reducerAutonomousComunityFilter,
+	    reducerProvinceFilter = _require7.reducerProvinceFilter;
+
+	var _require8 = __webpack_require__(224),
+	    reducerActivePage = _require8.reducerActivePage;
 
 	var reducerAlerts = __webpack_require__(225);
 	var resultDecorated = __webpack_require__(226);
@@ -24221,342 +24241,6 @@
 
 	  _extends(newState, state, {
 	    provincias: action.value
-	  });
-
-	  return newState;
-	};
-
-	var reducerSetAutonomousComunityValidation = function reducerSetAutonomousComunityValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: action.value,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerFounderNameValidation = function reducerFounderNameValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: action.value,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerFounderEmailValidation = function reducerFounderEmailValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: action.value,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerPetTypeValidation = function reducerPetTypeValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: action.value,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerBreedValidation = function reducerBreedValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: action.value,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerSizeValidation = function reducerSizeValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: action.value,
-	        location: state.validations.newPetFound.location,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerLocationValidation = function reducerLocationValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: action.value,
-	        description: state.validations.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerDescriptionValidation = function reducerDescriptionValidation(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    validations: {
-	      newPetFound: {
-	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
-	        founderName: state.validations.newPetFound.founderName,
-	        founderEmail: state.validations.newPetFound.founderEmail,
-	        petType: state.validations.newPetFound.petType,
-	        breed: state.validations.newPetFound.breed,
-	        size: state.validations.newPetFound.size,
-	        location: state.validations.newPetFound.location,
-	        description: action.value
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerAutonomousComunityInputColor = function reducerAutonomousComunityInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: action.value,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerFounderNameInputColor = function reducerFounderNameInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: action.value,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerFounderEmailInputColor = function reducerFounderEmailInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: action.value,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerPetTypeInputColor = function reducerPetTypeInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: action.value,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerBreedInputColor = function reducerBreedInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: action.value,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerSizeInputColor = function reducerSizeInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: action.value,
-	        location: state.inputColor.newPetFound.location,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerLocationInputColor = function reducerLocationInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: action.value,
-	        description: state.inputColor.newPetFound.description
-	      }
-	    }
-	  });
-
-	  return newState;
-	};
-
-	var reducerDescriptionInputColor = function reducerDescriptionInputColor(state, action) {
-	  var newState = {};
-
-	  _extends(newState, state, {
-	    inputColor: {
-	      newPetFound: {
-	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
-	        founderName: state.inputColor.newPetFound.founderName,
-	        founderEmail: state.inputColor.newPetFound.founderEmail,
-	        petType: state.inputColor.newPetFound.petType,
-	        breed: state.inputColor.newPetFound.breed,
-	        size: state.inputColor.newPetFound.size,
-	        location: state.inputColor.newPetFound.location,
-	        description: action.value
-	      }
-	    }
 	  });
 
 	  return newState;
@@ -67480,6 +67164,380 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 449 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var reducerSetAutonomousComunityValidation = function reducerSetAutonomousComunityValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: action.value,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderNameValidation = function reducerFounderNameValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: action.value,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderEmailValidation = function reducerFounderEmailValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: action.value,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerPetTypeValidation = function reducerPetTypeValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: action.value,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerBreedValidation = function reducerBreedValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: action.value,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerSizeValidation = function reducerSizeValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: action.value,
+	        location: state.validations.newPetFound.location,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerLocationValidation = function reducerLocationValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: action.value,
+	        description: state.validations.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerDescriptionValidation = function reducerDescriptionValidation(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    validations: {
+	      newPetFound: {
+	        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+	        founderName: state.validations.newPetFound.founderName,
+	        founderEmail: state.validations.newPetFound.founderEmail,
+	        petType: state.validations.newPetFound.petType,
+	        breed: state.validations.newPetFound.breed,
+	        size: state.validations.newPetFound.size,
+	        location: state.validations.newPetFound.location,
+	        description: action.value
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	module.exports = {
+	  reducerSetAutonomousComunityValidation: reducerSetAutonomousComunityValidation,
+	  reducerFounderNameValidation: reducerFounderNameValidation,
+	  reducerFounderEmailValidation: reducerFounderEmailValidation,
+	  reducerBreedValidation: reducerBreedValidation,
+	  reducerPetTypeValidation: reducerPetTypeValidation,
+	  reducerSizeValidation: reducerSizeValidation,
+	  reducerLocationValidation: reducerLocationValidation,
+	  reducerDescriptionValidation: reducerDescriptionValidation
+	};
+
+/***/ },
+/* 450 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var reducerAutonomousComunityInputColor = function reducerAutonomousComunityInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: action.value,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderNameInputColor = function reducerFounderNameInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: action.value,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerFounderEmailInputColor = function reducerFounderEmailInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: action.value,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerPetTypeInputColor = function reducerPetTypeInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: action.value,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerBreedInputColor = function reducerBreedInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: action.value,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerSizeInputColor = function reducerSizeInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: action.value,
+	        location: state.inputColor.newPetFound.location,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerLocationInputColor = function reducerLocationInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: action.value,
+	        description: state.inputColor.newPetFound.description
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	var reducerDescriptionInputColor = function reducerDescriptionInputColor(state, action) {
+	  var newState = {};
+
+	  _extends(newState, state, {
+	    inputColor: {
+	      newPetFound: {
+	        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+	        founderName: state.inputColor.newPetFound.founderName,
+	        founderEmail: state.inputColor.newPetFound.founderEmail,
+	        petType: state.inputColor.newPetFound.petType,
+	        breed: state.inputColor.newPetFound.breed,
+	        size: state.inputColor.newPetFound.size,
+	        location: state.inputColor.newPetFound.location,
+	        description: action.value
+	      }
+	    }
+	  });
+
+	  return newState;
+	};
+
+	module.exports = {
+	  reducerAutonomousComunityInputColor: reducerAutonomousComunityInputColor,
+	  reducerFounderNameInputColor: reducerFounderNameInputColor,
+	  reducerFounderEmailInputColor: reducerFounderEmailInputColor,
+	  reducerBreedInputColor: reducerBreedInputColor,
+	  reducerPetTypeInputColor: reducerPetTypeInputColor,
+	  reducerSizeInputColor: reducerSizeInputColor,
+	  reducerLocationInputColor: reducerLocationInputColor,
+	  reducerDescriptionInputColor: reducerDescriptionInputColor
+	};
 
 /***/ }
 /******/ ]);
