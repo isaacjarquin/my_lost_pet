@@ -166,8 +166,7 @@ class NewPetFound extends React.Component {
 
   handleSubmit (event) {
     if (this.hasMissingValues()) {
-      // this.props.setValidations()
-      this.props.setAutonomousComunityValidation(this.props)
+      this.props.setValidations(this.props)
     } else {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
@@ -366,7 +365,7 @@ NewPetFound.propTypes = {
   autonomousComunity: string,
   province: string,
   breed: string,
-  setAutonomousComunityValidation: func,
+  setValidations: func,
   inputColor: object,
   validations: object
 }

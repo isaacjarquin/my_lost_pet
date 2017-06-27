@@ -892,7 +892,7 @@ const mapDispatchToProps = (dispatch) => {
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
     },
-    setAutonomousComunityValidation ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
+    setValidations ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
       if (founderName === '') {
         dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
         dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color'})

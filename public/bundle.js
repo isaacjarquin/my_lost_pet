@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -24941,7 +24941,7 @@
 	    setProvince: function setProvince(province) {
 	      dispatch({ type: SET_PROVINCE, value: province });
 	    },
-	    setAutonomousComunityValidation: function setAutonomousComunityValidation(_ref3) {
+	    setValidations: function setValidations(_ref3) {
 	      var founderName = _ref3.founderName,
 	          founderEmail = _ref3.founderEmail,
 	          petType = _ref3.petType,
@@ -43424,7 +43424,7 @@
 	          comunidades: this.props.comunidades,
 	          provincias: this.props.provincias,
 	          setAutonomousComunity: this.props.setAutonomousComunity,
-	          setAutonomousComunityValidation: this.props.setAutonomousComunityValidation,
+	          setValidations: this.props.setValidations,
 	          setProvince: this.props.setProvince,
 	          setProvincias: this.props.setProvincias,
 	          setPetFounderName: this.props.setPetFounderName,
@@ -43514,7 +43514,7 @@
 	  setAutonomousComunityFilter: func,
 	  comunidades: arrayOf(string),
 	  provincias: arrayOf(string),
-	  setAutonomousComunityValidation: func,
+	  setValidations: func,
 	  validations: object,
 	  inputColor: object,
 	  cloudinary: object
@@ -44322,8 +44322,7 @@
 	      var _this3 = this;
 
 	      if (this.hasMissingValues()) {
-	        // this.props.setValidations()
-	        this.props.setAutonomousComunityValidation(this.props);
+	        this.props.setValidations(this.props);
 	      } else {
 	        $('#details-button').addClass('disable-button');
 	        $('.loader-container').show();
@@ -44639,7 +44638,7 @@
 	  autonomousComunity: string,
 	  province: string,
 	  breed: string,
-	  setAutonomousComunityValidation: func,
+	  setValidations: func,
 	  inputColor: object,
 	  validations: object
 	};

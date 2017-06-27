@@ -147,7 +147,7 @@ class Landing extends React.Component {
           comunidades={this.props.comunidades}
           provincias={this.props.provincias}
           setAutonomousComunity={this.props.setAutonomousComunity}
-          setAutonomousComunityValidation={this.props.setAutonomousComunityValidation}
+          setValidations={this.props.setValidations}
           setProvince={this.props.setProvince}
           setProvincias={this.props.setProvincias}
           setPetFounderName={this.props.setPetFounderName}
@@ -231,7 +231,7 @@ Landing.propTypes = {
   setAutonomousComunityFilter: func,
   comunidades: arrayOf(string),
   provincias: arrayOf(string),
-  setAutonomousComunityValidation: func,
+  setValidations: func,
   validations: object,
   inputColor: object,
   cloudinary: object
