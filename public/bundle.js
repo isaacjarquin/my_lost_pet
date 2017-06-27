@@ -24937,6 +24937,7 @@
 	    setAutonomousComunity: function setAutonomousComunity(autonomousComunity) {
 	      dispatch({ type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity });
 	      dispatch({ type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone' });
+	      dispatch({ type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: '' });
 	    },
 	    setProvince: function setProvince(province) {
 	      dispatch({ type: SET_PROVINCE, value: province });
@@ -44466,7 +44467,7 @@
 	            ),
 	            React.createElement(
 	              'select',
-	              { className: 'form-control landing-select-filter', onChange: this.handleComunidadesFilter },
+	              { className: 'form-control landing-select-filter ' + this.props.inputColor.autonomousComunity, onChange: this.handleComunidadesFilter },
 	              React.createElement(
 	                'option',
 	                { selected: 'selected', disabled: true },

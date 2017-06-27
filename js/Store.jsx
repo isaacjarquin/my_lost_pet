@@ -888,6 +888,7 @@ const mapDispatchToProps = (dispatch) => {
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})
       dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: ''})
     },
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
