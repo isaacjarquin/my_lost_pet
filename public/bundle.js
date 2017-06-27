@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -43854,7 +43854,7 @@
 	                      'li',
 	                      null,
 	                      React.createElement('i', { className: 'fa fa-envelope fa-fw w3-large w3-margin' }),
-	                      ' Email: mylostpet@mail.com'
+	                      ' Email: myfoundpet@mail.com'
 	                    )
 	                  )
 	                )
@@ -43869,7 +43869,7 @@
 	                React.createElement('i', { className: 'fa fa-map-marker fa-fw w3-xxlarge w3-margin' }),
 	                ' Las Palmas de Gran Canaria, Espa\xF1a',
 	                React.createElement('i', { className: 'fa fa-envelope fa-fw w3-xxlarge w3-margin' }),
-	                ' Email: mylostpet@mail.com'
+	                ' Email: myfoundpet@mail.com'
 	              )
 	            ),
 	            React.createElement(

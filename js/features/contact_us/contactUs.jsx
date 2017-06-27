@@ -128,7 +128,7 @@ class ContactUs extends React.Component {
                 <div className='collapse navbar-collapse contact-us-mobile-details' id='contactUsNavbar'>
                   <ul className='nav navbar-nav navbar-right contact-us'>
                     <li><i className='fa fa-map-marker fa-fw w3-large w3-margin' /> Las Palmas de Gran Canaria</li>
-                    <li><i className='fa fa-envelope fa-fw w3-large w3-margin' /> Email: mylostpet@mail.com</li>
+                    <li><i className='fa fa-envelope fa-fw w3-large w3-margin' /> Email: myfoundpet@mail.com</li>
                   </ul>
                 </div>
               </div>
@@ -136,7 +136,7 @@ class ContactUs extends React.Component {
             <MediaQuery minDeviceWidth={768}>
               <div className='w3-section w3-center w3-opacity'>
                 <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
-                <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: mylostpet@mail.com
+                <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: myfoundpet@mail.com
               </div>
             </MediaQuery>
             <form onSubmit={this.handleSubmit}>
