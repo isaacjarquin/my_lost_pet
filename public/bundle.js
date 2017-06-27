@@ -518,7 +518,7 @@
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -44313,7 +44313,7 @@
 	  }, {
 	    key: 'hasMissingValues',
 	    value: function hasMissingValues() {
-	      return this.props.autonomousComunity === '';
+	      return [this.props.autonomousComunity, this.props.founderName, this.props.founderEmail, this.props.petType, this.props.breed, this.props.size, this.props.location, this.props.description].includes('') || !this.props.images[0];
 	    }
 	  }, {
 	    key: 'handleSubmit',

@@ -159,7 +159,16 @@ class NewPetFound extends React.Component {
   }
 
   hasMissingValues () {
-    return this.props.autonomousComunity === ''
+    return [
+      this.props.autonomousComunity,
+      this.props.founderName,
+      this.props.founderEmail,
+      this.props.petType,
+      this.props.breed,
+      this.props.size,
+      this.props.location,
+      this.props.description
+    ].includes('') || !this.props.images[0]
   }
 
   handleSubmit (event) {
