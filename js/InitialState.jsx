@@ -11,6 +11,30 @@ module.exports = {
   validationBackground: '',
   comunidades: [],
   provincias: [],
+  validations: {
+    newPetFound: {
+      autonomousComunity: 'displayNone',
+      founderName: 'displayNone',
+      founderEmail: 'displayNone',
+      petType: 'displayNone',
+      breed: 'displayNone',
+      size: 'displayNone',
+      location: 'displayNone',
+      description: 'displayNone'
+    }
+  },
+  inputColor: {
+    newPetFound: {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+  },
   social: {
     facebook: '',
     twitter: ''

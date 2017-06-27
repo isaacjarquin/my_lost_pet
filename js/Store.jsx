@@ -19,6 +19,28 @@ const {
 } = require('../js/features/new_pet_found/newPetFoundReducer')
 
 const {
+  reducerSetAutonomousComunityValidation,
+  reducerFounderNameValidation,
+  reducerFounderEmailValidation,
+  reducerBreedValidation,
+  reducerPetTypeValidation,
+  reducerSizeValidation,
+  reducerLocationValidation,
+  reducerDescriptionValidation
+} = require('../js/features/new_pet_found/newPetFoundValidationsReducer')
+
+const {
+  reducerAutonomousComunityInputColor,
+  reducerFounderNameInputColor,
+  reducerFounderEmailInputColor,
+  reducerBreedInputColor,
+  reducerPetTypeInputColor,
+  reducerSizeInputColor,
+  reducerLocationInputColor,
+  reducerDescriptionInputColor
+} = require('../js/features/new_pet_found/newPetFoundInputColorReducer')
+
+const {
   reducerOwnerName,
   reducerOwnerEmail,
   reducerOwnerPhoneNumber,
@@ -87,6 +109,22 @@ const SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter'
 const SET_PROVINCE_FILTER = 'setProvinceFilter'
 const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
 const SET_PROVINCE = 'setProvince'
+const SET_AUTONOMOUS_COMUNITY_VALIDATION = 'setAutonomousComunityValidation'
+const SET_FOUNDER_NAME_VALIDATION = 'setFounderNameValidation'
+const SET_FOUNDER_EMAIL_VALIDATION = 'setFounderEmailValidation'
+const SET_PET_TYPE_VALIDATION = 'setPetTypeValidation'
+const SET_BREED_VALIDATION = 'setBreedValidation'
+const SET_SIZE_VALIDATION = 'setSizeValidation'
+const SET_LOCATION_VALIDATION = 'setLocationValidation'
+const SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation'
+const SET_FOUNDER_NAME_INPUT_COLOR = 'setFounderNameInputColor'
+const SET_FOUNDER_EMAIL_INPUT_COLOR = 'setFounderEmailInputColor'
+const SET_PET_TYPE_INPUT_COLOR = 'setPetTypeInputColor'
+const SET_BREED_INPUT_COLOR = 'setBreedInputColor'
+const SET_SIZE_INPUT_COLOR = 'setSizeInputColor'
+const SET_LOCATION_INPUT_COLOR = 'setLocationInputColor'
+const SET_DESCRIPTION_INPUT_COLOR = 'setDescriptionInputColor'
+const SET_AUTONOMOUS_COMUNITY_INPUT_COLOR = 'setAutonomousComunityInputColor'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -252,6 +290,38 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetAutonomousComunity(state, action)
     case SET_PROVINCE:
       return reducerPetProvince(state, action)
+    case SET_AUTONOMOUS_COMUNITY_VALIDATION:
+      return reducerSetAutonomousComunityValidation(state, action)
+    case SET_FOUNDER_NAME_VALIDATION:
+      return reducerFounderNameValidation(state, action)
+    case SET_FOUNDER_EMAIL_VALIDATION:
+      return reducerFounderEmailValidation(state, action)
+    case SET_PET_TYPE_VALIDATION:
+      return reducerPetTypeValidation(state, action)
+    case SET_BREED_VALIDATION:
+      return reducerBreedValidation(state, action)
+    case SET_SIZE_VALIDATION:
+      return reducerSizeValidation(state, action)
+    case SET_LOCATION_VALIDATION:
+      return reducerLocationValidation(state, action)
+    case SET_DESCRIPTION_VALIDATION:
+      return reducerDescriptionValidation(state, action)
+    case SET_FOUNDER_NAME_INPUT_COLOR:
+      return reducerFounderNameInputColor(state, action)
+    case SET_FOUNDER_EMAIL_INPUT_COLOR:
+      return reducerFounderEmailInputColor(state, action)
+    case SET_PET_TYPE_INPUT_COLOR:
+      return reducerPetTypeInputColor(state, action)
+    case SET_BREED_INPUT_COLOR:
+      return reducerBreedInputColor(state, action)
+    case SET_SIZE_INPUT_COLOR:
+      return reducerSizeInputColor(state, action)
+    case SET_LOCATION_INPUT_COLOR:
+      return reducerLocationInputColor(state, action)
+    case SET_DESCRIPTION_INPUT_COLOR:
+      return reducerDescriptionInputColor(state, action)
+    case SET_AUTONOMOUS_COMUNITY_INPUT_COLOR:
+      return reducerAutonomousComunityInputColor(state, action)
     default:
       return state
   }
@@ -275,6 +345,30 @@ const mapStateToProps = (state) => {
     filteredPets: state.filteredPets,
     comunidades: state.comunidades,
     provincias: state.provincias,
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
+      }
+    },
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
+      }
+    },
     urls: {
       host: state.urls.host,
       items_api: state.urls.items_api
@@ -398,30 +492,46 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPetFounderName (petFounderName) {
       dispatch({type: SET_PET_FOUNDER_NAME, value: petFounderName})
+      dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: ''})
     },
     setPetFounderEmail (petFounderEmail) {
       dispatch({type: SET_PET_FOUNDER_EMAIL, value: petFounderEmail})
+      dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: ''})
     },
     setPetType (petType) {
       dispatch({type: SET_PET_TYPE, value: petType})
+      dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: ''})
     },
     setBreed (breed) {
       dispatch({type: SET_BREED, value: breed})
+      dispatch({type: SET_BREED_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_BREED_INPUT_COLOR, value: ''})
     },
     setPetSize (petSize) {
       dispatch({type: SET_PET_SIZE, value: petSize})
+      dispatch({type: SET_SIZE_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_SIZE_INPUT_COLOR, value: ''})
     },
     setPetFoundDate (petFoundDate) {
       dispatch({type: SET_PET_FOUND_DATE, value: petFoundDate})
     },
     setPetLocation (petLocation) {
       dispatch({type: SET_PET_LOCATION, value: petLocation})
+      dispatch({type: SET_LOCATION_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_LOCATION_INPUT_COLOR, value: ''})
     },
     setImages (images) {
       dispatch({type: SET_IMAGES, value: images})
+      dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: ''})
+      dispatch({type: SET_VALIDATION_BACKGROUND, value: ''})
     },
     setPetDescription (petDescription) {
       dispatch({type: SET_PET_DESCRIPTION, value: petDescription})
+      dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: ''})
     },
     setContactUsName (name) {
       dispatch({type: SET_CONTACT_US_NAME, value: name})
@@ -444,12 +554,6 @@ const mapDispatchToProps = (dispatch) => {
     setFilteredPets (pets) {
       dispatch({type: SET_FILTERED_PETS, value: pets})
     },
-    setEncloseImageTitle (message) {
-      dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: message})
-    },
-    setValidationBackground (validationClass) {
-      dispatch({type: SET_VALIDATION_BACKGROUND, value: validationClass})
-    },
     setEnvs ({social, cloudinary, urls}) {
       dispatch({type: SET_SOCIAL_KEYS, value: social})
       dispatch({type: SET_CLOUDINARY, value: cloudinary})
@@ -469,9 +573,49 @@ const mapDispatchToProps = (dispatch) => {
     },
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})
+      dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone'})
+      dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: ''})
     },
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
+    },
+    setValidations ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
+      if (founderName === '') {
+        dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (founderEmail === '') {
+        dispatch({type: SET_FOUNDER_EMAIL_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_FOUNDER_EMAIL_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (petType === '') {
+        dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (breed === '') {
+        dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_BREED_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (size === '') {
+        dispatch({type: SET_SIZE_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_SIZE_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (location === '') {
+        dispatch({type: SET_LOCATION_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_LOCATION_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (description === '') {
+        dispatch({type: SET_DESCRIPTION_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_DESCRIPTION_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (autonomousComunity === '') {
+        dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayTrue'})
+        dispatch({type: SET_AUTONOMOUS_COMUNITY_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (!images[0]) {
+        dispatch({type: SET_ENCLOSE_IMAGE_TITLE, value: 'Debes añadir una foto de la mascota para poder enviar los datos.'})
+        dispatch({type: SET_VALIDATION_BACKGROUND, value: 'validation-color'})
+      }
     },
     getPets ({urls, filters}) {
       $.ajax({

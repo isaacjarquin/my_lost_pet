@@ -35,6 +35,30 @@ describe('Store', () => {
       name: '',
       phoneNumber: ''
     },
+    validations: {
+      newPetFound: {
+        autonomousComunity: 'displayNone',
+        founderName: 'displayNone',
+        founderEmail: 'displayNone',
+        petType: 'displayNone',
+        breed: 'displayNone',
+        size: 'displayNone',
+        location: 'displayNone',
+        description: 'displayNone'
+      }
+    },
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: '',
+        founderName: '',
+        founderEmail: '',
+        petType: '',
+        breed: '',
+        size: '',
+        location: '',
+        description: ''
+      }
+    },
     pet: {
       founderName: '',
       founderEmail: '',
@@ -327,5 +351,485 @@ describe('Store', () => {
     const state = rootReducer({provincias: ''}, {type: 'setProvincias', value: ['Las Palmas', 'Santa Cruz']})
 
     expect(state.provincias).to.deep.equal(['Las Palmas', 'Santa Cruz'])
+  })
+
+  it('should handle founderName actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: 'newValue',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setFounderNameValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle founderEmail actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: 'newValue',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setFounderEmailValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle petType actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: 'newValue',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setPetTypeValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle breed actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: 'newValue',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setBreedValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle size actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: 'newValue',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setSizeValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle Location actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: 'newValue',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setLocationValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle description actions', () => {
+    const intialStateValues = {
+      validations: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: 'newValue'
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setDescriptionValidation', value: 'newValue'})
+
+    expect(state.validations.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle autonomousComunityInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: 'fields-color',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setAutonomousComunityInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle founderNameInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: 'fields-color',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setFounderNameInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle founderEmailInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: 'fields-color',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setFounderEmailInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle petTypeInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: 'fields-color',
+      breed: '',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setPetTypeInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle breedInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: 'fields-color',
+      size: '',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setBreedInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle sizeInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: 'fields-color',
+      location: '',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setSizeInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle locationInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: 'fields-color',
+      description: ''
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setLocationInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
+  })
+
+  it('should handle descriptionInputColor actions', () => {
+    const intialStateValues = {
+      inputColor: {
+        newPetFound: {
+          autonomousComunity: '',
+          founderName: '',
+          founderEmail: '',
+          petType: '',
+          breed: '',
+          size: '',
+          location: '',
+          description: ''
+        }
+      }
+    }
+
+    const modifiedState = {
+      autonomousComunity: '',
+      founderName: '',
+      founderEmail: '',
+      petType: '',
+      breed: '',
+      size: '',
+      location: '',
+      description: 'fields-color'
+    }
+
+    const state = rootReducer(intialStateValues, {type: 'setDescriptionInputColor', value: 'fields-color'})
+
+    expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
   })
 })
