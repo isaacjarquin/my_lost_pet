@@ -1,6 +1,7 @@
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
+const ValidationError = require('../validations/error')
 
 if (process.env.WEBPACK_BUILD) {
   require('./contactDetailsPanel.scss')
@@ -72,44 +73,87 @@ class ContactDetailsPanel extends React.Component {
     this.handleDescription = this.handleDescription.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.renderPanel = this.renderPanel.bind(this)
+
+    this.state = {
+      nameValidationMessage: 'displayNone',
+      emailValidationMessage: 'displayNone',
+      phoneNumberValidationMessage: 'displayNone',
+      descriptionValidationMessage: 'displayNone',
+      nameInputColor: '',
+      emailInputColor: '',
+      phoneNumberInputColor: '',
+      descriptionInputColor: ''
+    }
   }
 
   handleName (event) {
     this.props.setOwnerName(event.target.value)
+    this.setState({nameValidationMessage: 'displayNone', nameInputColor: ''})
   }
   handleEmail (event) {
     this.props.setOwnerEmail(event.target.value)
+    this.setState({emailValidationMessage: 'displayNone', emailInputColor: ''})
   }
   handlePhoneNumber (event) {
     this.props.setOwnerPhoneNumber(event.target.value)
+    this.setState({phoneNumberValidationMessage: 'displayNone', phoneNumberInputColor: ''})
   }
   handleDescription (event) {
     this.props.setDescription(event.target.value)
+    this.setState({descriptionValidationMessage: 'displayNone', descriptionInputColor: ''})
   }
-
-  handleSubmit (event) {
-    const headers = { 'Content-Type': 'application/json' }
-    const props = this.props
-
-    const contactDetailsDecoreted = {
-      name: props.name,
-      email: props.email,
-      phone_number: props.phoneNumber,
-      details: props.description,
-      item_id: props.id
+  hasMissingValues () {
+    return [
+      this.props.name,
+      this.props.email,
+      this.props.phoneNumber,
+      this.props.description
+    ].includes('')
+  }
+  setValidations ({name, email, phoneNumber, description}) {
+    if (name === '') {
+      this.setState({nameValidationMessage: 'displayTrue', nameInputColor: 'fields-color'})
     }
 
-    fetch(props.items_api + '/api/contact_details', {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
-    }).then(function (response) {
-      showSuccesfullMessage(props)
-      console.log(response)
-    }).catch(function (err) {
-      showUnSuccesfullMessage(props, err)
-      console.log(err)
-    })
+    if (email === '') {
+      this.setState({emailValidationMessage: 'displayTrue', emailInputColor: 'fields-color'})
+    }
+
+    if (phoneNumber === '') {
+      this.setState({phoneNumberValidationMessage: 'displayTrue', phoneNumberInputColor: 'fields-color'})
+    }
+
+    if (description === '') {
+      this.setState({descriptionValidationMessage: 'displayTrue', descriptionInputColor: 'fields-color'})
+    }
+  }
+  handleSubmit (event) {
+    if (this.hasMissingValues()) {
+      this.setValidations(this.props)
+    } else {
+      const headers = { 'Content-Type': 'application/json' }
+      const props = this.props
+
+      const contactDetailsDecoreted = {
+        name: props.name,
+        email: props.email,
+        phone_number: props.phoneNumber,
+        details: props.description,
+        item_id: props.id
+      }
+
+      fetch(props.items_api + '/api/contact_details', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
+      }).then(function (response) {
+        showSuccesfullMessage(props)
+        console.log(response)
+      }).catch(function (err) {
+        showUnSuccesfullMessage(props, err)
+        console.log(err)
+      })
+    }
 
     event.preventDefault()
   }
@@ -127,10 +171,18 @@ class ContactDetailsPanel extends React.Component {
             <div className='w3-container'>
               <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
               <form onSubmit={this.handleSubmit}>
-                <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
-                <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
-                <p><input value={this.props.phoneNumber} onChange={this.handlePhoneNumber} className='w3-input w3-border' type='text' placeholder='Numero de telefono' required /></p>
-                <p><textarea value={this.props.description} onChange={this.handleDescription} className='w3-input w3-border' placeholder='Información personal' required /></p>
+                <p><input value={this.props.name} onChange={this.handleName} className={`w3-input w3-border ${this.state.nameInputColor}`} type='text' placeholder='Nombre' /></p>
+                <ValidationError message='El campo nombre es obligatorio' field={this.state.nameValidationMessage} />
+
+                <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
+                <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
+
+                <p><input value={this.props.phoneNumber} onChange={this.handlePhoneNumber} className={`w3-input w3-border ${this.state.phoneNumberInputColor}`} type='text' placeholder='Número de teléfono' /></p>
+                <ValidationError message='El campo número de teléfono es obligatorio' field={this.state.phoneNumberValidationMessage} />
+
+                <p><textarea value={this.props.description} onChange={this.handleDescription} className={`w3-input w3-border ${this.state.descriptionInputColor}`} placeholder='Información personal' /></p>
+                <ValidationError message='El campo descripción es obligatorio' field={this.state.descriptionValidationMessage} />
+
                 <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
               </form>
             </div>

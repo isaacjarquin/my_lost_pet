@@ -75,10 +75,10 @@ class ContactUs extends React.Component {
 
     this.state = {
       nameValidationMessage: 'displayNone',
-      nameInputColor: '',
       emailValidationMessage: 'displayNone',
-      emailInputColor: '',
       messageValidationMessage: 'displayNone',
+      nameInputColor: '',
+      emailInputColor: '',
       messageInputColor: ''
     }
   }
