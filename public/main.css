@@ -142,11 +142,6 @@ footer.w3-container.w3-grey.w3-center.w3-padding-xlarge p {
 
 .panel-title > .small, .panel-title > .small > a, .panel-title > a, .panel-title > small, .panel-title > small > a {
   color: grey; }
-.contact-us-mobile-details {
-  border-top: 1px solid lightgrey; }
-  .contact-us-mobile-details .navbar-nav {
-    opacity: 0.5;
-    margin: 7.5px -30px; }
 .dog-loader .loader-container {
   display: none;
   position: relative;
@@ -223,6 +218,11 @@ footer.w3-container.w3-grey.w3-center.w3-padding-xlarge p {
     stroke-dashoffset: 622;
     -webkit-transform: rotate(450deg);
             transform: rotate(450deg); } }
+.contact-us-mobile-details {
+  border-top: 1px solid lightgrey; }
+  .contact-us-mobile-details .navbar-nav {
+    opacity: 0.5;
+    margin: 7.5px -30px; }
 .loader {
   border-top: 10px solid #88A236;
   border-right: 10px solid #AA9739;

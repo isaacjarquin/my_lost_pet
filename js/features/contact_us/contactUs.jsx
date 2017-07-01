@@ -2,6 +2,7 @@ const React = require('react')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
 const ValidationError = require('../validations/error')
+const DogLoader = require('../dog_loader/DogLoader')
 
 var MediaQuery = require('react-responsive')
 
@@ -119,6 +120,7 @@ class ContactUs extends React.Component {
     if (this.hasMissingValues()) {
       this.setValidations(this.props)
     } else {
+      $('.loader-container').show()
       const headers = { 'Content-Type': 'application/json' }
       const props = this.props
 
@@ -133,9 +135,11 @@ class ContactUs extends React.Component {
         headers: headers,
         body: JSON.stringify({ contact_us: contactUsDecoreted })
       }).then(function (response) {
+        $('.loader-container').hide()
         showSuccesfullMessage(props)
         console.log(response)
       }).catch(function (err) {
+        $('.loader-container').hide()
         showUnSuccesfullMessage(props, err)
         console.log(err)
       })
@@ -188,6 +192,7 @@ class ContactUs extends React.Component {
               <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Describenos la informacion que necesitas' /></p>
               <ValidationError message='Este campo es obligatorio para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
 
+              <DogLoader />
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>
             </form>
           </div>

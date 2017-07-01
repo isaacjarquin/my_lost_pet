@@ -2,6 +2,7 @@ const React = require('react')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
 const ValidationError = require('../validations/error')
+const DogLoader = require('../dog_loader/DogLoader')
 
 if (process.env.WEBPACK_BUILD) {
   require('./contactDetailsPanel.scss')
@@ -131,6 +132,7 @@ class ContactDetailsPanel extends React.Component {
     if (this.hasMissingValues()) {
       this.setValidations(this.props)
     } else {
+      $('.loader-container').show()
       const headers = { 'Content-Type': 'application/json' }
       const props = this.props
 
@@ -147,9 +149,11 @@ class ContactDetailsPanel extends React.Component {
         headers: headers,
         body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
       }).then(function (response) {
+        $('.loader-container').hide()
         showSuccesfullMessage(props)
         console.log(response)
       }).catch(function (err) {
+        $('.loader-container').hide()
         showUnSuccesfullMessage(props, err)
         console.log(err)
       })
@@ -182,7 +186,7 @@ class ContactDetailsPanel extends React.Component {
 
                 <p><textarea value={this.props.description} onChange={this.handleDescription} className={`w3-input w3-border ${this.state.descriptionInputColor}`} placeholder='Información personal' /></p>
                 <ValidationError message='El campo descripción es obligatorio' field={this.state.descriptionValidationMessage} />
-
+                <DogLoader />
                 <p><button className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button></p>
               </form>
             </div>

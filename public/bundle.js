@@ -45122,6 +45122,7 @@
 	var Alerts = __webpack_require__(298);
 	var $ = __webpack_require__(222);
 	var ValidationError = __webpack_require__(434);
+	var DogLoader = __webpack_require__(432);
 
 	var MediaQuery = __webpack_require__(186);
 
@@ -45259,6 +45260,7 @@
 	      if (this.hasMissingValues()) {
 	        this.setValidations(this.props);
 	      } else {
+	        $('.loader-container').show();
 	        var headers = { 'Content-Type': 'application/json' };
 	        var props = this.props;
 
@@ -45273,9 +45275,11 @@
 	          headers: headers,
 	          body: JSON.stringify({ contact_us: contactUsDecoreted })
 	        }).then(function (response) {
+	          $('.loader-container').hide();
 	          showSuccesfullMessage(props);
 	          console.log(response);
 	        }).catch(function (err) {
+	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(props, err);
 	          console.log(err);
 	        });
@@ -45385,6 +45389,7 @@
 	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border ' + this.state.messageInputColor, placeholder: 'Describenos la informacion que necesitas' })
 	              ),
 	              React.createElement(ValidationError, { message: 'Este campo es obligatorio para ayudarnos a enternder tus dudas', field: this.state.messageValidationMessage }),
+	              React.createElement(DogLoader, null),
 	              React.createElement(
 	                'button',
 	                { type: 'submit', className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
@@ -69766,6 +69771,7 @@
 	var Alerts = __webpack_require__(298);
 	var $ = __webpack_require__(222);
 	var ValidationError = __webpack_require__(434);
+	var DogLoader = __webpack_require__(432);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(532);
@@ -69917,6 +69923,7 @@
 	      if (this.hasMissingValues()) {
 	        this.setValidations(this.props);
 	      } else {
+	        $('.loader-container').show();
 	        var headers = { 'Content-Type': 'application/json' };
 	        var props = this.props;
 
@@ -69933,9 +69940,11 @@
 	          headers: headers,
 	          body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
 	        }).then(function (response) {
+	          $('.loader-container').hide();
 	          showSuccesfullMessage(props);
 	          console.log(response);
 	        }).catch(function (err) {
+	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(props, err);
 	          console.log(err);
 	        });
@@ -69999,6 +70008,7 @@
 	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border ' + this.state.descriptionInputColor, placeholder: 'Informaci\xF3n personal' })
 	                ),
 	                React.createElement(ValidationError, { message: 'El campo descripci\xF3n es obligatorio', field: this.state.descriptionValidationMessage }),
+	                React.createElement(DogLoader, null),
 	                React.createElement(
 	                  'p',
 	                  null,
