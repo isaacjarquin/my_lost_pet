@@ -187,7 +187,6 @@ class NewPetFound extends React.Component {
           $('#details-button').removeClass('disable-button')
           $('.loader-container').hide()
           showUnSuccesfullMessage(this.props, err)
-          console.error(err)
         }
 
         if (response.body.secure_url !== '') {
@@ -224,18 +223,13 @@ class NewPetFound extends React.Component {
     }).then(function (response) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()
-
       clearForm(props)
       closePanel()
       showSuccesfullMessage(props)
-
-      console.log(response)
     }).catch(function (err) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()
-
       showUnSuccesfullMessage(props, err)
-      console.log(err)
     })
   }
 

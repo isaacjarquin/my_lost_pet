@@ -137,11 +137,9 @@ class ContactUs extends React.Component {
       }).then(function (response) {
         $('.loader-container').hide()
         showSuccesfullMessage(props)
-        console.log(response)
       }).catch(function (err) {
         $('.loader-container').hide()
         showUnSuccesfullMessage(props, err)
-        console.log(err)
       })
     }
 

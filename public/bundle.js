@@ -45277,11 +45277,9 @@
 	        }).then(function (response) {
 	          $('.loader-container').hide();
 	          showSuccesfullMessage(props);
-	          console.log(response);
 	        }).catch(function (err) {
 	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(props, err);
-	          console.log(err);
 	        });
 	      }
 
@@ -45829,7 +45827,6 @@
 	            $('#details-button').removeClass('disable-button');
 	            $('.loader-container').hide();
 	            showUnSuccesfullMessage(_this3.props, err);
-	            console.error(err);
 	          }
 
 	          if (response.body.secure_url !== '') {
@@ -45869,18 +45866,13 @@
 	      }).then(function (response) {
 	        $('#details-button').removeClass('disable-button');
 	        $('.loader-container').hide();
-
 	        clearForm(props);
 	        closePanel();
 	        showSuccesfullMessage(props);
-
-	        console.log(response);
 	      }).catch(function (err) {
 	        $('#details-button').removeClass('disable-button');
 	        $('.loader-container').hide();
-
 	        showUnSuccesfullMessage(props, err);
-	        console.log(err);
 	      });
 	    }
 	  }, {
@@ -69942,11 +69934,9 @@
 	        }).then(function (response) {
 	          $('.loader-container').hide();
 	          showSuccesfullMessage(props);
-	          console.log(response);
 	        }).catch(function (err) {
 	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(props, err);
-	          console.log(err);
 	        });
 	      }
 
