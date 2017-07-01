@@ -518,7 +518,7 @@
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -45121,6 +45121,8 @@
 	var React = __webpack_require__(6);
 	var Alerts = __webpack_require__(298);
 	var $ = __webpack_require__(222);
+	var ValidationError = __webpack_require__(434);
+
 	var MediaQuery = __webpack_require__(186);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
@@ -45197,6 +45199,15 @@
 	    _this.handleEmail = _this.handleEmail.bind(_this);
 	    _this.handleMessage = _this.handleMessage.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
+
+	    _this.state = {
+	      nameValidationMessage: 'displayNone',
+	      emailValidationMessage: 'displayNone',
+	      messageValidationMessage: 'displayNone',
+	      nameInputColor: '',
+	      emailInputColor: '',
+	      messageInputColor: ''
+	    };
 	    return _this;
 	  }
 
@@ -45204,40 +45215,71 @@
 	    key: 'handleName',
 	    value: function handleName(event) {
 	      this.props.setContactUsName(event.target.value);
+	      this.setState({ nameValidationMessage: 'displayNone', nameInputColor: '' });
 	    }
 	  }, {
 	    key: 'handleEmail',
 	    value: function handleEmail(event) {
 	      this.props.setContactUsEmail(event.target.value);
+	      this.setState({ emailValidationMessage: 'displayNone', emailInputColor: '' });
 	    }
 	  }, {
 	    key: 'handleMessage',
 	    value: function handleMessage(event) {
 	      this.props.setContactUsMessage(event.target.value);
+	      this.setState({ messageValidationMessage: 'displayNone', messageInputColor: '' });
+	    }
+	  }, {
+	    key: 'hasMissingValues',
+	    value: function hasMissingValues() {
+	      return [this.props.name, this.props.email, this.props.message].includes('');
+	    }
+	  }, {
+	    key: 'setValidations',
+	    value: function setValidations(_ref) {
+	      var name = _ref.name,
+	          email = _ref.email,
+	          message = _ref.message;
+
+	      if (name === '') {
+	        this.setState({ nameValidationMessage: 'displayTrue', nameInputColor: 'fields-color' });
+	      }
+
+	      if (email === '') {
+	        this.setState({ emailValidationMessage: 'displayTrue', emailInputColor: 'fields-color' });
+	      }
+
+	      if (message === '') {
+	        this.setState({ messageValidationMessage: 'displayTrue', messageInputColor: 'fields-color' });
+	      }
 	    }
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      var headers = { 'Content-Type': 'application/json' };
-	      var props = this.props;
+	      if (this.hasMissingValues()) {
+	        this.setValidations(this.props);
+	      } else {
+	        var headers = { 'Content-Type': 'application/json' };
+	        var props = this.props;
 
-	      var contactUsDecoreted = {
-	        name: props.name,
-	        email: props.email,
-	        details: props.message
-	      };
+	        var contactUsDecoreted = {
+	          name: props.name,
+	          email: props.email,
+	          details: props.message
+	        };
 
-	      fetch(props.items_api + '/api/contact_us', {
-	        method: 'POST',
-	        headers: headers,
-	        body: JSON.stringify({ contact_us: contactUsDecoreted })
-	      }).then(function (response) {
-	        showSuccesfullMessage(props);
-	        console.log(response);
-	      }).catch(function (err) {
-	        showUnSuccesfullMessage(props, err);
-	        console.log(err);
-	      });
+	        fetch(props.items_api + '/api/contact_us', {
+	          method: 'POST',
+	          headers: headers,
+	          body: JSON.stringify({ contact_us: contactUsDecoreted })
+	        }).then(function (response) {
+	          showSuccesfullMessage(props);
+	          console.log(response);
+	        }).catch(function (err) {
+	          showUnSuccesfullMessage(props, err);
+	          console.log(err);
+	        });
+	      }
 
 	      event.preventDefault();
 	    }
@@ -45328,18 +45370,21 @@
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
+	                React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border ' + this.state.nameInputColor, type: 'text', placeholder: 'Nombre' })
 	              ),
+	              React.createElement(ValidationError, { message: 'El campo nombre es obligatorio', field: this.state.nameValidationMessage }),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
+	                React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border ' + this.state.emailInputColor, type: 'email', placeholder: 'e-mail' })
 	              ),
+	              React.createElement(ValidationError, { message: 'El campo email es obligatorio', field: this.state.emailValidationMessage }),
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border', placeholder: 'Describenos la informacion que necesitas', required: true })
+	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border ' + this.state.messageInputColor, placeholder: 'Describenos la informacion que necesitas' })
 	              ),
+	              React.createElement(ValidationError, { message: 'Este campo es obligatorio para ayudarnos a enternder tus dudas', field: this.state.messageValidationMessage }),
 	              React.createElement(
 	                'button',
 	                { type: 'submit', className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
@@ -69720,6 +69765,7 @@
 	var React = __webpack_require__(6);
 	var Alerts = __webpack_require__(298);
 	var $ = __webpack_require__(222);
+	var ValidationError = __webpack_require__(434);
 
 	if (({"NODE_ENV":"production","FACEBOOK_KEY":undefined,"TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
 	  __webpack_require__(532);
@@ -69798,6 +69844,17 @@
 	    _this.handleDescription = _this.handleDescription.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.renderPanel = _this.renderPanel.bind(_this);
+
+	    _this.state = {
+	      nameValidationMessage: 'displayNone',
+	      emailValidationMessage: 'displayNone',
+	      phoneNumberValidationMessage: 'displayNone',
+	      descriptionValidationMessage: 'displayNone',
+	      nameInputColor: '',
+	      emailInputColor: '',
+	      phoneNumberInputColor: '',
+	      descriptionInputColor: ''
+	    };
 	    return _this;
 	  }
 
@@ -69805,47 +69862,84 @@
 	    key: 'handleName',
 	    value: function handleName(event) {
 	      this.props.setOwnerName(event.target.value);
+	      this.setState({ nameValidationMessage: 'displayNone', nameInputColor: '' });
 	    }
 	  }, {
 	    key: 'handleEmail',
 	    value: function handleEmail(event) {
 	      this.props.setOwnerEmail(event.target.value);
+	      this.setState({ emailValidationMessage: 'displayNone', emailInputColor: '' });
 	    }
 	  }, {
 	    key: 'handlePhoneNumber',
 	    value: function handlePhoneNumber(event) {
 	      this.props.setOwnerPhoneNumber(event.target.value);
+	      this.setState({ phoneNumberValidationMessage: 'displayNone', phoneNumberInputColor: '' });
 	    }
 	  }, {
 	    key: 'handleDescription',
 	    value: function handleDescription(event) {
 	      this.props.setDescription(event.target.value);
+	      this.setState({ descriptionValidationMessage: 'displayNone', descriptionInputColor: '' });
+	    }
+	  }, {
+	    key: 'hasMissingValues',
+	    value: function hasMissingValues() {
+	      return [this.props.name, this.props.email, this.props.phoneNumber, this.props.description].includes('');
+	    }
+	  }, {
+	    key: 'setValidations',
+	    value: function setValidations(_ref2) {
+	      var name = _ref2.name,
+	          email = _ref2.email,
+	          phoneNumber = _ref2.phoneNumber,
+	          description = _ref2.description;
+
+	      if (name === '') {
+	        this.setState({ nameValidationMessage: 'displayTrue', nameInputColor: 'fields-color' });
+	      }
+
+	      if (email === '') {
+	        this.setState({ emailValidationMessage: 'displayTrue', emailInputColor: 'fields-color' });
+	      }
+
+	      if (phoneNumber === '') {
+	        this.setState({ phoneNumberValidationMessage: 'displayTrue', phoneNumberInputColor: 'fields-color' });
+	      }
+
+	      if (description === '') {
+	        this.setState({ descriptionValidationMessage: 'displayTrue', descriptionInputColor: 'fields-color' });
+	      }
 	    }
 	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
-	      var headers = { 'Content-Type': 'application/json' };
-	      var props = this.props;
+	      if (this.hasMissingValues()) {
+	        this.setValidations(this.props);
+	      } else {
+	        var headers = { 'Content-Type': 'application/json' };
+	        var props = this.props;
 
-	      var contactDetailsDecoreted = {
-	        name: props.name,
-	        email: props.email,
-	        phone_number: props.phoneNumber,
-	        details: props.description,
-	        item_id: props.id
-	      };
+	        var contactDetailsDecoreted = {
+	          name: props.name,
+	          email: props.email,
+	          phone_number: props.phoneNumber,
+	          details: props.description,
+	          item_id: props.id
+	        };
 
-	      fetch(props.items_api + '/api/contact_details', {
-	        method: 'POST',
-	        headers: headers,
-	        body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
-	      }).then(function (response) {
-	        showSuccesfullMessage(props);
-	        console.log(response);
-	      }).catch(function (err) {
-	        showUnSuccesfullMessage(props, err);
-	        console.log(err);
-	      });
+	        fetch(props.items_api + '/api/contact_details', {
+	          method: 'POST',
+	          headers: headers,
+	          body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
+	        }).then(function (response) {
+	          showSuccesfullMessage(props);
+	          console.log(response);
+	        }).catch(function (err) {
+	          showUnSuccesfullMessage(props, err);
+	          console.log(err);
+	        });
+	      }
 
 	      event.preventDefault();
 	    }
@@ -69884,23 +69978,27 @@
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border', type: 'text', placeholder: 'Nombre', required: true })
+	                  React.createElement('input', { value: this.props.name, onChange: this.handleName, className: 'w3-input w3-border ' + this.state.nameInputColor, type: 'text', placeholder: 'Nombre' })
 	                ),
+	                React.createElement(ValidationError, { message: 'El campo nombre es obligatorio', field: this.state.nameValidationMessage }),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border', type: 'email', placeholder: 'e-mail', required: true })
+	                  React.createElement('input', { value: this.props.email, onChange: this.handleEmail, className: 'w3-input w3-border ' + this.state.emailInputColor, type: 'email', placeholder: 'e-mail' })
 	                ),
+	                React.createElement(ValidationError, { message: 'El campo email es obligatorio', field: this.state.emailValidationMessage }),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border', type: 'text', placeholder: 'Numero de telefono', required: true })
+	                  React.createElement('input', { value: this.props.phoneNumber, onChange: this.handlePhoneNumber, className: 'w3-input w3-border ' + this.state.phoneNumberInputColor, type: 'text', placeholder: 'N\xFAmero de tel\xE9fono' })
 	                ),
+	                React.createElement(ValidationError, { message: 'El campo n\xFAmero de tel\xE9fono es obligatorio', field: this.state.phoneNumberValidationMessage }),
 	                React.createElement(
 	                  'p',
 	                  null,
-	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border', placeholder: 'Informaci\xF3n personal', required: true })
+	                  React.createElement('textarea', { value: this.props.description, onChange: this.handleDescription, className: 'w3-input w3-border ' + this.state.descriptionInputColor, placeholder: 'Informaci\xF3n personal' })
 	                ),
+	                React.createElement(ValidationError, { message: 'El campo descripci\xF3n es obligatorio', field: this.state.descriptionValidationMessage }),
 	                React.createElement(
 	                  'p',
 	                  null,

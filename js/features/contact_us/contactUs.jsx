@@ -1,6 +1,8 @@
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const $ = require('jquery')
+const ValidationError = require('../validations/error')
+
 var MediaQuery = require('react-responsive')
 
 if (process.env.WEBPACK_BUILD) {
@@ -70,37 +72,74 @@ class ContactUs extends React.Component {
     this.handleEmail = this.handleEmail.bind(this)
     this.handleMessage = this.handleMessage.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+
+    this.state = {
+      nameValidationMessage: 'displayNone',
+      emailValidationMessage: 'displayNone',
+      messageValidationMessage: 'displayNone',
+      nameInputColor: '',
+      emailInputColor: '',
+      messageInputColor: ''
+    }
   }
+
   handleName (event) {
     this.props.setContactUsName(event.target.value)
+    this.setState({nameValidationMessage: 'displayNone', nameInputColor: ''})
   }
   handleEmail (event) {
     this.props.setContactUsEmail(event.target.value)
+    this.setState({emailValidationMessage: 'displayNone', emailInputColor: ''})
   }
   handleMessage (event) {
     this.props.setContactUsMessage(event.target.value)
+    this.setState({messageValidationMessage: 'displayNone', messageInputColor: ''})
   }
-  handleSubmit (event) {
-    const headers = { 'Content-Type': 'application/json' }
-    const props = this.props
-
-    const contactUsDecoreted = {
-      name: props.name,
-      email: props.email,
-      details: props.message
+  hasMissingValues () {
+    return [
+      this.props.name,
+      this.props.email,
+      this.props.message
+    ].includes('')
+  }
+  setValidations ({name, email, message}) {
+    if (name === '') {
+      this.setState({nameValidationMessage: 'displayTrue', nameInputColor: 'fields-color'})
     }
 
-    fetch(props.items_api + '/api/contact_us', {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ contact_us: contactUsDecoreted })
-    }).then(function (response) {
-      showSuccesfullMessage(props)
-      console.log(response)
-    }).catch(function (err) {
-      showUnSuccesfullMessage(props, err)
-      console.log(err)
-    })
+    if (email === '') {
+      this.setState({emailValidationMessage: 'displayTrue', emailInputColor: 'fields-color'})
+    }
+
+    if (message === '') {
+      this.setState({messageValidationMessage: 'displayTrue', messageInputColor: 'fields-color'})
+    }
+  }
+  handleSubmit (event) {
+    if (this.hasMissingValues()) {
+      this.setValidations(this.props)
+    } else {
+      const headers = { 'Content-Type': 'application/json' }
+      const props = this.props
+
+      const contactUsDecoreted = {
+        name: props.name,
+        email: props.email,
+        details: props.message
+      }
+
+      fetch(props.items_api + '/api/contact_us', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify({ contact_us: contactUsDecoreted })
+      }).then(function (response) {
+        showSuccesfullMessage(props)
+        console.log(response)
+      }).catch(function (err) {
+        showUnSuccesfullMessage(props, err)
+        console.log(err)
+      })
+    }
 
     event.preventDefault()
   }
@@ -140,9 +179,15 @@ class ContactUs extends React.Component {
               </div>
             </MediaQuery>
             <form onSubmit={this.handleSubmit}>
-              <p><input value={this.props.name} onChange={this.handleName} className='w3-input w3-border' type='text' placeholder='Nombre' required /></p>
-              <p><input value={this.props.email} onChange={this.handleEmail} className='w3-input w3-border' type='email' placeholder='e-mail' required /></p>
-              <p><textarea value={this.props.message} onChange={this.handleMessage} className='w3-input w3-border' placeholder='Describenos la informacion que necesitas' required /></p>
+              <p><input value={this.props.name} onChange={this.handleName} className={`w3-input w3-border ${this.state.nameInputColor}`} type='text' placeholder='Nombre' /></p>
+              <ValidationError message='El campo nombre es obligatorio' field={this.state.nameValidationMessage} />
+
+              <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
+              <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
+
+              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Describenos la informacion que necesitas' /></p>
+              <ValidationError message='Este campo es obligatorio para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
+
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>
             </form>
           </div>
