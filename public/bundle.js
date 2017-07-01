@@ -69837,12 +69837,16 @@
 	  var alertData = {
 	    alert: {
 	      type: 'alert-danger',
-	      message: 'no se han podido guar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+	      message: 'No se han podido guardar sus datos de contacto correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que le pedimos por favor volver a intentalo de nuevo más tarde y si el problema aun persiste vualva a intentarlo al dia siguiente. Gracias por tu paciencia y disculpa las molestias.',
 	      visible: 'displayTrue'
 	    }
 	  };
 
 	  props.setAlerts(alertData);
+	};
+
+	var isSuccessfulResponse = function isSuccessfulResponse(response) {
+	  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('');
 	};
 
 	var ContactDetailsPanel = function (_React$Component) {
@@ -69950,7 +69954,12 @@
 	          body: JSON.stringify({ contact_detail: contactDetailsDecoreted })
 	        }).then(function (response) {
 	          $('.loader-container').hide();
-	          showSuccesfullMessage(props);
+
+	          if (isSuccessfulResponse(response)) {
+	            showSuccesfullMessage(props);
+	          } else {
+	            showUnSuccesfullMessage(props, response.status);
+	          }
 	        }).catch(function (err) {
 	          $('.loader-container').hide();
 	          showUnSuccesfullMessage(props, err);
