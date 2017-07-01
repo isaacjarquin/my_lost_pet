@@ -68,7 +68,7 @@ const showUnSuccesfullMessage = (props, err) => {
   const alertData = {
     alert: {
       type: 'alert-danger',
-      message: 'Los datos del animal no se han guardado correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo mas tarde y si el problema aun persiste vualve a intentarlo al dia siguiente. Gracias por tu paciencia y disculpas las molestias.',
+      message: 'Los datos del animal no se han podido guardar correctamente debido a un error con servicios externos. Estamos trabajando para solucionar el problema lo antes posible por lo que te pedimos por favor volver a intentalo de nuevo más tarde y si el problema aun persiste vualva a intentarlo al día siguiente. Gracias por tu paciencia y disculpe las molestias.',
       visible: 'displayTrue',
       contactUs: 'displayNone',
       newPetFound: 'displayTrue'
@@ -76,6 +76,10 @@ const showUnSuccesfullMessage = (props, err) => {
   }
 
   props.setAlerts(alertData)
+}
+
+const isSuccessfulResponse = response => {
+  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('')
 }
 
 class NewPetFound extends React.Component {
@@ -223,9 +227,14 @@ class NewPetFound extends React.Component {
     }).then(function (response) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()
-      clearForm(props)
-      closePanel()
-      showSuccesfullMessage(props)
+      if (isSuccessfulResponse(response)) {
+        clearForm(props)
+        closePanel()
+        showSuccesfullMessage(props)
+      } else {
+        showUnSuccesfullMessage(props, response.status)
+      }
+
     }).catch(function (err) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()
