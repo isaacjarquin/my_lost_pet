@@ -76,6 +76,10 @@ const showUnSuccesfullMessage = (props, err) => {
   }
 
   props.setAlerts(alertData)
+
+  setTimeout(() => {
+    clearAlert(props)
+  }, 25000)
 }
 
 const isSuccessfulResponse = response => {
