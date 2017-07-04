@@ -264,13 +264,13 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
             <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
 
-            <p><input value={this.props.petType} onChange={this.handlePetType} className={`w3-input w3-border ${this.props.inputColor.petType}`} type='text' placeholder='Typo de mascota (perro/gato ...)' /></p>
+            <p><input value={this.props.petType} onChange={this.handlePetType} className={`w3-input w3-border ${this.props.inputColor.petType}`} type='text' placeholder='Tipo de mascota (perro/gato ...)' /></p>
             <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
 
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
 
-            <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamano (grande/mediano/pequeno)' /></p>
+            <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamaño (grande/mediano/pequeno)' /></p>
             <ValidationError message='El campo tamaño es obligatorio' field={this.props.validations.size} />
 
             <MediaQuery maxDeviceWidth={1200}>
@@ -287,7 +287,7 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.value}</option>
               ))}
             </select>
-            <ValidationError message='Debes seleccionar una Comunidad Autonoma' field={this.props.validations.autonomousComunity} />
+            <ValidationError message='Debes seleccionar una Comunidad Autónoma' field={this.props.validations.autonomousComunity} />
 
             <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
               <option selected='selected' disabled>Provincia</option>
@@ -300,7 +300,7 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.location} onChange={this.handlePetLocation} className={`w3-input w3-border ${this.props.inputColor.location}`} type='text' placeholder='Ciudad/Municipio' /></p>
             <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
-            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Imformacion sobre la mascota' /></p>
+            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>
             <ValidationError message='El campo Descripción es oblidatorio' field={this.props.validations.description} />
 
             <div className={'panel panel-default ' + this.props.validationBackground}>

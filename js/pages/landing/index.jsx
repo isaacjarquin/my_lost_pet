@@ -91,10 +91,10 @@ class Landing extends React.Component {
 
             <div className='lost'>
               <MediaQuery maxDeviceWidth={736}>
-                <h3 className='w3-text-white'>Encuentralo con nosotros</h3>
+                <h3 className='w3-text-white'>Encuéntralo con nosotros</h3>
               </MediaQuery>
               <MediaQuery minDeviceWidth={768}>
-                <h1 className='w3-text-white'>Encuentralo con nosotros</h1>
+                <h1 className='w3-text-white'>Encuéntralo con nosotros</h1>
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>

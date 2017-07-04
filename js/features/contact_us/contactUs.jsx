@@ -200,8 +200,8 @@ class ContactUs extends React.Component {
               <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
               <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
 
-              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Describenos la informacion que necesitas' /></p>
-              <ValidationError message='Este campo es obligatorio para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
+              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Descríbenos la información que necesitas' /></p>
+              <ValidationError message='Este campo es necesario para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
 
               <DogLoader />
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>

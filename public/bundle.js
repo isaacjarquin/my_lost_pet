@@ -518,7 +518,7 @@
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -44747,7 +44747,7 @@
 	                React.createElement(
 	                  'h3',
 	                  { className: 'w3-text-white' },
-	                  'Encuentralo con nosotros'
+	                  'Encu\xE9ntralo con nosotros'
 	                )
 	              ),
 	              React.createElement(
@@ -44756,7 +44756,7 @@
 	                React.createElement(
 	                  'h1',
 	                  { className: 'w3-text-white' },
-	                  'Encuentralo con nosotros'
+	                  'Encu\xE9ntralo con nosotros'
 	                )
 	              ),
 	              React.createElement(
@@ -45017,7 +45017,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'MyLostPet es un sitio web para el intercambio de informaci\xF3n sobre mascotas que han sido encontradas y necesitan volver con sus duenos . Al utilizar el sitio de MyLostPet, aceptas y acuerdas estar obligado por los siguientes t\xE9rminos y condiciones. Nada en estas Condiciones debe ser interpretado como una concesi\xF3n de derechos de terceros beneficiarios.'
+	              'MyLostPet es un sitio web para el intercambio de informaci\xF3n sobre mascotas que han sido encontradas y necesitan volver con sus due\xF1os . Al utilizar el sitio de MyLostPet, aceptas y acuerdas estar obligado por los siguientes t\xE9rminos y condiciones. Nada en estas Condiciones debe ser interpretado como una concesi\xF3n de derechos de terceros beneficiarios.'
 	            ),
 	            React.createElement(
 	              'p',
@@ -45027,12 +45027,12 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'Como parte del proceso de registro de un animal, se pide un email y opcionalmente un numero de telefono. En ningun case este se utilizara para enviar publicidad ni se mostrara a terceros. La web le enviar\xE1 un correo con los datos personales del dueno de la mascota y sera usted el que decidita como, cuando y si quier ponerse en contacto con la misma.'
+	              'Como parte del proceso de registro de un animal, se pide un email y un numero de telefono. En ning\xFAn case este se utilizara para enviar publicidad ni se mostrar\xE1 a terceros. La web le enviar\xE1 un correo con los datos personales del due\xF1o de la mascota y ser\xE1 usted el que decidir\xE1 c\xF3mo, cuando y si quiere ponerse en contacto con la misma.'
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              'MyLostPet se pone a tu disposici\xF3n para uso personal, no comercial. Las empresas, organizaciones u otras personas jur\xEDdicas no pueden utilizar el servicio para cualquier otro prop\xF3sito. No puedes usar el sitio de MyLostPet para ning\xFAn prop\xF3sito ilegal o no autorizado. Los usuarios internacionales se comprometen a cumplir con todas las reglas federales y/o locales sobre conducta y contenido aceptable. El usuario es el \xFAnico responsable de su conducta y de cualquier dato, texto, informaci\xF3n, fotos, links y dem\xE1s contenidos ("Materiales") que env\xEDa, publique y muestre en el sitio.'
+	              'MyLostPet se pone a tu disposici\xF3n para uso personal, no comercial. Las empresas, organizaciones u otras personas jur\xEDdicas no pueden utilizar el servicio para cualquier otro prop\xF3sito. No puedes usar el sitio de MyLostPet para ning\xFAn prop\xF3sito ilegal o no autorizado. Los usuarios internacionales se comprometen a cumplir con todas las reglas federales y/o locales sobre conducta y contenido aceptable. El usuario es el \xFAnico responsable de su conducta y de cualquier dato, texto, informaci\xF3n, fotos, links y dem\xE1s contenidos ("Materiales") que env\xEDe, publique y muestre en el sitio.'
 	            )
 	          ),
 	          React.createElement(
@@ -45055,17 +45055,17 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'El Usuario no deber\xE1 subir, publicar o de cualquier otra forma har\xE1 disponible en el sitio cualquier material protegido por derechos de autor, marcas registradas o cualquier otro derecho de propiedad sin el expreso consentimiento del propietario de tal derecho de autor, marca registrada o derecho de propiedad intelectual.'
+	              'El Usuario no deber\xE1 subir, publicar o de cualquier otra forma cualquier material protegido por derechos de autor, marcas registradas o cualquier otro derecho de propiedad sin el expreso consentimiento del propietario de los derechos, marca registrada o derecho de propiedad intelectual.'
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              'Al enviar, publicar o mostrar cualquier material en y a trav\xE9s del sitio, autom\xE1ticamente el usuario nos otorga y autoriza una licencia mundial (permiso) para utilizar de manera gratuita, libre de regal\xEDas, con derecho de exhibir p\xFAblicamente o redistribuir estos materiales en cualquier formato que el equipo de MyLostPet considere pertinente y a perpetuidad.'
+	              'Al enviar, publicar o mostrar cualquier material en y a trav\xE9s del sitio, autom\xE1ticamente el usuario nos otorga y autoriza una licencia mundial (permiso) para utilizar de manera gratuita, libre de regal\xEDas, con derecho de exhibir p\xFAblicamente o distribuir estos materiales en cualquier formato que el equipo de MyLostPet considere pertinente y a perpetuidad.'
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              'Con excepci\xF3n de lo expresamente autorizado por MyLostPet, no puedes copiar, modificar, publicar, transmitir, distribuir, ejecutar, exhibir o vender cualquier informaci\xF3n y/o material (incluyendo en forma enunciativa pero no limitativa, im\xE1genes, ilustraciones, textos, audios y cualquier otro material visual en lo sucesivo y en conjunto o separadamente \u201Cel material\u201D) en MyLostPet. En este sitio encontraras marcas registradas y derechos de autor de las que todos los derechos est\xE1n reservados. Todos los materiales contenidos en este sitio, est\xE1n protegidos por derechos de autor y/o como marca registrada, por lo que no podr\xE1n ser usados para propositos distintos al de uso personal. La reproducci\xF3n, copia, distribuci\xF3n, trabajos derivados, publicaci\xF3n y cualquier otra forma de copiado o de uso no autorizada del material aqu\xED contenido est\xE1 expresamente prohibida. Si deseas solicitar una licencia para usar alg\xFAn material de este sitio, por favor escr\xEDbenos a mylostpet@gmail.com'
+	              'Con excepci\xF3n de lo expresamente autorizado por MyLostPet, no puedes copiar, modificar, publicar, transmitir, distribuir, ejecutar, exhibir o vender cualquier informaci\xF3n y/o material (incluyendo en forma enunciativa pero no limitativa, im\xE1genes, ilustraciones, textos y cualquier otro material visual en lo sucesivo y en conjunto o separadamente en MyLostPet. En este sitio podr\xE1s encontrar marcas registradas y derechos de autor de las que todos los derechos est\xE1n reservados. Todos los materiales contenidos en este sitio, est\xE1n protegidos por derechos de autor y/o como marca registrada, por lo que no podr\xE1n ser usados para prop\xF3sitos distintos al de uso personal. La reproducci\xF3n, copia, distribuci\xF3n, trabajos derivados, publicaci\xF3n y cualquier otra forma de copiado o de uso no autorizada del material aqu\xED contenido est\xE1 expresamente prohibida. Si deseas solicitar una licencia para usar alg\xFAn material de este sitio, por favor escr\xEDbenos a myfoundpet@gmail.com '
 	            )
 	          ),
 	          React.createElement(
@@ -45083,7 +45083,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'La recopilaci\xF3n y uso de informaci\xF3n personal se rige por nuestro Aviso de Privacidad. Haga clic aqu\xED para revisar el Aviso de Privacidad MyLostPet. Entiendes y aceptas que MyLostPet puede acceder, conservar y revelar su informaci\xF3n y el contenido que se suba a la web si as\xED lo requiere la ley o si de buena fe considera que dicha reserva o revelaci\xF3n es razonablemente necesaria para cumplir con los requisitos legales, procesar o para proteger los derechos y la propiedad de MyLostPet, sus afiliados o el p\xFAblico.'
+	              'La recopilaci\xF3n y uso de informaci\xF3n personal se rige por nuestro Aviso de Privacidad. Al usar la web the MyLostPet, entiendes y aceptas que MyLostPet puede acceder, conservar y revelar su informaci\xF3n y el contenido que se suba a la web si as\xED lo requiere la ley o si de buena fe considera que dicha reserva o revelaci\xF3n es razonablemente necesaria para cumplir con los requisitos legales, procesar o para proteger los derechos y la propiedad de MyLostPet, sus afiliados o el p\xFAblico.'
 	            ),
 	            React.createElement(
 	              'p',
@@ -45397,9 +45397,9 @@
 	              React.createElement(
 	                'p',
 	                null,
-	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border ' + this.state.messageInputColor, placeholder: 'Describenos la informacion que necesitas' })
+	                React.createElement('textarea', { value: this.props.message, onChange: this.handleMessage, className: 'w3-input w3-border ' + this.state.messageInputColor, placeholder: 'Descr\xEDbenos la informaci\xF3n que necesitas' })
 	              ),
-	              React.createElement(ValidationError, { message: 'Este campo es obligatorio para ayudarnos a enternder tus dudas', field: this.state.messageValidationMessage }),
+	              React.createElement(ValidationError, { message: 'Este campo es necesario para ayudarnos a enternder tus dudas', field: this.state.messageValidationMessage }),
 	              React.createElement(DogLoader, null),
 	              React.createElement(
 	                'button',
@@ -45727,12 +45727,12 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'My lost pet es  una organizaci\xF3n sin fines de lucro compuesta por un grupo de voluntarios unidos por el amor hacia los animales y la convicci\xF3n de que, juntos, podemos hacer mucho por ellos. '
+	              'My lost pet es una organizaci\xF3n sin fines de lucro compuesta por un grupo de voluntarios unidos por el amor hacia los animales y la convicci\xF3n de que, juntos, podemos hacer mucho por ellos. '
 	            ),
 	            React.createElement(
 	              'p',
 	              null,
-	              'Esta iniciativa fue creada con el objetivo de facilitar todo lo posible la busqueda de nuestras mascotas cuando \xE9stas se encuntran extraviadas '
+	              'Esta iniciativa fue creada con el objetivo de facilitar todo lo posible la b\xFAsqueda de nuestras mascotas cuando \xE9stas se encuentran extraviadas. '
 	            )
 	          ),
 	          React.createElement(
@@ -45755,7 +45755,17 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              'La idea principal radica en que cuando nos encontramos un animal abandonado, todo lo que tenemos que hacer es introducir los datos relativos al animal y algunos datos personales de contacto. Tus datos personales en ningun momento se mostrar\xE1n a terceros ni ser\xE1n utilizados para enviarte publicidad. La \xFAnica finalidad de los mismos es la de poder comunicarte con la persona que haya perdido su mascota.'
+	              'La idea principal radica en que cuando nos encontramos un animal abandonado, todo lo que tenemos que hacer es introducir los datos relativos al animal y algunos datos personales de contacto. Tus datos personales en ning\xFAn momento se mostrar\xE1n a terceros ni ser\xE1n utilizados para enviarte publicidad. La \xFAnica finalidad de los mismos es la de poder comunicarte con la persona que haya perdido a su mascota. Una vez que hayas introducido los datos de la mascota encontrada, junto con una foto, que deber\xE1 ser inferior a 1Mbyte, debes hacer click en el bot\xF3n guardar datos, y los datos ser\xE1n almacenados en nuestra base de datos.'
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              'Si por el contrario, lo que deseas es encontrar a tu mascota perdida, debes usar el filtro en la parte superior de la p\xE1gina donde podr\xE1s filtrar por tipo de mascota, comunidad aut\xF3noma y provincia. Esto te direccionar\xE1 a una p\xE1gina donde se te mostrar\xE1n todas las mascotas perdidas en la provincia seleccionada que coinciden con tu tipo de mascota. En esta segunda p\xE1gina tambi\xE9n te encontrar\xE1s con otro filtro, con el cual podr\xE1s filtrar por ciudad o municipio, raza y tama\xF1o. La combinaci\xF3n de estos 6 filtros nos permitir\xE1 una potente b\xFAsqueda que deber\xEDa ser suficiente para encontrar a tu mascota. Una vez hayas encontrado a tu mascota, debes hacer click en el bot\xF3n de contactar.'
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              'Esto desplegar\xE1 un panel en el que deber\xE1s introducir tu informaci\xF3n personal de contacto, para que la persona que encontr\xF3 tu mascota se ponga en contacto contigo.'
 	            )
 	          )
 	        )
@@ -46117,7 +46127,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border ' + this.props.inputColor.petType, type: 'text', placeholder: 'Typo de mascota (perro/gato ...)' })
+	              React.createElement('input', { value: this.props.petType, onChange: this.handlePetType, className: 'w3-input w3-border ' + this.props.inputColor.petType, type: 'text', placeholder: 'Tipo de mascota (perro/gato ...)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo tipo de mascota es obligatorio', field: this.props.validations.petType }),
 	            React.createElement(
@@ -46129,7 +46139,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border ' + this.props.inputColor.size, type: 'text', placeholder: 'Tamano (grande/mediano/pequeno)' })
+	              React.createElement('input', { value: this.props.size, onChange: this.handlePetSize, className: 'w3-input w3-border ' + this.props.inputColor.size, type: 'text', placeholder: 'Tama\xF1o (grande/mediano/pequeno)' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo tama\xF1o es obligatorio', field: this.props.validations.size }),
 	            React.createElement(
@@ -46163,7 +46173,7 @@
 	                );
 	              })
 	            ),
-	            React.createElement(ValidationError, { message: 'Debes seleccionar una Comunidad Autonoma', field: this.props.validations.autonomousComunity }),
+	            React.createElement(ValidationError, { message: 'Debes seleccionar una Comunidad Aut\xF3noma', field: this.props.validations.autonomousComunity }),
 	            React.createElement(
 	              'select',
 	              { className: 'form-control landing-select-filter', onChange: this.handleProvincesFilter },
@@ -46190,7 +46200,7 @@
 	            React.createElement(
 	              'p',
 	              null,
-	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border ' + this.props.inputColor.description, placeholder: 'Imformacion sobre la mascota' })
+	              React.createElement('textarea', { value: this.props.description, onChange: this.handlePetDescription, className: 'w3-input w3-border ' + this.props.inputColor.description, placeholder: 'Informaci\xF3n sobre la mascota' })
 	            ),
 	            React.createElement(ValidationError, { message: 'El campo Descripci\xF3n es oblidatorio', field: this.props.validations.description }),
 	            React.createElement(
