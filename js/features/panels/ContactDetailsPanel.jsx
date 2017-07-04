@@ -184,7 +184,7 @@ class ContactDetailsPanel extends React.Component {
               <h2>Introduce tus datos de contacto</h2>
             </div>
             <div className='w3-container'>
-              <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.</p>
+              <p className='form-introduction w3-opacity'>Introduce tus datos para poder ponerte en contacto con la persona que está a cargo de tu mascota.</p>
               <form onSubmit={this.handleSubmit}>
                 <p><input value={this.props.name} onChange={this.handleName} className={`w3-input w3-border ${this.state.nameInputColor}`} type='text' placeholder='Nombre' /></p>
                 <ValidationError message='El campo nombre es obligatorio' field={this.state.nameValidationMessage} />

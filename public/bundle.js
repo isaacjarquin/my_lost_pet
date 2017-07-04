@@ -45405,7 +45405,7 @@
 	                'button',
 	                { type: 'submit', className: 'w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
 	                React.createElement('i', { className: 'fa fa-paper-plane' }),
-	                ' Enviar mensaje'
+	                ' Enviar mis datos'
 	              )
 	            )
 	          )
@@ -46107,7 +46107,7 @@
 	          React.createElement(
 	            'p',
 	            { className: 'title form-introduction' },
-	            'Introduce los datos de la mascota y los datos necesarios para poder contactar contigo'
+	            'Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo'
 	          ),
 	          React.createElement(
 	            'form',
@@ -46275,7 +46275,7 @@
 	                'button',
 	                { onSubmit: this.handleSubmit, id: 'details-button', className: 'w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off' },
 	                React.createElement('i', { className: 'fa fa-paper-plane', id: 'button-icon' }),
-	                ' ENVIAR MENSAJE'
+	                ' Guardar los datos de la mascota'
 	              )
 	            )
 	          )
@@ -70017,7 +70017,7 @@
 	              React.createElement(
 	                'p',
 	                { className: 'form-introduction w3-opacity' },
-	                'Introduce tus datos para poder ponerte en contacto con la persona que esta a cargo de tu mascota.'
+	                'Introduce tus datos para poder ponerte en contacto con la persona que est\xE1 a cargo de tu mascota.'
 	              ),
 	              React.createElement(
 	                'form',

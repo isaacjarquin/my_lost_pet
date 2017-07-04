@@ -204,7 +204,7 @@ class ContactUs extends React.Component {
               <ValidationError message='Este campo es necesario para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
 
               <DogLoader />
-              <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mensaje</button>
+              <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
             </form>
           </div>
         </div>
