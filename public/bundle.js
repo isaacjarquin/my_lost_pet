@@ -45193,7 +45193,7 @@
 	};
 
 	var isSuccessfulResponse = function isSuccessfulResponse(response) {
-	  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('');
+	  return [200, 201, 202, 203, 204].includes(response.status);
 	};
 
 	var ContactUs = function (_React$Component) {
@@ -45890,7 +45890,7 @@
 	};
 
 	var isSuccessfulResponse = function isSuccessfulResponse(response) {
-	  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('');
+	  return [200, 201, 202, 203, 204].includes(response.status);
 	};
 
 	var NewPetFound = function (_React$Component) {
@@ -69868,7 +69868,7 @@
 	};
 
 	var isSuccessfulResponse = function isSuccessfulResponse(response) {
-	  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('');
+	  return [200, 201, 202, 203, 204].includes(response.status);
 	};
 
 	var ContactDetailsPanel = function (_React$Component) {

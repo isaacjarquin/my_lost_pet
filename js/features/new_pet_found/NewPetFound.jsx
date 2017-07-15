@@ -83,7 +83,7 @@ const showUnSuccesfullMessage = (props, err) => {
 }
 
 const isSuccessfulResponse = response => {
-  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('')
+  return [200, 201, 202, 203, 204].includes(response.status)
 }
 
 class NewPetFound extends React.Component {
@@ -238,7 +238,6 @@ class NewPetFound extends React.Component {
       } else {
         showUnSuccesfullMessage(props, response.status)
       }
-
     }).catch(function (err) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()

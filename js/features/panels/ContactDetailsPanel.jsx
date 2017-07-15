@@ -70,7 +70,7 @@ const showUnSuccesfullMessage = (props, err) => {
 }
 
 const isSuccessfulResponse = response => {
-  return !!['400', '401', '403', '404', '405', '405', '408', '409', '410'].includes('')
+  return [200, 201, 202, 203, 204].includes(response.status)
 }
 
 class ContactDetailsPanel extends React.Component {
