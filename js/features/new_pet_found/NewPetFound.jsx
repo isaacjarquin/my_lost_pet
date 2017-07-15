@@ -238,7 +238,6 @@ class NewPetFound extends React.Component {
       } else {
         showUnSuccesfullMessage(props, response.status)
       }
-
     }).catch(function (err) {
       $('#details-button').removeClass('disable-button')
       $('.loader-container').hide()
