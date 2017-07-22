@@ -15,14 +15,15 @@ const TopNavigationBar = React.createClass({
         <li className='w3-right'>
           <TwitterButton
             url={this.hostUrl}
-            appId={this.props.twitter}
+            appId={process.env.TWITTER_KEY}
             className={'fa fa-twitter my-social-icons'}
             />
         </li>
         <li className='w3-right'>
+          {console.log('process.env', process.env)}
           <FacebookButton
             url={this.hostUrl}
-            appId={this.props.facebook}
+            appId={process.env.FACEBOOK_KEY}
             className={'fa fa-facebook my-social-icons'}
             />
         </li>
