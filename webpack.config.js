@@ -77,9 +77,9 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
         'FACEBOOK_KEY': JSON.stringify(process.env.FACEBOOK_KEY || 000000000000000 ),
-        'TWITTER_KEY': JSON.stringify(process.env.TWITTER_KEY),
-        'HOST_URL': JSON.stringify(process.env.HOST_URL),
-        'ITEMS_API_URL': JSON.stringify(process.env.ITEMS_API_URL)
+        'TWITTER_KEY': JSON.stringify(process.env.TWITTER_KEY || 000000000000000),
+        'HOST_URL': JSON.stringify(process.env.HOST_URL || 'http://localhost:5070'),
+        'ITEMS_API_URL': JSON.stringify(process.env.ITEMS_API_URL || 'http://localhost:4000/api/items')
       }
     })
   ],

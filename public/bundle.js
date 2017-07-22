@@ -15581,7 +15581,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -17774,7 +17774,7 @@
 
 	var ReactComponentTreeHook;
 
-	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}) && ("production") === 'test') {
+	if (typeof process !== 'undefined' && ({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}) && ("production") === 'test') {
 	  // Temporary hack.
 	  // Inline requires don't work well with Jest:
 	  // https://github.com/facebook/react/issues/7240
@@ -22529,7 +22529,7 @@
 
 	var MediaQuery = __webpack_require__(186);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(187);
 	}
 
@@ -22772,7 +22772,7 @@
 	var string = React.PropTypes.string;
 
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(183);
 	}
 
@@ -23489,17 +23489,17 @@
 	        { className: 'w3-right' },
 	        React.createElement(_reactSocial.TwitterButton, {
 	          url: this.hostUrl,
-	          appId: (undefined),
+	          appId: (0),
 	          className: 'fa fa-twitter my-social-icons'
 	        })
 	      ),
 	      React.createElement(
 	        'li',
 	        { className: 'w3-right' },
-	        console.log('process.env', ({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined})),
+	        console.log('process.env', ({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"})),
 	        React.createElement(_reactSocial.FacebookButton, {
 	          url: this.hostUrl,
-	          appId: ("290373181365977"),
+	          appId: (0),
 	          className: 'fa fa-facebook my-social-icons'
 	        })
 	      ),
@@ -25289,7 +25289,7 @@
 
 	var React = __webpack_require__(6);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(189);
 	}
 
@@ -44603,7 +44603,7 @@
 	var $ = __webpack_require__(222);
 	var MediaQuery = __webpack_require__(186);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(437);
 	}
 
@@ -45127,7 +45127,7 @@
 
 	var MediaQuery = __webpack_require__(186);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(304);
 	}
 
@@ -45454,7 +45454,7 @@
 
 	var React = __webpack_require__(6);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(299);
 	}
 
@@ -45522,7 +45522,7 @@
 
 	var React = __webpack_require__(6);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(301);
 	}
 
@@ -45590,7 +45590,7 @@
 
 	var React = __webpack_require__(6);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(303);
 	}
 
@@ -45819,7 +45819,7 @@
 
 	var MediaQuery = __webpack_require__(186);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(436);
 	}
 
@@ -66776,7 +66776,7 @@
 	var MobileTemplateResults = __webpack_require__(534);
 	var $ = __webpack_require__(222);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(535);
 	}
 
@@ -69492,7 +69492,7 @@
 	var ResponsiveImage = __webpack_require__(529);
 	var $ = __webpack_require__(222);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(530);
 	}
 
@@ -69801,7 +69801,7 @@
 	var ValidationError = __webpack_require__(300);
 	var DogLoader = __webpack_require__(302);
 
-	if (({"NODE_ENV":"production","FACEBOOK_KEY":"290373181365977","TWITTER_KEY":undefined,"HOST_URL":undefined,"ITEMS_API_URL":undefined}).WEBPACK_BUILD) {
+	if (({"NODE_ENV":"production","FACEBOOK_KEY":0,"TWITTER_KEY":0,"HOST_URL":"http://localhost:5070","ITEMS_API_URL":"http://localhost:4000/api/items"}).WEBPACK_BUILD) {
 	  __webpack_require__(532);
 	}
 
