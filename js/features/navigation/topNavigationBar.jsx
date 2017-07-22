@@ -12,6 +12,7 @@ const TopNavigationBar = React.createClass({
     return (
       <ul className='w3-navbar w3-black w3-hide-small'>
         <li className='w3-left'><a href='/'>Inicio<i /></a></li>
+        {console.log('process.env', process.env)}
         <li className='w3-right'>
           <TwitterButton
             url={this.hostUrl}
