@@ -6,7 +6,7 @@ const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
-  entry: ['./js/BrowserEntry.jsx'],
+  entry: ['whatwg-fetch', './js/BrowserEntry.jsx'],
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
