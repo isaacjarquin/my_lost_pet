@@ -9,7 +9,8 @@
     "fix": "standard --fix",
     "build": "webpack",
     "watch": "webpack --watch",
-    "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test"
+    "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "keywords": [
     "pet",
