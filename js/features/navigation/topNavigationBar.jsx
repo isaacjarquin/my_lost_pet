@@ -1,5 +1,4 @@
-import { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedInButton, EmailButton } from 'react-social'
-
+const { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedInButton, EmailButton } = require('react-social')
 const React = require('react')
 const { string } = React.PropTypes
 

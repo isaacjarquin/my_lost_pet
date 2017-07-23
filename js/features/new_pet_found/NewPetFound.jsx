@@ -1,10 +1,8 @@
-import 'whatwg-fetch'
-import Dropzone from 'react-dropzone'
-import request from 'superagent'
-
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
+const fetch = require('whatwg-fetch')
+const Dropzone= require('react-dropzone')
+const request= require('superagent')
+const DatePicker= require('react-datepicker')
+const moment= require('moment')
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
