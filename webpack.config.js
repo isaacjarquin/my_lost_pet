@@ -8,9 +8,9 @@ module.exports = {
   context: __dirname,
   entry: './js/BrowserEntry.jsx',
   output: {
-    path: path.join(__dirname, '/public'),
+    path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    publicPath: '/public/'
+    publicPath: '/dist/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
