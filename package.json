@@ -12,7 +12,6 @@
     "build-prod": "NODE_ENV=production webpack --config webpack/prod.config.js",
     "watch": "webpack --watch",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
-    "heroku-postbuild": "webpack -p --config webpack/prod.config.js --progress",
     "postinstall": "webpack -p --config webpack/prod.config.js --progress"
   },
   "keywords": [
