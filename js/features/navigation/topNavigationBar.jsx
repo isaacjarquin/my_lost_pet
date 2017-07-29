@@ -20,7 +20,6 @@ const TopNavigationBar = React.createClass({
             />
         </li>
         <li className='w3-right'>
-          {process.env.FACEBOOK_KEY}
           <FacebookButton
             url={this.hostUrl}
             appId={process.env.FACEBOOK_KEY}

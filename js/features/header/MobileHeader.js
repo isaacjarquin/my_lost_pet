@@ -29,14 +29,14 @@ const MobileHeader = React.createClass({
               <li>
                 <FacebookButton
                   url={this.hostUrl}
-                  appId={this.props.facebook}
+                  appId={process.env.FACEBOOK_KEY}
                   className={'fa fa-facebook mobile-social-button'}
                   ><span className='mobile-social-button_text'>Facebook</span></FacebookButton>
               </li>
               <li>
                 <TwitterButton
                   url={this.hostUrl}
-                  appId={this.props.twitter}
+                  appId={process.env.TWITTER_KEY}
                   className={'fa fa-twitter mobile-social-button'}
                   ><span className='mobile-social-button_text'>Twitter</span></TwitterButton>
               </li>
