@@ -14,39 +14,39 @@ const TopNavigationBar = React.createClass({
         <li className='w3-left'><a href='/'>Inicio<i /></a></li>
         <li className='w3-right'>
           <TwitterButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             appId={process.env.TWITTER_KEY}
             className={'fa fa-twitter my-social-icons'}
             />
         </li>
         <li className='w3-right'>
           <FacebookButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             appId={process.env.FACEBOOK_KEY}
             className={'fa fa-facebook my-social-icons'}
             />
         </li>
         <li className='w3-right'>
           <RedditButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             className={'fa fa-reddit my-social-icons'}
             />
         </li>
         <li className='w3-right'>
           <GooglePlusButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             className={'fa fa-google my-social-icons'}
             />
         </li>
         <li className='w3-right'>
           <LinkedInButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             className={'fa fa-linkedin my-social-icons'}
             />
         </li>
         <li className='w3-right'>
           <EmailButton
-            url={this.hostUrl}
+            url={process.env.HOST_URL}
             className={'fa fa-envelope-o my-social-icons'}
             />
         </li>
