@@ -7,7 +7,7 @@
     "test": "mocha --require test/helpers/setup.js",
     "lint": "standard",
     "fix": "standard --fix",
-    "build": "NODE_ENV=production webpack --config webpack/prod.config.js",
+    "build": "webpack",
     "build-dev": "NODE_ENV=development webpack --config webpack/dev.config.js",
     "build-prod": "NODE_ENV=production webpack --config webpack/prod.config.js",
     "watch": "webpack --watch",
