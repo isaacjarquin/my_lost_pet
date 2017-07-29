@@ -224,7 +224,7 @@ class NewPetFound extends React.Component {
     const headers = { 'Content-Type': 'application/json' }
     const props = this.props
 
-    fetch(props.items_api + '/api/items', {
+    fetch(process.env.ITEMS_API_URL, {
       method: 'POST',
       headers: headers,
       body: JSON.stringify({ item: adaptedItem })
