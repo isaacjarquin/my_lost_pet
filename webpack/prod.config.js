@@ -6,14 +6,14 @@ const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
-  entry: './js/BrowserEntry.jsx',
+  entry: '../js/BrowserEntry.jsx',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json']
   },
   stats: {
     colors: true,
