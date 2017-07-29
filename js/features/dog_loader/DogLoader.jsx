@@ -16,18 +16,18 @@ class DogLoader extends React.Component {
               </clipPath>
             </defs>
 
-            <circle className='path' fill='none' stroke-width='6' stroke-linecap='round' cx='103' cy='103' r='100' />
-            <circle className='path' cx='103' cy='103' r='100' fill='none' stroke='#000' stroke-linecap='round' stroke-width='6' stroke-dasharray='0.001,17' />
+            <circle className='path' fill='none' strokeWidth='6' strokeLinecap='round' cx='103' cy='103' r='100' />
+            <circle className='path' cx='103' cy='103' r='100' fill='none' stroke='#000' strokeLinecap='round' strokeWidth='6' strokeDasharray='0.001,17' />
           </svg>
           <svg id='scottie-loader' className='loader-dog' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 207.95 211.52'>
             <defs>
               <radialGradient id='a' cx='100.23' cy='111.94' r='146.5' gradientTransform='matrix(.68 0 0 .68 31.58 35.11)' gradientUnits='userSpaceOnUse'>
-                <stop offset='.51' stop-color='#bedeea' />
-                <stop offset='.68' stop-color='#bcdce7' />
-                <stop offset='.79' stop-color='#b5d4df' />
-                <stop offset='.88' stop-color='#aac6d0' />
-                <stop offset='.96' stop-color='#99b4bb' />
-                <stop offset='1' stop-color='#90a9af' />
+                <stop offset='.51' stopColor='#bedeea' />
+                <stop offset='.68' stopColor='#bcdce7' />
+                <stop offset='.79' stopColor='#b5d4df' />
+                <stop offset='.88' stopColor='#aac6d0' />
+                <stop offset='.96' stopColor='#99b4bb' />
+                <stop offset='1' stopColor='#90a9af' />
               </radialGradient>
             </defs>
             <title>
