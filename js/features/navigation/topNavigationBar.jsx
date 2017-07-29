@@ -15,7 +15,7 @@ const TopNavigationBar = React.createClass({
         <li className='w3-right'>
           <TwitterButton
             url={this.hostUrl}
-            appId={this.props.twitter}
+            appId={process.env.TWITTER_KEY}
             className={'fa fa-twitter my-social-icons'}
             />
         </li>
