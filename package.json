@@ -8,9 +8,11 @@
     "lint": "standard",
     "fix": "standard --fix",
     "build": "webpack",
+    "production-build": "NODE_ENV=production webpack -p --config ./webpack.config.js",
     "watch": "webpack --watch",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
-    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "pet",
