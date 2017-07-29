@@ -3,6 +3,8 @@ const Layout = require('./layouts/Layout')
 const { Router, browserHistory } = require('react-router')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
+const LandingPage = require('./pages/landing/index')
+const SearchResultPage = require('./pages/search/index')
 
 if (typeof module !== 'undefined' && module.require) {
   if (typeof require.ensure === 'undefined') {
@@ -10,35 +12,17 @@ if (typeof module !== 'undefined' && module.require) {
   }
 }
 
-const rootRoute = {
-  component: Layout,
-  path: '/',
-  indexRoute: {
-    getComponent (location, cb) {
-      cb(null, require('./pages/landing/index'))
-    }
-  },
-  childRoutes: [
-    {
-      path: 'search',
-      getComponent (location, cb) {
-        cb(null, require('./pages/search/index'))
-      }
-    }
-  ]
-}
-
 const App = React.createClass({
   render () {
     return (
       <Provider store={store}>
-        <Router history={browserHistory} routes={rootRoute} />
+        <Router>
+          <Route pattern="/" component={LandingPage} />
+          <Route path="search" component={SearchResultPage} />
+        </Router>
       </Provider>
     )
   }
 })
-
-App.Routes = rootRoute
-App.History = browserHistory
 
 module.exports = App
