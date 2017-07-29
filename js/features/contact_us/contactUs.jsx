@@ -138,7 +138,7 @@ class ContactUs extends React.Component {
         details: props.message
       }
 
-      fetch(props.items_api + '/api/contact_us', {
+      fetch(process.env.ITEMS_API_URL+ '/api/contact_us', {
         method: 'POST',
         headers: headers,
         body: JSON.stringify({ contact_us: contactUsDecoreted })

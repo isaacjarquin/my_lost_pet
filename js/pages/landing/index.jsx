@@ -166,7 +166,6 @@ class Landing extends React.Component {
           setEncloseImageTitle={this.props.setEncloseImageTitle}
           setValidationBackground={this.props.setValidationBackground}
           cloudinary={this.props.cloudinary}
-          items_api={this.props.urls.items_api}
           validations={this.props.validations.newPetFound}
           inputColor={this.props.inputColor.newPetFound}
           />
@@ -180,7 +179,6 @@ class Landing extends React.Component {
             setContactUsName={this.props.setContactUsName}
             setContactUsEmail={this.props.setContactUsEmail}
             setContactUsMessage={this.props.setContactUsMessage}
-            items_api={this.props.urls.items_api}
             />
           <TermsAndConditions />
         </div>
