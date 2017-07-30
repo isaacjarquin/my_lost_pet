@@ -7,7 +7,7 @@ const webpack = require('webpack')
 module.exports = {
   context: __dirname,
   entry: [
-    '../js/BrowserEntry.jsx',
+    path.resolve('./js/', 'BrowserEntry.jsx'),
     'whatwg-fetch'
   ],
   output: {
