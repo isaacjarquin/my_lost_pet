@@ -9,10 +9,10 @@
     "fix": "standard --fix",
     "build": "NODE_ENV=development webpack --config webpack/dev.config.js",
     "build-dev": "NODE_ENV=development webpack --config webpack/dev.config.js",
-    "build-prod": "NODE_ENV=production webpack --config webpack/prod.config.js",
+    "build-prod": "NODE_ENV=production webpack --display-error-details --config webpack/prod.config.js",
     "watch": "NODE_ENV=development webpack --config webpack/dev.config.js --watch",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
-    "postinstall": "webpack -p --config webpack/prod.config.js --progress"
+    "postinstall": "webpack --display-error-details -p --config webpack/prod.config.js --progress"
   },
   "keywords": [
     "pet",
