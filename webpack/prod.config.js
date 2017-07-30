@@ -18,10 +18,6 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', '.json']
   },
-  includePaths: [
-    path.resolve(__dirname, '..', 'public'),
-    path.resolve(__dirname, '..', 'js')
-  ],
   stats: {
     colors: true,
     reasons: true,
