@@ -6,9 +6,9 @@ const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
-  entry: ['whatwg-fetch', './js/BrowserEntry.jsx'],
+  entry: ['../js/BrowserEntry.jsx', 'whatwg-fetch'],
   output: {
-    path: path.join(__dirname, '/public'),
+    path: path.join(__dirname, '../public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
@@ -73,6 +73,10 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),

@@ -7,9 +7,12 @@
     "test": "mocha --require test/helpers/setup.js",
     "lint": "standard",
     "fix": "standard --fix",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test"
+    "build": "NODE_ENV=development webpack --config webpack/dev.config.js",
+    "build-dev": "NODE_ENV=development webpack --config webpack/dev.config.js",
+    "build-prod": "NODE_ENV=production webpack --config webpack/prod.config.js",
+    "watch": "NODE_ENV=development webpack --config webpack/dev.config.js --watch",
+    "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test",
+    "postinstall": "webpack -p --config webpack/prod.config.js --progress"
   },
   "keywords": [
     "pet",
@@ -79,11 +82,13 @@
     "jsdom": "^9.8.0",
     "json-loader": "^0.5.4",
     "mocha": "^3.1.2",
+    "node-libs-browser": "^2.0.0",
     "node-sass": "^3.10.1",
     "nodemon": "^1.11.0",
     "nyc": "^8.3.1",
     "react-addons-test-utils": "^15.3.2",
     "sass-loader": "^4.0.2",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.9.1"
   }
 }
