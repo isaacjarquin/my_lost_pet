@@ -1,6 +1,4 @@
 const path = require('path')
-const autoprefixer = require('autoprefixer')
-const precss = require('precss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')

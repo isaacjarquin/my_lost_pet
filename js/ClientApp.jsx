@@ -1,6 +1,5 @@
 const React = require('react')
-const Layout = require('./layouts/Layout')
-const { Router, browserHistory } = require('react-router')
+const { Router, Route } = require('react-router')
 const { store } = require('./Store')
 const { Provider } = require('react-redux')
 const LandingPage = require('./pages/landing/index')

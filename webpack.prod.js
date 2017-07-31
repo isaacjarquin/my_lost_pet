@@ -1,5 +1,7 @@
-const Merge = require('webpack-merge');
-const CommonConfig = require('./webpack.common.js');
+const Merge = require('webpack-merge')
+const CommonConfig = require('./webpack.common.js')
+const webpack = require('webpack')
+const path = require('path')
 
 module.exports = Merge(CommonConfig, {
   output: {
@@ -22,4 +24,5 @@ module.exports = Merge(CommonConfig, {
       },
       comments: false
     })
+  ]
 })

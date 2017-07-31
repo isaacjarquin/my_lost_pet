@@ -1,5 +1,9 @@
 const Merge = require('webpack-merge')
 const CommonConfig = require('./webpack.common.js')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const precss = require('precss')
 
 module.exports = Merge(CommonConfig, {
   plugins: [
