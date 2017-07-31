@@ -15,8 +15,8 @@ module.exports = {
   },
   resolve: {
     modules: [
-      path.join(__dirname, "src"),
-      "node_modules"
+      path.join(__dirname, 'src'),
+      'node_modules'
     ],
     extensions: ['.js', '.jsx', '.json']
   },
@@ -69,14 +69,14 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        enforce: "pre",
+        enforce: 'pre',
         loader: 'eslint-loader',
         exclude: /node_modules/
       },
       {
         test: /\.jsx?$/,
         loader: 'babel-loader',
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components)/
       }
     ]
   },

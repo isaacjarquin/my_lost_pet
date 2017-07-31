@@ -17,8 +17,8 @@ const App = React.createClass({
     return (
       <Provider store={store}>
         <Router>
-          <Route pattern="/" component={LandingPage} />
-          <Route path="search" component={SearchResultPage} />
+          <Route pattern='/' component={LandingPage} />
+          <Route path='search' component={SearchResultPage} />
         </Router>
       </Provider>
     )

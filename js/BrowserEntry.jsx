@@ -9,7 +9,7 @@ match({ routes: App }, (error, redirectLocation, renderProps) => {
   if (error) {
     return console.error('BrowserEntry error', error)
   }
-  if ( module.hot ) {
+  if (module.hot) {
     module.hot.accept('./App', () => {
       ReactDOM.render(<AppContainer><App {...renderProps} /></AppContainer>, rootEl)
     })

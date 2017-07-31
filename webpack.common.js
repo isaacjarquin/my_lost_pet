@@ -7,7 +7,7 @@ const webpack = require('webpack')
 module.exports = {
   context: __dirname,
   entry: ['whatwg-fetch', './js/BrowserEntry.jsx'],
-  devtool: "cheap-eval-source-map",
+  devtool: 'cheap-eval-source-map',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
