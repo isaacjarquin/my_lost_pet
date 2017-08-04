@@ -9,7 +9,7 @@
     "fix": "standard --fix",
     "build": "webpack -p",
     "watch": "webpack --watch",
-    "postinstall": "webpack -p --config ./webpack.config.js --progress",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "cover": "nyc --reporter=lcov --reporter=text --reporter=html --require babel-register --extension .jsx npm test"
   },
   "keywords": [
