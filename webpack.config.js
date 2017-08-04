@@ -1,19 +1,22 @@
 const path = require('path')
-const autoprefixer = require('autoprefixer')
-const precss = require('precss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   context: __dirname,
-  entry: ['whatwg-fetch', './js/BrowserEntry.jsx'],
+  entry: './js/BrowserEntry.jsx',
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
     publicPath: '/public/'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    modules: [
+      path.join(__dirname, 'src'),
+      'node_modules'
+    ],
+    extensions: ['.js', '.jsx', '.json']
   },
   stats: {
     colors: true,
@@ -21,58 +24,72 @@ module.exports = {
     chunks: true
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      }
-    ],
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.json?$/,
-        loader: 'json-loader'
-      },
+    rules: [
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css-loader?-autoprefixer!postcss-loader!sass-loader')
+        use: ExtractTextPlugin.extract('css-loader?-autoprefixer')
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract('postcss-loader')
+      },
+      {
+        test: /\.scss$/,
+        use: ExtractTextPlugin.extract('sass-loader')
       },
       {
         test: /\.png$/,
-        loader: ExtractTextPlugin.extract('url-loader?limit=100000')
+        use: ExtractTextPlugin.extract('url-loader?limit=100000')
       },
       {
         test: /\.jpg$/,
-        loader: ExtractTextPlugin.extract('file-loader')
+        use: ExtractTextPlugin.extract('file-loader')
       },
       {
         test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/font-woff')
+        use: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/font-woff')
       },
       {
         test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/octet-stream')
+        use: ExtractTextPlugin.extract('url?limit=10000&mimetype=application/octet-stream')
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        loader: ExtractTextPlugin.extract('file')
+        use: ExtractTextPlugin.extract('file')
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: ExtractTextPlugin.extract('url?limit=10000&mimetype=image/svg+xml')
+        use: ExtractTextPlugin.extract('url?limit=10000&mimetype=image/svg+xml')
+      },
+      {
+        test: /\.jsx?$/,
+        enforce: 'pre',
+        loader: 'eslint-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /(node_modules|bower_components)/
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new UglifyJsPlugin({
+      sourceMap: true
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      disable: false,
+      allChunks: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
@@ -82,8 +99,5 @@ module.exports = {
         'ITEMS_API_URL': JSON.stringify(process.env.ITEMS_API_URL)
       }
     })
-  ],
-  postcss: function () {
-    return [autoprefixer, precss]
-  }
+  ]
 }

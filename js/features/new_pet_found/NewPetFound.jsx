@@ -1,10 +1,8 @@
-import 'whatwg-fetch'
-import Dropzone from 'react-dropzone'
-import request from 'superagent'
-
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-
+const fetch = require('whatwg-fetch')
+const Dropzone = require('react-dropzone')
+const request = require('superagent')
+const DatePicker = require('react-datepicker')
+const moment = require('moment')
 const React = require('react')
 const Alerts = require('../alerts/alerts')
 const DogLoader = require('../dog_loader/DogLoader')
@@ -105,6 +103,7 @@ class NewPetFound extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
+    this.dropzone = this.dropzone.bind(this)
 
     this.state = { startDate: moment() }
     this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
@@ -317,7 +316,7 @@ class NewPetFound extends React.Component {
                         className='image-drop-zone'
                         multiple={false}
                         accept='image/*'
-                        ref={(node) => { this.dropzone = node }}
+                        ref={this.dropzone}
                         maxSize={1048576}
                         onDrop={this.onImageDrop}>
                         <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 1 Mbytes</p>
