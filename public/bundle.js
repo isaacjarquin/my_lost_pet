@@ -46276,7 +46276,7 @@
 	                          ref: function ref(node) {
 	                            _this4.dropzone = node;
 	                          },
-	                          maxSize: 1048576,
+	                          maxSize: 5242880,
 	                          onDrop: this.onImageDrop },
 	                        React.createElement(
 	                          'p',
