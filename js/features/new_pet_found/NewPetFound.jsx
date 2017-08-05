@@ -171,8 +171,7 @@ class NewPetFound extends React.Component {
     ].includes('') || !this.props.images[0]
   }
 
-
-  handleCloudinaryError(error) {
+  handleCloudinaryError (error) {
     $('#details-button').removeClass('disable-button')
     $('.loader-container').hide()
     showUnSuccesfullMessage(this.props, error)
@@ -191,7 +190,7 @@ class NewPetFound extends React.Component {
           .end((err, response) => {
             resolve(response.body)
             reject(err)
-        })
+          })
       }).then((cloudinaryResponse) => {
         this.sendDetails(cloudinaryResponse)
       }).catch((cloudinaryError) => {
