@@ -169,6 +169,8 @@ class Landing extends React.Component {
           items_api={this.props.urls.items_api}
           validations={this.props.validations.newPetFound}
           inputColor={this.props.inputColor.newPetFound}
+          setProgressBarPercentage={this.props.setProgressBarPercentage}
+          percentage={this.props.percentage}
           />
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>

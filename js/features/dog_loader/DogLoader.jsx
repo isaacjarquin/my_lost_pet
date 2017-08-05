@@ -43,6 +43,7 @@ class DogLoader extends React.Component {
             <path className='eyelid' fill='#010101' d='M85.88 68.878l24.722-16.19 1.802 2.754-24.72 16.19z' />
           </svg>
         </div>
+        <div className='progress-bar_percentage'>{this.props.percentage}%</div>
       </div>
     )
   }

@@ -184,9 +184,13 @@ class NewPetFound extends React.Component {
       $('.loader-container').show()
 
       new Promise((resolve, reject) => {
+        const props = this.props
         request.post(this.props.cloudinary.upload_url)
           .field('upload_preset', this.props.cloudinary.upload_preset)
           .field('file', this.props.images[0])
+          .on('progress', function(e){
+             props.setProgressBarPercentage(Math.trunc(e.percent))
+          })
           .end((err, response) => {
             resolve(response.body)
             reject(err)
@@ -313,7 +317,7 @@ class NewPetFound extends React.Component {
                         multiple={false}
                         accept='image/*'
                         ref={(node) => { this.dropzone = node }}
-                        maxSize={2097152}
+                        maxSize={1024 * 1024 * 5}
                         onDrop={this.onImageDrop}>
                         <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
                       </Dropzone>
@@ -328,7 +332,7 @@ class NewPetFound extends React.Component {
                 </div>
               </div>
             </div>
-            <DogLoader />
+            <DogLoader percentage={this.props.percentage}/>
             <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
           </form>
         </header>
