@@ -518,7 +518,7 @@
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var require;var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(process, global) {'use strict';
 
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -45946,8 +45946,6 @@
 	    _this.handleFoundDate = _this.handleFoundDate.bind(_this);
 	    _this.handlePetLocation = _this.handlePetLocation.bind(_this);
 	    _this.handlePetDescription = _this.handlePetDescription.bind(_this);
-	    _this.handleImageUrl = _this.handleImageUrl.bind(_this);
-	    _this.handleImages = _this.handleImages.bind(_this);
 	    _this.handleSubmit = _this.handleSubmit.bind(_this);
 	    _this.onImageDrop = _this.onImageDrop.bind(_this);
 	    _this.onOpenClick = _this.onOpenClick.bind(_this);
@@ -46012,16 +46010,6 @@
 	    key: 'handlePetDescription',
 	    value: function handlePetDescription(event) {
 	      this.props.setPetDescription(event.target.value);
-	    }
-	  }, {
-	    key: 'handleImageUrl',
-	    value: function handleImageUrl(event) {
-	      this.props.setImageUrl(event.target.value);
-	    }
-	  }, {
-	    key: 'handleImages',
-	    value: function handleImages(event) {
-	      this.props.setImages(event.target.value);
 	    }
 	  }, {
 	    key: 'handleComunidadesFilter',

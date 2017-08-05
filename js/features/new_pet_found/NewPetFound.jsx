@@ -96,8 +96,6 @@ class NewPetFound extends React.Component {
     this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
     this.handlePetDescription = this.handlePetDescription.bind(this)
-    this.handleImageUrl = this.handleImageUrl.bind(this)
-    this.handleImages = this.handleImages.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onImageDrop = this.onImageDrop.bind(this)
     this.onOpenClick = this.onOpenClick.bind(this)
@@ -145,12 +143,6 @@ class NewPetFound extends React.Component {
   }
   handlePetDescription (event) {
     this.props.setPetDescription(event.target.value)
-  }
-  handleImageUrl (event) {
-    this.props.setImageUrl(event.target.value)
-  }
-  handleImages (event) {
-    this.props.setImages(event.target.value)
   }
   handleComunidadesFilter (event) {
     this.props.setAutonomousComunity(event.target.value)
