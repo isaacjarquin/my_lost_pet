@@ -45846,6 +45846,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var _Promise = typeof Promise === 'undefined' ? __webpack_require__(2).Promise : Promise;
+
 	var React = __webpack_require__(6);
 	var Alerts = __webpack_require__(298);
 	var DogLoader = __webpack_require__(302);
@@ -46045,6 +46047,13 @@
 	      return [this.props.autonomousComunity, this.props.founderName, this.props.founderEmail, this.props.petType, this.props.breed, this.props.size, this.props.location, this.props.description].includes('') || !this.props.images[0];
 	    }
 	  }, {
+	    key: 'handleCloudinaryError',
+	    value: function handleCloudinaryError(error) {
+	      $('#details-button').removeClass('disable-button');
+	      $('.loader-container').hide();
+	      showUnSuccesfullMessage(this.props, error);
+	    }
+	  }, {
 	    key: 'handleSubmit',
 	    value: function handleSubmit(event) {
 	      var _this3 = this;
@@ -46055,18 +46064,15 @@
 	        $('#details-button').addClass('disable-button');
 	        $('.loader-container').show();
 
-	        var upload = _superagent2.default.post(this.props.cloudinary.upload_url).field('upload_preset', this.props.cloudinary.upload_preset).field('file', this.props.images[0]);
-
-	        upload.end(function (err, response) {
-	          if (err) {
-	            $('#details-button').removeClass('disable-button');
-	            $('.loader-container').hide();
-	            showUnSuccesfullMessage(_this3.props, err);
-	          }
-
-	          if (response.body.secure_url !== '') {
-	            _this3.sendDetails(response.body);
-	          }
+	        new _Promise(function (resolve, reject) {
+	          _superagent2.default.post(_this3.props.cloudinary.upload_url).field('upload_preset', _this3.props.cloudinary.upload_preset).field('file', _this3.props.images[0]).end(function (err, response) {
+	            resolve(response.body);
+	            reject(err);
+	          });
+	        }).then(function (cloudinaryResponse) {
+	          _this3.sendDetails(cloudinaryResponse);
+	        }).catch(function (cloudinaryError) {
+	          _this3.handleCloudinaryError(cloudinaryError);
 	        });
 	      }
 

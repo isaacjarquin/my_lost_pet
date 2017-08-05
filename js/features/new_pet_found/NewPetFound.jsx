@@ -179,6 +179,12 @@ class NewPetFound extends React.Component {
     ].includes('') || !this.props.images[0]
   }
 
+
+  handleCloudinaryError(error) {
+    $('#details-button').removeClass('disable-button')
+    $('.loader-container').hide()
+    showUnSuccesfullMessage(this.props, error)
+  }
   handleSubmit (event) {
     if (this.hasMissingValues()) {
       this.props.setValidations(this.props)
@@ -186,20 +192,18 @@ class NewPetFound extends React.Component {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
 
-      let upload = request.post(this.props.cloudinary.upload_url)
-                          .field('upload_preset', this.props.cloudinary.upload_preset)
-                          .field('file', this.props.images[0])
-
-      upload.end((err, response) => {
-        if (err) {
-          $('#details-button').removeClass('disable-button')
-          $('.loader-container').hide()
-          showUnSuccesfullMessage(this.props, err)
-        }
-
-        if (response.body.secure_url !== '') {
-          this.sendDetails(response.body)
-        }
+      new Promise((resolve, reject) => {
+        request.post(this.props.cloudinary.upload_url)
+          .field('upload_preset', this.props.cloudinary.upload_preset)
+          .field('file', this.props.images[0])
+          .end((err, response) => {
+            resolve(response.body)
+            reject(err)
+        })
+      }).then((cloudinaryResponse) => {
+        this.sendDetails(cloudinaryResponse)
+      }).catch((cloudinaryError) => {
+        this.handleCloudinaryError(cloudinaryError)
       })
     }
 
