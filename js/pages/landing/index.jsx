@@ -80,7 +80,7 @@ class Landing extends React.Component {
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
 
           <div className='pet-filter w3-display-left w3-padding-medium'>
-            <div className='small-nav-menu'>
+            <div className='small-nav-menu displayNone'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
                 <li className='active'><a href='#'>Perdidos</a></li>
                 <li><a href='#'>Buscando casa</a></li>
