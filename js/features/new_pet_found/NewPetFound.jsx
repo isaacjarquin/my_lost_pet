@@ -188,8 +188,8 @@ class NewPetFound extends React.Component {
         request.post(this.props.cloudinary.upload_url)
           .field('upload_preset', this.props.cloudinary.upload_preset)
           .field('file', this.props.images[0])
-          .on('progress', function(e){
-             props.setProgressBarPercentage(Math.trunc(e.percent))
+          .on('progress', function (e) {
+            props.setProgressBarPercentage(Math.trunc(e.percent))
           })
           .end((err, response) => {
             resolve(response.body)
@@ -332,7 +332,7 @@ class NewPetFound extends React.Component {
                 </div>
               </div>
             </div>
-            <DogLoader percentage={this.props.percentage}/>
+            <DogLoader percentage={this.props.percentage} />
             <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
           </form>
         </header>
