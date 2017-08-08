@@ -1,5 +1,6 @@
+import { Circle } from 'rc-progress'
+
 const React = require('react')
-import { Circle } from 'rc-progress';
 
 if (process.env.WEBPACK_BUILD) {
   require('./dogLoader.scss')
@@ -10,7 +11,7 @@ class DogLoader extends React.Component {
     return (
       <div className='dog-loader'>
         <div className='loader-container'>
-          <Circle percent={this.props.percentage} strokeWidth="4" trailWidth="0" strokeColor="#FCB316" strokeLinecap="square" className="circle-progress-bar"/>
+          <Circle percent={this.props.percentage} strokeWidth='4' trailWidth='0' strokeColor='#FCB316' strokeLinecap='square' className='circle-progress-bar' />
           <svg id='scottie-loader' className='loader-dog' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 207.95 211.52'>
             <defs>
               <radialGradient id='a' cx='100.23' cy='111.94' r='146.5' gradientTransform='matrix(.68 0 0 .68 31.58 35.11)' gradientUnits='userSpaceOnUse'>
