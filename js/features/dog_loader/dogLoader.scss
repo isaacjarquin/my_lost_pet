@@ -12,60 +12,38 @@
     z-index: 10;
   }
   .progress-bar_percentage {
+    margin-top: 64px;
+    margin-right: 13px;
     position: absolute;
     left: 0;
     right: 0;
-    font-size: 18px;
-    margin-top: 82px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 15px;
     z-index: 11;
+    color: white;
   }
+
+  .circle-progress-bar {
+    width: 140px;
+    right: 23px;
+    top: -35px;
+  }
+
   .loader-container svg{
     position: absolute;
   }
-  // Here is where the magic happens
-
-  $offset: 622;
-  $duration: 1.4s;
 
   .spinner {
-    animation: rotator $duration linear infinite;
+    box-shadow: 0 0 1em black;
+    border-radius: 100%;
     left: 37px;
     margin-top: -35px;
+    transform: rotate(90deg);
   }
 
   .loader-dog {
-    left:50px;
-    bottom: 50px;
-    width: 100px;
+    left:49px;
+    bottom: 31px;
+    width: 120px;
     height:auto;
-  }
-  @keyframes rotator {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(270deg); }
-  }
-
-  .path {
-    stroke-dasharray: $offset;
-    stroke-dashoffset: 0;
-    stroke-width: 5;
-    transform-origin: center;
-    stroke: #FCB316;
-    animation:
-      dash $duration ease-in-out infinite;
-  }
-
-
-  @keyframes dash {
-   0% { stroke-dashoffset: $offset; }
-   50% {
-     stroke-dashoffset: $offset/4;
-     transform:rotate(135deg);
-   }
-   100% {
-     stroke-dashoffset: $offset;
-     transform:rotate(450deg);
-   }
   }
 }
