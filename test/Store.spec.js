@@ -9,6 +9,7 @@ describe('Store', () => {
     searchTerm: '',
     selectFilter: '',
     activePage: 1,
+    percentage: 0,
     encloseImageTitle: 'Adjuntar imagen',
     validationBackground: '',
     cloudinary: {

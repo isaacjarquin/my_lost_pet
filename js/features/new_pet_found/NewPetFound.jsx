@@ -96,8 +96,6 @@ class NewPetFound extends React.Component {
     this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
     this.handlePetDescription = this.handlePetDescription.bind(this)
-    this.handleImageUrl = this.handleImageUrl.bind(this)
-    this.handleImages = this.handleImages.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.onImageDrop = this.onImageDrop.bind(this)
     this.onOpenClick = this.onOpenClick.bind(this)
@@ -146,12 +144,6 @@ class NewPetFound extends React.Component {
   handlePetDescription (event) {
     this.props.setPetDescription(event.target.value)
   }
-  handleImageUrl (event) {
-    this.props.setImageUrl(event.target.value)
-  }
-  handleImages (event) {
-    this.props.setImages(event.target.value)
-  }
   handleComunidadesFilter (event) {
     this.props.setAutonomousComunity(event.target.value)
 
@@ -179,6 +171,11 @@ class NewPetFound extends React.Component {
     ].includes('') || !this.props.images[0]
   }
 
+  handleCloudinaryError (error) {
+    $('#details-button').removeClass('disable-button')
+    $('.loader-container').hide()
+    showUnSuccesfullMessage(this.props, error)
+  }
   handleSubmit (event) {
     if (this.hasMissingValues()) {
       this.props.setValidations(this.props)
@@ -186,20 +183,22 @@ class NewPetFound extends React.Component {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
 
-      let upload = request.post(this.props.cloudinary.upload_url)
-                          .field('upload_preset', this.props.cloudinary.upload_preset)
-                          .field('file', this.props.images[0])
-
-      upload.end((err, response) => {
-        if (err) {
-          $('#details-button').removeClass('disable-button')
-          $('.loader-container').hide()
-          showUnSuccesfullMessage(this.props, err)
-        }
-
-        if (response.body.secure_url !== '') {
-          this.sendDetails(response.body)
-        }
+      new Promise((resolve, reject) => {
+        const props = this.props
+        request.post(this.props.cloudinary.upload_url)
+          .field('upload_preset', this.props.cloudinary.upload_preset)
+          .field('file', this.props.images[0])
+          .on('progress', function (e) {
+            props.setProgressBarPercentage(Math.trunc(e.percent))
+          })
+          .end((err, response) => {
+            resolve(response.body)
+            reject(err)
+          })
+      }).then((cloudinaryResponse) => {
+        this.sendDetails(cloudinaryResponse)
+      }).catch((cloudinaryError) => {
+        this.handleCloudinaryError(cloudinaryError)
       })
     }
 
@@ -318,9 +317,9 @@ class NewPetFound extends React.Component {
                         multiple={false}
                         accept='image/*'
                         ref={(node) => { this.dropzone = node }}
-                        maxSize={1048576}
+                        maxSize={1024 * 1024 * 5}
                         onDrop={this.onImageDrop}>
-                        <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 1 Mbytes</p>
+                        <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
                       </Dropzone>
                     </div>
                     <div className='image-preview'>
@@ -333,7 +332,7 @@ class NewPetFound extends React.Component {
                 </div>
               </div>
             </div>
-            <DogLoader />
+            <DogLoader percentage={this.props.percentage} />
             <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
           </form>
         </header>
