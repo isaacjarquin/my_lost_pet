@@ -11,6 +11,7 @@ describe('Store', () => {
     activePage: 1,
     encloseImageTitle: 'Adjuntar imagen',
     validationBackground: '',
+    percentage: 0,
     cloudinary: {
       upload_preset: '',
       upload_url: ''

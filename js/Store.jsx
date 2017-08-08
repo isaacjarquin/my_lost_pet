@@ -125,6 +125,7 @@ const SET_SIZE_INPUT_COLOR = 'setSizeInputColor'
 const SET_LOCATION_INPUT_COLOR = 'setLocationInputColor'
 const SET_DESCRIPTION_INPUT_COLOR = 'setDescriptionInputColor'
 const SET_AUTONOMOUS_COMUNITY_INPUT_COLOR = 'setAutonomousComunityInputColor'
+const SET_PROGRESS_BAR_PERCENTAGE = 'setProgressBarPercentage'
 
 const reducerPets = (state, action) => {
   const newState = {}
@@ -209,6 +210,16 @@ const reducerProvincias = (state, action) => {
 
   Object.assign(newState, state, {
     provincias: action.value
+  })
+
+  return newState
+}
+
+const reducerProgressBarPercentage = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    percentage: action.value
   })
 
   return newState
@@ -322,6 +333,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerDescriptionInputColor(state, action)
     case SET_AUTONOMOUS_COMUNITY_INPUT_COLOR:
       return reducerAutonomousComunityInputColor(state, action)
+    case SET_PROGRESS_BAR_PERCENTAGE:
+      return reducerProgressBarPercentage(state, action)
     default:
       return state
   }
@@ -334,6 +347,7 @@ const store = redux.createStore(rootReducer, initialState, redux.compose(
 const mapStateToProps = (state) => {
   return {
     searchTerm: state.searchTerm,
+    percentage: state.percentage,
     selectFilter: state.selectFilter,
     activePage: state.activePage,
     totalNumberOfPets: state.totalNumberOfPets,
@@ -578,6 +592,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setProvince (province) {
       dispatch({type: SET_PROVINCE, value: province})
+    },
+    setProgressBarPercentage (percentage) {
+      dispatch({type: SET_PROGRESS_BAR_PERCENTAGE, value: percentage})
     },
     setValidations ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
       if (founderName === '') {

@@ -1,3 +1,5 @@
+import { Circle } from 'rc-progress'
+
 const React = require('react')
 
 if (process.env.WEBPACK_BUILD) {
@@ -9,16 +11,7 @@ class DogLoader extends React.Component {
     return (
       <div className='dog-loader'>
         <div className='loader-container'>
-          <svg className='spinner' stroke='#000' width='120' height='120' viewBox='0 0 206 206' xmlns='http://www.w3.org/2000/svg'>
-            <defs>
-              <clipPath id='cut-off-bottom'>
-                <rect x='0' y='0' width='200' height='100' fill='#000' />
-              </clipPath>
-            </defs>
-
-            <circle className='path' fill='none' stroke-width='6' stroke-linecap='round' cx='103' cy='103' r='100' />
-            <circle className='path' cx='103' cy='103' r='100' fill='none' stroke='#000' stroke-linecap='round' stroke-width='6' stroke-dasharray='0.001,17' />
-          </svg>
+          <Circle percent={this.props.percentage} strokeWidth='4' trailWidth='0' strokeColor='#FCB316' strokeLinecap='square' className='circle-progress-bar' />
           <svg id='scottie-loader' className='loader-dog' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 207.95 211.52'>
             <defs>
               <radialGradient id='a' cx='100.23' cy='111.94' r='146.5' gradientTransform='matrix(.68 0 0 .68 31.58 35.11)' gradientUnits='userSpaceOnUse'>
@@ -30,9 +23,7 @@ class DogLoader extends React.Component {
                 <stop offset='1' stop-color='#90a9af' />
               </radialGradient>
             </defs>
-            <title>
-              dog-incircle
-            </title>
+
             <circle cx='100' cy='111.52' r='100' fill='#9ec4d6' />
             <path d='M125 199.08l-13.84-24.34 8.9-26.69-17 .91-39.27-30.15c-10.45 17.2-25.15 37.07-39.33 58.23a100.13 100.13 0 0 0 95.17 32.54l-6.13-16.86z' fill='#010101' />
             <path d='M197.73 71.64l10.22 6.71-31-58.29a10.75 10.75 0 0 0 4.47-13.3A10.82 10.82 0 0 0 161 13.83l-66.44 43L94 40.87l-6 14.8-7-18.53 1.22 19.66-11.85-11 7.39 21.82-23.52 15.24 8.46 31 .39.17c-3.7 16.38-7.16 32.53-7.16 36.58l44.78 26.27 21.53-35.81 18.49 18.66-7.24-18.76 14.22 14.64-9-21.29 19.62 13.81-14.6-18.31 18.92 14.2-12.43-18.92L165 138.47l-10.53-20.57 16.45 14.16-6.58-16.85 16.1 10.77-10-17.71 14.48 9-11.14-16.62 15.31 10.87-12.31-16.73 17.74 13.34-12.23-18 15.05 11.14-9.77-18.75 14.86 13.12-9-18.41 13.27 12.59z' fill='#010101' fill-rule='evenodd' />
@@ -43,6 +34,7 @@ class DogLoader extends React.Component {
             <path className='eyelid' fill='#010101' d='M85.88 68.878l24.722-16.19 1.802 2.754-24.72 16.19z' />
           </svg>
         </div>
+        <div className='progress-bar_percentage'>{this.props.percentage}%</div>
       </div>
     )
   }
