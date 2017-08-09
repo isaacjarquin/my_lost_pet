@@ -1,6 +1,7 @@
 const React = require('react')
 const MissingPet = require('../../../features/missing_pet/MissingPet')
 const ContactDetailsPanel = require('../../../features/panels/ContactDetailsPanel')
+const AnimatedHusky = require('../../../features/animated_husky/animatedHusky')
 const { connector } = require('../../../Store')
 const { object, string, arrayOf, func } = React.PropTypes
 
@@ -42,9 +43,21 @@ const Search = React.createClass({
       func(arr[i], arr[i + 1], arr[i + 2])
     }
   },
+  renderNoResultsFound: function () {
+    if (this.props.activePagePets.length === 0) {
+      return (
+        <div>
+          <div className="no-results_big">Su búsqueda no generó ningun resultado.</div>
+          <div><AnimatedHusky /></div>
+          <div className="no-results_small">Pruebe con una combinación difirente de los filtros seleccionados.</div>
+        </div>
+      )
+    }
+  },
   render () {
     return (
       <div>
+        {this.renderNoResultsFound()}
         {this.addPetRows(this.props.activePagePets)
           .map((pet) => (
             <div className='pets-row'>
