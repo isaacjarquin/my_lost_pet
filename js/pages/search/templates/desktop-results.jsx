@@ -47,9 +47,9 @@ const Search = React.createClass({
     if (this.props.activePagePets.length === 0) {
       return (
         <div>
-          <div className="no-results_big">Su búsqueda no generó ningun resultado.</div>
+          <div className='no-results_big'>Su búsqueda no generó ningún resultado.</div>
           <div><AnimatedHusky /></div>
-          <div className="no-results_small">Vuelva a la página de inicio e intente una nueva búsqueda con una combinación de filtros diferente.</div>
+          <div className='no-results_small'>Vuelva a la página de inicio e intente una nueva búsqueda con una combinación de filtros diferente.</div>
         </div>
       )
     }
