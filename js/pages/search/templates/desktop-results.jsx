@@ -49,7 +49,7 @@ const Search = React.createClass({
         <div>
           <div className="no-results_big">Su búsqueda no generó ningun resultado.</div>
           <div><AnimatedHusky /></div>
-          <div className="no-results_small">Pruebe con una combinación difirente de los filtros seleccionados.</div>
+          <div className="no-results_small">Vuelva a la página de inicio e intente una nueva búsqueda con una combinación de filtros diferente.</div>
         </div>
       )
     }
