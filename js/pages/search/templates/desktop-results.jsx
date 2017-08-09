@@ -44,70 +44,74 @@ const Search = React.createClass({
     }
   },
   renderNoResultsFound: function () {
-    if (this.props.activePagePets.length === 0) {
-      return (
-        <div>
-          <div className='no-results_big'>Su búsqueda no generó ningún resultado.</div>
-          <div><AnimatedHusky /></div>
-          <div className='no-results_small'>Vuelva a la página de inicio e intente una nueva búsqueda con una combinación de filtros diferente.</div>
-        </div>
+    return (
+      <div>
+        <div className='no-results_big'>Su búsqueda no generó ningún resultado.</div>
+        <div><AnimatedHusky /></div>
+        <div className='no-results_small'>Vuelva a la página de inicio e intente una nueva búsqueda con una combinación de filtros diferente.</div>
+      </div>
+    )
+  },
+  renderFoundsResults: function () {
+    return (
+      this.addPetRows(this.props.activePagePets)
+        .map((pet) => (
+          <div className='pets-row'>
+            {[pet.left, pet.center, pet.right]
+              .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-3'} key={pet.id} />))
+            }
+            <ContactDetailsPanel
+              {...this.props.owner}
+              id={pet.left.id}
+              arrow={'arrow-up-left'}
+              colSizeClass={'.col-sm-3'}
+              alert={this.props.alert}
+              setAlerts={this.props.setAlerts}
+              setOwnerName={this.props.setOwnerName}
+              setOwnerEmail={this.props.setOwnerEmail}
+              setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
+              setDescription={this.props.setDescription}
+              items_api={this.props.urls.items_api}
+            />
+            <ContactDetailsPanel
+              {...this.props.owner}
+              id={pet.center.id}
+              arrow={'arrow-up-center'}
+              colSizeClass={'.col-sm-3'}
+              alert={this.props.alert}
+              setAlerts={this.props.setAlerts}
+              setOwnerName={this.props.setOwnerName}
+              setOwnerEmail={this.props.setOwnerEmail}
+              setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
+              setDescription={this.props.setDescription}
+              items_api={this.props.urls.items_api}
+            />
+            <ContactDetailsPanel
+              {...this.props.owner}
+              id={pet.right.id}
+              arrow={'arrow-up-right'}
+              colSizeClass={'.col-sm-3'}
+              alert={this.props.alert}
+              setAlerts={this.props.setAlerts}
+              setOwnerName={this.props.setOwnerName}
+              setOwnerEmail={this.props.setOwnerEmail}
+              setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
+              setDescription={this.props.setDescription}
+              items_api={this.props.urls.items_api}
+            />
+          </div>)
       )
+    )
+  },
+  renderPetsData () {
+    if (this.props.activePagePets.length === 0) {
+      return this.renderNoResultsFound()
+    } else {
+      return this.renderFoundsResults()
     }
   },
   render () {
-    return (
-      <div>
-        {this.renderNoResultsFound()}
-        {this.addPetRows(this.props.activePagePets)
-          .map((pet) => (
-            <div className='pets-row'>
-              {[pet.left, pet.center, pet.right]
-                .map((pet) => (<MissingPet {...pet} colSizeClass={'col-sm-3'} key={pet.id} />))
-              }
-              <ContactDetailsPanel
-                {...this.props.owner}
-                id={pet.left.id}
-                arrow={'arrow-up-left'}
-                colSizeClass={'.col-sm-3'}
-                alert={this.props.alert}
-                setAlerts={this.props.setAlerts}
-                setOwnerName={this.props.setOwnerName}
-                setOwnerEmail={this.props.setOwnerEmail}
-                setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
-                setDescription={this.props.setDescription}
-                items_api={this.props.urls.items_api}
-              />
-              <ContactDetailsPanel
-                {...this.props.owner}
-                id={pet.center.id}
-                arrow={'arrow-up-center'}
-                colSizeClass={'.col-sm-3'}
-                alert={this.props.alert}
-                setAlerts={this.props.setAlerts}
-                setOwnerName={this.props.setOwnerName}
-                setOwnerEmail={this.props.setOwnerEmail}
-                setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
-                setDescription={this.props.setDescription}
-                items_api={this.props.urls.items_api}
-              />
-              <ContactDetailsPanel
-                {...this.props.owner}
-                id={pet.right.id}
-                arrow={'arrow-up-right'}
-                colSizeClass={'.col-sm-3'}
-                alert={this.props.alert}
-                setAlerts={this.props.setAlerts}
-                setOwnerName={this.props.setOwnerName}
-                setOwnerEmail={this.props.setOwnerEmail}
-                setOwnerPhoneNumber={this.props.setOwnerPhoneNumber}
-                setDescription={this.props.setDescription}
-                items_api={this.props.urls.items_api}
-              />
-            </div>)
-          )
-        }
-      </div>
-    )
+    return (<div>{this.renderPetsData()}</div>)
   }
 })
 
