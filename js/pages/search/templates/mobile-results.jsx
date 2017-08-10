@@ -50,7 +50,7 @@ const Search = React.createClass({
       </div>
     )
   },
-  renderPetsData() {
+  renderPetsData () {
     if (this.props.activePagePets.length === 0) {
       return this.renderNoResultsFound()
     } else {
@@ -58,7 +58,7 @@ const Search = React.createClass({
     }
   },
   render () {
-    return ( <div> {this.renderPetsData()} </div> )
+    return (<div> {this.renderPetsData()} </div>)
   }
 })
 

@@ -84,7 +84,7 @@ const Search = React.createClass({
               setDescription={this.props.setDescription}
               items_api={this.props.urls.items_api}
             />
-        </div>)
+          </div>)
       )
     )
   },
@@ -96,7 +96,7 @@ const Search = React.createClass({
     }
   },
   render () {
-    return ( <div>{this.renderPetsData()}</div>)
+    return (<div>{this.renderPetsData()}</div>)
   }
 })
 
