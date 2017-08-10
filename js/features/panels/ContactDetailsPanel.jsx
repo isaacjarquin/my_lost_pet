@@ -38,7 +38,7 @@ const showSuccesfullMessage = (props) => {
   setTimeout(() => {
     clearAlert(props)
     closePanel(props)
-  }, 8000)
+  }, 25000)
 }
 
 const clearAlert = (props) => {
