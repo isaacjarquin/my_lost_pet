@@ -76,7 +76,7 @@ class Landing extends React.Component {
       {type: 'conejo', id: 3},
       {type: 'hamster', id: 4},
       {type: 'iguana', id: 5},
-      {type: 'uron', id: 6},
+      {type: 'hurón', id: 6},
       {type: 'tortuga', id: 7}
     ]
     const dropDownOptions = [
@@ -85,7 +85,7 @@ class Landing extends React.Component {
       {value: 'conejo', id: 3},
       {value: 'hamster', id: 4},
       {value: 'iguana', id: 5},
-      {value: 'uron', id: 6},
+      {value: 'hurón', id: 6},
       {value: 'tortuga', id: 7}
     ]
     const url = this.props.urls.host

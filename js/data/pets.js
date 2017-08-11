@@ -4,6 +4,6 @@ module.exports = [
   {value: 'conejo', id: 3},
   {value: 'hamster', id: 4},
   {value: 'iguana', id: 5},
-  {value: 'uron', id: 6},
+  {value: 'hurón', id: 6},
   {value: 'tortuga', id: 7}
 ]
