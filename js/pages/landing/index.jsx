@@ -6,6 +6,7 @@ const Dropdown = require('../../features/dropdown/Dropdown')
 const TermsAndConditions = require('../../features/terms_and_conditions/termsAndConditions')
 const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
+const HowToUseTheApp = require('../../features/how_to_use_the_app/howToUseTheApp')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 const TopNavigationBar = require('../../features/navigation/topNavigationBar')
@@ -190,6 +191,7 @@ class Landing extends React.Component {
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>
           <AboutUs />
+          <HowToUseTheApp />
           <ContactUs
             {...this.props.contactUs}
             alert={this.props.alert}
