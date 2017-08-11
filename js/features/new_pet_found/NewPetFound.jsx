@@ -61,7 +61,7 @@ const showSuccesfullMessage = (props) => {
 
   setTimeout(() => {
     clearAlert(props)
-  }, 8000)
+  }, 25000)
 }
 
 const showUnSuccesfullMessage = (props, err) => {
