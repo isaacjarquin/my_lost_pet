@@ -6,6 +6,7 @@ const Dropdown = require('../../features/dropdown/Dropdown')
 const TermsAndConditions = require('../../features/terms_and_conditions/termsAndConditions')
 const ContactUs = require('../../features/contact_us/contactUs')
 const AboutUs = require('../../features/about_us/aboutUs')
+const HowToUseTheApp = require('../../features/how_to_use_the_app/howToUseTheApp')
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 const TopNavigationBar = require('../../features/navigation/topNavigationBar')
@@ -69,8 +70,24 @@ class Landing extends React.Component {
     })
   }
   render () {
-    const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
-    const dropDownOptions = [{value: 'perro', id: 1}, {value: 'gato', id: 2}, {value: 'conejo', id: 3}]
+    const petTypesOptions = [
+      {type: 'perro', id: 1},
+      {type: 'gato', id: 2},
+      {type: 'conejo', id: 3},
+      {type: 'hamster', id: 4},
+      {type: 'iguana', id: 5},
+      {type: 'uron', id: 6},
+      {type: 'tortuga', id: 7}
+    ]
+    const dropDownOptions = [
+      {value: 'perro', id: 1},
+      {value: 'gato', id: 2},
+      {value: 'conejo', id: 3},
+      {value: 'hamster', id: 4},
+      {value: 'iguana', id: 5},
+      {value: 'uron', id: 6},
+      {value: 'tortuga', id: 7}
+    ]
     const url = this.props.urls.host
 
     return (
@@ -99,7 +116,6 @@ class Landing extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
                   <option selected='selected' disabled>Tipo de mascota</option>
-                  <option value='default-value' key={0} />
                   {petTypesOptions.map((option) => (
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
@@ -175,6 +191,7 @@ class Landing extends React.Component {
 
         <div className='panel-group w3-opacity w3-medium' id='accordion'>
           <AboutUs />
+          <HowToUseTheApp />
           <ContactUs
             {...this.props.contactUs}
             alert={this.props.alert}

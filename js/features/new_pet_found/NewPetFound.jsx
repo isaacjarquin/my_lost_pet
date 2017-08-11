@@ -249,6 +249,16 @@ class NewPetFound extends React.Component {
   }
 
   render () {
+    const petTypesOptions = [
+      {type: 'perro', id: 1},
+      {type: 'gato', id: 2},
+      {type: 'conejo', id: 3},
+      {type: 'hamster', id: 4},
+      {type: 'iguana', id: 5},
+      {type: 'uron', id: 6},
+      {type: 'tortuga', id: 7}
+    ]
+
     return (
       <div className='new-pet-form'>
         <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
@@ -262,7 +272,12 @@ class NewPetFound extends React.Component {
             <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
             <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
 
-            <p><input value={this.props.petType} onChange={this.handlePetType} className={`w3-input w3-border ${this.props.inputColor.petType}`} type='text' placeholder='Tipo de mascota (perro/gato ...)' /></p>
+            <select className={`form-control landing-select-filter ${this.props.inputColor.petType}`} onChange={this.handlePetType}>
+              <option selected='selected' disabled>Tipo de mascota</option>
+              {petTypesOptions.map((option) => (
+                <option value={option.type} key={option.id}>{option.type}</option>
+                ))}
+            </select>
             <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
 
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
