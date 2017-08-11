@@ -69,8 +69,24 @@ class Landing extends React.Component {
     })
   }
   render () {
-    const petTypesOptions = [{type: 'perro', id: 1}, {type: 'gato', id: 2}, {type: 'conejo', id: 3}]
-    const dropDownOptions = [{value: 'perro', id: 1}, {value: 'gato', id: 2}, {value: 'conejo', id: 3}]
+    const petTypesOptions = [
+      {type: 'perro', id: 1},
+      {type: 'gato', id: 2},
+      {type: 'conejo', id: 3},
+      {type: 'hamster', id: 4},
+      {type: 'iguana', id: 5},
+      {type: 'uron', id: 6},
+      {type: 'tortuga', id: 7}
+    ]
+    const dropDownOptions = [
+      {value: 'perro', id: 1},
+      {value: 'gato', id: 2},
+      {value: 'conejo', id: 3},
+      {value: 'hamster', id: 4},
+      {value: 'iguana', id: 5},
+      {value: 'uron', id: 6},
+      {value: 'tortuga', id: 7}
+    ]
     const url = this.props.urls.host
 
     return (
@@ -99,7 +115,6 @@ class Landing extends React.Component {
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
                   <option selected='selected' disabled>Tipo de mascota</option>
-                  <option value='default-value' key={0} />
                   {petTypesOptions.map((option) => (
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
