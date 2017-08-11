@@ -64,3 +64,47 @@
     }
   }
 }
+
+.no-results_small {
+  color: orange;
+  font-size: 25px;
+  float: right;
+  top: 100px;
+  left: 50%;
+  line-height: 2;
+}
+
+.no-results_big {
+  color: orange;
+  font-size: 50px;
+  margin-bottom: 40px;
+}
+
+.mobile-no-results_small {
+  color: orange;
+  margin-left: 16px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.mobile-no-results_big {
+  margin-left: 16px;
+  color: orange;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.tablet-no-results_small {
+    color: orange;
+    font-size: 20px;
+    float: right;
+    top: 80px;
+    left: 50%;
+    line-height: 2;
+}
+
+.tablet-no-results_big {
+    color: orange;
+    font-size: 30px;
+    margin-bottom: 40px;
+}
