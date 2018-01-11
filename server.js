@@ -21,6 +21,7 @@ const path = require('path')
 const comunidades = require('./js/data/comunidades.js')
 const envs = require('./js/data/envs.js')
 const pets = require('./js/data/pets.js')
+var forceSsl = require('force-ssl-heroku');
 
 const server = express()
 
@@ -30,6 +31,7 @@ server.get('*.js', function (req, res, next) {
   next()
 })
 
+server.use(forceSsl);
 server.use('/public', express.static('./public'))
 
 server.get('/api/envs', function (req, res) {
