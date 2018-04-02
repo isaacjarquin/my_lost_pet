@@ -30,10 +30,18 @@
 
 .sidenav .closebtn {
     position: absolute;
-    top: 0;
+    top: -10px;
     right: 260px;
     font-size: 36px;
     margin-left: 50px;
+    color: #f1f1f1;
+}
+
+.openNaveIcon {
+    position: absolute;
+    top: -5px;
+    right: 10px;
+    font-size: 30px;
     color: #f1f1f1;
 }
 

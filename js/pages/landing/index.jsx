@@ -96,7 +96,6 @@ class Landing extends React.Component {
         <img className='landing-background-image' src='../../../public/mascotas_y_personas.jpg' alt='' />
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container w3-wide' id='home'>
-          <SideBarNavigation />
           <div className='pet-filter w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>

@@ -14,7 +14,8 @@ const SideBarNavigation = React.createClass({
     },
     render() {
         return (
-            <nav className='navbar-inverse top-right'>    
+            <nav className='navbar-inverse top-right'>
+                <i class="material-icons w3-white"></i>
                 <button type='button' onClick={this.openSideNav}>
                     <span className="openNaveIcon">&#9776;</span>
                 </button>
