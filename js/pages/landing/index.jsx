@@ -10,6 +10,7 @@ const HowToUseTheApp = require('../../features/how_to_use_the_app/howToUseTheApp
 const Footer = require('../../features/footer/Footer')
 const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 const TopNavigationBar = require('../../features/navigation/topNavigationBar')
+const SideBarNavigation = require('../../features/navigation/sideBarNavigation')
 const $ = require('jquery')
 var MediaQuery = require('react-responsive')
 
@@ -95,7 +96,7 @@ class Landing extends React.Component {
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
-
+          <SideBarNavigation />
           <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
