@@ -18,6 +18,14 @@ p.form-introduction {
   }
 }
 
+.landing-background-image {
+   position: fixed;
+   top: 0;
+   left: 0;
+   min-width: 100%;
+   min-height: 100%;
+}
+
 .large-button {
   width: 100%;
   border-width: 1px;
@@ -47,6 +55,9 @@ p.form-introduction {
 }
 
 .pet-filter {
+  margin: 4%;
+  width: 40%;
+
   input {
     height: 38px;
     border-radius: 4px;
@@ -65,7 +76,10 @@ p.form-introduction {
 }
 
 .panel-group {
-   margin-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
 
 @media (max-width:736px) {
