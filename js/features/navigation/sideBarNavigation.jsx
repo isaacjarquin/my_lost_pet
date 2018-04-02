@@ -8,9 +8,13 @@ if (process.env.WEBPACK_BUILD) {
 const SideBarNavigation = React.createClass({
     openSideNav() {
         $('#mySidenav').addClass('sideNavWidth')
+        const newWidth = $(".app-container").width() - 300
+        $(".panel-group").width(newWidth)
     },
     closeSideNav() {
         $('#mySidenav').removeClass('sideNavWidth')
+        const fullWidth = $(".app-container").width()
+        $(".panel-group").width(fullWidth)
     },
     render() {
         return (
