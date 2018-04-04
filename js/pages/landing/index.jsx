@@ -51,6 +51,9 @@ class Landing extends React.Component {
   componentDidMount () {
     const props = this.props
 
+    const imageWidth = $(".app-container").height() - 140
+    $(".brand-image").height(imageWidth)
+
     $.ajax({
       url: '/api/envs',
       cache: true,
@@ -94,7 +97,7 @@ class Landing extends React.Component {
       <div className='home-info'>
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container w3-wide' id='home'>
-          <img className='w3-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
+          <img className='w3-image brand-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
 
           <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu displayNone'>

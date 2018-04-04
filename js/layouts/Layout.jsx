@@ -41,7 +41,7 @@ const Layout = React.createClass({
   },
   render () {
     return (
-      <div className='container app-container'>
+      <div className='app-container'>
         {this.displayHeader(this.props)}
         <div className='row'>
           {this.props.children}

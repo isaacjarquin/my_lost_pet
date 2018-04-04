@@ -3,6 +3,10 @@ import { TwitterButton, FacebookButton, RedditButton, GooglePlusButton, LinkedIn
 const React = require('react')
 const { string } = React.PropTypes
 
+if (process.env.WEBPACK_BUILD) {
+  require('./topNavigationBar.scss')
+}
+
 const TopNavigationBar = React.createClass({
   propTypes: {
     twitter: string.isRequired,
@@ -10,7 +14,7 @@ const TopNavigationBar = React.createClass({
   },
   render () {
     return (
-      <ul className='w3-navbar w3-black w3-hide-small'>
+      <ul className='w3-navbar w3-black w3-hide-small top-navigation-bar'>
         <li className='w3-left'><a href='/'>Inicio<i /></a></li>
         <li className='w3-right'>
           <TwitterButton
