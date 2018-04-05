@@ -13,6 +13,7 @@ const TopNavigationBar = require('../../features/navigation/topNavigationBar')
 const $ = require('jquery')
 var MediaQuery = require('react-responsive')
 const SideBarNavigation = require('../../features/navigation/sideBarNavigation')
+const LandingSection = require('../../layouts/LandingSection')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -52,8 +53,8 @@ class Landing extends React.Component {
   componentDidMount () {
     const props = this.props
 
-    const imageWidth = $(".app-container").height() - 140
-    $(".brand-image").height(imageWidth)
+    // const imageWidth = $(".app-container").height()
+    // $(".brand-image").height(imageWidth)
 
     $.ajax({
       url: '/api/envs',
@@ -162,7 +163,7 @@ class Landing extends React.Component {
           </div>
         </header>
 
-        <div className="add-pet-section">
+        <LandingSection title={"¿ Encontraste una mascota perdida ?"} target={"add-pet-section"} >
           <NewPetFound
             {...this.props.pet}
             alert={this.props.alert}
@@ -193,23 +194,32 @@ class Landing extends React.Component {
             inputColor={this.props.inputColor.newPetFound}
             setProgressBarPercentage={this.props.setProgressBarPercentage}
             percentage={this.props.percentage}
-            />
-        </div>
-
-        <div className="about-us-section"><AboutUs /></div>
-        <div className="how-to-use-section"><HowToUseTheApp /></div>
-        <div className="contact-section">
-          <ContactUs
-            {...this.props.contactUs}
-            alert={this.props.alert}
-            setAlerts={this.props.setAlerts}
-            setContactUsName={this.props.setContactUsName}
-            setContactUsEmail={this.props.setContactUsEmail}
-            setContactUsMessage={this.props.setContactUsMessage}
-            items_api={this.props.urls.items_api}
           />
-        </div>
-        <div className="terms-and-condition-section"><TermsAndConditions /></div>
+        </LandingSection>
+
+        <LandingSection title={"¿Quiénes somos?"} target={"about-us-section"}>
+          <AboutUs />
+        </LandingSection>
+
+        <LandingSection title={"Como usar la aplicación"} target={"how-to-use-section"}>
+          <HowToUseTheApp />
+        </LandingSection>
+
+        <LandingSection title={"Contactar"} target={"contact-section"}>
+            <ContactUs
+              {...this.props.contactUs}
+              alert={this.props.alert}
+              setAlerts={this.props.setAlerts}
+              setContactUsName={this.props.setContactUsName}
+              setContactUsEmail={this.props.setContactUsEmail}
+              setContactUsMessage={this.props.setContactUsMessage}
+              items_api={this.props.urls.items_api}
+            />
+        </LandingSection>
+
+        <LandingSection title={"Aviso legal"} target={"terms-and-condition-section"}>
+          <TermsAndConditions />
+        </LandingSection>
 
         <Footer />
       </div>
