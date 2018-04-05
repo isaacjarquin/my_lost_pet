@@ -12,6 +12,7 @@ const NewPetFound = require('../../features/new_pet_found/NewPetFound')
 const TopNavigationBar = require('../../features/navigation/topNavigationBar')
 const $ = require('jquery')
 var MediaQuery = require('react-responsive')
+const SideBarNavigation = require('../../features/navigation/sideBarNavigation')
 
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
@@ -98,7 +99,7 @@ class Landing extends React.Component {
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container w3-wide' id='home'>
           <img className='w3-image brand-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
-
+          <SideBarNavigation />
           <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
@@ -160,41 +161,44 @@ class Landing extends React.Component {
 
           </div>
         </header>
-        <NewPetFound
-          {...this.props.pet}
-          alert={this.props.alert}
-          comunidades={this.props.comunidades}
-          provincias={this.props.provincias}
-          setAutonomousComunity={this.props.setAutonomousComunity}
-          setValidations={this.props.setValidations}
-          setProvince={this.props.setProvince}
-          setProvincias={this.props.setProvincias}
-          setPetFounderName={this.props.setPetFounderName}
-          setPetFounderEmail={this.props.setPetFounderEmail}
-          setPetType={this.props.setPetType}
-          setBreed={this.props.setBreed}
-          setPetSize={this.props.setPetSize}
-          setPetFoundDate={this.props.setPetFoundDate}
-          setPetLocation={this.props.setPetLocation}
-          setPetDescription={this.props.setPetDescription}
-          setImageUrl={this.props.setImageUrl}
-          setImages={this.props.setImages}
-          setAlerts={this.props.setAlerts}
-          encloseImageTitle={this.props.encloseImageTitle}
-          validationBackground={this.props.validationBackground}
-          setEncloseImageTitle={this.props.setEncloseImageTitle}
-          setValidationBackground={this.props.setValidationBackground}
-          cloudinary={this.props.cloudinary}
-          items_api={this.props.urls.items_api}
-          validations={this.props.validations.newPetFound}
-          inputColor={this.props.inputColor.newPetFound}
-          setProgressBarPercentage={this.props.setProgressBarPercentage}
-          percentage={this.props.percentage}
-          />
 
-        <div className='panel-group w3-opacity w3-medium' id='accordion'>
-          <AboutUs />
-          <HowToUseTheApp />
+        <div className="add-pet-section">
+          <NewPetFound
+            {...this.props.pet}
+            alert={this.props.alert}
+            comunidades={this.props.comunidades}
+            provincias={this.props.provincias}
+            setAutonomousComunity={this.props.setAutonomousComunity}
+            setValidations={this.props.setValidations}
+            setProvince={this.props.setProvince}
+            setProvincias={this.props.setProvincias}
+            setPetFounderName={this.props.setPetFounderName}
+            setPetFounderEmail={this.props.setPetFounderEmail}
+            setPetType={this.props.setPetType}
+            setBreed={this.props.setBreed}
+            setPetSize={this.props.setPetSize}
+            setPetFoundDate={this.props.setPetFoundDate}
+            setPetLocation={this.props.setPetLocation}
+            setPetDescription={this.props.setPetDescription}
+            setImageUrl={this.props.setImageUrl}
+            setImages={this.props.setImages}
+            setAlerts={this.props.setAlerts}
+            encloseImageTitle={this.props.encloseImageTitle}
+            validationBackground={this.props.validationBackground}
+            setEncloseImageTitle={this.props.setEncloseImageTitle}
+            setValidationBackground={this.props.setValidationBackground}
+            cloudinary={this.props.cloudinary}
+            items_api={this.props.urls.items_api}
+            validations={this.props.validations.newPetFound}
+            inputColor={this.props.inputColor.newPetFound}
+            setProgressBarPercentage={this.props.setProgressBarPercentage}
+            percentage={this.props.percentage}
+            />
+        </div>
+
+        <div className="about-us-section"><AboutUs /></div>
+        <div className="how-to-use-section"><HowToUseTheApp /></div>
+        <div className="contact-section">
           <ContactUs
             {...this.props.contactUs}
             alert={this.props.alert}
@@ -203,9 +207,9 @@ class Landing extends React.Component {
             setContactUsEmail={this.props.setContactUsEmail}
             setContactUsMessage={this.props.setContactUsMessage}
             items_api={this.props.urls.items_api}
-            />
-          <TermsAndConditions />
+          />
         </div>
+        <div className="terms-and-condition-section"><TermsAndConditions /></div>
 
         <Footer />
       </div>

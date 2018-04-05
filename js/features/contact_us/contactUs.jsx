@@ -160,54 +160,43 @@ class ContactUs extends React.Component {
   }
   render () {
     return (
-      <div className='panel panel-default'>
-        <div className='panel-heading'>
-          <h4 className='panel-title w3-center'>
-            <a data-toggle='collapse' data-parent='#accordion' href='#collapse2'>
-            Contacto</a>
-          </h4>
-        </div>
-        <div className={this.props.alert.contactUs} ><Alerts {...this.props.alert} /></div>
-        <div id='collapse2' className='panel-collapse collapse w3-padding'>
-          <div className='panel-body'>
-            <MediaQuery maxDeviceWidth={736}>
-              <div>
-                <div className='navbar-header'>
-                  <button type='button' className='navbar-toggle w3-grey' w3-grey data-toggle='collapse' data-target='#contactUsNavbar'>
-                    <span className='icon-bar w3-white' />
-                    <span className='icon-bar w3-white' />
-                    <span className='icon-bar w3-white' />
-                  </button>
-                </div>
-                <div className='collapse navbar-collapse contact-us-mobile-details' id='contactUsNavbar'>
-                  <ul className='nav navbar-nav navbar-right contact-us'>
-                    <li><i className='fa fa-map-marker fa-fw w3-large w3-margin' /> Las Palmas de Gran Canaria</li>
-                    <li><i className='fa fa-envelope fa-fw w3-large w3-margin' /> Email: myfoundpet@mail.com</li>
-                  </ul>
-                </div>
-              </div>
-            </MediaQuery>
-            <MediaQuery minDeviceWidth={768}>
-              <div className='w3-section w3-center w3-opacity'>
-                <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
+      <div className='panel-body'>
+        <MediaQuery maxDeviceWidth={736}>
+          <div>
+            <div className='navbar-header'>
+              <button type='button' className='navbar-toggle w3-grey' w3-grey data-toggle='collapse' data-target='#contactUsNavbar'>
+                <span className='icon-bar w3-white' />
+                <span className='icon-bar w3-white' />
+                <span className='icon-bar w3-white' />
+              </button>
+            </div>
+            <div className='collapse navbar-collapse contact-us-mobile-details' id='contactUsNavbar'>
+              <ul className='nav navbar-nav navbar-right contact-us'>
+                <li><i className='fa fa-map-marker fa-fw w3-large w3-margin' /> Las Palmas de Gran Canaria</li>
+                <li><i className='fa fa-envelope fa-fw w3-large w3-margin' /> Email: myfoundpet@mail.com</li>
+              </ul>
+            </div>
+          </div>
+        </MediaQuery>
+        <MediaQuery minDeviceWidth={768}>
+          <div className='w3-section w3-center w3-opacity'>
+            <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
                 <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: myfoundpet@mail.com
               </div>
-            </MediaQuery>
-            <form onSubmit={this.handleSubmit}>
-              <p><input value={this.props.name} onChange={this.handleName} className={`w3-input w3-border ${this.state.nameInputColor}`} type='text' placeholder='Nombre' /></p>
-              <ValidationError message='El campo nombre es obligatorio' field={this.state.nameValidationMessage} />
+        </MediaQuery>
+        <form onSubmit={this.handleSubmit}>
+          <p><input value={this.props.name} onChange={this.handleName} className={`w3-input w3-border ${this.state.nameInputColor}`} type='text' placeholder='Nombre' /></p>
+          <ValidationError message='El campo nombre es obligatorio' field={this.state.nameValidationMessage} />
 
-              <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
-              <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
+          <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
+          <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
 
-              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Descríbenos la información que necesitas' /></p>
-              <ValidationError message='Este campo es necesario para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
+          <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Descríbenos la información que necesitas' /></p>
+          <ValidationError message='Este campo es necesario para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
 
-              <DogLoader />
-              <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
-            </form>
-          </div>
-        </div>
+          <DogLoader />
+          <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
+        </form>
       </div>
     )
   }
