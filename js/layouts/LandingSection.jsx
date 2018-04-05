@@ -15,6 +15,7 @@ const LandingSection = React.createClass({
                 <div className="body">
                     {children}
                 </div>
+                <hr class="divider" />
             </div>
         )
     }
