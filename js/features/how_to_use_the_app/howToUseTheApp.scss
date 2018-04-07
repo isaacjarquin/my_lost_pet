@@ -1,15 +1,15 @@
 .panel-body {
-    .about-us-image {
+    .how-to-use-image {
+        width: 50%;
+        float: left;
+    }   
+    .how-to-use-right {
         width: 90%;
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    .about-us-right {
-        width: 50%;
-        float: left;
-    }
-    .about-us-left{
+    .how-to-use-left {
         width: 50%;
         float: left;
     }
