@@ -93,7 +93,7 @@ class Landing extends React.Component {
     const url = this.props.urls.host
 
     return (
-      <div className='home-info'>
+      <div className='home-info landing-top-section'>
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container' id='home'>
           <img className='brand-image' id="bg" src='../../../public/mascotas_y_personas.jpg' alt='Pet home' />

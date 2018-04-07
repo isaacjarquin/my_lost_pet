@@ -7,6 +7,11 @@ if (process.env.WEBPACK_BUILD) {
 
 const SideBarNavigation = React.createClass({
     componentDidMount() {
+        $('.landing-top').click(() => {
+            $('html, body').animate({
+                scrollTop: $('.landing-top-section').offset().top
+            }, 1000);
+        });
         $('.add-pet').click(() => {
             $('html, body').animate({
                 scrollTop: $('.add-pet-section').offset().top
@@ -51,7 +56,8 @@ const SideBarNavigation = React.createClass({
                     <button type='button' onClick={this.closeSideNav}>
                         <span className="closebtn">&times;</span>
                     </button>
-                    <a href="#" className="add-pet">Encontraste una mascota perdida ?</a>
+                    <a href="#" className="landing-top">Inicio</a>
+                    <a href="#" className="add-pet">Añadir mascota</a>
                     <a href="#" className="about-us">Quienes somos</a>
                     <a href="#" className="how-to-use">Como usar la aplicacion</a>
                     <a href="#" className="contact">Contacto</a>
