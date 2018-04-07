@@ -106,9 +106,8 @@ class Landing extends React.Component {
               </ul>
             </div>
 
-            <h1 className='w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
-
             <div className='lost'>
+              <h1 className='w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
               <MediaQuery maxDeviceWidth={736}>
                 <h3 className='w3-text-white'>Encuéntralo con nosotros</h3>
               </MediaQuery>
