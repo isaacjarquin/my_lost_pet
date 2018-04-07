@@ -34,24 +34,20 @@ const SideBarNavigation = React.createClass({
         });
     },
     openSideNav() {
-        $('#mySidenav').addClass('sideNavWidth')
-        const newWidth = $(".app-container").width() - 300
-        $(".panel-group").width(newWidth)
+        $('#mySidenav').css('right', '0px');
     },
     closeSideNav() {
-        $('#mySidenav').removeClass('sideNavWidth')
-        const fullWidth = $(".app-container").width()
-        $(".panel-group").width(fullWidth)
+        $('#mySidenav').css('right', '-300px');
     },
     render() {
         return (
-            <nav className='navbar-inverse top-right'>
+            <nav className='top-right'>
                 <i class="material-icons w3-white"></i>
                 <button type='button' onClick={this.openSideNav}>
                     <span className="openNaveIcon">&#9776;</span>
                 </button>
 
-                <div id="mySidenav" className="sidenav">
+                <div id="mySidenav" className="sidenav sideNavWidth">
                     <button type='button' onClick={this.closeSideNav}>
                         <span className="closebtn">&times;</span>
                     </button>

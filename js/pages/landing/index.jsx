@@ -98,8 +98,8 @@ class Landing extends React.Component {
     return (
       <div className='home-info'>
         <TopNavigationBar {...this.props.social} hostUrl={url} />
-        <header className='w3-display-container w3-wide' id='home'>
-          <img className='w3-image brand-image' src='../../../public/mascotas_y_personas.jpg' alt='Fashion Blog' width='1600' height='1060' />
+        <header className='w3-display-container' id='home'>
+          <img className='brand-image' id="bg" src='../../../public/mascotas_y_personas.jpg' alt='Pet home' />
           <SideBarNavigation />
           <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
