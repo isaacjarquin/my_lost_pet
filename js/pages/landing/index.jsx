@@ -53,9 +53,6 @@ class Landing extends React.Component {
   componentDidMount () {
     const props = this.props
 
-    // const imageWidth = $(".app-container").height()
-    // $(".brand-image").height(imageWidth)
-
     $.ajax({
       url: '/api/envs',
       cache: true,
