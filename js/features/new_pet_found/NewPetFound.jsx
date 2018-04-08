@@ -30,10 +30,6 @@ const clearForm = (props) => {
   props.setImages([])
 }
 
-const closePanel = () => {
-  setTimeout(() => { $('#new-pet').removeClass('in') }, 100)
-}
-
 const clearAlert = (props) => {
   const alertData = {
     alert: {
@@ -232,7 +228,6 @@ class NewPetFound extends React.Component {
       $('.loader-container').hide()
       if (isSuccessfulResponse(response)) {
         clearForm(props)
-        closePanel()
         showSuccesfullMessage(props)
       } else {
         showUnSuccesfullMessage(props, response.status)
