@@ -12,6 +12,11 @@
   margin-top: -11px;
 }
 
+.new-pet-form {
+  display: flex;
+  justify-content: center;
+}
+
 .w3-border .validation-color {
   background-color: #ffe6e6;
 }
@@ -37,7 +42,7 @@
 
 .missing-pet-form {
   background-color: lightgrey;
-  width: 40%;
+  width: 800px;
   opacity: 0.6;
   border-radius: 5px;
   margin-bottom: 10px;

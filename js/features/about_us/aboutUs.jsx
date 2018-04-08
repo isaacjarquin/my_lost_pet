@@ -1,4 +1,5 @@
 const React = require('react')
+const AnimatedHusky = require('../animated_husky/animatedHusky')
 
 if (process.env.WEBPACK_BUILD) {
   require('./aboutUs.scss')
@@ -10,7 +11,7 @@ const ContactUs = React.createClass({
       <div className='panel-body'>
         <div className='w3-margin'>
           <div className="about-us-left">
-            <img className='about-us-image' id="bg" src='../../../public/dog-dogo.jpg' alt='Pet home' />
+            <AnimatedHusky />
           </div>
           <div className="about-us-right">
             <p>My lost pet es una organización sin fines de lucro compuesta por un grupo de voluntarios unidos por el amor hacia los animales y la convicción de que, juntos, podemos hacer mucho por ellos. </p>
