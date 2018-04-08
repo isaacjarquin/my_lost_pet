@@ -97,6 +97,7 @@ class Landing extends React.Component {
         <TopNavigationBar {...this.props.social} hostUrl={url} />
         <header className='w3-display-container' id='home'>
           <img className='brand-image' id="bg" src='../../../public/mascotas_y_personas.jpg' alt='Pet home' />
+          <h1 className='main-title w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
           <SideBarNavigation />
           <div className='pet-filter w3-display-left w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
@@ -105,14 +106,12 @@ class Landing extends React.Component {
                 <li><a href='#'>Buscando casa</a></li>
               </ul>
             </div>
-
             <div className='lost'>
-              <h1 className='w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
               <MediaQuery maxDeviceWidth={736}>
-                <h3 className='w3-text-white'>Encuéntralo con nosotros</h3>
+                <h3 className='w3-text-white form-title'>Encuéntralo con nosotros</h3>
               </MediaQuery>
               <MediaQuery minDeviceWidth={768}>
-                <h1 className='w3-text-white'>Encuéntralo con nosotros</h1>
+                <h1 className='w3-text-white form-title'>Encuéntralo con nosotros</h1>
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
@@ -142,7 +141,6 @@ class Landing extends React.Component {
                 <h6><button className='w3-btn w3-white w3-padding-medium w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
               </Link>
             </div>
-
             <div className='looking-for-home'>
               <h1 className='w3-text-white'>Dale un hogar</h1>
               <form>
