@@ -178,6 +178,7 @@ class NewPetFound extends React.Component {
     } else {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
+      $('.progress-bar_percentage').removeClass('displayNone')
 
       new Promise((resolve, reject) => {
         const props = this.props
