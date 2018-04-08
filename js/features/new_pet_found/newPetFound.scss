@@ -40,12 +40,22 @@
   opacity: 0.1 !important;
 }
 
+.missing-pet-form .title {
+  color: white;
+}
+
 .missing-pet-form {
-  background-color: lightgrey;
-  width: 800px;
-  opacity: 0.6;
+  background-color: dimgray;
+  width: 900px;
+  opacity: 0.8;
   border-radius: 5px;
   margin-bottom: 10px;
+
+  .missing-pet-button {
+    color: black;
+    background-color: orange;
+    opacity: 1;
+  }
 
   .panel-heading {
     border-color: white;

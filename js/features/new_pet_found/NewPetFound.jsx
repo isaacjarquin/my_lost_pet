@@ -347,7 +347,7 @@ class NewPetFound extends React.Component {
               </div>
             </div>
             <DogLoader percentage={this.props.percentage} />
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
           </form>
         </header>
       </div>
