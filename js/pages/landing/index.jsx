@@ -95,11 +95,11 @@ class Landing extends React.Component {
     return (
       <div className='home-info landing-top-section'>
         <TopNavigationBar {...this.props.social} hostUrl={url} />
-        <header className='w3-display-container' id='home'>
-          <img className='brand-image' id="bg" src='../../../public/mascotas_y_personas.jpg' alt='Pet home' />
+
+        <div className="landing-image" id='home'>
           <h1 className='main-title w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
           <SideBarNavigation />
-          <div className='pet-filter w3-display-left w3-padding-medium'>
+          <div className='pet-filter w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
               <ul className='w3-navbar w3-black w3-hide-small small-nav-menu'>
                 <li className='active'><a href='#'>Perdidos</a></li>
@@ -149,13 +149,13 @@ class Landing extends React.Component {
                   dropDownOptions={dropDownOptions}
                   dropDownTitle={'tipo de mascota'}
                   setSelectFilter={this.props.setSelectFilter}
-                  />
+                />
               </form>
               <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
             </div>
 
           </div>
-        </header>
+        </div>
 
         <LandingSection title={"¿ Encontraste una mascota perdida ?"} target={"add-pet-section"} >
           <NewPetFound

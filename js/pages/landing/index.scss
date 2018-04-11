@@ -18,6 +18,16 @@ p.form-introduction {
   }
 }
 
+.landing-image {
+  background: url(/public/mascotas_y_personas.jpg);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .landing-background {
   min-height: 100%;
   min-width: 1024px;
@@ -80,7 +90,13 @@ p.form-introduction {
 
 .pet-filter {
   margin-left: 10px;
-  margin-right: 10px
+  margin-right: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
 
   input {
     height: 38px;
