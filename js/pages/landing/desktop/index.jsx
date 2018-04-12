@@ -97,7 +97,7 @@ class Desktop extends React.Component {
         <TopNavigationBar {...this.props.social} hostUrl={url} />
 
         <div className="landing-image" id='home'>
-          <h1 className='main-title w3-jumbo w3-text-white w3-hide-small'><b>My lost pet</b></h1>
+          <h1 className='main-title w3-jumbo w3-hide-small'><b>My lost pet</b></h1>
           <SideBarNavigation />
           <div className='pet-filter w3-padding-medium'>
             <div className='small-nav-menu displayNone'>
