@@ -260,7 +260,7 @@ class NewPetFoundMobile extends React.Component {
         ]
 
         return (
-            <div className='new-pet-form-mobile'>
+            <div className='missing-pet-form-mobile'>
                 <button data-toggle='collapse' data-target='#new-pet' className='main-toggle-button large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
                 <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
                 <header id='new-pet' className='collapse w3-container w3-center w3-padding w3-light-grey'>
