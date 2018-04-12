@@ -7,7 +7,7 @@ if (process.env.WEBPACK_BUILD) {
 class AnimatedHusky extends React.Component {
   render () {
     return (
-      <div>
+      <div className='animated-husky'>
         <div className='husky'>
           <div className='mane'>
             <div className='coat' />

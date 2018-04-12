@@ -1,0 +1,148 @@
+.looking-for-home {
+  display: none;
+}
+
+p.form-introduction {
+  margin: 15px 0;
+}
+
+.missing-pet-form {
+  .file-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-weight: bold;
+    color: grey;
+  }
+}
+
+.landing-image {
+  background: url(/public/mascotas_y_personas.jpg);
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.landing-background {
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.large-button {
+  width: 100%;
+  border-width: 1px;
+}
+
+.small-nav-menu {
+  ul.w3-navbar.w3-black.w3-hide-small {
+    background-color: transparent !important;
+
+    li {
+      color: black;
+      margin-left: 2px;
+      background-color: white;
+      opacity: 0.20;
+    }
+
+    li.active {
+      opacity: 0.50;
+    }
+  }
+}
+
+.lost {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+  opacity: 0.6;
+  background-color: dimgrey;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  .find-a-pet-button {
+    background-color: orange;
+    color: black;
+  }
+
+  button {
+    border-radius: 4px;
+    height: 50px;
+    width: 23%;
+  }
+}
+
+.pet-filter {
+  margin-left: 10px;
+  margin-right: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: auto;
+
+  input {
+    height: 38px;
+    border-radius: 4px;
+  }
+
+  .pet-type {
+    select.form-control {
+      border-radius: 0;
+    }
+  }
+}
+
+.landing-select-filter {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  height: 50px;
+  float: left;
+  width: 24%;
+}
+
+.form-title {
+  margin-left: 10px;
+}
+
+.main-title {
+  margin: 0;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.panel-group {
+   margin-bottom: 0;
+}
+
+@media (max-width:736px) {
+  .panel-body {
+    padding: 0;
+  }
+}
+
+.home-info {
+  img {
+    margin-bottom: -32px;
+  }
+}
+

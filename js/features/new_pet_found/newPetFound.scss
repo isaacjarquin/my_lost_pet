@@ -12,6 +12,11 @@
   margin-top: -11px;
 }
 
+.new-pet-form {
+  display: flex;
+  justify-content: center;
+}
+
 .w3-border .validation-color {
   background-color: #ffe6e6;
 }
@@ -35,12 +40,46 @@
   opacity: 0.1 !important;
 }
 
+.missing-pet-form .title {
+  color: white;
+}
+
 .missing-pet-form {
-  border: 1px solid lightgrey;
+  background-color: dimgray;
+  width: 900px;
+  opacity: 0.8;
+  border-radius: 5px;
   margin-bottom: 10px;
+
+  form {
+    input {
+      height: 50px;
+      border-radius: 4px;
+    }
+
+    select {
+      height: 50px;
+      width: 870px;
+      margin-left: 0;
+    }
+
+    textarea {
+      height: 120px;
+      border-radius: 4px;
+    }
+  }
+  
+  .missing-pet-button {
+    color: black;
+    background-color: orange;
+    opacity: 1;
+    border-radius: 4px;
+    height: 60px;
+  }
 
   .panel-heading {
     border-color: white;
+    border-radius: 4px;
   }
 
   .drop-zone-panel {

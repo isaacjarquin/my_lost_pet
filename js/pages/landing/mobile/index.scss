@@ -11,7 +11,6 @@ p.form-introduction {
     width: 100%;
     margin-bottom: 10px;
   }
-
   .title {
     font-weight: bold;
     color: grey;
@@ -26,14 +25,12 @@ p.form-introduction {
 .small-nav-menu {
   ul.w3-navbar.w3-black.w3-hide-small {
     background-color: transparent !important;
-
     li {
       color: black;
       margin-left: 2px;
       background-color: white;
       opacity: 0.20;
     }
-
     li.active {
       opacity: 0.50;
     }
@@ -47,13 +44,10 @@ p.form-introduction {
 }
 
 .pet-filter {
-  margin-left: 10px;
-
   input {
     height: 38px;
     border-radius: 4px;
   }
-
   .pet-type {
     select.form-control {
       height: 38px;
@@ -62,16 +56,21 @@ p.form-introduction {
   }
 }
 
-.landing-select-filter {
+.landing-select-filter-mobile {
   margin-bottom: 10px;
 }
 
+.landing-button-mobile {
+  width: 100%;
+  border-radius: 4px;
+}
+
 .panel-group {
-   margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 @media (max-width:736px) {
   .panel-body {
-    padding: 0;
+    padding: 16px;
   }
 }

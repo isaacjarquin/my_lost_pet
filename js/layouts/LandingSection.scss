@@ -1,0 +1,34 @@
+.landing-section {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    hr.divider {
+        height: 10px;
+        border: 0;
+        box-shadow: 0 10px 10px -10px #8c8b8b inset;
+        margin-top: 20px;
+    }
+}
+
+.landing-section.add-pet-section {
+    h1 {
+        padding: 30px;
+        color: white;
+        font-size: 30px;
+        margin-top: 0;
+    }
+}
+
+.add-pet-section {
+    background: rgba(193, 158, 103, 1);
+    background: -moz-linear-gradient(left, rgba(193, 158, 103, 1) 0%, rgba(182, 141, 76, 0.89) 27%, rgba(233, 212, 179, 0.6) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(193, 158, 103, 1)), color-stop(27%, rgba(182, 141, 76, 0.89)), color-stop(100%, rgba(233, 212, 179, 0.6)));
+    background: -webkit-linear-gradient(left, rgba(193, 158, 103, 1) 0%, rgba(182, 141, 76, 0.89) 27%, rgba(233, 212, 179, 0.6) 100%);
+    background: -o-linear-gradient(left, rgba(193, 158, 103, 1) 0%, rgba(182, 141, 76, 0.89) 27%, rgba(233, 212, 179, 0.6) 100%);
+    background: -ms-linear-gradient(left, rgba(193, 158, 103, 1) 0%, rgba(182, 141, 76, 0.89) 27%, rgba(233, 212, 179, 0.6) 100%);
+    background: linear-gradient(to right, rgba(193, 158, 103, 1) 0%, rgba(182, 141, 76, 0.89) 27%, rgba(233, 212, 179, 0.6) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c19e67', endColorstr='#e9d4b3', GradientType=1);
+    background-image: url(/public/dog-and-cat.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -160,16 +160,12 @@ class ContactUs extends React.Component {
   }
   render () {
     return (
-      <div className='panel panel-default'>
-        <div className='panel-heading'>
-          <h4 className='panel-title w3-center'>
-            <a data-toggle='collapse' data-parent='#accordion' href='#collapse2'>
-            Contacto</a>
-          </h4>
-        </div>
-        <div className={this.props.alert.contactUs} ><Alerts {...this.props.alert} /></div>
-        <div id='collapse2' className='panel-collapse collapse w3-padding'>
-          <div className='panel-body'>
+      <div className='panel-body'>
+        <div className='w3-margin'>
+          <div className="contact-us-left">
+            <img className='contact-us-image' id="bg" src='../../../public/dog-and-cat.png' alt='Pet home' />
+          </div>
+          <div className="contact-us-right">
             <MediaQuery maxDeviceWidth={736}>
               <div>
                 <div className='navbar-header'>

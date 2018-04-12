@@ -30,10 +30,6 @@ const clearForm = (props) => {
   props.setImages([])
 }
 
-const closePanel = () => {
-  setTimeout(() => { $('#new-pet').removeClass('in') }, 100)
-}
-
 const clearAlert = (props) => {
   const alertData = {
     alert: {
@@ -182,6 +178,7 @@ class NewPetFound extends React.Component {
     } else {
       $('#details-button').addClass('disable-button')
       $('.loader-container').show()
+      $('.progress-bar_percentage').removeClass('displayNone')
 
       new Promise((resolve, reject) => {
         const props = this.props
@@ -232,7 +229,6 @@ class NewPetFound extends React.Component {
       $('.loader-container').hide()
       if (isSuccessfulResponse(response)) {
         clearForm(props)
-        closePanel()
         showSuccesfullMessage(props)
       } else {
         showUnSuccesfullMessage(props, response.status)
@@ -261,9 +257,8 @@ class NewPetFound extends React.Component {
 
     return (
       <div className='new-pet-form'>
-        <button data-toggle='collapse' data-target='#new-pet' className='large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
         <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
-        <header id='new-pet' className='missing-pet-form collapse w3-container w3-center w3-padding w3-light-grey'>
+        <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
           <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
           <form onSubmit={this.handleSubmit}>
             <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
@@ -348,7 +343,7 @@ class NewPetFound extends React.Component {
               </div>
             </div>
             <DogLoader percentage={this.props.percentage} />
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
           </form>
         </header>
       </div>
