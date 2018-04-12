@@ -15,7 +15,7 @@ class Landing extends React.Component {
         <MediaQuery minDeviceWidth={768}>
           <Desktop props={this.props} />
         </MediaQuery>
-        <MediaQuery maxDeviceWidth={767}>
+        <MediaQuery maxDeviceWidth={736}>
           <Mobile props={this.props} />
         </MediaQuery>
       </div>
