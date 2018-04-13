@@ -242,4 +242,3 @@ Mobile.propTypes = {
 }
 
 module.exports = connector(Mobile)
-
