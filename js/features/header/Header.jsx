@@ -1,6 +1,7 @@
 const React = require('react')
 const Jumbotron = require('./Jumbotron')
 const Navbar = require('./Navbar')
+const MobileNavbar = require('./MobileNavbar')
 const MobileHeader = require('./MobileHeader')
 const TopNavigationBar = require('../navigation/topNavigationBar')
 const { string, func, object } = React.PropTypes
@@ -19,7 +20,20 @@ const Header = React.createClass({
     social: object.isRequired,
     urls: object.isRequired
   },
-  displayNavbar ({location, setSearchTerm, searchTerm, setSelectFilter, pets, selectFilter, locationFilter}) {
+  displayMobileNavbar ({location, setSearchTerm, searchTerm, setSelectFilter, pets, selectFilter, locationFilter}) {
+    if (location === '/search') {
+      return <MobileNavbar
+        setSearchTerm={setSearchTerm}
+        setSelectFilter={setSelectFilter}
+        searchTerm={searchTerm}
+        locationFilter={locationFilter}
+        selectFilter={selectFilter}
+        pets={pets} />
+    } else {
+      return null
+    }
+  },
+  displayDesktopNavbar({ location, setSearchTerm, searchTerm, setSelectFilter, pets, selectFilter, locationFilter }) {
     if (location === '/search') {
       return <Navbar
         setSearchTerm={setSearchTerm}
@@ -38,7 +52,8 @@ const Header = React.createClass({
         <MediaQuery maxDeviceWidth={736}><MobileHeader {...this.props.social} hostUrl={this.props.urls.host} /></MediaQuery>
         <TopNavigationBar {...this.props.social} hostUrl={this.props.urls.host} />
         <Jumbotron />
-        {this.displayNavbar(this.props)}
+        <MediaQuery minDeviceWidth={768}>{this.displayDesktopNavbar(this.props)}</MediaQuery>
+        <MediaQuery maxDeviceWidth={736}>{this.displayMobileNavbar(this.props)}</MediaQuery>
       </header>
     )
   }
