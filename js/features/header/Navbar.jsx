@@ -2,6 +2,10 @@ const React = require('react')
 const Dropdown = require('../dropdown/Dropdown')
 const { func, string, arrayOf, object } = React.PropTypes
 
+if (process.env.WEBPACK_BUILD) {
+  require('./navbar.scss')
+}
+
 const Navbar = React.createClass({
   propTypes: {
     searchTerm: string,
@@ -35,8 +39,8 @@ const Navbar = React.createClass({
       {value: 'gigante', id: 4}
     ]
     return (
-      <nav className='navbar navbar-inverse'>
-        <div className='container-fluid'>
+      <nav>
+        <div className='search-result-filter'>
           <div className='navbar-header'>
             <button type='button' className='navbar-toggle w3-dark-grey search-filter' data-toggle='collapse' data-target='#myNavbar'>
               <span className='icon-bar w3-white' />
@@ -45,7 +49,7 @@ const Navbar = React.createClass({
             </button>
           </div>
           <div className='collapse navbar-collapse' id='myNavbar'>
-            <ul className='nav navbar-nav navbar-right'>
+            <ul className='nav navbar-nav'>
               <li><input value={this.props.locationFilter} onChange={this.handleLocationSearchTermEvent} className='form-control pet-location' type='text' placeholder='Ciudad/Municipio' /></li>
               <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
               <li>
