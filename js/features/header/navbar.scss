@@ -1,0 +1,22 @@
+.search-result-filter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1100px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .form-control {
+        width: 230px;
+        height: 50px;
+    }
+
+    .navbar-collapse {
+        padding-left: 0;
+    }
+}
+
+.header .navbar {
+    margin-bottom: 0;
+}
