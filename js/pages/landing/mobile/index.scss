@@ -55,13 +55,50 @@ p.form-introduction {
     }
   }
 }
+.main-toggle-button {
+  margin-top: 0;
+}
+
+.landing-image-mobile {
+  background: url(/public/mascotas_y_personas.jpg);
+  width: 100%;
+  height: 93vh;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#new-pet {
+  .w3-input {
+    height: 50px;
+  }
+
+  .panel-default {
+    height: 50px;
+  }
+
+  .panel {
+    margin-bottom: 20px;
+  }
+
+  button {
+    height: 60px;
+  }
+
+  .panel-title {
+    margin-top: 6px;
+  }
+}
 
 .landing-select-filter-mobile {
   margin-bottom: 10px;
+  height: 50px;
 }
 
 .landing-button-mobile {
   width: 100%;
+  height: 60px;
   border-radius: 4px;
 }
 
