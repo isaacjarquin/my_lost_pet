@@ -340,6 +340,7 @@ class NewPetFound extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className='arrow-down'></div>
               </div>
             </div>
             <DogLoader percentage={this.props.percentage} />
