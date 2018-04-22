@@ -163,9 +163,6 @@ class ContactUs extends React.Component {
       <div className='panel-body'>
         <div className='w3-margin'>
           <div className="contact-us-left">
-            <img className='contact-us-image' id="bg" src='../../../public/dog-and-cat.png' alt='Pet home' />
-          </div>
-          <div className="contact-us-right">
             <MediaQuery maxDeviceWidth={736}>
               <div>
                 <div className='navbar-header'>
@@ -203,6 +200,7 @@ class ContactUs extends React.Component {
               <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
             </form>
           </div>
+          <div className="contact-us-right"></div>
         </div>
       </div>
     )
