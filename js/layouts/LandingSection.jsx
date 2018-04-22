@@ -15,7 +15,7 @@ const LandingSection = React.createClass({
                 <div className="body">
                     {children}
                 </div>
-                <hr class="divider" />
+                { target === 'about-us-section' && <hr class="divider" /> }
             </div>
         )
     }

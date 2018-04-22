@@ -163,9 +163,6 @@ class ContactUs extends React.Component {
       <div className='panel-body'>
         <div className='w3-margin'>
           <div className="contact-us-left">
-            <img className='contact-us-image' id="bg" src='../../../public/dog-and-cat.png' alt='Pet home' />
-          </div>
-          <div className="contact-us-right">
             <MediaQuery maxDeviceWidth={736}>
               <div>
                 <div className='navbar-header'>
@@ -184,7 +181,7 @@ class ContactUs extends React.Component {
               </div>
             </MediaQuery>
             <MediaQuery minDeviceWidth={768}>
-              <div className='w3-section w3-center w3-opacity'>
+              <div className='w3-section w3-center map-title'>
                 <i className='fa fa-map-marker fa-fw w3-xxlarge w3-margin' /> Las Palmas de Gran Canaria, España
                 <i className='fa fa-envelope fa-fw w3-xxlarge w3-margin' /> Email: myfoundpet@mail.com
               </div>
@@ -196,13 +193,14 @@ class ContactUs extends React.Component {
               <p><input value={this.props.email} onChange={this.handleEmail} className={`w3-input w3-border ${this.state.emailInputColor}`} type='email' placeholder='e-mail' /></p>
               <ValidationError message='El campo email es obligatorio' field={this.state.emailValidationMessage} />
 
-              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-border ${this.state.messageInputColor}`} placeholder='Descríbenos la información que necesitas' /></p>
+              <p><textarea value={this.props.message} onChange={this.handleMessage} className={`w3-input w3-input-textarea w3-border ${this.state.messageInputColor}`} placeholder='Descríbenos la información que necesitas' /></p>
               <ValidationError message='Este campo es necesario para ayudarnos a enternder tus dudas' field={this.state.messageValidationMessage} />
 
               <DogLoader />
-              <button type='submit' className='w3-btn-block w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
+              <button type='submit' className='contact-us-button w3-btn-block w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' /> Enviar mis datos</button>
             </form>
           </div>
+          <div className="contact-us-right"></div>
         </div>
       </div>
     )
