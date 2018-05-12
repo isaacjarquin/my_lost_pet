@@ -263,7 +263,7 @@ class NewPetFound extends React.Component {
 
     return (
       <div className='new-pet-form'>
-        <div className="new-pet-form_left">
+        <div className="missing-pet-form new-pet-form_left">
           <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
             <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
             <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
