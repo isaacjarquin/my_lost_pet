@@ -15,6 +15,18 @@
 .new-pet-form {
   display: flex;
   justify-content: center;
+
+  .new-pet-form_right {
+    width: 50%;
+    float: left;
+    padding: 10px;
+    margin-left: 10px;
+  }
+
+  .new-pet-form_left {
+    width: 50%;
+    float: left;
+  }
 }
 
 .w3-border .validation-color {
@@ -46,7 +58,7 @@
 
 .missing-pet-form {
   background-color: dimgray;
-  width: 900px;
+  width: 100%;
   opacity: 0.8;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -59,7 +71,7 @@
 
     select {
       height: 50px;
-      width: 870px;
+      width: 100%;
       margin-left: 0;
     }
 
