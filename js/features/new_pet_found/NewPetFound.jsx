@@ -4,6 +4,7 @@ import request from 'superagent'
 
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import MapLocationSearchInput from '../map_location_search_input/MapLocationSearchInput'
 
 const React = require('react')
 const Alerts = require('../alerts/alerts')
@@ -106,7 +107,7 @@ class NewPetFound extends React.Component {
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
-    this.state = { startDate: moment() }
+    this.state = { startDate: moment(), markers: [] }
     this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
   }
 
@@ -295,6 +296,8 @@ class NewPetFound extends React.Component {
                 <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
               </MediaQuery>
 
+              <MapLocationSearchInput />
+
               <select className={`form-control landing-select-filter ${this.props.inputColor.autonomousComunity}`} onChange={this.handleComunidadesFilter}>
                 <option selected='selected' disabled>Comunidad Autónoma</option>
                 <option value='default-value' key={0} />
@@ -359,12 +362,16 @@ class NewPetFound extends React.Component {
           <GoogleMapReact
             defaultCenter={{ lat: 40.7446790, lng: -73.9485420 }}
             defaultZoom={11}
-          >
-            <Marker
-              lat={40.7446790}
-              lng={-73.9485420}
-              icon={<IoIosPaw size={25} color={"red"} />}
-            />
+          > 
+            {[].map((marker) => {
+              return (
+                <Marker
+                  lat={marker.lat}
+                  lng={marker.lng}
+                  icon={<IoIosPaw size={25} color={"red"} />}
+                />
+              )
+            }) }
           </GoogleMapReact>
         </div>
       </div>
