@@ -19,9 +19,10 @@ export default class MapLocationSearchInput extends React.Component {
     }
 
     handleSelect (address) {
+        const { handleLocationInput } = this.props
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', latLng))
+            .then(latLng => handleLocationInput(latLng))
             .catch(error => console.error('Error', error))
     }
 

@@ -106,10 +106,11 @@ class NewPetFound extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
+    this.handleLocationInput = this.handleLocationInput.bind(this)
 
     this.state = {
       startDate: moment(),
-      markers: [{ lat: 41.3850639, lng: 2.1734034999999494}],
+      markers: [],
       map: {
         lat: 40.4167754,
         lng: -3.7037901999999576,
@@ -117,6 +118,21 @@ class NewPetFound extends React.Component {
       }
     }
     this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
+  }
+
+  handleLocationInput(marker) {
+    this.setState({
+      markers: [marker],
+      map: {
+        lat: marker.lat,
+        lng: marker.lng,
+        zoom: 12
+      }
+    })
+  }
+
+  onGoogleMapLoad({ props: { map } }) {
+    this._map = map;
   }
 
   handleChange (date) {
@@ -304,7 +320,7 @@ class NewPetFound extends React.Component {
                 <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
               </MediaQuery>
 
-              <MapLocationSearchInput />
+              <MapLocationSearchInput handleLocationInput={this.handleLocationInput}/>
               <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
               <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>
@@ -351,6 +367,8 @@ class NewPetFound extends React.Component {
           <GoogleMapReact
             defaultCenter={{ lat: this.state.map.lat, lng: this.state.map.lng }}
             defaultZoom={this.state.map.zoom}
+            zoom={this.state.map.zoom}
+            center={{ lat: this.state.map.lat, lng: this.state.map.lng }}
           > 
             {this.state.markers.map((marker) => {
               return (
