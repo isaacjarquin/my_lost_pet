@@ -297,25 +297,6 @@ class NewPetFound extends React.Component {
               </MediaQuery>
 
               <MapLocationSearchInput />
-
-              <select className={`form-control landing-select-filter ${this.props.inputColor.autonomousComunity}`} onChange={this.handleComunidadesFilter}>
-                <option selected='selected' disabled>Comunidad Autónoma</option>
-                <option value='default-value' key={0} />
-                {this.props.comunidades.map((option) => (
-                  <option value={option.value} key={option.id}>{option.value}</option>
-                ))}
-              </select>
-              <ValidationError message='Debes seleccionar una Comunidad Autónoma' field={this.props.validations.autonomousComunity} />
-
-              <select className='form-control landing-select-filter' onChange={this.handleProvincesFilter}>
-                <option selected='selected' disabled>Provincia</option>
-                <option value='default-value' key={0} />
-                {this.props.provincias.map((option) => (
-                  <option value={option.value} key={option.id}>{option.value}</option>
-                ))}
-              </select>
-
-              <p><input value={this.props.location} onChange={this.handlePetLocation} className={`w3-input w3-border ${this.props.inputColor.location}`} type='text' placeholder='Ciudad/Municipio' /></p>
               <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
               <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>

@@ -1,6 +1,10 @@
 import React from 'react'
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete'
 
+if (process.env.WEBPACK_BUILD) {
+    require('./mapLocationSearchInput.scss')
+}
+
 export default class MapLocationSearchInput extends React.Component {
     constructor(props) {
         super(props);
@@ -32,8 +36,8 @@ export default class MapLocationSearchInput extends React.Component {
                     <div>
                         <input
                             {...getInputProps({
-                                placeholder: 'Search Places ...',
-                                className: 'location-search-input'
+                                placeholder: 'Ciudad/Municipio',
+                                className: 'location-search-input w3-input w3-border map-location'
                             }) }
                         />
                         <div className="autocomplete-dropdown-container">
