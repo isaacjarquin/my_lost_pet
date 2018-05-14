@@ -107,7 +107,15 @@ class NewPetFound extends React.Component {
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
-    this.state = { startDate: moment(), markers: [] }
+    this.state = {
+      startDate: moment(),
+      markers: [{ lat: 41.3850639, lng: 2.1734034999999494}],
+      map: {
+        lat: 40.4167754,
+        lng: -3.7037901999999576,
+        zoom: 5
+      }
+    }
     this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
   }
 
@@ -341,10 +349,10 @@ class NewPetFound extends React.Component {
         </div>
         <div className="missing-pet-form new-pet-form_right">
           <GoogleMapReact
-            defaultCenter={{ lat: 40.7446790, lng: -73.9485420 }}
-            defaultZoom={11}
+            defaultCenter={{ lat: this.state.map.lat, lng: this.state.map.lng }}
+            defaultZoom={this.state.map.zoom}
           > 
-            {[].map((marker) => {
+            {this.state.markers.map((marker) => {
               return (
                 <Marker
                   lat={marker.lat}
