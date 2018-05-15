@@ -165,8 +165,9 @@ class NewPetFound extends React.Component {
     this.props.setPetFoundDate(event.target.value)
   }
 
-  handlePetLocation (event) {
-    this.props.setPetLocation(event.target.value)
+  handlePetLocation (address) {
+    console.log('address will see: ', address)
+    this.props.setPetLocation(address)
   }
   handlePetDescription (event) {
     this.props.setPetDescription(event.target.value)
@@ -187,7 +188,6 @@ class NewPetFound extends React.Component {
 
   hasMissingValues () {
     return [
-      this.props.autonomousComunity,
       this.props.founderName,
       this.props.founderEmail,
       this.props.petType,
@@ -320,7 +320,10 @@ class NewPetFound extends React.Component {
                 <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
               </MediaQuery>
 
-              <MapLocationSearchInput handleLocationInput={this.handleLocationInput}/>
+              <MapLocationSearchInput
+                handleLocationInput={this.handleLocationInput}
+                handlePetLocation={this.handlePetLocation}
+              />
               <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
               <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>

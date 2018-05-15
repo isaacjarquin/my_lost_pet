@@ -19,9 +19,13 @@
   .new-pet-form_right {
     width: 50%;
     float: left;
-    padding: 15px;
+    padding: 27px 15px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+  }
+
+  .new-pet-form_right > div > div {
+    border-radius: 5px;
   }
 
   .new-pet-form_left {
