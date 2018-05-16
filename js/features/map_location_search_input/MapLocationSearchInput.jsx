@@ -20,6 +20,7 @@ export default class MapLocationSearchInput extends React.Component {
 
     handleSelect (address) {
         const { handleLocationInput, handlePetLocation } = this.props
+        $('.loader-container').show()
 
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
