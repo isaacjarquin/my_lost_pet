@@ -1,5 +1,8 @@
 const React = require('react')
 import GoogleMapReact from 'google-map-react';
+import IoIosPaw from 'react-icons/lib/io/ios-paw';
+
+const Marker = ({ icon }) => <div>{icon}</div>;
 
 const Jumbotron = React.createClass({
   render () {
@@ -16,6 +19,15 @@ const Jumbotron = React.createClass({
           zoom={map.zoom}
           center={{ lat: map.lat, lng: map.lng }}
         >
+          {this.props.pets.map((pet) => {
+            return (
+              <Marker
+                lat={pet.id}
+                lng={3.25}
+                icon={<IoIosPaw size={25} color={"red"} />}
+              />
+            )
+          })}
         </GoogleMapReact>
       </div>
     )
