@@ -17,9 +17,6 @@ const Jumbotron = React.createClass({
           center={{ lat: map.lat, lng: map.lng }}
         >
         </GoogleMapReact>
-        <div className='container text-center brand-name'>
-          <h1>My Lost Pet</h1>
-        </div>
       </div>
     )
   }
