@@ -11,6 +11,8 @@ const Jumbotron = React.createClass({
       lng: -3.7037901999999576,
       zoom: 5
     }
+    const { pets } = this.props
+    
     return (
       <div className='jumbotron'>
         <GoogleMapReact
@@ -19,7 +21,7 @@ const Jumbotron = React.createClass({
           zoom={map.zoom}
           center={{ lat: map.lat, lng: map.lng }}
         >
-          {this.props.pets.map((pet) => {
+          {pets.map((pet) => {
             return (
               <Marker
                 lat={pet.id}
