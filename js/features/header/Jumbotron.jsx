@@ -1,18 +1,26 @@
 const React = require('react')
 import GoogleMapReact from 'google-map-react';
-import IoIosPaw from 'react-icons/lib/io/ios-paw';
+import FaMapMarker from 'react-icons/lib/fa/map-marker';
 
 const Marker = ({ icon }) => <div>{icon}</div>;
 
-const Jumbotron = React.createClass({
-  render () {
-    const map = {
-      lat: 40.4167754,
-      lng: -3.7037901999999576,
-      zoom: 5
+class Jumbotron extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      map: {
+        lat: 40.4167754,
+        lng: -3.7037901999999576,
+        zoom: 3
+      }
     }
+  }
+
+  render() {
+    const { map } = this.state
     const { pets } = this.props
-    
+
     return (
       <div className='jumbotron'>
         <GoogleMapReact
@@ -24,9 +32,9 @@ const Jumbotron = React.createClass({
           {pets.map((pet) => {
             return (
               <Marker
-                lat={pet.id}
-                lng={3.25}
-                icon={<IoIosPaw size={25} color={"red"} />}
+                lat={pet.lat}
+                lng={pet.lng}
+                icon={<FaMapMarker size={25} color={"orange"} />}
               />
             )
           })}
@@ -34,6 +42,6 @@ const Jumbotron = React.createClass({
       </div>
     )
   }
-})
+}
 
 module.exports = Jumbotron
