@@ -165,9 +165,8 @@ class NewPetFound extends React.Component {
     this.props.setPetFoundDate(event.target.value)
   }
 
-  handlePetLocation (address) {
-    console.log('address will see: ', address)
-    this.props.setPetLocation(address)
+  handlePetLocation(address, latLng) {
+    this.props.setPetLocation(address, latLng)
   }
   handlePetDescription (event) {
     this.props.setPetDescription(event.target.value)
@@ -244,6 +243,8 @@ class NewPetFound extends React.Component {
       autonomous_comunity: this.props.autonomousComunity,
       province: this.props.province,
       location: this.props.location,
+      latitud: this.props.latitud,
+      longitud: this.props.longitud,
       info: this.props.description,
       image: secure_url
     }
