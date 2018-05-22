@@ -25,15 +25,6 @@ class Jumbotron extends React.Component {
         zoom={2}
         center={{ lat: 40.4167754, lng: -3.7037901999999576 }}
       >
-        {pets.map((pet) => {
-          return (
-            <Marker
-              lat={pet.latitud}
-              lng={pet.longitud}
-              icon={<FaMapMarker size={25} color={"orange"} />}
-            />
-          )
-        })}
       </GoogleMapReact>
     )
   }
