@@ -4,18 +4,18 @@
   .loader-container {
     display: none;
     position: relative;
-    height: 124px;
+    height: 100px;
     width: 200px;
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
     margin-left: auto;
     margin-right: auto;
     z-index: 10;
   }
   .progress-bar_percentage {
-    margin-top: 64px;
-    margin-right: 13px;
+    margin-top: -8px;
     position: absolute;
     left: 0;
     right: 0;
@@ -27,7 +27,7 @@
   .circle-progress-bar {
     width: 140px;
     right: 23px;
-    top: -35px;
+    top: -6px;
   }
 
   .loader-container svg{
@@ -44,7 +44,6 @@
 
   .loader-dog {
     left:49px;
-    bottom: 31px;
     width: 120px;
     height:auto;
   }
