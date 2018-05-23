@@ -96,6 +96,7 @@ class ContactDetailsPanel extends React.Component {
   }
 
   handleName (event) {
+    $('.loader-container').show()
     this.props.setOwnerName(event.target.value)
     this.setState({nameValidationMessage: 'displayNone', nameInputColor: ''})
   }
