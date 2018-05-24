@@ -3,6 +3,10 @@
     color: white;
   }
 
+  .header .navbar {
+    margin-bottom: 50px
+  }
+
   .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
     padding: 0;
   }
@@ -22,6 +26,8 @@
   }
 
   .movile-header {
+    margin-bottom: 0 !important;
+
     .fa {
       margin: 16px 8px;
       color: white;
