@@ -35,33 +35,12 @@ const MobileNavbar = React.createClass({
             { value: 'gigante', id: 4 }
         ]
         return (
-            <nav className='navbar navbar-inverse'>
-                <div className='container-fluid'>
-                    <div className='navbar-header'>
-                        <button type='button' className='navbar-toggle w3-dark-grey search-filter' data-toggle='collapse' data-target='#myNavbar'>
-                            <span className='icon-bar w3-white' />
-                            <span className='icon-bar w3-white' />
-                            <span className='icon-bar w3-white' />
-                        </button>
-                    </div>
-                    <div className='collapse navbar-collapse' id='myNavbar'>
-                        <ul className='nav navbar-nav navbar-right'>
-                            <li><input value={this.props.locationFilter} onChange={this.handleLocationSearchTermEvent} className='form-control pet-location' type='text' placeholder='Ciudad/Municipio' /></li>
-                            <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
-                            <li>
-                                <Dropdown
-                                    dropDownOptions={dropDownOptions}
-                                    dropDownTitle={'Tamaño'}
-                                    setSelectFilter={this.props.setSelectFilter}
-                                    searchTerm={this.props.searchTerm}
-                                    locationFilter={this.props.locationFilter}
-                                    pets={this.props.pets}
-                                />
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <div className='mobile-search-filters'>
+                <ul className='nav navbar-nav navbar-right'>
+                    <li><input value={this.props.locationFilter} onChange={this.handleLocationSearchTermEvent} className='form-control pet-location' type='text' placeholder='Ciudad/Municipio' /></li>
+                    <li><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='form-control pet-location' type='text' placeholder='Raza' /></li>
+                </ul>
+            </div>
         )
     }
 })

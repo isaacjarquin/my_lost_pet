@@ -1,6 +1,7 @@
 const React = require('react')
 import GoogleMapReact from 'google-map-react';
 import FaMapMarker from 'react-icons/lib/fa/map-marker';
+var MediaQuery = require('react-responsive')
 
 const Marker = ({ icon }) => <div>{icon}</div>;
 
@@ -55,9 +56,11 @@ class Jumbotron extends React.Component {
     const { pets } = this.props
 
     return (
-      <div className='jumbotron'>
-        { pets.length > 0 ? this.renderMapWithResults() : this.renderEmptyMap() }
-      </div>
+      <MediaQuery minDeviceWidth={768}>
+        <div className='jumbotron'>
+            { pets.length > 0 ? this.renderMapWithResults() : this.renderEmptyMap() }
+        </div>
+      </MediaQuery>
     )
   }
 }

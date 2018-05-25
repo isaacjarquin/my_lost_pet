@@ -3,8 +3,24 @@
     color: white;
   }
 
+  .mobile-search-filters {
+    .navbar-nav {
+      margin: 15px -15px;
+    }
+
+    ul > li {
+      margin-left: 30px;
+      margin-right: 30px;
+
+      input {
+        height: 50px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
   .header .navbar {
-    margin-bottom: 50px
+    margin-bottom: 0 !important;
   }
 
   .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
