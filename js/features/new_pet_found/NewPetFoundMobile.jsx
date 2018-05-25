@@ -4,6 +4,7 @@ import request from 'superagent'
 
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import MapLocationSearchInput from '../map_location_search_input/MapLocationSearchInput'
 
 const React = require('react')
 const Alerts = require('../alerts/alerts')
@@ -138,9 +139,10 @@ class NewPetFoundMobile extends React.Component {
         this.props.setPetFoundDate(event.target.value)
     }
 
-    handlePetLocation(event) {
-        this.props.setPetLocation(event.target.value)
+    handlePetLocation(address, latLng) {
+        this.props.setPetLocation(address, latLng)
     }
+
     handlePetDescription(event) {
         this.props.setPetDescription(event.target.value)
     }
@@ -160,7 +162,6 @@ class NewPetFoundMobile extends React.Component {
 
     hasMissingValues() {
         return [
-            this.props.autonomousComunity,
             this.props.founderName,
             this.props.founderEmail,
             this.props.petType,
@@ -293,24 +294,10 @@ class NewPetFoundMobile extends React.Component {
                             <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
                         </MediaQuery>
 
-                        <select className={`form-control landing-select-filter-mobile ${this.props.inputColor.autonomousComunity}`} onChange={this.handleComunidadesFilter}>
-                            <option selected='selected' disabled>Comunidad Autónoma</option>
-                            <option value='default-value' key={0} />
-                            {this.props.comunidades.map((option) => (
-                                <option value={option.value} key={option.id}>{option.value}</option>
-                            ))}
-                        </select>
-                        <ValidationError message='Debes seleccionar una Comunidad Autónoma' field={this.props.validations.autonomousComunity} />
-
-                        <select className='form-control landing-select-filter-mobile' onChange={this.handleProvincesFilter}>
-                            <option selected='selected' disabled>Provincia</option>
-                            <option value='default-value' key={0} />
-                            {this.props.provincias.map((option) => (
-                                <option value={option.value} key={option.id}>{option.value}</option>
-                            ))}
-                        </select>
-
-                        <p><input value={this.props.location} onChange={this.handlePetLocation} className={`w3-input w3-border ${this.props.inputColor.location}`} type='text' placeholder='Ciudad/Municipio' /></p>
+                        <MapLocationSearchInput
+                            handleLocationInput={(adress, latLong) => console.log(adress)}
+                            handlePetLocation={this.handlePetLocation}
+                        />
                         <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
                         <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>

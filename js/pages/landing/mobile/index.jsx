@@ -116,22 +116,6 @@ class Mobile extends React.Component {
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
-
-                <select className='form-control landing-select-filter-mobile' onChange={this.handleComunidadesFilter}>
-                  <option selected='selected' disabled>Comunidad Autónoma</option>
-                  <option value='default-value' key={0} />
-                  {this.props.comunidades.map((option) => (
-                    <option value={option.value} key={option.id}>{option.value}</option>
-                  ))}
-                </select>
-
-                <select className='form-control landing-select-filter-mobile' onChange={this.handleProvincesFilter}>
-                  <option selected='selected' disabled>Provincia</option>
-                  <option value='default-value' key={0} />
-                  {this.props.provincias.map((option) => (
-                    <option value={option.value} key={option.id}>{option.value}</option>
-                  ))}
-                </select>
               </form>
               <Link to='/search'>
                 <h6><button className='landing-button-mobile w3-btn w3-white w3-padding-medium w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
