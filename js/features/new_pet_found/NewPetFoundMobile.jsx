@@ -102,8 +102,6 @@ class NewPetFoundMobile extends React.Component {
         this.onOpenClick = this.onOpenClick.bind(this)
         this.handleBreed = this.handleBreed.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
-        this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
         this.state = { startDate: moment() }
         this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
@@ -145,19 +143,6 @@ class NewPetFoundMobile extends React.Component {
 
     handlePetDescription(event) {
         this.props.setPetDescription(event.target.value)
-    }
-    handleComunidadesFilter(event) {
-        this.props.setAutonomousComunity(event.target.value)
-
-        this.props.comunidades.map((comunidad) => {
-            if (comunidad.value === event.target.value) {
-                this.props.setProvincias(comunidad.provincias)
-            }
-        })
-    }
-
-    handleProvincesFilter(event) {
-        this.props.setProvince(event.target.value)
     }
 
     hasMissingValues() {
