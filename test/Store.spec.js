@@ -204,9 +204,13 @@ describe('Store', () => {
   })
 
   it('should handle setPetLocation actions', () => {
-    const state = rootReducer({pet: {location: 'dont care'}}, {type: 'setPetLocation', value: 'I do care a lot'})
+    const location = { address: 'I do care a lot', latLng: { lat: '2.0', lng: '2.0' } }
+    const initialState = { pet: { location: 'dont care', latitud: '1.0', longitud: '1.0' } }
+    const state = rootReducer(initialState, { type: 'setPetLocation', value: location})
 
-    expect(state.pet.location).to.deep.equal('I do care a lot')
+    expect(state.pet.location).to.deep.equal(location.address)
+    expect(state.pet.latitud).to.deep.equal(location.latLng.lat)
+    expect(state.pet.longitud).to.deep.equal(location.latLng.lng)
   })
 
   it('should handle province actions', () => {

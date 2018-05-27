@@ -30,6 +30,8 @@ const resultDecorated = (itemsCollection) => {
       size: item.size,
       foundDate: item.date,
       location: item.location,
+      latitud: item.latitud,
+      longitud: item.longitud,
       imageUrl: item.image,
       description: item.info,
       extraDescription: extraDescription(item.info),

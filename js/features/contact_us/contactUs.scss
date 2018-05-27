@@ -28,6 +28,15 @@
     margin-bottom: 10px;
     padding: 10px;
 
+    .progress-bar_percentage {
+      margin-top: 55px;
+      left: 45%;
+    }
+
+    .loader-container {
+      height: 35px;
+    }
+
     .w3-input-textarea {
       height: 100px !important;
     }

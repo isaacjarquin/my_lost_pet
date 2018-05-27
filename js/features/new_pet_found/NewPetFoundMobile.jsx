@@ -4,6 +4,7 @@ import request from 'superagent'
 
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import MapLocationSearchInput from '../map_location_search_input/MapLocationSearchInput'
 
 const React = require('react')
 const Alerts = require('../alerts/alerts')
@@ -101,8 +102,6 @@ class NewPetFoundMobile extends React.Component {
         this.onOpenClick = this.onOpenClick.bind(this)
         this.handleBreed = this.handleBreed.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
-        this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
 
         this.state = { startDate: moment() }
         this.props.setPetFoundDate(moment().format('YYYY-MM-DD'))
@@ -138,29 +137,16 @@ class NewPetFoundMobile extends React.Component {
         this.props.setPetFoundDate(event.target.value)
     }
 
-    handlePetLocation(event) {
-        this.props.setPetLocation(event.target.value)
+    handlePetLocation(address, latLng) {
+        this.props.setPetLocation(address, latLng)
     }
+
     handlePetDescription(event) {
         this.props.setPetDescription(event.target.value)
-    }
-    handleComunidadesFilter(event) {
-        this.props.setAutonomousComunity(event.target.value)
-
-        this.props.comunidades.map((comunidad) => {
-            if (comunidad.value === event.target.value) {
-                this.props.setProvincias(comunidad.provincias)
-            }
-        })
-    }
-
-    handleProvincesFilter(event) {
-        this.props.setProvince(event.target.value)
     }
 
     hasMissingValues() {
         return [
-            this.props.autonomousComunity,
             this.props.founderName,
             this.props.founderEmail,
             this.props.petType,
@@ -293,24 +279,10 @@ class NewPetFoundMobile extends React.Component {
                             <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
                         </MediaQuery>
 
-                        <select className={`form-control landing-select-filter-mobile ${this.props.inputColor.autonomousComunity}`} onChange={this.handleComunidadesFilter}>
-                            <option selected='selected' disabled>Comunidad Autónoma</option>
-                            <option value='default-value' key={0} />
-                            {this.props.comunidades.map((option) => (
-                                <option value={option.value} key={option.id}>{option.value}</option>
-                            ))}
-                        </select>
-                        <ValidationError message='Debes seleccionar una Comunidad Autónoma' field={this.props.validations.autonomousComunity} />
-
-                        <select className='form-control landing-select-filter-mobile' onChange={this.handleProvincesFilter}>
-                            <option selected='selected' disabled>Provincia</option>
-                            <option value='default-value' key={0} />
-                            {this.props.provincias.map((option) => (
-                                <option value={option.value} key={option.id}>{option.value}</option>
-                            ))}
-                        </select>
-
-                        <p><input value={this.props.location} onChange={this.handlePetLocation} className={`w3-input w3-border ${this.props.inputColor.location}`} type='text' placeholder='Ciudad/Municipio' /></p>
+                        <MapLocationSearchInput
+                            handleLocationInput={(adress, latLong) => console.log(adress)}
+                            handlePetLocation={this.handlePetLocation}
+                        />
                         <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
                         <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>
@@ -347,8 +319,8 @@ class NewPetFoundMobile extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <DogLoader percentage={this.props.percentage} />
                         <p><button onSubmit={this.handleSubmit} id='details-button' className='w3-btn-block w3-padding w3-padding-12 w3-grey w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+                        <DogLoader percentage={this.props.percentage} />
                     </form>
                 </header>
             </div>

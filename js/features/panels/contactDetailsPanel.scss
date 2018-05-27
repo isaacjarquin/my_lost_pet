@@ -4,6 +4,15 @@
     width: 79.2%;
     box-shadow: 1px 2px 1px 1px #888888;
     margin-left: 1.5%;
+
+    .progress-bar_percentage {
+      left: 48%;
+      top: 60px;
+    }
+
+    .loader-container {
+      height: 40px;
+    }
   }
 
   .arrow-up-right {
@@ -44,6 +53,15 @@
       width: 87.4%;
       box-shadow: 1px 2px 1px 1px #888888;
       margin-left: 2%;
+
+      .progress-bar_percentage {
+        left: 48%;
+        top: 60px;
+      }
+
+      .loader-container {
+        height: 40px;
+      }
     }
 
     .arrow-up-right {

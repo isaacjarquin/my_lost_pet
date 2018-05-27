@@ -417,6 +417,8 @@ const mapStateToProps = (state) => {
       autonomousComunity: state.pet.autonomousComunity,
       province: state.pet.province,
       location: state.pet.location,
+      latitud: state.pet.latitud,
+      longitud: state.pet.longitud,
       images: state.pet.images,
       description: state.pet.description,
       extraDescription: state.pet.extraDescription,
@@ -532,8 +534,12 @@ const mapDispatchToProps = (dispatch) => {
     setPetFoundDate (petFoundDate) {
       dispatch({type: SET_PET_FOUND_DATE, value: petFoundDate})
     },
-    setPetLocation (petLocation) {
-      dispatch({type: SET_PET_LOCATION, value: petLocation})
+    setPetLocation(address, latLng) {
+      const locationObject = {
+        address: address,
+        latLng: latLng,
+      }
+      dispatch({ type: SET_PET_LOCATION, value: locationObject})
       dispatch({type: SET_LOCATION_VALIDATION, value: 'displayNone'})
       dispatch({type: SET_LOCATION_INPUT_COLOR, value: ''})
     },

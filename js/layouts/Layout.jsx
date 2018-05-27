@@ -14,7 +14,7 @@ const Layout = React.createClass({
     social: object.isRequired,
     urls: object.isRequired
   },
-  displayHeader ({location, setSearchTerm, setSelectFilter, searchTerm, selectFilter, pets, filters}) {
+  displayHeader({ location, setSearchTerm, setSelectFilter, searchTerm, selectFilter, pets, filters, filteredPets}) {
     if (location.pathname === '/') {
       return <MediaQuery maxDeviceWidth={736}><MobileHeader {...this.props.social} hostUrl={this.props.urls.host} /></MediaQuery>
     } else {
@@ -27,6 +27,7 @@ const Layout = React.createClass({
           locationFilter={filters.location}
           selectFilter={selectFilter}
           pets={pets}
+          filteredPets={filteredPets}
           social={this.props.social}
           urls={this.props.urls}
         /></div>

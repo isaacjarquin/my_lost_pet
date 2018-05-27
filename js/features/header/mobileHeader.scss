@@ -3,6 +3,31 @@
     color: white;
   }
 
+  .mobile-search-filters {
+    .navbar-nav {
+      margin: 15px -15px 0px -15px;
+    }
+
+    ul > li {
+      margin-left: 30px;
+      margin-right: 30px;
+
+      input {
+        height: 50px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .header {
+    background-color: #f1f1f1;
+    opacity: 0.8;
+  }
+
+  .header .navbar {
+    margin-bottom: 0 !important;
+  }
+
   .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
     padding: 0;
   }
@@ -22,6 +47,8 @@
   }
 
   .movile-header {
+    margin-bottom: 0 !important;
+
     .fa {
       margin: 16px 8px;
       color: white;
