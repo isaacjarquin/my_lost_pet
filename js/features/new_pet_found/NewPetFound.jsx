@@ -240,8 +240,6 @@ class NewPetFound extends React.Component {
       breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
-      autonomous_comunity: this.props.autonomousComunity,
-      province: this.props.province,
       location: this.props.location,
       latitud: this.props.latitud,
       longitud: this.props.longitud,

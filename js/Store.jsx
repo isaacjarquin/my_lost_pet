@@ -450,23 +450,11 @@ const getFilteredPets = (searchTerm, location, pets, selectFilter) => {
   return filteredPets
 }
 
-const urlParams = ({province, autonomousComunity, petType}) => {
-  if (autonomousComunity !== '' && province !== '' && petType !== '') {
-    return { autonomousComunity: autonomousComunity, province: province, petType: petType }
-  } else if (autonomousComunity !== '' && province === '' && petType === '') {
-    return { autonomousComunity: autonomousComunity }
-  } else if (autonomousComunity === '' && province !== '' && petType === '') {
-    return { province: province }
-  } else if (autonomousComunity === '' && province === '' && petType !== '') {
+const urlParams = ({petType}) => {
+  if (petType !== '') {
     return { petType: petType }
-  } else if (autonomousComunity !== '' && province !== '' && petType === '') {
-    return { autonomousComunity: autonomousComunity, province: province }
-  } else if (autonomousComunity !== '' && province === '' && petType !== '') {
-    return { autonomousComunity: autonomousComunity, petType: petType }
-  } else if (autonomousComunity === '' && province !== '' && petType !== '') {
-    return { province: province, petType: petType }
   } else {
-    return {}
+    return { petType: localStorage.getItem("petType")}
   }
 }
 
@@ -644,7 +632,7 @@ const mapDispatchToProps = (dispatch) => {
       $.ajax({
         url: urls.items_api + '/api/items',
         data: urlParams(filters),
-        cache: false,
+        cache: true,
         type: 'GET',
         success: function (response) {
           const result = resultDecorated(response.data)
