@@ -33,6 +33,7 @@ class Desktop extends React.Component {
   }
   handlePetTypeFilter (event) {
     this.props.setPetTypeFilter(event.target.value)
+    localStorage.setItem('petType', event.target.value);
   }
   handleComunidadesFilter (event) {
     this.props.setAutonomousComunityFilter(event.target.value)
