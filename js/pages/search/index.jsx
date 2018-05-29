@@ -30,8 +30,6 @@ const Search = React.createClass({
   componentDidMount: function () {
     const props = this.props
 
-    console.log('props: ', props)
-
     $.ajax({
       url: '/api/envs',
       cache: true,

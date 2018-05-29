@@ -461,9 +461,6 @@ const filterCached = () => {
 }
 
 const urlParams = ({petType, petStatus}) => {
-  console.log('petType: ', petType)
-  console.log('petStatus: ', petStatus)
-
   if (petType !== '' &&  petStatus === '') {
     return { petType: petType }
   } else if (petType === '' && petStatus !== '') {
