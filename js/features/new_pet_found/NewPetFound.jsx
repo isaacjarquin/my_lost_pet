@@ -287,102 +287,82 @@ class NewPetFound extends React.Component {
 
     return (
       <div className='new-pet-form'>
-        <div className="missing-pet-form new-pet-form_left">
-          <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
-            <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
-            <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
-            <form onSubmit={this.handleSubmit}>
-              <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
-              <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
+        <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
+          <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
+          <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
+          <form onSubmit={this.handleSubmit}>
+            <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
+            <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
 
-              <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
-              <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
+            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
+            <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
 
-              <select className={`form-control landing-select-filter ${this.props.inputColor.petType}`} onChange={this.handlePetType}>
-                <option selected='selected' disabled>Tipo de mascota</option>
-                {petTypesOptions.map((option) => (
-                  <option value={option.type} key={option.id}>{option.type}</option>
-                ))}
-              </select>
-              <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
+            <select className={`form-control landing-select-filter ${this.props.inputColor.petType}`} onChange={this.handlePetType}>
+              <option selected='selected' disabled>Tipo de mascota</option>
+              {petTypesOptions.map((option) => (
+                <option value={option.type} key={option.id}>{option.type}</option>
+              ))}
+            </select>
+            <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
 
-              <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
-              <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
+            <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
+            <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
 
-              <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamaño (grande/mediano/pequeno)' /></p>
-              <ValidationError message='El campo tamaño es obligatorio' field={this.props.validations.size} />
+            <p><input value={this.props.size} onChange={this.handlePetSize} className={`w3-input w3-border ${this.props.inputColor.size}`} type='text' placeholder='Tamaño (grande/mediano/pequeno)' /></p>
+            <ValidationError message='El campo tamaño es obligatorio' field={this.props.validations.size} />
 
-              <MediaQuery maxDeviceWidth={1200}>
-                <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
-              </MediaQuery>
-              <MediaQuery minDeviceWidth={1200}>
-                <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
-              </MediaQuery>
+            <MediaQuery maxDeviceWidth={1200}>
+              <p><input value={this.props.foundDate} onChange={this.handleFoundDate} className='w3-input w3-border' type='date' placeholder='fecha (25-08-2016)' /></p>
+            </MediaQuery>
+            <MediaQuery minDeviceWidth={1200}>
+              <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.startDate} onChange={this.handleChange} className='w3-input w3-border' />
+            </MediaQuery>
 
-              <MapLocationSearchInput
-                handleLocationInput={this.handleLocationInput}
-                handlePetLocation={this.handlePetLocation}
-              />
-              <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
+            <MapLocationSearchInput
+              handleLocationInput={this.handleLocationInput}
+              handlePetLocation={this.handlePetLocation}
+            />
+            <ValidationError message='El campo Ciudad/Municipio es oblidatorio' field={this.props.validations.location} />
 
-              <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>
-              <ValidationError message='El campo Descripción es oblidatorio' field={this.props.validations.description} />
+            <p><textarea value={this.props.description} onChange={this.handlePetDescription} className={`w3-input w3-border ${this.props.inputColor.description}`} placeholder='Información sobre la mascota' /></p>
+            <ValidationError message='El campo Descripción es oblidatorio' field={this.props.validations.description} />
 
-              <div className={'panel panel-default ' + this.props.validationBackground}>
-                <div className='panel-heading'>
-                  <h4 className='panel-title w3-center'>
-                    <a data-toggle='collapse' data-parent='#accordion' href='#dropzone'>
-                      {this.props.encloseImageTitle}</a>
-                  </h4>
-                </div>
-                <div id='dropzone' className='panel-collapse collapse'>
-                  <div className='panel-body'>
-                    <div className='drop-zone'>
-                      <div className='images-drop'>
-                        <Dropzone
-                          className='image-drop-zone'
-                          multiple={false}
-                          accept='image/*'
-                          ref={(node) => { this.dropzone = node }}
-                          maxSize={1024 * 1024 * 5}
-                          onDrop={this.onImageDrop}>
-                          <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
-                        </Dropzone>
-                      </div>
-                      <div className='image-preview'>
-                        {this.props.images.length > 0 ? <div>
-                          <h4 className='title'>Imagen Adjuntada</h4>
-                          <img className='image' src={this.props.images[0].preview} />
-                        </div> : null}
-                      </div>
+            <div className={'panel panel-default ' + this.props.validationBackground}>
+              <div className='panel-heading'>
+                <h4 className='panel-title w3-center'>
+                  <a data-toggle='collapse' data-parent='#accordion' href='#dropzone'>
+                    {this.props.encloseImageTitle}</a>
+                </h4>
+              </div>
+              <div id='dropzone' className='panel-collapse collapse'>
+                <div className='panel-body'>
+                  <div className='drop-zone'>
+                    <div className='images-drop'>
+                      <Dropzone
+                        className='image-drop-zone'
+                        multiple={false}
+                        accept='image/*'
+                        ref={(node) => { this.dropzone = node }}
+                        maxSize={1024 * 1024 * 5}
+                        onDrop={this.onImageDrop}>
+                        <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
+                      </Dropzone>
+                    </div>
+                    <div className='image-preview'>
+                      {this.props.images.length > 0 ? <div>
+                        <h4 className='title'>Imagen Adjuntada</h4>
+                        <img className='image' src={this.props.images[0].preview} />
+                      </div> : null}
                     </div>
                   </div>
-                  <div className='arrow-down'></div>
                 </div>
+                <div className='arrow-down'></div>
               </div>
-              <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
-              <DogLoader percentage={this.props.percentage} />
-            </form>
-          </header>
-        </div>
-        <div className="missing-pet-form new-pet-form_right">
-          <GoogleMapReact
-            defaultCenter={{ lat: this.state.map.lat, lng: this.state.map.lng }}
-            defaultZoom={this.state.map.zoom}
-            zoom={this.state.map.zoom}
-            center={{ lat: this.state.map.lat, lng: this.state.map.lng }}
-          > 
-            {this.state.markers.map((marker) => {
-              return (
-                <Marker
-                  lat={marker.lat}
-                  lng={marker.lng}
-                  icon={<IoIosPaw size={25} color={"red"} />}
-                />
-              )
-            }) }
-          </GoogleMapReact>
-        </div>
+            </div>
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+            <DogLoader percentage={this.props.percentage} />
+          </form>
+        </header>
       </div>
     )
   }
