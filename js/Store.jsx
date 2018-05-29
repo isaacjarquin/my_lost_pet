@@ -62,8 +62,7 @@ const {
 const {
   reducerLocationFilter,
   reducerPetTypeFilter,
-  reducerAutonomousComunityFilter,
-  reducerProvinceFilter
+  reducerPetStatusFilter
 } = require('../js/pages/landing/pageFilters')
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
@@ -75,6 +74,7 @@ const initialState = require('./InitialState')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_LOCATION_FILTER = 'setLocationFilter'
 const SET_PET_TYPE_FILTER = 'setPetTypeFilter'
+const SET_PET_STATUS_FILTER = 'setPetStatusFiler'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
 const SET_OWNER_NAME = 'setOwnerName'
@@ -105,8 +105,6 @@ const SET_CLOUDINARY = 'setCloudinary'
 const SET_URLS = 'setUrls'
 const SET_COMUNIDADES = 'setComunidades'
 const SET_PROVINCIAS = 'setProvincias'
-const SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter'
-const SET_PROVINCE_FILTER = 'setProvinceFilter'
 const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
 const SET_PROVINCE = 'setProvince'
 const SET_AUTONOMOUS_COMUNITY_VALIDATION = 'setAutonomousComunityValidation'
@@ -235,6 +233,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerLocationFilter(state, action)
     case SET_PET_TYPE_FILTER:
       return reducerPetTypeFilter(state, action)
+    case SET_PET_STATUS_FILTER:
+      return reducerPetStatusFilter(state, action)
     case SET_ACTIVE_PAGE:
       return reducerActivePage(state, action)
     case SET_OWNER_NAME:
@@ -293,10 +293,6 @@ const rootReducer = (state = initialState, action) => {
       return reducerComunidades(state, action)
     case SET_PROVINCIAS:
       return reducerProvincias(state, action)
-    case SET_AUTONOMOUS_COMUNITY_FILTER:
-      return reducerAutonomousComunityFilter(state, action)
-    case SET_PROVINCE_FILTER:
-      return reducerProvinceFilter(state, action)
     case SET_AUTONOMOUS_COMUNITY:
       return reducerPetAutonomousComunity(state, action)
     case SET_PROVINCE:
@@ -398,8 +394,7 @@ const mapStateToProps = (state) => {
     filters: {
       location: state.filters.location,
       petType: state.filters.petType,
-      autonomousComunity: state.filters.autonomousComunity,
-      province: state.filters.province
+      petStatus: state.filters.petStatus
     },
     owner: {
       name: state.owner.name,
@@ -450,11 +445,33 @@ const getFilteredPets = (searchTerm, location, pets, selectFilter) => {
   return filteredPets
 }
 
-const urlParams = ({petType}) => {
-  if (petType !== '') {
+const filterCached = () => {
+  const petType = localStorage.getItem("petType")
+  const petStatus = localStorage.getItem("petStatus")
+
+  if (petType !== undefined && petStatus === undefined) {
     return { petType: petType }
+  } else if (petType === undefined && petStatus !== undefined) {
+    return { petStatus: petStatus }
   } else {
-    return { petType: localStorage.getItem("petType")}
+    return { petType: petType, petStatus: petStatus }
+  }
+
+  return { petType: localStorage.getItem("petType"), petStatus: localStorage.getItem("petStatus") }
+}
+
+const urlParams = ({petType, petStatus}) => {
+  console.log('petType: ', petType)
+  console.log('petStatus: ', petStatus)
+
+  if (petType !== '' &&  petStatus === '') {
+    return { petType: petType }
+  } else if (petType === '' && petStatus !== '') {
+    return { petStatus: petStatus }
+  } else if (petType !== '' && petStatus !== '') {
+    return { petType: petType, petStatus: petStatus }
+  } else {
+    return filterCached()
   }
 }
 
@@ -470,6 +487,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPetTypeFilter (petType) {
       dispatch({type: SET_PET_TYPE_FILTER, value: petType})
+    },
+    setPetStatusFilter(petStatus) {
+      dispatch({ type: SET_PET_STATUS_FILTER, value: petStatus })
     },
     setSelectFilter (searchTerm, location, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
@@ -572,12 +592,6 @@ const mapDispatchToProps = (dispatch) => {
     },
     setProvincias (provincias) {
       dispatch({type: SET_PROVINCIAS, value: provincias})
-    },
-    setAutonomousComunityFilter (autonomousComunityFilter) {
-      dispatch({type: SET_AUTONOMOUS_COMUNITY_FILTER, value: autonomousComunityFilter})
-    },
-    setProvinceFilter (provinceFilter) {
-      dispatch({type: SET_PROVINCE_FILTER, value: provinceFilter})
     },
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})

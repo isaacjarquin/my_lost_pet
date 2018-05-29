@@ -24,8 +24,7 @@ class Desktop extends React.Component {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
-    this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
-    this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
+    this.handlePetStatusFilter = this.handlePetStatusFilter.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   handleSearchTermEvent (event) {
@@ -35,17 +34,9 @@ class Desktop extends React.Component {
     this.props.setPetTypeFilter(event.target.value)
     localStorage.setItem('petType', event.target.value);
   }
-  handleComunidadesFilter (event) {
-    this.props.setAutonomousComunityFilter(event.target.value)
-
-    this.props.comunidades.map((comunidad) => {
-      if (comunidad.value === event.target.value) {
-        this.props.setProvincias(comunidad.provincias)
-      }
-    })
-  }
-  handleProvincesFilter (event) {
-    this.props.setProvinceFilter(event.target.value)
+  handlePetStatusFilter(event) {
+    this.props.setPetStatusFilter(event.target.value)
+    localStorage.setItem('petStatus', event.target.value);
   }
   handleSubmit (event) {
     hashHistory.push('search')
@@ -61,16 +52,6 @@ class Desktop extends React.Component {
       success: function (response) { props.setEnvs(JSON.parse(response)) },
       error: function (xhr) { console.log(xhr) }
     })
-
-    $.ajax({
-      url: '/api/comunidades',
-      cache: true,
-      type: 'GET',
-      success: function (response) {
-        props.setComunidades(JSON.parse(response))
-      },
-      error: function (xhr) { console.log(xhr) }
-    })
   }
   render () {
     const petTypesOptions = [
@@ -82,15 +63,12 @@ class Desktop extends React.Component {
       {type: 'hurón', id: 6},
       {type: 'tortuga', id: 7}
     ]
-    const dropDownOptions = [
-      {value: 'perro', id: 1},
-      {value: 'gato', id: 2},
-      {value: 'conejo', id: 3},
-      {value: 'hamster', id: 4},
-      {value: 'iguana', id: 5},
-      {value: 'hurón', id: 6},
-      {value: 'tortuga', id: 7}
+    const petStatusOptions = [
+      { type: 'Buscando casa', id: 1 },
+      { type: 'Encontrado', id: 2 },
+      { type: 'Perdido', id: 3 }
     ]
+
     const url = this.props.urls.host
 
     return (
@@ -118,24 +96,17 @@ class Desktop extends React.Component {
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
+                <select className='form-control landing-select-filter' onChange={this.handlePetStatusFilter}>
+                  <option selected='selected' disabled>Estado de la mascota</option>
+                  {petStatusOptions.map((option) => (
+                    <option value={option.type} key={option.id}>{option.type}</option>
+                  ))}
+                </select>
               </form>
               <Link to='/search'>
                 <h6><button className='w3-btn find-a-pet-button w3-padding-medium w3-large w3-hover-opacity-off'>Buscar</button></h6>
               </Link>
             </div>
-            <div className='looking-for-home'>
-              <h1 className='w3-text-white'>Dale un hogar</h1>
-              <form>
-                <p><input value={this.props.searchTerm} onChange={this.handleSearchTermEvent} className='w3-input w3-border' type='text' placeholder='Actualmente en' /></p>
-                <Dropdown
-                  dropDownOptions={dropDownOptions}
-                  dropDownTitle={'tipo de mascota'}
-                  setSelectFilter={this.props.setSelectFilter}
-                />
-              </form>
-              <Link to='/search'><h6><button className='w3-btn w3-white w3-padding-large w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6></Link>
-            </div>
-
           </div>
         </div>
 

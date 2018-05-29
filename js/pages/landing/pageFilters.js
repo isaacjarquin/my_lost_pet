@@ -5,8 +5,7 @@ const reducerLocationFilter = (state, action) => {
     filters: {
       location: action.value,
       petType: state.filters.petType,
-      autonomousComunity: state.filters.autonomousComunity,
-      province: state.filters.province
+      petStatus: state.filters.petStatus
     }
   })
 
@@ -20,38 +19,21 @@ const reducerPetTypeFilter = (state, action) => {
     filters: {
       location: state.filters.location,
       petType: action.value,
-      autonomousComunity: state.filters.autonomousComunity,
-      province: state.filters.province
+      petStatus: state.filters.petStatus
     }
   })
 
   return newState
 }
 
-const reducerAutonomousComunityFilter = (state, action) => {
+const reducerPetStatusFilter = (state, action) => {
   const newState = {}
 
   Object.assign(newState, state, {
     filters: {
       location: state.filters.location,
       petType: state.filters.petType,
-      autonomousComunity: action.value,
-      province: state.filters.province
-    }
-  })
-
-  return newState
-}
-
-const reducerProvinceFilter = (state, action) => {
-  const newState = {}
-
-  Object.assign(newState, state, {
-    filters: {
-      location: state.filters.location,
-      petType: state.filters.petType,
-      autonomousComunity: state.filters.autonomousComunity,
-      province: action.value
+      petStatus: action.value
     }
   })
 
@@ -61,6 +43,5 @@ const reducerProvinceFilter = (state, action) => {
 module.exports = {
   reducerLocationFilter,
   reducerPetTypeFilter,
-  reducerAutonomousComunityFilter,
-  reducerProvinceFilter
+  reducerPetStatusFilter
 }
