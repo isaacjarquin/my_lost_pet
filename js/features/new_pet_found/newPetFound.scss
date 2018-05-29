@@ -15,25 +15,6 @@
 .new-pet-form {
   display: flex;
   justify-content: center;
-
-  .new-pet-form_right {
-    width: 50%;
-    float: left;
-    padding: 27px 15px;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-
-  .new-pet-form_right > div > div {
-    border-radius: 5px;
-  }
-
-  .new-pet-form_left {
-    width: 50%;
-    float: left;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
 }
 
 .w3-border .validation-color {
@@ -65,7 +46,7 @@
 
 .missing-pet-form {
   background-color: dimgray;
-  width: 100%;
+  width: 900px;
   opacity: 0.8;
   border-radius: 5px;
   margin-bottom: 10px;
