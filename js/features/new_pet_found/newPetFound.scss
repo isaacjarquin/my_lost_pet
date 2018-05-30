@@ -125,9 +125,8 @@
 
     .image-preview {
       float: left;
-      width: 40%;
       position: absolute;
-      right: 60px;
+      margin-left: 20px;
 
       .title {
         margin: 0;
@@ -137,8 +136,7 @@
       }
 
       .image {
-        width: 60%;
-        height: 135px;
+        height: 140px;
         margin-top: 60px;
         border-radius: 16px;
       }
