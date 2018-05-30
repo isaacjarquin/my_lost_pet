@@ -25,6 +25,7 @@ const clearForm = (props) => {
   props.setPetFounderName('')
   props.setPetFounderEmail('')
   props.setPetType('')
+  props.setPetStatus('')
   props.setBreed('')
   props.setPetSize('')
   props.setPetFoundDate('')
@@ -95,6 +96,7 @@ class NewPetFound extends React.Component {
     this.handleFounderName = this.handleFounderName.bind(this)
     this.handleFounderEmail = this.handleFounderEmail.bind(this)
     this.handlePetType = this.handlePetType.bind(this)
+    this.handlePetStatus = this.handlePetStatus.bind(this)
     this.handlePetSize = this.handlePetSize.bind(this)
     this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
@@ -154,6 +156,9 @@ class NewPetFound extends React.Component {
   handlePetType (event) {
     this.props.setPetType(event.target.value)
   }
+  handlePetStatus(event) {
+    this.props.setPetStatus(event.target.value)
+  }
   handleBreed (event) {
     this.props.setBreed(event.target.value)
   }
@@ -190,6 +195,7 @@ class NewPetFound extends React.Component {
       this.props.founderName,
       this.props.founderEmail,
       this.props.petType,
+      this.props.petStatus,
       this.props.breed,
       this.props.size,
       this.props.location,
@@ -237,6 +243,7 @@ class NewPetFound extends React.Component {
       name: this.props.founderName,
       email: this.props.founderEmail,
       kind: this.props.petType,
+      status: this.props.petStatus,
       breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
@@ -281,8 +288,14 @@ class NewPetFound extends React.Component {
       {type: 'conejo', id: 3},
       {type: 'hamster', id: 4},
       {type: 'iguana', id: 5},
-      {type: 'uron', id: 6},
+      { type: 'hurón', id: 6},
       {type: 'tortuga', id: 7}
+    ]
+
+    const petStatusOptions = [
+      { text: 'Buscando casa', value: 'adoption', id: 1 },
+      { text: 'Encontrado', value: 'found', id: 2 },
+      { text: 'Perdido', value: 'lost', id: 3 }
     ]
 
     return (
@@ -301,6 +314,13 @@ class NewPetFound extends React.Component {
               <option selected='selected' disabled>Tipo de mascota</option>
               {petTypesOptions.map((option) => (
                 <option value={option.type} key={option.id}>{option.type}</option>
+              ))}
+            </select>
+
+            <select className={`form-control landing-select-filter ${this.props.inputColor.petStatus}`} onChange={this.handlePetStatus}>
+              <option selected='selected' disabled>Estado de la mascota</option>
+              {petStatusOptions.map((option) => (
+                <option value={option.value} key={option.id}>{option.text}</option>
               ))}
             </select>
             <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
@@ -388,6 +408,7 @@ NewPetFound.propTypes = {
   founderName: string.isRequired,
   founderEmail: string.isRequired,
   petType: string.isRequired,
+  petStatus: string.isRequired,
   size: string.isRequired,
   foundDate: string.isRequired,
   location: string.isRequired,

@@ -64,9 +64,9 @@ class Desktop extends React.Component {
       {type: 'tortuga', id: 7}
     ]
     const petStatusOptions = [
-      { type: 'Buscando casa', id: 1 },
-      { type: 'Encontrado', id: 2 },
-      { type: 'Perdido', id: 3 }
+      { text: 'Buscando casa', value: 'adoption', id: 1 },
+      { text: 'Encontrado', value: 'found', id: 2 },
+      { text: 'Perdido', value: 'lost', id: 3 }
     ]
 
     const url = this.props.urls.host
@@ -99,7 +99,7 @@ class Desktop extends React.Component {
                 <select className='form-control landing-select-filter' onChange={this.handlePetStatusFilter}>
                   <option selected='selected' disabled>Estado de la mascota</option>
                   {petStatusOptions.map((option) => (
-                    <option value={option.type} key={option.id}>{option.type}</option>
+                    <option value={option.value} key={option.id}>{option.text}</option>
                   ))}
                 </select>
               </form>
@@ -123,6 +123,7 @@ class Desktop extends React.Component {
             setPetFounderName={this.props.setPetFounderName}
             setPetFounderEmail={this.props.setPetFounderEmail}
             setPetType={this.props.setPetType}
+            setPetStatus={this.props.setPetStatus}
             setBreed={this.props.setBreed}
             setPetSize={this.props.setPetSize}
             setPetFoundDate={this.props.setPetFoundDate}
@@ -184,6 +185,7 @@ Desktop.propTypes = {
   setPetFounderName: func,
   setPetFounderEmail: func,
   setPetType: func,
+  setPetStatus: func,
   setPetSize: func,
   setPetFoundDate: func,
   setPetLocation: func,

@@ -6,6 +6,7 @@ const {
   reducerPetFounderName,
   reducerPetFounderEmail,
   reducerPetType,
+  reducerPetStatus,
   reducerBreed,
   reducerPetSize,
   reducerPetFoundDate,
@@ -84,6 +85,7 @@ const SET_DESCRIPTION = 'setDescription'
 const SET_PET_FOUNDER_NAME = 'setPetFounderName'
 const SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail'
 const SET_PET_TYPE = 'setPetType'
+const SET_PET_STATUS = 'setPetSTatus'
 const SET_BREED = 'setBreed'
 const SET_PET_SIZE = 'setPetSize'
 const SET_PET_FOUND_DATE = 'setPetFoundDate'
@@ -251,6 +253,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetFounderEmail(state, action)
     case SET_PET_TYPE:
       return reducerPetType(state, action)
+    case SET_PET_STATUS:
+      return reducerPetStatus(state, action)
     case SET_BREED:
       return reducerBreed(state, action)
     case SET_PET_SIZE:
@@ -406,6 +410,7 @@ const mapStateToProps = (state) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      petStatus: state.pet.petStatus,
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
@@ -525,6 +530,11 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_PET_TYPE, value: petType})
       dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayNone'})
       dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: ''})
+    },
+    setPetStatus (petStatus) {
+      dispatch({ type: SET_PET_STATUS, value: petStatus })
+      // dispatch({ type: SET_PET_TYPE_VALIDATION, value: 'displayNone' })
+      // dispatch({ type: SET_PET_TYPE_INPUT_COLOR, value: '' })
     },
     setBreed (breed) {
       dispatch({type: SET_BREED, value: breed})

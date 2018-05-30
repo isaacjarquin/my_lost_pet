@@ -241,7 +241,7 @@ class NewPetFoundMobile extends React.Component {
             { type: 'conejo', id: 3 },
             { type: 'hamster', id: 4 },
             { type: 'iguana', id: 5 },
-            { type: 'uron', id: 6 },
+            { type: 'hurón', id: 6 },
             { type: 'tortuga', id: 7 }
         ]
 
