@@ -360,11 +360,11 @@ class NewPetFound extends React.Component {
                         maxSize={1024 * 1024 * 5}
                         onDrop={this.onImageDrop}>
                         <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
+                        <div className='image-drop-area-space' />
                       </Dropzone>
                     </div>
                     <div className='image-preview'>
                       {this.props.images.length > 0 ? <div>
-                        <h4 className='title'>Imagen Adjuntada</h4>
                         <img className='image' src={this.props.images[0].preview} />
                       </div> : null}
                     </div>
