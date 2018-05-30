@@ -93,6 +93,7 @@ class NewPetFoundMobile extends React.Component {
         this.handleFounderName = this.handleFounderName.bind(this)
         this.handleFounderEmail = this.handleFounderEmail.bind(this)
         this.handlePetType = this.handlePetType.bind(this)
+        this.handlePetStatus = this.handlePetStatus.bind(this)
         this.handlePetSize = this.handlePetSize.bind(this)
         this.handleFoundDate = this.handleFoundDate.bind(this)
         this.handlePetLocation = this.handlePetLocation.bind(this)
@@ -126,6 +127,9 @@ class NewPetFoundMobile extends React.Component {
     handlePetType(event) {
         this.props.setPetType(event.target.value)
     }
+    handlePetStatus(event) {
+        this.props.setPetStatus(event.target.value)
+    }
     handleBreed(event) {
         this.props.setBreed(event.target.value)
     }
@@ -150,6 +154,7 @@ class NewPetFoundMobile extends React.Component {
             this.props.founderName,
             this.props.founderEmail,
             this.props.petType,
+            this.props.petStatus,
             this.props.breed,
             this.props.size,
             this.props.location,
@@ -196,11 +201,12 @@ class NewPetFoundMobile extends React.Component {
             name: this.props.founderName,
             email: this.props.founderEmail,
             kind: this.props.petType,
+            status: this.props.petStatus,
+            latitud: this.props.latitud,
+            longitud: this.props.longitud,
             breed: this.props.breed,
             size: this.props.size,
             date: this.props.foundDate,
-            autonomous_comunity: this.props.autonomousComunity,
-            province: this.props.province,
             location: this.props.location,
             info: this.props.description,
             image: secure_url
@@ -245,6 +251,12 @@ class NewPetFoundMobile extends React.Component {
             { type: 'tortuga', id: 7 }
         ]
 
+        const petStatusOptions = [
+            { text: 'Buscando casa', value: 'adoption', id: 1 },
+            { text: 'Encontrado', value: 'found', id: 2 },
+            { text: 'Perdido', value: 'lost', id: 3 }
+        ]
+
         return (
             <div className='missing-pet-form-mobile'>
                 <button data-toggle='collapse' data-target='#new-pet' className='main-toggle-button large-button w3-padding-large'> ¿ Encontraste una mascota perdida ?</button>
@@ -265,6 +277,13 @@ class NewPetFoundMobile extends React.Component {
                             ))}
                         </select>
                         <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
+
+                        <select className={`form-control landing-select-filter-mobile ${this.props.inputColor.petStatus}`} onChange={this.handlePetStatus}>
+                            <option selected='selected' disabled>Estado de la mascota</option>
+                            {petStatusOptions.map((option) => (
+                                <option value={option.value} key={option.id}>{option.text}</option>
+                            ))}
+                        </select>
 
                         <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
                         <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />

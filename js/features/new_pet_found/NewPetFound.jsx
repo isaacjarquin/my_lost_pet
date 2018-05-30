@@ -302,14 +302,8 @@ class NewPetFound extends React.Component {
       <div className='new-pet-form'>
         <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
           <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
-          <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
+          <p className='title form-introduction'>Datos de la mascota</p>
           <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
-            <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
-
-            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
-            <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
-
             <select className={`form-control landing-select-filter ${this.props.inputColor.petType}`} onChange={this.handlePetType}>
               <option selected='selected' disabled>Tipo de mascota</option>
               {petTypesOptions.map((option) => (
@@ -379,7 +373,17 @@ class NewPetFound extends React.Component {
                 <div className='arrow-down'></div>
               </div>
             </div>
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+            
+            <div className="contact-details">
+              <p className='title form-introduction'>Datos de contacto</p>
+              <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
+              <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
+
+              <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
+              <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
+            </div>
+
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar datos</button></p>
             <DogLoader percentage={this.props.percentage} />
           </form>
         </header>

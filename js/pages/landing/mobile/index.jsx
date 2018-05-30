@@ -136,6 +136,7 @@ class Mobile extends React.Component {
           setPetFounderName={this.props.setPetFounderName}
           setPetFounderEmail={this.props.setPetFounderEmail}
           setPetType={this.props.setPetType}
+          setPetStatus={this.props.setPetStatus}
           setBreed={this.props.setBreed}
           setPetSize={this.props.setPetSize}
           setPetFoundDate={this.props.setPetFoundDate}

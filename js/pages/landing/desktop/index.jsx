@@ -110,7 +110,7 @@ class Desktop extends React.Component {
           </div>
         </div>
 
-        <LandingSection title={"¿ Encontraste una mascota perdida ?"} target={"add-pet-section"} >
+        <LandingSection title={"Añade algunos datos sobre la mascota"} target={"add-pet-section"} >
           <NewPetFound
             {...this.props.pet}
             alert={this.props.alert}
