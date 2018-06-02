@@ -30,6 +30,16 @@ class Jumbotron extends React.Component {
     )
   }
 
+  getIconColor({ petStatus }) {
+    const colors = {
+      lost: "orange",
+      found: "yellowgreen",
+      adoption: "dodgerblue"
+    }
+
+    return colors[petStatus];
+  }
+
   renderMapWithResults() {
     const { pets } = this.props
 
@@ -43,7 +53,7 @@ class Jumbotron extends React.Component {
             <Marker
               lat={pet.latitud}
               lng={pet.longitud}
-              icon={<FaMapMarker size={25} color={"orange"} />}
+              icon={<FaMapMarker size={25} color={this.getIconColor(pet)} />}
             />
           )
         })}

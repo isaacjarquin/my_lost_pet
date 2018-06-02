@@ -104,10 +104,16 @@
 }
 
 .panel-date {
+  float: left;
   padding: 10px;
   font-size: 1.2em;
   opacity: 0.6;
   font-weight: bold;
+}
+
+.panel-date-icon {
+  padding: 10px;
+  float: right;
 }
 
 .third-panel {

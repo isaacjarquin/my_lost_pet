@@ -1,6 +1,7 @@
 const React = require('react')
 const ResponsiveImage = require('../responsive_image/ResponsiveImage')
 const $ = require('jquery')
+import FaPaw from 'react-icons/lib/fa/paw';
 
 if (process.env.WEBPACK_BUILD) {
   require('./missingPet.scss')
@@ -71,12 +72,24 @@ class MissingPet extends React.Component {
     }
   }
 
+  getIconColor() {
+    const colors = {
+      lost: "orange",
+      found: "yellowgreen",
+      adoption: "dodgerblue"
+    }
+    const { petStatus } = this.props
+
+    return colors[petStatus];
+  }
+
   renderPetCard () {
     if (this.props.id !== undefined) {
       return (
         <div className='missing-pet-card'>
           <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
-            <div className='panel-date w3-center'>{this.props.petType}, {this.props.size}</div>
+            <div className='panel-date'>{this.props.petType}, {this.props.size}</div>
+            <div className="panel-date-icon"><FaPaw size={25} color={this.getIconColor()} /></div>
             <ResponsiveImage url={this.props.imageUrl} className={'panel-image'} />
             <div className='panel-description w3-container w3-light-grey'>
               <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
