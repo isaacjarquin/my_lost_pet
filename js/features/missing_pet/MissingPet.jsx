@@ -83,6 +83,17 @@ class MissingPet extends React.Component {
     return colors[petStatus];
   }
 
+  setPetStatus() {
+    const statusesSentences = {
+      lost: "Perdido por",
+      found: "Encontrado en",
+      adoption: "Buscando casa en"
+    }
+    const { petStatus } = this.props
+
+    return statusesSentences[petStatus];
+  }
+
   renderPetCard () {
     if (this.props.id !== undefined) {
       return (
@@ -94,7 +105,7 @@ class MissingPet extends React.Component {
             <div className="panel-date-icon"><FaPaw size={25} color={this.getIconColor()} /></div>
             <ResponsiveImage url={this.props.imageUrl} className={'panel-image'} />
             <div className='panel-description w3-container w3-light-grey'>
-              <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
+              <p className='panel-description_title w3-opacity'>{this.setPetStatus()} {this.props.city}, {this.props.location}</p>
               {this.displayDescription()}
               <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescription}</div>
               <div className='panel-description_iteraction'>
