@@ -15,6 +15,8 @@ var MediaQuery = require('react-responsive')
 const SideBarNavigation = require('../../../features/navigation/sideBarNavigation')
 const LandingSection = require('../../../layouts/LandingSection')
 
+import FaPaw from 'react-icons/lib/fa/paw';
+
 if (process.env.WEBPACK_BUILD) {
   require('./index.scss')
 }
@@ -26,6 +28,11 @@ class Desktop extends React.Component {
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
     this.handlePetStatusFilter = this.handlePetStatusFilter.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+
+    this.state = {
+      iconColor: 'white',
+      statusColor: ''
+    }
   }
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
@@ -35,6 +42,10 @@ class Desktop extends React.Component {
     localStorage.setItem('petType', event.target.value);
   }
   handlePetStatusFilter(event) {
+    this.setState({
+      iconColor: 'orange',
+      statusColor: event.target.value
+    })
     this.props.setPetStatusFilter(event.target.value)
     localStorage.setItem('petStatus', event.target.value);
   }
@@ -87,7 +98,12 @@ class Desktop extends React.Component {
             </div>
             <div className='lost'>
               <MediaQuery minDeviceWidth={768}>
-                <h1 className='w3-text-white form-title'>Encuéntralo con nosotros</h1>
+                <div className="landing-select-filter-title w3-center">
+                  <h1 className={`${this.state.statusColor} w3-text-white form-title`}>
+                    <FaPaw size={35} color={this.state.iconColor}/>
+                    Encuéntralo con nosotros
+                  </h1>
+                </div>
               </MediaQuery>
               <form onSubmit={this.handleSubmit}>
                 <select className='form-control landing-select-filter' onChange={this.handlePetTypeFilter}>
@@ -104,7 +120,9 @@ class Desktop extends React.Component {
                 </select>
               </form>
               <Link to='/search'>
-                <h6><button className='w3-btn find-a-pet-button w3-padding-medium w3-large w3-hover-opacity-off'>Buscar</button></h6>
+                <h6 className="landing-select-filter-button">
+                  <button className={`${this.state.statusColor} w3-btn find-a-pet-button w3-padding-medium w3-large w3-hover-opacity-off`}>Buscar</button>
+                </h6>
               </Link>
             </div>
           </div>

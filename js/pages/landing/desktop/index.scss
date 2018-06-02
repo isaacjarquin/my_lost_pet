@@ -64,20 +64,48 @@ p.form-introduction {
   }
 }
 
+.landing-select-filter-title {
+  .lost {
+    color: orange !important;
+  }
+
+  .found {
+    color: yellowgreen !important;
+  }
+
+  .adoption {
+    color: dodgerblue !important;
+  }
+}
+
+.landing-select-filter-button {
+  .lost {
+    background-color: orange !important;
+  }
+
+  .found {
+    background-color: yellowgreen !important;
+  }
+
+  .adoption {
+    background-color: dodgerblue !important;
+  }
+}
+
 .lost {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 900px;
-  opacity: 0.6;
+  opacity: 0.8;
   background-color: dimgrey;
   border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
 
   .find-a-pet-button {
-    background-color: orange;
-    color: black;
+    background-color: darkgray;
+    color: white;
   }
 
   button {
@@ -109,16 +137,17 @@ p.form-introduction {
   }
 }
 
+.form-title > svg {
+  padding-bottom: 5px;
+  margin-right: 5px;
+}
+
 .landing-select-filter {
   margin-bottom: 10px;
   margin-left: 10px;
   height: 50px;
   float: left;
   width: 32%;
-}
-
-.form-title {
-  margin-left: 10px;
 }
 
 .main-title {
