@@ -34,6 +34,16 @@ class Desktop extends React.Component {
       statusColor: ''
     }
   }
+  getIconColor(petStatus) {
+    const colors = {
+      lost: "orange",
+      found: "yellowgreen",
+      adoption: "dodgerblue"
+    }
+
+    return colors[petStatus];
+  }
+
   handleSearchTermEvent (event) {
     this.props.setSearchTerm(event.target.value)
   }
@@ -43,7 +53,7 @@ class Desktop extends React.Component {
   }
   handlePetStatusFilter(event) {
     this.setState({
-      iconColor: 'orange',
+      iconColor: this.getIconColor(event.target.value),
       statusColor: event.target.value
     })
     this.props.setPetStatusFilter(event.target.value)
@@ -99,7 +109,7 @@ class Desktop extends React.Component {
             <div className='lost'>
               <MediaQuery minDeviceWidth={768}>
                 <div className="landing-select-filter-title w3-center">
-                  <h1 className={`${this.state.statusColor} w3-text-white form-title`}>
+                  <h1 className={`${this.state.statusColor}-status w3-text-white form-title`}>
                     <FaPaw size={35} color={this.state.iconColor}/>
                     Encuéntralo con nosotros
                   </h1>
