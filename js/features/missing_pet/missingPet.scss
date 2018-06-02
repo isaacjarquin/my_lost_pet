@@ -103,11 +103,22 @@
   line-height: 2;
 }
 
+.panel-date.panel-date__lost {
+  color: orange;
+}
+
+.panel-date.panel-date__found {
+  color: yellowgreen
+}
+
+.panel-date.panel-date__adoption {
+  color: dodgerblue;
+}
+
 .panel-date {
   float: left;
   padding: 10px;
   font-size: 1.2em;
-  opacity: 0.6;
   font-weight: bold;
 }
 

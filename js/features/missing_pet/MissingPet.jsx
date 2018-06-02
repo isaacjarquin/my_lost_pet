@@ -88,7 +88,9 @@ class MissingPet extends React.Component {
       return (
         <div className='missing-pet-card'>
           <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
-            <div className='panel-date'>{this.props.petType}, {this.props.size}</div>
+            <div className={`panel-date panel-date__${this.props.petStatus}`}>
+              {this.props.petType}, {this.props.size}
+            </div>
             <div className="panel-date-icon"><FaPaw size={25} color={this.getIconColor()} /></div>
             <ResponsiveImage url={this.props.imageUrl} className={'panel-image'} />
             <div className='panel-description w3-container w3-light-grey'>
