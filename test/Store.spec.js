@@ -22,8 +22,7 @@ describe('Store', () => {
     },
     filters: {
       location: '',
-      autonomousComunity: '',
-      province: '',
+      petStatus: '',
       petType: ''
     },
     'social': {
@@ -42,6 +41,7 @@ describe('Store', () => {
         founderName: 'displayNone',
         founderEmail: 'displayNone',
         petType: 'displayNone',
+        petStatus: 'displayNone',
         breed: 'displayNone',
         size: 'displayNone',
         location: 'displayNone',
@@ -54,6 +54,7 @@ describe('Store', () => {
         founderName: '',
         founderEmail: '',
         petType: '',
+        petStatus: '',
         breed: '',
         size: '',
         location: '',
@@ -69,6 +70,7 @@ describe('Store', () => {
       foundDate: '',
       autonomousComunity: '',
       province: '',
+      petStatus: '',
       location: '',
       images: [],
       extraDescription: '',
@@ -332,18 +334,6 @@ describe('Store', () => {
     const state = rootReducer({upload_preset: '', upload_url: ''}, {type: 'setCloudinary', value: newCloudinaryState})
 
     expect(state.cloudinary).to.deep.equal(newCloudinaryState)
-  })
-
-  it('should handle setAutonomousComunityFilter actions', () => {
-    const state = rootReducer({filters: {autonomousComunity: ''}}, {type: 'setAutonomousComunityFilter', value: 'Canarias'})
-
-    expect(state.filters.autonomousComunity).to.deep.equal('Canarias')
-  })
-
-  it('should handle setProvinceFilter actions', () => {
-    const state = rootReducer({filters: {province: ''}}, {type: 'setProvinceFilter', value: 'Las Palmas'})
-
-    expect(state.filters.province).to.deep.equal('Las Palmas')
   })
 
   it('should handle setComunidades actions', () => {
