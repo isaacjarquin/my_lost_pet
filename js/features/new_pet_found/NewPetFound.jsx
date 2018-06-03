@@ -310,6 +310,7 @@ class NewPetFound extends React.Component {
                 <option value={option.type} key={option.id}>{option.type}</option>
               ))}
             </select>
+            <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
 
             <select className={`form-control landing-select-filter ${this.props.inputColor.petStatus}`} onChange={this.handlePetStatus}>
               <option selected='selected' disabled>Estado de la mascota</option>
@@ -317,7 +318,7 @@ class NewPetFound extends React.Component {
                 <option value={option.value} key={option.id}>{option.text}</option>
               ))}
             </select>
-            <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
+            <ValidationError message='El campo estado de la mascota es obligatorio' field={this.props.validations.petStatus} />
 
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
