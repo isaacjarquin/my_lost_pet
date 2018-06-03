@@ -800,7 +800,7 @@ describe('Store', () => {
     expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
   })
 
-  it.only('should handle descriptionInputColor actions', () => {
+  it('should handle descriptionInputColor actions', () => {
     const intialStateValues = {
       inputColor: {
         newPetFound: {
