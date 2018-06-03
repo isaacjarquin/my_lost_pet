@@ -284,6 +284,7 @@ class NewPetFoundMobile extends React.Component {
                                 <option value={option.value} key={option.id}>{option.text}</option>
                             ))}
                         </select>
+                        <ValidationError message='El campo estado de la mascota es obligatorio' field={this.props.validations.petStatus} />
 
                         <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
                         <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
