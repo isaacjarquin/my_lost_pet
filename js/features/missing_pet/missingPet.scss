@@ -1,3 +1,41 @@
+.missing-pet-card {
+  .lost-pet-selected {
+    background-color: orange;
+  }
+
+  .lost-pet-selected > div:first-child {
+    color: white !important;
+  }
+
+  .lost-pet-selected > div > svg {
+    color: white !important;
+  }
+
+  .found-pet-selected {
+    background-color: yellowgreen;
+  }
+
+  .found-pet-selected > div:first-child {
+    color: white !important;
+  }
+
+  .found-pet-selected > div > svg {
+    color: white !important;
+  }
+
+  .adoption-pet-selected {
+    background-color: dodgerblue;
+  }
+
+  .adoption-pet-selected > div:first-child {
+    color: white !important;
+  }
+
+  .adoption-pet-selected > div > svg {
+    color: white !important;
+  }
+}
+
 .panel-image {
   img {
     width: 100%;

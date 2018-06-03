@@ -2,8 +2,15 @@ const React = require('react')
 import GoogleMapReact from 'google-map-react';
 import FaMapMarker from 'react-icons/lib/fa/map-marker';
 var MediaQuery = require('react-responsive')
+const $ = require('jquery')
 
-const Marker = ({ icon }) => <div>{icon}</div>;
+const Marker = ({ icon, onClick, onMouseOver, onMouseLeave }) => {
+  return (
+    <button onMouseOver={() => onMouseOver()} onMouseLeave={() => onMouseLeave()} onClick={() => onClick()}>
+      <div>{icon}</div>;
+    </button>
+  )
+}
 
 class Jumbotron extends React.Component {
   constructor(props) {
@@ -30,6 +37,24 @@ class Jumbotron extends React.Component {
     )
   }
 
+  handleMarkerOnClick(pet) {
+    console.log('pet: ', pet)
+  }
+
+  handleMarkerOnMouseOver({id, petStatus}) {
+    const petId = 'item-' + id
+    const selectedId = '#' + petId
+  
+    $(selectedId).addClass(`${petStatus}-pet-selected`)
+  }
+
+  handleMarkerOnMouseLeave({ id, petStatus }) {
+    const petId = 'item-' + id
+    const selectedId = '#' + petId
+
+    $(selectedId).removeClass(`${petStatus}-pet-selected`)
+  }
+
   getIconColor({ petStatus }) {
     const colors = {
       lost: "orange",
@@ -45,7 +70,7 @@ class Jumbotron extends React.Component {
 
     return (
       <GoogleMapReact
-        zoom={15}
+        zoom={5}
         center={{ lat: pets[0].latitud, lng: pets[0].longitud }}
       >
         {pets.map((pet) => {
@@ -54,6 +79,9 @@ class Jumbotron extends React.Component {
               lat={pet.latitud}
               lng={pet.longitud}
               icon={<FaMapMarker size={25} color={this.getIconColor(pet)} />}
+              onClick={() => this.handleMarkerOnClick(pet)}
+              onMouseOver={() => this.handleMarkerOnMouseOver(pet)}
+              onMouseLeave={() => this.handleMarkerOnMouseLeave(pet)}
             />
           )
         })}

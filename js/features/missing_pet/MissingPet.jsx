@@ -98,7 +98,7 @@ class MissingPet extends React.Component {
     if (this.props.id !== undefined) {
       return (
         <div className='missing-pet-card'>
-          <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
+          <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-margin`}>
             <div className={`panel-date panel-date__${this.props.petStatus}`}>
               {this.props.petType}, {this.props.size}
             </div>

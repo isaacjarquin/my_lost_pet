@@ -580,6 +580,7 @@ describe('Store', () => {
           founderName: '',
           founderEmail: '',
           petType: '',
+          pstStatus: '',
           breed: '',
           size: '',
           location: '',
@@ -593,6 +594,7 @@ describe('Store', () => {
       founderName: '',
       founderEmail: '',
       petType: '',
+      pstStatus: '',
       breed: '',
       size: '',
       location: '',
@@ -611,6 +613,7 @@ describe('Store', () => {
           autonomousComunity: '',
           founderName: '',
           founderEmail: '',
+          pstStatus: '',
           petType: '',
           breed: '',
           size: '',
@@ -625,6 +628,7 @@ describe('Store', () => {
       founderName: 'fields-color',
       founderEmail: '',
       petType: '',
+      pstStatus: '',
       breed: '',
       size: '',
       location: '',
@@ -796,7 +800,7 @@ describe('Store', () => {
     expect(state.inputColor.newPetFound).to.deep.equal(modifiedState)
   })
 
-  it('should handle descriptionInputColor actions', () => {
+  it.only('should handle descriptionInputColor actions', () => {
     const intialStateValues = {
       inputColor: {
         newPetFound: {
@@ -804,6 +808,7 @@ describe('Store', () => {
           founderName: '',
           founderEmail: '',
           petType: '',
+          pstStatus: '',
           breed: '',
           size: '',
           location: '',
@@ -817,6 +822,7 @@ describe('Store', () => {
       founderName: '',
       founderEmail: '',
       petType: '',
+      pstStatus: '',
       breed: '',
       size: '',
       location: '',
