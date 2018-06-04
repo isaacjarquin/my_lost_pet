@@ -37,8 +37,13 @@ class Jumbotron extends React.Component {
     )
   }
 
-  handleMarkerOnClick(pet) {
-    console.log('pet: ', pet)
+  handleMarkerOnClick(pet, pets) {
+    this.props.setSearchTerm(
+      pet.breed,
+      pet.location,
+      pets,
+      pet.size
+    )
   }
 
   handleMarkerOnMouseOver({id, petStatus}) {
@@ -79,7 +84,7 @@ class Jumbotron extends React.Component {
               lat={pet.latitud}
               lng={pet.longitud}
               icon={<FaMapMarker size={25} color={this.getIconColor(pet)} />}
-              onClick={() => this.handleMarkerOnClick(pet)}
+              onClick={() => this.handleMarkerOnClick(pet, pets)}
               onMouseOver={() => this.handleMarkerOnMouseOver(pet)}
               onMouseLeave={() => this.handleMarkerOnMouseLeave(pet)}
             />
