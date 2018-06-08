@@ -22,6 +22,7 @@ class Mobile extends React.Component {
     super(props)
     this.handleSearchTermEvent = this.handleSearchTermEvent.bind(this)
     this.handlePetTypeFilter = this.handlePetTypeFilter.bind(this)
+    this.handlePetStatusFilter = this.handlePetStatusFilter.bind(this)
     this.handleComunidadesFilter = this.handleComunidadesFilter.bind(this)
     this.handleProvincesFilter = this.handleProvincesFilter.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,6 +32,11 @@ class Mobile extends React.Component {
   }
   handlePetTypeFilter(event) {
     this.props.setPetTypeFilter(event.target.value)
+    localStorage.setItem('petType', event.target.value);
+  }
+  handlePetStatusFilter(event) {
+    this.props.setPetStatusFilter(event.target.value)
+    localStorage.setItem('petStatus', event.target.value);
   }
   handleComunidadesFilter(event) {
     this.props.setAutonomousComunityFilter(event.target.value)
@@ -91,6 +97,12 @@ class Mobile extends React.Component {
       { value: 'hurón', id: 6 },
       { value: 'tortuga', id: 7 }
     ]
+    const petStatusOptions = [
+      { text: 'Buscando casa', value: 'adoption', id: 1 },
+      { text: 'Encontrado', value: 'found', id: 2 },
+      { text: 'Perdido', value: 'lost', id: 3 }
+    ]
+
     const url = this.props.urls.host
 
     return (
@@ -116,6 +128,13 @@ class Mobile extends React.Component {
                     <option value={option.type} key={option.id}>{option.type}</option>
                   ))}
                 </select>
+
+                <select className='form-control landing-select-filter-mobile' onChange={this.handlePetStatusFilter}>
+                  <option selected='selected' disabled>Estado de la mascota</option>
+                  {petStatusOptions.map((option) => (
+                    <option value={option.value} key={option.id}>{option.text}</option>
+                  ))}
+                </select>
               </form>
               <Link to='/search'>
                 <h6><button className='landing-button-mobile w3-btn w3-white w3-padding-medium w3-large w3-opacity w3-hover-opacity-off'>Buscar</button></h6>
@@ -136,6 +155,7 @@ class Mobile extends React.Component {
           setPetFounderName={this.props.setPetFounderName}
           setPetFounderEmail={this.props.setPetFounderEmail}
           setPetType={this.props.setPetType}
+          setPetStatus={this.props.setPetStatus}
           setBreed={this.props.setBreed}
           setPetSize={this.props.setPetSize}
           setPetFoundDate={this.props.setPetFoundDate}

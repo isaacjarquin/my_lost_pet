@@ -25,6 +25,7 @@ const clearForm = (props) => {
   props.setPetFounderName('')
   props.setPetFounderEmail('')
   props.setPetType('')
+  props.setPetStatus('')
   props.setBreed('')
   props.setPetSize('')
   props.setPetFoundDate('')
@@ -95,6 +96,7 @@ class NewPetFound extends React.Component {
     this.handleFounderName = this.handleFounderName.bind(this)
     this.handleFounderEmail = this.handleFounderEmail.bind(this)
     this.handlePetType = this.handlePetType.bind(this)
+    this.handlePetStatus = this.handlePetStatus.bind(this)
     this.handlePetSize = this.handlePetSize.bind(this)
     this.handleFoundDate = this.handleFoundDate.bind(this)
     this.handlePetLocation = this.handlePetLocation.bind(this)
@@ -154,6 +156,9 @@ class NewPetFound extends React.Component {
   handlePetType (event) {
     this.props.setPetType(event.target.value)
   }
+  handlePetStatus(event) {
+    this.props.setPetStatus(event.target.value)
+  }
   handleBreed (event) {
     this.props.setBreed(event.target.value)
   }
@@ -190,6 +195,7 @@ class NewPetFound extends React.Component {
       this.props.founderName,
       this.props.founderEmail,
       this.props.petType,
+      this.props.petStatus,
       this.props.breed,
       this.props.size,
       this.props.location,
@@ -237,6 +243,7 @@ class NewPetFound extends React.Component {
       name: this.props.founderName,
       email: this.props.founderEmail,
       kind: this.props.petType,
+      status: this.props.petStatus,
       breed: this.props.breed,
       size: this.props.size,
       date: this.props.foundDate,
@@ -281,22 +288,22 @@ class NewPetFound extends React.Component {
       {type: 'conejo', id: 3},
       {type: 'hamster', id: 4},
       {type: 'iguana', id: 5},
-      {type: 'uron', id: 6},
+      { type: 'hurón', id: 6},
       {type: 'tortuga', id: 7}
+    ]
+
+    const petStatusOptions = [
+      { text: 'Buscando casa', value: 'adoption', id: 1 },
+      { text: 'Encontrado', value: 'found', id: 2 },
+      { text: 'Perdido', value: 'lost', id: 3 }
     ]
 
     return (
       <div className='new-pet-form'>
         <header id='new-pet' className='missing-pet-form collapse in w3-container w3-center w3-padding'>
           <div className={this.props.alert.newPetFound} ><Alerts {...this.props.alert} /></div>
-          <p className='title form-introduction'>Introduce los datos de la mascota encontrada y los datos necesarios para poder contactar contigo</p>
+          <p className='title form-introduction'>Datos de la mascota</p>
           <form onSubmit={this.handleSubmit}>
-            <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
-            <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
-
-            <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
-            <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
-
             <select className={`form-control landing-select-filter ${this.props.inputColor.petType}`} onChange={this.handlePetType}>
               <option selected='selected' disabled>Tipo de mascota</option>
               {petTypesOptions.map((option) => (
@@ -304,6 +311,14 @@ class NewPetFound extends React.Component {
               ))}
             </select>
             <ValidationError message='El campo tipo de mascota es obligatorio' field={this.props.validations.petType} />
+
+            <select className={`form-control landing-select-filter ${this.props.inputColor.petStatus}`} onChange={this.handlePetStatus}>
+              <option selected='selected' disabled>Estado de la mascota</option>
+              {petStatusOptions.map((option) => (
+                <option value={option.value} key={option.id}>{option.text}</option>
+              ))}
+            </select>
+            <ValidationError message='El campo estado de la mascota es obligatorio' field={this.props.validations.petStatus} />
 
             <p><input value={this.props.breed} onChange={this.handleBreed} className={`w3-input w3-border ${this.props.inputColor.breed}`} type='text' placeholder='Raza (pitbul, pastor aleman ...)' /></p>
             <ValidationError message='El campo raza es obligatorio' field={this.props.validations.breed} />
@@ -346,11 +361,11 @@ class NewPetFound extends React.Component {
                         maxSize={1024 * 1024 * 5}
                         onDrop={this.onImageDrop}>
                         <p>Arrastra la imagen o haz click para selectionarla. La imagen tiene que ser siempre inferior a 2 Mbytes</p>
+                        <div className='image-drop-area-space' />
                       </Dropzone>
                     </div>
                     <div className='image-preview'>
                       {this.props.images.length > 0 ? <div>
-                        <h4 className='title'>Imagen Adjuntada</h4>
                         <img className='image' src={this.props.images[0].preview} />
                       </div> : null}
                     </div>
@@ -359,7 +374,17 @@ class NewPetFound extends React.Component {
                 <div className='arrow-down'></div>
               </div>
             </div>
-            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar los datos de la mascota</button></p>
+            
+            <div className="contact-details">
+              <p className='title form-introduction'>Datos de contacto</p>
+              <p><input value={this.props.founderName} onChange={this.handleFounderName} className={`w3-input w3-border ${this.props.inputColor.founderName}`} type='text' placeholder='Nombre' /></p>
+              <ValidationError message='El campo nombre es obligatorio' field={this.props.validations.founderName} />
+
+              <p><input value={this.props.founderEmail} onChange={this.handleFounderEmail} className={`w3-input w3-border ${this.props.inputColor.founderEmail}`} type='email' placeholder='e-mail' /></p>
+              <ValidationError message='El campo email es obligatorio' field={this.props.validations.founderEmail} />
+            </div>
+
+            <p><button onSubmit={this.handleSubmit} id='details-button' className='missing-pet-button w3-btn-block w3-padding w3-padding-12 w3-opacity w3-hover-opacity-off'><i className='fa fa-paper-plane' id='button-icon' /> Guardar datos</button></p>
             <DogLoader percentage={this.props.percentage} />
           </form>
         </header>
@@ -388,6 +413,7 @@ NewPetFound.propTypes = {
   founderName: string.isRequired,
   founderEmail: string.isRequired,
   petType: string.isRequired,
+  petStatus: string.isRequired,
   size: string.isRequired,
   foundDate: string.isRequired,
   location: string.isRequired,

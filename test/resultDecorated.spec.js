@@ -14,6 +14,7 @@ describe('resultDecorated', () => {
       size: 'size',
       date: 'item date',
       location: 'item location',
+      status: 'item status',
       latitud: 'item latitud',
       longitud: 'item longitud',
       image: 'item image',
@@ -30,6 +31,7 @@ describe('resultDecorated', () => {
       location: item.location,
       latitud: item.latitud,
       longitud: item.longitud,
+      petStatus: item.status,
       imageUrl: item.image,
       description: item.info,
       extraDescription: '',
@@ -55,6 +57,7 @@ describe('resultDecorated', () => {
       location: 'item location',
       latitud: 'item latitud',
       longitud: 'item longitud',
+      status: 'item status',
       image: 'item image',
       info: 'this is a very long description so we can test the extraDescription and extraDescriptionHidden fields for decorated results'
     }
@@ -69,6 +72,7 @@ describe('resultDecorated', () => {
       location: item.location,
       latitud: item.latitud,
       longitud: item.longitud,
+      petStatus: item.status,
       imageUrl: item.image,
       description: item.info,
       extraDescription: 'this is a very long description so we can test the extraDescription and extraDescriptionHi',

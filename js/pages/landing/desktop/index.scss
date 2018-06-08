@@ -64,26 +64,54 @@ p.form-introduction {
   }
 }
 
+.landing-select-filter-title {
+  .lost-status {
+    color: orange !important;
+  }
+
+  .found-status {
+    color: yellowgreen !important;
+  }
+
+  .adoption-status {
+    color: dodgerblue !important;
+  }
+}
+
+.landing-select-filter-button {
+  .lost {
+    background-color: orange !important;
+  }
+
+  .found {
+    background-color: yellowgreen !important;
+  }
+
+  .adoption {
+    background-color: dodgerblue !important;
+  }
+}
+
 .lost {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 600px;
-  opacity: 0.6;
+  width: 900px;
+  opacity: 0.8;
   background-color: dimgrey;
   border-radius: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
 
   .find-a-pet-button {
-    background-color: orange;
-    color: black;
+    background-color: darkgray;
+    color: white;
   }
 
   button {
     border-radius: 4px;
     height: 50px;
-    width: 47%;
+    width: 32%;
   }
 }
 
@@ -109,16 +137,17 @@ p.form-introduction {
   }
 }
 
+.form-title > svg {
+  padding-bottom: 5px;
+  margin-right: 5px;
+}
+
 .landing-select-filter {
   margin-bottom: 10px;
   margin-left: 10px;
   height: 50px;
   float: left;
-  width: 48%;
-}
-
-.form-title {
-  margin-left: 10px;
+  width: 32%;
 }
 
 .main-title {

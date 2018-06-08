@@ -18,6 +18,7 @@ module.exports = {
       founderName: 'displayNone',
       founderEmail: 'displayNone',
       petType: 'displayNone',
+      petStatus: 'displayNone',
       breed: 'displayNone',
       size: 'displayNone',
       location: 'displayNone',
@@ -30,6 +31,7 @@ module.exports = {
       founderName: '',
       founderEmail: '',
       petType: '',
+      petStatus: '',
       breed: '',
       size: '',
       location: '',
@@ -51,8 +53,7 @@ module.exports = {
   filters: {
     location: '',
     petType: '',
-    autonomousComunity: '',
-    province: ''
+    petStatus: ''
   },
   owner: {
     name: '',
@@ -64,6 +65,7 @@ module.exports = {
     founderName: '',
     founderEmail: '',
     petType: '',
+    petStatus: '',
     breed: '',
     size: '',
     foundDate: '',

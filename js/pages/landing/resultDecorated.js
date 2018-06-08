@@ -26,6 +26,7 @@ const resultDecorated = (itemsCollection) => {
       founderName: item.name,
       founderEmail: item.email,
       petType: item.kind,
+      petStatus: item.status,
       breed: item.breed,
       size: item.size,
       foundDate: item.date,

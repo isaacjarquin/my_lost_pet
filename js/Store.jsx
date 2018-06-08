@@ -6,6 +6,7 @@ const {
   reducerPetFounderName,
   reducerPetFounderEmail,
   reducerPetType,
+  reducerPetStatus,
   reducerBreed,
   reducerPetSize,
   reducerPetFoundDate,
@@ -24,6 +25,7 @@ const {
   reducerFounderEmailValidation,
   reducerBreedValidation,
   reducerPetTypeValidation,
+  reducerPetStatusValidation,
   reducerSizeValidation,
   reducerLocationValidation,
   reducerDescriptionValidation
@@ -35,6 +37,7 @@ const {
   reducerFounderEmailInputColor,
   reducerBreedInputColor,
   reducerPetTypeInputColor,
+  reducerPetStatusInputColor,
   reducerSizeInputColor,
   reducerLocationInputColor,
   reducerDescriptionInputColor
@@ -62,8 +65,7 @@ const {
 const {
   reducerLocationFilter,
   reducerPetTypeFilter,
-  reducerAutonomousComunityFilter,
-  reducerProvinceFilter
+  reducerPetStatusFilter
 } = require('../js/pages/landing/pageFilters')
 
 const { reducerActivePage } = require('../js/pages/search/paginationReducer')
@@ -75,6 +77,7 @@ const initialState = require('./InitialState')
 const SET_SEARCH_TERM = 'setSearchTerm'
 const SET_LOCATION_FILTER = 'setLocationFilter'
 const SET_PET_TYPE_FILTER = 'setPetTypeFilter'
+const SET_PET_STATUS_FILTER = 'setPetStatusFiler'
 const SET_SELECT_FILTER = 'setSelectFilter'
 const SET_ACTIVE_PAGE = 'setActivePage'
 const SET_OWNER_NAME = 'setOwnerName'
@@ -84,6 +87,7 @@ const SET_DESCRIPTION = 'setDescription'
 const SET_PET_FOUNDER_NAME = 'setPetFounderName'
 const SET_PET_FOUNDER_EMAIL = 'setPetFounderEmail'
 const SET_PET_TYPE = 'setPetType'
+const SET_PET_STATUS = 'setPetSTatus'
 const SET_BREED = 'setBreed'
 const SET_PET_SIZE = 'setPetSize'
 const SET_PET_FOUND_DATE = 'setPetFoundDate'
@@ -105,14 +109,13 @@ const SET_CLOUDINARY = 'setCloudinary'
 const SET_URLS = 'setUrls'
 const SET_COMUNIDADES = 'setComunidades'
 const SET_PROVINCIAS = 'setProvincias'
-const SET_AUTONOMOUS_COMUNITY_FILTER = 'setAutonomousComunityFilter'
-const SET_PROVINCE_FILTER = 'setProvinceFilter'
 const SET_AUTONOMOUS_COMUNITY = 'setAutonomousComunity'
 const SET_PROVINCE = 'setProvince'
 const SET_AUTONOMOUS_COMUNITY_VALIDATION = 'setAutonomousComunityValidation'
 const SET_FOUNDER_NAME_VALIDATION = 'setFounderNameValidation'
 const SET_FOUNDER_EMAIL_VALIDATION = 'setFounderEmailValidation'
 const SET_PET_TYPE_VALIDATION = 'setPetTypeValidation'
+const SET_PET_STATUS_VALIDATION = 'setPetStatusValidation'
 const SET_BREED_VALIDATION = 'setBreedValidation'
 const SET_SIZE_VALIDATION = 'setSizeValidation'
 const SET_LOCATION_VALIDATION = 'setLocationValidation'
@@ -120,6 +123,7 @@ const SET_DESCRIPTION_VALIDATION = 'setDescriptionValidation'
 const SET_FOUNDER_NAME_INPUT_COLOR = 'setFounderNameInputColor'
 const SET_FOUNDER_EMAIL_INPUT_COLOR = 'setFounderEmailInputColor'
 const SET_PET_TYPE_INPUT_COLOR = 'setPetTypeInputColor'
+const SET_PET_STATUS_INPUT_COLOR = 'setPetStatusInputColor'
 const SET_BREED_INPUT_COLOR = 'setBreedInputColor'
 const SET_SIZE_INPUT_COLOR = 'setSizeInputColor'
 const SET_LOCATION_INPUT_COLOR = 'setLocationInputColor'
@@ -235,6 +239,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerLocationFilter(state, action)
     case SET_PET_TYPE_FILTER:
       return reducerPetTypeFilter(state, action)
+    case SET_PET_STATUS_FILTER:
+      return reducerPetStatusFilter(state, action)
     case SET_ACTIVE_PAGE:
       return reducerActivePage(state, action)
     case SET_OWNER_NAME:
@@ -251,6 +257,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerPetFounderEmail(state, action)
     case SET_PET_TYPE:
       return reducerPetType(state, action)
+    case SET_PET_STATUS:
+      return reducerPetStatus(state, action)
     case SET_BREED:
       return reducerBreed(state, action)
     case SET_PET_SIZE:
@@ -293,10 +301,6 @@ const rootReducer = (state = initialState, action) => {
       return reducerComunidades(state, action)
     case SET_PROVINCIAS:
       return reducerProvincias(state, action)
-    case SET_AUTONOMOUS_COMUNITY_FILTER:
-      return reducerAutonomousComunityFilter(state, action)
-    case SET_PROVINCE_FILTER:
-      return reducerProvinceFilter(state, action)
     case SET_AUTONOMOUS_COMUNITY:
       return reducerPetAutonomousComunity(state, action)
     case SET_PROVINCE:
@@ -309,6 +313,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerFounderEmailValidation(state, action)
     case SET_PET_TYPE_VALIDATION:
       return reducerPetTypeValidation(state, action)
+    case SET_PET_STATUS_VALIDATION:
+      return reducerPetStatusValidation(state, action)
     case SET_BREED_VALIDATION:
       return reducerBreedValidation(state, action)
     case SET_SIZE_VALIDATION:
@@ -323,6 +329,8 @@ const rootReducer = (state = initialState, action) => {
       return reducerFounderEmailInputColor(state, action)
     case SET_PET_TYPE_INPUT_COLOR:
       return reducerPetTypeInputColor(state, action)
+    case SET_PET_STATUS_INPUT_COLOR:
+      return reducerPetStatusInputColor(state, action)
     case SET_BREED_INPUT_COLOR:
       return reducerBreedInputColor(state, action)
     case SET_SIZE_INPUT_COLOR:
@@ -365,6 +373,7 @@ const mapStateToProps = (state) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -377,6 +386,7 @@ const mapStateToProps = (state) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -398,8 +408,7 @@ const mapStateToProps = (state) => {
     filters: {
       location: state.filters.location,
       petType: state.filters.petType,
-      autonomousComunity: state.filters.autonomousComunity,
-      province: state.filters.province
+      petStatus: state.filters.petStatus
     },
     owner: {
       name: state.owner.name,
@@ -411,6 +420,7 @@ const mapStateToProps = (state) => {
       founderName: state.pet.founderName,
       founderEmail: state.pet.founderEmail,
       petType: state.pet.petType,
+      petStatus: state.pet.petStatus,
       breed: state.pet.breed,
       size: state.pet.size,
       foundDate: state.pet.foundDate,
@@ -450,11 +460,30 @@ const getFilteredPets = (searchTerm, location, pets, selectFilter) => {
   return filteredPets
 }
 
-const urlParams = ({petType}) => {
-  if (petType !== '') {
+const filterCached = () => {
+  const petType = localStorage.getItem("petType")
+  const petStatus = localStorage.getItem("petStatus")
+
+  if (petType !== undefined && petStatus === undefined) {
     return { petType: petType }
+  } else if (petType === undefined && petStatus !== undefined) {
+    return { petStatus: petStatus }
   } else {
-    return { petType: localStorage.getItem("petType")}
+    return { petType: petType, petStatus: petStatus }
+  }
+
+  return { petType: localStorage.getItem("petType"), petStatus: localStorage.getItem("petStatus") }
+}
+
+const urlParams = ({petType, petStatus}) => {
+  if (petType !== '' &&  petStatus === '') {
+    return { petType: petType }
+  } else if (petType === '' && petStatus !== '') {
+    return { petStatus: petStatus }
+  } else if (petType !== '' && petStatus !== '') {
+    return { petType: petType, petStatus: petStatus }
+  } else {
+    return filterCached()
   }
 }
 
@@ -470,6 +499,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPetTypeFilter (petType) {
       dispatch({type: SET_PET_TYPE_FILTER, value: petType})
+    },
+    setPetStatusFilter(petStatus) {
+      dispatch({ type: SET_PET_STATUS_FILTER, value: petStatus })
     },
     setSelectFilter (searchTerm, location, pets, selectFilter, activePage) {
       dispatch({type: SET_SELECT_FILTER, value: selectFilter})
@@ -508,6 +540,11 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: SET_PET_TYPE, value: petType})
       dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayNone'})
       dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: ''})
+    },
+    setPetStatus (petStatus) {
+      dispatch({ type: SET_PET_STATUS, value: petStatus })
+      dispatch({ type: SET_PET_STATUS_VALIDATION, value: 'displayNone' })
+      dispatch({ type: SET_PET_STATUS_INPUT_COLOR, value: '' })
     },
     setBreed (breed) {
       dispatch({type: SET_BREED, value: breed})
@@ -573,12 +610,6 @@ const mapDispatchToProps = (dispatch) => {
     setProvincias (provincias) {
       dispatch({type: SET_PROVINCIAS, value: provincias})
     },
-    setAutonomousComunityFilter (autonomousComunityFilter) {
-      dispatch({type: SET_AUTONOMOUS_COMUNITY_FILTER, value: autonomousComunityFilter})
-    },
-    setProvinceFilter (provinceFilter) {
-      dispatch({type: SET_PROVINCE_FILTER, value: provinceFilter})
-    },
     setAutonomousComunity (autonomousComunity) {
       dispatch({type: SET_AUTONOMOUS_COMUNITY, value: autonomousComunity})
       dispatch({type: SET_AUTONOMOUS_COMUNITY_VALIDATION, value: 'displayNone'})
@@ -590,7 +621,7 @@ const mapDispatchToProps = (dispatch) => {
     setProgressBarPercentage (percentage) {
       dispatch({type: SET_PROGRESS_BAR_PERCENTAGE, value: percentage})
     },
-    setValidations ({founderName, founderEmail, petType, breed, size, location, description, autonomousComunity, images}) {
+    setValidations ({founderName, founderEmail, petType, petStatus, breed, size, location, description, autonomousComunity, images}) {
       if (founderName === '') {
         dispatch({type: SET_FOUNDER_NAME_VALIDATION, value: 'displayTrue'})
         dispatch({type: SET_FOUNDER_NAME_INPUT_COLOR, value: 'fields-color'})
@@ -602,6 +633,10 @@ const mapDispatchToProps = (dispatch) => {
       if (petType === '') {
         dispatch({type: SET_PET_TYPE_VALIDATION, value: 'displayTrue'})
         dispatch({type: SET_PET_TYPE_INPUT_COLOR, value: 'fields-color'})
+      }
+      if (petStatus === '') {
+        dispatch({ type: SET_PET_STATUS_VALIDATION, value: 'displayTrue' })
+        dispatch({ type: SET_PET_STATUS_INPUT_COLOR, value: 'fields-color' })
       }
       if (breed === '') {
         dispatch({type: SET_BREED_VALIDATION, value: 'displayTrue'})

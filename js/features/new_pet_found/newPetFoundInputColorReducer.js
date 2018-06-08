@@ -8,6 +8,7 @@ const reducerAutonomousComunityInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -29,6 +30,7 @@ const reducerFounderNameInputColor = (state, action) => {
         founderName: action.value,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -50,6 +52,7 @@ const reducerFounderEmailInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: action.value,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -71,6 +74,29 @@ const reducerPetTypeInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: action.value,
+        petStatus: state.inputColor.newPetFound.petStatus,
+        breed: state.inputColor.newPetFound.breed,
+        size: state.inputColor.newPetFound.size,
+        location: state.inputColor.newPetFound.location,
+        description: state.inputColor.newPetFound.description
+      }
+    }
+  })
+
+  return newState
+}
+
+const reducerPetStatusInputColor = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    inputColor: {
+      newPetFound: {
+        autonomousComunity: state.inputColor.newPetFound.autonomousComunity,
+        founderName: state.inputColor.newPetFound.founderName,
+        founderEmail: state.inputColor.newPetFound.founderEmail,
+        petType: state.inputColor.newPetFound.petType,
+        petStatus: action.value,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -92,6 +118,7 @@ const reducerBreedInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: action.value,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -113,6 +140,7 @@ const reducerSizeInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: action.value,
         location: state.inputColor.newPetFound.location,
@@ -134,6 +162,7 @@ const reducerLocationInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: action.value,
@@ -155,6 +184,7 @@ const reducerDescriptionInputColor = (state, action) => {
         founderName: state.inputColor.newPetFound.founderName,
         founderEmail: state.inputColor.newPetFound.founderEmail,
         petType: state.inputColor.newPetFound.petType,
+        petStatus: state.inputColor.newPetFound.petStatus,
         breed: state.inputColor.newPetFound.breed,
         size: state.inputColor.newPetFound.size,
         location: state.inputColor.newPetFound.location,
@@ -162,6 +192,8 @@ const reducerDescriptionInputColor = (state, action) => {
       }
     }
   })
+
+  console.log('state.inputColor.newPetFound: ', state.inputColor.newPetFound)
 
   return newState
 }
@@ -172,6 +204,7 @@ module.exports = {
   reducerFounderEmailInputColor,
   reducerBreedInputColor,
   reducerPetTypeInputColor,
+  reducerPetStatusInputColor,
   reducerSizeInputColor,
   reducerLocationInputColor,
   reducerDescriptionInputColor

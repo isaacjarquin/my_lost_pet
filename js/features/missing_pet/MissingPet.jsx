@@ -1,6 +1,7 @@
 const React = require('react')
 const ResponsiveImage = require('../responsive_image/ResponsiveImage')
 const $ = require('jquery')
+import FaPaw from 'react-icons/lib/fa/paw';
 
 if (process.env.WEBPACK_BUILD) {
   require('./missingPet.scss')
@@ -71,15 +72,40 @@ class MissingPet extends React.Component {
     }
   }
 
+  getIconColor() {
+    const colors = {
+      lost: "orange",
+      found: "yellowgreen",
+      adoption: "dodgerblue"
+    }
+    const { petStatus } = this.props
+
+    return colors[petStatus];
+  }
+
+  setPetStatus() {
+    const statusesSentences = {
+      lost: "Perdido por",
+      found: "Encontrado en",
+      adoption: "Buscando casa en"
+    }
+    const { petStatus } = this.props
+
+    return statusesSentences[petStatus];
+  }
+
   renderPetCard () {
     if (this.props.id !== undefined) {
       return (
         <div className='missing-pet-card'>
-          <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-white w3-margin`}>
-            <div className='panel-date w3-center'>{this.props.petType}, {this.props.size}</div>
+          <div id={`item-${this.props.id}`} className={`panel ${this.props.colSizeClass} w3-margin`}>
+            <div className={`panel-date panel-date__${this.props.petStatus}`}>
+              {this.props.petType}, {this.props.size}
+            </div>
+            <div className="panel-date-icon"><FaPaw size={25} color={this.getIconColor()} /></div>
             <ResponsiveImage url={this.props.imageUrl} className={'panel-image'} />
             <div className='panel-description w3-container w3-light-grey'>
-              <p className='panel-description_title w3-opacity'>Encontrado en {this.props.city}, {this.props.location}</p>
+              <p className='panel-description_title w3-opacity'>{this.setPetStatus()} {this.props.city}, {this.props.location}</p>
               {this.displayDescription()}
               <div id={`more-info-${this.props.id}`} className='more-info-extra w3-opacity collapse'>{this.props.extraDescription}</div>
               <div className='panel-description_iteraction'>

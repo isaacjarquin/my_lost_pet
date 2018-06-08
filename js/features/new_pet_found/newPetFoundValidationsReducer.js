@@ -8,6 +8,7 @@ const reducerSetAutonomousComunityValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -29,6 +30,7 @@ const reducerFounderNameValidation = (state, action) => {
         founderName: action.value,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -50,6 +52,7 @@ const reducerFounderEmailValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: action.value,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -71,6 +74,29 @@ const reducerPetTypeValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: action.value,
+        petStatus: state.validations.newPetFound.petStatus,
+        breed: state.validations.newPetFound.breed,
+        size: state.validations.newPetFound.size,
+        location: state.validations.newPetFound.location,
+        description: state.validations.newPetFound.description
+      }
+    }
+  })
+
+  return newState
+}
+
+const reducerPetStatusValidation = (state, action) => {
+  const newState = {}
+
+  Object.assign(newState, state, {
+    validations: {
+      newPetFound: {
+        autonomousComunity: state.validations.newPetFound.autonomousComunity,
+        founderName: state.validations.newPetFound.founderName,
+        founderEmail: state.validations.newPetFound.founderEmail,
+        petType: state.validations.newPetFound.petType,
+        petStatus: action.value,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -92,6 +118,7 @@ const reducerBreedValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: action.value,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -113,6 +140,7 @@ const reducerSizeValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: action.value,
         location: state.validations.newPetFound.location,
@@ -134,6 +162,7 @@ const reducerLocationValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: action.value,
@@ -155,6 +184,7 @@ const reducerDescriptionValidation = (state, action) => {
         founderName: state.validations.newPetFound.founderName,
         founderEmail: state.validations.newPetFound.founderEmail,
         petType: state.validations.newPetFound.petType,
+        petStatus: state.validations.newPetFound.petStatus,
         breed: state.validations.newPetFound.breed,
         size: state.validations.newPetFound.size,
         location: state.validations.newPetFound.location,
@@ -172,6 +202,7 @@ module.exports = {
   reducerFounderEmailValidation,
   reducerBreedValidation,
   reducerPetTypeValidation,
+  reducerPetStatusValidation,
   reducerSizeValidation,
   reducerLocationValidation,
   reducerDescriptionValidation
