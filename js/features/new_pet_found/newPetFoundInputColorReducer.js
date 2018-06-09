@@ -193,8 +193,6 @@ const reducerDescriptionInputColor = (state, action) => {
     }
   })
 
-  console.log('state.inputColor.newPetFound: ', state.inputColor.newPetFound)
-
   return newState
 }
 
